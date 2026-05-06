@@ -75,6 +75,95 @@ function pageMeter(value = 1) {
   return `<span class="robot-meter" style="--score:${score}"><i></i></span>`;
 }
 
+const useCaseLibrary = [
+  {
+    slug: "manufacturing",
+    title: "Manufacturing",
+    summary: "Factory automation, assembly support, material movement, and industrial task learning.",
+    terms: ["manufacturing", "factory", "industrial", "assembly", "workplace", "automation"],
+    buyerQuestion: "Can this robot work around production lines, tools, parts, and repetitive industrial tasks?"
+  },
+  {
+    slug: "warehouse",
+    title: "Warehouse & Logistics",
+    summary: "Tote handling, inspection, inventory movement, loading support, and logistics operations.",
+    terms: ["warehouse", "logistics", "tote", "inventory", "material", "movement"],
+    buyerQuestion: "Is this robot close to useful deployment in warehouses or distribution centers?"
+  },
+  {
+    slug: "research",
+    title: "Research & Education",
+    summary: "Developer platforms for embodied AI, locomotion, manipulation, and robotics labs.",
+    terms: ["research", "education", "developer", "prototyping", "robocup", "embodied"],
+    buyerQuestion: "Is this robot accessible enough for labs, universities, and developer teams?"
+  },
+  {
+    slug: "home",
+    title: "Home & Companion",
+    summary: "Domestic assistance, companionship, household tasks, and human-space robotics.",
+    terms: ["home", "household", "companion", "assistance", "dishes", "laundry"],
+    buyerQuestion: "Is this robot being shaped for homes and human daily routines?"
+  },
+  {
+    slug: "healthcare",
+    title: "Healthcare & Care",
+    summary: "Care assistance, social interaction, rehabilitation support, and human-robot interaction.",
+    terms: ["healthcare", "care", "elderly", "rehabilitation", "social", "interaction"],
+    buyerQuestion: "Does this robot match care, support, or human-facing service environments?"
+  },
+  {
+    slug: "inspection",
+    title: "Inspection & Safety",
+    summary: "Industrial inspection, mapping, safety checks, and field operations.",
+    terms: ["inspection", "mapping", "safety", "field", "quadruped", "rescue"],
+    buyerQuestion: "Can this robot gather reliable physical-world data in hard or risky environments?"
+  },
+  {
+    slug: "hospitality",
+    title: "Hospitality & Retail",
+    summary: "Front-of-house service, events, retail interaction, and public demonstrations.",
+    terms: ["hospitality", "retail", "events", "demo", "service", "human-robot"],
+    buyerQuestion: "Can this robot create a useful customer-facing or demonstration experience?"
+  }
+];
+
+function robotScore(robot) {
+  const maturity = Math.max(0, Math.min(5, Number(robot.maturity) || 1));
+  const price = Math.max(0, Math.min(5, Number(robot.priceVisibility) || 1));
+  const status = pageNormalize(`${robot.status} ${robot.availability}`);
+  const source = robot.source ? 5 : 2;
+  const image = robot.image ? 5 : 2;
+  const deployment = status.includes("available") || status.includes("commercial") || status.includes("enterprise") ? 4 : status.includes("pilot") ? 3 : 2;
+  return Math.round(((maturity * 0.3) + (deployment * 0.25) + (price * 0.15) + (source * 0.15) + (image * 0.15)) * 20);
+}
+
+function scoreLabel(score) {
+  if (score >= 82) return "Leader";
+  if (score >= 68) return "Strong signal";
+  if (score >= 52) return "Watchlist";
+  return "Early signal";
+}
+
+function robotUseCases(robot) {
+  const text = robotText(robot);
+  return useCaseLibrary.filter((item) => item.terms.some((term) => text.includes(pageNormalize(term))));
+}
+
+function useCaseSlug(value = "") {
+  return pageNormalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function robotCapabilityRows(robot) {
+  const maturity = Number(robot.maturity) || 1;
+  const price = Number(robot.priceVisibility) || 1;
+  return [
+    ["Commercial readiness", maturity],
+    ["Price transparency", price],
+    ["Media proof", robot.image ? 5 : 2],
+    ["Official source strength", robot.source ? 5 : 2]
+  ];
+}
+
 function setCount(name, value) {
   document.querySelectorAll(`[data-count="${name}"]`).forEach((node) => {
     node.textContent = value;
@@ -97,14 +186,19 @@ function renderRobotCards() {
     <article class="catalog-card robot-catalog-card">
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
         ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+        <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
       </figure>
       <div class="catalog-card-body">
         <div class="database-tags">
           <span>${pageEscape(robot.category || "Robot")}</span>
           <span>${pageEscape(robot.country || "Global")}</span>
+          <span>${pageEscape(scoreLabel(robotScore(robot)))}</span>
         </div>
         <h2>${pageEscape(robot.name)}</h2>
         <p>${pageEscape(robot.useCase || "Robotics platform")}</p>
+        <div class="use-case-chip-row">
+          ${robotUseCases(robot).slice(0, 3).map((item) => `<a href="use-cases.html?case=${pageEscape(item.slug)}">${pageEscape(item.title)}</a>`).join("")}
+        </div>
         <dl>
           <div><dt>Company</dt><dd>${pageEscape(robot.company)}</dd></div>
           <div><dt>Status</dt><dd>${pageEscape(robot.status)}</dd></div>
@@ -236,6 +330,18 @@ function renderVideosPage() {
       </div>
     </a>
   `).join("");
+  const theater = document.querySelector("[data-video-theater]");
+  if (theater) {
+    const featured = pageState.robots.filter((robot) => robot.image).slice(0, 5);
+    theater.innerHTML = featured.map((robot, index) => `
+      <a class="theater-card ${index === 0 ? "is-featured" : ""}" href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">
+        <img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official demo visual" loading="${index === 0 ? "eager" : "lazy"}">
+        <span>${pageEscape(robot.company)}</span>
+        <strong>${pageEscape(robot.name)}</strong>
+        <small>${pageEscape(robot.useCase)}</small>
+      </a>
+    `).join("");
+  }
 }
 
 function renderRobotProfile() {
@@ -248,6 +354,8 @@ function renderRobotProfile() {
   const related = pageState.robots
     .filter((item) => item.name !== robot.name && (item.category === robot.category || item.country === robot.country || item.company === robot.company))
     .slice(0, 4);
+  const useCases = robotUseCases(robot);
+  const score = robotScore(robot);
 
   document.title = `${robot.name} Profile | robologai`;
   root.innerHTML = `
@@ -259,12 +367,24 @@ function renderRobotProfile() {
         <div class="catalog-metrics">
           <article><strong>${pageEscape(robot.status)}</strong><small>Status</small></article>
           <article><strong>${pageEscape(robot.availability)}</strong><small>Availability</small></article>
-          <article><strong>${pageEscape(robot.priceVisibility || "1")}/5</strong><small>Price clarity</small></article>
+          <article><strong>${score}</strong><small>Robologai Score</small></article>
+        </div>
+        <div class="profile-action-row">
+          <a href="compare.html">Compare robots</a>
+          <a href="prices.html">Price tracker</a>
+          <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
         </div>
       </div>
       <figure class="profile-visual ${robot.image ? "" : "catalog-visual-empty"}">
         ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+        <figcaption>${score} <small>${pageEscape(scoreLabel(score))}</small></figcaption>
       </figure>
+    </section>
+    <section class="profile-intel-strip" aria-label="Robot intelligence summary">
+      <article><span>Use case</span><strong>${pageEscape(useCases[0]?.title || robot.category || "Robot platform")}</strong></article>
+      <article><span>Country</span><strong>${pageEscape(robot.country || "Global")}</strong></article>
+      <article><span>Price</span><strong>${pageEscape(robot.price)}</strong></article>
+      <article><span>Last checked</span><strong>Source-first profile</strong></article>
     </section>
     <section class="profile-detail-grid">
       <article class="profile-facts">
@@ -280,12 +400,43 @@ function renderRobotProfile() {
       </article>
       <article class="profile-facts">
         <h2>Robologai signal</h2>
-        <div class="robot-score-row">
-          <span>Maturity ${pageMeter(robot.maturity)}</span>
-          <span>Price clarity ${pageMeter(robot.priceVisibility)}</span>
+        <strong class="score-big">${score}<small>/100</small></strong>
+        <span class="score-label">${pageEscape(scoreLabel(score))}</span>
+        <div class="capability-list">
+          ${robotCapabilityRows(robot).map(([label, value]) => `<div><span>${pageEscape(label)}</span>${pageMeter(value)}</div>`).join("")}
         </div>
         <p>${pageEscape(robot.imageCredit || "Profile based on linked official source and Robologai data fields.")}</p>
       </article>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Use Case Fit</p>
+        <h2>Where ${pageEscape(robot.name)} belongs in the robotics economy.</h2>
+      </div>
+      <div class="use-case-profile-grid">
+        ${(useCases.length ? useCases : useCaseLibrary.slice(0, 2)).slice(0, 4).map((item) => `
+          <a href="use-cases.html?case=${pageEscape(item.slug)}">
+            <span>${pageEscape(item.title)}</span>
+            <strong>${pageEscape(item.buyerQuestion)}</strong>
+            <small>${pageEscape(item.summary)}</small>
+          </a>
+        `).join("")}
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Official Media</p>
+        <h2>Demo and product proof for ${pageEscape(robot.name)}.</h2>
+      </div>
+      <div class="profile-media-card">
+        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official visual" loading="lazy">` : `<div>${pageEscape(pageInitials(robot.name))}</div>`}
+        <article>
+          <span>${pageEscape(robot.company)}</span>
+          <h3>${pageEscape(robot.name)} official source</h3>
+          <p>Robologai links out to official robot/product pages so readers can verify fast-changing claims directly.</p>
+          <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Open official page →</a>
+        </article>
+      </div>
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
@@ -295,6 +446,63 @@ function renderRobotProfile() {
       <div class="signal-grid">
         ${related.map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.company)}</span><small>${pageEscape(item.useCase)}</small><a href="robot.html?robot=${pageEscape(robotSlug(item))}">Open profile →</a></article>`).join("")}
       </div>
+    </section>
+  `;
+}
+
+function renderUseCasesPage() {
+  const root = document.querySelector("[data-use-cases]");
+  if (!root) return;
+  const params = new URLSearchParams(window.location.search);
+  const wanted = params.get("case");
+  const selected = useCaseLibrary.find((item) => item.slug === wanted);
+  const cases = selected ? [selected] : useCaseLibrary;
+  document.title = `${selected ? selected.title : "Use Cases"} | robologai`;
+
+  root.innerHTML = `
+    <section class="catalog-hero use-case-hero">
+      <p>Use Case Library</p>
+      <h1>${pageEscape(selected ? `${selected.title} robots and companies.` : "Find robots by real-world application.")}</h1>
+      <span>${pageEscape(selected ? selected.summary : "A buyer-style view of humanoid and service robots across manufacturing, warehouse, home, research, healthcare, inspection, and hospitality use cases.")}</span>
+      <div class="catalog-metrics">
+        <article><strong>${pageState.robots.length}</strong><small>Robot profiles</small></article>
+        <article><strong>${useCaseLibrary.length}</strong><small>Use-case tracks</small></article>
+        <article><strong>Source-first</strong><small>Official links</small></article>
+      </div>
+    </section>
+    <section class="use-case-board">
+      ${cases.map((item) => {
+        const robots = pageState.robots.filter((robot) => robotUseCases(robot).some((match) => match.slug === item.slug));
+        const companies = pageState.companies.filter((company) => {
+          const text = companyText(company);
+          return item.terms.some((term) => text.includes(pageNormalize(term)));
+        }).slice(0, 8);
+        return `
+          <article class="use-case-panel" id="${pageEscape(item.slug)}">
+            <div class="use-case-panel-head">
+              <div>
+                <span>${pageEscape(item.slug)}</span>
+                <h2>${pageEscape(item.title)}</h2>
+                <p>${pageEscape(item.summary)}</p>
+              </div>
+              <strong>${robots.length}<small>robots</small></strong>
+            </div>
+            <div class="buyer-question">${pageEscape(item.buyerQuestion)}</div>
+            <div class="use-case-robot-grid">
+              ${robots.slice(0, 6).map((robot) => `
+                <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">
+                  <span>${robotScore(robot)} R-Score</span>
+                  <strong>${pageEscape(robot.name)}</strong>
+                  <small>${pageEscape(robot.company)} · ${pageEscape(robot.availability)}</small>
+                </a>
+              `).join("") || `<p class="empty-note">Robologai is still mapping robots for this use case.</p>`}
+            </div>
+            <div class="linked-company-row">
+              ${companies.map((company) => `<a href="company.html?company=${pageEscape(companySlug(company))}">${pageEscape(company.name)}</a>`).join("")}
+            </div>
+          </article>
+        `;
+      }).join("")}
     </section>
   `;
 }
@@ -501,6 +709,7 @@ async function initCatalogPages() {
   renderRobotProfile();
   renderCompanyProfile();
   renderCountryTracker();
+  renderUseCasesPage();
   renderComparePicker();
   renderComparePage();
   wireCatalogControls();
