@@ -75,6 +75,30 @@ function pageMeter(value = 1) {
   return `<span class="robot-meter" style="--score:${score}"><i></i></span>`;
 }
 
+const robotVideoLibrary = {
+  optimus: {
+    title: "Tesla Optimus official demo",
+    provider: "YouTube / Tesla",
+    embed: "https://www.youtube-nocookie.com/embed/cpraXaw7dyc",
+    source: "https://www.tesla.com/AI",
+    note: "Official Tesla Optimus demo source."
+  },
+  atlas: {
+    title: "Boston Dynamics electric Atlas",
+    provider: "YouTube / Boston Dynamics",
+    embed: "https://www.youtube-nocookie.com/embed/29ECwExc-_M",
+    source: "https://bostondynamics.com/atlas/",
+    note: "Official Boston Dynamics Atlas launch/demo source."
+  },
+  spot: {
+    title: "Boston Dynamics Spot overview",
+    provider: "YouTube / Boston Dynamics",
+    embed: "https://www.youtube-nocookie.com/embed/wlkCQXHEgjA",
+    source: "https://bostondynamics.com/products/spot/",
+    note: "Official Boston Dynamics Spot video source."
+  }
+};
+
 const useCaseLibrary = [
   {
     slug: "manufacturing",
@@ -162,6 +186,51 @@ function robotCapabilityRows(robot) {
     ["Media proof", robot.image ? 5 : 2],
     ["Official source strength", robot.source ? 5 : 2]
   ];
+}
+
+function robotVideo(robot) {
+  return robotVideoLibrary[robotSlug(robot)] || null;
+}
+
+function renderVideoPlayer(robot) {
+  const player = document.querySelector("[data-video-player]");
+  if (!player || !robot) return;
+  const video = robotVideo(robot);
+  const frame = player.querySelector(".video-player-frame");
+  const info = player.querySelector(".video-player-info");
+  if (!frame || !info) return;
+
+  if (video?.embed) {
+    frame.innerHTML = `
+      <iframe
+        src="${pageEscape(video.embed)}"
+        title="${pageEscape(video.title)}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    `;
+  } else {
+    frame.innerHTML = `
+      <div class="video-fallback-panel">
+        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} demo visual">` : `<strong>${pageEscape(pageInitials(robot.name))}</strong>`}
+        <span>Embedded video pending</span>
+      </div>
+    `;
+  }
+
+  info.innerHTML = `
+    <span>${pageEscape(video?.provider || "Official source")}</span>
+    <h2>${pageEscape(video?.title || `${robot.name} demo source`)}</h2>
+    <p>${pageEscape(video?.note || "This robot does not yet have a verified embeddable official video in Robologai. Use the official source link while we add safe embeds.")}</p>
+    <div class="video-player-actions">
+      <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Robot profile</a>
+      <a href="${pageEscape(video?.source || robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
+    </div>
+  `;
+
+  document.querySelectorAll("[data-video-robot]").forEach((item) => {
+    item.classList.toggle("is-active", item.dataset.videoRobot === robotSlug(robot));
+  });
 }
 
 function setCount(name, value) {
@@ -318,30 +387,42 @@ function renderVideosPage() {
   if (!grid) return;
   const robots = pageState.robots.filter((robot) => robot.image).slice(0, 18);
   grid.innerHTML = robots.map((robot) => `
-    <a class="video-card video-gallery-card" href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">
+    <article class="video-card video-gallery-card ${robotVideo(robot) ? "has-embed" : ""}" data-video-robot="${pageEscape(robotSlug(robot))}">
       <div class="video-thumb">
         <img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} demo visual" loading="lazy">
         <span>▶</span>
-        <em>${pageEscape(robot.category || "Robot demo")}</em>
+        <em>${robotVideo(robot) ? "Plays here" : pageEscape(robot.category || "Source link")}</em>
       </div>
       <div>
         <small>${pageEscape(robot.company)}</small>
-        <h3>${pageEscape(robot.name)} official demo / product page</h3>
+        <h3>${pageEscape(robot.name)} ${robotVideo(robot) ? "embedded official demo" : "official product page"}</h3>
+        <div class="video-card-actions">
+          ${robotVideo(robot) ? `<button type="button" data-play-video="${pageEscape(robotSlug(robot))}">Play in theater</button>` : ""}
+          <a href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
       </div>
-    </a>
+    </article>
   `).join("");
   const theater = document.querySelector("[data-video-theater]");
   if (theater) {
-    const featured = pageState.robots.filter((robot) => robot.image).slice(0, 5);
+    const featured = pageState.robots.filter((robot) => robot.image && robotVideo(robot)).slice(0, 5);
     theater.innerHTML = featured.map((robot, index) => `
-      <a class="theater-card ${index === 0 ? "is-featured" : ""}" href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">
+      <button class="theater-card ${index === 0 ? "is-featured is-active" : ""}" type="button" data-play-video="${pageEscape(robotSlug(robot))}" data-video-robot="${pageEscape(robotSlug(robot))}">
         <img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official demo visual" loading="${index === 0 ? "eager" : "lazy"}">
         <span>${pageEscape(robot.company)}</span>
         <strong>${pageEscape(robot.name)}</strong>
         <small>${pageEscape(robot.useCase)}</small>
-      </a>
+      </button>
     `).join("");
+    if (featured[0]) renderVideoPlayer(featured[0]);
   }
+  document.querySelectorAll("[data-play-video]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const robot = pageState.robots.find((item) => robotSlug(item) === button.dataset.playVideo);
+      renderVideoPlayer(robot);
+      document.querySelector("[data-video-player]")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 function renderRobotProfile() {

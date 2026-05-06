@@ -536,9 +536,14 @@ body.light-theme .logo-track span {
   min-height: 310px;
   border: 1px solid var(--line);
   border-radius: 8px;
+  color: inherit;
   background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.video-card.has-embed {
+  border-color: rgba(120, 231, 255, 0.32);
 }
 
 .video-card:hover {
@@ -628,6 +633,35 @@ body.light-theme .logo-track span {
   margin: 12px 0 0;
   font-size: 21px;
   line-height: 1.16;
+}
+
+.video-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.video-card-actions button,
+.video-card-actions a,
+.video-player-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  border: 1px solid rgba(120, 231, 255, 0.26);
+  border-radius: 7px;
+  color: #eaf6ff;
+  background: rgba(20, 184, 166, 0.12);
+  cursor: pointer;
+  font-weight: 900;
+  padding: 0 12px;
+}
+
+.video-card-actions a,
+.video-player-actions a:last-child {
+  color: var(--blue-2);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 body.light-theme .video-card {
@@ -3469,6 +3503,99 @@ body.light-theme .profile-main > div > span {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.robot-video-player {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.92), rgba(7, 17, 31, 0.96));
+  box-shadow: var(--shadow);
+}
+
+.video-player-frame {
+  position: relative;
+  min-height: 360px;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 70% 24%, rgba(120, 231, 255, 0.16), transparent 34%),
+    #05060f;
+}
+
+.video-player-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-loading,
+.video-fallback-panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #d9e8ff;
+  background: rgba(5, 6, 15, 0.72);
+  font-weight: 900;
+}
+
+.video-fallback-panel {
+  overflow: hidden;
+}
+
+.video-fallback-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.58;
+}
+
+.video-fallback-panel span,
+.video-fallback-panel strong {
+  position: absolute;
+  z-index: 1;
+  padding: 10px 12px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(5, 6, 15, 0.74);
+}
+
+.video-player-info {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding: clamp(22px, 4vw, 36px);
+}
+
+.video-player-info span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.video-player-info h2 {
+  margin: 0;
+  font-size: clamp(26px, 3.6vw, 42px);
+  line-height: 1.02;
+}
+
+.video-player-info p {
+  margin: 0;
+  color: #c4cedc;
+  line-height: 1.62;
+}
+
+.video-player-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
 .video-theater-grid {
   display: grid;
   grid-template-columns: 1.25fr repeat(2, minmax(0, 0.82fr));
@@ -3484,7 +3611,15 @@ body.light-theme .profile-main > div > span {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
+  color: inherit;
   background: rgba(7, 17, 31, 0.86);
+  cursor: pointer;
+  text-align: left;
+}
+
+.theater-card.is-active {
+  border-color: rgba(120, 231, 255, 0.52);
+  box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.2), 0 24px 60px rgba(0, 0, 0, 0.24);
 }
 
 .theater-card.is-featured {
@@ -4264,6 +4399,7 @@ body.light-theme .price-column,
 body.light-theme .quick-path-grid a,
 body.light-theme .use-case-profile-grid a,
 body.light-theme .profile-media-card,
+body.light-theme .robot-video-player,
 body.light-theme .use-case-panel,
 body.light-theme .profile-intel-strip article,
 body.light-theme .compare-picker label {
@@ -4289,7 +4425,8 @@ body.light-theme .compare-picker label {
 body.light-theme .profile-hero > div > span,
 body.light-theme .profile-facts dd,
 body.light-theme .price-card p,
-body.light-theme .price-card small {
+body.light-theme .price-card small,
+body.light-theme .video-player-info p {
   color: #43566c;
 }
 
@@ -4436,6 +4573,7 @@ body.light-theme .facts span {
   .profile-hero,
   .profile-detail-grid,
   .profile-media-card,
+  .robot-video-player,
   .post-grid,
   .video-grid,
   .cinema-grid,
@@ -4589,6 +4727,7 @@ body.light-theme .facts span {
   .profile-intel-strip,
   .video-theater-grid,
   .use-case-robot-grid,
+  .robot-video-player,
   .profile-media-card,
   .site-footer {
     grid-template-columns: 1fr;

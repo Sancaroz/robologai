@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Watch official robot demo and product pages through Robologai's visual robot video gallery.">
-    <title>Robot Demo Gallery | robologai</title>
+    <meta name="description" content="Watch official robot demos inside Robologai's robot theater, with source links and robot profiles.">
+    <title>Robot Theater | robologai</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -26,29 +26,45 @@
     </header>
     <main>
       <section class="catalog-hero">
-        <p>Robot Demo Gallery</p>
-        <h1>Browse robot demo visuals and jump to official robot pages.</h1>
-        <span>This page uses thumbnail-style robot visuals and official source links instead of heavy embedded video players.</span>
+        <p>Robot Theater</p>
+        <h1>Watch official robot demos without leaving Robologai.</h1>
+        <span>Featured videos play inside the page through official embeddable sources. Every robot still keeps source and profile links for verification.</span>
         <div class="catalog-metrics">
           <article><strong data-count="robots">21</strong><small>Robot profiles</small></article>
-          <article><strong>Official</strong><small>Demo and product links</small></article>
-          <article><strong>Fast</strong><small>Thumbnail-first gallery</small></article>
+          <article><strong>Inline</strong><small>Embedded video player</small></article>
+          <article><strong>Verified</strong><small>Source links stay visible</small></article>
+        </div>
+      </section>
+      <section class="catalog-section">
+        <div class="robot-video-player" data-video-player>
+          <div class="video-player-frame">
+            <div class="video-loading">Loading Robologai theater...</div>
+          </div>
+          <aside class="video-player-info">
+            <span>Official Demo</span>
+            <h2>Choose a robot video.</h2>
+            <p>Robologai will load the selected embedded demo here.</p>
+          </aside>
         </div>
       </section>
       <section class="catalog-section">
         <div class="section-heading compact">
-          <p>Robot Theater</p>
-          <h2>Featured demo paths from official robot sources.</h2>
+          <p>Featured Queue</p>
+          <h2>Select a demo to play in the theater.</h2>
         </div>
         <div class="video-theater-grid" data-video-theater></div>
       </section>
       <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Robot Visual Index</p>
+          <h2>Browse all robot visuals, profiles, and source pages.</h2>
+        </div>
         <div class="video-grid video-gallery-grid" data-videos-grid></div>
       </section>
     </main>
     <footer class="site-footer mini-footer">
       <a class="brand footer-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
-      <p>Official demo links and product visuals for quick robot discovery.</p>
+      <p>Official embedded demos, robot profiles, and source links for quick robot discovery.</p>
     </footer>
     <script src="script.js"></script>
     <script src="catalog-pages.js"></script>
