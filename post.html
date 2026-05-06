@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Robologai blog and news post.">
+    <meta name="robots" content="index, follow">
+    <title>Robologai Post</title>
+    <link rel="stylesheet" href="styles.css?v=flow-polish-1">
+  </head>
+  <body>
+    <main class="content-page article-page">
+      <a class="brand content-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <article data-cms-post>
+        <p class="page-kicker">News · Robologai · 2026-05-03</p>
+        <h1>Welcome to the Robologai Admin Desk</h1>
+        <p class="article-lead">This is the first editable post source for the Robologai CMS test. Future blog and news posts can be added from the admin panel.</p>
+        <p>This page loads posts from <code>content/posts.json</code>. When the content file is updated and Cloudflare Pages publishes the site, new entries appear here automatically.</p>
+      </article>
+    </main>
+    <script src="cms.js?v=flow-polish-1"></script>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get("slug") !== "mercy-ai-justice-review") return;
+
+        function addMercyCover() {
+          var article = document.querySelector("[data-cms-post]");
+          if (!article || article.querySelector("[data-mercy-cover]")) return;
+
+          var lead = article.querySelector(".article-lead");
+          var figure = document.createElement("figure");
+          figure.className = "cms-figure cms-cover";
+          figure.setAttribute("data-mercy-cover", "true");
+          figure.innerHTML = '<img src="/assets/uploads/mercy-ai-justice-cover.jpg" alt="Original Robologai visual for AI justice and algorithmic judgment" loading="lazy">';
+
+          if (lead) {
+            lead.insertAdjacentElement("afterend", figure);
+          } else {
+            article.insertAdjacentElement("afterbegin", figure);
+          }
+        }
+
+        window.addEventListener("load", function () {
+          addMercyCover();
+          window.setTimeout(addMercyCover, 700);
+          window.setTimeout(addMercyCover, 1800);
+        });
+      })();
+    </script>
+  </body>
+</html>

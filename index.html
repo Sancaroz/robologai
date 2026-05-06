@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="robologai is a global technology publication tracking humanoid robots, AI companies, robot prices, market signals, and robotics news.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://robologai.com/">
+    <meta property="og:title" content="robologai | Humanoid Robotics and AI">
+    <meta property="og:description" content="A modern knowledge platform for humanoid robots, AI companies, robo market data, and technology analysis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://robologai.com/">
+    <meta property="og:site_name" content="robologai">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>robologai | Humanoid Robotics and AI</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a class="active nav-home" href="index.html" data-i18n="navHome">Home</a>
+        <div class="nav-item">
+          <a href="robots.html">Robots</a>
+          <div class="nav-menu">
+            <a href="robots.html"><strong>Robot Catalog</strong><span>Profiles, status, source links</span></a>
+            <a href="robots.html?filter=humanoid"><strong>Humanoid Robots</strong><span>Optimus, Figure, Unitree, AgiBot</span></a>
+            <a href="compare.html"><strong>Compare Robots</strong><span>Side-by-side availability and direction</span></a>
+            <a href="videos.html"><strong>Demo Gallery</strong><span>Official visuals and robot demo links</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="companies.html">Companies</a>
+          <div class="nav-menu">
+            <a href="companies.html"><strong>Company Database</strong><span>157+ robotics and AI entities</span></a>
+            <a href="market.html"><strong>Market Watchlist</strong><span>Public proxies and private builders</span></a>
+            <a href="country.html?country=china"><strong>China Tracker</strong><span>Unitree, AgiBot, LimX, Leju, Pudu</span></a>
+            <a href="#source-notes"><strong>Source Notes</strong><span>Fact, estimate, and opinion labels</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="market.html">Intelligence</a>
+          <div class="nav-menu">
+            <a href="market.html"><strong>Robo Market</strong><span>Pricing and deployment signals</span></a>
+            <a href="compare.html"><strong>Robot Compare</strong><span>Side-by-side direction and availability</span></a>
+            <a href="prices.html"><strong>Price Tracker</strong><span>Visible, quote-based, and no-price robots</span></a>
+            <a href="#admin-desk"><strong>Latest Analysis</strong><span>Fresh Robologai desk updates</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="#guide-hub">Learn</a>
+          <div class="nav-menu compact-menu">
+            <a href="#guide-hub"><strong>Beginner Guides</strong><span>Physical AI and robot terms</span></a>
+            <a href="#glossary"><strong>Glossary</strong><span>Short explanations</span></a>
+            <a href="#blog"><strong>Blog</strong><span>Analysis and explainers</span></a>
+          </div>
+        </div>
+        <a href="hakkimizda.html" data-i18n="navAbout">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle>
+          <span data-theme-icon>☾</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Search" data-search-focus>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.2-4.2m2.2-5.3a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+        </button>
+        <a class="join-button" href="#bulten" data-i18n="newsletterJoin">Follow</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="hero-kicker" data-i18n="heroKicker">Humanoid robots, AI companies, and future technologies</p>
+          <h1 data-i18n-html="heroTitle">Understand the World of Robotics and <span>AI.</span></h1>
+          <p data-i18n="heroText">robologai tracks humanoid robots, AI companies, investment signals, robot prices, and technology trends for a global audience.</p>
+
+          <form class="search-box" role="search">
+            <label for="company-search">Search Robologai</label>
+            <input id="company-search" type="search" placeholder="Search robots, AI labs, companies..." data-i18n-placeholder="searchPlaceholder">
+            <button type="submit" aria-label="Search company">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.2-4.2m2.2-5.3a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+            </button>
+          </form>
+
+          <div class="stats">
+            <div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21v-5m8 5v-5M5 11h14M7 11V7a5 5 0 0 1 10 0v4M4 16h16l-2 5H6l-2-5Z"/></svg>
+              <strong data-stat-companies>150+</strong>
+              <span>Companies tracked</span>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM3.6 9h16.8M3.6 15h16.8M12 3c2.3 2.4 3.4 5.4 3.4 9s-1.1 6.6-3.4 9c-2.3-2.4-3.4-5.4-3.4-9S9.7 5.4 12 3Z"/></svg>
+              <strong data-stat-countries>15+</strong>
+              <span data-i18n="statCountries">Countries</span>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg>
+              <strong data-stat-robots>16</strong>
+              <span>Robot profiles</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="robot-head">
+            <div class="head-shell"></div>
+            <div class="face-panel"></div>
+            <div class="eye"></div>
+            <div class="ear-core"></div>
+            <div class="ear-ring r1"></div>
+            <div class="ear-ring r2"></div>
+            <div class="neck"></div>
+          </div>
+          <div class="data-wave"></div>
+        </div>
+      </section>
+
+      <section class="logo-marquee-section home-logo-banner" aria-label="AI and robotics companies">
+        <div class="logo-marquee">
+          <div class="logo-track">
+            <span><img src="assets/logo-openai.svg" alt="">OpenAI</span>
+            <span><img src="assets/logo-tesla.svg" alt="">Tesla</span>
+            <span><img src="assets/logo-boston.svg" alt="">Boston Dynamics</span>
+            <span><img src="assets/logo-nvidia.svg" alt="">NVIDIA</span>
+            <span><img src="assets/logo-deepmind.svg" alt="">DeepMind</span>
+            <span><img src="assets/logo-figure.svg" alt="">Figure AI</span>
+            <span><img src="assets/logo-unitree.svg" alt="">Unitree</span>
+            <span><img src="assets/logo-anthropic.svg" alt="">Anthropic</span>
+            <span><img src="assets/logo-openai.svg" alt="">OpenAI</span>
+            <span><img src="assets/logo-tesla.svg" alt="">Tesla</span>
+            <span><img src="assets/logo-boston.svg" alt="">Boston Dynamics</span>
+            <span><img src="assets/logo-nvidia.svg" alt="">NVIDIA</span>
+            <span><img src="assets/logo-deepmind.svg" alt="">DeepMind</span>
+            <span><img src="assets/logo-figure.svg" alt="">Figure AI</span>
+            <span><img src="assets/logo-unitree.svg" alt="">Unitree</span>
+            <span><img src="assets/logo-anthropic.svg" alt="">Anthropic</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="brand-showcase" aria-label="robologai visual identity">
+        <div class="brand-showcase-copy">
+          <p data-i18n="brandEyebrow">robologai signal</p>
+          <h2 data-i18n="brandTitle">A live map for the companies building intelligent machines.</h2>
+          <span data-i18n="brandText">The site follows AI labs, humanoid robotics teams, robot prices, public market signals, and the wider machine economy from one focused editorial desk.</span>
+        </div>
+        <div class="brand-showcase-media">
+          <img src="assets/robologai-ai-robot-clean.png" alt="Humanoid robot facing a glowing digital AI profile">
+        </div>
+      </section>
+
+      <section class="robologai-index-section" aria-label="Robologai index">
+        <div class="section-heading compact">
+          <p>Robologai Index</p>
+          <h2>Start from the part of the robotics economy you care about.</h2>
+        </div>
+        <div class="index-grid">
+          <a href="robots.html"><strong>Humanoid Robots</strong><span>Optimus, Figure 02, G1, Atlas, Digit, NEO</span></a>
+          <a href="market.html"><strong>Robo Market</strong><span>Public proxies, private builders, robot price visibility</span></a>
+          <a href="#guide-hub"><strong>Beginner Guides</strong><span>Physical AI, embodied AI, automation, robot terms</span></a>
+          <a href="#humanoid-files"><strong>The Humanoid Files</strong><span>Ongoing notes on the race to general-purpose robots</span></a>
+          <a href="#glossary"><strong>Glossary</strong><span>Short explanations for new readers</span></a>
+          <a href="#source-notes"><strong>Source Notes</strong><span>How Robologai separates facts, estimates, and opinion</span></a>
+        </div>
+      </section>
+
+      <section id="company-database" class="company-database-section" aria-label="Robotics and AI company database">
+        <div class="section-heading compact">
+          <p>Company Database</p>
+          <h2>Search the hidden robotics and AI company index.</h2>
+          <span>The database stays quiet until a reader searches. Results link directly to official company websites so the homepage does not become crowded.</span>
+        </div>
+        <div class="database-panel">
+          <div class="database-insight-grid" data-database-insights aria-label="Database coverage summary">
+            <article><strong>Loading</strong><span>Company count</span></article>
+            <article><strong>Loading</strong><span>Top country</span></article>
+            <article><strong>Loading</strong><span>Private builders</span></article>
+            <article><strong>Loading</strong><span>Robot profiles</span></article>
+          </div>
+          <div class="database-status" data-database-status>
+            Search for a robot, company, country, ticker, category, or product name.
+          </div>
+          <div class="database-results" data-company-results aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="admin-desk" class="cms-posts-section latest-cms-section" aria-label="Latest Robologai analysis">
+        <div class="section-heading compact">
+          <p>Latest Analysis</p>
+          <h2>Fresh stories from the Robologai desk.</h2>
+          <span>New blog posts and news updates published through the content files appear here automatically after Cloudflare Pages publishes the site.</span>
+        </div>
+        <div class="editorial-trust-row" aria-label="Editorial signals">
+          <span>Source-focused</span>
+          <span>Independent coverage</span>
+          <span>Robotics and AI only</span>
+        </div>
+        <div class="post-grid cms-post-grid" data-cms-posts>
+          <a href="post.html?slug=welcome-to-robologai-admin-desk">
+            <span>News · Robologai</span>
+            <h3>Welcome to the Robologai Admin Desk</h3>
+            <p>This is the first editable post source for the Robologai CMS test.</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="bilgiler" class="info-section">
+        <div class="section-heading">
+          <p data-i18n="infoEyebrow">Insights</p>
+          <h2 data-i18n="infoTitle">Track the robotics and AI ecosystem more easily.</h2>
+          <span data-i18n="infoText">The homepage combines market maps, humanoid robots, current news, and analysis into one professional flow.</span>
+        </div>
+
+        <div class="info-grid">
+          <article>
+            <span>01</span>
+            <h3>Market Maps</h3>
+            <p>Follow public AI names, private humanoid builders, robot products, and official sources from one structured page.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3 data-i18n="infoCard2Title">Humanoid Robot Tracking</h3>
+            <p data-i18n="infoCard2Text">Follow robots such as Optimus, Figure 02, Atlas, Digit, and Unitree by use case and technical progress.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3 data-i18n="infoCard3Title">News and Analysis</h3>
+            <p data-i18n="infoCard3Text">Read concise news and deeper analysis on robotics investments, AI products, regulation, and sector trends.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="blog" class="editorial-section">
+        <div class="feature-story">
+          <p data-i18n="featureEyebrow">Featured analysis</p>
+          <h2 data-i18n="featureTitle">Which tasks will humanoid robots take on first in business?</h2>
+          <p data-i18n="featureText">Warehouse operations, factory transport, quality control, and repetitive field work are emerging as the first major application areas for robotics companies.</p>
+          <a href="blog/1-mayis-emek-sermaye-robotlar.html" data-i18n="featureLink">Read the May Day special analysis →</a>
+        </div>
+        <div class="quick-news">
+          <article>
+            <span data-i18n="newsTag1">AI Labs</span>
+            <h3><a href="blog/xmaquina-decentralized-robotics.html" data-i18n="newsTitleXmaquina">XMAQUINA: A decentralized gateway to humanoid robotics</a></h3>
+          </article>
+          <article>
+            <span data-i18n="newsTag2">Robots</span>
+            <h3><a href="blog/1-mayis-emek-sermaye-robotlar.html" data-i18n="newsTitleLabor">May Day, labor, and robots: the new negotiation around human work</a></h3>
+          </article>
+          <article>
+            <span data-i18n="newsTag3">Market</span>
+            <h3><a href="blog/physical-ai-explained.html">Physical AI explained: when intelligence leaves the screen</a></h3>
+          </article>
+        </div>
+      </section>
+
+      <section class="latest-posts" aria-label="Latest blog posts">
+        <div class="section-heading compact">
+          <p data-i18n="latestEyebrow">Latest Posts</p>
+          <h2 data-i18n="latestTitle">New analysis from the robologai editor desk.</h2>
+        </div>
+        <div class="post-grid">
+          <a href="blog/peaq-machine-economy-depin-ecosystem.html">
+            <span>DePIN · Machine Economy</span>
+            <h3>peaq and the Machine Economy: Why DePIN Matters for Robots and Physical AI</h3>
+            <p>A Robologai deep dive into peaq, DePIN, DePAI, Machine DeFi, Machine RWAs, and onchain coordination for robots and devices.</p>
+          </a>
+          <a href="blog/best-ai-robot-movies.html">
+            <span>Culture · AI Cinema</span>
+            <h3>10 Essential Movies About AI, Robots, and Human Work</h3>
+            <p>From Ex Machina to WALL-E, a curated robologai watchlist on machines, labor, emotion, and control.</p>
+          </a>
+          <a href="blog/physical-ai-explained.html">
+            <span>Guide · Physical AI</span>
+            <h3>Physical AI Explained: When Intelligence Leaves the Screen</h3>
+            <p>A simple guide to embodied AI, humanoid robots, teleoperation, simulation, and machine labor.</p>
+          </a>
+          <a href="blog/tesla-optimus-vs-figure-ai.html">
+            <span>Comparison · Humanoids</span>
+            <h3>Tesla Optimus vs Figure AI: Two Paths to Humanoid Work</h3>
+            <p>How Tesla and Figure approach scale, data, manufacturing, autonomy, and commercial deployment.</p>
+          </a>
+          <a href="blog/1-mayis-emek-sermaye-robotlar.html">
+            <span data-i18n="post1Meta">May Day · Labor</span>
+            <h3 data-i18n="post1Title">May Day, Labor, and Robots: The New Negotiation Around Human Work</h3>
+            <p data-i18n="post1Text">How do productivity, wages, time, and ownership change as robots take on more human work?</p>
+          </a>
+          <a href="blog/xmaquina-decentralized-robotics.html">
+            <span>Physical AI · DAO</span>
+            <h3 data-i18n="post2Title">XMAQUINA: A Decentralized Gateway to Humanoid Robotics</h3>
+            <p data-i18n="post2Text">A robologai analysis of robotics capital markets, DAO governance, and the Physical AI economy.</p>
+          </a>
+          <a href="market.html">
+            <span data-i18n="post3Meta">Robo Market · Finance</span>
+            <h3 data-i18n="post3Title">Robot prices and public AI companies</h3>
+            <p data-i18n="post3Text">A starter panel for tracking public companies and commercially available robots in one view.</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="guide-hub" class="guide-hub-section">
+        <div class="section-heading">
+          <p>Beginner Guides</p>
+          <h2>A calmer entry point for readers who are new to robotics and AI.</h2>
+          <span>These guides make the site easier to follow, keep visitors reading longer, and give Robologai a clear educational identity.</span>
+        </div>
+        <div class="guide-grid">
+          <a href="blog/physical-ai-explained.html">
+            <span>01</span>
+            <strong>Physical AI Explained</strong>
+            <small>Why AI is moving from screens into machines.</small>
+          </a>
+          <a href="robots.html">
+            <span>02</span>
+            <strong>What Is a Humanoid Robot?</strong>
+            <small>Body, sensors, hands, autonomy, and real-world tasks.</small>
+          </a>
+          <a href="market.html">
+            <span>03</span>
+            <strong>How to Read Robo Market</strong>
+            <small>Public proxies, private companies, and price visibility.</small>
+          </a>
+          <a href="#glossary">
+            <span>04</span>
+            <strong>Robotics Glossary</strong>
+            <small>Fast definitions for the most repeated terms.</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="cinema-section" aria-label="AI and robot movie recommendations">
+        <div class="section-heading">
+          <p>AI & Robot Cinema</p>
+          <h2>Movies that shaped how we imagine intelligent machines.</h2>
+          <span>A culture corner for readers who want to understand robotics through ethics, labor, emotion, power, and human identity.</span>
+        </div>
+        <div class="cinema-grid">
+          <a class="cinema-card ex-machina" href="blog/best-ai-robot-movies.html">
+            <span>01</span>
+            <h3>Ex Machina</h3>
+            <p>Consciousness, manipulation, and the danger of confusing intelligence with obedience.</p>
+          </a>
+          <a class="cinema-card blade-runner" href="blog/best-ai-robot-movies.html">
+            <span>02</span>
+            <h3>Blade Runner 2049</h3>
+            <p>Synthetic labor, memory, and the fragile line between personhood and product.</p>
+          </a>
+          <a class="cinema-card her" href="blog/best-ai-robot-movies.html">
+            <span>03</span>
+            <h3>Her</h3>
+            <p>AI companionship, emotional dependency, and software that outgrows its human users.</p>
+          </a>
+          <a class="cinema-card wall-e" href="blog/best-ai-robot-movies.html">
+            <span>04</span>
+            <h3>WALL-E</h3>
+            <p>Automation, consumption, climate neglect, and a robot that remembers care.</p>
+          </a>
+        </div>
+        <a class="section-link" href="blog/best-ai-robot-movies.html">Read the full watchlist →</a>
+      </section>
+
+      <section class="robot-video-section" aria-label="Leading robot videos">
+        <div class="section-heading">
+          <p data-i18n="videoEyebrow">1-Minute Robot Watch</p>
+          <h2 data-i18n="videoTitle">Fast official demo links for leading humanoid robots.</h2>
+          <span data-i18n="videoText">A clean watchlist for quick demos. Robologai links to official pages and channels instead of embedding third-party video files directly.</span>
+        </div>
+        <div class="video-grid">
+          <a class="video-card" href="https://www.tesla.com/AI">
+            <div class="video-thumb optimus">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Optimus_Tesla.jpg" alt="Tesla Optimus robot demo visual" loading="lazy">
+              <span>▶</span>
+              <em>Official robot page</em>
+            </div>
+            <div>
+              <small>Tesla Optimus</small>
+              <h3>Factory tasks and general-purpose humanoid work</h3>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.figure.ai/">
+            <div class="video-thumb figure">
+              <img src="https://images.ctfassets.net/qx5k8y1u9drj/56I3mHKEdLZdrsONwOm3sc/63b1569bb855cc334c2dda67ce40ba4a/generic-page-image.jpeg" alt="Figure AI humanoid demo visual" loading="lazy">
+              <span>▶</span>
+              <em>Official media</em>
+            </div>
+            <div>
+              <small>Figure AI</small>
+              <h3>Humanoid reasoning, manipulation, and workplace demos</h3>
+            </div>
+          </a>
+          <a class="video-card" href="https://bostondynamics.com/atlas/">
+            <div class="video-thumb atlas">
+              <img src="https://bostondynamics.com/wp-content/uploads/2024/04/atlas-blue-mobile-copy.jpg" alt="Boston Dynamics Atlas demo visual" loading="lazy">
+              <span>▶</span>
+              <em>Official demo page</em>
+            </div>
+            <div>
+              <small>Boston Dynamics Atlas</small>
+              <h3>Mobility, balance, and next-generation humanoid motion</h3>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.unitree.com/g1/">
+            <div class="video-thumb unitree">
+              <img src="https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png" alt="Unitree G1 demo visual" loading="lazy">
+              <span>▶</span>
+              <em>Official product page</em>
+            </div>
+            <div>
+              <small>Unitree G1</small>
+              <h3>Compact humanoid platform for research and development</h3>
+            </div>
+          </a>
+          <a class="video-card" href="https://agilityrobotics.com/">
+            <div class="video-thumb digit">
+              <img src="https://cdn.prod.website-files.com/68d6ca150ffa11fdc25d7575/698c88da0a3bf08e257409ea_digit-profile.jpg" alt="Agility Robotics Digit demo visual" loading="lazy">
+              <span>▶</span>
+              <em>Official media</em>
+            </div>
+            <div>
+              <small>Agility Digit</small>
+              <h3>Warehouse movement, tote handling, and logistics demos</h3>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.sunday.ai/">
+            <div class="video-thumb memo">
+              <img src="https://cdn.sanity.io/images/1omys9i3/production/319392a9e6c83e4b9f7c2158c5b10fa6f75e84c1-2400x1260.png" alt="Sunday Memo home robot demo visual" loading="lazy">
+              <span>▶</span>
+              <em>Official home robot page</em>
+            </div>
+            <div>
+              <small>Sunday Memo</small>
+              <h3>Home humanoid direction and human environment demos</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="robo-market" class="market-section">
+        <div class="market-hero">
+          <div>
+            <p data-i18n="marketEyebrow">Robo Market & Finance</p>
+            <h2 data-i18n="marketTitle">Humanoid robotics and AI market intelligence.</h2>
+            <span data-i18n="marketText">A focused watchlist for public companies, private robotics builders, flagship robots, and price visibility. Data changes frequently; official sources remain the reference point.</span>
+          </div>
+          <div class="market-terminal-card" aria-label="Robologai market signals">
+            <span>ROBOLOGAI MARKET SIGNAL</span>
+            <strong>Public equities · Private builders · Robot prices</strong>
+            <small>Editorial snapshot, not investment advice</small>
+          </div>
+        </div>
+        <div class="market-disclaimer">
+          <strong data-i18n="marketDisclaimerTitle">Editorial note</strong>
+          <span data-i18n="marketDisclaimerText">This table is informational only. It is not investment advice, trading guidance, or financial consulting.</span>
+        </div>
+
+        <div class="market-intelligence-panel">
+          <div class="market-toolbar" aria-label="Market table filters">
+            <strong>Humanoid / AI Market Watchlist</strong>
+            <div>
+              <span>All</span>
+              <span>Public</span>
+              <span>Private</span>
+              <span>Humanoid</span>
+              <span>AI</span>
+            </div>
+          </div>
+          <div class="market-table-wrap">
+            <div class="watchlist-score-row" aria-label="Watchlist score guide">
+              <article><strong>Public proxy</strong><span>Listed company or listed parent exposure</span></article>
+              <article><strong>Humanoid builder</strong><span>Owns a physical robot platform</span></article>
+              <article><strong>Price visible</strong><span>Official or semi-public robot pricing exists</span></article>
+              <article><strong>Blog priority</strong><span>Strong candidate for deeper Robologai analysis</span></article>
+            </div>
+            <table class="market-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Company</th>
+                  <th>Flagship robot / asset</th>
+                  <th>Signal</th>
+                  <th>Country</th>
+                  <th>Type</th>
+                  <th>Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-kind="humanoid" data-search="tesla nasdaq · tsla optimus humanoid 🇺🇸 usa public">
+                  <td>01</td>
+                  <td><span class="market-logo tesla-mark">T</span><div><strong>Tesla</strong><small>NASDAQ · TSLA</small></div></td>
+                  <td>Optimus</td>
+                  <td><span class="signal-pill public">Humanoid</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Public</td>
+                  <td><a href="https://www.tesla.com/AI">Official →</a></td>
+                </tr>
+                <tr data-kind="ai-infrastructure" data-search="nvidia nasdaq · nvda isaac · gr00t · robotics compute ai infrastructure 🇺🇸 usa public">
+                  <td>02</td>
+                  <td><span class="market-logo nvidia-mark">N</span><div><strong>NVIDIA</strong><small>NASDAQ · NVDA</small></div></td>
+                  <td>Isaac · GR00T · robotics compute</td>
+                  <td><span class="signal-pill public">AI infrastructure</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Public</td>
+                  <td><a href="https://www.nvidia.com/en-us/industries/robotics/">Official →</a></td>
+                </tr>
+                <tr data-kind="ai-lab" data-search="alphabet / deepmind nasdaq · googl gemini robotics · ai research ai lab 🇺🇸 usa / 🇬🇧 uk public">
+                  <td>03</td>
+                  <td><span class="market-logo alphabet-mark">G</span><div><strong>Alphabet / DeepMind</strong><small>NASDAQ · GOOGL</small></div></td>
+                  <td>Gemini Robotics · AI research</td>
+                  <td><span class="signal-pill public">AI lab</span></td>
+                  <td>🇺🇸 USA / 🇬🇧 UK</td>
+                  <td>Public</td>
+                  <td><a href="https://deepmind.google/">Official →</a></td>
+                </tr>
+                <tr data-kind="ai-platform" data-search="microsoft / openai nasdaq · msft / private lab frontier ai models ai platform 🇺🇸 usa public proxy">
+                  <td>04</td>
+                  <td><span class="market-logo openai-mark">AI</span><div><strong>Microsoft / OpenAI</strong><small>NASDAQ · MSFT / private lab</small></div></td>
+                  <td>Frontier AI models</td>
+                  <td><span class="signal-pill public">AI platform</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Public proxy</td>
+                  <td><a href="https://openai.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="ai-platform" data-search="meta ai nasdaq · meta ai models · robotics research ai platform 🇺🇸 usa public">
+                  <td>05</td>
+                  <td><span class="market-logo meta-mark">M</span><div><strong>Meta AI</strong><small>NASDAQ · META</small></div></td>
+                  <td>AI models · robotics research</td>
+                  <td><span class="signal-pill public">AI platform</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Public</td>
+                  <td><a href="https://ai.meta.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="automation" data-search="amazon robotics nasdaq · amzn warehouse robotics systems automation 🇺🇸 usa public">
+                  <td>06</td>
+                  <td><span class="market-logo amazon-mark">A</span><div><strong>Amazon Robotics</strong><small>NASDAQ · AMZN</small></div></td>
+                  <td>Warehouse robotics systems</td>
+                  <td><span class="signal-pill public">Automation</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Public</td>
+                  <td><a href="https://www.amazonrobotics.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="ai-ecosystem" data-search="apple nasdaq · aapl ai devices · possible robotics stack ai ecosystem 🇺🇸 usa public">
+                  <td>07</td>
+                  <td><span class="market-logo apple-mark"></span><div><strong>Apple</strong><small>NASDAQ · AAPL</small></div></td>
+                  <td>AI devices · possible robotics stack</td>
+                  <td><span class="signal-pill public">AI ecosystem</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Public</td>
+                  <td><a href="https://www.apple.com/ai/">Official →</a></td>
+                </tr>
+                <tr data-kind="commercial-robot" data-search="boston dynamics hyundai motor group atlas · spot commercial robot 🇺🇸 usa subsidiary">
+                  <td>08</td>
+                  <td><span class="market-logo boston-mark">BD</span><div><strong>Boston Dynamics</strong><small>Hyundai Motor Group</small></div></td>
+                  <td>Atlas · Spot</td>
+                  <td><span class="signal-pill robot-price">Commercial robot</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Subsidiary</td>
+                  <td><a href="https://bostondynamics.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="figure ai private company figure 02 humanoid 🇺🇸 usa private">
+                  <td>09</td>
+                  <td><span class="market-logo figure-mark">F</span><div><strong>Figure AI</strong><small>Private company</small></div></td>
+                  <td>Figure 02</td>
+                  <td><span class="signal-pill private">Humanoid</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://www.figure.ai/">Official →</a></td>
+                </tr>
+                <tr data-kind="price-visible" data-search="unitree robotics private company g1 · h1 · go2 price visible 🇨🇳 china private">
+                  <td>10</td>
+                  <td><span class="market-logo unitree-mark">U</span><div><strong>Unitree Robotics</strong><small>Private company</small></div></td>
+                  <td>G1 · H1 · Go2</td>
+                  <td><span class="signal-pill robot-price">Price visible</span></td>
+                  <td>🇨🇳 China</td>
+                  <td>Private</td>
+                  <td><a href="https://www.unitree.com/g1/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid-logistics" data-search="agility robotics private company digit humanoid logistics 🇺🇸 usa private">
+                  <td>11</td>
+                  <td><span class="market-logo generic-mark">AR</span><div><strong>Agility Robotics</strong><small>Private company</small></div></td>
+                  <td>Digit</td>
+                  <td><span class="signal-pill private">Humanoid logistics</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://agilityrobotics.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="apptronik private company apollo humanoid 🇺🇸 usa private">
+                  <td>12</td>
+                  <td><span class="market-logo generic-mark">AP</span><div><strong>Apptronik</strong><small>Private company</small></div></td>
+                  <td>Apollo</td>
+                  <td><span class="signal-pill private">Humanoid</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://apptronik.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="home-workplace-humanoid" data-search="1x technologies private company neo · eve home / workplace humanoid 🇳🇴 norway private">
+                  <td>13</td>
+                  <td><span class="market-logo generic-mark">1X</span><div><strong>1X Technologies</strong><small>Private company</small></div></td>
+                  <td>NEO · EVE</td>
+                  <td><span class="signal-pill private">Home / workplace humanoid</span></td>
+                  <td>🇳🇴 Norway</td>
+                  <td>Private</td>
+                  <td><a href="https://www.1x.tech/">Official →</a></td>
+                </tr>
+                <tr data-kind="general-purpose-humanoid" data-search="sanctuary ai private company phoenix general-purpose humanoid 🇨🇦 canada private">
+                  <td>14</td>
+                  <td><span class="market-logo generic-mark">SA</span><div><strong>Sanctuary AI</strong><small>Private company</small></div></td>
+                  <td>Phoenix</td>
+                  <td><span class="signal-pill private">General-purpose humanoid</span></td>
+                  <td>🇨🇦 Canada</td>
+                  <td>Private</td>
+                  <td><a href="https://www.sanctuary.ai/">Official →</a></td>
+                </tr>
+                <tr data-kind="social-humanoid" data-search="engineered arts private company ameca social humanoid 🇬🇧 uk private">
+                  <td>15</td>
+                  <td><span class="market-logo generic-mark">EA</span><div><strong>Engineered Arts</strong><small>Private company</small></div></td>
+                  <td>Ameca</td>
+                  <td><span class="signal-pill private">Social humanoid</span></td>
+                  <td>🇬🇧 UK</td>
+                  <td>Private</td>
+                  <td><a href="https://www.engineeredarts.co.uk/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="ubtech robotics hkex · 9880 walker s humanoid 🇨🇳 china public">
+                  <td>16</td>
+                  <td><span class="market-logo generic-mark">UB</span><div><strong>UBTECH Robotics</strong><small>HKEX · 9880</small></div></td>
+                  <td>Walker S</td>
+                  <td><span class="signal-pill public">Humanoid</span></td>
+                  <td>🇨🇳 China</td>
+                  <td>Public</td>
+                  <td><a href="https://www.ubtrobot.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="fourier intelligence private company gr-1 humanoid 🇨🇳 china private">
+                  <td>17</td>
+                  <td><span class="market-logo generic-mark">FI</span><div><strong>Fourier Intelligence</strong><small>Private company</small></div></td>
+                  <td>GR-1</td>
+                  <td><span class="signal-pill private">Humanoid</span></td>
+                  <td>🇨🇳 China</td>
+                  <td>Private</td>
+                  <td><a href="https://www.fftai.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="xpeng robotics xpeng ecosystem iron humanoid humanoid 🇨🇳 china public proxy">
+                  <td>18</td>
+                  <td><span class="market-logo generic-mark">XP</span><div><strong>XPENG Robotics</strong><small>XPENG ecosystem</small></div></td>
+                  <td>Iron humanoid</td>
+                  <td><span class="signal-pill public">Humanoid</span></td>
+                  <td>🇨🇳 China</td>
+                  <td>Public proxy</td>
+                  <td><a href="https://www.xpeng.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="robotics-r-d" data-search="toyota research institute toyota ecosystem robotics research robotics r&d 🇯🇵 japan / 🇺🇸 usa public proxy">
+                  <td>19</td>
+                  <td><span class="market-logo generic-mark">TRI</span><div><strong>Toyota Research Institute</strong><small>Toyota ecosystem</small></div></td>
+                  <td>Robotics research</td>
+                  <td><span class="signal-pill public">Robotics R&D</span></td>
+                  <td>🇯🇵 Japan / 🇺🇸 USA</td>
+                  <td>Public proxy</td>
+                  <td><a href="https://www.tri.global/">Official →</a></td>
+                </tr>
+                <tr data-kind="robotics-r-d" data-search="honda robotics honda ecosystem asimo legacy · robotics r&d robotics r&d 🇯🇵 japan public proxy">
+                  <td>20</td>
+                  <td><span class="market-logo generic-mark">H</span><div><strong>Honda Robotics</strong><small>Honda ecosystem</small></div></td>
+                  <td>ASIMO legacy · robotics R&D</td>
+                  <td><span class="signal-pill public">Robotics R&D</span></td>
+                  <td>🇯🇵 Japan</td>
+                  <td>Public proxy</td>
+                  <td><a href="https://global.honda/en/robotics/">Official →</a></td>
+                </tr>
+                <tr data-kind="cognitive-robotics" data-search="neura robotics private company 4ne-1 · maira cognitive robotics 🇩🇪 germany private">
+                  <td>21</td>
+                  <td><span class="market-logo generic-mark">NR</span><div><strong>NEURA Robotics</strong><small>Private company</small></div></td>
+                  <td>4NE-1 · MAiRA</td>
+                  <td><span class="signal-pill private">Cognitive robotics</span></td>
+                  <td>🇩🇪 Germany</td>
+                  <td>Private</td>
+                  <td><a href="https://www.neurarobotics.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid-hardware" data-search="clone robotics private company clone hand · musculoskeletal android humanoid hardware 🇵🇱 poland / 🇺🇸 usa private">
+                  <td>22</td>
+                  <td><span class="market-logo generic-mark">CR</span><div><strong>Clone Robotics</strong><small>Private company</small></div></td>
+                  <td>Clone hand · musculoskeletal android</td>
+                  <td><span class="signal-pill private">Humanoid hardware</span></td>
+                  <td>🇵🇱 Poland / 🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://www.clonerobotics.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="robotics-foundation-model" data-search="skild ai private company general-purpose robot brain robotics foundation model 🇺🇸 usa private">
+                  <td>23</td>
+                  <td><span class="market-logo generic-mark">SK</span><div><strong>Skild AI</strong><small>Private company</small></div></td>
+                  <td>General-purpose robot brain</td>
+                  <td><span class="signal-pill private">Robotics foundation model</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://www.skild.ai/">Official →</a></td>
+                </tr>
+                <tr data-kind="robotics-ai-model" data-search="physical intelligence private company generalist robot ai robotics ai model 🇺🇸 usa private">
+                  <td>24</td>
+                  <td><span class="market-logo generic-mark">π</span><div><strong>Physical Intelligence</strong><small>Private company</small></div></td>
+                  <td>Generalist robot AI</td>
+                  <td><span class="signal-pill private">Robotics AI model</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://www.physicalintelligence.company/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="mentee robotics private company menteebot humanoid 🇮🇱 israel private">
+                  <td>25</td>
+                  <td><span class="market-logo generic-mark">ME</span><div><strong>Mentee Robotics</strong><small>Private company</small></div></td>
+                  <td>Menteebot</td>
+                  <td><span class="signal-pill private">Humanoid</span></td>
+                  <td>🇮🇱 Israel</td>
+                  <td>Private</td>
+                  <td><a href="https://www.menteebot.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="humanoid" data-search="persona ai private company industrial humanoid humanoid 🇺🇸 usa private">
+                  <td>26</td>
+                  <td><span class="market-logo generic-mark">PA</span><div><strong>Persona AI</strong><small>Private company</small></div></td>
+                  <td>Industrial humanoid</td>
+                  <td><span class="signal-pill private">Humanoid</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://www.persona-ai.com/">Official →</a></td>
+                </tr>
+                <tr data-kind="robotics-ai" data-search="covariant private company warehouse ai robotics robotics ai 🇺🇸 usa private">
+                  <td>27</td>
+                  <td><span class="market-logo generic-mark">CV</span><div><strong>Covariant</strong><small>Private company</small></div></td>
+                  <td>Warehouse AI robotics</td>
+                  <td><span class="signal-pill private">Robotics AI</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://covariant.ai/">Official →</a></td>
+                </tr>
+                <tr data-kind="robotics-ai" data-search="dexterity ai private company warehouse robotics stack robotics ai 🇺🇸 usa private">
+                  <td>28</td>
+                  <td><span class="market-logo generic-mark">DX</span><div><strong>Dexterity AI</strong><small>Private company</small></div></td>
+                  <td>Warehouse robotics stack</td>
+                  <td><span class="signal-pill private">Robotics AI</span></td>
+                  <td>🇺🇸 USA</td>
+                  <td>Private</td>
+                  <td><a href="https://www.dexterity.ai/">Official →</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="market-summary-strip">
+            <article><strong>28</strong><span>Humanoid / AI entities</span></article>
+            <article><strong>10</strong><span>Public market proxies</span></article>
+            <article><strong>Official</strong><span>Source-first outbound links</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="robot-database" class="robot-database-section">
+        <div class="section-heading">
+          <p>Robot Database</p>
+          <h2>A practical tracker for leading humanoid and service robots.</h2>
+          <span>Each profile gives readers the company, status, use case, price visibility, and official source without pretending to be a live pricing feed.</span>
+        </div>
+        <div class="robot-catalog-toolbar" aria-label="Robot catalog filters">
+          <button type="button" class="is-active" data-robot-filter="all">All</button>
+          <button type="button" data-robot-filter="Humanoid">Humanoid</button>
+          <button type="button" data-robot-filter="China">China</button>
+          <button type="button" data-robot-filter="Available">Available</button>
+          <button type="button" data-robot-filter="Home">Home</button>
+        </div>
+        <div class="robot-database-grid">
+          <article>
+            <div class="robot-icon">...</div>
+            <span>Loading catalog</span>
+            <h3>Robot profiles</h3>
+            <p>Robologai is preparing the robot catalog.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="compare-section" class="compare-section">
+        <div class="section-heading">
+          <p>Robot Compare</p>
+          <h2>Compare leading robots without getting lost in hype.</h2>
+          <span>A quick view of what each robot appears to be built for, whether it is commercially accessible, and what kind of reader should watch it closely.</span>
+        </div>
+        <div class="compare-table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Robot</th>
+                <th>Company</th>
+                <th>Main direction</th>
+                <th>Availability</th>
+                <th>Price visibility</th>
+              </tr>
+            </thead>
+            <tbody data-robot-compare>
+              <tr>
+                <td>Optimus</td>
+                <td>Tesla</td>
+                <td>Factory and future general-purpose work</td>
+                <td>Not publicly sold</td>
+                <td>Scale, manufacturing, AI data loop</td>
+              </tr>
+              <tr>
+                <td>Figure 02</td>
+                <td>Figure AI</td>
+                <td>Workplace humanoid automation</td>
+                <td>Enterprise pilots</td>
+                <td>Commercial deployment speed</td>
+              </tr>
+              <tr>
+                <td>Unitree G1</td>
+                <td>Unitree Robotics</td>
+                <td>Research and developer humanoid</td>
+                <td>Order-based availability</td>
+                <td>Price visibility and accessibility</td>
+              </tr>
+              <tr>
+                <td>Atlas</td>
+                <td>Boston Dynamics</td>
+                <td>Advanced mobility and industrial R&D</td>
+                <td>Not publicly sold</td>
+                <td>Motion, balance, industrial future</td>
+              </tr>
+              <tr>
+                <td>Digit</td>
+                <td>Agility Robotics</td>
+                <td>Warehouse logistics</td>
+                <td>Enterprise model</td>
+                <td>Real workplace use cases</td>
+              </tr>
+              <tr>
+                <td>NEO</td>
+                <td>1X Technologies</td>
+                <td>Home and human spaces</td>
+                <td>Limited / developing</td>
+                <td>Consumer humanoid expectations</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="humanoid-files" class="humanoid-files-section">
+        <div class="section-heading">
+          <p>The Humanoid Files</p>
+          <h2>A repeatable series for the companies shaping general-purpose robots.</h2>
+          <span>This gives Robologai a recognizable editorial format: one robot, one company, one clear question.</span>
+        </div>
+        <div class="files-grid">
+          <a href="blog/tesla-optimus-vs-figure-ai.html"><span>File 01</span><strong>Tesla Optimus vs Figure AI</strong><small>Two paths to humanoid work.</small></a>
+          <a href="robots.html?filter=unitree"><span>File 02</span><strong>Unitree G1 Price Watch</strong><small>Why affordable humanoids matter.</small></a>
+          <a href="robots.html?filter=atlas"><span>File 03</span><strong>Atlas After Hydraulic Atlas</strong><small>What electric humanoids signal.</small></a>
+          <a href="market.html"><span>File 04</span><strong>Private Builders Radar</strong><small>Apptronik, 1X, Sanctuary AI, Agility.</small></a>
+        </div>
+      </section>
+
+      <section class="radar-section">
+        <div class="radar-main">
+          <p>Weekly Radar</p>
+          <h2>What Robologai can publish every week.</h2>
+          <span>A repeatable editorial format makes the site feel alive and gives Google a clear reason to revisit it.</span>
+        </div>
+        <div class="radar-list">
+          <article><strong>Monday</strong><span>Humanoid robot radar: launches, demos, pilots, and partnerships.</span></article>
+          <article><strong>Wednesday</strong><span>Robo Market watch: public companies, robot availability, and finance notes.</span></article>
+          <article><strong>Friday</strong><span>Deep analysis: one company, one robot, or one Physical AI theme.</span></article>
+          <article><strong>Weekend</strong><span>Culture post: AI films, books, documentaries, or future-of-work essays.</span></article>
+        </div>
+      </section>
+
+      <section id="glossary" class="glossary-section">
+        <div class="section-heading">
+          <p>Glossary</p>
+          <h2>Key terms for readers entering the robotics and AI economy.</h2>
+          <span>Short definitions help new readers stay on the page instead of leaving to search every technical term.</span>
+        </div>
+        <div class="glossary-grid">
+          <article><strong>Physical AI</strong><span>AI connected to sensors, robots, machines, and real-world action.</span></article>
+          <article><strong>Embodied AI</strong><span>Intelligence placed inside a body that can perceive and move in physical space.</span></article>
+          <article><strong>Humanoid Robot</strong><span>A robot shaped for human environments, usually with arms, legs, hands, and sensors.</span></article>
+          <article><strong>Teleoperation</strong><span>Remote human control used to train, supervise, or operate robots.</span></article>
+          <article><strong>RaaS</strong><span>Robotics as a Service: paying for robot usage instead of buying the robot outright.</span></article>
+          <article><strong>Simulation</strong><span>Virtual training environments where robots can learn before real-world deployment.</span></article>
+          <article><strong>End Effector</strong><span>The hand, gripper, or tool at the end of a robotic arm.</span></article>
+          <article><strong>Autonomy Stack</strong><span>The software layers for perception, planning, control, and decision-making.</span></article>
+        </div>
+      </section>
+
+      <section id="source-notes" class="source-notes-section">
+        <div>
+          <p>Source Notes</p>
+          <h2>Clear labels build trust before the site grows.</h2>
+          <span>Robologai separates official product information, market signals, estimates, and opinion. Robot prices can change quickly, private company data may be incomplete, and finance content is informational only.</span>
+        </div>
+        <div class="source-note-list">
+          <article><strong>Official first</strong><span>Links point readers to company or product pages whenever possible.</span></article>
+          <article><strong>No hidden ads</strong><span>Sponsored work should be clearly labeled if Robologai accepts it later.</span></article>
+          <article><strong>Corrections welcome</strong><span>Readers and companies can send updates to robologai@gmail.com.</span></article>
+        </div>
+      </section>
+
+      <section id="advertise" class="sponsor-section">
+        <div>
+          <p>Advertise on Robologai</p>
+          <h2>Built for robotics founders, AI tools, hardware companies, and future-of-work brands.</h2>
+          <span>Potential placements include sponsored analysis, newsletter sponsorship, comparison pages, and clearly labeled partner messages. Editorial independence stays visible.</span>
+        </div>
+        <a href="mailto:robologai@gmail.com?subject=Robologai%20partnership%20inquiry">Discuss sponsorship →</a>
+      </section>
+
+      <section id="hakkimizda" class="trust-section">
+        <div class="trust-copy">
+          <p data-i18n="aboutEyebrow">About</p>
+          <h2 data-i18n="aboutTitle">robologai is designed to make complex technology news easier to understand.</h2>
+          <p data-i18n="aboutText">Our goal is to build an information hub about AI companies, humanoid robots, and robotics investments that is quick to read without becoming shallow.</p>
+        </div>
+        <div class="trust-grid">
+          <article>
+            <strong data-i18n="trust1Title">Source-Focused</strong>
+            <span data-i18n="trust1Text">Company profiles are supported by official sites, product announcements, and reliable sector information.</span>
+          </article>
+          <article>
+            <strong data-i18n="trust2Title">Global Focus</strong>
+            <span data-i18n="trust2Text">English-first coverage helps robologai reach readers, builders, and investors across the global robotics ecosystem.</span>
+          </article>
+          <article>
+            <strong data-i18n="trust3Title">Readable</strong>
+            <span data-i18n="trust3Text">Light and dark modes provide a comfortable experience for longer reading sessions.</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="bulten" class="newsletter">
+        <div class="mail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4V6Z"/><path d="m4 7 8 6 8-6"/></svg>
+        </div>
+        <div>
+          <h2>Follow Robologai</h2>
+          <p>Follow the site on X and YouTube, or send news tips, partnership requests, and corrections by email.</p>
+        </div>
+        <div class="follow-actions">
+          <a href="https://x.com/robologai">X @robologai</a>
+          <a href="https://www.youtube.com/@robologai">YouTube</a>
+          <a href="mailto:robologai@gmail.com">Email</a>
+        </div>
+      </section>
+
+      <section id="iletisim" class="contact-strip">
+        <div>
+          <h2 data-i18n="contactTitle">Reach out for partnerships, source suggestions, or news tips.</h2>
+          <p data-i18n="contactText">Email: robologai@gmail.com · X: @robologai · YouTube: robologai</p>
+        </div>
+        <a href="mailto:robologai@gmail.com">robologai@gmail.com</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand footer-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+        <p data-i18n="footerText">The latest insights, analysis, and content from the world of robotics and artificial intelligence.</p>
+      </div>
+      <nav>
+        <h3 data-i18n="footerExplore">Explore</h3>
+        <a href="robots.html">Robots</a>
+        <a href="market.html" data-i18n="navMarket">Robo Market</a>
+        <a href="companies.html">Companies</a>
+        <a href="compare.html">Compare</a>
+        <a href="prices.html">Prices</a>
+        <a href="videos.html">Videos</a>
+        <a href="#kategoriler" data-i18n="navCategories">Categories</a>
+        <a href="#glossary">Glossary</a>
+        <a href="#blog">Blog</a>
+        <a href="#blog" data-i18n="analysis">Analysis</a>
+      </nav>
+      <nav>
+        <h3 data-i18n="footerCorporate">Company</h3>
+        <a href="hakkimizda.html" data-i18n="navAbout">About</a>
+        <a href="hakkimizda.html" data-i18n="team">Team</a>
+        <a href="iletisim.html" data-i18n="career">Careers</a>
+        <a href="#advertise">Advertise</a>
+        <a href="iletisim.html" data-i18n="navContact">Contact</a>
+      </nav>
+      <nav>
+        <h3 data-i18n="footerLegal">Legal</h3>
+        <a href="gizlilik-politikasi.html" data-i18n="privacy">Privacy Policy</a>
+        <a href="kullanim-sartlari.html" data-i18n="terms">Terms of Use</a>
+        <a href="cerez-politikasi.html" data-i18n="cookies">Cookie Policy</a>
+      </nav>
+      <div>
+        <h3 data-i18n="footerFollow">Follow Us</h3>
+        <div class="socials">
+          <a href="https://x.com/robologai" aria-label="X robologai">𝕏</a>
+          <a href="https://www.youtube.com/@robologai" aria-label="YouTube robologai">▶</a>
+          <a href="mailto:robologai@gmail.com" aria-label="robologai email">@</a>
+        </div>
+      </div>
+      <p class="copyright" data-i18n="copyright">© 2026 Robologai. All rights reserved. Original articles, visual identity, and site design may not be copied, republished, or used commercially without permission.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="cms.js"></script>
+  </body>
+</html>

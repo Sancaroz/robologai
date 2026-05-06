@@ -1,0 +1,55 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#030B16"/>
+  <path d="M0 720C270 602 514 562 733 600C1017 650 1255 584 1600 392V1000H0V720Z" fill="#07182B"/>
+  <g opacity=".24" stroke="#54A0FF">
+    <path d="M160 160H1440"/>
+    <path d="M160 260H1440"/>
+    <path d="M160 360H1440"/>
+    <path d="M160 460H1440"/>
+    <path d="M160 560H1440"/>
+    <path d="M160 660H1440"/>
+    <path d="M160 760H1440"/>
+    <path d="M300 100V850"/>
+    <path d="M500 100V850"/>
+    <path d="M700 100V850"/>
+    <path d="M900 100V850"/>
+    <path d="M1100 100V850"/>
+    <path d="M1300 100V850"/>
+  </g>
+  <g transform="translate(570 118)">
+    <path d="M260 0C389 0 478 97 478 226C478 309 437 376 374 417L414 596H116L156 417C93 376 52 309 52 226C52 97 131 0 260 0Z" fill="url(#shell)"/>
+    <path d="M90 242C64 262 40 297 26 342C13 383 21 421 58 455L128 355L140 260L90 242Z" fill="#B7C6D8"/>
+    <path d="M354 88C438 116 488 185 488 266C488 345 439 414 366 444" stroke="#EAF4FF" stroke-width="4" opacity=".9"/>
+    <circle cx="360" cy="232" r="110" stroke="#CFE2FF" stroke-width="8"/>
+    <circle cx="360" cy="232" r="72" stroke="#8EBBFF" stroke-width="8"/>
+    <circle cx="360" cy="232" r="32" fill="#07111D" stroke="#EAF4FF" stroke-width="8"/>
+    <rect x="146" y="272" width="36" height="16" rx="8" fill="#07111D"/>
+    <path d="M206 468H326L350 720H182L206 468Z" fill="url(#neck)"/>
+  </g>
+  <g opacity=".75" stroke="#54A0FF" stroke-width="2">
+    <path d="M980 210H1278"/>
+    <path d="M1046 284H1360"/>
+    <path d="M930 704H1280"/>
+    <path d="M1140 210 1190 160H1400"/>
+    <path d="M1228 704 1284 762H1434"/>
+  </g>
+  <g fill="#D9E8FF">
+    <circle cx="1278" cy="210" r="6"/>
+    <circle cx="1360" cy="284" r="6"/>
+    <circle cx="1280" cy="704" r="6"/>
+    <circle cx="1400" cy="160" r="6"/>
+    <circle cx="1434" cy="762" r="6"/>
+  </g>
+  <defs>
+    <linearGradient id="shell" x1="118" y1="12" x2="402" y2="494" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset=".48" stop-color="#C8D5E4"/>
+      <stop offset="1" stop-color="#8495A9"/>
+    </linearGradient>
+    <linearGradient id="neck" x1="182" y1="468" x2="350" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22364E"/>
+      <stop offset=".55" stop-color="#0D1A2A"/>
+      <stop offset="1" stop-color="#030812"/>
+    </linearGradient>
+  </defs>
+</svg>

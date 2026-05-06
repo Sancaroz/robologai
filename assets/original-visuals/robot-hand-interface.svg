@@ -1,0 +1,42 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#030914"/>
+  <circle cx="780" cy="420" r="310" fill="url(#blueGlow)"/>
+  <g stroke="#54A0FF" stroke-width="2" opacity=".72">
+    <circle cx="790" cy="420" r="180"/>
+    <circle cx="790" cy="420" r="116"/>
+    <path d="M610 420H356"/>
+    <path d="M970 420H1244"/>
+    <path d="M790 240V116"/>
+    <path d="M790 600V778"/>
+  </g>
+  <g>
+    <rect x="670" y="650" width="250" height="96" rx="30" fill="#C7D5E4"/>
+    <rect x="714" y="560" width="46" height="120" rx="23" fill="#EAF4FF"/>
+    <rect x="780" y="520" width="46" height="150" rx="23" fill="#D6E1ED"/>
+    <rect x="846" y="548" width="46" height="132" rx="23" fill="#B9C9DA"/>
+    <path d="M672 680C614 640 578 606 558 570C541 539 552 512 580 508C614 503 640 552 680 578L672 680Z" fill="#A9BBCE"/>
+    <rect x="730" y="746" width="136" height="160" rx="42" fill="#8598AD"/>
+  </g>
+  <g fill="#EAF4FF">
+    <circle cx="790" cy="420" r="20"/>
+    <circle cx="356" cy="420" r="8"/>
+    <circle cx="1244" cy="420" r="8"/>
+    <circle cx="790" cy="116" r="8"/>
+    <circle cx="790" cy="778" r="8"/>
+  </g>
+  <g opacity=".82">
+    <rect x="1040" y="214" width="250" height="118" rx="14" fill="#0E2038" stroke="#345F99"/>
+    <rect x="1092" y="246" width="150" height="14" rx="7" fill="#54A0FF"/>
+    <rect x="1092" y="278" width="98" height="14" rx="7" fill="#5EEAD4"/>
+    <rect x="302" y="596" width="270" height="138" rx="14" fill="#0E2038" stroke="#345F99"/>
+    <rect x="340" y="632" width="178" height="14" rx="7" fill="#D98A2B"/>
+    <rect x="340" y="668" width="126" height="14" rx="7" fill="#54A0FF"/>
+  </g>
+  <defs>
+    <radialGradient id="blueGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(780 420) rotate(90) scale(310)">
+      <stop stop-color="#1677FF" stop-opacity=".32"/>
+      <stop offset=".62" stop-color="#0A3B88" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#030914" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

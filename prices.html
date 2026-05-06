@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Track robot price visibility, public prices, quote-based platforms, enterprise pricing, and robots with no public price.">
+    <title>Robot Price Tracker | robologai</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="robots.html">Robots</a>
+        <a href="companies.html">Companies</a>
+        <a class="active" href="market.html">Intelligence</a>
+        <a href="compare.html">Compare</a>
+        <a href="videos.html">Videos</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle><span data-theme-icon>☾</span></button>
+        <a class="join-button" href="market.html">Market</a>
+      </div>
+    </header>
+    <main>
+      <section class="catalog-hero">
+        <p>Robot Price Tracker</p>
+        <h1>See which robots have visible prices, estimates, or enterprise-only pricing.</h1>
+        <span>Robologai separates public price visibility from quote-based, RaaS, and no-public-price robots so readers do not confuse hype with market access.</span>
+        <div class="catalog-metrics">
+          <article><strong data-count="robots">21</strong><small>Robot profiles</small></article>
+          <article><strong>4</strong><small>Pricing groups</small></article>
+          <article><strong>Editorial</strong><small>Not financial advice</small></article>
+        </div>
+      </section>
+      <section class="catalog-section">
+        <div class="price-board" data-prices-grid></div>
+      </section>
+    </main>
+    <footer class="site-footer mini-footer">
+      <a class="brand footer-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <p>Robot pricing is tracked as availability and visibility, not investment advice.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="catalog-pages.js"></script>
+  </body>
+</html>

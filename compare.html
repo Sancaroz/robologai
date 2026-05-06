@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Compare leading humanoid and service robots by company, category, country, availability, price visibility, use case, and source.">
+    <title>Robot Compare | robologai</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="robots.html">Robots</a>
+        <a href="companies.html">Companies</a>
+        <a href="market.html">Intelligence</a>
+        <a class="active" href="compare.html">Compare</a>
+        <a href="prices.html">Prices</a>
+        <a href="videos.html">Videos</a>
+        <a href="hakkimizda.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle><span data-theme-icon>☾</span></button>
+        <a class="join-button" href="index.html#bulten">Follow</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero">
+        <p>Robot Compare</p>
+        <h1>Compare leading robots without getting lost in launch hype.</h1>
+        <span>A practical table for availability, price clarity, primary use case, maturity, and official sources.</span>
+        <div class="catalog-metrics">
+          <article><strong data-count="robots">21</strong><small>Robot profiles</small></article>
+          <article><strong>8 fields</strong><small>Compared per robot</small></article>
+          <article><strong>Official</strong><small>Source links</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Compare Selector</p>
+          <h2>Choose the robots you want to compare.</h2>
+        </div>
+        <div class="compare-picker" data-compare-select></div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="compare-table-wrap full-compare-wrap">
+          <table class="compare-table full-compare-table">
+            <thead>
+              <tr>
+                <th>Robot</th>
+                <th>Category</th>
+                <th>Country</th>
+                <th>Availability</th>
+                <th>Price visibility</th>
+                <th>Main use case</th>
+                <th>Maturity</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody data-full-compare></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer mini-footer">
+      <a class="brand footer-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <p>Robotics and AI intelligence, organized as catalogs, comparisons, and source-first analysis.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="catalog-pages.js"></script>
+  </body>
+</html>

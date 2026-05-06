@@ -1,0 +1,52 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#020812"/>
+  <circle cx="800" cy="500" r="420" fill="url(#glow)"/>
+  <g opacity=".78">
+    <path d="M196 612C404 438 621 383 848 447C1029 498 1205 488 1404 370" stroke="#1677FF" stroke-width="2"/>
+    <path d="M170 692C390 514 626 456 874 521C1067 572 1244 553 1430 438" stroke="#54A0FF" stroke-width="2" opacity=".65"/>
+    <path d="M220 524C425 358 639 308 862 374C1027 423 1189 407 1366 296" stroke="#5EEAD4" stroke-width="2" opacity=".42"/>
+  </g>
+  <g>
+    <circle cx="800" cy="500" r="154" stroke="#D9E8FF" stroke-width="2" opacity=".5"/>
+    <circle cx="800" cy="500" r="106" stroke="#54A0FF" stroke-width="4"/>
+    <circle cx="800" cy="500" r="62" fill="#0B1B31" stroke="#EAF4FF" stroke-width="4"/>
+    <circle cx="800" cy="500" r="22" fill="#1677FF"/>
+  </g>
+  <g stroke="#54A0FF" stroke-width="2" opacity=".76">
+    <path d="M800 346V200"/>
+    <path d="M800 800V654"/>
+    <path d="M646 500H500"/>
+    <path d="M1100 500H954"/>
+    <path d="M692 392 590 290"/>
+    <path d="M1010 710 908 608"/>
+    <path d="M908 392 1010 290"/>
+    <path d="M590 710 692 608"/>
+  </g>
+  <g fill="#EAF4FF">
+    <circle cx="800" cy="200" r="8"/>
+    <circle cx="800" cy="800" r="8"/>
+    <circle cx="500" cy="500" r="8"/>
+    <circle cx="1100" cy="500" r="8"/>
+    <circle cx="590" cy="290" r="8"/>
+    <circle cx="1010" cy="710" r="8"/>
+    <circle cx="1010" cy="290" r="8"/>
+    <circle cx="590" cy="710" r="8"/>
+  </g>
+  <g opacity=".45" fill="#1677FF">
+    <circle cx="264" cy="264" r="3"/>
+    <circle cx="318" cy="228" r="3"/>
+    <circle cx="376" cy="306" r="3"/>
+    <circle cx="1276" cy="706" r="3"/>
+    <circle cx="1342" cy="642" r="3"/>
+    <circle cx="1188" cy="760" r="3"/>
+    <circle cx="1222" cy="214" r="3"/>
+    <circle cx="1370" cy="258" r="3"/>
+  </g>
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 500) rotate(90) scale(420)">
+      <stop stop-color="#1677FF" stop-opacity=".42"/>
+      <stop offset=".48" stop-color="#0B5FDB" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#020812" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

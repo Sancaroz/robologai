@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse Robologai's humanoid and service robot catalog with status, availability, price visibility, use cases, and official sources.">
+    <title>Robot Catalog | robologai</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a class="nav-home" href="index.html">Home</a>
+        <div class="nav-item">
+          <a class="active" href="robots.html">Robots</a>
+          <div class="nav-menu">
+            <a href="robots.html"><strong>Robot Catalog</strong><span>Profiles, status, source links</span></a>
+            <a href="robots.html?filter=humanoid"><strong>Humanoid Robots</strong><span>Optimus, Figure, Unitree, AgiBot</span></a>
+            <a href="compare.html"><strong>Compare Robots</strong><span>Side-by-side availability and direction</span></a>
+            <a href="videos.html"><strong>Demo Gallery</strong><span>Official visuals and robot demo links</span></a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="companies.html">Companies</a>
+          <div class="nav-menu">
+            <a href="companies.html"><strong>Company Database</strong><span><span data-count="companies">157</span>+ robotics and AI entities</span></a>
+            <a href="market.html"><strong>Market Watchlist</strong><span>Public proxies and private builders</span></a>
+            <a href="companies.html?filter=china"><strong>China Tracker</strong><span>Unitree, AgiBot, LimX, Leju, Pudu</span></a>
+            <a href="index.html#source-notes"><strong>Source Notes</strong><span>Fact, estimate, and opinion labels</span></a>
+          </div>
+        </div>
+        <a href="market.html">Intelligence</a>
+        <a href="index.html#guide-hub">Learn</a>
+        <a href="videos.html">Videos</a>
+        <a href="hakkimizda.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle><span data-theme-icon>☾</span></button>
+        <a class="join-button" href="index.html#bulten">Follow</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero">
+        <p>Robot Catalog</p>
+        <h1>Explore humanoid and service robots as a real database.</h1>
+        <span>Profiles combine official source links, availability, price clarity, maturity, use case direction, and demo visuals.</span>
+        <div class="catalog-metrics">
+          <article><strong data-count="robots">21</strong><small>Robot profiles</small></article>
+          <article><strong data-count="companies">157</strong><small>Company records</small></article>
+          <article><strong>Source-first</strong><small>Official links on every card</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-layout">
+        <aside class="catalog-sidebar">
+          <label>
+            Search robots
+            <input type="search" data-catalog-search placeholder="Search robot, company, use case...">
+          </label>
+          <div class="catalog-filter-group">
+            <button class="is-active" type="button" data-robot-page-filter="all">All robots</button>
+            <button type="button" data-robot-page-filter="humanoid">Humanoid</button>
+            <button type="button" data-robot-page-filter="china">China</button>
+            <button type="button" data-robot-page-filter="available">Available</button>
+            <button type="button" data-robot-page-filter="home">Home robots</button>
+          </div>
+        </aside>
+        <section class="catalog-main">
+          <div class="catalog-results-head">
+            <strong><span data-count="visible-robots">21</span> robots shown</strong>
+            <span>Updated from Robologai robot data</span>
+          </div>
+          <div class="catalog-grid" data-robots-grid></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer mini-footer">
+      <a class="brand footer-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <p>Robotics and AI intelligence, organized as catalogs, comparisons, and source-first analysis.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="catalog-pages.js"></script>
+  </body>
+</html>

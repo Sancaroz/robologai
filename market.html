@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Robologai market intelligence for public robotics proxies, private humanoid builders, and robot price visibility.">
+    <title>Robo Market Intelligence | robologai</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a class="nav-home" href="index.html">Home</a>
+        <a href="robots.html">Robots</a>
+        <a href="companies.html">Companies</a>
+        <div class="nav-item">
+          <a class="active" href="market.html">Intelligence</a>
+          <div class="nav-menu">
+            <a href="market.html"><strong>Robo Market</strong><span>Pricing and deployment signals</span></a>
+            <a href="compare.html"><strong>Robot Compare</strong><span>Side-by-side robot direction</span></a>
+            <a href="prices.html"><strong>Price Tracker</strong><span>Visible, quote-based, and no-price robots</span></a>
+            <a href="index.html#admin-desk"><strong>Latest Analysis</strong><span>Fresh Robologai desk updates</span></a>
+          </div>
+        </div>
+        <a href="compare.html">Compare</a>
+        <a href="videos.html">Videos</a>
+        <a href="hakkimizda.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle><span data-theme-icon>☾</span></button>
+        <a class="join-button" href="index.html#bulten">Follow</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero market-page-hero">
+        <p>Robo Market Intelligence</p>
+        <h1>Track public proxies, private builders, and robot price visibility.</h1>
+        <span>This is editorial market intelligence, not financial advice. Official sources remain the reference point.</span>
+        <div class="catalog-metrics">
+          <article><strong data-count="companies">157</strong><small>Companies indexed</small></article>
+          <article><strong data-count="robots">21</strong><small>Robot profiles</small></article>
+          <article><strong>Source-first</strong><small>Official links</small></article>
+        </div>
+      </section>
+
+      <section class="market-page-layout">
+        <article>
+          <div class="section-heading compact">
+            <p>Public Proxies</p>
+            <h2>Listed companies with robotics, AI, automation, or parent exposure.</h2>
+          </div>
+          <div class="signal-grid" data-market-public></div>
+        </article>
+        <article>
+          <div class="section-heading compact">
+            <p>Private Builders</p>
+            <h2>Humanoid and robotics builders to watch closely.</h2>
+          </div>
+          <div class="signal-grid" data-market-private></div>
+        </article>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Price Visibility</p>
+          <h2>Robots where pricing or commercial access is visible enough to track.</h2>
+        </div>
+        <div class="signal-grid price-signal-grid" data-market-prices></div>
+      </section>
+    </main>
+
+    <footer class="site-footer mini-footer">
+      <a class="brand footer-brand" href="index.html"><img src="assets/robologai-mark.svg" alt="" aria-hidden="true">robolog<span>ai</span></a>
+      <p>Robotics and AI intelligence, organized as catalogs, comparisons, and source-first analysis.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="catalog-pages.js"></script>
+  </body>
+</html>
