@@ -544,6 +544,12 @@ body.light-theme .logo-track span {
 
 .video-card.has-embed {
   border-color: rgba(120, 231, 255, 0.32);
+  cursor: pointer;
+}
+
+.video-card.has-embed:focus-visible {
+  outline: 2px solid var(--blue-2);
+  outline-offset: 3px;
 }
 
 .video-card:hover {

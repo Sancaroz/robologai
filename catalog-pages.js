@@ -387,7 +387,7 @@ function renderVideosPage() {
   if (!grid) return;
   const robots = pageState.robots.filter((robot) => robot.image).slice(0, 18);
   grid.innerHTML = robots.map((robot) => `
-    <article class="video-card video-gallery-card ${robotVideo(robot) ? "has-embed" : ""}" data-video-robot="${pageEscape(robotSlug(robot))}">
+    <article class="video-card video-gallery-card ${robotVideo(robot) ? "has-embed" : ""}" data-video-robot="${pageEscape(robotSlug(robot))}" ${robotVideo(robot) ? `data-play-video="${pageEscape(robotSlug(robot))}" role="button" tabindex="0"` : ""}>
       <div class="video-thumb">
         <img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} demo visual" loading="lazy">
         <span>▶</span>
@@ -398,7 +398,7 @@ function renderVideosPage() {
         <h3>${pageEscape(robot.name)} ${robotVideo(robot) ? "embedded official demo" : "official product page"}</h3>
         <div class="video-card-actions">
           ${robotVideo(robot) ? `<button type="button" data-play-video="${pageEscape(robotSlug(robot))}">Play in theater</button>` : ""}
-          <a href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">Source</a>
+          <a href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer" data-source-link>Official source</a>
         </div>
       </div>
     </article>
@@ -416,9 +416,17 @@ function renderVideosPage() {
     `).join("");
     if (featured[0]) renderVideoPlayer(featured[0]);
   }
-  document.querySelectorAll("[data-play-video]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const robot = pageState.robots.find((item) => robotSlug(item) === button.dataset.playVideo);
+  document.querySelectorAll("[data-play-video]").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      if (event.target.closest("[data-source-link]")) return;
+      const robot = pageState.robots.find((item) => robotSlug(item) === trigger.dataset.playVideo);
+      renderVideoPlayer(robot);
+      document.querySelector("[data-video-player]")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      const robot = pageState.robots.find((item) => robotSlug(item) === trigger.dataset.playVideo);
       renderVideoPlayer(robot);
       document.querySelector("[data-video-player]")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
