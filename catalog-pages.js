@@ -251,7 +251,9 @@ function renderRobotCards() {
     return matchesQuery && matchesFilter;
   });
 
-  grid.innerHTML = robots.map((robot) => `
+  grid.innerHTML = robots.map((robot) => {
+    const video = robotVideo(robot);
+    return `
     <article class="catalog-card robot-catalog-card">
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
         ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
@@ -278,13 +280,51 @@ function renderRobotCards() {
           <span>Maturity ${pageMeter(robot.maturity)}</span>
           <span>Price clarity ${pageMeter(robot.priceVisibility)}</span>
         </div>
+        ${video?.embed ? `
+          <div class="robot-card-video">
+            <button type="button" data-card-video="${pageEscape(robotSlug(robot))}">
+              <span>▶</span>
+              Play official demo
+            </button>
+            <div class="robot-card-video-frame" data-card-video-frame="${pageEscape(robotSlug(robot))}" hidden></div>
+          </div>
+        ` : ""}
         <div class="catalog-actions">
           <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Open profile →</a>
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source →</a>
         </div>
       </div>
     </article>
-  `).join("");
+  `;
+  }).join("");
+  document.querySelectorAll("[data-card-video]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const slug = button.dataset.cardVideo;
+      const robot = pageState.robots.find((item) => robotSlug(item) === slug);
+      const video = robotVideo(robot);
+      const frame = document.querySelector(`[data-card-video-frame="${slug}"]`);
+      if (!frame || !video?.embed) return;
+      const isOpen = !frame.hidden;
+      document.querySelectorAll("[data-card-video-frame]").forEach((node) => {
+        node.hidden = true;
+        node.innerHTML = "";
+      });
+      document.querySelectorAll("[data-card-video]").forEach((node) => {
+        node.classList.remove("is-playing");
+      });
+      if (isOpen) return;
+      frame.hidden = false;
+      button.classList.add("is-playing");
+      frame.innerHTML = `
+        <iframe
+          src="${pageEscape(video.embed)}"
+          title="${pageEscape(video.title)}"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      `;
+    });
+  });
   setCount("visible-robots", robots.length);
 }
 
