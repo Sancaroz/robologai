@@ -214,6 +214,56 @@ const useCaseLibrary = [
   }
 ];
 
+const signalLibrary = [
+  {
+    type: "Video",
+    title: "Robot Theater expanded to catalog cards",
+    summary: "Verified robot demos now play inside Robologai's catalog flow, so readers can watch without leaving the site.",
+    link: "videos.html"
+  },
+  {
+    type: "Market",
+    title: "Humanoid builders split into factory, warehouse, research, and home lanes",
+    summary: "The strongest comparison is no longer robot shape alone; buyer intent and deployment path matter more.",
+    link: "market.html"
+  },
+  {
+    type: "Buyer Guide",
+    title: "Price visibility is the fastest reality check",
+    summary: "Public price, quote-only access, and pilot-only availability are tracked separately across the catalog.",
+    link: "prices.html"
+  },
+  {
+    type: "Research",
+    title: "China's robot platforms are becoming a distinct comparison lane",
+    summary: "Unitree, LimX, PUDU, AgiBot, and Booster now sit together as a practical research and accessibility cluster.",
+    link: "country.html?country=china"
+  }
+];
+
+const buyerGuideLibrary = [
+  {
+    title: "Factory Readiness",
+    summary: "Prioritize repeatable demos, safety posture, enterprise pilots, runtime, and official deployment language.",
+    terms: ["manufacturing", "factory", "industrial", "workplace", "automation"]
+  },
+  {
+    title: "Warehouse Fit",
+    summary: "Look for tote handling, AMR integration, payload clarity, fleet operations, and real deployment references.",
+    terms: ["warehouse", "logistics", "tote", "material", "movement"]
+  },
+  {
+    title: "Research Value",
+    summary: "Developer access, public price signals, SDK depth, simulation support, and repairability matter more than spectacle.",
+    terms: ["research", "education", "developer", "prototyping"]
+  },
+  {
+    title: "Home Reality Check",
+    summary: "Separate domestic demos from purchasable products; household robots need safety, support, and clear autonomy limits.",
+    terms: ["home", "household", "companion", "domestic"]
+  }
+];
+
 function robotScore(robot) {
   const maturity = Math.max(0, Math.min(5, Number(robot.maturity) || 1));
   const price = Math.max(0, Math.min(5, Number(robot.priceVisibility) || 1));
@@ -234,6 +284,35 @@ function scoreLabel(score) {
 function robotUseCases(robot) {
   const text = robotText(robot);
   return useCaseLibrary.filter((item) => item.terms.some((term) => text.includes(pageNormalize(term))));
+}
+
+function robotStage(robot) {
+  const maturity = Number(robot.maturity) || 1;
+  if (maturity >= 5) return "Deployment";
+  if (maturity >= 4) return "Pilot";
+  if (maturity >= 3) return "Development";
+  return "Early signal";
+}
+
+function marketStrength(company) {
+  const type = pageNormalize(company.type);
+  const category = pageNormalize(company.category);
+  if (type.includes("public")) return "Public market exposure";
+  if (category.includes("humanoid") || category.includes("robot")) return "Private robotics builder";
+  if (category.includes("ai")) return "AI infrastructure signal";
+  return "Ecosystem signal";
+}
+
+function renderSignalFeed(targetSelector, limit = 4) {
+  const target = document.querySelector(targetSelector);
+  if (!target) return;
+  target.innerHTML = signalLibrary.slice(0, limit).map((item) => `
+    <a class="signal-update-card" href="${pageEscape(item.link)}">
+      <span>${pageEscape(item.type)}</span>
+      <strong>${pageEscape(item.title)}</strong>
+      <small>${pageEscape(item.summary)}</small>
+    </a>
+  `).join("");
 }
 
 function useCaseSlug(value = "") {
@@ -454,6 +533,7 @@ function renderMarketPage() {
       <article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.price)}</small><a href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">Source →</a></article>
     `).join("");
   }
+  renderSignalFeed("[data-market-signals]");
 }
 
 function renderPricesPage() {
@@ -483,6 +563,21 @@ function renderPricesPage() {
       </section>
     `;
   }).join("");
+}
+
+function renderHomeIntelligence() {
+  const grid = document.querySelector("[data-home-intelligence]");
+  if (grid) {
+    const playable = pageState.robots.filter((robot) => robotVideo(robot)).length;
+    const countries = new Set(pageState.robots.map((robot) => broadCountryName(robot.country)).filter(Boolean)).size;
+    grid.innerHTML = `
+      <article><strong>${pageState.robots.length}</strong><span>Robot profiles</span><small>${playable} with playable demos</small></article>
+      <article><strong>${pageState.companies.length}</strong><span>Companies indexed</span><small>Public proxies and private builders</small></article>
+      <article><strong>${countries}</strong><span>Countries tracked</span><small>Country pages group robot ecosystems</small></article>
+      <article><strong>${useCaseLibrary.length}</strong><span>Use-case tracks</span><small>Buyer-oriented navigation</small></article>
+    `;
+  }
+  renderSignalFeed("[data-home-signals]");
 }
 
 function renderVideosPage() {
@@ -548,6 +643,7 @@ function renderRobotProfile() {
     .slice(0, 4);
   const useCases = robotUseCases(robot);
   const score = robotScore(robot);
+  const video = robotVideo(robot);
 
   document.title = `${robot.name} Profile | robologai`;
   root.innerHTML = `
@@ -564,6 +660,7 @@ function renderRobotProfile() {
         <div class="profile-action-row">
           <a href="compare.html">Compare robots</a>
           <a href="prices.html">Price tracker</a>
+          ${video?.embed ? `<a href="#profile-video">Watch demo</a>` : ""}
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
         </div>
       </div>
@@ -576,7 +673,7 @@ function renderRobotProfile() {
       <article><span>Use case</span><strong>${pageEscape(useCases[0]?.title || robot.category || "Robot platform")}</strong></article>
       <article><span>Country</span><strong>${pageEscape(robot.country || "Global")}</strong></article>
       <article><span>Price</span><strong>${pageEscape(robot.price)}</strong></article>
-      <article><span>Last checked</span><strong>Source-first profile</strong></article>
+      <article><span>Stage</span><strong>${pageEscape(robotStage(robot))}</strong></article>
     </section>
     <section class="profile-detail-grid">
       <article class="profile-facts">
@@ -602,6 +699,29 @@ function renderRobotProfile() {
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
+        <p>Profile Stack</p>
+        <h2>Specs, media, timeline, and buyer notes in one robot profile.</h2>
+      </div>
+      <div class="profile-stack-grid">
+        <article>
+          <span>Specs</span>
+          <strong>${pageEscape(robot.height || "Not disclosed")} · ${pageEscape(robot.runtime || "Runtime undisclosed")}</strong>
+          <small>${pageEscape(robot.price)} · ${pageEscape(robot.availability)}</small>
+        </article>
+        <article>
+          <span>Timeline</span>
+          <strong>${pageEscape(robotStage(robot))}</strong>
+          <small>Status is based on current Robologai fields and official source language.</small>
+        </article>
+        <article>
+          <span>Buyer note</span>
+          <strong>${pageEscape(scoreLabel(score))}</strong>
+          <small>${pageEscape(robot.priceVisibility >= 3 ? "Commercial visibility is easier to evaluate." : "Pricing and access still need direct verification.")}</small>
+        </article>
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
         <p>Use Case Fit</p>
         <h2>Where ${pageEscape(robot.name)} belongs in the robotics economy.</h2>
       </div>
@@ -620,12 +740,21 @@ function renderRobotProfile() {
         <p>Official Media</p>
         <h2>Demo and product proof for ${pageEscape(robot.name)}.</h2>
       </div>
-      <div class="profile-media-card">
-        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official visual" loading="lazy">` : `<div>${pageEscape(pageInitials(robot.name))}</div>`}
+      <div class="profile-media-card" id="profile-video">
+        ${video?.embed ? `
+          <div class="profile-media-video">
+            <iframe
+              src="${pageEscape(video.embed)}"
+              title="${pageEscape(video.title)}"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        ` : robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official visual" loading="lazy">` : `<div>${pageEscape(pageInitials(robot.name))}</div>`}
         <article>
-          <span>${pageEscape(robot.company)}</span>
-          <h3>${pageEscape(robot.name)} official source</h3>
-          <p>Robologai links out to official robot/product pages so readers can verify fast-changing claims directly.</p>
+          <span>${pageEscape(video?.provider || robot.company)}</span>
+          <h3>${pageEscape(video?.title || `${robot.name} official source`)}</h3>
+          <p>${pageEscape(video?.note || "Robologai links out to official robot/product pages so readers can verify fast-changing claims directly.")}</p>
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Open official page →</a>
         </article>
       </div>
@@ -662,6 +791,21 @@ function renderUseCasesPage() {
         <article><strong>Source-first</strong><small>Official links</small></article>
       </div>
     </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Buyer Guides</p>
+        <h2>Short decision notes before comparing robots.</h2>
+      </div>
+      <div class="buyer-guide-grid">
+        ${buyerGuideLibrary.map((guide) => `
+          <article>
+            <span>${pageEscape(guide.title)}</span>
+            <strong>${pageEscape(guide.summary)}</strong>
+            <small>${pageEscape(guide.terms.join(" · "))}</small>
+          </article>
+        `).join("")}
+      </div>
+    </section>
     <section class="use-case-board">
       ${cases.map((item) => {
         const robots = pageState.robots.filter((robot) => robotUseCases(robot).some((match) => match.slug === item.slug));
@@ -669,6 +813,7 @@ function renderUseCasesPage() {
           const text = companyText(company);
           return item.terms.some((term) => text.includes(pageNormalize(term)));
         }).slice(0, 8);
+        const guide = buyerGuideLibrary.find((entry) => entry.terms.some((term) => item.terms.includes(term)));
         return `
           <article class="use-case-panel" id="${pageEscape(item.slug)}">
             <div class="use-case-panel-head">
@@ -680,6 +825,7 @@ function renderUseCasesPage() {
               <strong>${robots.length}<small>robots</small></strong>
             </div>
             <div class="buyer-question">${pageEscape(item.buyerQuestion)}</div>
+            ${guide ? `<div class="buyer-playbook"><span>Buyer playbook</span><strong>${pageEscape(guide.summary)}</strong></div>` : ""}
             <div class="use-case-robot-grid">
               ${robots.slice(0, 6).map((robot) => `
                 <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">
@@ -747,6 +893,17 @@ function renderCompanyProfile() {
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
+        <p>Market Signal</p>
+        <h2>How ${pageEscape(company.name)} fits into the robotics economy.</h2>
+      </div>
+      <div class="company-signal-grid">
+        <article><span>Exposure</span><strong>${pageEscape(marketStrength(company))}</strong><small>${pageEscape(company.type || "Entity")} · ${pageEscape(company.ticker || "No public ticker")}</small></article>
+        <article><span>Robotics lane</span><strong>${pageEscape(company.robot || "AI / robotics activity")}</strong><small>${pageEscape(company.category)}</small></article>
+        <article><span>Verification</span><strong>Official source first</strong><small>Robologai sends readers to the company source for fast-changing claims.</small></article>
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
         <p>Linked Robots</p>
         <h2>Robots and assets associated with ${pageEscape(company.name)}.</h2>
       </div>
@@ -811,7 +968,18 @@ function renderComparePage() {
   if (!body) return;
   const selected = [...document.querySelectorAll("[data-compare-select] input:checked")].map((input) => input.value);
   const priority = selected.length ? selected : ["Optimus", "Figure 02", "Apollo", "Digit", "G1", "PM01", "Booster T1", "AgiBot A2", "LimX Oli", "PUDU D9", "Memo", "Sprout"];
-  const robots = priority.map((name) => pageState.robots.find((robot) => robot.name === name)).filter(Boolean);
+  const robots = priority.slice(0, 4).map((name) => pageState.robots.find((robot) => robot.name === name)).filter(Boolean);
+  const summary = document.querySelector("[data-compare-summary]");
+  if (summary) {
+    const leader = [...robots].sort((a, b) => robotScore(b) - robotScore(a))[0];
+    const priced = robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2).length;
+    const videos = robots.filter((robot) => robotVideo(robot)).length;
+    summary.innerHTML = `
+      <article><span>Top R-Score</span><strong>${leader ? `${pageEscape(leader.name)} · ${robotScore(leader)}` : "Choose robots"}</strong></article>
+      <article><span>Price visibility</span><strong>${priced}/${robots.length || 0} visible enough</strong></article>
+      <article><span>Embedded demos</span><strong>${videos}/${robots.length || 0} available</strong></article>
+    `;
+  }
   body.innerHTML = robots.map((robot) => `
     <tr>
       <td><strong>${pageEscape(robot.name)}</strong><small>${pageEscape(robot.company)}</small></td>
@@ -819,6 +987,8 @@ function renderComparePage() {
       <td>${pageEscape(robot.country)}</td>
       <td>${pageEscape(robot.availability)}</td>
       <td>${pageEscape(robot.price)}</td>
+      <td><strong>${robotScore(robot)}</strong><small>${pageEscape(scoreLabel(robotScore(robot)))}</small></td>
+      <td>${robotVideo(robot) ? `<a href="videos.html">Playable</a>` : "Source only"}</td>
       <td>${pageEscape(robot.useCase)}</td>
       <td>${pageMeter(robot.maturity)}</td>
       <td><a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Profile →</a></td>
@@ -836,7 +1006,11 @@ function renderComparePicker() {
       <span>${pageEscape(robot.name)}</span>
     </label>
   `).join("");
-  picker.querySelectorAll("input").forEach((input) => input.addEventListener("change", renderComparePage));
+  picker.querySelectorAll("input").forEach((input) => input.addEventListener("change", () => {
+    const checked = [...picker.querySelectorAll("input:checked")];
+    if (checked.length > 4) input.checked = false;
+    renderComparePage();
+  }));
 }
 
 function wireCatalogControls() {
@@ -897,6 +1071,7 @@ async function initCatalogPages() {
   renderCompanyCards();
   renderMarketPage();
   renderPricesPage();
+  renderHomeIntelligence();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

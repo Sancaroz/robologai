@@ -3126,6 +3126,85 @@ body.light-theme .profile-main > div > span {
   gap: 12px;
 }
 
+.home-intelligence-grid,
+.signal-update-grid,
+.buyer-guide-grid,
+.profile-stack-grid,
+.company-signal-grid,
+.compare-summary-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.home-intelligence-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.signal-update-grid,
+.buyer-guide-grid,
+.profile-stack-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.company-signal-grid,
+.compare-summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.home-intelligence-grid article,
+.signal-update-card,
+.buyer-guide-grid article,
+.profile-stack-grid article,
+.company-signal-grid article,
+.compare-summary-grid article {
+  display: grid;
+  gap: 9px;
+  min-height: 142px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+}
+
+.home-intelligence-grid strong {
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.home-intelligence-grid span,
+.signal-update-card span,
+.buyer-guide-grid span,
+.profile-stack-grid span,
+.company-signal-grid span,
+.compare-summary-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.home-intelligence-grid small,
+.signal-update-card small,
+.buyer-guide-grid small,
+.profile-stack-grid small,
+.company-signal-grid small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
+.signal-update-card strong,
+.buyer-guide-grid strong,
+.profile-stack-grid strong,
+.company-signal-grid strong,
+.compare-summary-grid strong {
+  color: #eef6ff;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
 .price-signal-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -3473,6 +3552,21 @@ body.light-theme .profile-main > div > span {
   font-weight: 950;
 }
 
+.profile-media-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-height: 300px;
+  background: #020812;
+}
+
+.profile-media-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .profile-media-card article {
   display: grid;
   align-content: center;
@@ -3808,6 +3902,29 @@ body.light-theme .profile-main > div > span {
   color: #d9e8ff;
   background: rgba(120, 231, 255, 0.1);
   font-weight: 850;
+}
+
+.buyer-playbook {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.buyer-playbook span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.buyer-playbook strong {
+  color: #d9e8ff;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .use-case-robot-grid {
@@ -4457,7 +4574,12 @@ body.light-theme .use-case-profile-grid small,
 body.light-theme .profile-media-card p,
 body.light-theme .use-case-panel-head p,
 body.light-theme .use-case-robot-grid small,
-body.light-theme .empty-note {
+body.light-theme .empty-note,
+body.light-theme .home-intelligence-grid small,
+body.light-theme .signal-update-card small,
+body.light-theme .buyer-guide-grid small,
+body.light-theme .profile-stack-grid small,
+body.light-theme .company-signal-grid small {
   color: #43566c;
 }
 
@@ -4466,6 +4588,12 @@ body.light-theme .catalog-sidebar,
 body.light-theme .catalog-results-head,
 body.light-theme .catalog-card,
 body.light-theme .signal-card,
+body.light-theme .home-intelligence-grid article,
+body.light-theme .signal-update-card,
+body.light-theme .buyer-guide-grid article,
+body.light-theme .profile-stack-grid article,
+body.light-theme .company-signal-grid article,
+body.light-theme .compare-summary-grid article,
 body.light-theme .profile-hero,
 body.light-theme .profile-facts,
 body.light-theme .price-column,
@@ -4483,6 +4611,11 @@ body.light-theme .catalog-sidebar label,
 body.light-theme .catalog-card dt,
 body.light-theme .catalog-card h2,
 body.light-theme .signal-card strong,
+body.light-theme .signal-update-card strong,
+body.light-theme .buyer-guide-grid strong,
+body.light-theme .profile-stack-grid strong,
+body.light-theme .company-signal-grid strong,
+body.light-theme .compare-summary-grid strong,
 body.light-theme .profile-facts dt,
 body.light-theme .price-card strong,
 body.light-theme .quick-path-grid strong,
@@ -4670,6 +4803,12 @@ body.light-theme .facts span {
   .quick-path-grid,
   .use-case-profile-grid,
   .profile-intel-strip,
+  .home-intelligence-grid,
+  .signal-update-grid,
+  .buyer-guide-grid,
+  .profile-stack-grid,
+  .company-signal-grid,
+  .compare-summary-grid,
   .video-theater-grid,
   .use-case-robot-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4798,6 +4937,12 @@ body.light-theme .facts span {
   .quick-path-grid,
   .use-case-profile-grid,
   .profile-intel-strip,
+  .home-intelligence-grid,
+  .signal-update-grid,
+  .buyer-guide-grid,
+  .profile-stack-grid,
+  .company-signal-grid,
+  .compare-summary-grid,
   .video-theater-grid,
   .use-case-robot-grid,
   .robot-video-player,
