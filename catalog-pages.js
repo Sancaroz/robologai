@@ -56,6 +56,37 @@ function companySlug(company) {
     .replace(/^-|-$/g, "");
 }
 
+function seoNormalize(value = "") {
+  return String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function seoSlug(value = "") {
+  return seoNormalize(value)
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function robotSeoSlug(robot) {
+  const name = seoSlug(robot.name);
+  const brand = seoSlug(robot.company)
+    .replace(/-robotics$/, "")
+    .replace(/-technologies$/, "")
+    .replace(/-technology$/, "")
+    .replace(/-ai$/, "")
+    .replace(/-inc$/, "")
+    .replace(/-ltd$/, "");
+  return name.startsWith(brand) ? name : `${brand}-${name}`;
+}
+
+function robotProfileHref(robot) {
+  return `robots/${robotSeoSlug(robot)}.html`;
+}
+
+function companyProfileHref(company) {
+  return `companies/${seoSlug(company.name)}.html`;
+}
+
 function countrySlug(country = "") {
   const key = country.includes("/") ? country.split("/")[0] : country;
   return pageNormalize(key)
@@ -398,7 +429,7 @@ function renderVideoPlayer(robot) {
     <h2>${pageEscape(video?.title || `${robot.name} demo source`)}</h2>
     <p>${pageEscape(video?.note || "This robot does not yet have a verified embeddable official video in Robologai. Use the official source link while we add safe embeds.")}</p>
     <div class="video-player-actions">
-      <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Robot profile</a>
+      <a href="${pageEscape(robotProfileHref(robot))}">Robot profile</a>
       <a href="${pageEscape(video?.source || robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
     </div>
   `;
@@ -481,7 +512,7 @@ function renderRobotCards() {
           </div>
         ` : ""}
         <div class="catalog-actions">
-          <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Open profile →</a>
+          <a href="${pageEscape(robotProfileHref(robot))}">Open profile →</a>
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source →</a>
         </div>
       </div>
@@ -565,7 +596,7 @@ function renderCompanyCards() {
           <div><dt>Website</dt><dd>${pageEscape(company.website || "Official source")}</dd></div>
         </dl>
         <div class="catalog-actions">
-          <a href="company.html?company=${pageEscape(companySlug(company))}">Open profile →</a>
+          <a href="${pageEscape(companyProfileHref(company))}">Open profile →</a>
           <a href="country.html?country=${pageEscape(countrySlug(company.country))}">${pageEscape(broadCountryName(company.country))} tracker →</a>
           <a href="${pageEscape(company.website || "#")}" target="_blank" rel="noopener noreferrer">Official website →</a>
         </div>
@@ -624,7 +655,7 @@ function renderPricesPage() {
             <span>${pageEscape(robot.company)}</span>
             <p>${pageEscape(robot.price)}</p>
             <small>${pageEscape(robot.availability)}</small>
-            <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Profile →</a>
+            <a href="${pageEscape(robotProfileHref(robot))}">Profile →</a>
           </article>
         `).join("")}
       </section>
@@ -665,7 +696,7 @@ function renderFeaturedRobot() {
       <h3>${pageEscape(robot.name)}</h3>
       <p>${pageEscape(robot.useCase)}</p>
       <div class="featured-robot-actions">
-        <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Open profile</a>
+        <a href="${pageEscape(robotProfileHref(robot))}">Open profile</a>
         <a href="compare.html?robots=${pageEscape([robot, ...alternatives].map((item) => robotSlug(item)).join(","))}">Compare alternatives</a>
         ${robotVideo(robot) ? `<a href="videos.html">Watch demo</a>` : ""}
       </div>
@@ -877,7 +908,7 @@ function renderRobotProfile() {
         <a href="compare.html?robots=${pageEscape(compareSlugs)}">Open comparison set</a>
       </div>
       <div class="signal-grid">
-        ${(alternatives.length ? alternatives : related).map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.company)} · ${robotScore(item)} R-Score</span><small>${pageEscape(item.useCase)}</small><a href="robot.html?robot=${pageEscape(robotSlug(item))}">Open profile →</a></article>`).join("")}
+        ${(alternatives.length ? alternatives : related).map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.company)} · ${robotScore(item)} R-Score</span><small>${pageEscape(item.useCase)}</small><a href="${pageEscape(robotProfileHref(item))}">Open profile →</a></article>`).join("")}
       </div>
     </section>
   `;
@@ -940,7 +971,7 @@ function renderUseCasesPage() {
             ${guide ? `<div class="buyer-playbook"><span>Buyer playbook</span><strong>${pageEscape(guide.summary)}</strong></div>` : ""}
             <div class="use-case-robot-grid">
               ${robots.slice(0, 6).map((robot) => `
-                <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">
+                <a href="${pageEscape(robotProfileHref(robot))}">
                   <span>${robotScore(robot)} R-Score</span>
                   <strong>${pageEscape(robot.name)}</strong>
                   <small>${pageEscape(robot.company)} · ${pageEscape(robot.availability)}</small>
@@ -948,7 +979,7 @@ function renderUseCasesPage() {
               `).join("") || `<p class="empty-note">Robologai is still mapping robots for this use case.</p>`}
             </div>
             <div class="linked-company-row">
-              ${companies.map((company) => `<a href="company.html?company=${pageEscape(companySlug(company))}">${pageEscape(company.name)}</a>`).join("")}
+              ${companies.map((company) => `<a href="${pageEscape(companyProfileHref(company))}">${pageEscape(company.name)}</a>`).join("")}
             </div>
           </article>
         `;
@@ -1020,7 +1051,7 @@ function renderCompanyProfile() {
         <h2>Robots and assets associated with ${pageEscape(company.name)}.</h2>
       </div>
       <div class="signal-grid">
-        ${(robots.length ? robots : [{ name: company.robot || "Robotics / AI activity", company: company.name, useCase: company.category, source: company.website }]).map((robot) => `<article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.useCase || company.category)}</small>${robotSlug(robot) ? `<a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Robot profile →</a>` : ""}</article>`).join("")}
+        ${(robots.length ? robots : [{ name: company.robot || "Robotics / AI activity", company: company.name, useCase: company.category, source: company.website }]).map((robot) => `<article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.useCase || company.category)}</small>${robotSlug(robot) ? `<a href="${pageEscape(robotProfileHref(robot))}">Robot profile →</a>` : ""}</article>`).join("")}
       </div>
     </section>
     <section class="catalog-section">
@@ -1029,7 +1060,7 @@ function renderCompanyProfile() {
         <h2>Companies to compare next.</h2>
       </div>
       <div class="signal-grid">
-        ${related.map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.country)}</span><small>${pageEscape(item.category)}</small><a href="company.html?company=${pageEscape(companySlug(item))}">Open profile →</a></article>`).join("")}
+        ${related.map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.country)}</span><small>${pageEscape(item.category)}</small><a href="${pageEscape(companyProfileHref(item))}">Open profile →</a></article>`).join("")}
       </div>
     </section>
   `;
@@ -1062,13 +1093,13 @@ function renderCountryTracker() {
       <article>
         <div class="section-heading compact"><p>Companies</p><h2>Tracked entities in ${pageEscape(country)}.</h2></div>
         <div class="signal-grid">
-          ${companies.map((company) => `<article class="signal-card"><strong>${pageEscape(company.name)}</strong><span>${pageEscape(company.type || "Entity")}</span><small>${pageEscape(company.category)}</small><a href="company.html?company=${pageEscape(companySlug(company))}">Open profile →</a></article>`).join("")}
+          ${companies.map((company) => `<article class="signal-card"><strong>${pageEscape(company.name)}</strong><span>${pageEscape(company.type || "Entity")}</span><small>${pageEscape(company.category)}</small><a href="${pageEscape(companyProfileHref(company))}">Open profile →</a></article>`).join("")}
         </div>
       </article>
       <article>
         <div class="section-heading compact"><p>Robots</p><h2>Robot platforms connected to ${pageEscape(country)}.</h2></div>
         <div class="signal-grid">
-          ${robots.map((robot) => `<article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.useCase)}</small><a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Robot profile →</a></article>`).join("")}
+          ${robots.map((robot) => `<article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.useCase)}</small><a href="${pageEscape(robotProfileHref(robot))}">Robot profile →</a></article>`).join("")}
         </div>
       </article>
     </section>
@@ -1105,7 +1136,7 @@ function renderComparePage() {
       <td>${robotVideo(robot) ? `<a href="videos.html">Playable</a>` : "Source only"}</td>
       <td>${pageEscape(robot.useCase)}</td>
       <td>${pageMeter(robot.maturity)}</td>
-      <td><a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Profile →</a></td>
+      <td><a href="${pageEscape(robotProfileHref(robot))}">Profile →</a></td>
     </tr>
   `).join("");
 }
