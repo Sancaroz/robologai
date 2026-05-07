@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Unitree G1 YouTube thumbnail</title>
+  <desc id="desc">Original robologai thumbnail graphic for a Unitree G1 humanoid robot explainer.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071318"/>
+      <stop offset="0.55" stop-color="#102621"/>
+      <stop offset="1" stop-color="#172019"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6fffd2"/>
+      <stop offset="1" stop-color="#d9ff63"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="52" y="52" width="1176" height="616" rx="38" fill="#0d1718" stroke="#31584c" stroke-width="2"/>
+  <text x="88" y="128" fill="#c9ffe8" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">robologai</text>
+  <text x="88" y="250" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="98" font-weight="800">UNITREE G1</text>
+  <text x="90" y="346" fill="url(#accent)" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="800">$16K HUMANOID?</text>
+  <text x="94" y="426" fill="#b8c9c2" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600">Research • Education • Physical AI</text>
+  <g transform="translate(810 112)">
+    <circle cx="182" cy="94" r="58" fill="#132827" stroke="#6fffd2" stroke-width="8"/>
+    <rect x="126" y="160" width="112" height="176" rx="44" fill="#1b3432" stroke="#d9ff63" stroke-width="8"/>
+    <path d="M120 196 L54 288" stroke="#6fffd2" stroke-width="22" stroke-linecap="round"/>
+    <path d="M244 196 L318 282" stroke="#6fffd2" stroke-width="22" stroke-linecap="round"/>
+    <path d="M150 332 L112 488" stroke="#d9ff63" stroke-width="24" stroke-linecap="round"/>
+    <path d="M216 332 L264 488" stroke="#d9ff63" stroke-width="24" stroke-linecap="round"/>
+    <circle cx="162" cy="88" r="8" fill="#ffffff"/>
+    <circle cx="204" cy="88" r="8" fill="#ffffff"/>
+  </g>
+  <rect x="90" y="536" width="430" height="76" rx="20" fill="#d9ff63"/>
+  <text x="124" y="585" fill="#081213" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">3 DAKIKADA ROBOT</text>
+</svg>
+
