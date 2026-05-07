@@ -2,6 +2,42 @@
   "posts": [
     {
       "status": "Published",
+      "type": "Analysis",
+      "title": "Humanoid Robots in 2026: The Buyer Map for Factory, Warehouse, Home, and Research",
+      "slug": "humanoid-robots-2026-factory-warehouse-home",
+      "url": "blog/humanoid-robots-2026-factory-warehouse-home.html",
+      "date": "2026-05-07",
+      "category": "Humanoid Robots",
+      "excerpt": "Humanoid robots are splitting into factory, warehouse, research, and home lanes. This robologai guide explains how to compare the market without getting lost in demo hype.",
+      "body": "The humanoid robot market is no longer one simple scoreboard. The full buyer map is published as a canonical robologai article so readers can open the complete analysis, sources, and comparison links from the homepage.",
+      "featured": true
+    },
+    {
+      "status": "Published",
+      "type": "Analysis",
+      "title": "peaq and the Machine Economy: Why DePIN Matters for Robots and Physical AI",
+      "slug": "peaq-machine-economy-depin-ecosystem",
+      "url": "blog/peaq-machine-economy-depin-ecosystem.html",
+      "date": "2026-05-05",
+      "category": "Machine Economy",
+      "excerpt": "A robologai deep dive into peaq, DePIN, DePAI, Machine DeFi, Machine RWAs, and onchain coordination for robots and devices.",
+      "body": "A canonical robologai article on machine economy infrastructure, DePIN, and the coordination layer that may connect robots, devices, and physical AI systems.",
+      "featured": false
+    },
+    {
+      "status": "Published",
+      "type": "Guide",
+      "title": "Physical AI Explained: When Intelligence Leaves the Screen",
+      "slug": "physical-ai-explained",
+      "url": "blog/physical-ai-explained.html",
+      "date": "2026-05-02",
+      "category": "Physical AI",
+      "excerpt": "A simple guide to embodied AI, humanoid robots, teleoperation, simulation, and machine labor.",
+      "body": "A canonical robologai guide explaining physical AI, embodied intelligence, robots, simulation, teleoperation, and the move from software-only intelligence into the physical world.",
+      "featured": false
+    },
+    {
+      "status": "Published",
       "type": "News",
       "title": "Welcome to the Robologai Admin Desk",
       "slug": "welcome-to-robologai-admin-desk",

@@ -66,7 +66,7 @@
     const container = document.querySelector("[data-cms-posts]");
     if (!container) return;
     container.innerHTML = posts.slice(0, 6).map((post) => `
-      <a href="post.html?slug=${encodeURIComponent(post.slug)}">
+      <a href="${escapeHtml(post.url || `post.html?slug=${encodeURIComponent(post.slug)}`)}">
         ${postCover(post) ? `<img class="post-card-image" src="${escapeHtml(postCover(post))}" alt="" loading="lazy">` : ""}
         <span>${escapeHtml(post.type)} · ${escapeHtml(post.category)} · ${readingTime(post.body)}</span>
         <h3>${escapeHtml(post.title)}</h3>
@@ -122,7 +122,6 @@
       renderPostPage(posts);
     })
     .catch(() => {
-      const container = document.querySelector("[data-cms-posts]");
-      if (container) container.innerHTML = "";
+      // Keep the static fallback cards visible when local file browsing blocks fetch().
     });
 })();
