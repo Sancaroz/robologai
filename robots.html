@@ -38,6 +38,7 @@
       </nav>
       <div class="header-actions">
         <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle><span data-theme-icon>☾</span></button>
+        <a class="language-pill" href="tr.html">TR</a>
         <a class="join-button" href="index.html#bulten">Follow</a>
       </div>
     </header>
@@ -79,6 +80,33 @@
             <button type="button" data-robot-page-filter="china">China</button>
             <button type="button" data-robot-page-filter="available">Available</button>
             <button type="button" data-robot-page-filter="home">Home robots</button>
+          </div>
+          <div class="advanced-filter-group">
+            <label>
+              Use case
+              <select data-robot-usecase-filter></select>
+            </label>
+            <label>
+              Country
+              <select data-robot-country-filter></select>
+            </label>
+            <label>
+              R-Score
+              <select data-robot-score-filter>
+                <option value="all">All scores</option>
+                <option value="leader">Strong / leader</option>
+                <option value="watchlist">Watchlist</option>
+                <option value="early">Early signal</option>
+              </select>
+            </label>
+            <label class="filter-check">
+              <input type="checkbox" data-robot-video-filter>
+              <span>Playable video only</span>
+            </label>
+            <label class="filter-check">
+              <input type="checkbox" data-robot-price-filter>
+              <span>Price signal only</span>
+            </label>
           </div>
         </aside>
         <section class="catalog-main">

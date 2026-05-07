@@ -1798,6 +1798,20 @@ body.light-theme .theme-toggle span {
   font-weight: 780;
 }
 
+.language-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 38px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 8px;
+  color: var(--blue-2);
+  background: rgba(20, 184, 166, 0.08);
+  font-size: 12px;
+  font-weight: 950;
+}
+
 .hero {
   position: relative;
   display: grid;
@@ -2912,6 +2926,38 @@ body.light-theme .profile-main > div > span {
   gap: 8px;
 }
 
+.advanced-filter-group {
+  display: grid;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.advanced-filter-group label {
+  display: grid;
+  gap: 7px;
+}
+
+.advanced-filter-group select {
+  min-height: 38px;
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 7px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0 10px;
+}
+
+.filter-check {
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: center;
+  color: #d8e4f5;
+  font-size: 12px;
+}
+
+.filter-check input {
+  accent-color: var(--blue);
+}
+
 .catalog-filter-group button {
   min-height: 38px;
   border: 1px solid rgba(148, 163, 184, 0.2);
@@ -3065,6 +3111,25 @@ body.light-theme .profile-main > div > span {
   padding: 0 10px;
 }
 
+.quality-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.quality-chip-row span {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 999px;
+  color: #d9e8ff;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 11px;
+  font-weight: 850;
+  padding: 0 9px;
+}
+
 .catalog-card dl {
   display: grid;
   gap: 7px;
@@ -3131,7 +3196,9 @@ body.light-theme .profile-main > div > span {
 .buyer-guide-grid,
 .profile-stack-grid,
 .company-signal-grid,
-.compare-summary-grid {
+.compare-summary-grid,
+.data-quality-grid,
+.tr-guide-grid {
   display: grid;
   gap: 12px;
 }
@@ -3142,7 +3209,9 @@ body.light-theme .profile-main > div > span {
 
 .signal-update-grid,
 .buyer-guide-grid,
-.profile-stack-grid {
+.profile-stack-grid,
+.data-quality-grid,
+.tr-guide-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -3157,7 +3226,9 @@ body.light-theme .profile-main > div > span {
 .buyer-guide-grid article,
 .profile-stack-grid article,
 .company-signal-grid article,
-.compare-summary-grid article {
+.compare-summary-grid article,
+.data-quality-grid article,
+.tr-guide-grid a {
   display: grid;
   gap: 9px;
   min-height: 142px;
@@ -3179,7 +3250,9 @@ body.light-theme .profile-main > div > span {
 .buyer-guide-grid span,
 .profile-stack-grid span,
 .company-signal-grid span,
-.compare-summary-grid span {
+.compare-summary-grid span,
+.data-quality-grid span,
+.tr-guide-grid span {
   color: var(--blue-2);
   font-size: 12px;
   font-weight: 950;
@@ -3190,7 +3263,9 @@ body.light-theme .profile-main > div > span {
 .signal-update-card small,
 .buyer-guide-grid small,
 .profile-stack-grid small,
-.company-signal-grid small {
+.company-signal-grid small,
+.data-quality-grid small,
+.tr-guide-grid small {
   color: #c4cedc;
   line-height: 1.45;
 }
@@ -3199,7 +3274,9 @@ body.light-theme .profile-main > div > span {
 .buyer-guide-grid strong,
 .profile-stack-grid strong,
 .company-signal-grid strong,
-.compare-summary-grid strong {
+.compare-summary-grid strong,
+.data-quality-grid strong,
+.tr-guide-grid strong {
   color: #eef6ff;
   font-size: 16px;
   line-height: 1.25;
@@ -3349,6 +3426,10 @@ body.light-theme .profile-main > div > span {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 22px;
+}
+
+.compact-action-row {
+  margin: 0 0 14px;
 }
 
 .profile-action-row a {
@@ -4579,7 +4660,9 @@ body.light-theme .home-intelligence-grid small,
 body.light-theme .signal-update-card small,
 body.light-theme .buyer-guide-grid small,
 body.light-theme .profile-stack-grid small,
-body.light-theme .company-signal-grid small {
+body.light-theme .company-signal-grid small,
+body.light-theme .data-quality-grid small,
+body.light-theme .tr-guide-grid small {
   color: #43566c;
 }
 
@@ -4594,6 +4677,8 @@ body.light-theme .buyer-guide-grid article,
 body.light-theme .profile-stack-grid article,
 body.light-theme .company-signal-grid article,
 body.light-theme .compare-summary-grid article,
+body.light-theme .data-quality-grid article,
+body.light-theme .tr-guide-grid a,
 body.light-theme .profile-hero,
 body.light-theme .profile-facts,
 body.light-theme .price-column,
@@ -4616,6 +4701,8 @@ body.light-theme .buyer-guide-grid strong,
 body.light-theme .profile-stack-grid strong,
 body.light-theme .company-signal-grid strong,
 body.light-theme .compare-summary-grid strong,
+body.light-theme .data-quality-grid strong,
+body.light-theme .tr-guide-grid strong,
 body.light-theme .profile-facts dt,
 body.light-theme .price-card strong,
 body.light-theme .quick-path-grid strong,
@@ -4644,7 +4731,8 @@ body.light-theme .company-profile-mark {
 }
 
 body.light-theme .catalog-sidebar input,
-body.light-theme .catalog-filter-group button {
+body.light-theme .catalog-filter-group button,
+body.light-theme .advanced-filter-group select {
   color: #162235;
   background: rgba(255, 255, 255, 0.72);
 }
@@ -4809,6 +4897,8 @@ body.light-theme .facts span {
   .profile-stack-grid,
   .company-signal-grid,
   .compare-summary-grid,
+  .data-quality-grid,
+  .tr-guide-grid,
   .video-theater-grid,
   .use-case-robot-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4943,6 +5033,8 @@ body.light-theme .facts span {
   .profile-stack-grid,
   .company-signal-grid,
   .compare-summary-grid,
+  .data-quality-grid,
+  .tr-guide-grid,
   .video-theater-grid,
   .use-case-robot-grid,
   .robot-video-player,

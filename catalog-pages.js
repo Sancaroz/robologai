@@ -3,7 +3,12 @@ const pageState = {
   companies: [],
   robotFilter: "all",
   companyFilter: "all",
-  query: ""
+  query: "",
+  robotUseCaseFilter: "all",
+  robotCountryFilter: "all",
+  robotScoreFilter: "all",
+  robotVideoOnly: false,
+  robotPricedOnly: false
 };
 
 const robotFallback = [
@@ -330,6 +335,34 @@ function robotCapabilityRows(robot) {
   ];
 }
 
+function robotQuality(robot) {
+  const priceVisibility = Number(robot.priceVisibility || 0);
+  const score = robotScore(robot);
+  return {
+    sourceConfidence: robot.source ? "Official source linked" : "Source needed",
+    priceConfidence: priceVisibility >= 4 ? "Public price" : priceVisibility >= 2 ? "Partial / quote signal" : "No public price",
+    mediaVerified: robotVideo(robot) ? "Playable official demo" : robot.image ? "Official / source visual" : "Media pending",
+    dataFreshness: score >= 68 ? "High-priority watch" : "Periodic review"
+  };
+}
+
+function robotAlternatives(robot, limit = 4) {
+  const useCases = new Set(robotUseCases(robot).map((item) => item.slug));
+  return pageState.robots
+    .filter((item) => item.name !== robot.name)
+    .map((item) => {
+      const itemUseCases = robotUseCases(item);
+      const useCaseOverlap = itemUseCases.filter((useCase) => useCases.has(useCase.slug)).length;
+      const categoryMatch = pageNormalize(item.category) === pageNormalize(robot.category) ? 2 : 0;
+      const countryMatch = broadCountryName(item.country) === broadCountryName(robot.country) ? 1 : 0;
+      return { robot: item, rank: useCaseOverlap * 3 + categoryMatch + countryMatch + (robotVideo(item) ? 0.5 : 0) };
+    })
+    .filter((item) => item.rank > 0)
+    .sort((a, b) => b.rank - a.rank || robotScore(b.robot) - robotScore(a.robot))
+    .slice(0, limit)
+    .map((item) => item.robot);
+}
+
 function robotVideo(robot) {
   return robotVideoLibrary[robotSlug(robot)] || null;
 }
@@ -384,17 +417,28 @@ function setCount(name, value) {
 function renderRobotCards() {
   const grid = document.querySelector("[data-robots-grid]");
   if (!grid) return;
+  renderAdvancedRobotFilters();
   const terms = pageNormalize(pageState.query).split(/\s+/).filter(Boolean);
   const filter = pageNormalize(pageState.robotFilter);
   const robots = pageState.robots.filter((robot) => {
     const text = robotText(robot);
     const matchesQuery = !terms.length || terms.every((term) => text.includes(term));
     const matchesFilter = filter === "all" || text.includes(filter);
-    return matchesQuery && matchesFilter;
+    const matchesUseCase = pageState.robotUseCaseFilter === "all" || robotUseCases(robot).some((item) => item.slug === pageState.robotUseCaseFilter);
+    const matchesCountry = pageState.robotCountryFilter === "all" || countrySlug(robot.country) === pageState.robotCountryFilter;
+    const matchesScore = pageState.robotScoreFilter === "all" || (
+      pageState.robotScoreFilter === "leader" ? robotScore(robot) >= 68 :
+      pageState.robotScoreFilter === "watchlist" ? robotScore(robot) >= 52 && robotScore(robot) < 68 :
+      robotScore(robot) < 52
+    );
+    const matchesVideo = !pageState.robotVideoOnly || Boolean(robotVideo(robot));
+    const matchesPrice = !pageState.robotPricedOnly || Number(robot.priceVisibility || 0) >= 2;
+    return matchesQuery && matchesFilter && matchesUseCase && matchesCountry && matchesScore && matchesVideo && matchesPrice;
   });
 
   grid.innerHTML = robots.map((robot) => {
     const video = robotVideo(robot);
+    const quality = robotQuality(robot);
     return `
     <article class="catalog-card robot-catalog-card">
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
@@ -421,6 +465,11 @@ function renderRobotCards() {
         <div class="robot-score-row">
           <span>Maturity ${pageMeter(robot.maturity)}</span>
           <span>Price clarity ${pageMeter(robot.priceVisibility)}</span>
+        </div>
+        <div class="quality-chip-row">
+          <span>${pageEscape(quality.sourceConfidence)}</span>
+          <span>${pageEscape(quality.priceConfidence)}</span>
+          <span>${pageEscape(quality.mediaVerified)}</span>
         </div>
         ${video?.embed ? `
           <div class="robot-card-video">
@@ -468,6 +517,24 @@ function renderRobotCards() {
     });
   });
   setCount("visible-robots", robots.length);
+}
+
+function renderAdvancedRobotFilters() {
+  const useCaseSelect = document.querySelector("[data-robot-usecase-filter]");
+  const countrySelect = document.querySelector("[data-robot-country-filter]");
+  if (useCaseSelect && !useCaseSelect.dataset.ready) {
+    useCaseSelect.innerHTML = `<option value="all">All use cases</option>${useCaseLibrary.map((item) => `<option value="${pageEscape(item.slug)}">${pageEscape(item.title)}</option>`).join("")}`;
+    useCaseSelect.value = pageState.robotUseCaseFilter;
+    useCaseSelect.dataset.ready = "true";
+  }
+  if (countrySelect && !countrySelect.dataset.ready) {
+    const countries = [...new Map(pageState.robots.map((robot) => [countrySlug(robot.country), broadCountryName(robot.country)])).entries()]
+      .filter(([slug]) => slug)
+      .sort((a, b) => a[1].localeCompare(b[1]));
+    countrySelect.innerHTML = `<option value="all">All countries</option>${countries.map(([slug, label]) => `<option value="${pageEscape(slug)}">${pageEscape(label)}</option>`).join("")}`;
+    countrySelect.value = pageState.robotCountryFilter;
+    countrySelect.dataset.ready = "true";
+  }
 }
 
 function renderCompanyCards() {
@@ -644,6 +711,9 @@ function renderRobotProfile() {
   const useCases = robotUseCases(robot);
   const score = robotScore(robot);
   const video = robotVideo(robot);
+  const quality = robotQuality(robot);
+  const alternatives = robotAlternatives(robot);
+  const compareSlugs = [robot, ...alternatives.slice(0, 3)].map((item) => robotSlug(item)).join(",");
 
   document.title = `${robot.name} Profile | robologai`;
   root.innerHTML = `
@@ -659,6 +729,7 @@ function renderRobotProfile() {
         </div>
         <div class="profile-action-row">
           <a href="compare.html">Compare robots</a>
+          <a href="compare.html?robots=${pageEscape(compareSlugs)}">Compare alternatives</a>
           <a href="prices.html">Price tracker</a>
           ${video?.embed ? `<a href="#profile-video">Watch demo</a>` : ""}
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
@@ -674,6 +745,18 @@ function renderRobotProfile() {
       <article><span>Country</span><strong>${pageEscape(robot.country || "Global")}</strong></article>
       <article><span>Price</span><strong>${pageEscape(robot.price)}</strong></article>
       <article><span>Stage</span><strong>${pageEscape(robotStage(robot))}</strong></article>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Data Quality</p>
+        <h2>How confident Robologai is about this profile.</h2>
+      </div>
+      <div class="data-quality-grid">
+        <article><span>Source</span><strong>${pageEscape(quality.sourceConfidence)}</strong><small>${pageEscape(robot.source || "Official source missing")}</small></article>
+        <article><span>Price</span><strong>${pageEscape(quality.priceConfidence)}</strong><small>${pageEscape(robot.price)}</small></article>
+        <article><span>Media</span><strong>${pageEscape(quality.mediaVerified)}</strong><small>${video?.embed ? "Embedded demo available" : "Source image / page used"}</small></article>
+        <article><span>Review</span><strong>${pageEscape(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+      </div>
     </section>
     <section class="profile-detail-grid">
       <article class="profile-facts">
@@ -761,11 +844,14 @@ function renderRobotProfile() {
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
-        <p>Related Robots</p>
-        <h2>Similar robots to compare next.</h2>
+        <p>Alternatives</p>
+        <h2>Alternatives to ${pageEscape(robot.name)}.</h2>
+      </div>
+      <div class="profile-action-row compact-action-row">
+        <a href="compare.html?robots=${pageEscape(compareSlugs)}">Open comparison set</a>
       </div>
       <div class="signal-grid">
-        ${related.map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.company)}</span><small>${pageEscape(item.useCase)}</small><a href="robot.html?robot=${pageEscape(robotSlug(item))}">Open profile →</a></article>`).join("")}
+        ${(alternatives.length ? alternatives : related).map((item) => `<article class="signal-card"><strong>${pageEscape(item.name)}</strong><span>${pageEscape(item.company)} · ${robotScore(item)} R-Score</span><small>${pageEscape(item.useCase)}</small><a href="robot.html?robot=${pageEscape(robotSlug(item))}">Open profile →</a></article>`).join("")}
       </div>
     </section>
   `;
@@ -967,8 +1053,10 @@ function renderComparePage() {
   const body = document.querySelector("[data-full-compare]");
   if (!body) return;
   const selected = [...document.querySelectorAll("[data-compare-select] input:checked")].map((input) => input.value);
-  const priority = selected.length ? selected : ["Optimus", "Figure 02", "Apollo", "Digit", "G1", "PM01", "Booster T1", "AgiBot A2", "LimX Oli", "PUDU D9", "Memo", "Sprout"];
-  const robots = priority.slice(0, 4).map((name) => pageState.robots.find((robot) => robot.name === name)).filter(Boolean);
+  const params = new URLSearchParams(window.location.search);
+  const queryRobots = (params.get("robots") || "").split(",").map((item) => item.trim()).filter(Boolean);
+  const priority = selected.length ? selected : queryRobots.length ? queryRobots : ["Optimus", "Figure 02", "Apollo", "Digit", "G1", "PM01", "Booster T1", "AgiBot A2", "LimX Oli", "PUDU D9", "Memo", "Sprout"];
+  const robots = priority.slice(0, 4).map((name) => pageState.robots.find((robot) => robot.name === name || robotSlug(robot) === name)).filter(Boolean);
   const summary = document.querySelector("[data-compare-summary]");
   if (summary) {
     const leader = [...robots].sort((a, b) => robotScore(b) - robotScore(a))[0];
@@ -999,10 +1087,12 @@ function renderComparePage() {
 function renderComparePicker() {
   const picker = document.querySelector("[data-compare-select]");
   if (!picker) return;
-  const defaults = new Set(["Optimus", "Figure 02", "Apollo", "Digit"]);
+  const params = new URLSearchParams(window.location.search);
+  const queryRobots = (params.get("robots") || "").split(",").map((item) => item.trim()).filter(Boolean);
+  const defaults = new Set(queryRobots.length ? queryRobots : ["Optimus", "Figure 02", "Apollo", "Digit"]);
   picker.innerHTML = pageState.robots.slice(0, 16).map((robot) => `
     <label>
-      <input type="checkbox" value="${pageEscape(robot.name)}" ${defaults.has(robot.name) ? "checked" : ""}>
+      <input type="checkbox" value="${pageEscape(robot.name)}" ${defaults.has(robot.name) || defaults.has(robotSlug(robot)) ? "checked" : ""}>
       <span>${pageEscape(robot.name)}</span>
     </label>
   `).join("");
@@ -1035,6 +1125,41 @@ function wireCatalogControls() {
       pageState.companyFilter = button.dataset.companyPageFilter || "all";
       document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item === button));
       renderCompanyCards();
+    });
+  });
+
+  document.querySelectorAll("[data-robot-usecase-filter]").forEach((select) => {
+    select.addEventListener("change", () => {
+      pageState.robotUseCaseFilter = select.value || "all";
+      renderRobotCards();
+    });
+  });
+
+  document.querySelectorAll("[data-robot-country-filter]").forEach((select) => {
+    select.addEventListener("change", () => {
+      pageState.robotCountryFilter = select.value || "all";
+      renderRobotCards();
+    });
+  });
+
+  document.querySelectorAll("[data-robot-score-filter]").forEach((select) => {
+    select.addEventListener("change", () => {
+      pageState.robotScoreFilter = select.value || "all";
+      renderRobotCards();
+    });
+  });
+
+  document.querySelectorAll("[data-robot-video-filter]").forEach((input) => {
+    input.addEventListener("change", () => {
+      pageState.robotVideoOnly = input.checked;
+      renderRobotCards();
+    });
+  });
+
+  document.querySelectorAll("[data-robot-price-filter]").forEach((input) => {
+    input.addEventListener("change", () => {
+      pageState.robotPricedOnly = input.checked;
+      renderRobotCards();
     });
   });
 }
