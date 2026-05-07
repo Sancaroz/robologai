@@ -647,6 +647,32 @@ function renderHomeIntelligence() {
   renderSignalFeed("[data-home-signals]");
 }
 
+function renderFeaturedRobot() {
+  const target = document.querySelector("[data-featured-robot]");
+  if (!target) return;
+  const robot = [...pageState.robots]
+    .filter((item) => robotVideo(item) && item.image)
+    .sort((a, b) => robotScore(b) - robotScore(a))[0] || pageState.robots[0];
+  if (!robot) return;
+  const alternatives = robotAlternatives(robot, 3);
+  target.innerHTML = `
+    <figure>
+      ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+      <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
+    </figure>
+    <article>
+      <span>${pageEscape(robot.company)} · ${pageEscape(robotStage(robot))}</span>
+      <h3>${pageEscape(robot.name)}</h3>
+      <p>${pageEscape(robot.useCase)}</p>
+      <div class="featured-robot-actions">
+        <a href="robot.html?robot=${pageEscape(robotSlug(robot))}">Open profile</a>
+        <a href="compare.html?robots=${pageEscape([robot, ...alternatives].map((item) => robotSlug(item)).join(","))}">Compare alternatives</a>
+        ${robotVideo(robot) ? `<a href="videos.html">Watch demo</a>` : ""}
+      </div>
+    </article>
+  `;
+}
+
 function renderVideosPage() {
   const grid = document.querySelector("[data-videos-grid]");
   if (!grid) return;
@@ -1197,6 +1223,7 @@ async function initCatalogPages() {
   renderMarketPage();
   renderPricesPage();
   renderHomeIntelligence();
+  renderFeaturedRobot();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

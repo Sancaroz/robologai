@@ -3198,7 +3198,9 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid,
 .compare-summary-grid,
 .data-quality-grid,
-.tr-guide-grid {
+.tr-guide-grid,
+.compare-preset-grid,
+.faq-grid {
   display: grid;
   gap: 12px;
 }
@@ -3211,8 +3213,13 @@ body.light-theme .profile-main > div > span {
 .buyer-guide-grid,
 .profile-stack-grid,
 .data-quality-grid,
-.tr-guide-grid {
+.tr-guide-grid,
+.compare-preset-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.faq-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .company-signal-grid,
@@ -3228,7 +3235,9 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid article,
 .compare-summary-grid article,
 .data-quality-grid article,
-.tr-guide-grid a {
+.tr-guide-grid a,
+.compare-preset-grid a,
+.faq-grid details {
   display: grid;
   gap: 9px;
   min-height: 142px;
@@ -3252,7 +3261,8 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid span,
 .compare-summary-grid span,
 .data-quality-grid span,
-.tr-guide-grid span {
+.tr-guide-grid span,
+.compare-preset-grid span {
   color: var(--blue-2);
   font-size: 12px;
   font-weight: 950;
@@ -3276,10 +3286,121 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid strong,
 .compare-summary-grid strong,
 .data-quality-grid strong,
-.tr-guide-grid strong {
+.tr-guide-grid strong,
+.compare-preset-grid strong,
+.faq-grid summary {
   color: #eef6ff;
   font-size: 16px;
   line-height: 1.25;
+}
+
+.faq-grid details {
+  min-height: auto;
+}
+
+.faq-grid summary {
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.faq-grid p {
+  margin: 0;
+  color: #c4cedc;
+  line-height: 1.55;
+}
+
+.featured-robot-card {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.92), rgba(7, 17, 31, 0.96));
+  box-shadow: var(--shadow);
+}
+
+.featured-robot-card figure {
+  position: relative;
+  min-height: 320px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.featured-robot-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.featured-robot-card figcaption {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid rgba(116, 199, 255, 0.42);
+  border-radius: 50%;
+  color: #eaf6ff;
+  background: rgba(2, 8, 18, 0.76);
+  backdrop-filter: blur(12px);
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.featured-robot-card figcaption small {
+  display: block;
+  margin-top: 3px;
+  color: #a8c6e8;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.featured-robot-card article {
+  display: grid;
+  align-content: center;
+  gap: 13px;
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.featured-robot-card article > span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.featured-robot-card h3 {
+  margin: 0;
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height: 1.02;
+}
+
+.featured-robot-card p {
+  margin: 0;
+  color: #c4cedc;
+  line-height: 1.62;
+}
+
+.featured-robot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.featured-robot-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 7px;
+  color: #eaf6ff;
+  background: rgba(20, 184, 166, 0.12);
+  font-weight: 900;
+  padding: 0 13px;
 }
 
 .price-signal-grid {
@@ -4662,7 +4783,9 @@ body.light-theme .buyer-guide-grid small,
 body.light-theme .profile-stack-grid small,
 body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
-body.light-theme .tr-guide-grid small {
+body.light-theme .tr-guide-grid small,
+body.light-theme .faq-grid p,
+body.light-theme .featured-robot-card p {
   color: #43566c;
 }
 
@@ -4679,6 +4802,9 @@ body.light-theme .company-signal-grid article,
 body.light-theme .compare-summary-grid article,
 body.light-theme .data-quality-grid article,
 body.light-theme .tr-guide-grid a,
+body.light-theme .compare-preset-grid a,
+body.light-theme .faq-grid details,
+body.light-theme .featured-robot-card,
 body.light-theme .profile-hero,
 body.light-theme .profile-facts,
 body.light-theme .price-column,
@@ -4703,6 +4829,9 @@ body.light-theme .company-signal-grid strong,
 body.light-theme .compare-summary-grid strong,
 body.light-theme .data-quality-grid strong,
 body.light-theme .tr-guide-grid strong,
+body.light-theme .compare-preset-grid strong,
+body.light-theme .faq-grid summary,
+body.light-theme .featured-robot-card h3,
 body.light-theme .profile-facts dt,
 body.light-theme .price-card strong,
 body.light-theme .quick-path-grid strong,
@@ -4899,6 +5028,8 @@ body.light-theme .facts span {
   .compare-summary-grid,
   .data-quality-grid,
   .tr-guide-grid,
+  .compare-preset-grid,
+  .faq-grid,
   .video-theater-grid,
   .use-case-robot-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5035,6 +5166,9 @@ body.light-theme .facts span {
   .compare-summary-grid,
   .data-quality-grid,
   .tr-guide-grid,
+  .compare-preset-grid,
+  .faq-grid,
+  .featured-robot-card,
   .video-theater-grid,
   .use-case-robot-grid,
   .robot-video-player,
