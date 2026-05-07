@@ -55,9 +55,9 @@ Bu video yatirim tavsiyesi veya satin alma onerisi degildir. robologai, robotik 
 
 | Time | Visual | Voiceover Focus |
 | --- | --- | --- |
-| 0:00-0:15 | Big title: Unitree G1, 16K humanoid? | Hook and why G1 matters |
-| 0:15-0:45 | Robot identity card | Unitree Robotics, China, humanoid platform |
-| 0:45-1:20 | Spec board | Height, weight, runtime, sensors, price visibility |
+| 0:00-0:15 | Big title with official Unitree G1 product image | Hook and why G1 matters |
+| 0:15-0:45 | Robot identity card with official product image credit | Unitree Robotics, China, humanoid platform |
+| 0:45-1:20 | Spec board with product image and source note | Height, weight, runtime, sensors, price visibility |
 | 1:20-2:10 | Use case map | Research, education, prototyping, Physical AI |
 | 2:10-2:55 | Comparison lanes | Optimus vs Figure vs G1 positioning |
 | 2:55-3:35 | Robologai score view | Strengths, risks, what to watch |
@@ -106,4 +106,3 @@ Cunku humanoid robotlarin sadece dev sirketlerin kapali projeleri olarak kalmayi
 
 Yeni robologai video paketi:
 https://robologai.com/robot.html?robot=g1
-

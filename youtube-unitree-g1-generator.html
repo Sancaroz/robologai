@@ -135,10 +135,11 @@
       <canvas id="videoCanvas" width="1280" height="720" aria-label="robologai Unitree G1 generated video preview"></canvas>
       <aside>
         <h1>Unitree G1 Video Generator</h1>
-        <p>Bu sayfa robologai icin otomatik video uretir: sahneler, altyazi, hareketli grafikler ve varsa seslendirme tek dosyada birlesir.</p>
+        <p>Bu sayfa robologai icin otomatik video uretir: resmi Unitree G1 urun gorseli, sahneler, altyazi, hareketli grafikler ve varsa seslendirme tek dosyada birlesir.</p>
         <button id="previewButton" class="secondary">Onizleme Baslat</button>
         <button id="recordButton">Videoyu Otomatik Uret</button>
         <a id="downloadLink" class="button download" download="robologai-unitree-g1.webm">Videoyu Indir</a>
+        <a class="button secondary" href="https://www.unitree.com/g1/" target="_blank" rel="noopener noreferrer">Resmi Unitree Kaynagi</a>
         <a class="button secondary" href="assets/social/unitree-g1-youtube-thumbnail.svg" target="_blank" rel="noopener noreferrer">Thumbnail'i Ac</a>
         <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
         <div class="status" id="status">Hazir. En iyi sonuc icin Chrome'da acip "Videoyu Otomatik Uret" tusuna bas.</div>
@@ -158,6 +159,9 @@
       const meterFill = document.getElementById("meterFill");
       const width = canvas.width;
       const height = canvas.height;
+      const productImage = new Image();
+      let productImageReady = false;
+      productImage.crossOrigin = "anonymous";
 
       const fallbackDuration = 230;
       let audioAvailable = false;
@@ -292,6 +296,32 @@
         ctx.restore();
       }
 
+      function drawProductImage(x, y, size, phase) {
+        ctx.save();
+        ctx.translate(x + size / 2, y + size / 2 + Math.sin(phase) * 8);
+        roundRect(-size / 2 - 20, -size / 2 - 20, size + 40, size + 40, 34);
+        ctx.fillStyle = "rgba(16, 27, 29, 0.76)";
+        ctx.fill();
+        ctx.strokeStyle = "#31584c";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        if (productImageReady) {
+          ctx.shadowColor = "rgba(111, 255, 210, 0.18)";
+          ctx.shadowBlur = 30;
+          ctx.drawImage(productImage, -size / 2, -size / 2, size, size);
+          ctx.shadowBlur = 0;
+          ctx.fillStyle = "#8ea7a0";
+          ctx.font = "700 17px Arial";
+          ctx.fillText("Official Unitree product image", -size / 2 + 10, size / 2 + 40);
+        } else {
+          drawRobot(0, 20, 0.76, phase);
+          ctx.fillStyle = "#8ea7a0";
+          ctx.font = "700 17px Arial";
+          ctx.fillText("Official image loading fallback", -size / 2 + 10, size / 2 + 40);
+        }
+        ctx.restore();
+      }
+
       function drawBackground(progress) {
         const gradient = ctx.createLinearGradient(0, 0, width, height);
         gradient.addColorStop(0, "#071318");
@@ -331,7 +361,7 @@
         ctx.fillText(scene.kicker, 72, 152);
         drawText(scene.title, 72, 250, 710, 82, "800 74px Arial", "#ffffff");
         drawText(scene.subtitle, 76, 408, 720, 42, "600 31px Arial", "#b4c6c1");
-        drawRobot(1010, 390, 0.86, time * 2.5);
+        drawProductImage(820, 176, 360, time * 2.5);
 
         if (scene.stats) {
           scene.stats.forEach((item, index) => {
@@ -510,6 +540,16 @@
         audioAvailable = false;
         setStatus("Seslendirme dosyasi bulunamadi. Generator yine de altyazili ve arka plan sesli video uretebilir.");
       });
+      productImage.addEventListener("load", () => {
+        productImageReady = true;
+        drawScene(0, audio.duration || fallbackDuration);
+        setStatus("Resmi Unitree G1 urun gorseli yuklendi. Video uretime hazir.");
+      });
+      productImage.addEventListener("error", () => {
+        productImageReady = false;
+        setStatus("Resmi urun gorseli yuklenemedi. Video robologai cizimiyle uretilebilir.");
+      });
+      productImage.src = "https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png";
       drawScene(0, fallbackDuration);
     </script>
   </body>
