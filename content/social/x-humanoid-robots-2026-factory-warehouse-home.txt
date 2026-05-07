@@ -1,0 +1,81 @@
+X post package for robologai
+Date: 2026-05-07
+Target article: https://robologai.com/blog/humanoid-robots-2026-factory-warehouse-home.html
+
+Single post:
+
+Humanoid robots are not one market anymore.
+
+In 2026 they are splitting into 4 lanes: factory, warehouse, research, and home.
+
+The useful question is no longer "which robot looks best?"
+
+It is: which job is each robot closest to doing daily?
+
+https://robologai.com/blog/humanoid-robots-2026-factory-warehouse-home.html
+
+Thread:
+
+1/ Humanoid robots are not one market anymore.
+
+In 2026, the race is splitting into four buyer lanes:
+
+factory, warehouse, research, and home.
+
+That changes how we should compare Optimus, Figure, Digit, Apollo, Unitree, NEO, and the rest.
+
+2/ Factory humanoids are chasing structured work:
+
+part movement, machine tending, inspection support, assembly assistance, and repetitive physical tasks.
+
+The key signal is not a viral demo.
+
+It is repeatability.
+
+3/ Warehouse robots may be the closest near-term lane.
+
+Logistics has measurable work: tote movement, loading, unloading, sorting, AMR support, and shift coverage.
+
+The winning metric is utilization, not personality.
+
+4/ Research robots are a different market.
+
+A platform like Unitree G1 can matter even if it is not ready for paid labor, because it gives builders real hardware for AI, control, simulation, and motion planning.
+
+Price visibility matters here.
+
+5/ Home robots are the most exciting and the hardest.
+
+Homes have clutter, stairs, pets, privacy concerns, food, furniture, kids, and emotional expectations.
+
+A home robot needs trust before it needs magic.
+
+6/ My buyer map:
+
+Do not ask only "which robot is best?"
+
+Ask:
+- what job first?
+- what stage?
+- what price signal?
+- what video proof?
+- what source confidence?
+- what alternatives?
+
+7/ I mapped the 2026 humanoid robot lanes here:
+
+https://robologai.com/blog/humanoid-robots-2026-factory-warehouse-home.html
+
+robologai is building a robot catalog, video theater, and comparison layer for the physical AI market.
+
+#robotics #humanoidrobots #AI
+
+Short follow-up post:
+
+The humanoid robot market will probably not be won by the flashiest demo.
+
+It may be won by the robot that becomes boringly useful:
+
+safe, repeatable, maintainable, affordable, and clear about its first job.
+
+That is the lens I am using on robologai.
