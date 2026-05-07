@@ -83,6 +83,27 @@ const robotVideoLibrary = {
     source: "https://www.tesla.com/AI",
     note: "Official Tesla Optimus demo source."
   },
+  "figure-02": {
+    title: "Figure 02 official robot demo",
+    provider: "YouTube / Figure AI",
+    embed: "https://www.youtube-nocookie.com/embed/0SRVJaOg9Co",
+    source: "https://www.figure.ai/",
+    note: "Figure 02 official demo video for enterprise humanoid work."
+  },
+  apollo: {
+    title: "Apptronik Apollo humanoid robot",
+    provider: "YouTube / Apptronik",
+    embed: "https://www.youtube-nocookie.com/embed/uJOA5IDaL5g",
+    source: "https://apptronik.com/news-collection/apptronik-unveils-apollo",
+    note: "Apollo launch/demo source for warehouse and manufacturing work."
+  },
+  digit: {
+    title: "Agility Digit official demo",
+    provider: "YouTube / Agility Robotics",
+    embed: "https://www.youtube-nocookie.com/embed/rnFZAB9ogEE",
+    source: "https://www.agilityrobotics.com/videos/what-can-digit-do-amr-loading-and-unloading",
+    note: "Digit demo source for logistics, AMR loading, and warehouse movement."
+  },
   atlas: {
     title: "Boston Dynamics electric Atlas",
     provider: "YouTube / Boston Dynamics",
@@ -96,6 +117,48 @@ const robotVideoLibrary = {
     embed: "https://www.youtube-nocookie.com/embed/wlkCQXHEgjA",
     source: "https://bostondynamics.com/products/spot/",
     note: "Official Boston Dynamics Spot video source."
+  },
+  g1: {
+    title: "Unitree G1 humanoid agent",
+    provider: "YouTube / Unitree Robotics",
+    embed: "https://www.youtube-nocookie.com/embed/GzX1qOIO1bE",
+    source: "https://www.unitree.com/g1/",
+    note: "Official Unitree G1 introduction with price and research positioning."
+  },
+  h1: {
+    title: "Unitree H1 humanoid robot",
+    provider: "YouTube / Unitree Robotics",
+    embed: "https://www.youtube-nocookie.com/embed/GtPs_ygfaEA",
+    source: "https://www.unitree.com/h1/",
+    note: "Official Unitree H1 introduction for full-size humanoid mobility."
+  },
+  neo: {
+    title: "1X NEO Gamma home humanoid",
+    provider: "YouTube / 1X Technologies",
+    embed: "https://www.youtube-nocookie.com/embed/8FNwHSSaK5A",
+    source: "https://www.1x.tech/",
+    note: "NEO Gamma source video showing domestic humanoid use cases."
+  },
+  phoenix: {
+    title: "Sanctuary AI Phoenix humanoid",
+    provider: "YouTube / Sanctuary AI",
+    embed: "https://www.youtube-nocookie.com/embed/k2GhgO7SnZQ",
+    source: "https://www.sanctuary.ai/blog/sanctuary-ai-unveils-phoenix-a-humanoid-general-purpose-robot-designed-for-work",
+    note: "Phoenix launch source for general-purpose industrial humanoid work."
+  },
+  ameca: {
+    title: "Engineered Arts Ameca demo",
+    provider: "YouTube / Engineered Arts",
+    embed: "https://www.youtube-nocookie.com/embed/IPukuYb9xWw",
+    source: "https://www.engineeredarts.co.uk/robot/ameca/",
+    note: "Ameca source video for human-robot interaction and expressive robotics."
+  },
+  "walker-s": {
+    title: "UBTECH Walker S humanoid robot",
+    provider: "YouTube / UBTECH Robotics",
+    embed: "https://www.youtube-nocookie.com/embed/Iryqtfym7oo",
+    source: "https://www.ubtrobot.com/en/humanoid/products/walker-s",
+    note: "Walker S source video and product page for industrial humanoid work."
   }
 };
 
