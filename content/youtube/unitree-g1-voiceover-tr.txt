@@ -1,0 +1,23 @@
+Bugün robologai'de Unitree G1'e bakıyoruz.
+
+G1, Çin merkezli Unitree Robotics tarafından geliştirilen kompakt bir humanoid robot. Onu ilgi çekici yapan şey sadece yürümesi, zıplaması veya viral videolarda akrobatik hareketler yapması değil. Asıl önemli nokta şu: Unitree G1, humanoid robot pazarında fiyat görünürlüğü olan ve araştırma ekiplerinin daha ulaşılabilir bulabileceği platformlardan biri.
+
+Unitree'nin resmi G1 sayfasında başlangıç fiyatı yaklaşık 16 bin dolar olarak geçiyor. Bu rakam robot dünyası için hâlâ pahalı, ama humanoid robot kategorisinde oldukça dikkat çekici. Çünkü Tesla Optimus, Figure 02 veya Apptronik Apollo gibi birçok rakip henüz halka açık net satış fiyatlarıyla gelmiyor. G1 ise daha çok araştırma, eğitim ve prototipleme tarafında konumlanmış durumda.
+
+Robotun boyu yaklaşık 132 santimetre, ağırlığı ise batarya ile yaklaşık 35 kilogram. Model ve konfigürasyona göre 23 ile 43 arası eklem motorundan söz ediliyor. Resmi teknik bilgilerde derinlik kamerası, 3D LiDAR, mikrofon dizisi, hoparlör, Wi-Fi 6 ve Bluetooth 5.2 gibi sensör ve bağlantı özellikleri de var. Batarya süresi ise yaklaşık 2 saat olarak belirtiliyor.
+
+Peki bu neden önemli?
+
+Çünkü humanoid robot yarışı sadece "hangi robot en etkileyici görünüyor" yarışı değil. Asıl yarış, robotları gerçek donanım üzerinde test edebilen ekip sayısını artırmak. Eğer daha fazla üniversite, geliştirici ve yapay zeka laboratuvarı gerçek humanoid donanıma erişebilirse, yürümeden dengeye, kontrolden görüşe, sim-to-real çalışmalarından insan-robot etkileşimine kadar birçok alanda gelişme hızlanabilir.
+
+G1'i ev işlerini yapacak hazır bir robot gibi düşünmek doğru olmaz. Bu daha çok bir araştırma ve geliştirme platformu. Yani bugün için en mantıklı soru "Bu robot evde kahvaltı hazırlar mı?" değil. Daha doğru soru şu: "Bu robot, Physical AI ve humanoid robot yazılımı geliştiren ekipler için iyi bir başlangıç platformu mu?"
+
+robologai bakış açısıyla G1'in güçlü tarafı fiyat görünürlüğü ve araştırma odaklı konumu. Zayıf tarafı ise olgunluk. Bu robot henüz fabrika veya ev gibi karmaşık ortamlarda geniş ölçekli iş gücü olarak düşünülmemeli. Demosu güçlü olabilir, hareket kabiliyeti etkileyici olabilir, ama gerçek dünyada sürekli, güvenli ve ekonomik çalışma bambaşka bir seviye.
+
+Bu yüzden G1'i Tesla Optimus veya Figure 02 ile birebir "hangisi daha iyi" diye değil, farklı bir kulvarda değerlendirmek gerekiyor. Optimus daha çok Tesla'nın üretim ve fabrika ekosistemiyle bağlanıyor. Figure 02 iş yeri ve fabrika otomasyonu tarafında izleniyor. Unitree G1 ise daha erişilebilir humanoid donanım ve araştırma platformu fikrini güçlendiriyor.
+
+Kısaca: Unitree G1, humanoid robotların sadece dev şirketlerin kapalı projeleri olmaktan çıkıp daha geniş bir geliştirici ekosistemine yayılabileceğini gösteren önemli bir sinyal.
+
+robologai.com'da G1 profilini, fiyat sinyalini, alternatif robotları ve karşılaştırma sayfalarını bulabilirsiniz. Eğer bu seri hoşunuza gittiyse kanala abone olun; sıradaki videolarda Figure 02, Tesla Optimus, Agility Digit ve 1X NEO'yu aynı formatta inceleyeceğiz.
+
+Bu video yatırım tavsiyesi veya satın alma önerisi değildir. robologai, robotik ve yapay zeka ekosistemini kaynaklı ve anlaşılır şekilde takip etmek için hazırlanır.
