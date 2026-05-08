@@ -157,23 +157,30 @@
         </div>
       </section>
 
-      <section class="brand-showcase" aria-label="robologai visual identity">
-        <div class="brand-showcase-copy">
-          <p data-i18n="brandEyebrow">robologai signal</p>
-          <h2 data-i18n="brandTitle">A live map for the companies building intelligent machines.</h2>
-          <span data-i18n="brandText">The site follows AI labs, humanoid robotics teams, robot prices, public market signals, and the wider machine economy from one focused editorial desk.</span>
+      <section class="home-command-section" aria-label="Robologai intelligence overview">
+        <div class="home-command-lead">
+          <p>Robologai Intelligence</p>
+          <h2>A cleaner control room for robotics news, companies, and market signals.</h2>
+          <span>Use the cards below to move quickly from current robotics stories to company profiles, robot comparisons, videos, and source-first research.</span>
         </div>
-        <div class="brand-showcase-media">
-          <img src="assets/robot-lab.png" alt="Humanoid robot facing a glowing digital AI profile">
+        <div class="home-command-grid">
+          <a class="command-card command-card-large" href="blog/humanoid-robots-2026-factory-warehouse-home.html">
+            <span>Featured analysis</span>
+            <h3>Humanoid robots are splitting into factory, warehouse, research, and home lanes.</h3>
+            <p>Read the buyer map for the machines closest to real deployment.</p>
+          </a>
+          <a class="command-card" href="robots.html">
+            <span>Robot database</span>
+            <h3>Compare robot profiles by readiness, price clarity, use case, and media proof.</h3>
+          </a>
+          <a class="command-card" href="companies.html">
+            <span>Company radar</span>
+            <h3>Track public AI names, private builders, labs, and robotics suppliers.</h3>
+          </a>
         </div>
       </section>
 
       <section class="home-intelligence-section" aria-label="Robologai intelligence dashboard">
-        <div class="section-heading compact">
-          <p>Robologai Intelligence</p>
-          <h2>A faster read on the humanoid robotics market.</h2>
-          <span>Robot profiles, company records, playable demos, and buyer-focused use cases now connect across the site.</span>
-        </div>
         <div class="home-intelligence-grid" data-home-intelligence>
           <article><strong>Loading</strong><span>Robot profiles</span></article>
           <article><strong>Loading</strong><span>Companies</span></article>
@@ -182,12 +189,82 @@
         </div>
       </section>
 
-      <section class="signal-feed-section" aria-label="Latest Robologai signals">
+      <section class="home-news-section" aria-label="Robotics news cards">
         <div class="section-heading compact">
-          <p>Latest Signals</p>
-          <h2>What changed in the platform view.</h2>
+          <p>Robotics News</p>
+          <h2>Fast reads for the stories shaping physical AI.</h2>
         </div>
-        <div class="signal-update-grid" data-home-signals></div>
+        <div class="home-news-grid">
+          <a class="news-card news-card-primary" href="blog/physical-ai-explained.html">
+            <span>Guide · Physical AI</span>
+            <h3>When intelligence leaves the screen and starts moving through the world.</h3>
+            <p>A clear primer on embodied AI, simulation, teleoperation, and machine labor.</p>
+          </a>
+          <a class="news-card" href="blog/tesla-optimus-vs-figure-ai.html">
+            <span>Comparison · Humanoids</span>
+            <h3>Tesla Optimus vs Figure AI</h3>
+            <p>Two different paths toward useful humanoid work.</p>
+          </a>
+          <a class="news-card" href="blog/peaq-machine-economy-depin-ecosystem.html">
+            <span>DePIN · Robots</span>
+            <h3>Machine economy signals</h3>
+            <p>Why robots, devices, and physical AI need new coordination rails.</p>
+          </a>
+          <a class="news-card" href="blog/xmaquina-decentralized-robotics.html">
+            <span>AI Labs · Capital</span>
+            <h3>Decentralized robotics exposure</h3>
+            <p>XMAQUINA as a gateway into humanoid robotics markets.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="company-spotlight-section" aria-label="Robotics company cards">
+        <div class="section-heading compact">
+          <p>Company Cards</p>
+          <h2>Companies readers should recognize first.</h2>
+        </div>
+        <div class="company-spotlight-grid">
+          <a href="companies/tesla.html">
+            <img src="assets/logo-tesla.svg" alt="" loading="lazy">
+            <span>Humanoid platform</span>
+            <strong>Tesla</strong>
+            <small>Optimus, manufacturing scale, AI data loop</small>
+          </a>
+          <a href="companies/figure-ai.html">
+            <img src="assets/logo-figure.svg" alt="" loading="lazy">
+            <span>General-purpose robots</span>
+            <strong>Figure AI</strong>
+            <small>Humanoid labor, enterprise pilots, AI integration</small>
+          </a>
+          <a href="companies/unitree-robotics.html">
+            <img src="assets/logo-unitree.svg" alt="" loading="lazy">
+            <span>Price visibility</span>
+            <strong>Unitree Robotics</strong>
+            <small>G1, H1, quadrupeds, public product demos</small>
+          </a>
+          <a href="companies/boston-dynamics.html">
+            <img src="assets/logo-boston.svg" alt="" loading="lazy">
+            <span>Robot capability</span>
+            <strong>Boston Dynamics</strong>
+            <small>Atlas, Spot, mobility, industrial robotics</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="trending-robotics-section" aria-label="Trending robotics topics">
+        <div class="section-heading compact">
+          <p>Trending Robotics</p>
+          <h2>The signals to watch now.</h2>
+        </div>
+        <div class="trending-layout">
+          <div class="trending-stack">
+            <a href="use-cases.html?case=warehouse-logistics"><strong>Warehouse humanoids</strong><span>Digit, Figure, Apollo, mobile manipulation</span></a>
+            <a href="prices.html"><strong>Robot price clarity</strong><span>Visible prices vs enterprise quote-based robots</span></a>
+            <a href="videos.html"><strong>Playable robot demos</strong><span>Official embeddable videos and product media</span></a>
+            <a href="country.html?country=united-states"><strong>US robotics ecosystem</strong><span>Private builders, public proxies, AI labs</span></a>
+          </div>
+          <div class="signal-update-grid" data-home-signals></div>
+        </div>
       </section>
 
       <section class="featured-robot-section" aria-label="Featured robot of the week">
@@ -196,22 +273,6 @@
           <h2>A weekly robot profile to start from.</h2>
         </div>
         <div class="featured-robot-card" data-featured-robot></div>
-      </section>
-
-      <section class="robologai-index-section" aria-label="Robologai index">
-        <div class="section-heading compact">
-          <p>Robologai Index</p>
-          <h2>Start from the part of the robotics economy you care about.</h2>
-        </div>
-        <div class="index-grid">
-          <a href="robots.html"><strong>Humanoid Robots</strong><span>Optimus, Figure 02, G1, Atlas, Digit, NEO</span></a>
-          <a href="use-cases.html"><strong>Use Case Library</strong><span>Manufacturing, warehouse, home, research, inspection</span></a>
-          <a href="market.html"><strong>Robo Market</strong><span>Public proxies, private builders, robot price visibility</span></a>
-          <a href="#guide-hub"><strong>Beginner Guides</strong><span>Physical AI, embodied AI, automation, robot terms</span></a>
-          <a href="#humanoid-files"><strong>The Humanoid Files</strong><span>Ongoing notes on the race to general-purpose robots</span></a>
-          <a href="#glossary"><strong>Glossary</strong><span>Short explanations for new readers</span></a>
-          <a href="#source-notes"><strong>Source Notes</strong><span>How Robologai separates facts, estimates, and opinion</span></a>
-        </div>
       </section>
 
       <section id="company-database" class="company-database-section" aria-label="Robotics and AI company database">
@@ -264,56 +325,31 @@
         </div>
       </section>
 
-      <section id="bilgiler" class="info-section">
-        <div class="section-heading">
-          <p data-i18n="infoEyebrow">Insights</p>
-          <h2 data-i18n="infoTitle">Track the robotics and AI ecosystem more easily.</h2>
-          <span data-i18n="infoText">The homepage combines market maps, humanoid robots, current news, and analysis into one professional flow.</span>
+      <section id="bilgiler" class="research-path-section">
+        <div class="section-heading compact">
+          <p>Insights</p>
+          <h2>Three clean ways to read the robotics economy.</h2>
         </div>
-
-        <div class="info-grid">
-          <article>
+        <div class="research-path-grid">
+          <a href="market.html">
             <span>01</span>
-            <h3>Market Maps</h3>
-            <p>Follow public AI names, private humanoid builders, robot products, and official sources from one structured page.</p>
-          </article>
-          <article>
+            <strong>Market Maps</strong>
+            <small>Public AI names, private builders, robot pricing, and source links.</small>
+          </a>
+          <a href="robots.html">
             <span>02</span>
-            <h3 data-i18n="infoCard2Title">Humanoid Robot Tracking</h3>
-            <p data-i18n="infoCard2Text">Follow robots such as Optimus, Figure 02, Atlas, Digit, and Unitree by use case and technical progress.</p>
-          </article>
-          <article>
+            <strong>Robot Tracking</strong>
+            <small>Optimus, Figure, Atlas, Digit, G1, NEO, and robots with demos.</small>
+          </a>
+          <a href="#admin-desk">
             <span>03</span>
-            <h3 data-i18n="infoCard3Title">News and Analysis</h3>
-            <p data-i18n="infoCard3Text">Read concise news and deeper analysis on robotics investments, AI products, regulation, and sector trends.</p>
-          </article>
+            <strong>News and Analysis</strong>
+            <small>Shorter stories, deeper guides, and source-focused robotics context.</small>
+          </a>
         </div>
       </section>
 
-      <section id="blog" class="editorial-section">
-        <div class="feature-story">
-          <p data-i18n="featureEyebrow">Featured analysis</p>
-          <h2 data-i18n="featureTitle">Humanoid robots in 2026 are splitting into four buyer lanes.</h2>
-          <p data-i18n="featureText">Factory, warehouse, research, and home robots now need different scorecards. The best question is not which robot looks best, but which job each robot is closest to doing every day.</p>
-          <a href="blog/humanoid-robots-2026-factory-warehouse-home.html" data-i18n="featureLink">Read the 2026 buyer map →</a>
-        </div>
-        <div class="quick-news">
-          <article>
-            <span data-i18n="newsTag1">AI Labs</span>
-            <h3><a href="blog/xmaquina-decentralized-robotics.html" data-i18n="newsTitleXmaquina">XMAQUINA: A decentralized gateway to humanoid robotics</a></h3>
-          </article>
-          <article>
-            <span data-i18n="newsTag2">Robots</span>
-            <h3><a href="blog/1-mayis-emek-sermaye-robotlar.html" data-i18n="newsTitleLabor">May Day, labor, and robots: the new negotiation around human work</a></h3>
-          </article>
-          <article>
-            <span data-i18n="newsTag3">Market</span>
-            <h3><a href="blog/physical-ai-explained.html">Physical AI explained: when intelligence leaves the screen</a></h3>
-          </article>
-        </div>
-      </section>
-
-      <section class="latest-posts" aria-label="Latest blog posts">
+      <section id="blog" class="latest-posts home-blog-strip" aria-label="Latest blog posts">
         <div class="section-heading compact">
           <p data-i18n="latestEyebrow">Latest Posts</p>
           <h2 data-i18n="latestTitle">New analysis from the robologai editor desk.</h2>
@@ -338,26 +374,6 @@
             <span>Guide · Physical AI</span>
             <h3>Physical AI Explained: When Intelligence Leaves the Screen</h3>
             <p>A simple guide to embodied AI, humanoid robots, teleoperation, simulation, and machine labor.</p>
-          </a>
-          <a href="blog/tesla-optimus-vs-figure-ai.html">
-            <span>Comparison · Humanoids</span>
-            <h3>Tesla Optimus vs Figure AI: Two Paths to Humanoid Work</h3>
-            <p>How Tesla and Figure approach scale, data, manufacturing, autonomy, and commercial deployment.</p>
-          </a>
-          <a href="blog/1-mayis-emek-sermaye-robotlar.html">
-            <span data-i18n="post1Meta">May Day · Labor</span>
-            <h3 data-i18n="post1Title">May Day, Labor, and Robots: The New Negotiation Around Human Work</h3>
-            <p data-i18n="post1Text">How do productivity, wages, time, and ownership change as robots take on more human work?</p>
-          </a>
-          <a href="blog/xmaquina-decentralized-robotics.html">
-            <span>Physical AI · DAO</span>
-            <h3 data-i18n="post2Title">XMAQUINA: A Decentralized Gateway to Humanoid Robotics</h3>
-            <p data-i18n="post2Text">A robologai analysis of robotics capital markets, DAO governance, and the Physical AI economy.</p>
-          </a>
-          <a href="market.html">
-            <span data-i18n="post3Meta">Robo Market · Finance</span>
-            <h3 data-i18n="post3Title">Robot prices and public AI companies</h3>
-            <p data-i18n="post3Text">A starter panel for tracking public companies and commercially available robots in one view.</p>
           </a>
         </div>
       </section>
