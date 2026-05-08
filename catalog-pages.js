@@ -473,7 +473,7 @@ function renderRobotCards() {
     return `
     <article class="catalog-card robot-catalog-card">
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
-        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
         <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
       </figure>
       <div class="catalog-card-body">
@@ -688,7 +688,7 @@ function renderFeaturedRobot() {
   const alternatives = robotAlternatives(robot, 3);
   target.innerHTML = `
     <figure>
-      ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+      ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
       <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
     </figure>
     <article>
@@ -711,7 +711,7 @@ function renderVideosPage() {
   grid.innerHTML = robots.map((robot) => `
     <article class="video-card video-gallery-card ${robotVideo(robot) ? "has-embed" : ""}" data-video-robot="${pageEscape(robotSlug(robot))}" ${robotVideo(robot) ? `data-play-video="${pageEscape(robotSlug(robot))}" role="button" tabindex="0"` : ""}>
       <div class="video-thumb">
-        <img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} demo visual" loading="lazy">
+        <img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} demo visual" loading="lazy" decoding="async">
         <span>▶</span>
         <em>${robotVideo(robot) ? "Plays here" : pageEscape(robot.category || "Source link")}</em>
       </div>
@@ -793,7 +793,7 @@ function renderRobotProfile() {
         </div>
       </div>
       <figure class="profile-visual ${robot.image ? "" : "catalog-visual-empty"}">
-        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
         <figcaption>${score} <small>${pageEscape(scoreLabel(score))}</small></figcaption>
       </figure>
     </section>
@@ -890,7 +890,7 @@ function renderRobotProfile() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-        ` : robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official visual" loading="lazy">` : `<div>${pageEscape(pageInitials(robot.name))}</div>`}
+        ` : robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} official visual" loading="lazy" decoding="async">` : `<div>${pageEscape(pageInitials(robot.name))}</div>`}
         <article>
           <span>${pageEscape(video?.provider || robot.company)}</span>
           <h3>${pageEscape(video?.title || `${robot.name} official source`)}</h3>

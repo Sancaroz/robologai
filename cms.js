@@ -26,7 +26,7 @@
           const src = image[2].startsWith("http") || image[2].startsWith("/")
             ? image[2]
             : `/${image[2]}`;
-          return `<figure class="cms-figure"><img src="${escapeHtml(src)}" alt="${escapeHtml(image[1])}" loading="lazy"></figure>`;
+          return `<figure class="cms-figure"><img src="${escapeHtml(src)}" alt="${escapeHtml(image[1])}" loading="lazy" decoding="async"></figure>`;
         }
         if (text.startsWith("## ")) return `<h2>${inlineMarkdown(text.slice(3))}</h2>`;
         if (text.startsWith("# ")) return `<h2>${inlineMarkdown(text.slice(2))}</h2>`;
@@ -36,7 +36,7 @@
   }
 
   function coverFigure(src, alt) {
-    return `<figure class="cms-figure cms-cover"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" onerror="this.onerror=null;this.src='/assets/uploads/mercy-ai-justice-cover.jpg';"></figure>`;
+    return `<figure class="cms-figure cms-cover"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/assets/uploads/mercy-ai-justice-cover.jpg';"></figure>`;
   }
 
   function normalizePosts(data) {
@@ -67,7 +67,7 @@
     if (!container) return;
     container.innerHTML = posts.slice(0, 6).map((post) => `
       <a href="${escapeHtml(post.url || `post.html?slug=${encodeURIComponent(post.slug)}`)}">
-        ${postCover(post) ? `<img class="post-card-image" src="${escapeHtml(postCover(post))}" alt="" loading="lazy">` : ""}
+        ${postCover(post) ? `<img class="post-card-image" src="${escapeHtml(postCover(post))}" alt="" loading="lazy" decoding="async">` : ""}
         <span>${escapeHtml(post.type)} · ${escapeHtml(post.category)} · ${readingTime(post.body)}</span>
         <h3>${escapeHtml(post.title)}</h3>
         <p>${escapeHtml(post.excerpt)}</p>
