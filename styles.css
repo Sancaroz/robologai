@@ -2335,6 +2335,207 @@ body.light-theme .newsletter input::placeholder {
   box-shadow: inset 0 0 60px rgba(47, 140, 255, 0.08);
 }
 
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(120, 231, 255, 0.13) 50%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(120, 231, 255, 0.1) 50%, transparent 51%);
+  opacity: 0.32;
+  mask-image: radial-gradient(circle at 58% 45%, black, transparent 66%);
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, transparent 0 48%, rgba(120, 231, 255, 0.08) 49%, transparent 50% 100%);
+  background-size: 100% 18px;
+  opacity: 0.26;
+  animation: heroScanlines 7s linear infinite;
+  pointer-events: none;
+}
+
+.hero-radar {
+  position: absolute;
+  left: 36px;
+  bottom: 34px;
+  width: 210px;
+  height: 210px;
+  border: 1px solid rgba(120, 231, 255, 0.22);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(120, 231, 255, 0.18) 0 2px, transparent 3px),
+    repeating-radial-gradient(circle, transparent 0 38px, rgba(120, 231, 255, 0.13) 39px 40px),
+    conic-gradient(from 0deg, rgba(120, 231, 255, 0.42), transparent 27%, transparent);
+  box-shadow: inset 0 0 38px rgba(47, 140, 255, 0.12), 0 0 34px rgba(47, 140, 255, 0.1);
+  opacity: 0.78;
+  animation: heroRadarSpin 9s linear infinite;
+}
+
+.hero-radar::before,
+.hero-radar::after {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(120, 231, 255, 0.6), transparent);
+  transform-origin: left center;
+}
+
+.hero-radar::after {
+  transform: rotate(90deg);
+  opacity: 0.58;
+}
+
+.hero-radar span {
+  position: absolute;
+  left: 42%;
+  top: 28%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #78e7ff;
+  box-shadow: 0 0 18px #78e7ff;
+  animation: heroPulse 1.8s ease-in-out infinite;
+}
+
+.hero-particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.hero-particle-field i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(120, 231, 255, 0.82);
+  box-shadow: 0 0 18px rgba(120, 231, 255, 0.8);
+  animation: heroParticleDrift 8s ease-in-out infinite;
+}
+
+.hero-particle-field i:nth-child(1) { left: 18%; top: 24%; animation-delay: -1s; }
+.hero-particle-field i:nth-child(2) { left: 72%; top: 18%; animation-delay: -3s; }
+.hero-particle-field i:nth-child(3) { left: 84%; top: 46%; animation-delay: -5s; }
+.hero-particle-field i:nth-child(4) { left: 34%; top: 70%; animation-delay: -2s; }
+.hero-particle-field i:nth-child(5) { left: 62%; top: 76%; animation-delay: -4s; }
+.hero-particle-field i:nth-child(6) { left: 48%; top: 34%; animation-delay: -6s; }
+
+.hero-wireframe {
+  position: absolute;
+  right: 98px;
+  top: 72px;
+  width: 260px;
+  height: 420px;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 20px rgba(120, 231, 255, 0.26));
+  animation: heroWirePulse 4s ease-in-out infinite;
+}
+
+.hero-wireframe span {
+  position: absolute;
+  border: 1px solid rgba(120, 231, 255, 0.36);
+  background: rgba(120, 231, 255, 0.035);
+}
+
+.wire-head {
+  left: 98px;
+  top: 0;
+  width: 64px;
+  height: 78px;
+  border-radius: 42% 42% 48% 48%;
+}
+
+.wire-spine {
+  left: 128px;
+  top: 82px;
+  width: 1px;
+  height: 200px;
+  background: rgba(120, 231, 255, 0.45);
+}
+
+.wire-shoulders {
+  left: 50px;
+  top: 102px;
+  width: 160px;
+  height: 1px;
+}
+
+.wire-arm {
+  top: 110px;
+  width: 1px;
+  height: 138px;
+  transform-origin: top center;
+}
+
+.wire-arm-left {
+  left: 58px;
+  transform: rotate(18deg);
+}
+
+.wire-arm-right {
+  right: 58px;
+  transform: rotate(-18deg);
+}
+
+.wire-hip {
+  left: 76px;
+  top: 272px;
+  width: 108px;
+  height: 1px;
+}
+
+.hero-live-signals {
+  position: absolute;
+  left: 42px;
+  top: 48%;
+  z-index: 3;
+  display: grid;
+  gap: 8px;
+  min-width: 230px;
+}
+
+.hero-live-signals span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 999px;
+  color: #cfeeff;
+  background: rgba(2, 8, 18, 0.58);
+  backdrop-filter: blur(14px);
+  font-size: 12px;
+  font-weight: 850;
+  animation: heroSignalFloat 5s ease-in-out infinite;
+}
+
+.hero-live-signals span:nth-child(2) {
+  margin-left: 28px;
+  animation-delay: -1.4s;
+}
+
+.hero-live-signals span:nth-child(3) {
+  margin-left: 10px;
+  animation-delay: -2.8s;
+}
+
+.hero-live-signals b {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.78);
+}
+
 .data-wave {
   position: absolute;
   right: -120px;
@@ -2420,6 +2621,62 @@ body.light-theme .data-wave {
   }
   50% {
     transform: translateY(-7px);
+  }
+}
+
+@keyframes heroRadarSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroPulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.62;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+@keyframes heroParticleDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.42;
+  }
+  50% {
+    transform: translate3d(18px, -22px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes heroWirePulse {
+  0%,
+  100% {
+    opacity: 0.34;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}
+
+@keyframes heroSignalFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heroScanlines {
+  to {
+    background-position: 0 72px;
   }
 }
 
@@ -5687,6 +5944,25 @@ body.light-theme .facts span {
     transform-origin: top right;
   }
 
+  .hero-wireframe {
+    right: 12%;
+    top: 28px;
+    transform: scale(0.72);
+    transform-origin: top right;
+  }
+
+  .hero-radar {
+    width: 170px;
+    height: 170px;
+    left: 28px;
+    bottom: 24px;
+  }
+
+  .hero-live-signals {
+    left: 32px;
+    top: 44%;
+  }
+
   .data-wave {
     bottom: -24px;
   }
@@ -5866,6 +6142,31 @@ body.light-theme .facts span {
   .robot-head {
     right: -15px;
     transform: scale(0.58);
+  }
+
+  .hero-wireframe {
+    right: -10px;
+    top: 20px;
+    transform: scale(0.52);
+  }
+
+  .hero-radar {
+    width: 132px;
+    height: 132px;
+    left: 12px;
+    bottom: 16px;
+  }
+
+  .hero-live-signals {
+    left: 12px;
+    top: 44%;
+    min-width: 190px;
+  }
+
+  .hero-live-signals span {
+    min-height: 28px;
+    padding: 0 10px;
+    font-size: 10px;
   }
 
   .hero-orbit-card {
