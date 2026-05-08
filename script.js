@@ -739,11 +739,16 @@ function initBeehiivForms() {
 }
 
 function initNewsletterScroll() {
+  const newsletter = document.querySelector("#bulten");
+  if (newsletter && window.location.hash === "#bulten") {
+    requestAnimationFrame(() => {
+      newsletter.scrollIntoView({ behavior: "auto", block: "start" });
+    });
+  }
   if (!newsletterCtas.length) return;
   newsletterCtas.forEach((link) => {
     link.addEventListener("click", (event) => {
       const isSamePage = link.getAttribute("href") === "#bulten" || window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
-      const newsletter = document.querySelector("#bulten");
       if (!isSamePage || !newsletter) return;
       event.preventDefault();
       newsletter.scrollIntoView({ behavior: "auto", block: "start" });
