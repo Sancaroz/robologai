@@ -301,13 +301,41 @@ const buyerGuideLibrary = [
 ];
 
 function robotScore(robot) {
+  return robotScoreBreakdown(robot).overall;
+}
+
+function scoreField(value, fallback = 1) {
+  return Math.max(0, Math.min(5, Number(value) || fallback));
+}
+
+function deploymentScore(robot) {
+  const status = pageNormalize(`${robot.status} ${robot.availability}`);
+  if (status.includes("available") || status.includes("commercial")) return 5;
+  if (status.includes("enterprise")) return 4;
+  if (status.includes("pilot")) return 3;
+  if (status.includes("development") || status.includes("prototype")) return 2;
+  return 2;
+}
+
+function robotScoreBreakdown(robot) {
   const maturity = Math.max(0, Math.min(5, Number(robot.maturity) || 1));
   const price = Math.max(0, Math.min(5, Number(robot.priceVisibility) || 1));
-  const status = pageNormalize(`${robot.status} ${robot.availability}`);
+  const deployment = deploymentScore(robot);
   const source = robot.source ? 5 : 2;
   const image = robot.image ? 5 : 2;
-  const deployment = status.includes("available") || status.includes("commercial") || status.includes("enterprise") ? 4 : status.includes("pilot") ? 3 : 2;
-  return Math.round(((maturity * 0.3) + (deployment * 0.25) + (price * 0.15) + (source * 0.15) + (image * 0.15)) * 20);
+  const video = robotVideo(robot) ? 5 : image;
+  const text = robotText(robot);
+  const aiSignal = text.includes("ai") || text.includes("autonomy") || text.includes("general-purpose") || text.includes("embodied") ? 5 : text.includes("research") || text.includes("developer") ? 4 : 3;
+  const mobilitySignal = text.includes("humanoid") || text.includes("quadruped") || text.includes("mobility") || text.includes("walking") ? 5 : text.includes("warehouse") || text.includes("logistics") ? 4 : 3;
+  return {
+    overall: Math.round(((maturity * 0.3) + (deployment * 0.25) + (price * 0.15) + (source * 0.15) + (image * 0.15)) * 20),
+    commercial: Math.round(((maturity * 0.45) + (deployment * 0.35) + (price * 0.2)) * 20),
+    mobility: Math.round(((maturity * 0.35) + (mobilitySignal * 0.35) + (video * 0.3)) * 20),
+    intelligence: Math.round(((maturity * 0.35) + (aiSignal * 0.4) + (source * 0.25)) * 20),
+    price: Math.round(price * 20),
+    media: Math.round(((video * 0.7) + (image * 0.3)) * 20),
+    source: Math.round(source * 20)
+  };
 }
 
 function scoreLabel(score) {
@@ -356,14 +384,34 @@ function useCaseSlug(value = "") {
 }
 
 function robotCapabilityRows(robot) {
-  const maturity = Number(robot.maturity) || 1;
-  const price = Number(robot.priceVisibility) || 1;
+  const score = robotScoreBreakdown(robot);
   return [
-    ["Commercial readiness", maturity],
-    ["Price transparency", price],
-    ["Media proof", robot.image ? 5 : 2],
-    ["Official source strength", robot.source ? 5 : 2]
+    ["Commercial readiness", score.commercial / 20],
+    ["Mobility proof", score.mobility / 20],
+    ["AI capability signal", score.intelligence / 20],
+    ["Price transparency", score.price / 20],
+    ["Media proof", score.media / 20],
+    ["Official source strength", score.source / 20]
   ];
+}
+
+function robotRankings() {
+  return [...pageState.robots]
+    .sort((a, b) => robotScore(b) - robotScore(a) || pageNormalize(a.name).localeCompare(pageNormalize(b.name)))
+    .map((robot, index) => ({ robot, rank: index + 1, score: robotScore(robot), breakdown: robotScoreBreakdown(robot) }));
+}
+
+function renderMiniScoreBars(robot, limit = 3) {
+  const score = robotScoreBreakdown(robot);
+  return [
+    ["Commercial", score.commercial],
+    ["Mobility", score.mobility],
+    ["AI signal", score.intelligence],
+    ["Media", score.media],
+    ["Price", score.price]
+  ].slice(0, limit).map(([label, value]) => `
+    <li><span>${pageEscape(label)}</span><b style="--score:${Math.max(0, Math.min(100, value)) / 100}"><i></i></b><em>${value}</em></li>
+  `).join("");
 }
 
 function robotQuality(robot) {
@@ -449,6 +497,7 @@ function renderRobotCards() {
   const grid = document.querySelector("[data-robots-grid]");
   if (!grid) return;
   renderAdvancedRobotFilters();
+  const rankings = new Map(robotRankings().map((item) => [robotSlug(item.robot), item.rank]));
   const terms = pageNormalize(pageState.query).split(/\s+/).filter(Boolean);
   const filter = pageNormalize(pageState.robotFilter);
   const robots = pageState.robots.filter((robot) => {
@@ -470,10 +519,12 @@ function renderRobotCards() {
   grid.innerHTML = robots.map((robot) => {
     const video = robotVideo(robot);
     const quality = robotQuality(robot);
+    const rank = rankings.get(robotSlug(robot));
     return `
     <article class="catalog-card robot-catalog-card">
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
         ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
+        ${rank ? `<div class="robot-rank-chip">#${rank}</div>` : ""}
         <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
       </figure>
       <div class="catalog-card-body">
@@ -497,6 +548,9 @@ function renderRobotCards() {
           <span>Maturity ${pageMeter(robot.maturity)}</span>
           <span>Price clarity ${pageMeter(robot.priceVisibility)}</span>
         </div>
+        <ul class="rscore-mini-bars" aria-label="${pageEscape(robot.name)} R-Score breakdown">
+          ${renderMiniScoreBars(robot)}
+        </ul>
         <div class="quality-chip-row">
           <span>${pageEscape(quality.sourceConfidence)}</span>
           <span>${pageEscape(quality.priceConfidence)}</span>
@@ -548,6 +602,54 @@ function renderRobotCards() {
     });
   });
   setCount("visible-robots", robots.length);
+}
+
+function renderRScoreFeature() {
+  const target = document.querySelector("[data-rscore-feature]");
+  if (!target) return;
+  const leader = robotRankings()[0];
+  if (!leader) return;
+  const { robot, score, breakdown } = leader;
+  target.innerHTML = `
+    <div>
+      <strong>${score}</strong>
+      <span>${pageEscape(robot.name)}</span>
+    </div>
+    <ol>
+      <li><span style="--score:${breakdown.commercial / 100}"></span><b>Commercial readiness</b><em>${breakdown.commercial}</em></li>
+      <li><span style="--score:${breakdown.mobility / 100}"></span><b>Mobility proof</b><em>${breakdown.mobility}</em></li>
+      <li><span style="--score:${breakdown.intelligence / 100}"></span><b>AI signal</b><em>${breakdown.intelligence}</em></li>
+      <li><span style="--score:${breakdown.media / 100}"></span><b>Media proof</b><em>${breakdown.media}</em></li>
+    </ol>
+  `;
+}
+
+function renderRScoreLeaderboards() {
+  const rankings = robotRankings();
+  document.querySelectorAll("[data-rscore-leaderboard]").forEach((target) => {
+    const limit = Number(target.dataset.rscoreLimit || 5);
+    target.innerHTML = rankings.slice(0, limit).map(({ robot, rank, score, breakdown }) => `
+      <article>
+        <span>#${rank} ${pageEscape(scoreLabel(score))}</span>
+        <strong>${pageEscape(robot.name)}</strong>
+        <small>${score} R-Score · ${breakdown.commercial} commercial · ${breakdown.mobility} mobility · ${breakdown.intelligence} AI</small>
+        <a href="${pageEscape(robotProfileHref(robot))}">Open profile →</a>
+      </article>
+    `).join("");
+  });
+  document.querySelectorAll("[data-rscore-snapshot]").forEach((target) => {
+    const leader = rankings[0];
+    const commercial = [...rankings].sort((a, b) => b.breakdown.commercial - a.breakdown.commercial)[0];
+    const mobility = [...rankings].sort((a, b) => b.breakdown.mobility - a.breakdown.mobility)[0];
+    const priced = [...rankings].sort((a, b) => b.breakdown.price - a.breakdown.price)[0];
+    target.innerHTML = [leader, commercial, mobility, priced].filter(Boolean).map((item, index) => `
+      <article>
+        <span>${["Overall leader", "Commercial readiness", "Mobility proof", "Price transparency"][index]}</span>
+        <strong>${pageEscape(item.robot.name)}</strong>
+        <small>${item.score} R-Score · ${pageEscape(item.robot.company)}</small>
+      </article>
+    `).join("");
+  });
 }
 
 function renderAdvancedRobotFilters() {
@@ -767,6 +869,7 @@ function renderRobotProfile() {
     .slice(0, 4);
   const useCases = robotUseCases(robot);
   const score = robotScore(robot);
+  const rank = robotRankings().find((item) => robotSlug(item.robot) === robotSlug(robot))?.rank;
   const video = robotVideo(robot);
   const quality = robotQuality(robot);
   const alternatives = robotAlternatives(robot);
@@ -776,7 +879,7 @@ function renderRobotProfile() {
   root.innerHTML = `
     <section class="profile-hero">
       <div>
-        <p>${pageEscape(robot.category)} · ${pageEscape(robot.company)}</p>
+          <p>${pageEscape(robot.category)} · ${pageEscape(robot.company)}${rank ? ` · #${rank} R-Score rank` : ""}</p>
         <h1>${pageEscape(robot.name)}</h1>
         <span>${pageEscape(robot.useCase)}</span>
         <div class="catalog-metrics">
@@ -831,6 +934,9 @@ function renderRobotProfile() {
         <h2>Robologai signal</h2>
         <strong class="score-big">${score}<small>/100</small></strong>
         <span class="score-label">${pageEscape(scoreLabel(score))}</span>
+        <ul class="rscore-mini-bars profile-rscore-bars" aria-label="${pageEscape(robot.name)} R-Score breakdown">
+          ${renderMiniScoreBars(robot, 6)}
+        </ul>
         <div class="capability-list">
           ${robotCapabilityRows(robot).map(([label, value]) => `<div><span>${pageEscape(label)}</span>${pageMeter(value)}</div>`).join("")}
         </div>
@@ -1255,6 +1361,8 @@ async function initCatalogPages() {
   renderPricesPage();
   renderHomeIntelligence();
   renderFeaturedRobot();
+  renderRScoreFeature();
+  renderRScoreLeaderboards();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

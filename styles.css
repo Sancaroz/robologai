@@ -1295,6 +1295,51 @@ body.light-theme .video-card h3 {
   font-weight: 850;
 }
 
+.rscore-mini-bars {
+  display: grid;
+  gap: 8px;
+  margin: 2px 0 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.rscore-mini-bars li {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) 34px;
+  gap: 9px;
+  align-items: center;
+  color: #93a4bb;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.rscore-mini-bars b {
+  display: block;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.rscore-mini-bars i {
+  display: block;
+  width: calc(var(--score) * 100%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2f8cff, #7df9ff 58%, #2dd4bf);
+  box-shadow: 0 0 16px rgba(125, 249, 255, 0.24);
+}
+
+.rscore-mini-bars em {
+  color: #dff8ff;
+  font-style: normal;
+  text-align: right;
+}
+
+.profile-rscore-bars {
+  margin: 0 0 18px;
+}
+
 .robot-card-video {
   display: grid;
   gap: 10px;
@@ -3292,6 +3337,66 @@ body.light-theme .data-wave {
   line-height: 1.4;
 }
 
+.rscore-leaderboard a {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 12px;
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.rscore-lab-section {
+  position: relative;
+}
+
+.rscore-lab-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.92fr) minmax(320px, 1.08fr);
+  gap: 16px;
+}
+
+.rscore-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rscore-snapshot-grid article {
+  min-height: 145px;
+  padding: 18px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 8px;
+  background: radial-gradient(circle at 20% 0%, rgba(120, 231, 255, 0.14), transparent 45%), rgba(7, 17, 31, 0.76);
+}
+
+.rscore-snapshot-grid span {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--blue-2);
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.rscore-snapshot-grid strong {
+  display: block;
+  color: #eaf6ff;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1;
+}
+
+.rscore-snapshot-grid small {
+  display: block;
+  margin-top: 12px;
+  color: #9fb0c8;
+  line-height: 1.45;
+}
+
+.catalog-leaderboard {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .home-compare-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3372,7 +3477,8 @@ body.light-theme .home-compare-section,
 body.light-theme .trending-robots-grid a,
 body.light-theme .home-compare-grid article,
 body.light-theme .rscore-command-meter,
-body.light-theme .rscore-leaderboard article {
+body.light-theme .rscore-leaderboard article,
+body.light-theme .rscore-snapshot-grid article {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.94));
 }
 
@@ -3383,6 +3489,7 @@ body.light-theme .trending-robots-grid strong,
 body.light-theme .trending-robots-grid dd,
 body.light-theme .rscore-command-main h2,
 body.light-theme .rscore-leaderboard strong,
+body.light-theme .rscore-snapshot-grid strong,
 body.light-theme .home-compare-grid h3,
 body.light-theme .home-compare-grid dd {
   color: #102033;
@@ -4499,6 +4606,24 @@ body.light-theme .profile-main > div > span {
   font-size: 9px;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.robot-rank-chip {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid rgba(125, 249, 255, 0.36);
+  border-radius: 999px;
+  color: #dff8ff;
+  background: rgba(3, 12, 24, 0.72);
+  box-shadow: 0 0 22px rgba(47, 140, 255, 0.16);
+  backdrop-filter: blur(12px);
+  font-size: 12px;
+  font-weight: 950;
 }
 
 .catalog-visual-empty {
@@ -6856,6 +6981,11 @@ body.light-theme .facts span {
     grid-template-columns: 1fr;
   }
 
+  .rscore-lab-grid,
+  .catalog-leaderboard {
+    grid-template-columns: 1fr;
+  }
+
   .ticker-viewport {
     min-width: 0;
   }
@@ -7050,6 +7180,10 @@ body.light-theme .facts span {
   .trending-robots-grid,
   .home-compare-grid,
   .rscore-command-section {
+    grid-template-columns: 1fr;
+  }
+
+  .rscore-snapshot-grid {
     grid-template-columns: 1fr;
   }
 

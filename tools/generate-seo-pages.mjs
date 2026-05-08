@@ -72,13 +72,42 @@ function initials(value = "") {
 }
 
 function robotScore(robot) {
+  return robotScoreBreakdown(robot).overall;
+}
+
+function deploymentScore(robot) {
+  const status = normalize(`${robot.status} ${robot.availability}`);
+  if (status.includes("available") || status.includes("commercial")) return 5;
+  if (status.includes("enterprise")) return 4;
+  if (status.includes("pilot")) return 3;
+  if (status.includes("development") || status.includes("prototype")) return 2;
+  return 2;
+}
+
+function robotVideoSignal(robot) {
+  const robotSlug = slug(robot.name);
+  return ["optimus", "figure-02", "apollo", "digit", "atlas", "spot", "g1", "h1", "neo", "phoenix", "ameca", "walker-s"].includes(robotSlug);
+}
+
+function robotScoreBreakdown(robot) {
   const maturity = Math.max(0, Math.min(5, Number(robot.maturity) || 1));
   const price = Math.max(0, Math.min(5, Number(robot.priceVisibility) || 1));
-  const status = normalize(`${robot.status} ${robot.availability}`);
+  const deployment = deploymentScore(robot);
   const source = robot.source ? 5 : 2;
   const image = robot.image ? 5 : 2;
-  const deployment = status.includes("available") || status.includes("commercial") || status.includes("enterprise") ? 4 : status.includes("pilot") ? 3 : 2;
-  return Math.round(((maturity * 0.3) + (deployment * 0.25) + (price * 0.15) + (source * 0.15) + (image * 0.15)) * 20);
+  const video = robotVideoSignal(robot) ? 5 : image;
+  const text = normalize([robot.name, robot.company, robot.category, robot.country, robot.status, robot.availability, robot.price, robot.useCase, ...(robot.keywords || [])].filter(Boolean).join(" "));
+  const aiSignal = text.includes("ai") || text.includes("autonomy") || text.includes("general-purpose") || text.includes("embodied") ? 5 : text.includes("research") || text.includes("developer") ? 4 : 3;
+  const mobilitySignal = text.includes("humanoid") || text.includes("quadruped") || text.includes("mobility") || text.includes("walking") ? 5 : text.includes("warehouse") || text.includes("logistics") ? 4 : 3;
+  return {
+    overall: Math.round(((maturity * 0.3) + (deployment * 0.25) + (price * 0.15) + (source * 0.15) + (image * 0.15)) * 20),
+    commercial: Math.round(((maturity * 0.45) + (deployment * 0.35) + (price * 0.2)) * 20),
+    mobility: Math.round(((maturity * 0.35) + (mobilitySignal * 0.35) + (video * 0.3)) * 20),
+    intelligence: Math.round(((maturity * 0.35) + (aiSignal * 0.4) + (source * 0.25)) * 20),
+    price: Math.round(price * 20),
+    media: Math.round(((video * 0.7) + (image * 0.3)) * 20),
+    source: Math.round(source * 20)
+  };
 }
 
 function scoreLabel(score) {
@@ -86,6 +115,24 @@ function scoreLabel(score) {
   if (score >= 68) return "Strong signal";
   if (score >= 52) return "Watchlist";
   return "Early signal";
+}
+
+function robotRank(robot) {
+  return [...robots]
+    .sort((a, b) => robotScore(b) - robotScore(a) || normalize(a.name).localeCompare(normalize(b.name)))
+    .findIndex((item) => item.name === robot.name && item.company === robot.company) + 1;
+}
+
+function scoreBars(robot) {
+  const score = robotScoreBreakdown(robot);
+  return [
+    ["Commercial", score.commercial],
+    ["Mobility", score.mobility],
+    ["AI signal", score.intelligence],
+    ["Media", score.media],
+    ["Price", score.price],
+    ["Source", score.source]
+  ].map(([label, value]) => `<li><span>${escapeHtml(label)}</span><b style="--score:${Math.max(0, Math.min(100, value)) / 100}"><i></i></b><em>${value}</em></li>`).join("");
 }
 
 function broadCountryName(country = "") {
@@ -196,6 +243,8 @@ function robotPage(robot) {
   const pageSlug = robotPageSlug(robot);
   const dynamicSlug = slug(robot.name);
   const score = robotScore(robot);
+  const rank = robotRank(robot);
+  const breakdown = robotScoreBreakdown(robot);
   const related = relatedRobots(robot);
   const title = `${robot.name} Robot Profile: Price, Use Case, Status`;
   const description = `${robot.name} by ${robot.company}: ${robot.category} robot profile with availability, price signal, use case, status, source link, and Robologai readiness score.`;
@@ -213,7 +262,7 @@ function robotPage(robot) {
   };
   const body = `      <section class="profile-hero robot-profile-hero">
         <div>
-          <p>${escapeHtml(robot.category)} · ${escapeHtml(robot.country)} · ${escapeHtml(scoreLabel(score))}</p>
+          <p>${escapeHtml(robot.category)} · ${escapeHtml(robot.country)} · ${escapeHtml(scoreLabel(score))} · #${rank} R-Score rank</p>
           <h1>${escapeHtml(robot.name)} Robot Profile</h1>
           <span>${escapeHtml(robot.useCase)}</span>
           <div class="catalog-metrics">
@@ -242,9 +291,17 @@ function robotPage(robot) {
         <article class="profile-facts">
           <h2>Robologai view</h2>
           <p>${escapeHtml(robot.name)} is tracked as a ${escapeHtml(robot.category)} robot for ${escapeHtml(robot.useCase)}. Robologai scores it by maturity, deployment signal, price clarity, media proof, and official source strength.</p>
+          <strong class="score-big">${score}<small>/100</small></strong>
+          <span class="score-label">${escapeHtml(scoreLabel(score))}</span>
+          <ul class="rscore-mini-bars profile-rscore-bars" aria-label="${escapeAttr(robot.name)} R-Score breakdown">
+            ${scoreBars(robot)}
+          </ul>
           <div class="quality-chip-row">
             <span>Maturity ${escapeHtml(String(robot.maturity || "1"))}/5</span>
             <span>Price clarity ${escapeHtml(String(robot.priceVisibility || "1"))}/5</span>
+            <span>Commercial ${breakdown.commercial}</span>
+            <span>Mobility ${breakdown.mobility}</span>
+            <span>AI signal ${breakdown.intelligence}</span>
             <span>${escapeHtml(scoreLabel(score))}</span>
           </div>
         </article>
