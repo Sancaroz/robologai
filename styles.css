@@ -1747,15 +1747,22 @@ body.light-theme .cinema-card span {
 
 .site-header {
   position: sticky;
-  top: 0;
+  top: 12px;
   z-index: 40;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 24px 0 16px;
-  background: rgba(2, 8, 18, 0.78);
-  backdrop-filter: blur(18px);
+  width: min(100% - 32px, 1280px);
+  margin: 12px auto 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(120, 231, 255, 0.07), transparent 38%),
+    rgba(2, 8, 18, 0.74);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(22px) saturate(1.28);
 }
 
 body.light-theme .site-header {
@@ -1820,7 +1827,13 @@ body.light-theme .site-header {
 .nav-item > a {
   position: relative;
   color: rgba(255, 255, 255, 0.88);
-  padding: 10px 12px 16px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 body.light-theme .main-nav a,
@@ -1833,16 +1846,22 @@ body.light-theme .nav-item > a {
 .nav-item:hover > a,
 .nav-item:focus-within > a {
   color: var(--blue-2);
+  border-color: rgba(120, 231, 255, 0.2);
+  background: rgba(120, 231, 255, 0.08);
+  box-shadow: 0 0 26px rgba(56, 189, 248, 0.12);
+  transform: translateY(-1px);
 }
 
 .main-nav a.active::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 16px;
+  right: 16px;
+  bottom: 3px;
   height: 2px;
   background: var(--blue);
+  border-radius: 999px;
+  box-shadow: 0 0 16px rgba(120, 231, 255, 0.85);
 }
 
 .nav-item {
@@ -2671,12 +2690,110 @@ body.light-theme .data-wave {
   text-transform: uppercase;
 }
 
+.live-stats-strip small {
+  display: block;
+  margin-top: 8px;
+  color: #71849d;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.live-intelligence-board {
+  display: grid;
+  grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+  gap: 16px;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(56, 189, 248, 0.18), transparent 32%),
+    rgba(4, 12, 25, 0.82);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.live-intelligence-head p {
+  margin: 0 0 10px;
+  color: var(--blue-2);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.live-intelligence-head h2 {
+  margin: 0;
+  color: #eef6ff;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.02;
+}
+
+.live-intelligence-feed {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.live-intelligence-feed article {
+  position: relative;
+  overflow: hidden;
+  min-height: 132px;
+  padding: 16px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.045);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.live-intelligence-feed article::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #46f3ff;
+  box-shadow: 0 0 18px rgba(70, 243, 255, 0.9);
+  animation: heroPulse 1.8s ease-in-out infinite;
+}
+
+.live-intelligence-feed article:hover {
+  transform: translateY(-3px);
+  border-color: rgba(120, 231, 255, 0.38);
+  background: rgba(120, 231, 255, 0.08);
+}
+
+.live-intelligence-feed span {
+  display: block;
+  color: var(--blue-2);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.live-intelligence-feed strong {
+  display: block;
+  margin-top: 12px;
+  color: #eef6ff;
+  font-size: 18px;
+}
+
+.live-intelligence-feed small {
+  display: block;
+  margin-top: 9px;
+  color: #9fb2c9;
+  line-height: 1.45;
+}
+
 .robotics-signal-ticker {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: 18px;
-  margin-top: 14px;
+  grid-column: 1 / -1;
+  margin-top: 0;
   padding: 12px;
   overflow: hidden;
   border: 1px solid rgba(120, 231, 255, 0.18);
@@ -2759,7 +2876,7 @@ body.light-theme .data-wave {
 .trending-robots-grid a {
   position: relative;
   overflow: hidden;
-  min-height: 360px;
+  min-height: 500px;
   border: 1px solid rgba(120, 231, 255, 0.18);
   border-radius: 10px;
   background: rgba(6, 15, 30, 0.82);
@@ -2811,6 +2928,37 @@ body.light-theme .data-wave {
   line-height: 1.45;
 }
 
+.trending-robots-grid dl {
+  display: grid;
+  gap: 7px;
+  margin: 16px 18px 0;
+}
+
+.trending-robots-grid dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.trending-robots-grid dt,
+.trending-robots-grid dd {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.trending-robots-grid dt {
+  color: #71849d;
+}
+
+.trending-robots-grid dd {
+  color: #d8e8fa;
+  font-weight: 850;
+  text-align: right;
+}
+
 .trending-robots-grid em {
   width: fit-content;
   margin-top: 16px;
@@ -2826,7 +2974,7 @@ body.light-theme .data-wave {
 
 .rscore-command-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(330px, 0.7fr) minmax(280px, 0.75fr);
   gap: clamp(18px, 4vw, 42px);
   align-items: center;
 }
@@ -2950,6 +3098,47 @@ body.light-theme .data-wave {
   font-weight: 950;
 }
 
+.rscore-leaderboard {
+  display: grid;
+  gap: 10px;
+}
+
+.rscore-leaderboard article {
+  padding: 16px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.045);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.rscore-leaderboard article:hover {
+  transform: translateX(4px);
+  border-color: rgba(120, 231, 255, 0.42);
+  background: rgba(120, 231, 255, 0.08);
+}
+
+.rscore-leaderboard span {
+  color: var(--blue-2);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rscore-leaderboard strong {
+  display: block;
+  margin-top: 8px;
+  color: #eef6ff;
+  font-size: 20px;
+}
+
+.rscore-leaderboard small {
+  display: block;
+  margin-top: 8px;
+  color: #9fb2c9;
+  line-height: 1.4;
+}
+
 .home-compare-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3021,19 +3210,26 @@ body.light-theme .data-wave {
 }
 
 body.light-theme .live-stats-strip article,
+body.light-theme .live-intelligence-board,
+body.light-theme .live-intelligence-feed article,
 body.light-theme .robotics-signal-ticker,
 body.light-theme .trending-robots-section,
 body.light-theme .rscore-command-section,
 body.light-theme .home-compare-section,
 body.light-theme .trending-robots-grid a,
 body.light-theme .home-compare-grid article,
-body.light-theme .rscore-command-meter {
+body.light-theme .rscore-command-meter,
+body.light-theme .rscore-leaderboard article {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.94));
 }
 
 body.light-theme .live-stats-strip strong,
+body.light-theme .live-intelligence-head h2,
+body.light-theme .live-intelligence-feed strong,
 body.light-theme .trending-robots-grid strong,
+body.light-theme .trending-robots-grid dd,
 body.light-theme .rscore-command-main h2,
+body.light-theme .rscore-leaderboard strong,
 body.light-theme .home-compare-grid h3,
 body.light-theme .home-compare-grid dd {
   color: #102033;
@@ -6453,6 +6649,7 @@ body.light-theme .facts span {
   .profile-intel-strip,
   .home-intelligence-grid,
   .live-stats-strip,
+  .live-intelligence-feed,
   .trending-robots-grid,
   .signal-update-grid,
   .buyer-guide-grid,
@@ -6482,6 +6679,7 @@ body.light-theme .facts span {
   }
 
   .robotics-signal-ticker,
+  .live-intelligence-board,
   .rscore-command-section {
     grid-template-columns: 1fr;
   }
@@ -6646,6 +6844,8 @@ body.light-theme .facts span {
   }
 
   .live-stats-strip,
+  .live-intelligence-board,
+  .live-intelligence-feed,
   .trending-robots-grid,
   .home-compare-grid,
   .rscore-command-section {
