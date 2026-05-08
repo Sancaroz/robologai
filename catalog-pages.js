@@ -652,6 +652,57 @@ function renderRScoreLeaderboards() {
   });
 }
 
+function robotTrendBadge(robot, rank, breakdown) {
+  if (rank <= 3 && breakdown.media >= 90) return { label: "Hot", tone: "hot" };
+  if (breakdown.price >= 80 && breakdown.commercial >= 85) return { label: "Rising", tone: "rising" };
+  if (breakdown.intelligence >= 90) return { label: "AI signal", tone: "ai" };
+  if (breakdown.mobility >= 90) return { label: "Mobility", tone: "mobility" };
+  if (rank <= 8) return { label: "Watch", tone: "watch" };
+  return { label: "Tracked", tone: "tracked" };
+}
+
+function leaderboardCompareHref(robot) {
+  const alternatives = robotAlternatives(robot, 2);
+  const slugs = [robot, ...alternatives].map((item) => robotSlug(item)).join(",");
+  return `compare.html?robots=${pageEscape(slugs)}`;
+}
+
+function renderRobotLeaderboardPage() {
+  const target = document.querySelector("[data-robot-leaderboard]");
+  if (!target) return;
+  const rankings = robotRankings();
+  target.innerHTML = `
+    <div class="leaderboard-row leaderboard-head" role="row">
+      <span>Rank</span>
+      <span>Robot</span>
+      <span>Company</span>
+      <span>Category</span>
+      <span>Country</span>
+      <span>R-Score</span>
+      <span>Trend</span>
+      <span>Action</span>
+    </div>
+    ${rankings.map(({ robot, rank, score, breakdown }) => {
+      const trend = robotTrendBadge(robot, rank, breakdown);
+      return `
+        <article class="leaderboard-row" role="row">
+          <span class="leaderboard-rank">#${rank}</span>
+          <a class="leaderboard-robot" href="${pageEscape(robotProfileHref(robot))}">
+            <strong>${pageEscape(robot.name)}</strong>
+            <small>${pageEscape(scoreLabel(score))}</small>
+          </a>
+          <span class="leaderboard-meta" data-label="Company">${pageEscape(robot.company)}</span>
+          <span class="leaderboard-meta" data-label="Category">${pageEscape(robot.category || "Robot")}</span>
+          <span class="leaderboard-meta" data-label="Country">${pageEscape(broadCountryName(robot.country || "Global"))}</span>
+          <span class="leaderboard-score" data-label="R-Score"><strong>${score}</strong><small>/100</small></span>
+          <span class="leaderboard-trend" data-label="Trend"><em class="trend-badge trend-${pageEscape(trend.tone)}">${pageEscape(trend.label)}</em></span>
+          <a class="leaderboard-compare" href="${leaderboardCompareHref(robot)}">Compare</a>
+        </article>
+      `;
+    }).join("")}
+  `;
+}
+
 function renderAdvancedRobotFilters() {
   const useCaseSelect = document.querySelector("[data-robot-usecase-filter]");
   const countrySelect = document.querySelector("[data-robot-country-filter]");
@@ -1363,6 +1414,7 @@ async function initCatalogPages() {
   renderFeaturedRobot();
   renderRScoreFeature();
   renderRScoreLeaderboards();
+  renderRobotLeaderboardPage();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();
