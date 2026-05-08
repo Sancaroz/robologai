@@ -1,6 +1,6 @@
 const translations = {
   tr: {
-    newsletterJoin: "Takip Et",
+    newsletterJoin: "Intel akışına katıl",
     navHome: "Ana Sayfa",
     navInfo: "Bilgiler",
     navCompanies: "Şirketler",
@@ -169,7 +169,7 @@ const translations = {
     copyright: "© 2026 Robologai. Tüm hakları saklıdır. Özgün yazılar, görsel kimlik ve site tasarımı izinsiz kopyalanamaz, yeniden yayımlanamaz veya ticari amaçla kullanılamaz."
   },
   en: {
-    newsletterJoin: "Follow",
+    newsletterJoin: "Join Intel Feed",
     navHome: "Home",
     navInfo: "Insights",
     navCompanies: "Companies",
