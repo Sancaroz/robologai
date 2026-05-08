@@ -423,6 +423,7 @@ const robotCatalogGrid = document.querySelector(".robot-database-grid");
 const robotCompareBody = document.querySelector("[data-robot-compare]");
 const robotFilterButtons = Array.from(document.querySelectorAll("[data-robot-filter]"));
 const beehiivShells = document.querySelectorAll("[data-beehiiv-form-id]");
+const newsletterCtas = document.querySelectorAll('a[href="#bulten"], a[href="index.html#bulten"]');
 const statCompanies = document.querySelector("[data-stat-companies]");
 const statCountries = document.querySelector("[data-stat-countries]");
 const statRobots = document.querySelector("[data-stat-robots]");
@@ -737,6 +738,20 @@ function initBeehiivForms() {
   });
 }
 
+function initNewsletterScroll() {
+  if (!newsletterCtas.length) return;
+  newsletterCtas.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const isSamePage = link.getAttribute("href") === "#bulten" || window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
+      const newsletter = document.querySelector("#bulten");
+      if (!isSamePage || !newsletter) return;
+      event.preventDefault();
+      newsletter.scrollIntoView({ behavior: "smooth", block: "center" });
+      history.replaceState(null, "", "#bulten");
+    });
+  });
+}
+
 searchInput?.addEventListener("input", filterCompanies);
 categoryFilter?.addEventListener("change", filterCompanies);
 subcategoryFilter?.addEventListener("change", filterCompanies);
@@ -786,3 +801,4 @@ searchFocusButton?.addEventListener("click", () => {
 loadCompanyDatabase();
 loadRobotDatabase();
 initBeehiivForms();
+initNewsletterScroll();
