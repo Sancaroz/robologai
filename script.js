@@ -746,7 +746,7 @@ function initNewsletterScroll() {
       const newsletter = document.querySelector("#bulten");
       if (!isSamePage || !newsletter) return;
       event.preventDefault();
-      newsletter.scrollIntoView({ behavior: "smooth", block: "center" });
+      newsletter.scrollIntoView({ behavior: "auto", block: "start" });
       history.replaceState(null, "", "#bulten");
     });
   });
