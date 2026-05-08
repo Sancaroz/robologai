@@ -1780,6 +1780,20 @@ body.light-theme .site-header {
   filter: drop-shadow(0 10px 20px rgba(20, 184, 166, 0.22));
 }
 
+.brand-full {
+  gap: 0;
+}
+
+.brand-full .brand-logo-full {
+  width: 174px;
+  height: auto;
+  filter: drop-shadow(0 14px 28px rgba(47, 227, 255, 0.18));
+}
+
+.brand-full .brand-logo-mini {
+  display: none;
+}
+
 .brand span {
   color: var(--blue);
 }
@@ -5839,7 +5853,7 @@ body.light-theme .advanced-filter-group select {
 }
 
 .footer-brand {
-  display: block;
+  display: inline-flex;
   margin-bottom: 16px;
 }
 
@@ -6484,6 +6498,10 @@ body.light-theme .facts span {
     height: 31px;
   }
 
+  .brand-full .brand-logo-full {
+    width: 154px;
+  }
+
   .header-actions {
     gap: 8px;
     margin-left: auto;
@@ -6884,6 +6902,16 @@ body.light-theme .facts span {
   .brand img {
     width: 28px;
     height: 28px;
+  }
+
+  .brand-full .brand-logo-full {
+    display: none;
+  }
+
+  .brand-full .brand-logo-mini {
+    display: block;
+    width: 38px;
+    height: 38px;
   }
 
   .join-button {
