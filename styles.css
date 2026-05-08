@@ -6719,6 +6719,18 @@ body.light-theme .trust-grid article {
   position: relative;
 }
 
+.beehiiv-shell {
+  min-height: 120px;
+}
+
+.beehiiv-embed-frame {
+  width: 100%;
+  min-height: 230px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+}
+
 .newsletter label {
   color: #9fc5ff;
   font-size: 12px;
@@ -6768,6 +6780,12 @@ body.light-theme .trust-grid article {
   transform: translateY(-2px);
   filter: brightness(1.06);
   box-shadow: 0 24px 58px rgba(45, 212, 191, 0.26);
+}
+
+.newsletter-fallback small {
+  color: #8ea2bb;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .newsletter-proof {
