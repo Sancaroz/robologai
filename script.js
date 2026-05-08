@@ -740,10 +740,15 @@ function initBeehiivForms() {
 
 function initNewsletterScroll() {
   const newsletter = document.querySelector("#bulten");
+  const alignNewsletter = () => {
+    if (!newsletter) return;
+    const header = document.querySelector(".site-header");
+    const headerOffset = header ? header.getBoundingClientRect().height + 28 : 96;
+    const targetTop = newsletter.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: "auto" });
+  };
   if (newsletter && window.location.hash === "#bulten") {
-    requestAnimationFrame(() => {
-      newsletter.scrollIntoView({ behavior: "auto", block: "start" });
-    });
+    [0, 120, 420, 900].forEach((delay) => window.setTimeout(alignNewsletter, delay));
   }
   if (!newsletterCtas.length) return;
   newsletterCtas.forEach((link) => {
@@ -751,8 +756,8 @@ function initNewsletterScroll() {
       const isSamePage = link.getAttribute("href") === "#bulten" || window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
       if (!isSamePage || !newsletter) return;
       event.preventDefault();
-      newsletter.scrollIntoView({ behavior: "auto", block: "start" });
       history.replaceState(null, "", "#bulten");
+      alignNewsletter();
     });
   });
 }
