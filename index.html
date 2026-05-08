@@ -1007,17 +1007,27 @@
       </section>
 
       <section id="bulten" class="newsletter">
-        <div class="mail-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4V6Z"/><path d="m4 7 8 6 8-6"/></svg>
+        <div class="newsletter-copy">
+          <div class="mail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4V6Z"/><path d="m4 7 8 6 8-6"/></svg>
+          </div>
+          <p>Robotics brief</p>
+          <h2>Join the Future of Robotics</h2>
+          <span>Get concise updates on humanoid robots, physical AI, robot prices, company signals, and new Robologai research.</span>
         </div>
-        <div>
-          <h2>Follow Robologai</h2>
-          <p>Follow the site on X and YouTube, or send news tips, partnership requests, and corrections by email.</p>
-        </div>
-        <div class="follow-actions">
-          <a href="https://x.com/robologai">X @robologai</a>
-          <a href="https://www.youtube.com/@robologai">YouTube</a>
-          <a href="mailto:robologai@gmail.com">Email</a>
+        <div class="newsletter-panel">
+          <form action="mailto:robologai@gmail.com" method="post" enctype="text/plain">
+            <label for="newsletter-email">Email address</label>
+            <div class="newsletter-form-row">
+              <input id="newsletter-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+              <button type="submit">Join</button>
+            </div>
+          </form>
+          <div class="newsletter-proof" aria-label="Newsletter topics">
+            <span>Weekly signals</span>
+            <span>No noise</span>
+            <span>Source-first</span>
+          </div>
         </div>
       </section>
 
