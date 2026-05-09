@@ -357,7 +357,16 @@ const futureIndexFallback = [
 ];
 
 function pageNormalize(value = "") {
-  return String(value).toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return String(value)
+    .toLocaleLowerCase("tr")
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
 function pageEscape(value = "") {
@@ -368,8 +377,55 @@ function robotText(robot) {
   return pageNormalize([robot.name, robot.company, robot.category, robot.country, robot.status, robot.availability, robot.price, robot.useCase, ...(robot.keywords || [])].filter(Boolean).join(" "));
 }
 
+function companyValueList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return String(value || "").split(",").map((item) => item.trim()).filter(Boolean);
+}
+
 function companyText(company) {
-  return pageNormalize([company.name, company.category, company.country, company.type, company.ticker, company.robot, company.website, ...(company.keywords || [])].filter(Boolean).join(" "));
+  return pageNormalize([
+    company.name,
+    company.category,
+    company.country,
+    company.region,
+    company.type,
+    company.ticker,
+    company.robot,
+    company.website,
+    company.focus,
+    company.keyProject,
+    company.grassFocus,
+    ...companyValueList(company.groupCompanies),
+    ...companyValueList(company.industriesServed),
+    ...(company.keywords || [])
+  ].filter(Boolean).join(" "));
+}
+
+function optionalCompanyRows(company) {
+  return [
+    ["Region", company.region],
+    ["Focus", company.focus],
+    ["Group companies", companyValueList(company.groupCompanies).join(", ")],
+    ["Key project", company.keyProject],
+    ["GRASS focus", company.grassFocus],
+    ["Industries served", companyValueList(company.industriesServed).join(", ")]
+  ]
+    .filter(([, value]) => value)
+    .map(([label, value]) => `<div><dt>${pageEscape(label)}</dt><dd>${pageEscape(value)}</dd></div>`)
+    .join("");
+}
+
+function optionalCompanyStats(company) {
+  return [
+    ["Employees", company.employees],
+    ["Countries", company.countries],
+    ["Locations", company.locations],
+    ["Operational area", company.operationalArea],
+    ["Experience", company.experience],
+    ["Clients", company.clients],
+    ["Delivered projects", company.deliveredProjects],
+    ["Export countries", company.exportCountries]
+  ].filter(([, value]) => value);
 }
 
 function pageInitials(value = "") {
@@ -390,7 +446,16 @@ function companySlug(company) {
 }
 
 function seoNormalize(value = "") {
-  return String(value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return String(value)
+    .toLowerCase()
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 }
 
 function seoSlug(value = "") {
@@ -1949,6 +2014,8 @@ function renderCompanyProfile() {
   const robots = pageState.robots
     .filter((robot) => pageNormalize(robot.company).includes(pageNormalize(company.name)) || companyRobotNames.includes(pageNormalize(robot.name)))
     .slice(0, 6);
+  const extraRows = optionalCompanyRows(company);
+  const extraStats = optionalCompanyStats(company);
   const related = pageState.companies
     .filter((item) => item.name !== company.name && (broadCountryName(item.country) === broadCountryName(company.country) || pageNormalize(item.category).includes(pageNormalize(company.category).split(" ")[0])))
     .slice(0, 6);
@@ -1977,6 +2044,7 @@ function renderCompanyProfile() {
           <div><dt>Type</dt><dd>${pageEscape(company.type || "Entity")}</dd></div>
           <div><dt>Ticker</dt><dd>${pageEscape(company.ticker || "Not public / not listed")}</dd></div>
           <div><dt>Website</dt><dd><a href="${pageEscape(company.website || "#")}" target="_blank" rel="noopener noreferrer">Official website →</a></dd></div>
+          ${extraRows}
         </dl>
       </article>
       <article class="profile-facts">
@@ -1984,6 +2052,15 @@ function renderCompanyProfile() {
         <p>${pageEscape(company.name)} is tracked as part of Robologai's robotics and AI company database. Use this profile as a source-first launch point, then verify fast-changing details from the official website.</p>
       </article>
     </section>
+    ${extraStats.length ? `<section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Company Scale</p>
+        <h2>Operational signals from ${pageEscape(company.name)}.</h2>
+      </div>
+      <div class="catalog-metrics">
+        ${extraStats.map(([label, value]) => `<article><strong>${pageEscape(value)}</strong><small>${pageEscape(label)}</small></article>`).join("")}
+      </div>
+    </section>` : ""}
     <section class="catalog-section">
       <div class="section-heading compact">
         <p>Market Signal</p>

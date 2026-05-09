@@ -453,6 +453,12 @@ const fallbackCompanyDatabase = [
 function normalizeSearch(value) {
   return value
     .toLocaleLowerCase("tr")
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
@@ -462,10 +468,16 @@ function companySearchText(company) {
     company.name,
     company.category,
     company.country,
+    company.region,
     company.type,
     company.ticker,
     company.robot,
     company.website,
+    company.focus,
+    company.keyProject,
+    company.grassFocus,
+    ...(Array.isArray(company.groupCompanies) ? company.groupCompanies : []),
+    ...(Array.isArray(company.industriesServed) ? company.industriesServed : []),
     ...(company.keywords || [])
   ].filter(Boolean).join(" "));
 }

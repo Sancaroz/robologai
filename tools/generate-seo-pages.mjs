@@ -18,6 +18,12 @@ for (const dir of [robotDir, companyDir]) {
 function normalize(value = "") {
   return String(value)
     .toLowerCase()
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
@@ -184,6 +190,38 @@ function relatedCompanies(company, limit = 5) {
     .map((entry) => entry.item);
 }
 
+function toList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return String(value || "").split(",").map((item) => item.trim()).filter(Boolean);
+}
+
+function optionalCompanyRows(company) {
+  return [
+    ["Region", company.region],
+    ["Focus", company.focus],
+    ["Group companies", toList(company.groupCompanies).join(", ")],
+    ["Key project", company.keyProject],
+    ["GRASS focus", company.grassFocus],
+    ["Industries served", toList(company.industriesServed).join(", ")]
+  ]
+    .filter(([, value]) => value)
+    .map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`)
+    .join("");
+}
+
+function optionalCompanyStats(company) {
+  return [
+    ["Employees", company.employees],
+    ["Countries", company.countries],
+    ["Locations", company.locations],
+    ["Operational area", company.operationalArea],
+    ["Experience", company.experience],
+    ["Clients", company.clients],
+    ["Delivered projects", company.deliveredProjects],
+    ["Export countries", company.exportCountries]
+  ].filter(([, value]) => value);
+}
+
 function layout({ title, description, canonical, body, schema }) {
   return `<!doctype html>
 <html lang="en">
@@ -327,6 +365,8 @@ function companyPage(company) {
   const pageSlug = companyPageSlug(company);
   const linkedRobots = robotsForCompany(company);
   const related = relatedCompanies(company);
+  const extraRows = optionalCompanyRows(company);
+  const extraStats = optionalCompanyStats(company);
   const title = `${company.name} Company Profile: Robots, AI, Market Signal`;
   const description = `${company.name} profile on robologai: ${company.category}, country, public/private status, ticker, robot assets, official website, and related robotics companies.`;
   const canonical = `https://robologai.com/companies/${pageSlug}.html`;
@@ -360,14 +400,23 @@ function companyPage(company) {
             <div><dt>Country</dt><dd><a href="../country.html?country=${escapeAttr(slug(broadCountryName(company.country)))}">${escapeHtml(company.country)} →</a></dd></div>
             <div><dt>Type</dt><dd>${escapeHtml(company.type || "Entity")}</dd></div>
             <div><dt>Ticker</dt><dd>${escapeHtml(company.ticker || "Not public / not listed")}</dd></div>
-            <div><dt>Website</dt><dd><a href="${escapeAttr(company.website || "#")}" target="_blank" rel="noopener noreferrer">Official website →</a></dd></div>
+            <div><dt>Website</dt><dd><a href="${escapeAttr(company.website || "#")}" target="_blank" rel="noopener noreferrer">Official website →</a></dd></div>${extraRows ? `\n            ${extraRows}` : ""}
           </dl>
         </article>
         <article class="profile-facts">
           <h2>Robologai signal</h2>
           <p>${escapeHtml(company.name)} is tracked in Robologai's robotics and AI company database. This static profile gives search engines and readers a stable source-first page, while the interactive database remains available for filtering and comparison.</p>
         </article>
-      </section>
+      </section>${extraStats.length ? `
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Company Scale</p>
+          <h2>Operational signals from ${escapeHtml(company.name)}.</h2>
+        </div>
+        <div class="catalog-metrics">
+          ${extraStats.map(([label, value]) => `<article><strong>${escapeHtml(value)}</strong><small>${escapeHtml(label)}</small></article>`).join("")}
+        </div>
+      </section>` : ""}
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Linked Robots</p>
