@@ -1,6 +1,7 @@
 const pageState = {
   robots: [],
   companies: [],
+  signals: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -21,6 +22,61 @@ const companyFallback = [
   { name: "Tesla", category: "Humanoid robotics, EV, autonomy", country: "USA", type: "Public", ticker: "TSLA", robot: "Optimus", website: "https://www.tesla.com/AI", keywords: ["humanoid", "factory"] },
   { name: "Figure AI", category: "Humanoid robotics", country: "USA", type: "Private", ticker: "", robot: "Figure 02", website: "https://www.figure.ai/", keywords: ["humanoid", "workplace"] },
   { name: "Unitree Robotics", category: "Humanoid and quadruped robotics", country: "China", type: "Private", ticker: "", robot: "G1, H1, Go2", website: "https://www.unitree.com/", keywords: ["g1", "h1", "quadruped"] }
+];
+
+const signalFallback = [
+  {
+    date: "2026-05-09",
+    type: "Emotional AI",
+    title: "Familiar points toward emotionally responsive home robots",
+    company: "Familiar Machines & Magic",
+    robot: "Familiar",
+    category: "Home robotics",
+    country: "USA",
+    impact: "High",
+    summary: "Roomba creator Colin Angle is framing the next home robot around presence, behavior, and emotional response rather than cleaning alone.",
+    source: "https://www.prnewswire.com/news-releases/roomba-pioneer-colin-angle-unveils-new-venture-familiar-machines--magic-introducing-a-new-platform-for-consumer-physical-ai-302761495.html",
+    relatedUrl: "blog/roomba-creator-familiar-emotional-ai-robot.html"
+  },
+  {
+    date: "2026-05-08",
+    type: "Humanoid",
+    title: "Unitree keeps price transparency pressure on the humanoid market",
+    company: "Unitree Robotics",
+    robot: "G1",
+    category: "Research humanoid",
+    country: "China",
+    impact: "High",
+    summary: "Visible pricing and official demo material make G1 a useful benchmark for robotics labs and early physical AI builders.",
+    source: "https://www.unitree.com/g1/",
+    relatedUrl: "robots/unitree-g1.html"
+  },
+  {
+    date: "2026-05-07",
+    type: "Enterprise Pilot",
+    title: "Figure 02 remains one of the strongest factory humanoid signals",
+    company: "Figure AI",
+    robot: "Figure 02",
+    category: "Industrial humanoid",
+    country: "USA",
+    impact: "High",
+    summary: "The platform is positioned around workplace manipulation, enterprise pilots, and general-purpose robot learning.",
+    source: "https://www.figure.ai/",
+    relatedUrl: "robots/figure-02.html"
+  },
+  {
+    date: "2026-05-07",
+    type: "Factory AI",
+    title: "Tesla Optimus keeps the factory-first humanoid narrative alive",
+    company: "Tesla",
+    robot: "Optimus",
+    category: "Humanoid",
+    country: "USA",
+    impact: "Medium",
+    summary: "Optimus is still best read as an internal manufacturing and embodied AI signal until public deployment details become clearer.",
+    source: "https://www.tesla.com/AI",
+    relatedUrl: "robots/tesla-optimus.html"
+  }
 ];
 
 function pageNormalize(value = "") {
@@ -370,13 +426,98 @@ function marketStrength(company) {
 function renderSignalFeed(targetSelector, limit = 4) {
   const target = document.querySelector(targetSelector);
   if (!target) return;
-  target.innerHTML = signalLibrary.slice(0, limit).map((item) => `
+  const feed = pageState.signals.length ? pageState.signals.map((item) => ({
+    type: item.type,
+    title: item.title,
+    summary: item.summary,
+    link: item.relatedUrl || item.source || "signals.html"
+  })) : signalLibrary;
+  target.innerHTML = feed.slice(0, limit).map((item) => `
     <a class="signal-update-card" href="${pageEscape(item.link)}">
       <span>${pageEscape(item.type)}</span>
       <strong>${pageEscape(item.title)}</strong>
       <small>${pageEscape(item.summary)}</small>
     </a>
   `).join("");
+}
+
+function signalImpactClass(impact = "") {
+  const key = pageNormalize(impact);
+  if (key.includes("high")) return "impact-high";
+  if (key.includes("medium")) return "impact-medium";
+  return "impact-early";
+}
+
+function renderRoboticsSignalsPage() {
+  const featured = document.querySelector("[data-signals-featured]");
+  const feed = document.querySelector("[data-signals-feed]");
+  const types = document.querySelector("[data-signals-types]");
+  const metrics = document.querySelector("[data-signals-metrics]");
+  if (!featured && !feed && !types && !metrics) return;
+
+  const signals = pageState.signals.length ? pageState.signals : signalFallback;
+  const highImpact = signals.filter((item) => pageNormalize(item.impact).includes("high")).length;
+  const signalTypes = [...new Set(signals.map((item) => item.type).filter(Boolean))];
+  const countries = [...new Set(signals.map((item) => broadCountryName(item.country || "")).filter(Boolean))];
+
+  if (metrics) {
+    metrics.innerHTML = `
+      <article><strong>${signals.length}</strong><small>Robotics signals</small></article>
+      <article><strong>${signalTypes.length}</strong><small>Signal categories</small></article>
+      <article><strong>${highImpact}</strong><small>High-impact watches</small></article>
+      <article><strong>${countries.length}</strong><small>Markets covered</small></article>
+    `;
+  }
+
+  if (featured) {
+    const lead = signals[0];
+    featured.innerHTML = `
+      <span>${pageEscape(lead.type)} · ${pageEscape(lead.date)}</span>
+      <h2>${pageEscape(lead.title)}</h2>
+      <p>${pageEscape(lead.summary)}</p>
+      <dl>
+        <div><dt>Company</dt><dd>${pageEscape(lead.company)}</dd></div>
+        <div><dt>Robot</dt><dd>${pageEscape(lead.robot)}</dd></div>
+        <div><dt>Category</dt><dd>${pageEscape(lead.category)}</dd></div>
+        <div><dt>Country</dt><dd>${pageEscape(lead.country)}</dd></div>
+      </dl>
+      <div class="signals-actions">
+        <a href="${pageEscape(lead.relatedUrl || lead.source)}">Read signal</a>
+        <a href="${pageEscape(lead.source)}" target="_blank" rel="noopener noreferrer">Official source</a>
+      </div>
+    `;
+  }
+
+  if (feed) {
+    feed.innerHTML = signals.map((item, index) => `
+      <article class="signals-row">
+        <div class="signals-row-index">#${String(index + 1).padStart(2, "0")}</div>
+        <div class="signals-row-main">
+          <span>${pageEscape(item.type)} · ${pageEscape(item.date)}</span>
+          <h2>${pageEscape(item.title)}</h2>
+          <p>${pageEscape(item.summary)}</p>
+          <small>${pageEscape(item.company)} · ${pageEscape(item.robot)} · ${pageEscape(item.country)}</small>
+        </div>
+        <div class="signals-row-side">
+          <b class="signal-impact ${signalImpactClass(item.impact)}">${pageEscape(item.impact)}</b>
+          <a href="${pageEscape(item.relatedUrl || item.source)}">View</a>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  if (types) {
+    types.innerHTML = signalTypes.slice(0, 8).map((type) => {
+      const matching = signals.filter((item) => item.type === type);
+      return `
+        <article>
+          <span>${matching.length} signals</span>
+          <strong>${pageEscape(type)}</strong>
+          <small>${pageEscape(matching[0]?.category || "Robotics intelligence")}</small>
+        </article>
+      `;
+    }).join("");
+  }
 }
 
 function useCaseSlug(value = "") {
@@ -1397,12 +1538,14 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies] = await Promise.all([
+  const [robots, companies, signals] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
-    loadJson("data/companies.json", companyFallback)
+    loadJson("data/companies.json", companyFallback),
+    loadJson("data/signals.json", signalFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
+  pageState.signals = signals;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -1415,6 +1558,7 @@ async function initCatalogPages() {
   renderRScoreFeature();
   renderRScoreLeaderboards();
   renderRobotLeaderboardPage();
+  renderRoboticsSignalsPage();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();
