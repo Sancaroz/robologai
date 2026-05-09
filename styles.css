@@ -7787,6 +7787,324 @@ body.light-theme .task-hero {
     url("assets/original-visuals/data-constellation.svg") center / cover;
 }
 
+.timeline-home-section,
+.timeline-section,
+.timeline-hero,
+.timeline-metrics,
+.timeline-intelligence {
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-home-section,
+.timeline-section {
+  margin: 24px 0;
+}
+
+.timeline-home-grid,
+.timeline-metrics,
+.timeline-intelligence {
+  display: grid;
+  gap: 14px;
+}
+
+.timeline-home-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.timeline-mini-card,
+.timeline-item,
+.timeline-intelligence article,
+.timeline-intelligence aside,
+.timeline-metrics article {
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(11, 23, 42, 0.94), rgba(5, 12, 24, 0.86)),
+    radial-gradient(circle at 92% 10%, rgba(120, 231, 255, 0.13), transparent 30%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-mini-card {
+  display: grid;
+  gap: 12px;
+  min-height: 100%;
+  padding: 20px;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.timeline-mini-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(120, 231, 255, 0.42);
+  box-shadow: 0 28px 90px rgba(56, 189, 248, 0.14);
+}
+
+.timeline-mini-card time,
+.timeline-item time {
+  color: #7df9ff;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.timeline-mini-card span,
+.timeline-item span,
+.timeline-intelligence article > span {
+  color: var(--blue-2);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timeline-mini-card strong,
+.timeline-item h3 {
+  color: #f4fbff;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.08;
+}
+
+.timeline-mini-card small,
+.timeline-item small,
+.timeline-intelligence p,
+.timeline-radar small {
+  color: #9fb0c8;
+  line-height: 1.55;
+}
+
+.timeline-mini-card a,
+.timeline-item a,
+.timeline-intelligence a {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 999px;
+  color: #dff9ff;
+  background: rgba(120, 231, 255, 0.08);
+  font-weight: 900;
+}
+
+.timeline-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.45fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 430px;
+  margin: 24px 0;
+  padding: 44px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(4, 10, 22, 0.96), rgba(10, 27, 46, 0.86)),
+    url("assets/original-visuals/neural-city-grid.svg") center / cover;
+  box-shadow: var(--shadow);
+}
+
+.timeline-hero p {
+  margin: 0 0 12px;
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timeline-hero h1 {
+  max-width: 840px;
+  margin: 0 0 18px;
+  font-size: clamp(40px, 6vw, 78px);
+  line-height: 0.94;
+}
+
+.timeline-hero span {
+  display: block;
+  max-width: 720px;
+  color: #c4cedc;
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.timeline-radar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 270px;
+  border: 1px solid rgba(120, 231, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(2, 8, 18, 0.45);
+  overflow: hidden;
+}
+
+.timeline-radar::before,
+.timeline-radar::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(120, 231, 255, 0.2);
+  border-radius: 50%;
+}
+
+.timeline-radar::before {
+  width: 210px;
+  height: 210px;
+}
+
+.timeline-radar::after {
+  width: 138px;
+  height: 138px;
+}
+
+.timeline-radar i {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7df9ff;
+  box-shadow: 0 0 22px rgba(125, 249, 255, 0.74);
+}
+
+.timeline-radar i:nth-child(1) { top: 22%; left: 24%; }
+.timeline-radar i:nth-child(2) { right: 20%; top: 38%; }
+.timeline-radar i:nth-child(3) { bottom: 22%; left: 46%; }
+
+.timeline-radar strong,
+.timeline-radar small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+.timeline-radar strong {
+  color: #f4fbff;
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.timeline-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 24px;
+}
+
+.timeline-metrics article {
+  padding: 18px;
+}
+
+.timeline-metrics strong,
+.timeline-metrics small {
+  display: block;
+}
+
+.timeline-metrics strong {
+  margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 38px);
+}
+
+.timeline-intelligence {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  margin: 24px 0;
+}
+
+.timeline-intelligence article,
+.timeline-intelligence aside {
+  padding: 24px;
+}
+
+.timeline-intelligence h2 {
+  max-width: 780px;
+  margin: 10px 0 12px;
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.04;
+}
+
+.timeline-intelligence aside {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.timeline-intelligence aside strong {
+  font-size: 24px;
+}
+
+.timeline-list {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding-left: 24px;
+}
+
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(120, 231, 255, 0.8), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 18px;
+  padding: 22px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 34px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #7df9ff;
+  box-shadow: 0 0 24px rgba(125, 249, 255, 0.82);
+}
+
+.timeline-item h3,
+.timeline-item p {
+  margin: 0 0 10px;
+}
+
+body.light-theme .timeline-mini-card,
+body.light-theme .timeline-item,
+body.light-theme .timeline-intelligence article,
+body.light-theme .timeline-intelligence aside,
+body.light-theme .timeline-metrics article,
+body.light-theme .timeline-radar {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+body.light-theme .timeline-mini-card strong,
+body.light-theme .timeline-item h3,
+body.light-theme .timeline-radar strong,
+body.light-theme .timeline-intelligence aside strong {
+  color: #102033;
+}
+
+body.light-theme .timeline-mini-card small,
+body.light-theme .timeline-item small,
+body.light-theme .timeline-item p,
+body.light-theme .timeline-intelligence p,
+body.light-theme .timeline-hero span,
+body.light-theme .timeline-metrics small {
+  color: #43566c;
+}
+
+body.light-theme .timeline-hero {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.88)),
+    url("assets/original-visuals/neural-city-grid.svg") center / cover;
+}
+
 .contact-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -9379,12 +9697,16 @@ body.light-theme .facts span {
 
   .task-home-grid,
   .task-page-grid,
+  .timeline-home-grid,
+  .timeline-hero,
+  .timeline-intelligence,
   .task-hero,
   .task-layout {
     grid-template-columns: 1fr;
   }
 
-  .task-metrics {
+  .task-metrics,
+  .timeline-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -9399,21 +9721,41 @@ body.light-theme .facts span {
   }
 
   .task-hero,
+  .timeline-hero,
   .task-intel-panel,
-  .task-watch-panel {
+  .task-watch-panel,
+  .timeline-intelligence article,
+  .timeline-intelligence aside {
     padding: 20px;
   }
 
-  .task-hero {
+  .task-hero,
+  .timeline-hero {
     min-height: 0;
   }
 
-  .task-hero h1 {
+  .task-hero h1,
+  .timeline-hero h1 {
     font-size: 34px;
   }
 
-  .task-metrics {
+  .task-metrics,
+  .timeline-metrics {
     grid-template-columns: 1fr;
+  }
+
+  .timeline-list {
+    padding-left: 12px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 18px;
+  }
+
+  .timeline-item::before {
+    left: -13px;
   }
 
   .task-card dl div {
@@ -9426,7 +9768,10 @@ body.light-theme .facts span {
   }
 
   .task-card a,
-  .task-watch-panel a {
+  .task-watch-panel a,
+  .timeline-mini-card a,
+  .timeline-item a,
+  .timeline-intelligence a {
     width: 100%;
   }
 }

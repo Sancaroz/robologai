@@ -3,6 +3,7 @@ const pageState = {
   companies: [],
   signals: [],
   tasks: [],
+  timeline: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -116,6 +117,39 @@ const taskFallback = [
     robots: ["Assistive robots", "Companion robots"],
     summary: "Robots can support reminders and monitoring, but deep caregiving remains a human-led domain because the work is relational, ethical, and highly contextual.",
     link: "use-cases.html?case=healthcare"
+  }
+];
+
+const timelineFallback = [
+  {
+    year: "2002",
+    era: "Consumer robotics",
+    title: "Roomba normalizes home robots",
+    company: "iRobot",
+    category: "Home robotics",
+    impact: "Made autonomous robots feel normal inside everyday homes.",
+    signal: "Mass-market adoption",
+    link: "companies/irobot.html"
+  },
+  {
+    year: "2024",
+    era: "Accessible humanoids",
+    title: "Unitree G1 pressures the price curve",
+    company: "Unitree Robotics",
+    category: "Research humanoids",
+    impact: "Visible pricing made humanoid robots easier to benchmark for labs, developers, and early physical AI builders.",
+    signal: "Price transparency",
+    link: "robots/unitree-g1.html"
+  },
+  {
+    year: "2026",
+    era: "Emotional robotics",
+    title: "Familiar points toward emotionally responsive home robots",
+    company: "Familiar Machines & Magic",
+    category: "Home companion robotics",
+    impact: "Shows a shift from utility-only machines toward robots designed around presence, behavior, and emotional response.",
+    signal: "Human-robot relationship",
+    link: "blog/roomba-creator-familiar-emotional-ai-robot.html"
   }
 ];
 
@@ -612,6 +646,46 @@ function renderTaskMaps() {
       <article><strong>${ready}</strong><small>Robot-ready lanes</small></article>
       <article><strong>${human}</strong><small>Human-first lanes</small></article>
       <article><strong>${categories}</strong><small>Work categories</small></article>
+    `;
+  }
+}
+
+function timelineCard(item, compact = false) {
+  return `
+    <article class="${compact ? "timeline-mini-card" : "timeline-item"}">
+      <time>${pageEscape(item.year)}</time>
+      <div>
+        <span>${pageEscape(item.era)} · ${pageEscape(item.company)}</span>
+        <h3>${pageEscape(item.title)}</h3>
+        <p>${pageEscape(item.impact)}</p>
+        <small>Signal: ${pageEscape(item.signal)}${compact ? "" : ` · ${pageEscape(item.category)}`}</small>
+        <a href="${pageEscape(item.link || "signals.html")}">${compact ? "Open timeline" : "Open signal"}</a>
+      </div>
+    </article>
+  `;
+}
+
+function renderTimelinePage() {
+  const timeline = pageState.timeline.length ? pageState.timeline : timelineFallback;
+  const homeTarget = document.querySelector("[data-home-timeline]");
+  const list = document.querySelector("[data-timeline-list]");
+  const metrics = document.querySelector("[data-timeline-metrics]");
+  if (homeTarget) {
+    const picks = [timeline[0], timeline[Math.max(0, timeline.length - 2)], timeline[timeline.length - 1]].filter(Boolean);
+    homeTarget.innerHTML = picks.map((item) => timelineCard(item, true)).join("");
+  }
+  if (list) {
+    list.innerHTML = timeline.map((item) => timelineCard(item)).join("");
+  }
+  if (metrics) {
+    const eras = new Set(timeline.map((item) => item.era).filter(Boolean)).size;
+    const humanoid = timeline.filter((item) => pageNormalize([item.category, item.title, item.impact].join(" ")).includes("humanoid")).length;
+    const latest = timeline[timeline.length - 1];
+    metrics.innerHTML = `
+      <article><strong>${timeline.length}</strong><small>Key milestones</small></article>
+      <article><strong>${eras}</strong><small>Robotics eras</small></article>
+      <article><strong>${humanoid}</strong><small>Humanoid signals</small></article>
+      <article><strong>${pageEscape(latest?.year || "Now")}</strong><small>Latest timeline point</small></article>
     `;
   }
 }
@@ -1646,16 +1720,18 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks] = await Promise.all([
+  const [robots, companies, signals, tasks, timeline] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
-    loadJson("data/tasks.json", taskFallback)
+    loadJson("data/tasks.json", taskFallback),
+    loadJson("data/timeline.json", timelineFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
   pageState.signals = signals;
   pageState.tasks = tasks;
+  pageState.timeline = timeline;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -1670,6 +1746,7 @@ async function initCatalogPages() {
   renderRobotLeaderboardPage();
   renderRoboticsSignalsPage();
   renderTaskMaps();
+  renderTimelinePage();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

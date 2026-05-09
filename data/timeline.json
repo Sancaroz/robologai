@@ -1,0 +1,82 @@
+[
+  {
+    "year": "2002",
+    "era": "Consumer robotics",
+    "title": "Roomba normalizes home robots",
+    "company": "iRobot",
+    "category": "Home robotics",
+    "impact": "Made autonomous robots feel normal inside everyday homes.",
+    "signal": "Mass-market adoption",
+    "link": "companies/irobot.html"
+  },
+  {
+    "year": "2013",
+    "era": "Humanoid research",
+    "title": "Atlas becomes a mobility benchmark",
+    "company": "Boston Dynamics",
+    "category": "Humanoid robotics",
+    "impact": "Showed that dynamic humanoid locomotion could become a serious research and engineering frontier.",
+    "signal": "Mobility proof",
+    "link": "robots/boston-dynamics-atlas.html"
+  },
+  {
+    "year": "2016",
+    "era": "Field robotics",
+    "title": "Spot points toward useful mobile robots",
+    "company": "Boston Dynamics",
+    "category": "Inspection robotics",
+    "impact": "Moved legged robots from spectacle toward inspection, enterprise use, and mapped industrial environments.",
+    "signal": "Commercial field deployment",
+    "link": "robots/boston-dynamics-spot.html"
+  },
+  {
+    "year": "2021",
+    "era": "Embodied AI",
+    "title": "Tesla frames Optimus as factory-first AI",
+    "company": "Tesla",
+    "category": "Humanoid robotics",
+    "impact": "Connected humanoid robotics with manufacturing scale, autonomy data, and AI infrastructure.",
+    "signal": "Platform narrative",
+    "link": "robots/tesla-optimus.html"
+  },
+  {
+    "year": "2023",
+    "era": "General-purpose robots",
+    "title": "Figure AI accelerates workplace humanoids",
+    "company": "Figure AI",
+    "category": "Industrial humanoids",
+    "impact": "Helped shift humanoid attention toward near-term labor, enterprise pilots, and manipulation.",
+    "signal": "Enterprise pilot signal",
+    "link": "robots/figure-02.html"
+  },
+  {
+    "year": "2024",
+    "era": "Accessible humanoids",
+    "title": "Unitree G1 pressures the price curve",
+    "company": "Unitree Robotics",
+    "category": "Research humanoids",
+    "impact": "Visible pricing made humanoid robots easier to benchmark for labs, developers, and early physical AI builders.",
+    "signal": "Price transparency",
+    "link": "robots/unitree-g1.html"
+  },
+  {
+    "year": "2025",
+    "era": "Robot economy",
+    "title": "Physical AI becomes an investment thesis",
+    "company": "Robotics ecosystem",
+    "category": "Market intelligence",
+    "impact": "Robotics, AI infrastructure, simulation, data engines, and embodied intelligence started converging into one market story.",
+    "signal": "Market formation",
+    "link": "market.html"
+  },
+  {
+    "year": "2026",
+    "era": "Emotional robotics",
+    "title": "Familiar points toward emotionally responsive home robots",
+    "company": "Familiar Machines & Magic",
+    "category": "Home companion robotics",
+    "impact": "Shows a shift from utility-only machines toward robots designed around presence, behavior, and emotional response.",
+    "signal": "Human-robot relationship",
+    "link": "blog/roomba-creator-familiar-emotional-ai-robot.html"
+  }
+]
