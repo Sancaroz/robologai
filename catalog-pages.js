@@ -8,6 +8,7 @@ const pageState = {
   physicalAi: [],
   robotEconomy: [],
   globalMap: [],
+  futureIndex: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -316,6 +317,39 @@ const robotEconomyFallback = [
     companies: ["peaq", "XMAQUINA", "Fetch.ai", "Autonolas"],
     metrics: ["Machine identity", "DePIN networks", "Autonomous payments"],
     link: "blog/peaq-machine-economy-depin-ecosystem.html"
+  }
+];
+
+const futureIndexFallback = [
+  {
+    theme: "Embodied AI Readiness",
+    score: 91,
+    trend: "Accelerating",
+    horizon: "2026-2028",
+    signal: "Vision-language-action models, simulation, teleoperation, and robot fleet data are converging into the software layer for useful physical AI.",
+    companies: ["NVIDIA", "Physical Intelligence", "Figure AI", "Google DeepMind", "Sanctuary AI"],
+    whyItMatters: "This is the layer that could make robots less scripted and more adaptable across real-world tasks.",
+    link: "physical-ai.html"
+  },
+  {
+    theme: "Humanoid Labor Deployment",
+    score: 86,
+    trend: "High momentum",
+    horizon: "2026-2029",
+    signal: "Factory, warehouse, and logistics pilots are turning humanoids from demos into measurable labor experiments.",
+    companies: ["Figure AI", "Agility Robotics", "Apptronik", "Tesla", "1X Technologies"],
+    whyItMatters: "Labor deployment is where robotics shifts from spectacle to economic impact.",
+    link: "ai-vs-human-tasks.html"
+  },
+  {
+    theme: "Affordable Robot Hardware",
+    score: 82,
+    trend: "Compressing price curve",
+    horizon: "2026-2028",
+    signal: "Lower-cost humanoids, quadrupeds, actuators, sensors, and batteries are making robotics more accessible to labs and developers.",
+    companies: ["Unitree Robotics", "AgiBot", "LimX Dynamics", "Booster Robotics", "Pudu Robotics"],
+    whyItMatters: "Cheaper hardware expands the developer base and increases real-world experimentation.",
+    link: "leaderboard.html"
   }
 ];
 
@@ -1031,6 +1065,45 @@ function renderRobotEconomyPage() {
       <article><strong>${pageEscape(top?.layer || "Robot Labor")}</strong><small>Fastest moving layer</small></article>
       <article><strong>${companyRefs}+</strong><small>Company references</small></article>
       <article><strong>${pageEscape(publicLayer?.layer || "Market")}</strong><small>Investor proxy layer</small></article>
+    `;
+  }
+}
+
+function futureIndexCard(item, compact = false) {
+  const score = Math.max(0, Math.min(100, Number(item.score || 0)));
+  const companies = Array.isArray(item.companies) ? item.companies : String(item.companies || "").split(",").map((company) => company.trim()).filter(Boolean);
+  return `
+    <article class="future-index-card">
+      <div class="future-index-score" style="--future-score:${score / 100}"><strong>${score}</strong><small>Index</small></div>
+      <span>${pageEscape(item.theme)} · ${pageEscape(item.trend)}</span>
+      <h3>${pageEscape(compact ? item.signal : item.whyItMatters || item.signal)}</h3>
+      <p>${pageEscape(companies.join(" · "))}</p>
+      ${compact ? "" : `<small>Horizon: ${pageEscape(item.horizon)}</small>`}
+      <a href="${pageEscape(compact ? "future-robotics-index.html" : item.link || "future-robotics-index.html")}">${compact ? "Open Future Index" : "Open signal"}</a>
+    </article>
+  `;
+}
+
+function renderFutureRoboticsIndex() {
+  const index = pageState.futureIndex.length ? pageState.futureIndex : futureIndexFallback;
+  const sorted = [...index].sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+  const homeTarget = document.querySelector("[data-home-future-index]");
+  const grid = document.querySelector("[data-future-index-grid]");
+  const metrics = document.querySelector("[data-future-index-metrics]");
+  if (homeTarget) {
+    homeTarget.innerHTML = sorted.slice(0, 3).map((item) => futureIndexCard(item, true)).join("");
+  }
+  if (grid) {
+    grid.innerHTML = sorted.map((item) => futureIndexCard(item)).join("");
+  }
+  if (metrics) {
+    const top = sorted[0];
+    const companies = new Set(sorted.flatMap((item) => Array.isArray(item.companies) ? item.companies : [])).size;
+    metrics.innerHTML = `
+      <article><strong>${sorted.length}</strong><small>Future themes</small></article>
+      <article><strong>${pageEscape(top?.score || "0")}</strong><small>Top index score</small></article>
+      <article><strong>${companies}+</strong><small>Companies referenced</small></article>
+      <article><strong>${pageEscape(top?.theme || "Embodied AI")}</strong><small>Leading thesis</small></article>
     `;
   }
 }
@@ -2065,7 +2138,7 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi, robotEconomy, globalMap] = await Promise.all([
+  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi, robotEconomy, globalMap, futureIndex] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
@@ -2074,7 +2147,8 @@ async function initCatalogPages() {
     loadJson("data/heatmap.json", heatmapFallback),
     loadJson("data/physical-ai.json", physicalAiFallback),
     loadJson("data/robot-economy.json", robotEconomyFallback),
-    loadJson("data/global-robotics-map.json", globalMapFallback)
+    loadJson("data/global-robotics-map.json", globalMapFallback),
+    loadJson("data/future-robotics-index.json", futureIndexFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
@@ -2085,6 +2159,7 @@ async function initCatalogPages() {
   pageState.physicalAi = physicalAi;
   pageState.robotEconomy = robotEconomy;
   pageState.globalMap = globalMap;
+  pageState.futureIndex = futureIndex;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -2104,6 +2179,7 @@ async function initCatalogPages() {
   renderGlobalRoboticsMap();
   renderPhysicalAiPage();
   renderRobotEconomyPage();
+  renderFutureRoboticsIndex();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

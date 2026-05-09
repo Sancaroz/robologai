@@ -9424,6 +9424,293 @@ body.light-theme .economy-hero {
     url("assets/original-visuals/data-constellation.svg") center / cover;
 }
 
+.future-index-home-section,
+.future-index-section,
+.future-index-hero,
+.future-index-metrics,
+.future-index-intelligence {
+  position: relative;
+  z-index: 1;
+}
+
+.future-index-home-section,
+.future-index-section {
+  margin: 24px 0;
+}
+
+.future-index-home-grid,
+.future-index-grid,
+.future-index-metrics,
+.future-index-intelligence {
+  display: grid;
+  gap: 14px;
+}
+
+.future-index-home-grid,
+.future-index-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.future-index-card,
+.future-index-intelligence article,
+.future-index-intelligence aside,
+.future-index-metrics article,
+.future-index-core {
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(9, 20, 38, 0.95), rgba(4, 10, 21, 0.9)),
+    radial-gradient(circle at 86% 10%, rgba(120, 231, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 10% 95%, rgba(45, 212, 191, 0.12), transparent 34%);
+  box-shadow: 0 24px 76px rgba(0, 0, 0, 0.22);
+}
+
+.future-index-card {
+  display: grid;
+  gap: 13px;
+  min-height: 100%;
+  padding: 20px;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.future-index-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(120, 231, 255, 0.44);
+  box-shadow: 0 30px 94px rgba(56, 189, 248, 0.14);
+}
+
+.future-index-score {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 180deg, #78e7ff calc(var(--future-score, 0.5) * 1turn), rgba(148, 163, 184, 0.12) 0),
+    rgba(2, 8, 18, 0.7);
+  box-shadow: 0 0 32px rgba(120, 231, 255, 0.18);
+}
+
+.future-index-score::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: rgba(2, 8, 18, 0.9);
+}
+
+.future-index-score strong,
+.future-index-score small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+.future-index-score strong {
+  color: #f4fbff;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.future-index-score small {
+  color: #9fb0c8;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.future-index-card > span,
+.future-index-intelligence article > span {
+  color: var(--blue-2);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.future-index-card h3 {
+  margin: 0;
+  color: #f4fbff;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.14;
+}
+
+.future-index-card p,
+.future-index-card small,
+.future-index-intelligence p,
+.future-index-core small,
+.future-index-core span {
+  margin: 0;
+  color: #9fb0c8;
+  line-height: 1.55;
+}
+
+.future-index-card a,
+.future-index-intelligence a {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 999px;
+  color: #dff9ff;
+  background: rgba(120, 231, 255, 0.08);
+  font-weight: 900;
+}
+
+.future-index-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.38fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 430px;
+  margin: 24px 0;
+  padding: 44px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 18% 86%, rgba(45, 212, 191, 0.12), transparent 34%),
+    linear-gradient(135deg, rgba(4, 10, 22, 0.97), rgba(10, 27, 46, 0.88)),
+    url("assets/original-visuals/data-constellation.svg") center / cover;
+  box-shadow: var(--shadow);
+}
+
+.future-index-hero p {
+  margin: 0 0 12px;
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.future-index-hero h1 {
+  max-width: 860px;
+  margin: 0 0 18px;
+  font-size: clamp(40px, 6vw, 78px);
+  line-height: 0.94;
+}
+
+.future-index-hero span {
+  display: block;
+  max-width: 720px;
+  color: #c4cedc;
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.future-index-core {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  padding: 24px;
+  text-align: center;
+}
+
+.future-index-core strong {
+  color: #f4fbff;
+  font-size: clamp(64px, 9vw, 112px);
+  line-height: 0.9;
+}
+
+.future-index-core span {
+  color: var(--blue-2);
+  font-weight: 950;
+}
+
+.future-index-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 24px;
+}
+
+.future-index-metrics article {
+  padding: 18px;
+}
+
+.future-index-metrics strong,
+.future-index-metrics small {
+  display: block;
+}
+
+.future-index-metrics strong {
+  margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 36px);
+}
+
+.future-index-metrics small {
+  color: #9fb0c8;
+  font-weight: 850;
+}
+
+.future-index-intelligence {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  margin: 24px 0;
+}
+
+.future-index-intelligence article,
+.future-index-intelligence aside {
+  padding: 24px;
+}
+
+.future-index-intelligence h2 {
+  max-width: 780px;
+  margin: 10px 0 12px;
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.04;
+}
+
+.future-index-intelligence aside {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.future-index-intelligence aside strong {
+  font-size: 24px;
+}
+
+body.light-theme .future-index-card,
+body.light-theme .future-index-intelligence article,
+body.light-theme .future-index-intelligence aside,
+body.light-theme .future-index-metrics article,
+body.light-theme .future-index-core {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+body.light-theme .future-index-card h3,
+body.light-theme .future-index-score strong,
+body.light-theme .future-index-core strong,
+body.light-theme .future-index-intelligence aside strong {
+  color: #102033;
+}
+
+body.light-theme .future-index-card p,
+body.light-theme .future-index-card small,
+body.light-theme .future-index-intelligence p,
+body.light-theme .future-index-hero span,
+body.light-theme .future-index-metrics small,
+body.light-theme .future-index-core small,
+body.light-theme .future-index-score small {
+  color: #43566c;
+}
+
+body.light-theme .future-index-score::after {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+body.light-theme .future-index-hero {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.88)),
+    url("assets/original-visuals/data-constellation.svg") center / cover;
+}
+
 .contact-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -11022,6 +11309,8 @@ body.light-theme .facts span {
   .global-map-home-layout,
   .global-map-home-grid,
   .global-map-grid,
+  .future-index-home-grid,
+  .future-index-grid,
   .physical-home-grid,
   .physical-layer-grid,
   .economy-home-grid,
@@ -11032,6 +11321,8 @@ body.light-theme .facts span {
   .heatmap-intelligence,
   .global-map-hero,
   .global-map-intelligence,
+  .future-index-hero,
+  .future-index-intelligence,
   .physical-hero,
   .physical-intelligence,
   .economy-hero,
@@ -11045,6 +11336,7 @@ body.light-theme .facts span {
   .timeline-metrics,
   .heatmap-metrics,
   .global-map-metrics,
+  .future-index-metrics,
   .physical-metrics,
   .economy-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -11064,6 +11356,7 @@ body.light-theme .facts span {
   .timeline-hero,
   .heatmap-hero,
   .global-map-hero,
+  .future-index-hero,
   .physical-hero,
   .economy-hero,
   .task-intel-panel,
@@ -11074,6 +11367,8 @@ body.light-theme .facts span {
   .heatmap-intelligence aside,
   .global-map-intelligence article,
   .global-map-intelligence aside,
+  .future-index-intelligence article,
+  .future-index-intelligence aside,
   .physical-intelligence article,
   .physical-intelligence aside,
   .economy-intelligence article,
@@ -11085,6 +11380,7 @@ body.light-theme .facts span {
   .timeline-hero,
   .heatmap-hero,
   .global-map-hero,
+  .future-index-hero,
   .physical-hero,
   .economy-hero {
     min-height: 0;
@@ -11094,6 +11390,7 @@ body.light-theme .facts span {
   .timeline-hero h1,
   .heatmap-hero h1,
   .global-map-hero h1,
+  .future-index-hero h1,
   .physical-hero h1,
   .economy-hero h1 {
     font-size: 34px;
@@ -11103,6 +11400,7 @@ body.light-theme .facts span {
   .timeline-metrics,
   .heatmap-metrics,
   .global-map-metrics,
+  .future-index-metrics,
   .physical-metrics,
   .economy-metrics {
     grid-template-columns: 1fr;
@@ -11140,6 +11438,8 @@ body.light-theme .facts span {
   .heatmap-intelligence a,
   .global-map-card a,
   .global-map-intelligence a,
+  .future-index-card a,
+  .future-index-intelligence a,
   .physical-layer-card a,
   .physical-intelligence a,
   .economy-card a,

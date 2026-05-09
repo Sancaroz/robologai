@@ -1,0 +1,62 @@
+[
+  {
+    "theme": "Embodied AI Readiness",
+    "score": 91,
+    "trend": "Accelerating",
+    "horizon": "2026-2028",
+    "signal": "Vision-language-action models, simulation, teleoperation, and robot fleet data are converging into the software layer for useful physical AI.",
+    "companies": ["NVIDIA", "Physical Intelligence", "Figure AI", "Google DeepMind", "Sanctuary AI"],
+    "whyItMatters": "This is the layer that could make robots less scripted and more adaptable across real-world tasks.",
+    "link": "physical-ai.html"
+  },
+  {
+    "theme": "Humanoid Labor Deployment",
+    "score": 86,
+    "trend": "High momentum",
+    "horizon": "2026-2029",
+    "signal": "Factory, warehouse, and logistics pilots are turning humanoids from demos into measurable labor experiments.",
+    "companies": ["Figure AI", "Agility Robotics", "Apptronik", "Tesla", "1X Technologies"],
+    "whyItMatters": "Labor deployment is where robotics shifts from spectacle to economic impact.",
+    "link": "ai-vs-human-tasks.html"
+  },
+  {
+    "theme": "Affordable Robot Hardware",
+    "score": 82,
+    "trend": "Compressing price curve",
+    "horizon": "2026-2028",
+    "signal": "Lower-cost humanoids, quadrupeds, actuators, sensors, and batteries are making robotics more accessible to labs and developers.",
+    "companies": ["Unitree Robotics", "AgiBot", "LimX Dynamics", "Booster Robotics", "Pudu Robotics"],
+    "whyItMatters": "Cheaper hardware expands the developer base and increases real-world experimentation.",
+    "link": "leaderboard.html"
+  },
+  {
+    "theme": "Robot Infrastructure",
+    "score": 77,
+    "trend": "Quietly compounding",
+    "horizon": "2026-2030",
+    "signal": "Fleet management, monitoring, safety systems, charging, simulation, and developer tools are becoming the hidden operating system for robotics.",
+    "companies": ["Formant", "Foxglove", "Intrinsic", "Open Robotics", "Realtime Robotics"],
+    "whyItMatters": "Robots scale only when the deployment layer becomes reliable, observable, and maintainable.",
+    "link": "robot-economy.html"
+  },
+  {
+    "theme": "Home and Emotional Robots",
+    "score": 69,
+    "trend": "Early but important",
+    "horizon": "2027-2032",
+    "signal": "Companion, eldercare, emotional AI, and home-assistive robots may enter households before fully general humanoids do.",
+    "companies": ["Familiar Machines & Magic", "1X Technologies", "Enchanted Tools", "Intuition Robotics"],
+    "whyItMatters": "The fastest home adoption path may be emotional presence and care support, not full chore automation.",
+    "link": "blog/roomba-creator-familiar-emotional-ai-robot.html"
+  },
+  {
+    "theme": "Machine Economy",
+    "score": 61,
+    "trend": "Speculative signal",
+    "horizon": "2028-2035",
+    "signal": "Machine identity, DePIN networks, autonomous payments, and robot-owned economic activity are forming an early machine economy thesis.",
+    "companies": ["peaq", "XMAQUINA", "Fetch.ai", "Autonolas"],
+    "whyItMatters": "If machines become economic actors, robotics shifts from tools to autonomous network participants.",
+    "link": "blog/peaq-machine-economy-depin-ecosystem.html"
+  }
+]
