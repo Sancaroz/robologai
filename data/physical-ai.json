@@ -1,0 +1,56 @@
+[
+  {
+    "layer": "Embodied Models",
+    "score": 92,
+    "signal": "Vision-language-action models that connect perception, instructions, memory, and robot motion.",
+    "whyItMatters": "This is the software layer that may let robots generalize across tasks instead of only repeating fixed routines.",
+    "companies": ["NVIDIA", "Physical Intelligence", "Google DeepMind", "Figure AI", "OpenAI"],
+    "robotExamples": ["Figure 02", "Optimus", "Apollo"],
+    "link": "blog/physical-ai-explained.html"
+  },
+  {
+    "layer": "Simulation and Synthetic Worlds",
+    "score": 84,
+    "signal": "Robots train and test in simulated environments before risky real-world deployment.",
+    "whyItMatters": "Simulation lowers cost, improves safety, and creates scalable training loops for physical tasks.",
+    "companies": ["NVIDIA", "Intrinsic", "Toyota Research Institute", "Open Robotics"],
+    "robotExamples": ["Atlas", "Digit", "Unitree G1"],
+    "link": "companies/nvidia.html"
+  },
+  {
+    "layer": "Teleoperation and Data Loops",
+    "score": 79,
+    "signal": "Human operators generate training data, supervise edge cases, and bridge the gap before full autonomy.",
+    "whyItMatters": "Most useful robots will likely scale through human-in-the-loop systems before they become highly autonomous.",
+    "companies": ["Figure AI", "Sanctuary AI", "1X Technologies", "Apptronik"],
+    "robotExamples": ["Figure 02", "Phoenix", "NEO", "Apollo"],
+    "link": "robots.html"
+  },
+  {
+    "layer": "Robot Bodies and Actuation",
+    "score": 87,
+    "signal": "Motors, joints, hands, batteries, balance, and manipulation determine whether AI can do useful physical work.",
+    "whyItMatters": "Physical AI fails if the body cannot safely move, lift, grasp, balance, or operate for enough time.",
+    "companies": ["Tesla", "Unitree Robotics", "Boston Dynamics", "Agility Robotics", "Apptronik"],
+    "robotExamples": ["Optimus", "G1", "Atlas", "Digit", "Apollo"],
+    "link": "leaderboard.html"
+  },
+  {
+    "layer": "Sensors and World Models",
+    "score": 81,
+    "signal": "Cameras, depth, force, audio, lidar, tactile sensing, and spatial memory help robots understand physical scenes.",
+    "whyItMatters": "Robots need reliable perception before they can move near people, objects, tools, and changing environments.",
+    "companies": ["Cognex", "Keyence", "Skild AI", "FieldAI", "NVIDIA"],
+    "robotExamples": ["Spot", "ANYmal", "NEO"],
+    "link": "use-cases.html?case=inspection"
+  },
+  {
+    "layer": "Deployment Environments",
+    "score": 76,
+    "signal": "Warehouses, factories, inspection routes, retail back rooms, labs, and homes define how fast robots can become useful.",
+    "whyItMatters": "Structured environments create the first real markets for physical AI before fully open-world robots mature.",
+    "companies": ["Amazon Robotics", "Agility Robotics", "Locus Robotics", "Serve Robotics", "Starship Technologies"],
+    "robotExamples": ["Digit", "AMRs", "delivery robots"],
+    "link": "ai-vs-human-tasks.html"
+  }
+]

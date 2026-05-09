@@ -8460,6 +8460,317 @@ body.light-theme .heatmap-hero {
     url("assets/original-visuals/data-constellation.svg") center / cover;
 }
 
+.physical-home-section,
+.physical-layer-section,
+.physical-hero,
+.physical-metrics,
+.physical-intelligence {
+  position: relative;
+  z-index: 1;
+}
+
+.physical-home-section,
+.physical-layer-section {
+  margin: 24px 0;
+}
+
+.physical-home-grid,
+.physical-layer-grid,
+.physical-metrics,
+.physical-intelligence {
+  display: grid;
+  gap: 14px;
+}
+
+.physical-home-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.physical-layer-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.physical-layer-card,
+.physical-intelligence article,
+.physical-intelligence aside,
+.physical-metrics article {
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(11, 23, 42, 0.94), rgba(5, 12, 24, 0.86)),
+    radial-gradient(circle at 88% 10%, rgba(45, 212, 191, 0.16), transparent 34%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+}
+
+.physical-layer-card {
+  display: grid;
+  gap: 13px;
+  min-height: 100%;
+  padding: 20px;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.physical-layer-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(120, 231, 255, 0.42);
+  box-shadow: 0 28px 90px rgba(56, 189, 248, 0.14);
+}
+
+.physical-layer-score {
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(120, 231, 255, 0.24);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(120, 231, 255, 0.12), rgba(45, 212, 191, 0.04)),
+    rgba(2, 8, 18, 0.68);
+  box-shadow: inset 0 calc(var(--physical-score, 0.5) * -58px) 0 rgba(120, 231, 255, 0.16), 0 0 32px rgba(120, 231, 255, 0.14);
+}
+
+.physical-layer-score strong,
+.physical-layer-score small {
+  display: block;
+  text-align: center;
+}
+
+.physical-layer-score strong {
+  color: #f4fbff;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.physical-layer-score small {
+  color: #9fb0c8;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.physical-layer-card > span,
+.physical-intelligence article > span {
+  color: var(--blue-2);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.physical-layer-card h3 {
+  margin: 0;
+  color: #f4fbff;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.14;
+}
+
+.physical-layer-card p,
+.physical-layer-card small,
+.physical-layer-card em,
+.physical-intelligence p,
+.physical-stack-orbit small {
+  margin: 0;
+  color: #9fb0c8;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.physical-layer-card a,
+.physical-intelligence a {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 999px;
+  color: #dff9ff;
+  background: rgba(120, 231, 255, 0.08);
+  font-weight: 900;
+}
+
+.physical-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.45fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 430px;
+  margin: 24px 0;
+  padding: 44px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(4, 10, 22, 0.96), rgba(10, 27, 46, 0.86)),
+    url("assets/original-visuals/ai-chip-landscape.svg") center / cover;
+  box-shadow: var(--shadow);
+}
+
+.physical-hero p {
+  margin: 0 0 12px;
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.physical-hero h1 {
+  max-width: 850px;
+  margin: 0 0 18px;
+  font-size: clamp(40px, 6vw, 78px);
+  line-height: 0.94;
+}
+
+.physical-hero span {
+  display: block;
+  max-width: 720px;
+  color: #c4cedc;
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.physical-stack-orbit {
+  position: relative;
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(120, 231, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(2, 8, 18, 0.45);
+}
+
+.physical-stack-orbit::before,
+.physical-stack-orbit::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(120, 231, 255, 0.22);
+  border-radius: 50%;
+}
+
+.physical-stack-orbit::before {
+  width: 220px;
+  height: 220px;
+}
+
+.physical-stack-orbit::after {
+  width: 138px;
+  height: 138px;
+}
+
+.physical-stack-orbit i {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #7df9ff;
+  box-shadow: 0 0 24px rgba(125, 249, 255, 0.82);
+}
+
+.physical-stack-orbit i:nth-child(1) { top: 24%; left: 30%; }
+.physical-stack-orbit i:nth-child(2) { top: 42%; right: 20%; }
+.physical-stack-orbit i:nth-child(3) { bottom: 24%; left: 42%; }
+.physical-stack-orbit i:nth-child(4) { bottom: 38%; left: 20%; }
+
+.physical-stack-orbit strong,
+.physical-stack-orbit small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+.physical-stack-orbit strong {
+  color: #f4fbff;
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.physical-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 24px;
+}
+
+.physical-metrics article {
+  padding: 18px;
+}
+
+.physical-metrics strong,
+.physical-metrics small {
+  display: block;
+}
+
+.physical-metrics strong {
+  margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 36px);
+}
+
+.physical-metrics small {
+  color: #9fb0c8;
+  font-weight: 850;
+}
+
+.physical-intelligence {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  margin: 24px 0;
+}
+
+.physical-intelligence article,
+.physical-intelligence aside {
+  padding: 24px;
+}
+
+.physical-intelligence h2 {
+  max-width: 780px;
+  margin: 10px 0 12px;
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.04;
+}
+
+.physical-intelligence aside {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.physical-intelligence aside strong {
+  font-size: 24px;
+}
+
+body.light-theme .physical-layer-card,
+body.light-theme .physical-intelligence article,
+body.light-theme .physical-intelligence aside,
+body.light-theme .physical-metrics article,
+body.light-theme .physical-stack-orbit {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+body.light-theme .physical-layer-card h3,
+body.light-theme .physical-layer-score strong,
+body.light-theme .physical-stack-orbit strong,
+body.light-theme .physical-intelligence aside strong {
+  color: #102033;
+}
+
+body.light-theme .physical-layer-card p,
+body.light-theme .physical-layer-card small,
+body.light-theme .physical-layer-card em,
+body.light-theme .physical-intelligence p,
+body.light-theme .physical-hero span,
+body.light-theme .physical-metrics small,
+body.light-theme .physical-stack-orbit small,
+body.light-theme .physical-layer-score small {
+  color: #43566c;
+}
+
+body.light-theme .physical-hero {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.88)),
+    url("assets/original-visuals/ai-chip-landscape.svg") center / cover;
+}
+
 .contact-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -10055,10 +10366,14 @@ body.light-theme .facts span {
   .timeline-home-grid,
   .heatmap-home-grid,
   .heatmap-grid,
+  .physical-home-grid,
+  .physical-layer-grid,
   .timeline-hero,
   .timeline-intelligence,
   .heatmap-hero,
   .heatmap-intelligence,
+  .physical-hero,
+  .physical-intelligence,
   .task-hero,
   .task-layout {
     grid-template-columns: 1fr;
@@ -10066,7 +10381,8 @@ body.light-theme .facts span {
 
   .task-metrics,
   .timeline-metrics,
-  .heatmap-metrics {
+  .heatmap-metrics,
+  .physical-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -10083,30 +10399,36 @@ body.light-theme .facts span {
   .task-hero,
   .timeline-hero,
   .heatmap-hero,
+  .physical-hero,
   .task-intel-panel,
   .task-watch-panel,
   .timeline-intelligence article,
   .timeline-intelligence aside,
   .heatmap-intelligence article,
-  .heatmap-intelligence aside {
+  .heatmap-intelligence aside,
+  .physical-intelligence article,
+  .physical-intelligence aside {
     padding: 20px;
   }
 
   .task-hero,
   .timeline-hero,
-  .heatmap-hero {
+  .heatmap-hero,
+  .physical-hero {
     min-height: 0;
   }
 
   .task-hero h1,
   .timeline-hero h1,
-  .heatmap-hero h1 {
+  .heatmap-hero h1,
+  .physical-hero h1 {
     font-size: 34px;
   }
 
   .task-metrics,
   .timeline-metrics,
-  .heatmap-metrics {
+  .heatmap-metrics,
+  .physical-metrics {
     grid-template-columns: 1fr;
   }
 
@@ -10139,7 +10461,9 @@ body.light-theme .facts span {
   .timeline-item a,
   .timeline-intelligence a,
   .heatmap-card a,
-  .heatmap-intelligence a {
+  .heatmap-intelligence a,
+  .physical-layer-card a,
+  .physical-intelligence a {
     width: 100%;
   }
 

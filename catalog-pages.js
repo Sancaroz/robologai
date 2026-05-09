@@ -5,6 +5,7 @@ const pageState = {
   tasks: [],
   timeline: [],
   heatmap: [],
+  physicalAi: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -187,6 +188,36 @@ const heatmapFallback = [
     keyCompanies: ["FANUC", "Yaskawa Motoman", "Honda Robotics", "Kawasaki Robotics"],
     marketStage: "Industrial depth",
     link: "country.html?country=japan"
+  }
+];
+
+const physicalAiFallback = [
+  {
+    layer: "Embodied Models",
+    score: 92,
+    signal: "Vision-language-action models that connect perception, instructions, memory, and robot motion.",
+    whyItMatters: "This is the software layer that may let robots generalize across tasks instead of only repeating fixed routines.",
+    companies: ["NVIDIA", "Physical Intelligence", "Google DeepMind", "Figure AI", "OpenAI"],
+    robotExamples: ["Figure 02", "Optimus", "Apollo"],
+    link: "blog/physical-ai-explained.html"
+  },
+  {
+    layer: "Robot Bodies and Actuation",
+    score: 87,
+    signal: "Motors, joints, hands, batteries, balance, and manipulation determine whether AI can do useful physical work.",
+    whyItMatters: "Physical AI fails if the body cannot safely move, lift, grasp, balance, or operate for enough time.",
+    companies: ["Tesla", "Unitree Robotics", "Boston Dynamics", "Agility Robotics", "Apptronik"],
+    robotExamples: ["Optimus", "G1", "Atlas", "Digit", "Apollo"],
+    link: "leaderboard.html"
+  },
+  {
+    layer: "Simulation and Synthetic Worlds",
+    score: 84,
+    signal: "Robots train and test in simulated environments before risky real-world deployment.",
+    whyItMatters: "Simulation lowers cost, improves safety, and creates scalable training loops for physical tasks.",
+    companies: ["NVIDIA", "Intrinsic", "Toyota Research Institute", "Open Robotics"],
+    robotExamples: ["Atlas", "Digit", "Unitree G1"],
+    link: "companies/nvidia.html"
   }
 ];
 
@@ -770,6 +801,46 @@ function renderHeatmapPage() {
       <article><strong>${pageEscape(top?.region || "Global")}</strong><small>Strongest ecosystem</small></article>
       <article><strong>${totalCompanies}+</strong><small>Companies represented</small></article>
       <article><strong>${pageEscape(fastest?.region || "China")}</strong><small>Fastest hardware curve</small></article>
+    `;
+  }
+}
+
+function physicalAiCard(item, compact = false) {
+  const score = Math.max(0, Math.min(100, Number(item.score || 0)));
+  const companies = Array.isArray(item.companies) ? item.companies : String(item.companies || "").split(",").map((company) => company.trim()).filter(Boolean);
+  const robots = Array.isArray(item.robotExamples) ? item.robotExamples : String(item.robotExamples || "").split(",").map((robot) => robot.trim()).filter(Boolean);
+  return `
+    <article class="physical-layer-card">
+      <div class="physical-layer-score" style="--physical-score:${score / 100}"><strong>${score}</strong><small>Signal</small></div>
+      <span>${pageEscape(item.layer)}</span>
+      <h3>${pageEscape(item.signal)}</h3>
+      <p>${pageEscape(compact ? companies.join(" · ") : item.whyItMatters)}</p>
+      ${compact ? "" : `<small>${pageEscape(companies.join(" · "))}</small><em>${pageEscape(robots.join(" · "))}</em>`}
+      <a href="${pageEscape(compact ? "physical-ai.html" : item.link || "blog/physical-ai-explained.html")}">${compact ? "Open Physical AI hub" : "Open layer"}</a>
+    </article>
+  `;
+}
+
+function renderPhysicalAiPage() {
+  const layers = pageState.physicalAi.length ? pageState.physicalAi : physicalAiFallback;
+  const sorted = [...layers].sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+  const homeTarget = document.querySelector("[data-home-physical-ai]");
+  const grid = document.querySelector("[data-physical-ai-grid]");
+  const metrics = document.querySelector("[data-physical-metrics]");
+  if (homeTarget) {
+    homeTarget.innerHTML = sorted.slice(0, 3).map((item) => physicalAiCard(item, true)).join("");
+  }
+  if (grid) {
+    grid.innerHTML = sorted.map((item) => physicalAiCard(item)).join("");
+  }
+  if (metrics) {
+    const top = sorted[0];
+    const companies = new Set(sorted.flatMap((item) => Array.isArray(item.companies) ? item.companies : [])).size;
+    metrics.innerHTML = `
+      <article><strong>${sorted.length}</strong><small>Stack layers</small></article>
+      <article><strong>${pageEscape(top?.score || "0")}</strong><small>Top signal score</small></article>
+      <article><strong>${pageEscape(top?.layer || "Models")}</strong><small>Fastest moving layer</small></article>
+      <article><strong>${companies}+</strong><small>Companies referenced</small></article>
     `;
   }
 }
@@ -1804,13 +1875,14 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks, timeline, heatmap] = await Promise.all([
+  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
     loadJson("data/tasks.json", taskFallback),
     loadJson("data/timeline.json", timelineFallback),
-    loadJson("data/heatmap.json", heatmapFallback)
+    loadJson("data/heatmap.json", heatmapFallback),
+    loadJson("data/physical-ai.json", physicalAiFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
@@ -1818,6 +1890,7 @@ async function initCatalogPages() {
   pageState.tasks = tasks;
   pageState.timeline = timeline;
   pageState.heatmap = heatmap;
+  pageState.physicalAi = physicalAi;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -1834,6 +1907,7 @@ async function initCatalogPages() {
   renderTaskMaps();
   renderTimelinePage();
   renderHeatmapPage();
+  renderPhysicalAiPage();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();
