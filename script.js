@@ -749,10 +749,8 @@ function initNewsletterSignup() {
   const form = document.querySelector("[data-newsletter-form]");
   if (!form) return;
   const emailInput = form.querySelector('input[name="email"]');
-  const submitButton = form.querySelector('button[type="submit"]');
   const message = document.querySelector("[data-newsletter-message]");
-  const fallbackLink = document.querySelector(".newsletter-fallback-link");
-  const endpoint = form.dataset.endpoint || "/api/subscribe";
+  const signupUrl = form.dataset.signupUrl || "https://robologai.beehiiv.com/subscribe?ref=c0nG8IuEjz";
 
   const setMessage = (text, state = "") => {
     if (!message) return;
@@ -767,32 +765,8 @@ function initNewsletterSignup() {
       setMessage("Please enter your email.", "error");
       return;
     }
-
-    submitButton.disabled = true;
-    setMessage("Joining...", "loading");
-
-    try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
-      });
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        const message = result.detail || result.error || "subscribe_failed";
-        throw new Error(message);
-      }
-      setMessage("You are on the list.", "success");
-      form.reset();
-      fallbackLink?.classList.remove("is-visible");
-    } catch (error) {
-      const cleanMessage = String(error.message || "").slice(0, 140);
-      setMessage(cleanMessage && cleanMessage !== "Failed to fetch" ? cleanMessage : "Use the signup page for now.", "error");
-      fallbackLink?.classList.add("is-visible");
-    } finally {
-      submitButton.disabled = false;
-    }
+    setMessage("Opening secure signup...", "loading");
+    window.open(signupUrl, "_blank", "noopener,noreferrer");
   });
 }
 
