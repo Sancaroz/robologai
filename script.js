@@ -777,13 +777,18 @@ function initNewsletterSignup() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
       });
+      const result = await response.json().catch(() => ({}));
 
-      if (!response.ok) throw new Error("subscribe_failed");
+      if (!response.ok) {
+        const message = result.detail || result.error || "subscribe_failed";
+        throw new Error(message);
+      }
       setMessage("You are on the list.", "success");
       form.reset();
       fallbackLink?.classList.remove("is-visible");
     } catch (error) {
-      setMessage("Use the signup page for now.", "error");
+      const cleanMessage = String(error.message || "").slice(0, 140);
+      setMessage(cleanMessage && cleanMessage !== "Failed to fetch" ? cleanMessage : "Use the signup page for now.", "error");
       fallbackLink?.classList.add("is-visible");
     } finally {
       submitButton.disabled = false;
