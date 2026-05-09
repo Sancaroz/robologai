@@ -7,6 +7,7 @@ const pageState = {
   heatmap: [],
   physicalAi: [],
   robotEconomy: [],
+  globalMap: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -189,6 +190,51 @@ const heatmapFallback = [
     keyCompanies: ["FANUC", "Yaskawa Motoman", "Honda Robotics", "Kawasaki Robotics"],
     marketStage: "Industrial depth",
     link: "country.html?country=japan"
+  }
+];
+
+const globalMapFallback = [
+  {
+    region: "United States",
+    slug: "united-states",
+    score: 96,
+    companies: 70,
+    robots: 9,
+    role: "AI labs, humanoid platforms, autonomy, defense robotics, robotics infrastructure",
+    keyCompanies: ["Tesla", "Figure AI", "Boston Dynamics", "Apptronik", "NVIDIA"],
+    corridor: "Silicon Valley · Boston · Austin · Pittsburgh",
+    momentum: "Global leader",
+    link: "country.html?country=united-states",
+    x: 26,
+    y: 42
+  },
+  {
+    region: "China",
+    slug: "china",
+    score: 91,
+    companies: 18,
+    robots: 7,
+    role: "Affordable humanoids, quadrupeds, consumer robots, rapid hardware iteration",
+    keyCompanies: ["Unitree Robotics", "AgiBot", "UBTECH Robotics", "Pudu Robotics", "LimX Dynamics"],
+    corridor: "Shenzhen · Hangzhou · Shanghai · Beijing",
+    momentum: "Fastest hardware curve",
+    link: "country.html?country=china",
+    x: 74,
+    y: 46
+  },
+  {
+    region: "Japan",
+    slug: "japan",
+    score: 74,
+    companies: 10,
+    robots: 3,
+    role: "Industrial robotics, service robotics, factory automation, legacy humanoid research",
+    keyCompanies: ["FANUC", "Yaskawa Motoman", "Honda Robotics", "Kawasaki Robotics"],
+    corridor: "Tokyo · Osaka · Nagoya",
+    momentum: "Industrial depth",
+    link: "country.html?country=japan",
+    x: 82,
+    y: 49
   }
 ];
 
@@ -854,6 +900,56 @@ function renderHeatmapPage() {
       <article><strong>${totalCompanies}+</strong><small>Companies represented</small></article>
       <article><strong>${pageEscape(fastest?.region || "China")}</strong><small>Fastest hardware curve</small></article>
     `;
+  }
+}
+
+function globalMapCard(item, compact = false) {
+  const score = Math.max(0, Math.min(100, Number(item.score || 0)));
+  const companies = Array.isArray(item.keyCompanies) ? item.keyCompanies : String(item.keyCompanies || "").split(",").map((company) => company.trim()).filter(Boolean);
+  return `
+    <article class="global-map-card">
+      <div class="global-map-score" style="--map-score:${score / 100}"><strong>${score}</strong><small>Index</small></div>
+      <span>${pageEscape(item.region)}</span>
+      <h3>${pageEscape(item.role || item.dominantSignal)}</h3>
+      <p>${pageEscape(companies.join(" · "))}</p>
+      ${compact ? "" : `
+        <dl>
+          <div><dt>Companies</dt><dd>${pageEscape(item.companies)}</dd></div>
+          <div><dt>Robots</dt><dd>${pageEscape(item.robots)}</dd></div>
+          <div><dt>Corridor</dt><dd>${pageEscape(item.corridor || item.marketStage)}</dd></div>
+        </dl>
+      `}
+      <a href="${pageEscape(compact ? "global-robotics-map.html" : item.link || "country.html")}">${compact ? "Open global map" : "Open country tracker"}</a>
+    </article>
+  `;
+}
+
+function renderGlobalRoboticsMap() {
+  const map = pageState.globalMap.length ? pageState.globalMap : globalMapFallback;
+  const sorted = [...map].sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+  const homeTarget = document.querySelector("[data-home-global-map]");
+  const grid = document.querySelector("[data-global-map-grid]");
+  const metrics = document.querySelector("[data-global-map-metrics]");
+  const pins = document.querySelector("[data-global-map-pins]");
+  if (homeTarget) {
+    homeTarget.innerHTML = sorted.slice(0, 3).map((item) => globalMapCard(item, true)).join("");
+  }
+  if (grid) {
+    grid.innerHTML = sorted.map((item) => globalMapCard(item)).join("");
+  }
+  if (metrics) {
+    const top = sorted[0];
+    const totalCompanies = sorted.reduce((sum, item) => sum + Number(item.companies || 0), 0);
+    const totalRobots = sorted.reduce((sum, item) => sum + Number(item.robots || 0), 0);
+    metrics.innerHTML = `
+      <article><strong>${sorted.length}</strong><small>Regions mapped</small></article>
+      <article><strong>${totalCompanies}+</strong><small>Company references</small></article>
+      <article><strong>${totalRobots}+</strong><small>Robot platforms</small></article>
+      <article><strong>${pageEscape(top?.region || "USA")}</strong><small>Strongest ecosystem</small></article>
+    `;
+  }
+  if (pins) {
+    pins.innerHTML = sorted.slice(0, 8).map((item) => `<i style="--x:${Number(item.x || 50)}%;--y:${Number(item.y || 50)}%" title="${pageEscape(item.region)}"></i>`).join("");
   }
 }
 
@@ -1969,7 +2065,7 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi, robotEconomy] = await Promise.all([
+  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi, robotEconomy, globalMap] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
@@ -1977,7 +2073,8 @@ async function initCatalogPages() {
     loadJson("data/timeline.json", timelineFallback),
     loadJson("data/heatmap.json", heatmapFallback),
     loadJson("data/physical-ai.json", physicalAiFallback),
-    loadJson("data/robot-economy.json", robotEconomyFallback)
+    loadJson("data/robot-economy.json", robotEconomyFallback),
+    loadJson("data/global-robotics-map.json", globalMapFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
@@ -1987,6 +2084,7 @@ async function initCatalogPages() {
   pageState.heatmap = heatmap;
   pageState.physicalAi = physicalAi;
   pageState.robotEconomy = robotEconomy;
+  pageState.globalMap = globalMap;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -2003,6 +2101,7 @@ async function initCatalogPages() {
   renderTaskMaps();
   renderTimelinePage();
   renderHeatmapPage();
+  renderGlobalRoboticsMap();
   renderPhysicalAiPage();
   renderRobotEconomyPage();
   renderVideosPage();

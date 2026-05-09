@@ -8460,6 +8460,370 @@ body.light-theme .heatmap-hero {
     url("assets/original-visuals/data-constellation.svg") center / cover;
 }
 
+.global-map-home-section,
+.global-map-section,
+.global-map-hero,
+.global-map-metrics,
+.global-map-intelligence {
+  position: relative;
+  z-index: 1;
+}
+
+.global-map-home-section,
+.global-map-section {
+  margin: 24px 0;
+}
+
+.global-map-home-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.44fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.global-map-home-grid,
+.global-map-grid,
+.global-map-metrics,
+.global-map-intelligence {
+  display: grid;
+  gap: 14px;
+}
+
+.global-map-home-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.global-map-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.global-map-card,
+.global-map-intelligence article,
+.global-map-intelligence aside,
+.global-map-metrics article,
+.global-map-orbit {
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(11, 23, 42, 0.94), rgba(5, 12, 24, 0.88)),
+    radial-gradient(circle at 88% 12%, rgba(120, 231, 255, 0.16), transparent 34%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+}
+
+.global-map-card {
+  display: grid;
+  gap: 13px;
+  min-height: 100%;
+  padding: 20px;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.global-map-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(120, 231, 255, 0.42);
+  box-shadow: 0 28px 90px rgba(56, 189, 248, 0.14);
+}
+
+.global-map-score {
+  position: relative;
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 180deg, #78e7ff calc(var(--map-score, 0.5) * 1turn), rgba(148, 163, 184, 0.12) 0),
+    rgba(2, 8, 18, 0.7);
+  box-shadow: 0 0 32px rgba(120, 231, 255, 0.18);
+}
+
+.global-map-score::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: rgba(2, 8, 18, 0.9);
+}
+
+.global-map-score strong,
+.global-map-score small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+.global-map-score strong {
+  color: #f4fbff;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.global-map-score small {
+  color: #9fb0c8;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.global-map-card > span,
+.global-map-intelligence article > span {
+  color: var(--blue-2);
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.global-map-card h3 {
+  margin: 0;
+  color: #f4fbff;
+  font-size: clamp(18px, 1.7vw, 23px);
+  line-height: 1.14;
+}
+
+.global-map-card p,
+.global-map-intelligence p,
+.global-map-orbit small {
+  margin: 0;
+  color: #9fb0c8;
+  line-height: 1.55;
+}
+
+.global-map-card dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.global-map-card dl div {
+  display: grid;
+  gap: 3px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.global-map-card dt,
+.global-map-card dd {
+  margin: 0;
+  font-size: 12px;
+}
+
+.global-map-card dt {
+  color: #7f91aa;
+  font-weight: 850;
+}
+
+.global-map-card dd {
+  color: #f4fbff;
+  font-weight: 900;
+}
+
+.global-map-card a,
+.global-map-intelligence a {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid rgba(120, 231, 255, 0.28);
+  border-radius: 999px;
+  color: #dff9ff;
+  background: rgba(120, 231, 255, 0.08);
+  font-weight: 900;
+}
+
+.global-map-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.45fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 430px;
+  margin: 24px 0;
+  padding: 44px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    radial-gradient(circle at 18% 86%, rgba(45, 212, 191, 0.12), transparent 34%),
+    linear-gradient(135deg, rgba(4, 10, 22, 0.96), rgba(10, 27, 46, 0.86)),
+    url("assets/original-visuals/data-constellation.svg") center / cover;
+  box-shadow: var(--shadow);
+}
+
+.global-map-hero p {
+  margin: 0 0 12px;
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.global-map-hero h1 {
+  max-width: 820px;
+  margin: 0 0 18px;
+  font-size: clamp(40px, 6vw, 78px);
+  line-height: 0.94;
+}
+
+.global-map-hero span {
+  display: block;
+  max-width: 720px;
+  color: #c4cedc;
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.global-map-orbit {
+  position: relative;
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(120, 231, 255, 0.1), transparent 52%),
+    linear-gradient(90deg, transparent 0 12%, rgba(120, 231, 255, 0.08) 12% 13%, transparent 13% 25%),
+    rgba(2, 8, 18, 0.45);
+}
+
+.global-map-orbit.compact {
+  min-height: 100%;
+}
+
+.global-map-orbit::before,
+.global-map-orbit::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(120, 231, 255, 0.2);
+  border-radius: 50%;
+}
+
+.global-map-orbit::before {
+  width: 230px;
+  height: 230px;
+}
+
+.global-map-orbit::after {
+  width: 320px;
+  height: 120px;
+  transform: rotate(-12deg);
+}
+
+.global-map-orbit i {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #7df9ff;
+  box-shadow: 0 0 24px rgba(125, 249, 255, 0.82);
+}
+
+.global-map-orbit strong,
+.global-map-orbit small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 240px;
+  text-align: center;
+}
+
+.global-map-orbit strong {
+  color: #f4fbff;
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.global-map-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 24px;
+}
+
+.global-map-metrics article {
+  padding: 18px;
+}
+
+.global-map-metrics strong,
+.global-map-metrics small {
+  display: block;
+}
+
+.global-map-metrics strong {
+  margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 36px);
+}
+
+.global-map-metrics small {
+  color: #9fb0c8;
+  font-weight: 850;
+}
+
+.global-map-intelligence {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  margin: 24px 0;
+}
+
+.global-map-intelligence article,
+.global-map-intelligence aside {
+  padding: 24px;
+}
+
+.global-map-intelligence h2 {
+  max-width: 780px;
+  margin: 10px 0 12px;
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.04;
+}
+
+.global-map-intelligence aside {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.global-map-intelligence aside strong {
+  font-size: 24px;
+}
+
+body.light-theme .global-map-card,
+body.light-theme .global-map-intelligence article,
+body.light-theme .global-map-intelligence aside,
+body.light-theme .global-map-metrics article,
+body.light-theme .global-map-orbit {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+body.light-theme .global-map-card h3,
+body.light-theme .global-map-card dd,
+body.light-theme .global-map-orbit strong,
+body.light-theme .global-map-intelligence aside strong,
+body.light-theme .global-map-score strong {
+  color: #102033;
+}
+
+body.light-theme .global-map-card p,
+body.light-theme .global-map-card dt,
+body.light-theme .global-map-intelligence p,
+body.light-theme .global-map-hero span,
+body.light-theme .global-map-metrics small,
+body.light-theme .global-map-orbit small,
+body.light-theme .global-map-score small {
+  color: #43566c;
+}
+
+body.light-theme .global-map-score::after {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+body.light-theme .global-map-hero {
+  background:
+    radial-gradient(circle at 78% 20%, rgba(120, 231, 255, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.88)),
+    url("assets/original-visuals/data-constellation.svg") center / cover;
+}
+
 .physical-home-section,
 .physical-layer-section,
 .physical-hero,
@@ -10655,6 +11019,9 @@ body.light-theme .facts span {
   .timeline-home-grid,
   .heatmap-home-grid,
   .heatmap-grid,
+  .global-map-home-layout,
+  .global-map-home-grid,
+  .global-map-grid,
   .physical-home-grid,
   .physical-layer-grid,
   .economy-home-grid,
@@ -10663,6 +11030,8 @@ body.light-theme .facts span {
   .timeline-intelligence,
   .heatmap-hero,
   .heatmap-intelligence,
+  .global-map-hero,
+  .global-map-intelligence,
   .physical-hero,
   .physical-intelligence,
   .economy-hero,
@@ -10675,6 +11044,7 @@ body.light-theme .facts span {
   .task-metrics,
   .timeline-metrics,
   .heatmap-metrics,
+  .global-map-metrics,
   .physical-metrics,
   .economy-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -10693,6 +11063,7 @@ body.light-theme .facts span {
   .task-hero,
   .timeline-hero,
   .heatmap-hero,
+  .global-map-hero,
   .physical-hero,
   .economy-hero,
   .task-intel-panel,
@@ -10701,6 +11072,8 @@ body.light-theme .facts span {
   .timeline-intelligence aside,
   .heatmap-intelligence article,
   .heatmap-intelligence aside,
+  .global-map-intelligence article,
+  .global-map-intelligence aside,
   .physical-intelligence article,
   .physical-intelligence aside,
   .economy-intelligence article,
@@ -10711,6 +11084,7 @@ body.light-theme .facts span {
   .task-hero,
   .timeline-hero,
   .heatmap-hero,
+  .global-map-hero,
   .physical-hero,
   .economy-hero {
     min-height: 0;
@@ -10719,6 +11093,7 @@ body.light-theme .facts span {
   .task-hero h1,
   .timeline-hero h1,
   .heatmap-hero h1,
+  .global-map-hero h1,
   .physical-hero h1,
   .economy-hero h1 {
     font-size: 34px;
@@ -10727,6 +11102,7 @@ body.light-theme .facts span {
   .task-metrics,
   .timeline-metrics,
   .heatmap-metrics,
+  .global-map-metrics,
   .physical-metrics,
   .economy-metrics {
     grid-template-columns: 1fr;
@@ -10762,6 +11138,8 @@ body.light-theme .facts span {
   .timeline-intelligence a,
   .heatmap-card a,
   .heatmap-intelligence a,
+  .global-map-card a,
+  .global-map-intelligence a,
   .physical-layer-card a,
   .physical-intelligence a,
   .economy-card a,
@@ -10774,7 +11152,16 @@ body.light-theme .facts span {
     gap: 3px;
   }
 
+  .global-map-card dl div {
+    display: grid;
+    gap: 3px;
+  }
+
   .heatmap-card dd {
+    text-align: left;
+  }
+
+  .global-map-card dd {
     text-align: left;
   }
 }
