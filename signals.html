@@ -127,6 +127,36 @@
         </aside>
       </section>
 
+      <section class="signals-filter-panel" aria-label="Filter robotics signals">
+        <div class="signals-filter-head">
+          <p>Signal Console</p>
+          <h2>Filter the robotics intelligence feed.</h2>
+        </div>
+        <strong data-signals-count>12 visible signals</strong>
+        <div class="signals-filter-grid" data-signals-filters>
+          <div>
+            <span>Signal Type</span>
+            <button class="is-active" type="button" data-signal-type-filter="all">All</button>
+            <button type="button" data-signal-type-filter="humanoid">Humanoid</button>
+            <button type="button" data-signal-type-filter="emotional-ai">Emotional AI</button>
+            <button type="button" data-signal-type-filter="warehouse">Warehouse</button>
+          </div>
+          <div>
+            <span>Impact</span>
+            <button class="is-active" type="button" data-signal-impact-filter="all">All</button>
+            <button type="button" data-signal-impact-filter="high">High</button>
+            <button type="button" data-signal-impact-filter="medium">Medium</button>
+          </div>
+          <div>
+            <span>Market</span>
+            <button class="is-active" type="button" data-signal-country-filter="all">All</button>
+            <button type="button" data-signal-country-filter="usa">USA</button>
+            <button type="button" data-signal-country-filter="china">China</button>
+            <button type="button" data-signal-country-filter="global">Global</button>
+          </div>
+        </div>
+      </section>
+
       <section class="signals-section">
         <div class="section-heading compact">
           <p>Latest Robotics Signals</p>

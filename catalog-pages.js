@@ -16,7 +16,10 @@ const pageState = {
   robotCountryFilter: "all",
   robotScoreFilter: "all",
   robotVideoOnly: false,
-  robotPricedOnly: false
+  robotPricedOnly: false,
+  signalTypeFilter: "all",
+  signalImpactFilter: "all",
+  signalCountryFilter: "all"
 };
 
 const robotFallback = [
@@ -722,14 +725,38 @@ function signalImpactClass(impact = "") {
   return "impact-early";
 }
 
+function signalFilterSlug(value = "") {
+  return pageNormalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "all";
+}
+
+function filteredSignals(signals) {
+  return signals.filter((item) => {
+    const type = signalFilterSlug(item.type);
+    const impact = signalFilterSlug(item.impact);
+    const country = countrySlug(item.country || broadCountryName(item.country || ""));
+    const matchesType = pageState.signalTypeFilter === "all" || type === pageState.signalTypeFilter;
+    const matchesImpact = pageState.signalImpactFilter === "all" || impact === pageState.signalImpactFilter;
+    const matchesCountry = pageState.signalCountryFilter === "all" || country === pageState.signalCountryFilter;
+    return matchesType && matchesImpact && matchesCountry;
+  });
+}
+
+function signalFilterButton(label, value, current, attr) {
+  const slug = value === "all" ? "all" : signalFilterSlug(value);
+  return `<button class="${current === slug ? "is-active" : ""}" type="button" ${attr}="${pageEscape(slug)}">${pageEscape(label)}</button>`;
+}
+
 function renderRoboticsSignalsPage() {
   const featured = document.querySelector("[data-signals-featured]");
   const feed = document.querySelector("[data-signals-feed]");
   const types = document.querySelector("[data-signals-types]");
   const metrics = document.querySelector("[data-signals-metrics]");
-  if (!featured && !feed && !types && !metrics) return;
+  const filters = document.querySelector("[data-signals-filters]");
+  const count = document.querySelector("[data-signals-count]");
+  if (!featured && !feed && !types && !metrics && !filters && !count) return;
 
   const signals = pageState.signals.length ? pageState.signals : signalFallback;
+  const visibleSignals = filteredSignals(signals);
   const highImpact = signals.filter((item) => pageNormalize(item.impact).includes("high")).length;
   const signalTypes = [...new Set(signals.map((item) => item.type).filter(Boolean))];
   const countries = [...new Set(signals.map((item) => broadCountryName(item.country || "")).filter(Boolean))];
@@ -744,7 +771,7 @@ function renderRoboticsSignalsPage() {
   }
 
   if (featured) {
-    const lead = signals[0];
+    const lead = visibleSignals[0] || signals[0];
     featured.innerHTML = `
       <span>${pageEscape(lead.type)} · ${pageEscape(lead.date)}</span>
       <h2>${pageEscape(lead.title)}</h2>
@@ -762,22 +789,47 @@ function renderRoboticsSignalsPage() {
     `;
   }
 
+  if (filters) {
+    const impactTypes = [...new Set(signals.map((item) => item.impact).filter(Boolean))];
+    filters.innerHTML = `
+      <div>
+        <span>Signal Type</span>
+        ${signalFilterButton("All", "all", pageState.signalTypeFilter, "data-signal-type-filter")}
+        ${signalTypes.map((type) => signalFilterButton(type, type, pageState.signalTypeFilter, "data-signal-type-filter")).join("")}
+      </div>
+      <div>
+        <span>Impact</span>
+        ${signalFilterButton("All", "all", pageState.signalImpactFilter, "data-signal-impact-filter")}
+        ${impactTypes.map((impact) => signalFilterButton(impact, impact, pageState.signalImpactFilter, "data-signal-impact-filter")).join("")}
+      </div>
+      <div>
+        <span>Market</span>
+        ${signalFilterButton("All", "all", pageState.signalCountryFilter, "data-signal-country-filter")}
+        ${countries.map((country) => signalFilterButton(country, country, pageState.signalCountryFilter, "data-signal-country-filter")).join("")}
+      </div>
+    `;
+  }
+
+  if (count) {
+    count.textContent = `${visibleSignals.length} visible signals`;
+  }
+
   if (feed) {
-    feed.innerHTML = signals.map((item, index) => `
+    feed.innerHTML = visibleSignals.map((item, index) => `
       <article class="signals-row">
         <div class="signals-row-index">#${String(index + 1).padStart(2, "0")}</div>
         <div class="signals-row-main">
           <span>${pageEscape(item.type)} · ${pageEscape(item.date)}</span>
           <h2>${pageEscape(item.title)}</h2>
           <p>${pageEscape(item.summary)}</p>
-          <small>${pageEscape(item.company)} · ${pageEscape(item.robot)} · ${pageEscape(item.country)}</small>
+          <small>${pageEscape(item.company)} · ${pageEscape(item.robot)} · ${pageEscape(item.country)} · ${pageEscape(item.category)}</small>
         </div>
         <div class="signals-row-side">
           <b class="signal-impact ${signalImpactClass(item.impact)}">${pageEscape(item.impact)}</b>
           <a href="${pageEscape(item.relatedUrl || item.source)}">View</a>
         </div>
       </article>
-    `).join("");
+    `).join("") || `<article class="signals-empty"><strong>No matching signals</strong><span>Try a broader filter combination.</span></article>`;
   }
 
   if (types) {
@@ -2059,6 +2111,31 @@ function renderComparePicker() {
 }
 
 function wireCatalogControls() {
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) return;
+
+    const signalTypeButton = target.closest("[data-signal-type-filter]");
+    if (signalTypeButton) {
+      pageState.signalTypeFilter = signalTypeButton.dataset.signalTypeFilter || "all";
+      renderRoboticsSignalsPage();
+      return;
+    }
+
+    const signalImpactButton = target.closest("[data-signal-impact-filter]");
+    if (signalImpactButton) {
+      pageState.signalImpactFilter = signalImpactButton.dataset.signalImpactFilter || "all";
+      renderRoboticsSignalsPage();
+      return;
+    }
+
+    const signalCountryButton = target.closest("[data-signal-country-filter]");
+    if (signalCountryButton) {
+      pageState.signalCountryFilter = signalCountryButton.dataset.signalCountryFilter || "all";
+      renderRoboticsSignalsPage();
+    }
+  });
+
   document.querySelectorAll("[data-catalog-search]").forEach((input) => {
     input.addEventListener("input", () => {
       pageState.query = input.value;
