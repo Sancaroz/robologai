@@ -1,0 +1,50 @@
+[
+  {
+    "layer": "Robot Labor",
+    "score": 88,
+    "signal": "Humanoids and mobile robots begin targeting repeatable physical work in factories, warehouses, inspection routes, and service environments.",
+    "companies": ["Figure AI", "Agility Robotics", "Apptronik", "Tesla", "1X Technologies"],
+    "metrics": ["Labor substitution", "Deployment pilots", "Task readiness"],
+    "link": "ai-vs-human-tasks.html"
+  },
+  {
+    "layer": "Robot Hardware",
+    "score": 84,
+    "signal": "Bodies, actuators, hands, batteries, sensors, and manufacturing scale define whether AI can become useful in the physical world.",
+    "companies": ["Unitree Robotics", "Boston Dynamics", "Tesla", "Apptronik", "Agility Robotics"],
+    "metrics": ["Bill of materials", "Reliability", "Price curve"],
+    "link": "leaderboard.html"
+  },
+  {
+    "layer": "Physical AI Data",
+    "score": 81,
+    "signal": "Teleoperation, simulation, sensor logs, video, and robot fleet feedback become the training fuel for embodied intelligence.",
+    "companies": ["Physical Intelligence", "NVIDIA", "Google DeepMind", "Figure AI", "Sanctuary AI"],
+    "metrics": ["Robot data loops", "Teleoperation", "Simulation scale"],
+    "link": "physical-ai.html"
+  },
+  {
+    "layer": "Deployment Infrastructure",
+    "score": 76,
+    "signal": "Robots need charging, monitoring, fleet management, maintenance, safety tooling, mapping, and integration before they scale.",
+    "companies": ["Formant", "Foxglove", "Open Robotics", "Intrinsic", "Realtime Robotics"],
+    "metrics": ["Fleet operations", "Developer tools", "Safety systems"],
+    "link": "companies.html"
+  },
+  {
+    "layer": "Public Market Proxies",
+    "score": 72,
+    "signal": "Most pure-play humanoid builders remain private, so public exposure comes through automation, semiconductors, industrial robotics, and parent companies.",
+    "companies": ["NVIDIA", "Tesla", "ABB Robotics", "FANUC", "Intuitive Surgical"],
+    "metrics": ["Ticker visibility", "Robotics exposure", "AI infrastructure"],
+    "link": "market.html"
+  },
+  {
+    "layer": "Machine Economy",
+    "score": 63,
+    "signal": "Robots, autonomous machines, DePIN networks, and machine payments point toward a future where machines become economic actors.",
+    "companies": ["peaq", "XMAQUINA", "Fetch.ai", "Autonolas"],
+    "metrics": ["Machine identity", "DePIN networks", "Autonomous payments"],
+    "link": "blog/peaq-machine-economy-depin-ecosystem.html"
+  }
+]

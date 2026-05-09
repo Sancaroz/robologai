@@ -6,6 +6,7 @@ const pageState = {
   timeline: [],
   heatmap: [],
   physicalAi: [],
+  robotEconomy: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -218,6 +219,57 @@ const physicalAiFallback = [
     companies: ["NVIDIA", "Intrinsic", "Toyota Research Institute", "Open Robotics"],
     robotExamples: ["Atlas", "Digit", "Unitree G1"],
     link: "companies/nvidia.html"
+  }
+];
+
+const robotEconomyFallback = [
+  {
+    layer: "Robot Labor",
+    score: 88,
+    signal: "Humanoids and mobile robots begin targeting repeatable physical work in factories, warehouses, inspection routes, and service environments.",
+    companies: ["Figure AI", "Agility Robotics", "Apptronik", "Tesla", "1X Technologies"],
+    metrics: ["Labor substitution", "Deployment pilots", "Task readiness"],
+    link: "ai-vs-human-tasks.html"
+  },
+  {
+    layer: "Robot Hardware",
+    score: 84,
+    signal: "Bodies, actuators, hands, batteries, sensors, and manufacturing scale define whether AI can become useful in the physical world.",
+    companies: ["Unitree Robotics", "Boston Dynamics", "Tesla", "Apptronik", "Agility Robotics"],
+    metrics: ["Bill of materials", "Reliability", "Price curve"],
+    link: "leaderboard.html"
+  },
+  {
+    layer: "Physical AI Data",
+    score: 81,
+    signal: "Teleoperation, simulation, sensor logs, video, and robot fleet feedback become the training fuel for embodied intelligence.",
+    companies: ["Physical Intelligence", "NVIDIA", "Google DeepMind", "Figure AI", "Sanctuary AI"],
+    metrics: ["Robot data loops", "Teleoperation", "Simulation scale"],
+    link: "physical-ai.html"
+  },
+  {
+    layer: "Deployment Infrastructure",
+    score: 76,
+    signal: "Robots need charging, monitoring, fleet management, maintenance, safety tooling, mapping, and integration before they scale.",
+    companies: ["Formant", "Foxglove", "Open Robotics", "Intrinsic", "Realtime Robotics"],
+    metrics: ["Fleet operations", "Developer tools", "Safety systems"],
+    link: "companies.html"
+  },
+  {
+    layer: "Public Market Proxies",
+    score: 72,
+    signal: "Most pure-play humanoid builders remain private, so public exposure comes through automation, semiconductors, industrial robotics, and parent companies.",
+    companies: ["NVIDIA", "Tesla", "ABB Robotics", "FANUC", "Intuitive Surgical"],
+    metrics: ["Ticker visibility", "Robotics exposure", "AI infrastructure"],
+    link: "market.html"
+  },
+  {
+    layer: "Machine Economy",
+    score: 63,
+    signal: "Robots, autonomous machines, DePIN networks, and machine payments point toward a future where machines become economic actors.",
+    companies: ["peaq", "XMAQUINA", "Fetch.ai", "Autonolas"],
+    metrics: ["Machine identity", "DePIN networks", "Autonomous payments"],
+    link: "blog/peaq-machine-economy-depin-ecosystem.html"
   }
 ];
 
@@ -841,6 +893,48 @@ function renderPhysicalAiPage() {
       <article><strong>${pageEscape(top?.score || "0")}</strong><small>Top signal score</small></article>
       <article><strong>${pageEscape(top?.layer || "Models")}</strong><small>Fastest moving layer</small></article>
       <article><strong>${companies}+</strong><small>Companies referenced</small></article>
+    `;
+  }
+}
+
+function robotEconomyCard(item, compact = false) {
+  const score = Math.max(0, Math.min(100, Number(item.score || 0)));
+  const companies = Array.isArray(item.companies) ? item.companies : String(item.companies || "").split(",").map((company) => company.trim()).filter(Boolean);
+  const metrics = Array.isArray(item.metrics) ? item.metrics : String(item.metrics || "").split(",").map((metric) => metric.trim()).filter(Boolean);
+  return `
+    <article class="economy-card">
+      <div class="economy-score" style="--economy-score:${score / 100}"><strong>${score}</strong><small>Signal</small></div>
+      <span>${pageEscape(item.layer)}</span>
+      <h3>${pageEscape(item.signal)}</h3>
+      <p>${pageEscape(compact ? companies.join(" · ") : metrics.join(" · "))}</p>
+      ${compact ? "" : `<small>${pageEscape(companies.join(" · "))}</small>`}
+      <a href="${pageEscape(compact ? "robot-economy.html" : item.link || "robot-economy.html")}">${compact ? "Open Robot Economy" : "Open layer"}</a>
+    </article>
+  `;
+}
+
+function renderRobotEconomyPage() {
+  const layers = pageState.robotEconomy.length ? pageState.robotEconomy : robotEconomyFallback;
+  const sorted = [...layers].sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+  const homeTarget = document.querySelector("[data-home-economy]");
+  const grid = document.querySelector("[data-economy-grid]");
+  const metrics = document.querySelector("[data-economy-metrics]");
+  if (homeTarget) {
+    homeTarget.innerHTML = sorted.slice(0, 3).map((item) => robotEconomyCard(item, true)).join("");
+  }
+  if (grid) {
+    grid.innerHTML = sorted.map((item) => robotEconomyCard(item)).join("");
+  }
+  if (metrics) {
+    const top = sorted[0];
+    const companyRefs = new Set(sorted.flatMap((item) => Array.isArray(item.companies) ? item.companies : [])).size;
+    const publicLayer = sorted.find((item) => pageNormalize(item.layer).includes("public")) || sorted[0];
+    metrics.innerHTML = `
+      <article><strong>${sorted.length}</strong><small>Economy layers</small></article>
+      <article><strong>${pageEscape(top?.score || "0")}</strong><small>Top signal score</small></article>
+      <article><strong>${pageEscape(top?.layer || "Robot Labor")}</strong><small>Fastest moving layer</small></article>
+      <article><strong>${companyRefs}+</strong><small>Company references</small></article>
+      <article><strong>${pageEscape(publicLayer?.layer || "Market")}</strong><small>Investor proxy layer</small></article>
     `;
   }
 }
@@ -1875,14 +1969,15 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi] = await Promise.all([
+  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi, robotEconomy] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
     loadJson("data/tasks.json", taskFallback),
     loadJson("data/timeline.json", timelineFallback),
     loadJson("data/heatmap.json", heatmapFallback),
-    loadJson("data/physical-ai.json", physicalAiFallback)
+    loadJson("data/physical-ai.json", physicalAiFallback),
+    loadJson("data/robot-economy.json", robotEconomyFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
@@ -1891,6 +1986,7 @@ async function initCatalogPages() {
   pageState.timeline = timeline;
   pageState.heatmap = heatmap;
   pageState.physicalAi = physicalAi;
+  pageState.robotEconomy = robotEconomy;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -1908,6 +2004,7 @@ async function initCatalogPages() {
   renderTimelinePage();
   renderHeatmapPage();
   renderPhysicalAiPage();
+  renderRobotEconomyPage();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();
