@@ -3,6 +3,18 @@
     {
       "status": "Published",
       "type": "Analysis",
+      "title": "Can Türkiye Build Its Own Humanoid Robotics Future? Inside the Rise of AKINROBOTICS",
+      "slug": "akinrobotics-turkiye-humanoid-robotics-future",
+      "url": "blog/akinrobotics-turkiye-humanoid-robotics-future.html",
+      "date": "2026-05-09",
+      "category": "Turkish Robotics",
+      "excerpt": "AKINROBOTICS shows how Türkiye is trying to build a domestic humanoid robotics and Physical AI ecosystem from the ground up.",
+      "body": "RoboLogAI analysis: AKINROBOTICS represents a regional robotics story, where Türkiye is attempting to participate in humanoid robots, service robots, industrial robotics, and the Physical AI era.",
+      "featured": true
+    },
+    {
+      "status": "Published",
+      "type": "Analysis",
       "title": "Roomba's Creator Unveils a New Kind of Robot",
       "slug": "roomba-creator-familiar-emotional-ai-robot",
       "url": "blog/roomba-creator-familiar-emotional-ai-robot.html",
