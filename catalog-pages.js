@@ -4,6 +4,7 @@ const pageState = {
   signals: [],
   tasks: [],
   timeline: [],
+  heatmap: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -150,6 +151,42 @@ const timelineFallback = [
     impact: "Shows a shift from utility-only machines toward robots designed around presence, behavior, and emotional response.",
     signal: "Human-robot relationship",
     link: "blog/roomba-creator-familiar-emotional-ai-robot.html"
+  }
+];
+
+const heatmapFallback = [
+  {
+    region: "United States",
+    slug: "united-states",
+    score: 96,
+    companies: 70,
+    robots: 9,
+    dominantSignal: "Humanoid platforms, AI labs, defense robotics, autonomous vehicles",
+    keyCompanies: ["Tesla", "Figure AI", "Boston Dynamics", "Apptronik", "NVIDIA"],
+    marketStage: "Global leader",
+    link: "country.html?country=united-states"
+  },
+  {
+    region: "China",
+    slug: "china",
+    score: 91,
+    companies: 18,
+    robots: 7,
+    dominantSignal: "Affordable humanoids, quadrupeds, consumer robotics, rapid hardware iteration",
+    keyCompanies: ["Unitree Robotics", "AgiBot", "UBTECH Robotics", "Pudu Robotics", "LimX Dynamics"],
+    marketStage: "Fastest hardware curve",
+    link: "country.html?country=china"
+  },
+  {
+    region: "Japan",
+    slug: "japan",
+    score: 74,
+    companies: 10,
+    robots: 3,
+    dominantSignal: "Industrial robotics, service robotics, legacy humanoid research",
+    keyCompanies: ["FANUC", "Yaskawa Motoman", "Honda Robotics", "Kawasaki Robotics"],
+    marketStage: "Industrial depth",
+    link: "country.html?country=japan"
   }
 ];
 
@@ -686,6 +723,53 @@ function renderTimelinePage() {
       <article><strong>${eras}</strong><small>Robotics eras</small></article>
       <article><strong>${humanoid}</strong><small>Humanoid signals</small></article>
       <article><strong>${pageEscape(latest?.year || "Now")}</strong><small>Latest timeline point</small></article>
+    `;
+  }
+}
+
+function heatmapCard(item, compact = false) {
+  const score = Math.max(0, Math.min(100, Number(item.score || 0)));
+  const companies = Array.isArray(item.keyCompanies) ? item.keyCompanies : String(item.keyCompanies || "").split(",").map((company) => company.trim()).filter(Boolean);
+  return `
+    <article class="heatmap-card">
+      <div class="heatmap-score" style="--heat:${score / 100}"><strong>${score}</strong><small>Heat</small></div>
+      <span>${pageEscape(item.region)}</span>
+      <h3>${pageEscape(item.dominantSignal)}</h3>
+      <p>${pageEscape(companies.join(" · "))}</p>
+      ${compact ? "" : `
+        <dl>
+          <div><dt>Companies</dt><dd>${pageEscape(item.companies)}</dd></div>
+          <div><dt>Robots</dt><dd>${pageEscape(item.robots)}</dd></div>
+          <div><dt>Stage</dt><dd>${pageEscape(item.marketStage)}</dd></div>
+        </dl>
+      `}
+      <a href="${pageEscape(compact ? "robotics-heatmap.html" : item.link || "companies.html")}">${compact ? "Open heatmap" : "Open tracker"}</a>
+    </article>
+  `;
+}
+
+function renderHeatmapPage() {
+  const heatmap = pageState.heatmap.length ? pageState.heatmap : heatmapFallback;
+  const sorted = [...heatmap].sort((a, b) => Number(b.score || 0) - Number(a.score || 0));
+  const homeTarget = document.querySelector("[data-home-heatmap]");
+  const grid = document.querySelector("[data-heatmap-grid]");
+  const metrics = document.querySelector("[data-heatmap-metrics]");
+  if (homeTarget) {
+    homeTarget.innerHTML = sorted.slice(0, 3).map((item) => heatmapCard(item, true)).join("");
+  }
+  if (grid) {
+    grid.innerHTML = sorted.map((item) => heatmapCard(item)).join("");
+  }
+  if (metrics) {
+    const top = sorted[0];
+    const fastest = sorted.find((item) => pageNormalize(item.marketStage).includes("fastest")) || sorted[1] || top;
+    const totalCompanies = sorted.reduce((sum, item) => sum + Number(item.companies || 0), 0);
+    metrics.innerHTML = `
+      <article><strong>${sorted.length}</strong><small>Regions mapped</small></article>
+      <article><strong>${pageEscape(top?.score || "0")}</strong><small>Top heat score</small></article>
+      <article><strong>${pageEscape(top?.region || "Global")}</strong><small>Strongest ecosystem</small></article>
+      <article><strong>${totalCompanies}+</strong><small>Companies represented</small></article>
+      <article><strong>${pageEscape(fastest?.region || "China")}</strong><small>Fastest hardware curve</small></article>
     `;
   }
 }
@@ -1720,18 +1804,20 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks, timeline] = await Promise.all([
+  const [robots, companies, signals, tasks, timeline, heatmap] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
     loadJson("data/tasks.json", taskFallback),
-    loadJson("data/timeline.json", timelineFallback)
+    loadJson("data/timeline.json", timelineFallback),
+    loadJson("data/heatmap.json", heatmapFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
   pageState.signals = signals;
   pageState.tasks = tasks;
   pageState.timeline = timeline;
+  pageState.heatmap = heatmap;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -1747,6 +1833,7 @@ async function initCatalogPages() {
   renderRoboticsSignalsPage();
   renderTaskMaps();
   renderTimelinePage();
+  renderHeatmapPage();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

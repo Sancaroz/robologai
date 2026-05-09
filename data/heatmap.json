@@ -1,0 +1,90 @@
+[
+  {
+    "region": "United States",
+    "slug": "united-states",
+    "score": 96,
+    "companies": 70,
+    "robots": 9,
+    "dominantSignal": "Humanoid platforms, AI labs, defense robotics, autonomous vehicles",
+    "keyCompanies": ["Tesla", "Figure AI", "Boston Dynamics", "Apptronik", "NVIDIA"],
+    "marketStage": "Global leader",
+    "link": "country.html?country=united-states"
+  },
+  {
+    "region": "China",
+    "slug": "china",
+    "score": 91,
+    "companies": 18,
+    "robots": 7,
+    "dominantSignal": "Affordable humanoids, quadrupeds, consumer robotics, rapid hardware iteration",
+    "keyCompanies": ["Unitree Robotics", "AgiBot", "UBTECH Robotics", "Pudu Robotics", "LimX Dynamics"],
+    "marketStage": "Fastest hardware curve",
+    "link": "country.html?country=china"
+  },
+  {
+    "region": "Japan",
+    "slug": "japan",
+    "score": 74,
+    "companies": 10,
+    "robots": 3,
+    "dominantSignal": "Industrial robotics, service robotics, legacy humanoid research",
+    "keyCompanies": ["FANUC", "Yaskawa Motoman", "Honda Robotics", "Kawasaki Robotics"],
+    "marketStage": "Industrial depth",
+    "link": "country.html?country=japan"
+  },
+  {
+    "region": "South Korea",
+    "slug": "south-korea",
+    "score": 68,
+    "companies": 7,
+    "robots": 2,
+    "dominantSignal": "Electronics, humanoid research, consumer and industrial automation",
+    "keyCompanies": ["Samsung Electronics", "Rainbow Robotics", "Hyundai Robotics"],
+    "marketStage": "Hardware ecosystem",
+    "link": "country.html?country=south-korea"
+  },
+  {
+    "region": "Germany",
+    "slug": "germany",
+    "score": 66,
+    "companies": 8,
+    "robots": 2,
+    "dominantSignal": "Industrial automation, cobots, factory robotics and machine tooling",
+    "keyCompanies": ["KUKA", "NEURA Robotics", "Siemens", "Wandelbots"],
+    "marketStage": "Factory automation base",
+    "link": "country.html?country=germany"
+  },
+  {
+    "region": "Switzerland",
+    "slug": "switzerland",
+    "score": 58,
+    "companies": 5,
+    "robots": 2,
+    "dominantSignal": "Legged robotics, research systems, inspection platforms",
+    "keyCompanies": ["ANYbotics", "Swiss-Mile", "ETH Zurich"],
+    "marketStage": "Research-to-industry lane",
+    "link": "country.html?country=switzerland"
+  },
+  {
+    "region": "United Kingdom",
+    "slug": "united-kingdom",
+    "score": 52,
+    "companies": 5,
+    "robots": 1,
+    "dominantSignal": "AI research, expressive robotics, surgical and service robotics",
+    "keyCompanies": ["Engineered Arts", "CMR Surgical", "Google DeepMind"],
+    "marketStage": "AI and specialist robotics",
+    "link": "country.html?country=united-kingdom"
+  },
+  {
+    "region": "Canada",
+    "slug": "canada",
+    "score": 46,
+    "companies": 4,
+    "robots": 1,
+    "dominantSignal": "Autonomous mobile robots, robotics software, AI research links",
+    "keyCompanies": ["OTTO Motors", "Clearpath Robotics", "Cohere"],
+    "marketStage": "AMR and AI corridor",
+    "link": "country.html?country=canada"
+  }
+]
