@@ -769,7 +769,7 @@ function initNewsletterSignup() {
     }
 
     submitButton.disabled = true;
-    setMessage("Sending your signup to RoboLogAI Intel Feed...", "loading");
+    setMessage("Joining...", "loading");
 
     try {
       const response = await fetch(endpoint, {
@@ -779,11 +779,11 @@ function initNewsletterSignup() {
       });
 
       if (!response.ok) throw new Error("subscribe_failed");
-      setMessage("You are on the list. Welcome to RoboLogAI Intel Feed.", "success");
+      setMessage("You are on the list.", "success");
       form.reset();
       fallbackLink?.classList.remove("is-visible");
     } catch (error) {
-      setMessage("Direct signup is not live yet. Use the backup beehiiv link for now.", "error");
+      setMessage("Use the signup page for now.", "error");
       fallbackLink?.classList.add("is-visible");
     } finally {
       submitButton.disabled = false;
