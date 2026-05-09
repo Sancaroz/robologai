@@ -5516,6 +5516,34 @@ body.light-theme .profile-main > div > span {
   box-shadow: var(--shadow);
 }
 
+.robot-week-section {
+  position: relative;
+}
+
+.robot-week-section .section-heading {
+  margin-bottom: 18px;
+}
+
+.robot-week-card {
+  position: relative;
+  border-color: rgba(120, 231, 255, 0.24);
+  background:
+    radial-gradient(circle at 78% 14%, rgba(120, 231, 255, 0.16), transparent 32%),
+    linear-gradient(145deg, rgba(18, 35, 60, 0.92), rgba(3, 8, 17, 0.98));
+}
+
+.robot-week-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(120, 231, 255, 0.09), transparent),
+    linear-gradient(rgba(120, 231, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 34px;
+  opacity: 0.72;
+}
+
 .featured-robot-card figure {
   position: relative;
   min-height: 320px;
@@ -5556,10 +5584,12 @@ body.light-theme .profile-main > div > span {
 }
 
 .featured-robot-card article {
+  position: relative;
   display: grid;
   align-content: center;
   gap: 13px;
   padding: clamp(24px, 4vw, 44px);
+  z-index: 1;
 }
 
 .featured-robot-card article > span {
@@ -5579,6 +5609,43 @@ body.light-theme .profile-main > div > span {
   margin: 0;
   color: #c4cedc;
   line-height: 1.62;
+}
+
+.robot-week-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.robot-week-grid div {
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.robot-week-grid strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #eef6ff;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.robot-week-grid small {
+  display: block;
+  margin-top: 6px;
+  color: #8fa3bc;
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.robot-week-bars {
+  max-width: 520px;
+  margin-top: 4px;
 }
 
 .featured-robot-actions {
@@ -7416,7 +7483,8 @@ body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
 body.light-theme .tr-guide-grid small,
 body.light-theme .faq-grid p,
-body.light-theme .featured-robot-card p {
+body.light-theme .featured-robot-card p,
+body.light-theme .robot-week-grid small {
   color: #43566c;
 }
 
@@ -7449,6 +7517,10 @@ body.light-theme .compare-picker label {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.94));
 }
 
+body.light-theme .robot-week-grid div {
+  background: rgba(255, 255, 255, 0.68);
+}
+
 body.light-theme .catalog-sidebar label,
 body.light-theme .catalog-card dt,
 body.light-theme .catalog-card h2,
@@ -7463,6 +7535,7 @@ body.light-theme .tr-guide-grid strong,
 body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
 body.light-theme .featured-robot-card h3,
+body.light-theme .robot-week-grid strong,
 body.light-theme .profile-facts dt,
 body.light-theme .price-card strong,
 body.light-theme .quick-path-grid strong,
@@ -8921,5 +8994,21 @@ body.light-theme .facts span {
   .humanoid-preview-card dd,
   .catalog-card dd {
     text-align: left;
+  }
+}
+
+@media (max-width: 900px) {
+  .robot-week-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .robot-week-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .robot-week-bars li {
+    grid-template-columns: 82px minmax(0, 1fr) 30px;
   }
 }

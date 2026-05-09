@@ -975,20 +975,32 @@ function renderHomeIntelligence() {
 function renderFeaturedRobot() {
   const target = document.querySelector("[data-featured-robot]");
   if (!target) return;
-  const robot = [...pageState.robots]
+  const robot = pageState.robots.find((item) => robotSlug(item) === "g1") || [...pageState.robots]
     .filter((item) => robotVideo(item) && item.image)
     .sort((a, b) => robotScore(b) - robotScore(a))[0] || pageState.robots[0];
   if (!robot) return;
   const alternatives = robotAlternatives(robot, 3);
+  const score = robotScore(robot);
+  const quality = robotQuality(robot);
+  const week = Math.ceil((((new Date()).getTime() - new Date(new Date().getFullYear(), 0, 1).getTime()) / 86400000 + new Date(new Date().getFullYear(), 0, 1).getDay() + 1) / 7);
   target.innerHTML = `
     <figure>
       ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
-      <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
+      <figcaption>${score} <small>R-Score</small></figcaption>
     </figure>
     <article>
-      <span>${pageEscape(robot.company)} · ${pageEscape(robotStage(robot))}</span>
+      <span>Week ${week} · ${pageEscape(robot.company)} · ${pageEscape(scoreLabel(score))}</span>
       <h3>${pageEscape(robot.name)}</h3>
-      <p>${pageEscape(robot.useCase)}</p>
+      <p>${pageEscape(robot.name)} is this week's RoboLogAI pick because it combines ${pageEscape(quality.priceConfidence.toLowerCase())}, ${pageEscape(quality.mediaVerified.toLowerCase())}, and a clear use-case path: ${pageEscape(robot.useCase)}.</p>
+      <div class="robot-week-grid">
+        <div><strong>${pageEscape(broadCountryName(robot.country))}</strong><small>Country</small></div>
+        <div><strong>${pageEscape(robotStage(robot))}</strong><small>Status</small></div>
+        <div><strong>${pageEscape(robot.price)}</strong><small>Price signal</small></div>
+        <div><strong>${pageEscape(robot.category || "Robot")}</strong><small>Category</small></div>
+      </div>
+      <ul class="rscore-mini-bars robot-week-bars" aria-label="${pageEscape(robot.name)} R-Score preview">
+        ${renderMiniScoreBars(robot, 3)}
+      </ul>
       <div class="featured-robot-actions">
         <a href="${pageEscape(robotProfileHref(robot))}">Open profile</a>
         <a href="compare.html?robots=${pageEscape([robot, ...alternatives].map((item) => robotSlug(item)).join(","))}">Compare alternatives</a>
