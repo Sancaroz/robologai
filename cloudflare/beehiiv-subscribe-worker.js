@@ -1,16 +1,22 @@
-const BEEHIIV_PUBLICATION_ID = "pub_REPLACE_WITH_YOUR_PUBLICATION_ID";
+const allowedOrigins = new Set([
+  "https://robologai.com",
+  "https://www.robologai.com"
+]);
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://robologai.com",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type"
-};
+function corsHeadersFor(request) {
+  const origin = request.headers.get("Origin") || "https://robologai.com";
+  return {
+    "Access-Control-Allow-Origin": allowedOrigins.has(origin) ? origin : "https://robologai.com",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type"
+  };
+}
 
-function jsonResponse(body, status = 200) {
+function jsonResponse(request, body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
-      ...corsHeaders,
+      ...corsHeadersFor(request),
       "Content-Type": "application/json"
     }
   });
@@ -19,25 +25,29 @@ function jsonResponse(body, status = 200) {
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: corsHeaders });
+      return new Response(null, { status: 204, headers: corsHeadersFor(request) });
     }
 
     const url = new URL(request.url);
-    if (request.method !== "POST" || url.pathname !== "/api/subscribe") {
-      return jsonResponse({ error: "Not found" }, 404);
+    if (request.method !== "POST" || !["/subscribe", "/api/subscribe"].includes(url.pathname)) {
+      return jsonResponse(request, { error: "Not found" }, 404);
     }
 
     if (!env.BEEHIIV_API_KEY) {
-      return jsonResponse({ error: "Beehiiv API key is not configured." }, 500);
+      return jsonResponse(request, { error: "Beehiiv API key is not configured." }, 500);
+    }
+
+    if (!env.BEEHIIV_PUBLICATION_ID) {
+      return jsonResponse(request, { error: "Beehiiv publication ID is not configured." }, 500);
     }
 
     const payload = await request.json().catch(() => ({}));
     const email = String(payload.email || "").trim().toLowerCase();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return jsonResponse({ error: "Please enter a valid email address." }, 400);
+      return jsonResponse(request, { error: "Please enter a valid email address." }, 400);
     }
 
-    const beehiivResponse = await fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID}/subscriptions`, {
+    const beehiivResponse = await fetch(`https://api.beehiiv.com/v2/publications/${env.BEEHIIV_PUBLICATION_ID}/subscriptions`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${env.BEEHIIV_API_KEY}`,
@@ -55,9 +65,9 @@ export default {
 
     if (!beehiivResponse.ok) {
       const detail = await beehiivResponse.text();
-      return jsonResponse({ error: "Beehiiv subscription failed.", detail }, 502);
+      return jsonResponse(request, { error: "Beehiiv subscription failed.", detail }, 502);
     }
 
-    return jsonResponse({ ok: true });
+    return jsonResponse(request, { ok: true });
   }
 };

@@ -752,6 +752,7 @@ function initNewsletterSignup() {
   const submitButton = form.querySelector('button[type="submit"]');
   const message = document.querySelector("[data-newsletter-message]");
   const fallbackLink = document.querySelector(".newsletter-fallback-link");
+  const endpoint = form.dataset.endpoint || "/api/subscribe";
 
   const setMessage = (text, state = "") => {
     if (!message) return;
@@ -771,7 +772,7 @@ function initNewsletterSignup() {
     setMessage("Sending your signup to RoboLogAI Intel Feed...", "loading");
 
     try {
-      const response = await fetch("/api/subscribe", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
