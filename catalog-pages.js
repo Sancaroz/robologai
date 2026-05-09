@@ -2,6 +2,7 @@ const pageState = {
   robots: [],
   companies: [],
   signals: [],
+  tasks: [],
   robotFilter: "all",
   companyFilter: "all",
   query: "",
@@ -76,6 +77,45 @@ const signalFallback = [
     summary: "Optimus is still best read as an internal manufacturing and embodied AI signal until public deployment details become clearer.",
     source: "https://www.tesla.com/AI",
     relatedUrl: "robots/tesla-optimus.html"
+  }
+];
+
+const taskFallback = [
+  {
+    task: "Tote handling",
+    category: "Warehouse logistics",
+    humanStrength: "Exception handling, mixed inventory, damaged items, judgment calls",
+    robotReadiness: 82,
+    automationLevel: "Robot-assisted",
+    robotFit: "High",
+    timeHorizon: "Near-term",
+    robots: ["Digit", "Figure 02", "Apollo"],
+    summary: "Structured warehouses are one of the clearest early markets for humanoid and mobile manipulation robots because tasks repeat, routes can be mapped, and safety zones can be controlled.",
+    link: "use-cases.html?case=warehouse"
+  },
+  {
+    task: "Factory inspection",
+    category: "Industrial inspection",
+    humanStrength: "Root-cause judgment, safety escalation, repair decisions",
+    robotReadiness: 76,
+    automationLevel: "Robot-assisted",
+    robotFit: "High",
+    timeHorizon: "Near-term",
+    robots: ["Spot", "ANYmal", "Atlas"],
+    summary: "Inspection is already practical when robots patrol known environments, collect repeatable sensor data, and hand off decisions to human operators.",
+    link: "use-cases.html?case=inspection"
+  },
+  {
+    task: "Complex caregiving",
+    category: "Human services",
+    humanStrength: "Trust, ethics, emotional labor, unpredictable human needs",
+    robotReadiness: 34,
+    automationLevel: "Human advantage",
+    robotFit: "Low-medium",
+    timeHorizon: "Long-term",
+    robots: ["Assistive robots", "Companion robots"],
+    summary: "Robots can support reminders and monitoring, but deep caregiving remains a human-led domain because the work is relational, ethical, and highly contextual.",
+    link: "use-cases.html?case=healthcare"
   }
 ];
 
@@ -517,6 +557,62 @@ function renderRoboticsSignalsPage() {
         </article>
       `;
     }).join("");
+  }
+}
+
+function taskTone(task) {
+  const score = Number(task.robotReadiness || 0);
+  if (score >= 80) return "ready";
+  if (score >= 58) return "assist";
+  return "human";
+}
+
+function taskCard(task, compact = false) {
+  const score = Math.max(0, Math.min(100, Number(task.robotReadiness || 0)));
+  const robots = Array.isArray(task.robots) ? task.robots : String(task.robots || "").split(",").map((item) => item.trim()).filter(Boolean);
+  return `
+    <article class="task-card task-${taskTone(task)}">
+      <span>${pageEscape(task.category)}</span>
+      <h3>${pageEscape(task.task)}</h3>
+      <p>${pageEscape(task.summary)}</p>
+      <div class="task-meter" style="--task-score:${score / 100}"><i></i></div>
+      <dl>
+        <div><dt>${compact ? "Current lead" : "Automation"}</dt><dd>${pageEscape(task.automationLevel)}</dd></div>
+        <div><dt>Robot fit</dt><dd>${score}%</dd></div>
+        ${compact ? "" : `<div><dt>Horizon</dt><dd>${pageEscape(task.timeHorizon)}</dd></div>`}
+      </dl>
+      ${compact ? "" : `<em>${pageEscape(task.humanStrength)}</em>`}
+      <small>${pageEscape(robots.join(" · "))}</small>
+      <a href="${pageEscape(task.link || "robots.html")}">${compact ? "Open task map" : "View related robots"}</a>
+    </article>
+  `;
+}
+
+function renderTaskMaps() {
+  const tasks = pageState.tasks.length ? pageState.tasks : taskFallback;
+  const homeTarget = document.querySelector("[data-home-task-map]");
+  const pageTarget = document.querySelector("[data-task-map]");
+  const metrics = document.querySelector("[data-task-metrics]");
+  if (homeTarget) {
+    const featured = [
+      ...tasks.filter((task) => Number(task.robotReadiness || 0) >= 75).slice(0, 2),
+      ...tasks.filter((task) => Number(task.robotReadiness || 0) < 65).slice(0, 1)
+    ].slice(0, 3);
+    homeTarget.innerHTML = featured.map((task) => taskCard(task, true)).join("");
+  }
+  if (pageTarget) {
+    pageTarget.innerHTML = tasks.map((task) => taskCard(task)).join("");
+  }
+  if (metrics) {
+    const ready = tasks.filter((task) => Number(task.robotReadiness || 0) >= 75).length;
+    const human = tasks.filter((task) => Number(task.robotReadiness || 0) < 45).length;
+    const categories = new Set(tasks.map((task) => task.category).filter(Boolean)).size;
+    metrics.innerHTML = `
+      <article><strong>${tasks.length}</strong><small>Task maps</small></article>
+      <article><strong>${ready}</strong><small>Robot-ready lanes</small></article>
+      <article><strong>${human}</strong><small>Human-first lanes</small></article>
+      <article><strong>${categories}</strong><small>Work categories</small></article>
+    `;
   }
 }
 
@@ -1550,14 +1646,16 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals] = await Promise.all([
+  const [robots, companies, signals, tasks] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
-    loadJson("data/signals.json", signalFallback)
+    loadJson("data/signals.json", signalFallback),
+    loadJson("data/tasks.json", taskFallback)
   ]);
   pageState.robots = robots;
   pageState.companies = companies;
   pageState.signals = signals;
+  pageState.tasks = tasks;
   setCount("robots", robots.length);
   setCount("companies", companies.length);
   setCount("countries", new Set(companies.map((company) => company.country).filter(Boolean)).size);
@@ -1571,6 +1669,7 @@ async function initCatalogPages() {
   renderRScoreLeaderboards();
   renderRobotLeaderboardPage();
   renderRoboticsSignalsPage();
+  renderTaskMaps();
   renderVideosPage();
   renderRobotProfile();
   renderCompanyProfile();

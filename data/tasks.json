@@ -1,0 +1,110 @@
+[
+  {
+    "task": "Tote handling",
+    "category": "Warehouse logistics",
+    "humanStrength": "Exception handling, mixed inventory, damaged items, judgment calls",
+    "robotReadiness": 82,
+    "automationLevel": "Robot-assisted",
+    "robotFit": "High",
+    "timeHorizon": "Near-term",
+    "robots": ["Digit", "Figure 02", "Apollo"],
+    "summary": "Structured warehouses are one of the clearest early markets for humanoid and mobile manipulation robots because tasks repeat, routes can be mapped, and safety zones can be controlled.",
+    "link": "use-cases.html?case=warehouse"
+  },
+  {
+    "task": "Factory inspection",
+    "category": "Industrial inspection",
+    "humanStrength": "Root-cause judgment, safety escalation, repair decisions",
+    "robotReadiness": 76,
+    "automationLevel": "Robot-assisted",
+    "robotFit": "High",
+    "timeHorizon": "Near-term",
+    "robots": ["Spot", "ANYmal", "Atlas"],
+    "summary": "Inspection is already practical when robots patrol known environments, collect repeatable sensor data, and hand off decisions to human operators.",
+    "link": "use-cases.html?case=inspection"
+  },
+  {
+    "task": "Repetitive pick-and-place",
+    "category": "Manufacturing",
+    "humanStrength": "Fixture changes, quality nuance, unexpected variation",
+    "robotReadiness": 88,
+    "automationLevel": "Automation-ready",
+    "robotFit": "Very high",
+    "timeHorizon": "Now",
+    "robots": ["ABB robots", "FANUC robots", "Dexterity AI"],
+    "summary": "Repetitive handling with defined parts remains one of the strongest robot advantage zones, especially when vision models and fixtures reduce variation.",
+    "link": "use-cases.html?case=manufacturing"
+  },
+  {
+    "task": "Home companionship",
+    "category": "Emotional AI",
+    "humanStrength": "Trust, empathy, relationship depth, social context",
+    "robotReadiness": 58,
+    "automationLevel": "Human-first",
+    "robotFit": "Emerging",
+    "timeHorizon": "Mid-term",
+    "robots": ["Familiar", "NEO", "Mirokaï"],
+    "summary": "Companion robots are less about replacing people and more about persistent presence, behavioral cues, and support for loneliness or routine.",
+    "link": "blog/roomba-creator-familiar-emotional-ai-robot.html"
+  },
+  {
+    "task": "Elder care check-ins",
+    "category": "Healthcare support",
+    "humanStrength": "Care judgment, dignity, emotional nuance, medical escalation",
+    "robotReadiness": 64,
+    "automationLevel": "Assistive",
+    "robotFit": "Medium",
+    "timeHorizon": "Mid-term",
+    "robots": ["NEO", "Mirokaï", "Familiar"],
+    "summary": "Robots may help with reminders, presence, remote check-ins, and basic monitoring, while humans remain central for care, trust, and medical decisions.",
+    "link": "use-cases.html?case=healthcare"
+  },
+  {
+    "task": "Surgical assistance",
+    "category": "Medical robotics",
+    "humanStrength": "Diagnosis, responsibility, real-time clinical judgment",
+    "robotReadiness": 72,
+    "automationLevel": "Human-controlled",
+    "robotFit": "High precision",
+    "timeHorizon": "Now",
+    "robots": ["da Vinci", "Mako", "Monarch"],
+    "summary": "Surgery shows how robots can outperform humans in precision while still depending on human surgeons for decisions, accountability, and patient context.",
+    "link": "companies/intuitive-surgical.html"
+  },
+  {
+    "task": "Last-mile delivery",
+    "category": "Delivery robots",
+    "humanStrength": "Dense urban judgment, customer interaction, edge-case navigation",
+    "robotReadiness": 70,
+    "automationLevel": "Zone-ready",
+    "robotFit": "Medium-high",
+    "timeHorizon": "Near-term",
+    "robots": ["Starship", "Serve", "Nuro"],
+    "summary": "Delivery robots work best in constrained campuses, sidewalks, and known service zones where the environment can be monitored and optimized.",
+    "link": "companies/starship-technologies.html"
+  },
+  {
+    "task": "Complex caregiving",
+    "category": "Human services",
+    "humanStrength": "Trust, ethics, emotional labor, unpredictable human needs",
+    "robotReadiness": 34,
+    "automationLevel": "Human advantage",
+    "robotFit": "Low-medium",
+    "timeHorizon": "Long-term",
+    "robots": ["Assistive robots", "Companion robots"],
+    "summary": "Robots can assist with reminders and monitoring, but deep caregiving remains a human-led domain because the work is relational, ethical, and highly contextual.",
+    "link": "use-cases.html?case=healthcare"
+  },
+  {
+    "task": "Creative judgment",
+    "category": "Strategy and ethics",
+    "humanStrength": "Taste, responsibility, values, social impact, narrative judgment",
+    "robotReadiness": 22,
+    "automationLevel": "Human advantage",
+    "robotFit": "Low",
+    "timeHorizon": "Long-term",
+    "robots": ["AI copilots"],
+    "summary": "AI can support research and drafting, but decisions involving taste, responsibility, and social consequences remain deeply human.",
+    "link": "blog/physical-ai-explained.html"
+  }
+]
