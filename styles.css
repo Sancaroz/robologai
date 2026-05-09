@@ -7220,13 +7220,13 @@ body.light-theme .trust-grid article {
   white-space: nowrap;
 }
 
-.newsletter-fallback-link {
+.newsletter-direct .newsletter-fallback-link {
   display: none;
   color: #c8f6ff;
   background: rgba(120, 231, 255, 0.08);
 }
 
-.newsletter-fallback-link.is-visible {
+.newsletter-direct .newsletter-fallback-link.is-visible {
   display: inline-flex;
 }
 
