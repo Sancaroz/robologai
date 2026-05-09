@@ -7174,7 +7174,32 @@ body.light-theme .trust-grid article {
   line-height: 1.58;
 }
 
-.newsletter-direct a {
+.newsletter-direct-form {
+  display: grid;
+  gap: 10px;
+}
+
+.newsletter-direct-form small {
+  color: #9fb0c8;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.newsletter-direct-form small[data-state="success"] {
+  color: #7df9ff;
+}
+
+.newsletter-direct-form small[data-state="error"] {
+  color: #fda4af;
+}
+
+.newsletter-direct-form button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.newsletter-direct a,
+.newsletter-direct button {
   display: inline-flex;
   min-height: 52px;
   align-items: center;
@@ -7187,6 +7212,22 @@ body.light-theme .trust-grid article {
   background: linear-gradient(135deg, #78e7ff, #2dd4bf);
   box-shadow: 0 18px 42px rgba(45, 212, 191, 0.18);
   font-weight: 950;
+  cursor: pointer;
+}
+
+.newsletter-direct button {
+  min-width: 154px;
+  white-space: nowrap;
+}
+
+.newsletter-fallback-link {
+  display: none;
+  color: #c8f6ff;
+  background: rgba(120, 231, 255, 0.08);
+}
+
+.newsletter-fallback-link.is-visible {
+  display: inline-flex;
 }
 
 .newsletter label {
@@ -7290,6 +7331,18 @@ body.light-theme .newsletter-direct strong {
 
 body.light-theme .newsletter-direct p {
   color: #526275;
+}
+
+body.light-theme .newsletter-direct-form small {
+  color: #526275;
+}
+
+body.light-theme .newsletter-direct-form small[data-state="success"] {
+  color: #047c8f;
+}
+
+body.light-theme .newsletter-direct-form small[data-state="error"] {
+  color: #be123c;
 }
 
 body.light-theme .newsletter input {
@@ -8021,7 +8074,8 @@ body.light-theme .facts span {
     border-radius: 7px;
   }
 
-  .newsletter-direct a {
+  .newsletter-direct a,
+  .newsletter-direct button {
     width: 100%;
   }
 

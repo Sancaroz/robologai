@@ -745,6 +745,51 @@ function initNewsletterScroll() {
   });
 }
 
+function initNewsletterSignup() {
+  const form = document.querySelector("[data-newsletter-form]");
+  if (!form) return;
+  const emailInput = form.querySelector('input[name="email"]');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const message = document.querySelector("[data-newsletter-message]");
+  const fallbackLink = document.querySelector(".newsletter-fallback-link");
+
+  const setMessage = (text, state = "") => {
+    if (!message) return;
+    message.textContent = text;
+    message.dataset.state = state;
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = emailInput?.value.trim();
+    if (!email) {
+      setMessage("Please enter your email.", "error");
+      return;
+    }
+
+    submitButton.disabled = true;
+    setMessage("Sending your signup to RoboLogAI Intel Feed...", "loading");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+
+      if (!response.ok) throw new Error("subscribe_failed");
+      setMessage("You are on the list. Welcome to RoboLogAI Intel Feed.", "success");
+      form.reset();
+      fallbackLink?.classList.remove("is-visible");
+    } catch (error) {
+      setMessage("Direct signup is not live yet. Use the backup beehiiv link for now.", "error");
+      fallbackLink?.classList.add("is-visible");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
 searchInput?.addEventListener("input", filterCompanies);
 categoryFilter?.addEventListener("change", filterCompanies);
 subcategoryFilter?.addEventListener("change", filterCompanies);
@@ -794,3 +839,4 @@ searchFocusButton?.addEventListener("click", () => {
 loadCompanyDatabase();
 loadRobotDatabase();
 initNewsletterScroll();
+initNewsletterSignup();
