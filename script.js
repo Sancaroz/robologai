@@ -422,7 +422,6 @@ const databaseInsights = document.querySelector("[data-database-insights]");
 const robotCatalogGrid = document.querySelector(".robot-database-grid");
 const robotCompareBody = document.querySelector("[data-robot-compare]");
 const robotFilterButtons = Array.from(document.querySelectorAll("[data-robot-filter]"));
-const beehiivShells = document.querySelectorAll("[data-beehiiv-form-id]");
 const newsletterCtas = document.querySelectorAll('a[href="#bulten"], a[href="index.html#bulten"]');
 const statCompanies = document.querySelector("[data-stat-companies]");
 const statCountries = document.querySelector("[data-stat-countries]");
@@ -722,22 +721,6 @@ function sortCompanies() {
   filterCompanies();
 }
 
-function initBeehiivForms() {
-  if (!beehiivShells.length) return;
-  beehiivShells.forEach((shell) => {
-    const formId = (shell.dataset.beehiivFormId || "").trim();
-    if (!formId || formId.toLowerCase().includes("paste")) return;
-    if (!document.querySelector('script[src="https://subscribe-forms.beehiiv.com/v3/loader.js"]')) {
-      const embedScript = document.createElement("script");
-      embedScript.src = "https://subscribe-forms.beehiiv.com/v3/loader.js";
-      embedScript.dataset.beehiivForm = formId;
-      embedScript.async = true;
-      shell.replaceChildren(embedScript);
-      return;
-    }
-  });
-}
-
 function initNewsletterScroll() {
   const newsletter = document.querySelector("#bulten");
   const alignNewsletter = () => {
@@ -810,5 +793,4 @@ searchFocusButton?.addEventListener("click", () => {
 
 loadCompanyDatabase();
 loadRobotDatabase();
-initBeehiivForms();
 initNewsletterScroll();
