@@ -197,12 +197,16 @@ function toList(value) {
 
 function optionalCompanyRows(company) {
   return [
+    ["City", company.city],
     ["Region", company.region],
+    ["Founded by", company.foundedBy],
     ["Focus", company.focus],
+    ["Positioning", company.positioning],
     ["Group companies", toList(company.groupCompanies).join(", ")],
     ["Key project", company.keyProject],
     ["GRASS focus", company.grassFocus],
-    ["Industries served", toList(company.industriesServed).join(", ")]
+    ["Industries served", toList(company.industriesServed).join(", ")],
+    ["Important claims", toList(company.importantClaims).join(", ")]
   ]
     .filter(([, value]) => value)
     .map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`)
@@ -215,6 +219,8 @@ function optionalCompanyStats(company) {
     ["Countries", company.countries],
     ["Locations", company.locations],
     ["Operational area", company.operationalArea],
+    ["Application area", company.applicationArea],
+    ["Indoor production area", company.productionArea],
     ["Experience", company.experience],
     ["Clients", company.clients],
     ["Delivered projects", company.deliveredProjects],

@@ -387,14 +387,18 @@ function companyText(company) {
     company.name,
     company.category,
     company.country,
+    company.city,
     company.region,
     company.type,
     company.ticker,
     company.robot,
     company.website,
+    company.foundedBy,
     company.focus,
+    company.positioning,
     company.keyProject,
     company.grassFocus,
+    ...companyValueList(company.importantClaims),
     ...companyValueList(company.groupCompanies),
     ...companyValueList(company.industriesServed),
     ...(company.keywords || [])
@@ -403,12 +407,16 @@ function companyText(company) {
 
 function optionalCompanyRows(company) {
   return [
+    ["City", company.city],
     ["Region", company.region],
+    ["Founded by", company.foundedBy],
     ["Focus", company.focus],
+    ["Positioning", company.positioning],
     ["Group companies", companyValueList(company.groupCompanies).join(", ")],
     ["Key project", company.keyProject],
     ["GRASS focus", company.grassFocus],
-    ["Industries served", companyValueList(company.industriesServed).join(", ")]
+    ["Industries served", companyValueList(company.industriesServed).join(", ")],
+    ["Important claims", companyValueList(company.importantClaims).join(", ")]
   ]
     .filter(([, value]) => value)
     .map(([label, value]) => `<div><dt>${pageEscape(label)}</dt><dd>${pageEscape(value)}</dd></div>`)
@@ -421,6 +429,8 @@ function optionalCompanyStats(company) {
     ["Countries", company.countries],
     ["Locations", company.locations],
     ["Operational area", company.operationalArea],
+    ["Application area", company.applicationArea],
+    ["Indoor production area", company.productionArea],
     ["Experience", company.experience],
     ["Clients", company.clients],
     ["Delivered projects", company.deliveredProjects],
