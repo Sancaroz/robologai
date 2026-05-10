@@ -231,6 +231,8 @@ Events are not simple calendar entries. They are robotics intelligence signals b
 
 Use official event links and participation pages wherever possible.
 
+Türkiye event coverage is a major traffic and authority opportunity. Treat TEKNOFEST, SAHA EXPO, WIN EURASIA, AI-focused summits, robot competitions, defense fairs, industrial automation expos, and university robotics events as ecosystem signals, not generic calendar listings.
+
 ---
 
 ## 9. Turkish Platform Positioning
@@ -246,6 +248,8 @@ Turkish pages should emphasize:
 * robotics fairs, AI events, expos, and ecosystem gatherings
 * market signals translated into clear Turkish concepts
 * analytical, source-first, future-focused language
+
+The Türkiye robotics ecosystem layer should track AKINROBOTICS, Altınay Robot Grubu, ASELSAN robotics/autonomy signals, Milvus Robotics, robot startups, university laboratories, student robotics teams, and defense/industrial automation clusters.
 
 Do not translate the RoboLogAI brand name. Keep "RoboLogAI" consistent across all languages.
 
