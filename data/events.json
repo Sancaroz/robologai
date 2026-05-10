@@ -25,6 +25,7 @@
       "physicalAi": "Medium"
     },
     "relatedArticles": ["robot-economy.html", "companies.html"],
+    "relatedLabel": "Industrial robotics market",
     "sourceType": "Official"
   },
   {
@@ -53,6 +54,7 @@
       "physicalAi": "High"
     },
     "relatedArticles": ["physical-ai.html", "future-robotics-index.html"],
+    "relatedLabel": "Physical AI research",
     "sourceType": "Official"
   },
   {
@@ -81,6 +83,7 @@
       "physicalAi": "High"
     },
     "relatedArticles": ["global-robotics-map.html", "robot-economy.html"],
+    "relatedLabel": "Defense robotics map",
     "sourceType": "Official"
   },
   {
@@ -108,7 +111,8 @@
       "industrialRobotics": "High",
       "physicalAi": "Medium"
     },
-    "relatedArticles": ["companies.html", "robot-economy.html"],
+    "relatedArticles": ["robot-economy.html", "companies.html"],
+    "relatedLabel": "Manufacturing automation",
     "sourceType": "Official"
   },
   {
@@ -137,6 +141,7 @@
       "physicalAi": "High"
     },
     "relatedArticles": ["physical-ai.html", "robotics-timeline.html"],
+    "relatedLabel": "Intelligent robots research",
     "sourceType": "Official"
   },
   {
@@ -164,7 +169,8 @@
       "industrialRobotics": "Medium",
       "physicalAi": "High"
     },
-    "relatedArticles": ["ai-model-index.html", "physical-ai.html"],
+    "relatedArticles": ["physical-ai.html", "ai-model-index.html"],
+    "relatedLabel": "Robotics software stack",
     "sourceType": "Official"
   },
   {
@@ -192,7 +198,8 @@
       "industrialRobotics": "Medium",
       "physicalAi": "High"
     },
-    "relatedArticles": ["leaderboard.html", "robots.html"],
+    "relatedArticles": ["robots.html?filter=humanoid", "signals.html"],
+    "relatedLabel": "Humanoid robot catalog",
     "sourceType": "Official"
   },
   {
@@ -220,7 +227,8 @@
       "industrialRobotics": "Low",
       "physicalAi": "Medium"
     },
-    "relatedArticles": ["blog/roomba-creator-familiar-emotional-ai-robot.html", "videos.html"],
+    "relatedArticles": ["videos.html", "blog/roomba-creator-familiar-emotional-ai-robot.html"],
+    "relatedLabel": "Consumer robot demos",
     "sourceType": "Official"
   },
   {
@@ -248,7 +256,8 @@
       "industrialRobotics": "High",
       "physicalAi": "High"
     },
-    "relatedArticles": ["companies.html", "robot-economy.html"],
+    "relatedArticles": ["robot-economy.html", "companies.html"],
+    "relatedLabel": "Automation economy",
     "sourceType": "Official"
   }
 ]

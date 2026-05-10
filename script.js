@@ -820,6 +820,7 @@ function eventRelatedLabel(url = "") {
   if (url.includes("physical-ai")) return "Physical AI";
   if (url.includes("robot-economy")) return "Robot economy";
   if (url.includes("leaderboard")) return "Leaderboard";
+  if (url.includes("robots.html")) return "Robot catalog";
   if (url.includes("companies")) return "Company index";
   if (url.includes("timeline")) return "Timeline";
   if (url.includes("videos")) return "Video signals";
@@ -850,7 +851,7 @@ function renderEventCard(event) {
       <div class="event-tags">${tags}</div>
       <div class="event-actions">
         <a href="${escapeEventHtml(event.officialUrl)}" target="_blank" rel="noopener noreferrer">Official source</a>
-        <a href="${escapeEventHtml(relatedUrl)}">${escapeEventHtml(eventRelatedLabel(relatedUrl))}</a>
+        <a href="${escapeEventHtml(relatedUrl)}">${escapeEventHtml(event.relatedLabel || eventRelatedLabel(relatedUrl))}</a>
       </div>
     </article>
   `;
