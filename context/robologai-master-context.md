@@ -216,6 +216,23 @@ Focus:
 
 ---
 
+## 8. Robotics Events Intelligence
+
+RoboLogAI should also track robotics fairs, AI events, humanoid robot showcases, industrial automation expos, technology gatherings, and industry participation pages in Türkiye and global markets.
+
+Events are not simple calendar entries. They are robotics intelligence signals because they reveal:
+
+* which companies are gaining visibility
+* where robotics ecosystems are moving
+* which technologies are entering the market
+* product launch timing
+* industrial adoption signals
+* regional robotics momentum
+
+Use official event links and participation pages wherever possible.
+
+---
+
 # SEO STRATEGY
 
 Main traffic opportunities:
