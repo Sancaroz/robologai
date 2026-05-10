@@ -233,6 +233,24 @@ Use official event links and participation pages wherever possible.
 
 ---
 
+## 9. Turkish Platform Positioning
+
+The Turkish side should not feel like a translated tech blog. It should feel like a premium Turkish robotics intelligence layer aligned with the global RoboLogAI identity.
+
+Turkish pages should emphasize:
+
+* humanoid robotics
+* physical AI explained in Turkish
+* Türkiye robotics ecosystem
+* industrial automation and systems integration
+* robotics fairs, AI events, expos, and ecosystem gatherings
+* market signals translated into clear Turkish concepts
+* analytical, source-first, future-focused language
+
+Do not translate the RoboLogAI brand name. Keep "RoboLogAI" consistent across all languages.
+
+---
+
 # SEO STRATEGY
 
 Main traffic opportunities:

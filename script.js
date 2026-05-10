@@ -33,9 +33,9 @@ const translations = {
     norwayFlag: "🇳🇴 Norveç",
     franceFlag: "🇫🇷 Fransa",
     details: "Detayları Gör →",
-    heroKicker: "Humanoid robotlar, AI şirketleri ve gelecek teknolojileri",
-    heroTitle: 'Robotik ve Yapay Zeka Dünyasını <span>Anlayın.</span>',
-    heroText: "robologai; humanoid robotları, yapay zeka şirketlerini, yatırım haberlerini ve teknoloji trendlerini Türkçe ve İngilizce takip edebileceğiniz modern bir bilgi platformudur.",
+    heroKicker: "Humanoid robotlar, fiziksel AI ve robotik istihbarat",
+    heroTitle: 'Robotik, Fiziksel AI ve Humanoid Robot Yarışını <span>İstihbarat Katmanıyla Takip Edin.</span>',
+    heroText: "RoboLogAI; humanoid robotları, yapay zeka şirketlerini, Türkiye ve global robotik ekosistemini, fuarları, fiyat görünürlüğünü ve piyasa sinyallerini kaynak odaklı takip eden robotik istihbarat platformudur.",
     searchPlaceholder: "Robot, AI laboratuvarı veya şirket ara...",
     statCompanies: "Şirket",
     statCountries: "Ülke",
@@ -47,14 +47,14 @@ const translations = {
     clearFilters: "Filtreleri Temizle",
     noResults: "Aramanıza uygun şirket bulunamadı.",
     infoEyebrow: "Bilgiler",
-    infoTitle: "Robotik ve yapay zeka ekosistemini daha kolay takip edin.",
+    infoTitle: "Robotik ve yapay zeka ekosistemini daha analitik takip edin.",
     infoText: "Ana sayfa; pazar haritaları, humanoid robotlar, güncel haberler ve analizleri tek bir profesyonel akışta birleştirir.",
     infoCard1Title: "Pazar Haritaları",
     infoCard1Text: "Halka açık AI isimlerini, özel humanoid üreticilerini, robot ürünlerini ve resmi kaynakları tek yerden takip edin.",
     infoCard2Title: "Humanoid Robot Takibi",
     infoCard2Text: "Optimus, Figure 02, Atlas, Digit ve Unitree gibi robotları kullanım alanları ve teknik gelişmeler açısından takip edin.",
     infoCard3Title: "Haber ve Analiz",
-    infoCard3Text: "Robotik yatırımları, AI ürünleri, regülasyonlar ve sektör trendlerini kısa haberler ve derin analizlerle okuyun.",
+    infoCard3Text: "Robotik yatırımları, AI ürünleri, fuarlar, etkinlikler, regülasyonlar ve sektör trendlerini sinyal mantığıyla okuyun.",
     featureEyebrow: "Öne çıkan analiz",
     featureTitle: "Humanoid robotlar iş dünyasında hangi görevlerle başlayacak?",
     featureText: "Depo operasyonları, fabrika içi taşıma, kalite kontrol ve tekrarlı saha görevleri robotik şirketleri için ilk büyük uygulama alanları olarak öne çıkıyor.",
@@ -89,7 +89,7 @@ const translations = {
     category3Title: "Donanım ve Altyapı",
     category3Text: "GPU, çip, simülasyon, veri merkezi ve fiziksel AI altyapısı.",
     category4Title: "Pazar ve Yatırım",
-    category4Text: "Fonlama haberleri, ortaklıklar, satın almalar ve sektör büyüme sinyalleri.",
+    category4Text: "Fonlama haberleri, ortaklıklar, satın almalar, fuar katılımları ve sektör büyüme sinyalleri.",
     openaiDesc: "Yapay zeka araştırma ve uygulama alanında öncü çözümler geliştirir.",
     teslaDesc: "Elektrikli araçların yanı sıra otonom sürüş ve robotik çözümler geliştirir.",
     bostonDesc: "İleri düzey robotik sistemleri ile mobilite ve otomasyon çözümleri sunar.",
@@ -108,8 +108,8 @@ const translations = {
     cohereDesc: "Kurumsal yapay zeka modelleri ve güvenli AI altyapısı geliştiren model şirketi.",
     loadMore: "Daha Fazla Şirket Yükle",
     marketEyebrow: "Robo Market & Finans",
-    marketTitle: "Humanoid robotik ve AI pazar istihbaratı.",
-    marketText: "Halka açık şirketler, özel robotik girişimleri, öne çıkan robotlar ve fiyat görünürlüğü için odaklı bir takip paneli. Veriler sık değişebilir; resmi kaynaklar referans kabul edilir.",
+    marketTitle: "Humanoid robotik, fiziksel AI ve piyasa istihbaratı.",
+    marketText: "Halka açık şirketler, özel robotik girişimleri, Türkiye ekosistemi, öne çıkan robotlar, fiyat görünürlüğü ve etkinlik sinyalleri için odaklı bir takip paneli. Veriler sık değişebilir; resmi kaynaklar referans kabul edilir.",
     marketDisclaimerTitle: "Editoryal not",
     marketDisclaimerText: "Fiyatlar bilgilendirme amaçlıdır; yatırım tavsiyesi, alım-satım önerisi veya finansal danışmanlık değildir.",
     stockPanelTitle: "Borsada işlem görenler",
@@ -141,8 +141,8 @@ const translations = {
     similarCompanies: "Benzer Şirketler",
     seeAll: "Tümünü Gör →",
     aboutEyebrow: "Hakkımızda",
-    aboutTitle: "robologai, karmaşık teknoloji gündemini anlaşılır hale getirmek için tasarlandı.",
-    aboutText: "Amacımız; AI şirketleri, humanoid robotlar ve robotik yatırımları hakkında hızlı okunabilen ama yüzeysel kalmayan bir bilgi merkezi oluşturmak.",
+    aboutTitle: "RoboLogAI karmaşık robotik değişimleri anlaşılır bir istihbarat katmanına dönüştürür.",
+    aboutText: "Amacımız; AI şirketleri, humanoid robotlar, fiziksel AI, Türkiye robotik ekosistemi, fuarlar, etkinlikler ve robotik yatırımları hakkında hızlı okunabilen ama yüzeysel kalmayan bir bilgi merkezi oluşturmak.",
     trust1Title: "Kaynak Odaklı",
     trust1Text: "Şirket profilleri resmi siteler, ürün duyuruları ve güvenilir sektör bilgileriyle desteklenir.",
     trust2Title: "İki Dilli",
@@ -150,12 +150,12 @@ const translations = {
     trust3Title: "Okunur",
     trust3Text: "Gündüz ve akşam modlarıyla uzun okumalarda göz yormayan bir deneyim sunar.",
     newsletterTitle: "Gelişmelerden Haberdar Olun",
-    newsletterText: "Robotik ve yapay zeka dünyasındaki en son gelişmeleri, yeni şirketleri ve analizleri e-posta kutunuza gönderelim.",
+    newsletterText: "Robotik ve yapay zeka dünyasındaki en son gelişmeleri, sinyalleri, fuar notlarını, yeni şirketleri ve analizleri e-posta kutunuza gönderelim.",
     emailPlaceholder: "E-posta adresiniz",
     subscribe: "Abone Ol",
     contactTitle: "İş birliği, kaynak önerisi veya haber bildirimi için ulaşın.",
     contactText: "E-posta: robologai@gmail.com · X: @robologai · YouTube: robologai",
-    footerText: "Robotik ve yapay zeka dünyasına dair en güncel bilgiler, analizler ve içerikler.",
+    footerText: "Robotik, fiziksel AI, Türkiye ekosistemi ve global robot ekonomisine dair kaynak odaklı analizler.",
     footerExplore: "Keşfet",
     footerCorporate: "Kurumsal",
     footerLegal: "Yasal",
@@ -815,7 +815,7 @@ function escapeEventHtml(value = "") {
 }
 
 function eventRelatedLabel(url = "") {
-  if (url.includes("events-turkiye")) return "Turkiye layer";
+  if (url.includes("events-turkiye")) return "Türkiye layer";
   if (url.includes("events-global")) return "Global layer";
   if (url.includes("physical-ai")) return "Physical AI";
   if (url.includes("robot-economy")) return "Robot economy";
@@ -858,7 +858,7 @@ function renderEventCard(event) {
 }
 
 function renderEventPreviewCard(event) {
-  const scope = event.scope === "turkiye" ? "Turkiye" : "Global";
+  const scope = event.scope === "turkiye" ? "Türkiye" : "Global";
   const category = Array.isArray(event.category) ? event.category.slice(0, 2).join(", ") : event.category || "Robotics";
   return `
     <article>
