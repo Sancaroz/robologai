@@ -1086,6 +1086,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://robologai.com/events.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://robologai.com/events-turkiye.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://robologai.com/events-global.html</loc>
+    <lastmod>2026-05-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://robologai.com/tr-ai-agent-endeksi.html</loc>
     <lastmod>2026-05-10</lastmod>
     <priority>0.8</priority>
