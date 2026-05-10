@@ -1,0 +1,60 @@
+[
+  {
+    "name": "PR Newswire Robotics",
+    "url": "https://www.prnewswire.com/rss/technology-latest-news/technology-latest-news-list.rss",
+    "type": "Robotics News",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "robot": "Robotics ecosystem",
+    "defaultImpact": "Medium",
+    "relatedUrl": "signals.html",
+    "keywords": ["robot", "robotics", "humanoid", "automation", "autonomous", "physical ai", "factory automation"]
+  },
+  {
+    "name": "NVIDIA Robotics Blog",
+    "url": "https://blogs.nvidia.com/feed/",
+    "type": "Embodied AI Stack",
+    "company": "NVIDIA",
+    "category": "Robotics infrastructure",
+    "country": "USA",
+    "robot": "Isaac / GR00T",
+    "defaultImpact": "High",
+    "relatedUrl": "physical-ai.html",
+    "keywords": ["robotics", "robot", "isaac", "gr00t", "physical ai", "simulation", "humanoid"]
+  },
+  {
+    "name": "Google DeepMind Blog",
+    "url": "https://deepmind.google/discover/blog/rss.xml",
+    "type": "Robot AI",
+    "company": "Google DeepMind",
+    "category": "Robot AI",
+    "country": "USA / UK",
+    "robot": "Gemini Robotics",
+    "defaultImpact": "High",
+    "relatedUrl": "physical-ai.html",
+    "keywords": ["robotics", "robot", "embodied", "physical world", "gemini robotics", "agents"]
+  },
+  {
+    "name": "Boston Dynamics Blog",
+    "url": "https://bostondynamics.com/feed/",
+    "type": "Mobility",
+    "company": "Boston Dynamics",
+    "category": "Humanoid mobility",
+    "country": "USA",
+    "robot": "Atlas / Spot",
+    "defaultImpact": "High",
+    "relatedUrl": "robots/boston-dynamics-atlas.html",
+    "keywords": ["atlas", "spot", "robot", "robotics", "automation", "inspection"]
+  },
+  {
+    "name": "IEEE Spectrum Robotics",
+    "url": "https://spectrum.ieee.org/feeds/topic/robotics.rss",
+    "type": "Research Signal",
+    "category": "Robotics research",
+    "country": "Global",
+    "robot": "Robotics ecosystem",
+    "defaultImpact": "Medium",
+    "relatedUrl": "signals.html",
+    "keywords": ["robot", "robotics", "humanoid", "autonomous", "manipulation", "drone", "automation"]
+  }
+]

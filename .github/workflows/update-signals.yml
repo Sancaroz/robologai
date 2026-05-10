@@ -1,0 +1,36 @@
+name: Update robotics signals
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "18 */12 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-signals:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Update signals feed
+        run: node scripts/update-signals.mjs
+
+      - name: Commit updated signals
+        run: |
+          if git diff --quiet data/signals.json; then
+            echo "No signal changes."
+            exit 0
+          fi
+          git config user.name "RoboLogAI Signal Bot"
+          git config user.email "actions@github.com"
+          git add data/signals.json
+          git commit -m "Update robotics signals"
+          git push
