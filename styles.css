@@ -4851,7 +4851,8 @@ body.light-theme .profile-main > div > span {
   background:
     linear-gradient(90deg, rgba(2, 8, 18, 0.88), rgba(2, 8, 18, 0.54)),
     radial-gradient(circle at 78% 22%, rgba(120, 231, 255, 0.24), transparent 34%),
-    url("assets/robot-lab.png") right center / cover;
+    radial-gradient(circle at 18% 82%, rgba(20, 184, 166, 0.14), transparent 34%),
+    linear-gradient(135deg, rgba(8, 23, 39, 0.96), rgba(2, 8, 18, 0.96));
   box-shadow: var(--shadow);
 }
 
@@ -5146,7 +5147,8 @@ body.light-theme .profile-main > div > span {
   background:
     linear-gradient(90deg, rgba(2, 8, 18, 0.92), rgba(2, 8, 18, 0.64)),
     radial-gradient(circle at 80% 18%, rgba(120, 231, 255, 0.24), transparent 34%),
-    url("assets/robot-lab.png") right center / cover;
+    radial-gradient(circle at 18% 82%, rgba(20, 184, 166, 0.13), transparent 32%),
+    linear-gradient(135deg, rgba(8, 23, 39, 0.96), rgba(2, 8, 18, 0.97));
   box-shadow: var(--shadow);
 }
 
@@ -6638,7 +6640,8 @@ body.light-theme .humanoid-preview-card dt {
   background:
     linear-gradient(90deg, rgba(2, 8, 18, 0.94), rgba(2, 8, 18, 0.66)),
     radial-gradient(circle at 80% 18%, rgba(116, 199, 255, 0.2), transparent 34%),
-    url("assets/robot-lab.png") right center / cover;
+    radial-gradient(circle at 18% 82%, rgba(20, 184, 166, 0.12), transparent 32%),
+    linear-gradient(135deg, rgba(8, 23, 39, 0.96), rgba(2, 8, 18, 0.97));
 }
 
 .use-case-board {
@@ -6919,7 +6922,8 @@ body.light-theme .market-hero {
   background:
     linear-gradient(90deg, rgba(247, 251, 255, 0.94), rgba(247, 251, 255, 0.62)),
     radial-gradient(circle at 78% 22%, rgba(120, 231, 255, 0.18), transparent 34%),
-    url("assets/robot-lab.png") right center / cover;
+    radial-gradient(circle at 18% 82%, rgba(20, 184, 166, 0.12), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.9));
 }
 
 body.light-theme .market-hero span {
@@ -9897,7 +9901,8 @@ body.light-theme .catalog-hero {
   background:
     linear-gradient(90deg, rgba(247, 251, 255, 0.94), rgba(247, 251, 255, 0.72)),
     radial-gradient(circle at 80% 18%, rgba(120, 231, 255, 0.18), transparent 34%),
-    url("assets/robot-lab.png") right center / cover;
+    radial-gradient(circle at 18% 82%, rgba(20, 184, 166, 0.12), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.9));
 }
 
 body.light-theme .catalog-hero > span,
@@ -10593,7 +10598,8 @@ body.light-theme .facts span {
     padding: 24px;
     background:
       linear-gradient(180deg, rgba(2, 8, 18, 0.9), rgba(2, 8, 18, 0.68)),
-      url("assets/robot-lab.png") center / cover;
+      radial-gradient(circle at 76% 22%, rgba(120, 231, 255, 0.18), transparent 34%),
+      linear-gradient(135deg, rgba(8, 23, 39, 0.96), rgba(2, 8, 18, 0.98));
   }
 
   .market-hero h2 {
