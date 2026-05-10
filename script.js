@@ -786,6 +786,25 @@ function initNewsletterSignup() {
   });
 }
 
+async function initSignalCounter() {
+  const counters = document.querySelectorAll("[data-live-signals-count]");
+  if (!counters.length) return;
+  try {
+    const response = await fetch("data/signals.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("signals unavailable");
+    const signals = await response.json();
+    const count = Array.isArray(signals) ? signals.length : 0;
+    if (!count) return;
+    counters.forEach((counter) => {
+      counter.textContent = `${count} tracked`;
+    });
+  } catch (error) {
+    counters.forEach((counter) => {
+      counter.textContent = "12 tracked";
+    });
+  }
+}
+
 searchInput?.addEventListener("input", filterCompanies);
 categoryFilter?.addEventListener("change", filterCompanies);
 subcategoryFilter?.addEventListener("change", filterCompanies);
@@ -836,3 +855,4 @@ loadCompanyDatabase();
 loadRobotDatabase();
 initNewsletterScroll();
 initNewsletterSignup();
+initSignalCounter();
