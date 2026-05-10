@@ -805,6 +805,103 @@ async function initSignalCounter() {
   }
 }
 
+function escapeEventHtml(value = "") {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function eventRelatedLabel(url = "") {
+  if (url.includes("events-turkiye")) return "Turkiye layer";
+  if (url.includes("events-global")) return "Global layer";
+  if (url.includes("physical-ai")) return "Physical AI";
+  if (url.includes("robot-economy")) return "Robot economy";
+  if (url.includes("leaderboard")) return "Leaderboard";
+  if (url.includes("companies")) return "Company index";
+  if (url.includes("timeline")) return "Timeline";
+  if (url.includes("videos")) return "Video signals";
+  if (url.includes("ai-model-index")) return "AI model index";
+  return "Related analysis";
+}
+
+function renderEventCard(event) {
+  const category = Array.isArray(event.category) ? event.category.join(", ") : event.category || "Robotics";
+  const tags = (event.expectedSignals || []).slice(0, 3).map((tag) => `<span>${escapeEventHtml(tag)}</span>`).join("");
+  const relatedUrl = (event.relatedArticles || [])[0] || "signals.html";
+  const relevance = event.relevance || {};
+  const priorityClass = Number(event.signalScore || 0) >= 95 ? " priority" : "";
+
+  return `
+    <article class="event-card${priorityClass}">
+      <div class="event-topline"><span>${escapeEventHtml(event.status || "Tracked")}</span><strong>Signal ${escapeEventHtml(event.signalScore || "")}</strong></div>
+      <h3>${escapeEventHtml(event.name)}</h3>
+      <p>${escapeEventHtml(event.dateDisplay)} · ${escapeEventHtml(event.city)}, ${escapeEventHtml(event.country)}</p>
+      <small>${escapeEventHtml(category)}</small>
+      <p>${escapeEventHtml(event.whyItMatters)}</p>
+      <dl>
+        <div><dt>AI</dt><dd>${escapeEventHtml(relevance.ai || "Watch")}</dd></div>
+        <div><dt>Humanoid</dt><dd>${escapeEventHtml(relevance.humanoid || "Watch")}</dd></div>
+        <div><dt>Industrial</dt><dd>${escapeEventHtml(relevance.industrialRobotics || "Watch")}</dd></div>
+        <div><dt>Physical AI</dt><dd>${escapeEventHtml(relevance.physicalAi || "Watch")}</dd></div>
+      </dl>
+      <div class="event-tags">${tags}</div>
+      <div class="event-actions">
+        <a href="${escapeEventHtml(event.officialUrl)}" target="_blank" rel="noopener noreferrer">Official source</a>
+        <a href="${escapeEventHtml(relatedUrl)}">${escapeEventHtml(eventRelatedLabel(relatedUrl))}</a>
+      </div>
+    </article>
+  `;
+}
+
+function renderEventPreviewCard(event) {
+  const scope = event.scope === "turkiye" ? "Turkiye" : "Global";
+  const category = Array.isArray(event.category) ? event.category.slice(0, 2).join(", ") : event.category || "Robotics";
+  return `
+    <article>
+      <span>${escapeEventHtml(scope)} · ${escapeEventHtml(event.dateDisplay)}</span>
+      <strong>${escapeEventHtml(event.name)}</strong>
+      <small>${escapeEventHtml(category)}</small>
+      <em>Signal ${escapeEventHtml(event.signalScore || "")}</em>
+    </article>
+  `;
+}
+
+async function initEventsCatalog() {
+  const eventLists = document.querySelectorAll("[data-events-list]");
+  const preview = document.querySelector("[data-events-preview]");
+  if (!eventLists.length && !preview) return;
+
+  try {
+    const response = await fetch("data/events.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("events unavailable");
+    const events = await response.json();
+    if (!Array.isArray(events) || !events.length) return;
+
+    const sortedEvents = [...events].sort((a, b) => {
+      const scoreDiff = Number(b.signalScore || 0) - Number(a.signalScore || 0);
+      if (scoreDiff) return scoreDiff;
+      return String(a.dateStart || "").localeCompare(String(b.dateStart || ""));
+    });
+
+    eventLists.forEach((list) => {
+      const scope = list.dataset.eventsScope || "all";
+      const scopedEvents = scope === "all" ? sortedEvents : sortedEvents.filter((event) => event.scope === scope);
+      if (!scopedEvents.length) return;
+      list.innerHTML = scopedEvents.map(renderEventCard).join("");
+    });
+
+    if (preview) {
+      const previewEvents = sortedEvents.slice(0, 3);
+      preview.innerHTML = previewEvents.map(renderEventPreviewCard).join("");
+    }
+  } catch (error) {
+    // Keep SEO-friendly fallback cards visible if JSON cannot load locally or over the network.
+  }
+}
+
 searchInput?.addEventListener("input", filterCompanies);
 categoryFilter?.addEventListener("change", filterCompanies);
 subcategoryFilter?.addEventListener("change", filterCompanies);
@@ -856,3 +953,4 @@ loadRobotDatabase();
 initNewsletterScroll();
 initNewsletterSignup();
 initSignalCounter();
+initEventsCatalog();
