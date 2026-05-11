@@ -160,7 +160,7 @@
   {"name":"Leju Robotics","category":"Humanoid robotics","country":"China","type":"Private","ticker":"","robot":"KUAVO 4Pro, KUAVO 5","website":"https://www.lejurobot.com/en","keywords":["kuavo","humanoid","industrial manufacturing","teleoperation"]},
   {"name":"Pudu Robotics","category":"Service and humanoid robotics","country":"China","type":"Private","ticker":"","robot":"PUDU D9, D7, service robots","website":"https://www.pudurobotics.com/","keywords":["service robot","humanoid","d9","commercial robotics"]},
   {"name":"MagicLab","category":"General-purpose humanoid robotics","country":"China","type":"Private","ticker":"","robot":"MagicBot Gen1","website":"https://www.magiclab.top/en/human","keywords":["magicbot","humanoid","multi robot collaboration","industrial"]}
-] , {
+  , {
   "name": "X-Humanoid",
   "category": "Humanoid robotics, embodied AI, general-purpose robot platforms",
   "country": "China",
@@ -168,5 +168,5 @@
   "ticker": "",
   "robot": "Embodied Tien Kung 3.0",
   "website": "https://www.x-humanoid.com/",
-  "keywords": ["x-humanoid", "tien kung", "embodied ai", "humanoid", "wise kaiwu", "china"]}
+  "keywords": ["x-humanoid", "tien kung", "embodied ai", "humanoid", "wise kaiwu", "china"}
 ]
