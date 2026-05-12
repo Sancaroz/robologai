@@ -96,3 +96,5 @@
       "body": "This post is stored in `content/posts.json`. When the file is updated and Cloudflare Pages publishes the site, the post appears automatically.\\n\\nThe goal is simple: publish lightweight blog and news updates without preparing a new zip package every time.",
       "featured": true
     }
+  ]
+}
