@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+{
+  "status": "Published",
+  "type": "Analysis",
+  "title": "OpenMind and the Next Wave of Embodied AI",
+  "slug": "openmind-next-wave-embodied-ai",
+  "url": "blog/openmind-next-wave-embodied-ai.html",
+  "date": "2026-05-12",
+  "category": "Embodied AI",
+  "excerpt": "Why the future of artificial intelligence may belong to systems that can move, learn, and operate in the physical world.",
+  "body": "A RoboLogAI analysis exploring OpenMind, embodied AI, humanoid robotics, and the future of physical intelligence systems.",
+  "image": "assets/robots/openmind.png",
+  "featured": true
+},
+  {  
   "status": "Published",
   "type": "Analysis",
   "title": "Embodied Tien Kung 3.0: China’s New Humanoid Robotics Platform Explained",
@@ -93,5 +107,4 @@
   "image": "assets/robots/openmind.png",
   "url": "blog/openmind-next-wave-embodied-ai.html"
 }
-  ]
-}
+
