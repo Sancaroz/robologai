@@ -1,0 +1,161 @@
+<!-- BLOG HERO -->
+<section class="post-hero">
+  <p class="post-kicker">Embodied AI · Humanoid Robotics</p>
+
+  <h1>
+    OpenMind and the Next Wave of Embodied AI
+  </h1>
+
+  <p class="post-subtitle">
+    Why the future of artificial intelligence may belong to systems
+    that can move, learn, and operate in the physical world.
+  </p>
+
+  <div class="post-meta">
+    <span>RoboLogAI Analysis</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<!-- HERO IMAGE -->
+<section class="post-cover">
+  <img
+    src="../assets/robots/openmind.png"
+    alt="OpenMind humanoid robotics"
+  >
+</section>
+
+<!-- ARTICLE -->
+<section class="post-content">
+
+  <p>
+    Artificial intelligence is entering a new era.
+  </p>
+
+  <p>
+    The next generation of AI may not live only on screens,
+    inside chat windows, or in cloud software platforms.
+  </p>
+
+  <p>
+    It may move through the physical world.
+  </p>
+
+  <p>
+    OpenMind is one of the emerging companies exploring this transition
+    between advanced AI systems and embodied robotics.
+  </p>
+
+  <h2>
+    From Digital Intelligence to Physical Intelligence
+  </h2>
+
+  <p>
+    For years, the AI race focused mainly on language models,
+    image generation, and software assistants.
+  </p>
+
+  <p>
+    But humanoid robotics is changing the direction of the industry.
+  </p>
+
+  <p>
+    Physical AI systems require more than conversation abilities.
+    Robots must understand movement, balance, space, objects,
+    timing, safety, and human environments.
+  </p>
+
+  <blockquote>
+    “The next AI revolution may not happen on screens —
+    it may walk into the physical world.”
+  </blockquote>
+
+  <p>
+    This is why embodied AI has become one of the most important
+    technology trends in robotics.
+  </p>
+
+  <h2>
+    Why Embodied AI Matters
+  </h2>
+
+  <p>
+    Humanoid robots represent a major shift in how artificial intelligence
+    interacts with reality.
+  </p>
+
+  <p>
+    Instead of generating only text or images,
+    embodied systems must make real-world decisions continuously.
+  </p>
+
+  <ul>
+    <li>Object manipulation</li>
+    <li>Human interaction</li>
+    <li>Navigation</li>
+    <li>Autonomous movement</li>
+    <li>Task adaptation</li>
+    <li>Physical learning</li>
+  </ul>
+
+  <p>
+    Companies entering this sector are competing to build
+    scalable robot intelligence that can operate in factories,
+    logistics environments, homes, and future autonomous systems.
+  </p>
+
+  <h2>
+    OpenMind and the Future Robotics Race
+  </h2>
+
+  <p>
+    OpenMind is part of a growing wave of robotics-focused AI companies
+    exploring the future of physical intelligence.
+  </p>
+
+  <p>
+    As the robotics ecosystem expands,
+    companies combining AI software with real-world robotic capability
+    may become some of the most important technology platforms
+    of the next decade.
+  </p>
+
+  <p>
+    The humanoid robotics race is no longer science fiction.
+  </p>
+
+  <p>
+    It is becoming an engineering race,
+    an infrastructure race,
+    and eventually an economic race.
+  </p>
+
+</section>
+
+<!-- VIDEO EMBED -->
+<section class="post-video">
+
+  <h2>
+    Watch: OpenMind Robotics Video
+  </h2>
+
+  <div class="video-embed">
+
+    <iframe
+      src="https://www.youtube.com/embed/cwrZ0k1BZhI"
+      title="OpenMind robotics video"
+      allowfullscreen
+    ></iframe>
+
+  </div>
+
+</section>
+
+<!-- RELATED -->
+<section class="related-links">
+
+  <a href="../companies/openmind.html">
+    View OpenMind Company Profile →
+  </a>
+
+</section>
