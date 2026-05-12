@@ -172,11 +172,18 @@
   },
   {
   "name": "OpenMind",
-  "country": "United States",
-  "focus": "Embodied AI and Humanoid Robotics",
-  "website": "https://www.openmind.org",
-  "category": "AI Robotics",
-  "status": "Emerging",
-  "description": "OpenMind is an emerging AI and robotics company focused on embodied intelligence, humanoid systems, and scalable physical AI platforms.",
-  "image": "assets/robots/openmind.png"]
-  }
+  "category": "Embodied AI and humanoid robotics",
+  "country": "USA",
+  "type": "Private",
+  "ticker": "",
+  "robot": "Future humanoid platform",
+  "website": "https://www.openmind.org/",
+  "image": "assets/robots/openmind.png",
+  "keywords": [
+    "openmind",
+    "embodied ai",
+    "humanoid",
+    "physical ai",
+    "robotics"
+  ]
+}
