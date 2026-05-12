@@ -169,21 +169,5 @@
   "robot": "Embodied Tien Kung 3.0",
   "website": "https://www.x-humanoid.com/",
   "keywords": ["x-humanoid", "tien kung", "embodied ai", "humanoid", "wise kaiwu", "china"]
-  },
-  {
-  "name": "OpenMind",
-  "category": "Embodied AI and humanoid robotics",
-  "country": "USA",
-  "type": "Private",
-  "ticker": "",
-  "robot": "Future humanoid platform",
-  "website": "https://www.openmind.org/",
-  "image": "assets/robots/openmind.png",
-  "keywords": [
-    "openmind",
-    "embodied ai",
-    "humanoid",
-    "physical ai",
-    "robotics"
-  ]
 }
+]
