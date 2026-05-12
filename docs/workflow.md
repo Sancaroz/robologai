@@ -32,13 +32,20 @@
    - Görsel
    - Share on X butonu
 
-## Yeni Şirket Ekleme
+Yeni şirket ekleme sırası
+1. data/companies.json içine company objesi ekle
+2. image path kontrol et
+3. logo dosyasını assets/robots içine koy
+4. companies/company-name.html oluştur
+5. company-profile-mark kısmına gerçek img koy
+6. commit + deploy kontrol et
 
-1. `data/companies.json` aç.
-2. Yeni şirket objesini ekle.
-3. JSON virgül/kapanış kontrolü yap.
-4. Commit et.
-5. Companies sayfasında ara.
+Logo çalışmıyorsa kontrol
+- png gerçekten png mi?
+- path doğru mu?
+- büyük/küçük harf aynı mı?
+- OM placeholder kaldı mı?
+
 
 ## Yeni Robot Ekleme
 
