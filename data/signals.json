@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-05-12",
+    "type": "Robotics News",
+    "title": "SAP und Cyberwave setzen vollständig autonome, KI-gestützte Roboter in einem realen SAP-Logistiklager ein",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "WALLDORF, Deutschland, 11. Mai 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), der weltweit führende Anbieter von Unternehmensanwendungssoftware, und Cyberwave, ein auf KI-Robotik-Software spezialisiertes Unternehmen, gaben heute den erfolgreichen Einsatz vollautonom",
+    "source": "https://www.prnewswire.com/news-releases/sap-und-cyberwave-setzen-vollstandig-autonome-ki-gestutzte-roboter-in-einem-realen-sap-logistiklager-ein-302768875.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-12",
+    "type": "Robotics News",
+    "title": "SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "-SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial en un almacén logístico SAP en funcionamiento WALLDORF, Alemania, 11 de mayo de 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), líder mundial en software de aplicaciones empresariale",
+    "source": "https://www.prnewswire.com/news-releases/sap-y-cyberwave-implementan-robots-totalmente-autonomos-con-inteligencia-artificial-302768860.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-09",
     "type": "Research Signal",
     "title": "Video Friday: AI Gives Robot Hands Human-Like Dexterity",
