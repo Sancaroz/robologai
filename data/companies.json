@@ -169,6 +169,16 @@
   "robot": "Embodied Tien Kung 3.0",
   "website": "https://www.x-humanoid.com/",
   "keywords": ["x-humanoid", "tien kung", "embodied ai", "humanoid", "wise kaiwu", "china"]
-  }
+  },
+  {
+  "name": "OpenMind",
+  "country": "United States",
+  "focus": "Embodied AI and Humanoid Robotics",
+  "website": "https://www.openmind.org",
+  "category": "AI Robotics",
+  "status": "Emerging",
+  "description": "OpenMind is an emerging AI and robotics company focused on embodied intelligence, humanoid systems, and scalable physical AI platforms.",
+  "image": "assets/companies/openmind.png"
+}
   ]
   
