@@ -1,6 +1,5 @@
 {
   "posts": [
-    {
 {
   "status": "Published",
   "type": "Analysis",
@@ -96,15 +95,4 @@
       "excerpt": "This is the first editable post source for the Robologai CMS test. Future blog and news posts can be added from the admin panel.",
       "body": "This post is stored in `content/posts.json`. When the file is updated and Cloudflare Pages publishes the site, the post appears automatically.\\n\\nThe goal is simple: publish lightweight blog and news updates without preparing a new zip package every time.",
       "featured": true
-    },
-    {
-  "title": "OpenMind and the Next Wave of Embodied AI",
-  "slug": "openmind-next-wave-embodied-ai",
-  "category": "Embodied AI",
-  "date": "2026-05-12",
-  "readTime": "5 min read",
-  "excerpt": "Why the future of artificial intelligence may belong to systems that can move, learn, and operate in the physical world.",
-  "image": "assets/robots/openmind.png",
-  "url": "blog/openmind-next-wave-embodied-ai.html"
-}
-
+    }
