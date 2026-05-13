@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-05-13",
+    "type": "Robotics News",
+    "title": "Emerson Unveils AI-Ready Test Automation Platform at Annual NI Connect Conference",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "NI Nigel™ AI to expand into code generation and cross-platform intelligence, embedding AI automation across the test lifecycle FORT WORTH, Texas, May 13, 2026 /PRNewswire/ -- Global automation leader Emerson (NYSE: EMR) today announced the expansion of NI Nige",
+    "source": "https://www.prnewswire.com/news-releases/emerson-unveils-ai-ready-test-automation-platform-at-annual-ni-connect-conference-302766280.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-13",
+    "type": "Robotics News",
+    "title": "Aisera Named a Leader in Inaugural IDC MarketScape for Conversational AI Platforms for Back-Office Use Cases 2026 Vendor Assessment",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "SAN JOSE, Calif., May 13, 2026 /PRNewswire/ -- Aisera, an Automation Anywhere company, was named a Leader in the inaugural IDC MarketScape Worldwide Conversational AI Platforms for Back-Office Use Cases 2026 Vendor Assessment1 This is the first IDC MarketScape",
+    "source": "https://www.prnewswire.com/news-releases/aisera-named-a-leader-in-inaugural-idc-marketscape-for-conversational-ai-platforms-for-back-office-use-cases-2026-vendor-assessment-302771068.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-12",
     "type": "Research Signal",
     "title": "Hello Robot Sets the Standard for Practical, Safe Home Robots",
@@ -38,6 +66,20 @@
     "impact": "Medium",
     "summary": "-SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial en un almacén logístico SAP en funcionamiento WALLDORF, Alemania, 11 de mayo de 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), líder mundial en software de aplicaciones empresariale",
     "source": "https://www.prnewswire.com/news-releases/sap-y-cyberwave-implementan-robots-totalmente-autonomos-con-inteligencia-artificial-302768860.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-09",
+    "type": "Research Signal",
+    "title": "Video Friday: AI Gives Robot Hands Humanlike Dexterity",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-robotic-hand-dexterity",
     "relatedUrl": "signals.html",
     "sourceType": "automated"
   },
