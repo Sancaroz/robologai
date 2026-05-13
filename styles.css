@@ -2394,7 +2394,10 @@ h1 span {
 
 .hero h1 span {
   color: #78e7ff;
-  text-shadow: 0 0 34px rgba(78, 183, 255, 0.46);
+  text-shadow:
+  0 0 12px rgba(125,211,252,.12),
+  0 0 24px rgba(167,139,250,.10);
+letter-spacing: -0.03em;
 }
 
 .hero p {
