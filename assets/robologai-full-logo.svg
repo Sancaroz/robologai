@@ -1,64 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 128" role="img" aria-label="robologai full logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 96" role="img" aria-label="RoboLogAI">
   <defs>
-    <radialGradient id="iconGlow" cx="62%" cy="48%" r="62%">
-      <stop offset="0" stop-color="#8ff7ff" stop-opacity="0.95"/>
-      <stop offset="0.45" stop-color="#29d3e6" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#06121d" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="metal" x1="34" x2="77" y1="24" y2="100" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="0.42" stop-color="#c6d4df"/>
-      <stop offset="1" stop-color="#465b66"/>
+    <linearGradient id="aiGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="50%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#34d399"/>
     </linearGradient>
-    <linearGradient id="cyan" x1="18" x2="112" y1="22" y2="106" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#98f8ff"/>
-      <stop offset="0.56" stop-color="#35d7e7"/>
-      <stop offset="1" stop-color="#178fb5"/>
-    </linearGradient>
-    <linearGradient id="textMain" x1="142" x2="388" y1="74" y2="74" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f7fbff"/>
-      <stop offset="0.68" stop-color="#dbeafe"/>
-      <stop offset="1" stop-color="#58eff7"/>
-    </linearGradient>
-    <filter id="softGlow" x="-35%" y="-35%" width="170%" height="170%">
-      <feGaussianBlur stdDeviation="2.4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="textGlow" x="-10%" y="-30%" width="120%" height="160%">
-      <feGaussianBlur stdDeviation="1.4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-  <g>
-    <rect width="112" height="112" x="8" y="8" rx="25" fill="#06111d"/>
-    <circle cx="68" cy="64" r="51" fill="url(#iconGlow)"/>
-    <g fill="none" stroke="url(#cyan)" stroke-linecap="round" filter="url(#softGlow)">
-      <circle cx="70" cy="62" r="42" stroke-width="2.2"/>
-      <circle cx="74" cy="62" r="28" stroke-width="1.8" opacity="0.82"/>
-      <circle cx="76" cy="62" r="16" stroke-width="1.8" opacity="0.82"/>
-      <path d="M70 18c17 2 31 12 39 28" stroke-width="2.2"/>
-      <path d="M35 91c-10-15-12-34-5-51" stroke-width="1.8" opacity="0.76"/>
-      <path d="M76 34v58M47 62h61M98 36 55 90" stroke-width="1.4" opacity="0.58"/>
-    </g>
-    <g fill="url(#cyan)" filter="url(#softGlow)">
-      <circle cx="31" cy="62" r="5.2"/>
-      <circle cx="97" cy="26" r="4.8"/>
-      <circle cx="109" cy="59" r="4.3"/>
-      <circle cx="76" cy="105" r="5"/>
-    </g>
-    <path fill="url(#metal)" stroke="#9cf7ff" stroke-width="1.2" d="M51 22 32 31l-4 31 11 11-6 18 17 18 13-25 15-17-5-32-22-13Z"/>
-    <path fill="#071722" opacity="0.62" d="m36 36-3 25 9 10-4 16 11 12 9-18 12-14-4-25-16-8-14 2Z"/>
-    <path fill="#f8fbff" d="m51 24-16 8-2 25 11 11 16-12-4-25-5-7Z"/>
-    <path fill="#263b46" d="m45 70-7 16 11 14 9-20 10-12-23 2Z"/>
-    <circle cx="48" cy="61" r="7.5" fill="#41e6f2" filter="url(#softGlow)"/>
-    <circle cx="48" cy="61" r="3.4" fill="#d8ffff"/>
+
+  <rect width="460" height="96" rx="24" fill="transparent"/>
+
+  <g transform="translate(12 14)">
+    <rect x="0" y="8" width="68" height="52" rx="18" fill="#05060f" stroke="url(#aiGradient)" stroke-width="4"/>
+    <circle cx="24" cy="34" r="6" fill="#e5f9ff"/>
+    <circle cx="44" cy="34" r="6" fill="#e5f9ff"/>
+    <path d="M22 48c8 7 18 7 26 0" fill="none" stroke="url(#aiGradient)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M34 8V0" stroke="url(#aiGradient)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="34" cy="-3" r="3" fill="#34d399"/>
   </g>
-  <text x="142" y="82" fill="url(#textMain)" stroke="#06111d" stroke-width="3" paint-order="stroke fill" filter="url(#textGlow)" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="850" letter-spacing="0">robolog</text>
-  <text x="344" y="82" fill="#58eff7" stroke="#06111d" stroke-width="3" paint-order="stroke fill" filter="url(#textGlow)" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="850" letter-spacing="0">ai</text>
+
+  <text x="96" y="60"
+        font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="42"
+        font-weight="800"
+        letter-spacing="-1.4"
+        fill="#ffffff">
+    RoboLog
+  </text>
+
+  <text x="294" y="60"
+        font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="42"
+        font-weight="900"
+        letter-spacing="-1"
+        fill="url(#aiGradient)">
+    AI
+  </text>
+
+  <text x="98" y="82"
+        font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="11"
+        font-weight="700"
+        letter-spacing="3.4"
+        fill="#94a3b8">
+    ROBOTICS INTELLIGENCE
+  </text>
 </svg>
