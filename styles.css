@@ -2302,9 +2302,25 @@ body.light-theme .language-pill span {
 
 .hero {
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.9fr);
   gap: clamp(18px, 3vw, 40px);
+  }
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(125,211,252,.16), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(167,139,250,.18), transparent 34%),
+    radial-gradient(circle at 50% 80%, rgba(52,211,153,.12), transparent 36%);
+  filter: blur(60px);
+  z-index:-1;
+  opacity:.95;
+}
   min-height: 390px;
   margin-top: 12px;
   padding: clamp(30px, 5vw, 48px);
