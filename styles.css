@@ -11737,6 +11737,42 @@ body.light-theme .brand-full {
   min-height: 38px;
   padding: 0 16px;
   font-size: 13px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 22px;
+  border-radius: 16px;
+
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.08);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,.28);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 16px;
+
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.08);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,.28);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
 }
 
 .search-box {
@@ -13438,4 +13474,14 @@ body.light-theme .event-card dd {
 
 .share-x-button:hover {
   opacity: 0.85;
+}
+.hero-primary-action:hover,
+.hero-secondary-action:hover{
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 50px rgba(0,0,0,.34),
+    0 0 18px rgba(125,211,252,.18);
+
+  border-color: rgba(125,211,252,.22);
 }
