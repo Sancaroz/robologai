@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-05-12",
+    "type": "Research Signal",
+    "title": "Hello Robot Sets the Standard for Practical, Safe Home Robots",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Many roboticists (and at least one robotics journalist) have been seduced by the dream of a robot butler. And the rampant popularity of videos showing humanoid robots doing household tasks in improbably clean kitchens and unrealistically tidy bedrooms suggests",
+    "source": "https://spectrum.ieee.org/stretch-4-home-robot",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-12",
     "type": "Robotics News",
     "title": "SAP und Cyberwave setzen vollständig autonome, KI-gestützte Roboter in einem realen SAP-Logistiklager ein",
     "company": "Robotics ecosystem",
