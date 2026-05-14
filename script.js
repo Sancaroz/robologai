@@ -423,7 +423,7 @@ const robotCatalogGrid = document.querySelector(".robot-database-grid");
 const robotCompareBody = document.querySelector("[data-robot-compare]");
 const robotFilterButtons = Array.from(document.querySelectorAll("[data-robot-filter]"));
 const newsletterCtas = document.querySelectorAll('a[href="#bulten"], a[href="index.html#bulten"]');
-const statCompanies = document.querySelector("[data-stat-companies]");
+const statCompanies = document.querySelectorAll("[data-stat-companies]");
 const statCountries = document.querySelector("[data-stat-countries]");
 const statRobots = document.querySelector("[data-stat-robots]");
 const noResults = document.querySelector(".no-results");
