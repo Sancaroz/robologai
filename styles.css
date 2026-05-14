@@ -12028,7 +12028,9 @@ body.light-theme .hero-orbit-card strong {
   }
 
   .brand-full .brand-logo-full {
-    width: 138px;
+  height: 62px;
+  width: auto;
+  display: block;
   }
 
   .hero {
