@@ -1864,7 +1864,9 @@ body.light-theme .site-header {
 }
 
 .brand-full .brand-logo-mini {
-  display: none;
+  width: 38px;
+  height: 38px;
+  margin-right: -4px;
 }
 
 .brand span {
