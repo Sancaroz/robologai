@@ -522,7 +522,9 @@ function renderDatabaseInsights() {
   const [topCountry, topCountryCount] = topEntry(companies, (company) => broadCountry(company.country));
   const privateCount = companies.filter((company) => normalizeSearch(company.type).includes("private")).length;
 
-  if (statCompanies) statCompanies.textContent = `${companies.length}+`;
+  if (statCompanies) statCompanies.forEach((item) => {
+  item.textContent = `${companyDatabase.length}+`;
+});
   if (statCountries) statCountries.textContent = `${countries.size}+`;
   if (statRobots) statRobots.textContent = robotDatabase.length ? `${robotDatabase.length}` : "16";
 
