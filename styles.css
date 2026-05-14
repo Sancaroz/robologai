@@ -13494,3 +13494,18 @@ body.light-theme .event-card dd {
   width: auto !important;
   max-height: none !important;
 }
+.site-header .brand{
+  display:flex;
+  align-items:center;
+}
+
+.site-header .brand-logo-full{
+  height: 90px !important;
+  width: auto !important;
+  max-height: none !important;
+  object-fit: contain;
+}
+
+.site-header{
+  min-height: 96px;
+}
