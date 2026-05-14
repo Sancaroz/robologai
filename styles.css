@@ -13489,3 +13489,8 @@ body.light-theme .event-card dd {
 
   border-color: rgba(125,211,252,.22);
 }
+.site-header .brand-logo-full{
+  height: 78px !important;
+  width: auto !important;
+  max-height: none !important;
+}
