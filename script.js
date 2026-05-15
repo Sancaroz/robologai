@@ -419,6 +419,7 @@ const companyDatabaseSection = document.querySelector("#company-database");
 const companyDatabaseResults = document.querySelector("[data-company-results]");
 const companyDatabaseStatus = document.querySelector("[data-database-status]");
 const databaseInsights = document.querySelector("[data-database-insights]");
+const homeSearchResults = document.querySelector("[data-home-search-results]");
 const robotCatalogGrid = document.querySelector(".robot-database-grid");
 const robotCompareBody = document.querySelector("[data-robot-compare]");
 const robotFilterButtons = Array.from(document.querySelectorAll("[data-robot-filter]"));
@@ -580,6 +581,81 @@ function robotSearchText(robot) {
   ].filter(Boolean).join(" "));
 }
 
+function seoSlug(value = "") {
+  return normalizeSearch(value)
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function robotSeoSlug(robot) {
+  const name = seoSlug(robot.name);
+  const brand = seoSlug(robot.company)
+    .replace(/-robotics$/, "")
+    .replace(/-technologies$/, "")
+    .replace(/-technology$/, "")
+    .replace(/-ai$/, "")
+    .replace(/-inc$/, "")
+    .replace(/-ltd$/, "");
+  return name.startsWith(brand) ? name : `${brand}-${name}`;
+}
+
+function companyProfileHref(company) {
+  return sitePath(`companies/${seoSlug(company.name)}.html`);
+}
+
+function robotProfileHref(robot) {
+  return sitePath(`robots/${robotSeoSlug(robot)}.html`);
+}
+
+function renderHomeSearchResults(query = searchInput?.value || "") {
+  if (!homeSearchResults) return;
+  const normalizedQuery = normalizeSearch(query.trim());
+  if (normalizedQuery.length < 2) {
+    homeSearchResults.hidden = true;
+    homeSearchResults.innerHTML = "";
+    return;
+  }
+
+  const terms = normalizedQuery.split(/\s+/).filter(Boolean);
+  const companies = (companyDatabase.length ? companyDatabase : fallbackCompanyDatabase)
+    .filter((company) => terms.every((term) => companySearchText(company).includes(term)))
+    .slice(0, 4)
+    .map((company) => ({
+      type: "Company",
+      title: company.name,
+      meta: [company.type, company.country].filter(Boolean).join(" · "),
+      body: company.category || company.robot || "Robotics and AI entity",
+      href: companyProfileHref(company)
+    }));
+  const robots = robotDatabase
+    .filter((robot) => terms.every((term) => robotSearchText(robot).includes(term)))
+    .slice(0, 4)
+    .map((robot) => ({
+      type: "Robot",
+      title: robot.name,
+      meta: [robot.company, robot.category].filter(Boolean).join(" · "),
+      body: robot.useCase || robot.status || "Physical AI system",
+      href: robotProfileHref(robot)
+    }));
+  const results = [...companies, ...robots].slice(0, 6);
+
+  homeSearchResults.hidden = false;
+  homeSearchResults.innerHTML = `
+    <div class="home-search-results-head">
+      <span>${results.length ? `${results.length} result${results.length === 1 ? "" : "s"}` : "No exact match"}</span>
+      <a href="${sitePath(`companies.html?search=${encodeURIComponent(query.trim())}`)}">Open database</a>
+    </div>
+    ${results.length ? results.map((result) => `
+      <a class="home-search-result" href="${escapeHtml(result.href)}">
+        <small>${escapeHtml(result.type)} · ${escapeHtml(result.meta)}</small>
+        <strong>${escapeHtml(result.title)}</strong>
+        <span>${escapeHtml(result.body)}</span>
+      </a>
+    `).join("") : `<p>Try a company, robot, country, ticker, or physical AI theme.</p>`}
+  `;
+}
+
 function initials(value = "") {
   const letters = value
     .split(/\s+/)
@@ -661,6 +737,7 @@ async function loadRobotDatabase() {
   renderRobotCatalog();
   renderRobotCompare();
   renderDatabaseInsights();
+  renderHomeSearchResults();
 }
 
 function renderCompanyDatabase(query = "") {
@@ -708,11 +785,13 @@ async function loadCompanyDatabase() {
   }
   renderDatabaseInsights();
   renderCompanyDatabase(searchInput?.value || "");
+  renderHomeSearchResults();
 }
 
 function filterCompanies() {
   const query = normalizeSearch(searchInput.value.trim());
   renderCompanyDatabase(searchInput.value.trim());
+  renderHomeSearchResults(searchInput.value.trim());
   if (!companyCards.length) {
     filterMarketRows(query);
     return;
@@ -973,7 +1052,7 @@ searchForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   filterCompanies();
   const hasDatabaseQuery = normalizeSearch(searchInput?.value || "").length >= 2;
-  (hasDatabaseQuery ? companyDatabaseSection : companiesSection || marketSection)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  (hasDatabaseQuery ? homeSearchResults || companyDatabaseSection : companiesSection || marketSection)?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 searchFocusButton?.addEventListener("click", () => {
