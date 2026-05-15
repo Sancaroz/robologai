@@ -800,6 +800,20 @@ function signalImpactClass(impact = "") {
   return "impact-early";
 }
 
+function signalPrimaryUrl(signal) {
+  const relatedUrl = signal.relatedUrl || "";
+  if (!relatedUrl || relatedUrl === "signals.html" || relatedUrl.endsWith("/signals.html")) {
+    return signal.source || "signals.html";
+  }
+  return relatedUrl;
+}
+
+function signalLinkAttrs(signal) {
+  const url = signalPrimaryUrl(signal);
+  const isExternal = /^https?:\/\//i.test(url);
+  return `href="${pageEscape(url)}"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ""}`;
+}
+
 function signalFilterSlug(value = "") {
   return pageNormalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "all";
 }
@@ -858,7 +872,7 @@ function renderRoboticsSignalsPage() {
         <div><dt>Country</dt><dd>${pageEscape(lead.country)}</dd></div>
       </dl>
       <div class="signals-actions">
-        <a href="${pageEscape(lead.relatedUrl || lead.source)}">Read signal</a>
+        <a ${signalLinkAttrs(lead)}>Read signal</a>
         <a href="${pageEscape(lead.source)}" target="_blank" rel="noopener noreferrer">Official source</a>
       </div>
     `;
@@ -901,7 +915,7 @@ function renderRoboticsSignalsPage() {
         </div>
         <div class="signals-row-side">
           <b class="signal-impact ${signalImpactClass(item.impact)}">${pageEscape(item.impact)}</b>
-          <a href="${pageEscape(item.relatedUrl || item.source)}">View</a>
+          <a ${signalLinkAttrs(item)}>View</a>
         </div>
       </article>
     `).join("") || `<article class="signals-empty"><strong>No matching signals</strong><span>Try a broader filter combination.</span></article>`;
