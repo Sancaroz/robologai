@@ -1860,9 +1860,9 @@ body.light-theme .site-header {
 }
 
 .brand-full .brand-logo-full {
-  width: clamp(168px, 16vw, 224px);
+  width: clamp(260px, 24vw, 420px);
   height: auto;
-  max-height: 64px;
+  max-height: 86px;
   object-fit: contain;
   filter: drop-shadow(0 14px 28px rgba(47, 227, 255, 0.18));
 }
@@ -11650,8 +11650,8 @@ body.light-theme .facts span {
 }
 
 .brand-full .brand-logo-full {
-  width: clamp(188px, 18vw, 270px);
-  max-height: 72px;
+  width: clamp(300px, 24vw, 440px);
+  max-height: 96px;
   filter: drop-shadow(0 10px 20px rgba(47, 227, 255, 0.22)) saturate(1.12) contrast(1.1);
 }
 
@@ -12012,9 +12012,9 @@ body.light-theme .hero-orbit-card strong {
     min-height: 40px;
   }
 
-  .brand-full .brand-logo-full {
-    width: 152px;
-    max-height: 48px;
+.brand-full .brand-logo-full {
+    width: 212px;
+    max-height: 70px;
     display: block;
   }
 
@@ -13480,16 +13480,16 @@ body.light-theme .event-card dd {
 }
 
 .site-header .brand-logo-full{
-  width: clamp(188px, 18vw, 270px);
+  width: clamp(300px, 24vw, 440px);
   height: auto;
-  max-height: 72px;
+  max-height: 96px;
   object-fit: contain;
 }
 
 @media (max-width: 820px) {
   .site-header .brand-logo-full {
-    width: 184px;
-    max-height: 60px;
+    width: 220px;
+    max-height: 72px;
   }
 }
 
