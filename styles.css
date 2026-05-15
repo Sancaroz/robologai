@@ -938,6 +938,43 @@ body.light-theme .video-card h3 {
   color: #43566c;
 }
 
+.robot-watch-section {
+  margin-top: 42px;
+}
+
+.robot-watch-section .compact-video-grid {
+  gap: 14px;
+}
+
+.robot-watch-section .video-card {
+  min-height: 0;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
+}
+
+.robot-watch-section .video-thumb {
+  height: 140px;
+}
+
+.robot-watch-section .video-card > div:last-child {
+  padding: 16px;
+}
+
+.robot-watch-section .video-card h3 {
+  font-size: 17px;
+}
+
+.compact-market-section {
+  margin-top: 42px;
+}
+
+.compact-market-section .market-hero {
+  min-height: 0;
+}
+
+.compact-market-section .section-link {
+  margin-top: 16px;
+}
+
 .robot-database-section,
 .robologai-index-section,
 .company-database-section,
