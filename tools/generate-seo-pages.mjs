@@ -7,10 +7,12 @@ const companies = JSON.parse(fs.readFileSync(path.join(root, "data/companies.jso
 
 const robotDir = path.join(root, "robots");
 const companyDir = path.join(root, "companies");
+const preservedCompanyPages = new Set(["akinrobotics.html", "openmind.html"]);
 fs.mkdirSync(robotDir, { recursive: true });
 fs.mkdirSync(companyDir, { recursive: true });
 for (const dir of [robotDir, companyDir]) {
   for (const file of fs.readdirSync(dir)) {
+    if (dir === companyDir && preservedCompanyPages.has(file)) continue;
     if (file.endsWith(".html")) fs.unlinkSync(path.join(dir, file));
   }
 }
@@ -152,8 +154,12 @@ function findCompanyForRobot(robot) {
 
 function robotsForCompany(company) {
   const companyName = normalize(company.name);
-  const companyRobots = normalize(company.robot || "");
-  return robots.filter((robot) => normalize(robot.company).includes(companyName) || companyName.includes(normalize(robot.company)) || companyRobots.includes(normalize(robot.name)));
+  const companyRobotNames = toList(company.robot).map((name) => normalize(name));
+  return robots.filter((robot) => {
+    const robotCompany = normalize(robot.company);
+    const robotName = normalize(robot.name);
+    return robotCompany === companyName || companyRobotNames.includes(robotName);
+  });
 }
 
 function relatedRobots(robot, limit = 4) {
@@ -228,7 +234,11 @@ function optionalCompanyStats(company) {
   ].filter(([, value]) => value);
 }
 
-function layout({ title, description, canonical, body, schema }) {
+function navClass(active, item) {
+  return active === item ? ' class="active"' : "";
+}
+
+function layout({ title, description, canonical, body, schema, activeNav = "" }) {
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -245,19 +255,19 @@ function layout({ title, description, canonical, body, schema }) {
     <title>${escapeHtml(title)} | robologai</title>
     <link rel="icon" href="../assets/robologai-icon-v2.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/robologai-icon-v2.svg">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=20260515-premium-logo">
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2.png" alt="RoboLogAI"></a>
+      <a class="brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-header.png?v=20260515-logo" alt="RoboLogAI"></a>
       <nav class="main-nav" aria-label="Main menu">
-        <a href="../index.html">Home</a>
-        <a href="../robots.html">Robots</a>
-        <a href="../companies.html">Companies</a>
-        <a href="../market.html">Intelligence</a>
-        <a href="../compare.html">Compare</a>
-        <a href="../videos.html">Videos</a>
+        <a href="../index.html" data-i18n="navHome">Home</a>
+        <a${navClass(activeNav, "signals")} href="../signals.html">Signals</a>
+        <a${navClass(activeNav, "companies")} href="../companies.html">Companies</a>
+        <a${navClass(activeNav, "robots")} href="../robots.html">Robots</a>
+        <a${navClass(activeNav, "market")} href="../market.html">Market</a>
+        <a href="../hakkimizda.html" data-i18n="navAbout">About</a>
       </nav>
       <div class="header-actions intelligence-controls">
         <span class="live-control" aria-label="Robotics signal feed"><i></i><b>Signals</b><small data-live-signals-count>12 tracked</small></span>
@@ -273,7 +283,7 @@ function layout({ title, description, canonical, body, schema }) {
 ${body}
     </main>
     <footer class="site-footer mini-footer">
-      <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2.png" alt="RoboLogAI"></a>
+      <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-header.png?v=20260515-logo" alt="RoboLogAI"></a>
       <p>Robotics and AI intelligence, organized as catalogs, comparisons, and source-first analysis.</p>
       <a class="footer-x-link" href="https://x.com/robologai" target="_blank" rel="noopener noreferrer">Follow @robologai on X</a>
     </footer>
@@ -364,7 +374,7 @@ function robotPage(robot) {
           <a href="../robots.html">Back to robot catalog →</a>
         </div>
       </section>`;
-  return layout({ title, description, canonical, body, schema });
+  return layout({ title, description, canonical, body, schema, activeNav: "robots" });
 }
 
 function companyPage(company) {
@@ -445,7 +455,7 @@ function companyPage(company) {
           <a href="../companies.html">Back to company database →</a>
         </div>
       </section>`;
-  return layout({ title, description, canonical, body, schema });
+  return layout({ title, description, canonical, body, schema, activeNav: "companies" });
 }
 
 for (const robot of robots) {
@@ -453,7 +463,9 @@ for (const robot of robots) {
 }
 
 for (const company of companies) {
-  fs.writeFileSync(path.join(companyDir, `${companyPageSlug(company)}.html`), companyPage(company));
+  const fileName = `${companyPageSlug(company)}.html`;
+  if (preservedCompanyPages.has(fileName)) continue;
+  fs.writeFileSync(path.join(companyDir, fileName), companyPage(company));
 }
 
 const sitemapPath = path.join(root, "sitemap.xml");

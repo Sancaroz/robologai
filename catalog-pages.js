@@ -514,6 +514,13 @@ function broadCountryName(country = "") {
   return country.split("/")[0].trim() || "Global";
 }
 
+function listedRobotNames(value = "") {
+  return String(value || "")
+    .split(",")
+    .map((item) => pageNormalize(item.trim()))
+    .filter(Boolean);
+}
+
 function pageMeter(value = 1) {
   const score = Math.max(0, Math.min(5, Number(value) || 0)) / 5;
   return `<span class="robot-meter" style="--score:${score}"><i></i></span>`;
@@ -2041,9 +2048,9 @@ function renderCompanyProfile() {
   const wanted = params.get("company") || "unitree-robotics";
   const company = pageState.companies.find((item) => companySlug(item) === wanted) || pageState.companies[0];
   if (!company) return;
-  const companyRobotNames = pageNormalize(company.robot || "");
+  const companyRobotNames = listedRobotNames(company.robot);
   const robots = pageState.robots
-    .filter((robot) => pageNormalize(robot.company).includes(pageNormalize(company.name)) || companyRobotNames.includes(pageNormalize(robot.name)))
+    .filter((robot) => pageNormalize(robot.company) === pageNormalize(company.name) || companyRobotNames.includes(pageNormalize(robot.name)))
     .slice(0, 6);
   const extraRows = optionalCompanyRows(company);
   const extraStats = optionalCompanyStats(company);
