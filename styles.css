@@ -13619,12 +13619,14 @@ body.light-theme .event-card dd {
   }
 }
 
-/* Header logo fallback: render the RoboLogAI lockup with live CSS/SVG so it stays visible even if PNG caching misbehaves. */
+/* Header logo lockup: render the premium PNG as a CSS background so it stays visible across cached HTML/image states. */
 .site-header .brand-full {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-width: 240px;
+  width: clamp(240px, 19vw, 300px);
+  min-width: clamp(240px, 19vw, 300px);
+  height: 78px;
+  background: url("assets/uploads/robologai-full-logo-v2-header.png?v=20260515-logo") left center / contain no-repeat;
 }
 
 .site-header .brand-full .brand-logo-full {
@@ -13636,42 +13638,21 @@ body.light-theme .event-card dd {
 }
 
 .site-header .brand-full::before {
-  content: "";
-  flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
-  background: url("assets/robologai-icon-v2.svg") center / contain no-repeat;
-  filter: drop-shadow(0 0 14px rgba(103, 232, 249, 0.42));
+  content: none;
 }
 
 .site-header .brand-full::after {
-  content: "RoboLogAI";
-  color: #f8fcff;
-  font-size: 25px;
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 1;
-  text-shadow:
-    0 0 18px rgba(103, 232, 249, 0.32),
-    0 1px 0 rgba(255, 255, 255, 0.14);
+  content: none;
 }
 
 body.light-theme .site-header .brand-full::after {
-  color: #0c1726;
-  text-shadow: 0 0 16px rgba(8, 145, 178, 0.18);
+  content: none;
 }
 
 @media (max-width: 680px) {
   .site-header .brand-full {
-    min-width: 205px;
-  }
-
-  .site-header .brand-full::before {
-    width: 40px;
-    height: 40px;
-  }
-
-  .site-header .brand-full::after {
-    font-size: 22px;
+    width: 220px;
+    min-width: 220px;
+    height: 72px;
   }
 }
