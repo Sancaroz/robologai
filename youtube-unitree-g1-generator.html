@@ -146,7 +146,7 @@
       </aside>
     </div>
 
-    <audio id="voiceAudio" preload="auto" src="assets/youtube/unitree-g1-voiceover.m4a"></audio>
+    <audio id="voiceAudio" preload="metadata"></audio>
 
     <script>
       const canvas = document.getElementById("videoCanvas");
@@ -462,7 +462,7 @@
         let audioStream = createMusicTrack(audioContext);
         let recordingAudio = null;
         if (audioAvailable) {
-          recordingAudio = new Audio("assets/youtube/unitree-g1-voiceover.m4a");
+          recordingAudio = new Audio(audio.currentSrc);
           recordingAudio.crossOrigin = "anonymous";
           const source = audioContext.createMediaElementSource(recordingAudio);
           const destination = audioContext.createMediaStreamDestination();

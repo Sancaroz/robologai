@@ -423,9 +423,10 @@ const robotCatalogGrid = document.querySelector(".robot-database-grid");
 const robotCompareBody = document.querySelector("[data-robot-compare]");
 const robotFilterButtons = Array.from(document.querySelectorAll("[data-robot-filter]"));
 const newsletterCtas = document.querySelectorAll('a[href="#bulten"], a[href="index.html#bulten"]');
-const statCompanies = document.querySelector("[data-stat-companies]");
-const statCountries = document.querySelector("[data-stat-countries]");
-const statRobots = document.querySelector("[data-stat-robots]");
+const statCompanies = document.querySelectorAll("[data-stat-companies]");
+const statCountries = document.querySelectorAll("[data-stat-countries]");
+const statRobots = document.querySelectorAll("[data-stat-robots]");
+const statHumanoids = document.querySelectorAll("[data-stat-humanoids]");
 const noResults = document.querySelector(".no-results");
 const profilePanel = document.querySelector(".profile-panel");
 const loadMore = document.querySelector(".load-more");
@@ -440,6 +441,13 @@ let activeMarketFilter = "all";
 let companyDatabase = [];
 let robotDatabase = [];
 let activeRobotFilter = "all";
+
+function sitePath(path) {
+  const cleanPath = path.replace(/^\/+/, "");
+  const currentPath = window.location.pathname.endsWith("/") ? `${window.location.pathname}index.html` : window.location.pathname;
+  const depth = Math.max(0, currentPath.split("/").filter(Boolean).length - 1);
+  return `${"../".repeat(depth)}${cleanPath}`;
+}
 
 const fallbackCompanyDatabase = [
   { name: "Tesla", category: "Humanoid robotics", country: "USA", type: "Public", ticker: "TSLA", robot: "Optimus", website: "https://www.tesla.com/AI", keywords: ["humanoid", "factory"] },
@@ -516,24 +524,45 @@ function broadCountry(country = "") {
   return country.split("/")[0].trim();
 }
 
+function isHumanoidRobot(robot) {
+  return normalizeSearch([
+    robot.name,
+    robot.category,
+    robot.useCase,
+    ...(robot.keywords || [])
+  ].filter(Boolean).join(" ")).includes("humanoid");
+}
+
+function formatCount(value, suffix = "") {
+  return value ? `${value}${suffix}` : "";
+}
+
+function syncStatNodes(nodes, value) {
+  nodes.forEach((node) => {
+    node.textContent = value;
+  });
+}
+
 function renderDatabaseInsights() {
   const companies = companyDatabase.length ? companyDatabase : fallbackCompanyDatabase;
+  const robots = robotDatabase.length ? robotDatabase : [];
   const countries = new Set(companies.map((company) => broadCountry(company.country)).filter(Boolean));
   const [topCountry, topCountryCount] = topEntry(companies, (company) => broadCountry(company.country));
   const privateCount = companies.filter((company) => normalizeSearch(company.type).includes("private")).length;
+  const robotCount = robots.length;
+  const humanoidCount = robots.filter(isHumanoidRobot).length;
 
-  if (statCompanies) statCompanies.forEach((item) => {
-  item.textContent = `${companyDatabase.length}+`;
-});
-  if (statCountries) statCountries.textContent = `${countries.size}+`;
-  if (statRobots) statRobots.textContent = robotDatabase.length ? `${robotDatabase.length}` : "16";
+  syncStatNodes(statCompanies, formatCount(companies.length, "+"));
+  syncStatNodes(statCountries, formatCount(countries.size, "+"));
+  syncStatNodes(statRobots, robotCount ? `${robotCount}` : "");
+  syncStatNodes(statHumanoids, humanoidCount ? `${humanoidCount}` : "");
 
   if (!databaseInsights) return;
   databaseInsights.innerHTML = [
     [`${companies.length}+`, "Company profiles"],
     [topCountry ? `${topCountry} · ${topCountryCount}` : "Global", "Top coverage"],
     [`${privateCount}`, "Private builders"],
-    [robotDatabase.length ? `${robotDatabase.length}` : "16", "Robot profiles"]
+    [robotCount ? `${robotCount}` : "0", "Physical AI systems"]
   ].map(([value, label]) => `<article><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></article>`).join("");
 }
 
@@ -623,7 +652,7 @@ function renderRobotCompare() {
 
 async function loadRobotDatabase() {
   try {
-    const response = await fetch("data/robots.json", { cache: "no-store" });
+    const response = await fetch(sitePath("data/robots.json"), { cache: "no-store" });
     if (!response.ok) throw new Error("Robot database could not be loaded.");
     robotDatabase = await response.json();
   } catch (error) {
@@ -671,7 +700,7 @@ function renderCompanyDatabase(query = "") {
 
 async function loadCompanyDatabase() {
   try {
-    const response = await fetch("data/companies.json", { cache: "no-store" });
+    const response = await fetch(sitePath("data/companies.json"), { cache: "no-store" });
     if (!response.ok) throw new Error("Company database could not be loaded.");
     companyDatabase = await response.json();
   } catch (error) {
@@ -792,7 +821,7 @@ async function initSignalCounter() {
   const counters = document.querySelectorAll("[data-live-signals-count]");
   if (!counters.length) return;
   try {
-    const response = await fetch("data/signals.json", { cache: "no-store" });
+    const response = await fetch(sitePath("data/signals.json"), { cache: "no-store" });
     if (!response.ok) throw new Error("signals unavailable");
     const signals = await response.json();
     const count = Array.isArray(signals) ? signals.length : 0;
@@ -878,7 +907,7 @@ async function initEventsCatalog() {
   if (!eventLists.length && !preview) return;
 
   try {
-    const response = await fetch("data/events.json", { cache: "no-store" });
+    const response = await fetch(sitePath("data/events.json"), { cache: "no-store" });
     if (!response.ok) throw new Error("events unavailable");
     const events = await response.json();
     if (!Array.isArray(events) || !events.length) return;

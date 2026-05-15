@@ -1349,6 +1349,13 @@ function setCount(name, value) {
   });
 }
 
+function catalogSitePath(path) {
+  const cleanPath = path.replace(/^\/+/, "");
+  const currentPath = window.location.pathname.endsWith("/") ? `${window.location.pathname}index.html` : window.location.pathname;
+  const depth = Math.max(0, currentPath.split("/").filter(Boolean).length - 1);
+  return `${"../".repeat(depth)}${cleanPath}`;
+}
+
 function renderRobotCards() {
   const grid = document.querySelector("[data-robots-grid]");
   if (!grid) return;
@@ -2285,7 +2292,7 @@ function wireCatalogControls() {
 
 async function loadJson(path, fallback) {
   try {
-    const response = await fetch(path, { cache: "no-store" });
+    const response = await fetch(catalogSitePath(path), { cache: "no-store" });
     if (!response.ok) throw new Error(path);
     return await response.json();
   } catch (error) {
