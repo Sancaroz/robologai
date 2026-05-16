@@ -172,6 +172,23 @@
 }
 ,
 {
+  "name": "WIRobotics",
+  "category": "Wearable Robotics / Mobility Robotics",
+  "country": "South Korea",
+  "type": "Private",
+  "ticker": "",
+  "robot": "WIM, WIM S, WIM KIDS, ALLEX, WIBS",
+  "website": "https://www.wirobotics.com",
+  "focus": "Wearable walking-assist robots, gait training, mobility support, and human-responsive robotics",
+  "sourceLinks": [
+    "https://www.wirobotics.com/product/wimInfo",
+    "https://corp.wirobotics.com/en/product/wim-s",
+    "https://www.wirobotics.com/media/newsDetail?idx=75&page=1&pageType=01"
+  ],
+  "keywords": ["wirobotics", "wim", "wim s", "wim kids", "allex", "wibs", "wearable robot", "walking assist", "gait training", "mobility robotics", "exoskeleton"]
+}
+,
+{
   "name": "OpenMind",
   "category": "Embodied AI and humanoid robotics",
   "country": "USA",
