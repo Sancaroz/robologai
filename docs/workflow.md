@@ -33,12 +33,14 @@
    - Share on X butonu
 
 Yeni şirket ekleme sırası
-1. data/companies.json içine company objesi ekle
-2. image path kontrol et
-3. logo dosyasını assets/robots içine koy
-4. companies/company-name.html oluştur
-5. company-profile-mark kısmına gerçek img koy
-6. commit + deploy kontrol et
+1. Yeni kayıt için önce mümkünse `data/companies/company-name.json` dosyası oluştur.
+2. `node scripts/validate-data.mjs` ile alanları kontrol et.
+3. Şimdilik canlı site `data/companies.json` okuduğu için aggregate dosyayı da güncel tut.
+4. image path kontrol et.
+5. logo dosyasını assets/robots içine koy.
+6. companies/company-name.html oluştur.
+7. company-profile-mark kısmına gerçek img koy.
+8. commit + deploy kontrol et.
 
 Logo çalışmıyorsa kontrol
 - png gerçekten png mi?
@@ -49,10 +51,25 @@ Logo çalışmıyorsa kontrol
 
 ## Yeni Robot Ekleme
 
-1. Görseli `assets/robots/` içine yükle.
-2. `data/robots.json` aç.
-3. Yeni robot objesini ekle.
-4. `image` yolunu doğru yaz:
+1. Yeni kayıt için önce mümkünse `data/robots/company-robot.json` dosyası oluştur.
+2. `node scripts/validate-data.mjs` ile alanları kontrol et.
+3. Şimdilik canlı site `data/robots.json` okuduğu için aggregate dosyayı da güncel tut.
+4. Görseli `assets/robots/` içine yükle.
+5. `image` yolunu doğru yaz:
    `assets/robots/dosya-adi.png`
-5. Commit et.
-6. Robots sayfasında kontrol et.
+6. Commit et.
+7. Robots sayfasında kontrol et.
+
+## Modüler Data Geçişi
+
+- Canlı runtime hâlâ `data/companies.json`, `data/robots.json`, `data/signals.json` dosyalarını okur.
+- Yeni modüler kaynak klasörleri:
+  - `data/companies/`
+  - `data/robots/`
+  - `data/signals/`
+- Güvenlik kontrolü:
+  `node scripts/validate-data.mjs`
+- Dry-run aggregate kontrolü:
+  `node scripts/build-data.mjs`
+- Aggregate dosyaları yazmak için:
+  `node scripts/build-data.mjs --write`
