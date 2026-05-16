@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-05-15",
+    "type": "Research Signal",
+    "title": "Video Friday: Heavy Robotic Machinery Operates Itself",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-material-handling-robots",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-13",
     "type": "Robotics News",
     "title": "Emerson Unveils AI-Ready Test Automation Platform at Annual NI Connect Conference",
