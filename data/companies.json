@@ -189,6 +189,26 @@
 }
 ,
 {
+  "name": "DEEP Robotics",
+  "category": "Quadruped Robotics / Industrial Robotics / Embodied AI",
+  "country": "China",
+  "type": "Private",
+  "ticker": "",
+  "robot": "Lite3, Lite3 Pro, Lite3 LIDAR, X20, X30, X30 Pro, LYNX, LYNX M20, DR01, DR02",
+  "website": "https://www.deeprobotics.cn/",
+  "focus": "Industrial robot dogs, quadruped robots, inspection robotics, wheeled quadrupeds, humanoids, and embodied AI mobility systems",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/lite3.html",
+    "https://www.deeprobotics.cn/en/index/product.html",
+    "https://www.deeprobotics.cn/en/index/product3.html",
+    "https://www.deeprobotics.cn/en/index/lynx.html",
+    "https://www.deeprobotics.cn/en/index/humanoid.html",
+    "https://www.deeprobotics.cn/en/index/dr02.html"
+  ],
+  "keywords": ["deep robotics", "deeprobotics", "lite3", "x20", "x30", "x30 pro", "lynx", "lynx m20", "dr01", "dr02", "quadruped", "robot dog", "wheeled quadruped", "humanoid", "inspection robot", "embodied ai"]
+}
+,
+{
   "name": "OpenMind",
   "category": "Embodied AI and humanoid robotics",
   "country": "USA",
