@@ -1055,8 +1055,12 @@ searchForm?.addEventListener("submit", (event) => {
   (hasDatabaseQuery ? homeSearchResults || companyDatabaseSection : companiesSection || marketSection)?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-searchFocusButton?.addEventListener("click", () => {
-  searchInput.focus();
+searchFocusButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  const searchTarget = searchForm || searchInput;
+  searchTarget?.scrollIntoView({ behavior: "smooth", block: "center" });
+  searchInput?.focus({ preventScroll: true });
+  window.setTimeout(() => searchInput?.focus(), 250);
 });
 
 loadCompanyDatabase();
