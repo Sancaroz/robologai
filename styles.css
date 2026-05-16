@@ -4136,9 +4136,9 @@ body.light-theme .data-wave {
 
 .signals-row {
   display: grid;
-  grid-template-columns: 68px minmax(0, 1fr) 130px;
+  grid-template-columns: 68px minmax(0, 1fr) minmax(136px, 0.22fr);
   gap: 16px;
-  align-items: center;
+  align-items: start;
   padding: 18px;
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
@@ -4165,14 +4165,70 @@ body.light-theme .data-wave {
 }
 
 .signals-row-main small {
+  display: block;
+  margin-top: 10px;
   color: #95a8c0;
   font-weight: 850;
+  line-height: 1.5;
+}
+
+.signals-row-main small strong {
+  color: #dff8ff;
+}
+
+.signal-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 8px;
+}
+
+.signal-chip-row em {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 999px;
+  padding: 0 10px;
+  color: #c9d8ec;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.signal-why {
+  display: grid;
+  gap: 6px;
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid rgba(120, 231, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(120, 231, 255, 0.055);
+}
+
+.signal-why strong {
+  color: #7df9ff;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signal-why span {
+  color: #dbe8f6;
+  font-weight: 800;
 }
 
 .signals-row-side {
   display: grid;
   justify-items: end;
-  gap: 10px;
+  gap: 8px;
+}
+
+.signals-row-side a {
+  width: 100%;
+  justify-content: center;
+  padding-inline: 10px;
 }
 
 .signals-empty {

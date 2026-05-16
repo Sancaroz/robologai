@@ -19,7 +19,8 @@ const pageState = {
   robotPricedOnly: false,
   signalTypeFilter: "all",
   signalImpactFilter: "all",
-  signalCountryFilter: "all"
+  signalCountryFilter: "all",
+  signalConfidenceFilter: "all"
 };
 
 const robotFallback = [
@@ -825,15 +826,102 @@ function signalFilterSlug(value = "") {
   return pageNormalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "all";
 }
 
+function signalText(signal) {
+  return pageNormalize([
+    signal.title,
+    signal.summary,
+    signal.type,
+    signal.category,
+    signal.company,
+    signal.robot,
+    signal.country
+  ].filter(Boolean).join(" "));
+}
+
+function signalIntelligenceType(signal) {
+  const text = signalText(signal);
+  if (text.includes("funding") || text.includes("raises") || text.includes("investment") || text.includes("financing")) return "Funding";
+  if (text.includes("partner") || text.includes("collaborat") || text.includes("agreement")) return "Partnership";
+  if (text.includes("factory") || text.includes("warehouse") || text.includes("deploy") || text.includes("pilot") || text.includes("logistics")) return "Factory deployment";
+  if (text.includes("humanoid") && (text.includes("demo") || text.includes("motion") || text.includes("walking") || text.includes("launch"))) return "Humanoid demo";
+  if (text.includes("price") || text.includes("pricing") || text.includes("available") || text.includes("order") || text.includes("retailer")) return "Price / availability";
+  if (text.includes("unveil") || text.includes("launch") || text.includes("introduc") || text.includes("product")) return "Product launch";
+  if (text.includes("regulation") || text.includes("safety") || text.includes("policy")) return "Regulation / safety";
+  if (text.includes("market") || text.includes("stock") || text.includes("economy") || text.includes("platform")) return "Market movement";
+  if (text.includes("research") || text.includes("ieee") || text.includes("spectrum")) return "Research";
+  return signal.type || "Robotics signal";
+}
+
+function signalConfidence(signal) {
+  const source = pageNormalize(signal.source || "");
+  if (source.includes("prnewswire") || source.includes("businesswire") || source.includes("globenewswire")) return "Press release";
+  if (source.includes("robotsusa") || source.includes("robotshop") || source.includes("warpix") || source.includes("shop.") || source.includes("physio")) return "Retailer";
+  if (source.includes("spectrum.ieee") || source.includes("therobotreport") || source.includes("techcrunch") || source.includes("theverge")) return "Media report";
+  if (signal.sourceType === "automated") return "Automated feed";
+  if (source && !source.includes("robologai.com")) return "Official";
+  return "Source-linked";
+}
+
+function signalWhyItMatters(signal) {
+  if (signal.whyItMatters) return signal.whyItMatters;
+  const type = signalIntelligenceType(signal);
+  const category = signal.category || "robotics";
+  if (type === "Funding") return "Capital flowing into this area can accelerate hiring, hardware iteration, and commercial deployment.";
+  if (type === "Partnership") return "Partnerships are often stronger deployment signals than standalone demos because they show buyer or ecosystem pull.";
+  if (type === "Factory deployment") return "Real operational environments are where physical AI moves from spectacle to repeatable economic value.";
+  if (type === "Humanoid demo") return "Humanoid demos matter when they reveal mobility, manipulation, autonomy, or cost signals that can be compared across builders.";
+  if (type === "Price / availability") return "Pricing and availability make robot markets easier to benchmark and bring developer adoption closer.";
+  if (type === "Product launch") return `A new ${category} launch can reset the competitive map for buyers, developers, and robotics investors.`;
+  if (type === "Regulation / safety") return "Safety and policy signals shape which robots can leave controlled demos and enter public or industrial spaces.";
+  if (type === "Market movement") return "Market movement can reveal where public companies, suppliers, and buyers are placing physical AI bets.";
+  return "This signal adds context to how robotics capabilities, companies, and markets are moving.";
+}
+
+function findSignalCompany(signal) {
+  const name = pageNormalize(signal.company || "");
+  if (!name || name.includes("ecosystem")) return null;
+  return pageState.companies.find((company) => {
+    const companyName = pageNormalize(company.name);
+    return companyName === name || name.includes(companyName) || companyName.includes(name);
+  }) || null;
+}
+
+function findSignalRobot(signal) {
+  const robotName = pageNormalize(signal.robot || "");
+  const companyName = pageNormalize(signal.company || "");
+  if (!robotName || robotName.includes("ecosystem")) return null;
+  return pageState.robots.find((robot) => {
+    const name = pageNormalize(robot.name);
+    const company = pageNormalize(robot.company || "");
+    return name === robotName || (robotName.includes(name) && (!companyName || companyName.includes(company) || company.includes(companyName)));
+  }) || null;
+}
+
+function signalViewModel(signal) {
+  const company = findSignalCompany(signal);
+  const robot = findSignalRobot(signal);
+  return {
+    ...signal,
+    intelligenceType: signalIntelligenceType(signal),
+    confidence: signalConfidence(signal),
+    whyItMatters: signalWhyItMatters(signal),
+    companyHref: company ? companyProfileHref(company) : "",
+    robotHref: robot ? robotProfileHref(robot) : ""
+  };
+}
+
 function filteredSignals(signals) {
   return signals.filter((item) => {
-    const type = signalFilterSlug(item.type);
+    const view = signalViewModel(item);
+    const type = signalFilterSlug(view.intelligenceType);
     const impact = signalFilterSlug(item.impact);
     const country = countrySlug(item.country || broadCountryName(item.country || ""));
+    const confidence = signalFilterSlug(view.confidence);
     const matchesType = pageState.signalTypeFilter === "all" || type === pageState.signalTypeFilter;
     const matchesImpact = pageState.signalImpactFilter === "all" || impact === pageState.signalImpactFilter;
     const matchesCountry = pageState.signalCountryFilter === "all" || country === pageState.signalCountryFilter;
-    return matchesType && matchesImpact && matchesCountry;
+    const matchesConfidence = pageState.signalConfidenceFilter === "all" || confidence === pageState.signalConfidenceFilter;
+    return matchesType && matchesImpact && matchesCountry && matchesConfidence;
   });
 }
 
@@ -852,34 +940,45 @@ function renderRoboticsSignalsPage() {
   if (!featured && !feed && !types && !metrics && !filters && !count) return;
 
   const signals = pageState.signals.length ? pageState.signals : signalFallback;
-  const visibleSignals = filteredSignals(signals);
+  const visibleSignals = filteredSignals(signals).map(signalViewModel);
   const highImpact = signals.filter((item) => pageNormalize(item.impact).includes("high")).length;
-  const signalTypes = [...new Set(signals.map((item) => item.type).filter(Boolean))];
+  const enrichedSignals = signals.map(signalViewModel);
+  const signalTypes = [...new Set(enrichedSignals.map((item) => item.intelligenceType).filter(Boolean))];
+  const confidenceTypes = [...new Set(enrichedSignals.map((item) => item.confidence).filter(Boolean))];
   const countries = [...new Set(signals.map((item) => broadCountryName(item.country || "")).filter(Boolean))];
 
   if (metrics) {
+    const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
     metrics.innerHTML = `
       <article><strong>${signals.length}</strong><small>Robotics signals</small></article>
       <article><strong>${signalTypes.length}</strong><small>Signal categories</small></article>
       <article><strong>${highImpact}</strong><small>High-impact watches</small></article>
-      <article><strong>${countries.length}</strong><small>Markets covered</small></article>
+      <article><strong>${officialish}</strong><small>Official / PR sources</small></article>
     `;
   }
 
   if (featured) {
-    const lead = visibleSignals[0] || signals[0];
+    const lead = visibleSignals[0] || enrichedSignals[0];
     featured.innerHTML = `
-      <span>${pageEscape(lead.type)} · ${pageEscape(lead.date)}</span>
+      <span>${pageEscape(lead.intelligenceType)} · ${pageEscape(lead.date)} · ${pageEscape(lead.confidence)}</span>
       <h2>${pageEscape(lead.title)}</h2>
       <p>${pageEscape(lead.summary)}</p>
+      <div class="signal-chip-row">
+        <b class="signal-impact ${signalImpactClass(lead.impact)}">${pageEscape(lead.impact || "Tracked")}</b>
+        <em>${pageEscape(lead.confidence)}</em>
+        <em>${pageEscape(lead.intelligenceType)}</em>
+      </div>
       <dl>
         <div><dt>Company</dt><dd>${pageEscape(lead.company)}</dd></div>
         <div><dt>Robot</dt><dd>${pageEscape(lead.robot)}</dd></div>
         <div><dt>Category</dt><dd>${pageEscape(lead.category)}</dd></div>
         <div><dt>Country</dt><dd>${pageEscape(lead.country)}</dd></div>
       </dl>
+      <div class="signal-why"><strong>Why it matters</strong><span>${pageEscape(lead.whyItMatters)}</span></div>
       <div class="signals-actions">
         <a ${signalLinkAttrs(lead)}>Read signal</a>
+        ${lead.companyHref ? `<a href="${pageEscape(lead.companyHref)}">Open company</a>` : ""}
+        ${lead.robotHref ? `<a href="${pageEscape(lead.robotHref)}">Open robot</a>` : ""}
         <a href="${pageEscape(lead.source)}" target="_blank" rel="noopener noreferrer">Official source</a>
       </div>
     `;
@@ -903,6 +1002,11 @@ function renderRoboticsSignalsPage() {
         ${signalFilterButton("All", "all", pageState.signalCountryFilter, "data-signal-country-filter")}
         ${countries.map((country) => signalFilterButton(country, country, pageState.signalCountryFilter, "data-signal-country-filter")).join("")}
       </div>
+      <div>
+        <span>Source Confidence</span>
+        ${signalFilterButton("All", "all", pageState.signalConfidenceFilter, "data-signal-confidence-filter")}
+        ${confidenceTypes.map((confidence) => signalFilterButton(confidence, confidence, pageState.signalConfidenceFilter, "data-signal-confidence-filter")).join("")}
+      </div>
     `;
   }
 
@@ -915,14 +1019,23 @@ function renderRoboticsSignalsPage() {
       <article class="signals-row">
         <div class="signals-row-index">#${String(index + 1).padStart(2, "0")}</div>
         <div class="signals-row-main">
-          <span>${pageEscape(item.type)} · ${pageEscape(item.date)}</span>
+          <span>${pageEscape(item.intelligenceType)} · ${pageEscape(item.date)} · ${pageEscape(item.confidence)}</span>
           <h2>${pageEscape(item.title)}</h2>
           <p>${pageEscape(item.summary)}</p>
-          <small>${pageEscape(item.company)} · ${pageEscape(item.robot)} · ${pageEscape(item.country)} · ${pageEscape(item.category)}</small>
+          <div class="signal-chip-row">
+            <em>${pageEscape(item.company)}</em>
+            <em>${pageEscape(item.robot)}</em>
+            <em>${pageEscape(item.country)}</em>
+            <em>${pageEscape(item.category)}</em>
+          </div>
+          <small><strong>Why it matters:</strong> ${pageEscape(item.whyItMatters)}</small>
         </div>
         <div class="signals-row-side">
           <b class="signal-impact ${signalImpactClass(item.impact)}">${pageEscape(item.impact)}</b>
           <a ${signalLinkAttrs(item)}>View</a>
+          ${item.companyHref ? `<a href="${pageEscape(item.companyHref)}">Company</a>` : ""}
+          ${item.robotHref ? `<a href="${pageEscape(item.robotHref)}">Robot</a>` : ""}
+          <a href="${pageEscape(item.source)}" target="_blank" rel="noopener noreferrer">Source</a>
         </div>
       </article>
     `).join("") || `<article class="signals-empty"><strong>No matching signals</strong><span>Try a broader filter combination.</span></article>`;
@@ -930,12 +1043,12 @@ function renderRoboticsSignalsPage() {
 
   if (types) {
     types.innerHTML = signalTypes.slice(0, 8).map((type) => {
-      const matching = signals.filter((item) => item.type === type);
+      const matching = enrichedSignals.filter((item) => item.intelligenceType === type);
       return `
         <article>
           <span>${matching.length} signals</span>
           <strong>${pageEscape(type)}</strong>
-          <small>${pageEscape(matching[0]?.category || "Robotics intelligence")}</small>
+          <small>${pageEscape(matching[0]?.whyItMatters || "Robotics intelligence")}</small>
         </article>
       `;
     }).join("");
@@ -2247,6 +2360,13 @@ function wireCatalogControls() {
     const signalCountryButton = target.closest("[data-signal-country-filter]");
     if (signalCountryButton) {
       pageState.signalCountryFilter = signalCountryButton.dataset.signalCountryFilter || "all";
+      renderRoboticsSignalsPage();
+      return;
+    }
+
+    const signalConfidenceButton = target.closest("[data-signal-confidence-filter]");
+    if (signalConfidenceButton) {
+      pageState.signalConfidenceFilter = signalConfidenceButton.dataset.signalConfidenceFilter || "all";
       renderRoboticsSignalsPage();
     }
   });
