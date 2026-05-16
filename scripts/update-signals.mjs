@@ -109,7 +109,38 @@ function inferImpact(text, fallback = "Medium") {
 
 function keywordMatch(item, source) {
   const haystack = `${item.title} ${item.summary}`.toLowerCase();
-  return (source.keywords || []).some((keyword) => haystack.includes(String(keyword).toLowerCase()));
+  if ((source.excludeKeywords || []).some((keyword) => haystack.includes(String(keyword).toLowerCase()))) {
+    return false;
+  }
+  const matches = (source.keywords || []).filter((keyword) => haystack.includes(String(keyword).toLowerCase()));
+  const minimumMatches = Number(source.minimumKeywordMatches || 1);
+  return matches.length >= minimumMatches;
+}
+
+function isRelevantSignal(signal) {
+  if (signal.sourceType !== "automated") return true;
+  const company = String(signal.company || "").toLowerCase().includes("robotics ecosystem") ? "" : signal.company;
+  const text = `${signal.title} ${signal.summary} ${company || ""}`.toLowerCase();
+  const coreTerms = [
+    "robot",
+    "robotics",
+    "humanoid",
+    "quadruped",
+    "cobot",
+    "drone",
+    "autonomous vehicle",
+    "physical ai",
+    "embodied",
+    "manipulation",
+    "exoskeleton",
+    "inspection robot",
+    "warehouse robot",
+    "mobile robot",
+    "factory robot"
+  ];
+  if (coreTerms.some((term) => text.includes(term))) return true;
+  const contextualAutomation = ["factory automation", "warehouse automation", "industrial automation", "robotic automation"];
+  return contextualAutomation.some((term) => text.includes(term));
 }
 
 function signalFromItem(item, source) {
@@ -148,7 +179,7 @@ async function fetchSource(source) {
   const xml = await response.text();
   return parseFeed(xml)
     .filter((item) => keywordMatch(item, source))
-    .slice(0, 8)
+    .slice(0, Number(source.maxItems || 8))
     .map((item) => signalFromItem(item, source));
 }
 
@@ -178,6 +209,7 @@ async function main() {
   }
 
   const merged = dedupeSignals([...generated, ...existing])
+    .filter(isRelevantSignal)
     .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
     .slice(0, maxSignals);
 

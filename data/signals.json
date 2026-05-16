@@ -15,29 +15,15 @@
   },
   {
     "date": "2026-05-13",
-    "type": "Robotics News",
-    "title": "Emerson Unveils AI-Ready Test Automation Platform at Annual NI Connect Conference",
+    "type": "Robotics Startup Signal",
+    "title": "Rivian spinoff Mind Robotics raises another $400M",
     "company": "Robotics ecosystem",
     "robot": "Robotics ecosystem",
-    "category": "Robotics intelligence",
+    "category": "Robotics startups and market movement",
     "country": "Global",
     "impact": "Medium",
-    "summary": "NI Nigel™ AI to expand into code generation and cross-platform intelligence, embedding AI automation across the test lifecycle FORT WORTH, Texas, May 13, 2026 /PRNewswire/ -- Global automation leader Emerson (NYSE: EMR) today announced the expansion of NI Nige",
-    "source": "https://www.prnewswire.com/news-releases/emerson-unveils-ai-ready-test-automation-platform-at-annual-ni-connect-conference-302766280.html",
-    "relatedUrl": "signals.html",
-    "sourceType": "automated"
-  },
-  {
-    "date": "2026-05-13",
-    "type": "Robotics News",
-    "title": "Aisera Named a Leader in Inaugural IDC MarketScape for Conversational AI Platforms for Back-Office Use Cases 2026 Vendor Assessment",
-    "company": "Robotics ecosystem",
-    "robot": "Robotics ecosystem",
-    "category": "Robotics intelligence",
-    "country": "Global",
-    "impact": "Medium",
-    "summary": "SAN JOSE, Calif., May 13, 2026 /PRNewswire/ -- Aisera, an Automation Anywhere company, was named a Leader in the inaugural IDC MarketScape Worldwide Conversational AI Platforms for Back-Office Use Cases 2026 Vendor Assessment1 This is the first IDC MarketScape",
-    "source": "https://www.prnewswire.com/news-releases/aisera-named-a-leader-in-inaugural-idc-marketscape-for-conversational-ai-platforms-for-back-office-use-cases-2026-vendor-assessment-302771068.html",
+    "summary": "Mind Robotics, which was first revealed in late 2025, has now raised more than $1 billion to date.",
+    "source": "https://techcrunch.com/2026/05/13/rivian-spinoff-mind-robotics-raises-another-400m/",
     "relatedUrl": "signals.html",
     "sourceType": "automated"
   },
@@ -80,6 +66,20 @@
     "impact": "Medium",
     "summary": "-SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial en un almacén logístico SAP en funcionamiento WALLDORF, Alemania, 11 de mayo de 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), líder mundial en software de aplicaciones empresariale",
     "source": "https://www.prnewswire.com/news-releases/sap-y-cyberwave-implementan-robots-totalmente-autonomos-con-inteligencia-artificial-302768860.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-11",
+    "type": "Robotics Startup Signal",
+    "title": "Korea&#8217;s biggest manufacturers back Config, the TSMC of robot data",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Instead of building robots themselves, the team is focused on a simpler goal — providing data that robots need to learn and operate. They believe that better data will be key to making robots more useful.",
+    "source": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
     "relatedUrl": "signals.html",
     "sourceType": "automated"
   },
@@ -162,6 +162,20 @@
     "summary": "Optimus is still best read as an internal manufacturing and embodied AI signal until public deployment details become clearer.",
     "source": "https://www.tesla.com/AI",
     "relatedUrl": "robots/tesla-optimus.html"
+  },
+  {
+    "date": "2026-05-06",
+    "type": "Robotics Startup Signal",
+    "title": "Khosla-backed robotics startup Genesis AI has gone full stack, demo shows",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Genesis AI, a startup that raised a $105 million seed round to build foundational AI for robotics, has unveiled its first model, GENE-26.5, but also a demo showcasing a set of robotic hands performing complex tasks.",
+    "source": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-06",
@@ -298,6 +312,20 @@
   },
   {
     "date": "2026-04-29",
+    "type": "Robotics Startup Signal",
+    "title": "Colby Adcock&#8217;s Scout AI raises $100M to train its models for war: We visited its bootcamp",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "We visited Scout AI's training ground where it's working on AI agents that can help individual soldiers control fleets of autonomous vehicles.",
+    "source": "https://techcrunch.com/2026/04/29/coby-adcocks-scout-ai-raises-100-million-to-train-models-for-war-we-visited-its-bootcamp/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-29",
     "type": "Inspection",
     "title": "Quadrupeds remain the practical bridge between robots and field operations",
     "company": "Boston Dynamics / ANYbotics / Unitree",
@@ -308,20 +336,6 @@
     "summary": "Inspection robots prove that useful robotics can scale before general-purpose humanoids reach full autonomy.",
     "source": "https://bostondynamics.com/products/spot/",
     "relatedUrl": "use-cases.html"
-  },
-  {
-    "date": "2026-04-28",
-    "type": "Embodied AI Stack",
-    "title": "Into the Omniverse: Manufacturing’s Simulation-First Era Has Arrived",
-    "company": "NVIDIA",
-    "robot": "Isaac / GR00T",
-    "category": "Robotics infrastructure",
-    "country": "USA",
-    "impact": "High",
-    "summary": "Manufacturing’s traditional design-build-test cycle rested on a single assumption: Real-world testing was the only reliable test environment.",
-    "source": "https://blogs.nvidia.com/blog/manufacturing-simulation-first/",
-    "relatedUrl": "physical-ai.html",
-    "sourceType": "automated"
   },
   {
     "date": "2026-04-24",
@@ -390,6 +404,20 @@
     "impact": "High",
     "summary": "When the robotics engineering field that Maja Matarić wanted to work in didn’t exist, she helped create it. In 2005 she helped define the new area of socially assistive robotics. As an associate professor of computer science, neuroscience, and pediatrics at th",
     "source": "https://spectrum.ieee.org/socially-assistive-robotics",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-19",
+    "type": "Robotics Startup Signal",
+    "title": "Robots beat human records at Beijing half-marathon",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "The winning time is a massive improvement over last year’s race, when the fastest robot finished in two hours and 40 minutes.",
+    "source": "https://techcrunch.com/2026/04/19/robots-beat-human-records-at-beijing-half-marathon/",
     "relatedUrl": "signals.html",
     "sourceType": "automated"
   }

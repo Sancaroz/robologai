@@ -8,7 +8,23 @@
     "robot": "Robotics ecosystem",
     "defaultImpact": "Medium",
     "relatedUrl": "signals.html",
-    "keywords": ["robot", "robotics", "humanoid", "automation", "autonomous", "physical ai", "factory automation"]
+    "minimumKeywordMatches": 2,
+    "maxItems": 5,
+    "keywords": ["robot", "robotics", "humanoid", "autonomous robot", "physical ai", "embodied ai", "factory automation", "warehouse robot", "industrial robot", "quadruped", "exoskeleton"],
+    "excludeKeywords": ["conversational ai", "back-office", "test automation", "marketing automation", "workflow automation", "customer support", "cybersecurity", "data center"]
+  },
+  {
+    "name": "TechCrunch Robotics",
+    "url": "https://techcrunch.com/category/robotics/feed/",
+    "type": "Robotics Startup Signal",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "robot": "Robotics ecosystem",
+    "defaultImpact": "Medium",
+    "relatedUrl": "signals.html",
+    "minimumKeywordMatches": 1,
+    "maxItems": 5,
+    "keywords": ["robot", "robotics", "humanoid", "automation", "autonomous", "warehouse", "delivery", "drone", "manipulation", "physical ai"]
   },
   {
     "name": "NVIDIA Robotics Blog",
@@ -21,18 +37,6 @@
     "defaultImpact": "High",
     "relatedUrl": "physical-ai.html",
     "keywords": ["robotics", "robot", "isaac", "gr00t", "physical ai", "simulation", "humanoid"]
-  },
-  {
-    "name": "Google DeepMind Blog",
-    "url": "https://deepmind.google/discover/blog/rss.xml",
-    "type": "Robot AI",
-    "company": "Google DeepMind",
-    "category": "Robot AI",
-    "country": "USA / UK",
-    "robot": "Gemini Robotics",
-    "defaultImpact": "High",
-    "relatedUrl": "physical-ai.html",
-    "keywords": ["robotics", "robot", "embodied", "physical world", "gemini robotics", "agents"]
   },
   {
     "name": "Boston Dynamics Blog",
