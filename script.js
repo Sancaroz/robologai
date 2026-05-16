@@ -608,14 +608,9 @@ function robotProfileHref(robot) {
   return sitePath(`robots/${robotSeoSlug(robot)}.html`);
 }
 
-function renderHomeSearchResults(query = searchInput?.value || "") {
-  if (!homeSearchResults) return;
+function homeSearchMatches(query = searchInput?.value || "") {
   const normalizedQuery = normalizeSearch(query.trim());
-  if (normalizedQuery.length < 2) {
-    homeSearchResults.hidden = true;
-    homeSearchResults.innerHTML = "";
-    return;
-  }
+  if (normalizedQuery.length < 2) return [];
 
   const terms = normalizedQuery.split(/\s+/).filter(Boolean);
   const companies = (companyDatabase.length ? companyDatabase : fallbackCompanyDatabase)
@@ -638,7 +633,19 @@ function renderHomeSearchResults(query = searchInput?.value || "") {
       body: robot.useCase || robot.status || "Physical AI system",
       href: robotProfileHref(robot)
     }));
-  const results = [...companies, ...robots].slice(0, 6);
+  return [...companies, ...robots].slice(0, 6);
+}
+
+function renderHomeSearchResults(query = searchInput?.value || "") {
+  if (!homeSearchResults) return;
+  const normalizedQuery = normalizeSearch(query.trim());
+  if (normalizedQuery.length < 2) {
+    homeSearchResults.hidden = true;
+    homeSearchResults.innerHTML = "";
+    return;
+  }
+
+  const results = homeSearchMatches(query);
 
   homeSearchResults.hidden = false;
   homeSearchResults.innerHTML = `
@@ -1051,16 +1058,18 @@ robotFilterButtons.forEach((button) => {
 searchForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   filterCompanies();
-  const hasDatabaseQuery = normalizeSearch(searchInput?.value || "").length >= 2;
-  (hasDatabaseQuery ? homeSearchResults || companyDatabaseSection : companiesSection || marketSection)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const firstResult = homeSearchMatches(searchInput?.value || "")[0];
+  if (firstResult?.href) {
+    window.location.href = firstResult.href;
+    return;
+  }
+  (homeSearchResults || companyDatabaseSection || companiesSection || marketSection)?.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 searchFocusButton?.addEventListener("click", (event) => {
-  event.preventDefault();
   const searchTarget = searchForm || searchInput;
   searchTarget?.scrollIntoView({ behavior: "smooth", block: "center" });
-  searchInput?.focus({ preventScroll: true });
-  window.setTimeout(() => searchInput?.focus(), 250);
+  window.setTimeout(() => searchInput?.focus({ preventScroll: true }), 180);
 });
 
 loadCompanyDatabase();
