@@ -13686,22 +13686,25 @@ body.light-theme .event-card dd {
   }
 }
 
-/* Header logo lockup: render the premium PNG as a CSS background so it stays visible across cached HTML/image states. */
+/* Header logo lockup: keep the real image visible so browser/CDN cache cannot hide the brand mark. */
 .site-header .brand-full {
   display: inline-flex;
   align-items: center;
   width: clamp(240px, 19vw, 300px);
   min-width: clamp(240px, 19vw, 300px);
   height: 78px;
-  background: url("assets/uploads/robologai-full-logo-v2-header.png?v=20260515-logo") left center / contain no-repeat;
+  background: none;
 }
 
 .site-header .brand-full .brand-logo-full {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .site-header .brand-full::before {
