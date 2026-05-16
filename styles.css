@@ -13734,3 +13734,40 @@ body.light-theme .site-header .brand-full::after {
     height: 64px;
   }
 }
+
+/* Mobile home search final override: the search input must remain tappable. */
+@media (max-width: 680px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  .hero .search-box {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    width: 100% !important;
+    max-width: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    scroll-margin-top: 180px;
+  }
+
+  .hero .search-box input {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  .hero .search-box button {
+    position: static !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
