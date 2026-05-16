@@ -260,7 +260,7 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
   </head>
   <body>
     <header class="site-header">
-      <a class="brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2.png?v=20260517-live-logo" alt="RoboLogAI"></a>
+      <a class="brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>
       <nav class="main-nav" aria-label="Main menu">
         <a href="../index.html" data-i18n="navHome">Home</a>
         <a${navClass(activeNav, "signals")} href="../signals.html">Signals</a>
@@ -283,7 +283,7 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
 ${body}
     </main>
     <footer class="site-footer mini-footer">
-      <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2.png?v=20260517-live-logo" alt="RoboLogAI"></a>
+      <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>
       <p>Robotics and AI intelligence, organized as catalogs, comparisons, and source-first analysis.</p>
       <a class="footer-x-link" href="https://x.com/robologai" target="_blank" rel="noopener noreferrer">Follow @robologai on X</a>
     </footer>
