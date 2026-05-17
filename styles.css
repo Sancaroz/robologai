@@ -5717,6 +5717,8 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid,
 .data-quality-grid,
 .source-note-grid,
+.company-snapshot-grid,
+.product-lineup-grid,
 .tr-guide-grid,
 .compare-preset-grid,
 .faq-grid {
@@ -5733,9 +5735,14 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid,
 .data-quality-grid,
 .source-note-grid,
+.company-snapshot-grid,
 .tr-guide-grid,
 .compare-preset-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.product-lineup-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .faq-grid {
@@ -5756,6 +5763,8 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid article,
 .data-quality-grid article,
 .source-note-grid article,
+.company-snapshot-grid article,
+.product-lineup-grid article,
 .tr-guide-grid a,
 .compare-preset-grid a,
 .faq-grid details {
@@ -5783,6 +5792,8 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid span,
 .data-quality-grid span,
 .source-note-grid span,
+.company-snapshot-grid span,
+.product-lineup-grid span,
 .tr-guide-grid span,
 .compare-preset-grid span {
   color: var(--blue-2);
@@ -5798,6 +5809,8 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid small,
 .data-quality-grid small,
 .source-note-grid small,
+.company-snapshot-grid small,
+.product-lineup-grid small,
 .tr-guide-grid small {
   color: #c4cedc;
   line-height: 1.45;
@@ -5810,6 +5823,8 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid strong,
 .data-quality-grid strong,
 .source-note-grid strong,
+.company-snapshot-grid strong,
+.product-lineup-grid strong,
 .tr-guide-grid strong,
 .compare-preset-grid strong,
 .faq-grid summary {
@@ -5823,6 +5838,19 @@ body.light-theme .profile-main > div > span {
 }
 
 .source-note-grid a {
+  align-self: end;
+  color: #7df9ff;
+  font-weight: 950;
+}
+
+.product-lineup-grid em {
+  color: #9ee8ff;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.product-lineup-grid a {
   align-self: end;
   color: #7df9ff;
   font-weight: 950;
@@ -10121,6 +10149,8 @@ body.light-theme .profile-stack-grid small,
 body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
 body.light-theme .source-note-grid small,
+body.light-theme .company-snapshot-grid small,
+body.light-theme .product-lineup-grid small,
 body.light-theme .tr-guide-grid small,
 body.light-theme .faq-grid p,
 body.light-theme .featured-robot-card p,
@@ -10141,6 +10171,8 @@ body.light-theme .company-signal-grid article,
 body.light-theme .compare-summary-grid article,
 body.light-theme .data-quality-grid article,
 body.light-theme .source-note-grid article,
+body.light-theme .company-snapshot-grid article,
+body.light-theme .product-lineup-grid article,
 body.light-theme .tr-guide-grid a,
 body.light-theme .compare-preset-grid a,
 body.light-theme .faq-grid details,
@@ -10173,6 +10205,8 @@ body.light-theme .company-signal-grid strong,
 body.light-theme .compare-summary-grid strong,
 body.light-theme .data-quality-grid strong,
 body.light-theme .source-note-grid strong,
+body.light-theme .company-snapshot-grid strong,
+body.light-theme .product-lineup-grid strong,
 body.light-theme .tr-guide-grid strong,
 body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
@@ -10418,6 +10452,8 @@ body.light-theme .facts span {
   .compare-summary-grid,
   .data-quality-grid,
   .source-note-grid,
+  .company-snapshot-grid,
+  .product-lineup-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,
@@ -10734,6 +10770,8 @@ body.light-theme .facts span {
   .compare-summary-grid,
   .data-quality-grid,
   .source-note-grid,
+  .company-snapshot-grid,
+  .product-lineup-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,

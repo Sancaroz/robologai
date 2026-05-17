@@ -270,6 +270,29 @@ function companyQuality(company, linkedRobots = []) {
   };
 }
 
+function companyRobotCategories(company, linkedRobots = []) {
+  const categories = linkedRobots.map((robot) => robot.category).filter(Boolean);
+  if (!categories.length && company.category) categories.push(company.category);
+  return [...new Set(categories)].slice(0, 4);
+}
+
+function companyMarketThesis(company, linkedRobots = []) {
+  const text = normalize([company.category, company.robot, ...linkedRobots.map((robot) => `${robot.category} ${robot.useCase}`)].join(" "));
+  if (text.includes("quadruped")) return "Field robotics and inspection signal";
+  if (text.includes("humanoid")) return "Humanoid embodiment signal";
+  if (text.includes("wearable") || text.includes("exo")) return "Mobility assistance and gait robotics signal";
+  if (text.includes("warehouse") || text.includes("logistics")) return "Automation throughput signal";
+  if (text.includes("ai") || text.includes("embodied")) return "Physical AI infrastructure signal";
+  return "Robotics ecosystem signal";
+}
+
+function robotPriceSignal(robot) {
+  if (!robot?.price) return "Price not listed";
+  if (Number(robot.priceVisibility || 0) >= 4) return robot.price;
+  if (Number(robot.priceVisibility || 0) >= 2) return `${robot.price} · reference signal`;
+  return robot.price;
+}
+
 function sourceNotes(title, sources, fallbackLabel = "Official source") {
   if (!sources.length) return "";
   return `\n      <section class="catalog-section">
@@ -304,7 +327,7 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
     <title>${escapeHtml(title)} | robologai</title>
     <link rel="icon" href="../assets/robologai-icon-v2.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/robologai-icon-v2.svg">
-    <link rel="stylesheet" href="../styles.css?v=20260517-profile-quality">
+    <link rel="stylesheet" href="../styles.css?v=20260517-company-intel">
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
   </head>
   <body>
@@ -444,6 +467,8 @@ function companyPage(company) {
   const extraStats = optionalCompanyStats(company);
   const quality = companyQuality(company, linkedRobots);
   const sources = sourceList(company.website, company.sourceLinks);
+  const categories = companyRobotCategories(company, linkedRobots);
+  const marketThesis = companyMarketThesis(company, linkedRobots);
   const title = `${company.name} Company Profile: Robots, AI, Market Signal`;
   const description = `${company.name} profile on robologai: ${company.category}, country, public/private status, ticker, robot assets, official website, and related robotics companies.`;
   const canonical = `https://robologai.com/companies/${pageSlug}.html`;
@@ -482,8 +507,29 @@ function companyPage(company) {
         </article>
         <article class="profile-facts">
           <h2>Robologai signal</h2>
-          <p>${escapeHtml(company.name)} is tracked in Robologai's robotics and AI company database. This static profile gives search engines and readers a stable source-first page, while the interactive database remains available for filtering and comparison.</p>
+          <p>${escapeHtml(company.name)} is tracked as a ${escapeHtml(marketThesis)}. This static profile gives search engines and readers a stable source-first page, while the interactive database remains available for filtering and comparison.</p>
         </article>
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Company Snapshot</p>
+          <h2>Core signals Robologai tracks for ${escapeHtml(company.name)}.</h2>
+        </div>
+        <div class="company-snapshot-grid">
+          <article><span>Market lane</span><strong>${escapeHtml(marketThesis)}</strong><small>${escapeHtml(company.category)}</small></article>
+          <article><span>Product coverage</span><strong>${escapeHtml(linkedRobots.length ? `${linkedRobots.length} tracked robot${linkedRobots.length === 1 ? "" : "s"}` : "Profile watch")}</strong><small>${escapeHtml(categories.join(" · ") || company.robot || "Robotics activity")}</small></article>
+          <article><span>Country signal</span><strong>${escapeHtml(broadCountryName(company.country))}</strong><small>Regional robotics and AI tracker</small></article>
+          <article><span>Market access</span><strong>${escapeHtml(company.ticker || company.type || "Private")}</strong><small>${escapeHtml(company.website ? sourceHost(company.website) : "Official source pending")}</small></article>
+        </div>
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Product Lineup</p>
+          <h2>Tracked robots and products associated with ${escapeHtml(company.name)}.</h2>
+        </div>
+        <div class="product-lineup-grid">
+          ${(linkedRobots.length ? linkedRobots : [{ name: company.robot || "Robotics / AI activity", company: company.name, category: company.category, useCase: company.category, price: "Price not listed" }]).map((robot) => `<article><span>${escapeHtml(robot.category || company.category)}</span><strong>${escapeHtml(robot.name)}</strong><small>${escapeHtml(robot.useCase || company.category)}</small><em>${escapeHtml(robotPriceSignal(robot))}</em>${robots.includes(robot) ? `<a href="../robots/${robotPageSlug(robot)}.html">Robot profile →</a>` : ""}</article>`).join("")}
+        </div>
       </section>
       <section class="catalog-section">
         <div class="section-heading compact">
@@ -508,11 +554,13 @@ function companyPage(company) {
       </section>` : ""}
       <section class="catalog-section">
         <div class="section-heading compact">
-          <p>Linked Robots</p>
-          <h2>Robots and assets associated with ${escapeHtml(company.name)}.</h2>
+          <p>Market Signal</p>
+          <h2>How ${escapeHtml(company.name)} fits into the robotics economy.</h2>
         </div>
-        <div class="signal-grid">
-          ${(linkedRobots.length ? linkedRobots : [{ name: company.robot || "Robotics / AI activity", company: company.name, useCase: company.category }]).map((robot) => `<article class="signal-card"><strong>${escapeHtml(robot.name)}</strong><span>${escapeHtml(robot.company || company.name)}</span><small>${escapeHtml(robot.useCase || company.category)}</small>${robots.includes(robot) ? `<a href="../robots/${robotPageSlug(robot)}.html">Robot profile →</a>` : ""}</article>`).join("")}
+        <div class="company-signal-grid">
+          <article><span>Exposure</span><strong>${escapeHtml(company.ticker ? "Public market exposure" : company.type || "Private / unlisted")}</strong><small>${escapeHtml(company.ticker || "No public ticker")}</small></article>
+          <article><span>Robotics lane</span><strong>${escapeHtml(marketThesis)}</strong><small>${escapeHtml(categories.join(" · ") || company.category)}</small></article>
+          <article><span>Verification</span><strong>Official source first</strong><small>Robologai sends readers to the company source for fast-changing claims.</small></article>
         </div>
       </section>
       <section class="catalog-section">

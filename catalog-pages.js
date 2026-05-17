@@ -1463,6 +1463,29 @@ function companyQuality(company, robots = []) {
   };
 }
 
+function companyRobotCategories(company, robots = []) {
+  const categories = robots.map((robot) => robot.category).filter(Boolean);
+  if (!categories.length && company.category) categories.push(company.category);
+  return [...new Set(categories)].slice(0, 4);
+}
+
+function companyMarketThesis(company, robots = []) {
+  const text = pageNormalize([company.category, company.robot, ...robots.map((robot) => `${robot.category} ${robot.useCase}`)].join(" "));
+  if (text.includes("quadruped")) return "Field robotics and inspection signal";
+  if (text.includes("humanoid")) return "Humanoid embodiment signal";
+  if (text.includes("wearable") || text.includes("exo")) return "Mobility assistance and gait robotics signal";
+  if (text.includes("warehouse") || text.includes("logistics")) return "Automation throughput signal";
+  if (text.includes("ai") || text.includes("embodied")) return "Physical AI infrastructure signal";
+  return "Robotics ecosystem signal";
+}
+
+function robotPriceSignal(robot) {
+  if (!robot?.price) return "Price not listed";
+  if (Number(robot.priceVisibility || 0) >= 4) return robot.price;
+  if (Number(robot.priceVisibility || 0) >= 2) return `${robot.price} · reference signal`;
+  return robot.price;
+}
+
 function robotAlternatives(robot, limit = 4) {
   const useCases = new Set(robotUseCases(robot).map((item) => item.slug));
   return pageState.robots
@@ -2219,6 +2242,8 @@ function renderCompanyProfile() {
   const extraStats = optionalCompanyStats(company);
   const quality = companyQuality(company, robots);
   const companySources = sourceList(company.website, company.sourceLinks);
+  const categories = companyRobotCategories(company, robots);
+  const marketThesis = companyMarketThesis(company, robots);
   const related = pageState.companies
     .filter((item) => item.name !== company.name && (broadCountryName(item.country) === broadCountryName(company.country) || pageNormalize(item.category).includes(pageNormalize(company.category).split(" ")[0])))
     .slice(0, 6);
@@ -2252,8 +2277,29 @@ function renderCompanyProfile() {
       </article>
       <article class="profile-facts">
         <h2>Robologai signal</h2>
-        <p>${pageEscape(company.name)} is tracked as part of Robologai's robotics and AI company database. Use this profile as a source-first launch point, then verify fast-changing details from the official website.</p>
+        <p>${pageEscape(company.name)} is tracked as a ${pageEscape(marketThesis)}. Use this profile as a source-first launch point for product coverage, market exposure, and fast-changing robotics claims.</p>
       </article>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Company Snapshot</p>
+        <h2>Core signals Robologai tracks for ${pageEscape(company.name)}.</h2>
+      </div>
+      <div class="company-snapshot-grid">
+        <article><span>Market lane</span><strong>${pageEscape(marketThesis)}</strong><small>${pageEscape(company.category)}</small></article>
+        <article><span>Product coverage</span><strong>${pageEscape(robots.length ? `${robots.length} tracked robot${robots.length === 1 ? "" : "s"}` : "Profile watch")}</strong><small>${pageEscape(categories.join(" · ") || company.robot || "Robotics activity")}</small></article>
+        <article><span>Country signal</span><strong>${pageEscape(broadCountryName(company.country))}</strong><small>Regional robotics and AI tracker</small></article>
+        <article><span>Market access</span><strong>${pageEscape(company.ticker || company.type || "Private")}</strong><small>${pageEscape(company.website ? sourceHost(company.website) : "Official source pending")}</small></article>
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Product Lineup</p>
+        <h2>Tracked robots and products associated with ${pageEscape(company.name)}.</h2>
+      </div>
+      <div class="product-lineup-grid">
+        ${(robots.length ? robots : [{ name: company.robot || "Robotics / AI activity", company: company.name, category: company.category, useCase: company.category, price: "Price not listed", source: company.website }]).map((robot) => `<article><span>${pageEscape(robot.category || company.category)}</span><strong>${pageEscape(robot.name)}</strong><small>${pageEscape(robot.useCase || company.category)}</small><em>${pageEscape(robotPriceSignal(robot))}</em>${robotSlug(robot) ? `<a href="${pageEscape(robotProfileHref(robot))}">Robot profile →</a>` : ""}</article>`).join("")}
+      </div>
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
@@ -2284,17 +2330,8 @@ function renderCompanyProfile() {
       </div>
       <div class="company-signal-grid">
         <article><span>Exposure</span><strong>${pageEscape(marketStrength(company))}</strong><small>${pageEscape(company.type || "Entity")} · ${pageEscape(company.ticker || "No public ticker")}</small></article>
-        <article><span>Robotics lane</span><strong>${pageEscape(company.robot || "AI / robotics activity")}</strong><small>${pageEscape(company.category)}</small></article>
+        <article><span>Robotics lane</span><strong>${pageEscape(marketThesis)}</strong><small>${pageEscape(categories.join(" · ") || company.category)}</small></article>
         <article><span>Verification</span><strong>Official source first</strong><small>Robologai sends readers to the company source for fast-changing claims.</small></article>
-      </div>
-    </section>
-    <section class="catalog-section">
-      <div class="section-heading compact">
-        <p>Linked Robots</p>
-        <h2>Robots and assets associated with ${pageEscape(company.name)}.</h2>
-      </div>
-      <div class="signal-grid">
-        ${(robots.length ? robots : [{ name: company.robot || "Robotics / AI activity", company: company.name, useCase: company.category, source: company.website }]).map((robot) => `<article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.useCase || company.category)}</small>${robotSlug(robot) ? `<a href="${pageEscape(robotProfileHref(robot))}">Robot profile →</a>` : ""}</article>`).join("")}
       </div>
     </section>
     <section class="catalog-section">
