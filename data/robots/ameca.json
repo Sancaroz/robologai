@@ -1,0 +1,17 @@
+{
+    "name": "Ameca",
+    "company": "Engineered Arts",
+    "category": "Social humanoid",
+    "country": "United Kingdom",
+    "status": "Commercial / demo platform",
+    "availability": "Available for commercial engagement",
+    "price": "Enterprise / quote-based",
+    "useCase": "Human-robot interaction, events, research",
+    "height": "Human scale",
+    "runtime": "Not disclosed",
+    "maturity": 5,
+    "priceVisibility": 2,
+    "source": "https://www.engineeredarts.co.uk/",
+    "keywords": ["ameca", "social humanoid", "hri", "engineered arts"]
+  }
+  
