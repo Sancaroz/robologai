@@ -1,0 +1,21 @@
+{
+  "name": "DR02",
+  "company": "DEEP Robotics",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Industrial-level humanoid robot",
+  "availability": "Official product page and retailer listings",
+  "price": "Retailer/reference pricing: about US$119,950",
+  "useCase": "All-weather industrial humanoid operation, outdoor work, cargo transport, emergency scenarios, and human-space automation",
+  "height": "Not disclosed on official page",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 3,
+  "imageCredit": "DEEP Robotics official DR02 page",
+  "source": "https://www.deeprobotics.cn/en/index/dr02.html",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/dr02.html",
+    "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
+  ],
+  "keywords": ["deep robotics", "dr02", "humanoid", "industrial humanoid", "ip66", "all-weather", "embodied ai", "retailer reference pricing"]
+}
