@@ -1,0 +1,17 @@
+{
+    "name": "Phoenix",
+    "company": "Sanctuary AI",
+    "category": "Humanoid",
+    "country": "Canada",
+    "status": "Enterprise development",
+    "availability": "Enterprise / pilots",
+    "price": "No official public price",
+    "useCase": "General-purpose work in structured environments",
+    "height": "5 ft 7 in",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "source": "https://www.sanctuary.ai/",
+    "keywords": ["phoenix", "sanctuary", "general purpose", "humanoid"]
+  }
+  
