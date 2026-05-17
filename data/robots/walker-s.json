@@ -1,0 +1,17 @@
+{
+    "name": "Walker S",
+    "company": "UBTECH Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Industrial pilots",
+    "availability": "Enterprise",
+    "price": "No official public price",
+    "useCase": "Manufacturing, automotive, industrial tasks",
+    "height": "Human scale",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "source": "https://www.ubtrobot.com/",
+    "keywords": ["walker", "ubtech", "industrial", "humanoid"]
+  }
+  
