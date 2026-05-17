@@ -1,0 +1,17 @@
+{
+  "name": "X30",
+  "company": "DEEP Robotics",
+  "category": "Quadruped",
+  "country": "China",
+  "status": "Industrial-grade quadruped robot",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Industrial inspection, investigation, security, surveying, mapping, and all-weather patrol",
+  "height": "Official standing size: 1000 x 695 x 470 mm",
+  "runtime": "Official endurance: 2.5-4 hours",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/product3.html",
+  "keywords": ["deep robotics", "x30", "quadruped", "industrial robot dog", "inspection", "ip67", "security", "mapping"]
+}
