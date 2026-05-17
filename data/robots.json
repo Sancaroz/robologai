@@ -15,7 +15,12 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Optimus_Tesla.jpg",
     "imageCredit": "Wikimedia Commons / public domain",
     "source": "https://www.tesla.com/AI",
-    "keywords": ["factory", "autonomy", "tesla", "humanoid"]
+    "keywords": [
+      "factory",
+      "autonomy",
+      "tesla",
+      "humanoid"
+    ]
   },
   {
     "name": "Figure 02",
@@ -33,7 +38,12 @@
     "image": "https://images.ctfassets.net/qx5k8y1u9drj/56I3mHKEdLZdrsONwOm3sc/63b1569bb855cc334c2dda67ce40ba4a/generic-page-image.jpeg",
     "imageCredit": "Figure AI official media",
     "source": "https://www.figure.ai/",
-    "keywords": ["figure", "workplace", "factory", "humanoid"]
+    "keywords": [
+      "figure",
+      "workplace",
+      "factory",
+      "humanoid"
+    ]
   },
   {
     "name": "Persona Humanoid",
@@ -51,7 +61,18 @@
     "image": "https://persona.ai/wp-content/uploads/image-of-humanoid-robot.webp",
     "imageCredit": "Persona AI official media",
     "source": "https://persona.ai/humanoid/",
-    "keywords": ["persona", "industrial humanoid", "shipyards", "energy", "construction", "manufacturing", "welder", "fabricator", "assembler", "miner"]
+    "keywords": [
+      "persona",
+      "industrial humanoid",
+      "shipyards",
+      "energy",
+      "construction",
+      "manufacturing",
+      "welder",
+      "fabricator",
+      "assembler",
+      "miner"
+    ]
   },
   {
     "name": "Apollo",
@@ -69,7 +90,12 @@
     "image": "https://cdn.prod.website-files.com/646de3abb3e62d339f089e28/64e54eb19605183a5d58e077_Hero%20Shot%2001.png",
     "imageCredit": "Apptronik official media",
     "source": "https://apptronik.com/",
-    "keywords": ["apollo", "industrial", "warehouse", "humanoid"]
+    "keywords": [
+      "apollo",
+      "industrial",
+      "warehouse",
+      "humanoid"
+    ]
   },
   {
     "name": "Digit",
@@ -87,7 +113,12 @@
     "image": "https://cdn.prod.website-files.com/68d6ca150ffa11fdc25d7575/698c88da0a3bf08e257409ea_digit-profile.jpg",
     "imageCredit": "Agility Robotics official media",
     "source": "https://agilityrobotics.com/",
-    "keywords": ["digit", "warehouse", "logistics", "humanoid"]
+    "keywords": [
+      "digit",
+      "warehouse",
+      "logistics",
+      "humanoid"
+    ]
   },
   {
     "name": "Atlas",
@@ -105,7 +136,12 @@
     "image": "https://bostondynamics.com/wp-content/uploads/2024/04/atlas-blue-mobile-copy.jpg",
     "imageCredit": "Boston Dynamics official media",
     "source": "https://bostondynamics.com/atlas/",
-    "keywords": ["atlas", "mobility", "boston dynamics", "humanoid"]
+    "keywords": [
+      "atlas",
+      "mobility",
+      "boston dynamics",
+      "humanoid"
+    ]
   },
   {
     "name": "Spot",
@@ -123,16 +159,21 @@
     "image": "https://bostondynamics.com/wp-content/uploads/2024/02/spot-stairs-safety-lights.jpg",
     "imageCredit": "Boston Dynamics official media",
     "source": "https://bostondynamics.com/products/spot/",
-    "keywords": ["spot", "inspection", "quadruped", "commercial"]
+    "keywords": [
+      "spot",
+      "inspection",
+      "quadruped",
+      "commercial"
+    ]
   },
   {
-    "name": "G1",
+    "name": "Unitree G1",
     "company": "Unitree Robotics",
     "category": "Humanoid",
     "country": "China",
     "status": "Order-based availability",
     "availability": "Available / order-based",
-    "price": "From around $16K depending on configuration",
+    "price": 16000,
     "useCase": "Research, education, prototyping",
     "height": "132 cm",
     "runtime": "About 2 hours",
@@ -141,7 +182,12 @@
     "image": "https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png",
     "imageCredit": "Unitree official media",
     "source": "https://www.unitree.com/g1/",
-    "keywords": ["g1", "unitree", "research", "price visible"]
+    "keywords": [
+      "g1",
+      "unitree",
+      "research",
+      "price visible"
+    ]
   },
   {
     "name": "H1",
@@ -159,7 +205,12 @@
     "image": "https://www.unitree.com/images/ea2d2b637df84e3bacd508cd1f2711e5_2744x1596.jpg",
     "imageCredit": "Unitree official media",
     "source": "https://www.unitree.com/",
-    "keywords": ["h1", "unitree", "humanoid", "mobility"]
+    "keywords": [
+      "h1",
+      "unitree",
+      "humanoid",
+      "mobility"
+    ]
   },
   {
     "name": "PM01",
@@ -177,7 +228,12 @@
     "image": "https://en-engineai-1304599088.cos.ap-guangzhou.myqcloud.com/uploads/frame/PM01/PM01_00000.png",
     "imageCredit": "EngineAI official media",
     "source": "https://en.engineai.com.cn/product-pm01.html",
-    "keywords": ["pm01", "engineai", "open source", "developer"]
+    "keywords": [
+      "pm01",
+      "engineai",
+      "open source",
+      "developer"
+    ]
   },
   {
     "name": "Booster T1",
@@ -195,7 +251,12 @@
     "image": "https://www.booster.tech/_astro/product-1.Dk_Ke_Kw_24hsch.webp",
     "imageCredit": "Booster Robotics official media",
     "source": "https://www.booster.tech/",
-    "keywords": ["booster", "t1", "robocup", "education"]
+    "keywords": [
+      "booster",
+      "t1",
+      "robocup",
+      "education"
+    ]
   },
   {
     "name": "NEO",
@@ -211,7 +272,12 @@
     "maturity": 3,
     "priceVisibility": 1,
     "source": "https://www.1x.tech/",
-    "keywords": ["neo", "home robot", "1x", "humanoid"]
+    "keywords": [
+      "neo",
+      "home robot",
+      "1x",
+      "humanoid"
+    ]
   },
   {
     "name": "Memo",
@@ -229,7 +295,12 @@
     "image": "https://cdn.sanity.io/images/1omys9i3/production/319392a9e6c83e4b9f7c2158c5b10fa6f75e84c1-2400x1260.png",
     "imageCredit": "Sunday Robotics official media",
     "source": "https://www.sunday.ai/",
-    "keywords": ["memo", "home robot", "household", "sunday"]
+    "keywords": [
+      "memo",
+      "home robot",
+      "household",
+      "sunday"
+    ]
   },
   {
     "name": "Sprout",
@@ -247,7 +318,12 @@
     "image": "https://cdn.prod.website-files.com/6931911db0300aa6e7e3fc81/6977d9e235cf9a54353a625b_fauna_social_6%20(1).jpg",
     "imageCredit": "Fauna Robotics official media",
     "source": "https://faunarobotics.com/",
-    "keywords": ["sprout", "soft humanoid", "fauna", "research"]
+    "keywords": [
+      "sprout",
+      "soft humanoid",
+      "fauna",
+      "research"
+    ]
   },
   {
     "name": "Phoenix",
@@ -263,7 +339,12 @@
     "maturity": 3,
     "priceVisibility": 1,
     "source": "https://www.sanctuary.ai/",
-    "keywords": ["phoenix", "sanctuary", "general purpose", "humanoid"]
+    "keywords": [
+      "phoenix",
+      "sanctuary",
+      "general purpose",
+      "humanoid"
+    ]
   },
   {
     "name": "Ameca",
@@ -279,7 +360,12 @@
     "maturity": 5,
     "priceVisibility": 2,
     "source": "https://www.engineeredarts.co.uk/",
-    "keywords": ["ameca", "social humanoid", "hri", "engineered arts"]
+    "keywords": [
+      "ameca",
+      "social humanoid",
+      "hri",
+      "engineered arts"
+    ]
   },
   {
     "name": "Walker S",
@@ -295,7 +381,12 @@
     "maturity": 4,
     "priceVisibility": 1,
     "source": "https://www.ubtrobot.com/",
-    "keywords": ["walker", "ubtech", "industrial", "humanoid"]
+    "keywords": [
+      "walker",
+      "ubtech",
+      "industrial",
+      "humanoid"
+    ]
   },
   {
     "name": "AgiBot A2",
@@ -311,7 +402,12 @@
     "maturity": 4,
     "priceVisibility": 1,
     "source": "https://www.agibot.com/",
-    "keywords": ["agibot", "a2", "embodied ai", "china"]
+    "keywords": [
+      "agibot",
+      "a2",
+      "embodied ai",
+      "china"
+    ]
   },
   {
     "name": "LimX Oli",
@@ -329,7 +425,12 @@
     "image": "https://www.limxdynamics.com/_next/image?url=%2Fimages%2Fheader%2Fproduct-1.png&w=1080&q=75",
     "imageCredit": "LimX Dynamics official media",
     "source": "https://www.limxdynamics.com/en",
-    "keywords": ["limx", "oli", "physical ai", "agentic os"]
+    "keywords": [
+      "limx",
+      "oli",
+      "physical ai",
+      "agentic os"
+    ]
   },
   {
     "name": "KUAVO",
@@ -345,7 +446,12 @@
     "maturity": 4,
     "priceVisibility": 1,
     "source": "https://www.lejurobot.com/en",
-    "keywords": ["kuavo", "leju", "industrial", "humanoid"]
+    "keywords": [
+      "kuavo",
+      "leju",
+      "industrial",
+      "humanoid"
+    ]
   },
   {
     "name": "PUDU D9",
@@ -363,7 +469,12 @@
     "image": "https://cdn.pudutech.com/official-website/d9/section3_front_en.webp",
     "imageCredit": "Pudu Robotics official media",
     "source": "https://www.pudurobotics.com/en/products/d9",
-    "keywords": ["pudu", "d9", "service robot", "humanoid"]
+    "keywords": [
+      "pudu",
+      "d9",
+      "service robot",
+      "humanoid"
+    ]
   },
   {
     "name": "MagicBot Gen1",
@@ -379,7 +490,12 @@
     "maturity": 3,
     "priceVisibility": 2,
     "source": "https://www.magiclab.top/en/human",
-    "keywords": ["magicbot", "magiclab", "manufacturing", "humanoid"]
+    "keywords": [
+      "magicbot",
+      "magiclab",
+      "manufacturing",
+      "humanoid"
+    ]
   },
   {
     "name": "Galbot G1",
@@ -397,7 +513,15 @@
     "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/g1/g1-poster.jpg",
     "imageCredit": "Galbot official media",
     "source": "https://developer.galbot.com/docs/g1/2.2.4/zh/g1",
-    "keywords": ["galbot", "g1", "humanoid", "embodied ai", "vla", "manipulation", "pick and place"]
+    "keywords": [
+      "galbot",
+      "g1",
+      "humanoid",
+      "embodied ai",
+      "vla",
+      "manipulation",
+      "pick and place"
+    ]
   },
   {
     "name": "Galbot S1",
@@ -415,247 +539,383 @@
     "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/s1/product-en.png",
     "imageCredit": "Galbot official media",
     "source": "https://developer.galbot.com/docs/s1/2.0.0/zh/s1",
-    "keywords": ["galbot", "s1", "industrial robot", "heavy load", "embodied ai", "simulation"]
-  }, 
+    "keywords": [
+      "galbot",
+      "s1",
+      "industrial robot",
+      "heavy load",
+      "embodied ai",
+      "simulation"
+    ]
+  },
   {
-  "name": "Embodied Tien Kung 3.0",
-  "company": "X-Humanoid",
-  "category": "Humanoid",
-  "country": "China",
-  "status": "Launched / advanced platform",
-  "availability": "Developer and enterprise ecosystem",
-  "price": "No official public price",
-  "useCase": "Industrial, commercial, embodied AI development and high-dynamic autonomous tasks",
-  "height": "Full-size",
-  "runtime": "Not disclosed",
-  "maturity": 4,
-  "priceVisibility": 1,
-  "image": "assets/robots/tien-kung-3.png",
-  "imageCredit": "X-Humanoid / PRNewswire official press release",
-  "source": "https://www.x-humanoid.com/",
-  "keywords": ["tien kung", "x-humanoid", "embodied ai", "wise kaiwu", "humanoid", "autonomous"]
-},
-{
-  "name": "WIM",
-  "company": "WIRobotics",
-  "category": "Wearable walking-assist robot",
-  "country": "South Korea",
-  "status": "Commercial wearable mobility robot",
-  "availability": "Official WIRobotics product page and selected retailers",
-  "price": "Retailer price / not official MSRP: €2,499 incl. tax; £2,224.12 / £2,001.70 incl. tax shown by EU/UK retailers",
-  "useCase": "Wearable walking assistance, gait training, daily mobility support, and resistance-mode exercise",
-  "height": "Not applicable",
-  "runtime": "Not disclosed",
-  "maturity": 4,
-  "priceVisibility": 3,
-  "imageCredit": "WIRobotics official product page",
-  "source": "https://www.wirobotics.com/product/wimInfo",
-  "sourceLinks": [
-    "https://www.wirobotics.com/product/wimInfo",
-    "https://www.physiosupplies.fr/wirobotics-wim-robot-portable",
-    "https://www.physioparts.co.uk/wirobotics-wim-wearable-robot"
-  ],
-  "keywords": ["wirobotics", "wim", "wearable robot", "walking assist", "gait training", "mobility", "exoskeleton", "retailer price not official msrp"]
-},
-{
-  "name": "Lite3",
-  "company": "DEEP Robotics",
-  "category": "Quadruped",
-  "country": "China",
-  "status": "Commercial / research quadruped platform",
-  "availability": "Official product page and retailer listings",
-  "price": "Retailer/reference pricing: Lite3 Basic about US$4,995; official China page shows Lite 3 from US$2,890",
-  "useCase": "Academic research, education, entertainment, quadruped locomotion, SDK/API development, and light mobility experiments",
-  "height": "Official configuration-dependent standing height: 406-496 mm",
-  "runtime": "Official configuration-dependent endurance: 1.5-2 hours",
-  "maturity": 4,
-  "priceVisibility": 4,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/lite3.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/lite3.html",
-    "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
-  ],
-  "keywords": ["deep robotics", "deeprobotics", "lite3", "lite 3", "quadruped", "robot dog", "research", "education", "retailer reference pricing"]
-},
-{
-  "name": "Lite3 Pro",
-  "company": "DEEP Robotics",
-  "category": "Quadruped",
-  "country": "China",
-  "status": "Commercial / developer quadruped configuration",
-  "availability": "Official Lite3 product family and retailer listings",
-  "price": "Retailer/reference pricing: about US$9,995",
-  "useCase": "Advanced perception development, robotics education, research, obstacle-aware mobility, and SDK/API development",
-  "height": "Official standing dimensions: 610 x 370 x 450 mm",
-  "runtime": "Official endurance: 1.5-2 hours",
-  "maturity": 4,
-  "priceVisibility": 4,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/lite3.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/lite3.html",
-    "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
-  ],
-  "keywords": ["deep robotics", "lite3 pro", "quadruped", "robot dog", "developer platform", "perception", "retailer reference pricing"]
-},
-{
-  "name": "Lite3 LIDAR",
-  "company": "DEEP Robotics",
-  "category": "Quadruped",
-  "country": "China",
-  "status": "Commercial / LiDAR quadruped configuration",
-  "availability": "Official Lite3 product family and retailer listings",
-  "price": "Retailer/reference pricing: about US$14,500",
-  "useCase": "Quadruped autonomy, SLAM/navigation experiments, LiDAR perception, research, and education",
-  "height": "Official standing dimensions: 610 x 370 x 496 mm",
-  "runtime": "Official endurance: 1.5-2 hours",
-  "maturity": 4,
-  "priceVisibility": 4,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/lite3.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/lite3.html",
-    "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
-  ],
-  "keywords": ["deep robotics", "lite3 lidar", "quadruped", "robot dog", "lidar", "slam", "autonomous navigation", "retailer reference pricing"]
-},
-{
-  "name": "X20",
-  "company": "DEEP Robotics",
-  "category": "Quadruped",
-  "country": "China",
-  "status": "Industrial quadruped robot",
-  "availability": "Official product page / contact sales",
-  "price": "No official public price",
-  "useCase": "Industrial patrol inspection, power utilities, tunnel inspection, rescue, metal and mining, and construction environments",
-  "height": "Official standing size: 950 x 470 x 700 mm",
-  "runtime": "Official endurance: 2-4 hours",
-  "maturity": 4,
-  "priceVisibility": 1,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/product.html",
-  "keywords": ["deep robotics", "x20", "quadruped", "industrial robot dog", "inspection", "ip66", "patrol"]
-},
-{
-  "name": "X30",
-  "company": "DEEP Robotics",
-  "category": "Quadruped",
-  "country": "China",
-  "status": "Industrial-grade quadruped robot",
-  "availability": "Official product page / contact sales",
-  "price": "No official public price",
-  "useCase": "Industrial inspection, investigation, security, surveying, mapping, and all-weather patrol",
-  "height": "Official standing size: 1000 x 695 x 470 mm",
-  "runtime": "Official endurance: 2.5-4 hours",
-  "maturity": 4,
-  "priceVisibility": 1,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/product3.html",
-  "keywords": ["deep robotics", "x30", "quadruped", "industrial robot dog", "inspection", "ip67", "security", "mapping"]
-},
-{
-  "name": "X30 Pro",
-  "company": "DEEP Robotics",
-  "category": "Quadruped",
-  "country": "China",
-  "status": "Industrial-grade quadruped robot",
-  "availability": "Official product page, online shop, and retailer listings",
-  "price": "Retailer/reference pricing: US$85,000+; official US shop listing seen at US$113,400",
-  "useCase": "Industrial inspection, patrol, emergency response, public safety, surveying, mapping, and all-weather autonomous navigation",
-  "height": "Official standing size: 1000 x 715 x 470 mm",
-  "runtime": "Official endurance: 2.5-4 hours",
-  "maturity": 4,
-  "priceVisibility": 4,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/product3.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/product3.html",
-    "https://www.robotsusa.com/Deep-Robotics-X30-Pro-Industrial-Quadruped-Robot-Dog.htm",
-    "https://shop.deeprobotics.us/products/x30"
-  ],
-  "keywords": ["deep robotics", "x30 pro", "quadruped", "industrial robot dog", "inspection", "ip67", "retailer reference pricing"]
-},
-{
-  "name": "LYNX",
-  "company": "DEEP Robotics",
-  "category": "Wheeled Quadruped",
-  "country": "China",
-  "status": "All-terrain wheeled-leg quadruped",
-  "availability": "Official product family / contact sales",
-  "price": "No official public price",
-  "useCase": "All-terrain mobility, outdoor research, industrial inspection, emergency response, logistics, and field exploration",
-  "height": "Not disclosed",
-  "runtime": "Not disclosed",
-  "maturity": 3,
-  "priceVisibility": 1,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/lynx.html",
-  "keywords": ["deep robotics", "lynx", "wheeled quadruped", "wheel-legged", "all terrain", "robot dog", "field robotics"]
-},
-{
-  "name": "LYNX M20",
-  "company": "DEEP Robotics",
-  "category": "Wheeled Quadruped",
-  "country": "China",
-  "status": "Industrial wheeled-legged quadruped robot",
-  "availability": "Official product page, online shop, and retailer listings",
-  "price": "Retailer/reference pricing varies by seller: around US$39,995+ to US$61,200 for M20/M20 Pro listings",
-  "useCase": "Industrial inspection, power inspection, emergency response, logistics, last-mile delivery, outdoor off-road mobility, and field exploration",
-  "height": "Official standing size: 820 x 430 x 570 mm",
-  "runtime": "Official endurance: 3 hours unloaded; 2.5 hours loaded",
-  "maturity": 4,
-  "priceVisibility": 3,
-  "imageCredit": "DEEP Robotics official product page",
-  "source": "https://www.deeprobotics.cn/en/index/lynx.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/lynx.html",
-    "https://www.deeprobotics.us/products/lynx-m20/",
-    "https://shop.deeprobotics.us/products/lynx-m20",
-    "https://www.warpix.com/products/deep-robotics-lynx-m20"
-  ],
-  "keywords": ["deep robotics", "lynx m20", "lynx m20 pro", "wheeled quadruped", "wheel-legged", "industrial robot dog", "inspection", "retailer reference pricing"]
-},
-{
-  "name": "DR01",
-  "company": "DEEP Robotics",
-  "category": "Humanoid",
-  "country": "China",
-  "status": "Humanoid / embodied intelligence explorer",
-  "availability": "Official product page and retailer listings",
-  "price": "Retailer/reference pricing: about US$29,995",
-  "useCase": "Embodied intelligence research, humanoid mobility, perception learning, industrial productivity exploration, and home-environment research",
-  "height": "Not disclosed",
-  "runtime": "Not disclosed",
-  "maturity": 3,
-  "priceVisibility": 3,
-  "imageCredit": "DEEP Robotics official humanoid page",
-  "source": "https://www.deeprobotics.cn/en/index/humanoid.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/humanoid.html",
-    "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
-  ],
-  "keywords": ["deep robotics", "dr01", "humanoid", "embodied intelligence", "robotics research", "retailer reference pricing"]
-},
-{
-  "name": "DR02",
-  "company": "DEEP Robotics",
-  "category": "Humanoid",
-  "country": "China",
-  "status": "Industrial-level humanoid robot",
-  "availability": "Official product page and retailer listings",
-  "price": "Retailer/reference pricing: about US$119,950",
-  "useCase": "All-weather industrial humanoid operation, outdoor work, cargo transport, emergency scenarios, and human-space automation",
-  "height": "Not disclosed on official page",
-  "runtime": "Not disclosed",
-  "maturity": 3,
-  "priceVisibility": 3,
-  "imageCredit": "DEEP Robotics official DR02 page",
-  "source": "https://www.deeprobotics.cn/en/index/dr02.html",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/dr02.html",
-    "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
-  ],
-  "keywords": ["deep robotics", "dr02", "humanoid", "industrial humanoid", "ip66", "all-weather", "embodied ai", "retailer reference pricing"]
-}
+    "name": "Embodied Tien Kung 3.0",
+    "company": "X-Humanoid",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Launched / advanced platform",
+    "availability": "Developer and enterprise ecosystem",
+    "price": "No official public price",
+    "useCase": "Industrial, commercial, embodied AI development and high-dynamic autonomous tasks",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "assets/robots/tien-kung-3.png",
+    "imageCredit": "X-Humanoid / PRNewswire official press release",
+    "source": "https://www.x-humanoid.com/",
+    "keywords": [
+      "tien kung",
+      "x-humanoid",
+      "embodied ai",
+      "wise kaiwu",
+      "humanoid",
+      "autonomous"
+    ]
+  },
+  {
+    "name": "WIM",
+    "company": "WIRobotics",
+    "category": "Wearable walking-assist robot",
+    "country": "South Korea",
+    "status": "Commercial wearable mobility robot",
+    "availability": "Official WIRobotics product page and selected retailers",
+    "price": "Retailer price / not official MSRP: €2,499 incl. tax; £2,224.12 / £2,001.70 incl. tax shown by EU/UK retailers",
+    "useCase": "Wearable walking assistance, gait training, daily mobility support, and resistance-mode exercise",
+    "height": "Not applicable",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "imageCredit": "WIRobotics official product page",
+    "source": "https://www.wirobotics.com/product/wimInfo",
+    "sourceLinks": [
+      "https://www.wirobotics.com/product/wimInfo",
+      "https://www.physiosupplies.fr/wirobotics-wim-robot-portable",
+      "https://www.physioparts.co.uk/wirobotics-wim-wearable-robot"
+    ],
+    "keywords": [
+      "wirobotics",
+      "wim",
+      "wearable robot",
+      "walking assist",
+      "gait training",
+      "mobility",
+      "exoskeleton",
+      "retailer price not official msrp"
+    ]
+  },
+  {
+    "name": "Lite3",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Commercial / research quadruped platform",
+    "availability": "Official product page and retailer listings",
+    "price": "Retailer/reference pricing: Lite3 Basic about US$4,995; official China page shows Lite 3 from US$2,890",
+    "useCase": "Academic research, education, entertainment, quadruped locomotion, SDK/API development, and light mobility experiments",
+    "height": "Official configuration-dependent standing height: 406-496 mm",
+    "runtime": "Official configuration-dependent endurance: 1.5-2 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "deeprobotics",
+      "lite3",
+      "lite 3",
+      "quadruped",
+      "robot dog",
+      "research",
+      "education",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "Lite3 Pro",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Commercial / developer quadruped configuration",
+    "availability": "Official Lite3 product family and retailer listings",
+    "price": "Retailer/reference pricing: about US$9,995",
+    "useCase": "Advanced perception development, robotics education, research, obstacle-aware mobility, and SDK/API development",
+    "height": "Official standing dimensions: 610 x 370 x 450 mm",
+    "runtime": "Official endurance: 1.5-2 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "lite3 pro",
+      "quadruped",
+      "robot dog",
+      "developer platform",
+      "perception",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "Lite3 LIDAR",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Commercial / LiDAR quadruped configuration",
+    "availability": "Official Lite3 product family and retailer listings",
+    "price": "Retailer/reference pricing: about US$14,500",
+    "useCase": "Quadruped autonomy, SLAM/navigation experiments, LiDAR perception, research, and education",
+    "height": "Official standing dimensions: 610 x 370 x 496 mm",
+    "runtime": "Official endurance: 1.5-2 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "lite3 lidar",
+      "quadruped",
+      "robot dog",
+      "lidar",
+      "slam",
+      "autonomous navigation",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "X20",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Industrial quadruped robot",
+    "availability": "Official product page / contact sales",
+    "price": "No official public price",
+    "useCase": "Industrial patrol inspection, power utilities, tunnel inspection, rescue, metal and mining, and construction environments",
+    "height": "Official standing size: 950 x 470 x 700 mm",
+    "runtime": "Official endurance: 2-4 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/product.html",
+    "keywords": [
+      "deep robotics",
+      "x20",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip66",
+      "patrol"
+    ]
+  },
+  {
+    "name": "X30",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Industrial-grade quadruped robot",
+    "availability": "Official product page / contact sales",
+    "price": "No official public price",
+    "useCase": "Industrial inspection, investigation, security, surveying, mapping, and all-weather patrol",
+    "height": "Official standing size: 1000 x 695 x 470 mm",
+    "runtime": "Official endurance: 2.5-4 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/product3.html",
+    "keywords": [
+      "deep robotics",
+      "x30",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip67",
+      "security",
+      "mapping"
+    ]
+  },
+  {
+    "name": "X30 Pro",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Industrial-grade quadruped robot",
+    "availability": "Official product page, online shop, and retailer listings",
+    "price": "Retailer/reference pricing: US$85,000+; official US shop listing seen at US$113,400",
+    "useCase": "Industrial inspection, patrol, emergency response, public safety, surveying, mapping, and all-weather autonomous navigation",
+    "height": "Official standing size: 1000 x 715 x 470 mm",
+    "runtime": "Official endurance: 2.5-4 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/product3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/product3.html",
+      "https://www.robotsusa.com/Deep-Robotics-X30-Pro-Industrial-Quadruped-Robot-Dog.htm",
+      "https://shop.deeprobotics.us/products/x30"
+    ],
+    "keywords": [
+      "deep robotics",
+      "x30 pro",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip67",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "LYNX",
+    "company": "DEEP Robotics",
+    "category": "Wheeled Quadruped",
+    "country": "China",
+    "status": "All-terrain wheeled-leg quadruped",
+    "availability": "Official product family / contact sales",
+    "price": "No official public price",
+    "useCase": "All-terrain mobility, outdoor research, industrial inspection, emergency response, logistics, and field exploration",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lynx.html",
+    "keywords": [
+      "deep robotics",
+      "lynx",
+      "wheeled quadruped",
+      "wheel-legged",
+      "all terrain",
+      "robot dog",
+      "field robotics"
+    ]
+  },
+  {
+    "name": "LYNX M20",
+    "company": "DEEP Robotics",
+    "category": "Wheeled Quadruped",
+    "country": "China",
+    "status": "Industrial wheeled-legged quadruped robot",
+    "availability": "Official product page, online shop, and retailer listings",
+    "price": "Retailer/reference pricing varies by seller: around US$39,995+ to US$61,200 for M20/M20 Pro listings",
+    "useCase": "Industrial inspection, power inspection, emergency response, logistics, last-mile delivery, outdoor off-road mobility, and field exploration",
+    "height": "Official standing size: 820 x 430 x 570 mm",
+    "runtime": "Official endurance: 3 hours unloaded; 2.5 hours loaded",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lynx.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lynx.html",
+      "https://www.deeprobotics.us/products/lynx-m20/",
+      "https://shop.deeprobotics.us/products/lynx-m20",
+      "https://www.warpix.com/products/deep-robotics-lynx-m20"
+    ],
+    "keywords": [
+      "deep robotics",
+      "lynx m20",
+      "lynx m20 pro",
+      "wheeled quadruped",
+      "wheel-legged",
+      "industrial robot dog",
+      "inspection",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "DR01",
+    "company": "DEEP Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Humanoid / embodied intelligence explorer",
+    "availability": "Official product page and retailer listings",
+    "price": "Retailer/reference pricing: about US$29,995",
+    "useCase": "Embodied intelligence research, humanoid mobility, perception learning, industrial productivity exploration, and home-environment research",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 3,
+    "imageCredit": "DEEP Robotics official humanoid page",
+    "source": "https://www.deeprobotics.cn/en/index/humanoid.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/humanoid.html",
+      "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "dr01",
+      "humanoid",
+      "embodied intelligence",
+      "robotics research",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "DR02",
+    "company": "DEEP Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Industrial-level humanoid robot",
+    "availability": "Official product page and retailer listings",
+    "price": "Retailer/reference pricing: about US$119,950",
+    "useCase": "All-weather industrial humanoid operation, outdoor work, cargo transport, emergency scenarios, and human-space automation",
+    "height": "Not disclosed on official page",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 3,
+    "imageCredit": "DEEP Robotics official DR02 page",
+    "source": "https://www.deeprobotics.cn/en/index/dr02.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/dr02.html",
+      "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "dr02",
+      "humanoid",
+      "industrial humanoid",
+      "ip66",
+      "all-weather",
+      "embodied ai",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "Maximo",
+    "company": "AES",
+    "category": "Energy Robotics",
+    "country": "United States",
+    "status": "Deployed / enterprise use",
+    "availability": "Enterprise use / project deployment",
+    "price": "No official public price",
+    "useCase": "Solar module installation automation",
+    "height": "Not disclosed",
+    "runtime": "Extended shifts; exact runtime not publicly disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "imageCredit": "AES official media",
+    "source": "https://www.aes.com/about-us/innovation/maximo",
+    "sourceLinks": [
+      "https://www.aes.com/about-us/innovation/maximo",
+      "https://www.aes.com/energy-insights/reimagining-solar"
+    ],
+    "keywords": [
+      "solar installation robot",
+      "energy robotics",
+      "solar module installation",
+      "computer vision",
+      "clean energy",
+      "construction automation"
+    ]
+  }
 ]

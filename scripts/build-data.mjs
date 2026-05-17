@@ -8,19 +8,59 @@ const collections = {
   companies: {
     file: path.join(root, "data", "companies.json"),
     dir: path.join(root, "data", "companies"),
-    key: (record) => String(record.name || "").toLowerCase()
+    key: (record) => normalizeKey(record.name)
   },
   robots: {
     file: path.join(root, "data", "robots.json"),
     dir: path.join(root, "data", "robots"),
-    key: (record) => `${record.company || ""}::${record.name || ""}`.toLowerCase()
+    key: robotKey
   },
   signals: {
     file: path.join(root, "data", "signals.json"),
     dir: path.join(root, "data", "signals"),
-    key: (record) => `${record.source || ""}::${record.title || ""}`.toLowerCase()
+    key: (record) => `${normalizeKey(record.source)}::${normalizeKey(record.title)}`
   }
 };
+
+function normalize(value = "") {
+  return String(value)
+    .toLowerCase()
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function slug(value = "") {
+  return normalize(value)
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function normalizeKey(value = "") {
+  return normalize(value).trim();
+}
+
+function brandSlug(company = "") {
+  return slug(company)
+    .replace(/-robotics$/, "")
+    .replace(/-technologies$/, "")
+    .replace(/-technology$/, "")
+    .replace(/-ai$/, "")
+    .replace(/-inc$/, "")
+    .replace(/-ltd$/, "");
+}
+
+function robotKey(record) {
+  const name = slug(record.name);
+  const brand = brandSlug(record.company);
+  return name.startsWith(brand) ? name : `${brand}-${name}`;
+}
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -39,6 +79,7 @@ function listJsonFiles(dirPath) {
 
 function readModularRecords(dirPath) {
   return listJsonFiles(dirPath).flatMap((filePath) => {
+    if (fs.statSync(filePath).size === 0) return [];
     const value = readJson(filePath);
     return Array.isArray(value) ? value : [value];
   });
@@ -53,7 +94,7 @@ function mergeRecords(base, modular, keyFn) {
   for (const record of modular) {
     const key = keyFn(record);
     if (positions.has(key)) {
-      merged[positions.get(key)] = record;
+      merged[positions.get(key)] = { ...merged[positions.get(key)], ...record };
     } else {
       positions.set(key, merged.length);
       merged.push(record);

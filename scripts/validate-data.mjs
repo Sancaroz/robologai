@@ -63,10 +63,62 @@ function validateRecord(kind, record, label) {
   }
 }
 
+function normalize(value = "") {
+  return String(value)
+    .toLowerCase()
+    .replace(/ı/g, "i")
+    .replace(/ğ/g, "g")
+    .replace(/ü/g, "u")
+    .replace(/ş/g, "s")
+    .replace(/ö/g, "o")
+    .replace(/ç/g, "c")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function slug(value = "") {
+  return normalize(value)
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function brandSlug(company = "") {
+  return slug(company)
+    .replace(/-robotics$/, "")
+    .replace(/-technologies$/, "")
+    .replace(/-technology$/, "")
+    .replace(/-ai$/, "")
+    .replace(/-inc$/, "")
+    .replace(/-ltd$/, "");
+}
+
 function recordKey(kind, record) {
-  if (kind === "robots") return `${record.company}::${record.name}`.toLowerCase();
-  if (kind === "signals") return `${record.source || ""}::${record.title || ""}`.toLowerCase();
-  return String(record.name || "").toLowerCase();
+  if (kind === "robots") {
+    const name = slug(record.name);
+    const brand = brandSlug(record.company);
+    return name.startsWith(brand) ? name : `${brand}-${name}`;
+  }
+  if (kind === "signals") return `${normalize(record.source || "")}::${normalize(record.title || "")}`;
+  return normalize(record.name || "");
+}
+
+function mergeRecords(base, modular, kind) {
+  const positions = new Map();
+  const merged = base.map((record, index) => {
+    positions.set(recordKey(kind, record), index);
+    return record;
+  });
+  for (const record of modular) {
+    const key = recordKey(kind, record);
+    if (positions.has(key)) {
+      merged[positions.get(key)] = { ...merged[positions.get(key)], ...record };
+    } else {
+      positions.set(key, merged.length);
+      merged.push(record);
+    }
+  }
+  return merged;
 }
 
 function validateCollection(kind, records, label) {
@@ -83,13 +135,11 @@ function validateCollection(kind, records, label) {
 function readModularRecords(kind) {
   const records = [];
   for (const filePath of listJsonFiles(modularDirs[kind])) {
+    if (fs.statSync(filePath).size === 0) continue;
     const value = readJson(filePath);
     const fileLabel = path.relative(root, filePath);
     const fileRecords = Array.isArray(value) ? value : [value];
-    fileRecords.forEach((record, index) => {
-      validateRecord(kind, record, `${fileLabel}${Array.isArray(value) ? `[${index}]` : ""}`);
-      records.push(record);
-    });
+    fileRecords.forEach((record) => records.push({ ...record, __sourceFile: fileLabel }));
   }
   return records;
 }
@@ -115,11 +165,24 @@ function main() {
     robots: readModularRecords("robots"),
     signals: readModularRecords("signals")
   };
+  const merged = {
+    companies: mergeRecords(central.companies, modular.companies.map(({ __sourceFile, ...record }) => record), "companies"),
+    robots: mergeRecords(central.robots, modular.robots.map(({ __sourceFile, ...record }) => record), "robots"),
+    signals: mergeRecords(central.signals, modular.signals.map(({ __sourceFile, ...record }) => record), "signals")
+  };
 
-  validateCollection("companies", [...central.companies, ...modular.companies], "companies");
-  validateCollection("robots", [...central.robots, ...modular.robots], "robots");
-  validateCollection("signals", [...central.signals, ...modular.signals], "signals");
-  validateLinks([...central.companies, ...modular.companies], [...central.robots, ...modular.robots]);
+  for (const kind of Object.keys(modular)) {
+    for (const record of modular[kind]) {
+      const { __sourceFile, ...cleanRecord } = record;
+      const mergedRecord = merged[kind].find((item) => recordKey(kind, item) === recordKey(kind, cleanRecord));
+      validateRecord(kind, mergedRecord || cleanRecord, __sourceFile);
+    }
+  }
+
+  validateCollection("companies", merged.companies, "companies");
+  validateCollection("robots", merged.robots, "robots");
+  validateCollection("signals", merged.signals, "signals");
+  validateLinks(merged.companies, merged.robots);
 
   console.log(`companies ok: ${central.companies.length} central, ${modular.companies.length} modular`);
   console.log(`robots ok: ${central.robots.length} central, ${modular.robots.length} modular`);

@@ -1,0 +1,21 @@
+{
+  "name": "AES",
+  "category": "Energy Robotics / Clean Energy Infrastructure",
+  "country": "United States",
+  "type": "Public",
+  "ticker": "AES",
+  "robot": "Maximo",
+  "website": "https://www.aes.com/",
+  "focus": "Clean energy infrastructure, solar automation, and AI-enabled solar installation robotics",
+  "sourceLinks": [
+    "https://www.aes.com/about-us/innovation/maximo",
+    "https://www.aes.com/energy-insights/reimagining-solar"
+  ],
+  "keywords": [
+    "energy robotics",
+    "solar installation",
+    "clean energy",
+    "automation",
+    "maximo"
+  ]
+}

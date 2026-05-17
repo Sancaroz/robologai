@@ -1,223 +1,2415 @@
 [
-  {"name":"Tesla","category":"Humanoid robotics, EV, autonomy","country":"USA","type":"Public","ticker":"TSLA","robot":"Optimus","website":"https://www.tesla.com/AI","keywords":["humanoid","factory","autonomy","electric vehicles"]},
-  {"name":"NVIDIA","category":"AI infrastructure, robotics compute","country":"USA","type":"Public","ticker":"NVDA","robot":"Isaac, GR00T","website":"https://www.nvidia.com/en-us/industries/robotics/","keywords":["gpu","simulation","robotics platform","physical ai"]},
-  {"name":"Alphabet / Google DeepMind","category":"AI research, robotics AI","country":"USA / UK","type":"Public","ticker":"GOOGL","robot":"Gemini Robotics","website":"https://deepmind.google/","keywords":["ai lab","robot learning","gemini","research"]},
-  {"name":"Microsoft / OpenAI","category":"Frontier AI, AI platform","country":"USA","type":"Public proxy","ticker":"MSFT","robot":"AI models","website":"https://openai.com/","keywords":["chatgpt","frontier models","ai platform"]},
-  {"name":"Meta AI","category":"AI research, robotics research","country":"USA","type":"Public","ticker":"META","robot":"AI models","website":"https://ai.meta.com/","keywords":["llama","embodied ai","research"]},
-  {"name":"Amazon Robotics","category":"Warehouse robotics, automation","country":"USA","type":"Public","ticker":"AMZN","robot":"Warehouse robots","website":"https://www.amazonrobotics.com/","keywords":["warehouse","logistics","automation"]},
-  {"name":"Apple","category":"AI devices, consumer ecosystem","country":"USA","type":"Public","ticker":"AAPL","robot":"AI devices","website":"https://www.apple.com/ai/","keywords":["ai devices","consumer ai","hardware"]},
-  {"name":"Boston Dynamics","category":"Advanced robotics","country":"USA","type":"Subsidiary","ticker":"Hyundai Motor Group","robot":"Atlas, Spot, Stretch","website":"https://bostondynamics.com/","keywords":["atlas","spot","industrial robotics","mobility"]},
-  {"name":"Figure AI","category":"Humanoid robotics","country":"USA","type":"Private","ticker":"","robot":"Figure 02","website":"https://www.figure.ai/","keywords":["humanoid","factory","general purpose robot"]},
-  {"name":"Unitree Robotics","category":"Humanoid and quadruped robotics","country":"China","type":"Private","ticker":"","robot":"G1, H1, Go2","website":"https://www.unitree.com/","keywords":["g1","h1","quadruped","price visible"]},
-  {"name":"Agility Robotics","category":"Humanoid logistics","country":"USA","type":"Private","ticker":"","robot":"Digit","website":"https://agilityrobotics.com/","keywords":["digit","warehouse","logistics","humanoid"]},
-  {"name":"Apptronik","category":"Humanoid robotics","country":"USA","type":"Private","ticker":"","robot":"Apollo","website":"https://apptronik.com/","keywords":["apollo","industrial humanoid"]},
-  {"name":"1X Technologies","category":"Home and workplace humanoids","country":"Norway / USA","type":"Private","ticker":"","robot":"NEO, EVE","website":"https://www.1x.tech/","keywords":["neo","home humanoid","physical ai"]},
-  {"name":"Sanctuary AI","category":"General-purpose humanoids","country":"Canada","type":"Private","ticker":"","robot":"Phoenix","website":"https://www.sanctuary.ai/","keywords":["phoenix","general purpose robot"]},
-  {"name":"Engineered Arts","category":"Social humanoid robots","country":"United Kingdom","type":"Private","ticker":"","robot":"Ameca","website":"https://www.engineeredarts.co.uk/","keywords":["ameca","social humanoid","human robot interaction"]},
-  {"name":"UBTECH Robotics","category":"Humanoid and service robots","country":"China","type":"Public","ticker":"9880.HK","robot":"Walker S","website":"https://www.ubtrobot.com/","keywords":["walker","humanoid","china"]},
-  {"name":"Fourier Intelligence","category":"Humanoid and rehabilitation robotics","country":"China","type":"Private","ticker":"","robot":"GR-1","website":"https://www.fftai.com/","keywords":["gr-1","rehabilitation","humanoid"]},
-  {"name":"XPENG Robotics","category":"Humanoid robotics","country":"China","type":"Public proxy","ticker":"XPEV","robot":"Iron","website":"https://www.xpeng.com/","keywords":["iron","humanoid","xpeng"]},
-  {"name":"Toyota Research Institute","category":"Robotics research","country":"Japan / USA","type":"Public proxy","ticker":"TM","robot":"Robotics research","website":"https://www.tri.global/","keywords":["robot learning","research","toyota"]},
-  {"name":"Honda Robotics","category":"Robotics research","country":"Japan","type":"Public proxy","ticker":"HMC","robot":"ASIMO legacy","website":"https://global.honda/en/robotics/","keywords":["asimo","research","mobility"]},
-  {"name":"NEURA Robotics","category":"Cognitive robotics","country":"Germany","type":"Private","ticker":"","robot":"4NE-1, MAiRA","website":"https://www.neurarobotics.com/","keywords":["cognitive robotics","humanoid","industrial"]},
-  {"name":"Clone Robotics","category":"Humanoid hardware","country":"Poland / USA","type":"Private","ticker":"","robot":"Clone hand, android","website":"https://www.clonerobotics.com/","keywords":["musculoskeletal","android","robot hand"]},
-  {"name":"Skild AI","category":"Robotics foundation models","country":"USA","type":"Private","ticker":"","robot":"General-purpose robot brain","website":"https://www.skild.ai/","keywords":["robot brain","foundation model","physical ai"]},
-  {"name":"Physical Intelligence","category":"Robotics AI models","country":"USA","type":"Private","ticker":"","robot":"Generalist robot AI","website":"https://www.physicalintelligence.company/","keywords":["pi","robot learning","generalist ai"]},
-  {"name":"Mentee Robotics","category":"Humanoid robotics","country":"Israel","type":"Private","ticker":"","robot":"Menteebot","website":"https://www.menteebot.com/","keywords":["menteebot","humanoid"]},
-  {"name":"Persona AI","category":"Industrial humanoids","country":"USA","type":"Private","ticker":"","robot":"Persona Humanoid","website":"https://persona.ai/","logo":"https://persona.ai/wp-content/uploads/2025/12/logo@2x.webp","keywords":["industrial humanoid","manufacturing","shipyards","energy","construction","welding","fabrication","persona humanoid"]},
-  {"name":"Covariant","category":"Warehouse AI robotics","country":"USA","type":"Private","ticker":"","robot":"Robotics AI platform","website":"https://covariant.ai/","keywords":["warehouse ai","robot picking","automation"]},
-  {"name":"Dexterity AI","category":"Warehouse robotics","country":"USA","type":"Private","ticker":"","robot":"Robotic handling systems","website":"https://www.dexterity.ai/","keywords":["warehouse","robot manipulation","logistics"]},
-  {"name":"ABB Robotics","category":"Industrial robotics","country":"Switzerland / Sweden","type":"Public","ticker":"ABBN.SW","robot":"Industrial robots","website":"https://new.abb.com/products/robotics","keywords":["industrial robot","factory automation","cobot"]},
-  {"name":"Altınay Robot Grubu","category":"Industrial Robotics, Factory Automation, Robotic Systems Integration","country":"Türkiye","region":"Europe / Middle East","type":"Private industrial robotics group","ticker":"","robot":"GRASS industrial robot arms, robotic systems, factory automation","website":"https://altinay.com/tr/robot-grubu","focus":"Robotic systems, factory automation, flexible manufacturing technologies","groupCompanies":["Altınay Robot Teknolojileri","GRASS","KSM","Olbricht","Robio"],"keyProject":"GRASS","grassFocus":"Domestic industrial robot arms, servo motors, gearboxes, motor drivers","industriesServed":["Automotive","Glass","White goods","Agriculture","Food","General manufacturing"],"employees":"300+","countries":"3","locations":"6","operationalArea":"25,000 m²","experience":"30+ years","clients":"150+","deliveredProjects":"500+","exportCountries":"20+","keywords":["Turkish robotics","Türkiye robotics","industrial automation","robot arms","factory automation","robotics sovereignty","GRASS","servo motors","gearboxes","motor drivers","automotive","glass","white goods","agriculture","food","general manufacturing"]},
-  {"name":"AKINROBOTICS","category":"Humanoid Robotics, Service Robots, Industrial Robotics, AI Robotics","country":"Türkiye","city":"Konya","region":"Europe / Middle East","type":"Private robotics company","ticker":"","robot":"ADA series, AKINCI humanoid robots, Service Robot V3, AMR Robot V500, AMR Robot V1000, Industrial Robot Arm 4.2","website":"https://www.akinrobotics.com/","foundedBy":"AKINSOFT","focus":"Humanoid robots, service robots, AMR systems, robotic arms, domestic robotics technologies","positioning":"Turkey's humanoid robotics company","applicationArea":"11,000 m² robotics application area","productionArea":"3,800 m² indoor production area","importantClaims":["World's first humanoid robot factory","Domestic robotics manufacturing","Mass-production humanoid robotics vision"],"keywords":["humanoid robotics","Turkish robotics","service robots","robotics factory","physical AI","AKINCI humanoid","ADA robot","AMR Robot V500","AMR Robot V1000","Industrial Robot Arm 4.2","domestic robotics manufacturing","Konya"]},
-  {"name":"ASELSAN","category":"Defense Robotics, Autonomous Systems, Unmanned Systems, AI-enabled Defense Technologies","country":"Türkiye","city":"Ankara","region":"Europe / Middle East","type":"Public defense technology company","ticker":"ASELS.IS","robot":"Unmanned ground systems, autonomous systems, defense robotics, sensor and command-control stacks","website":"https://www.aselsan.com/","focus":"Defense electronics, autonomous systems, unmanned platforms, electro-optics, sensors, command-control systems and robotics-adjacent defense technologies","keywords":["ASELSAN","Turkish robotics","Türkiye robotics","defense robotics","autonomous systems","UGV","unmanned systems","military robotics","robotics sovereignty","physical AI","defense technology"]},
-  {"name":"Milvus Robotics","category":"Autonomous Mobile Robots, Warehouse Robotics, Industrial Automation","country":"Türkiye","city":"Ankara","region":"Europe / Middle East","type":"Private robotics company","ticker":"","robot":"Autonomous mobile robots, AMR platforms, intralogistics and warehouse automation robots","website":"https://milvusrobotics.com/","focus":"Autonomous mobile robots for intralogistics, warehouse automation, flexible manufacturing and industrial transport","keywords":["Milvus Robotics","Turkish robotics","Türkiye robotics","AMR","autonomous mobile robots","warehouse robotics","intralogistics","factory automation","robotics startup","industrial automation"]},
-  {"name":"FANUC","category":"Industrial robotics","country":"Japan","type":"Public","ticker":"6954.T","robot":"Industrial robots","website":"https://www.fanuc.co.jp/en/","keywords":["factory automation","industrial robot","cnc"]},
-  {"name":"KUKA","category":"Industrial robotics","country":"Germany","type":"Subsidiary","ticker":"Midea Group","robot":"Industrial robots","website":"https://www.kuka.com/","keywords":["industrial robot","automation","manufacturing"]},
-  {"name":"Yaskawa Motoman","category":"Industrial robotics","country":"Japan","type":"Public","ticker":"6506.T","robot":"Motoman robots","website":"https://www.motoman.com/","keywords":["industrial robot","welding","automation"]},
-  {"name":"Universal Robots","category":"Collaborative robots","country":"Denmark","type":"Subsidiary","ticker":"Teradyne","robot":"UR cobots","website":"https://www.universal-robots.com/","keywords":["cobot","collaborative robot","automation"]},
-  {"name":"Teradyne Robotics","category":"Collaborative robotics","country":"USA","type":"Public","ticker":"TER","robot":"Universal Robots, MiR","website":"https://www.teradyne.com/","keywords":["cobot","automation","robotics portfolio"]},
-  {"name":"Omron Robotics","category":"Industrial and mobile robotics","country":"Japan","type":"Public","ticker":"6645.T","robot":"Mobile robots, automation","website":"https://automation.omron.com/","keywords":["mobile robot","factory automation"]},
-  {"name":"Epson Robots","category":"Industrial robotics","country":"Japan","type":"Public proxy","ticker":"SEKEY","robot":"SCARA and industrial robots","website":"https://epson.com/robots","keywords":["scara","industrial robot","automation"]},
-  {"name":"Stäubli Robotics","category":"Industrial robotics","country":"Switzerland","type":"Private","ticker":"","robot":"Industrial robots","website":"https://www.staubli.com/","keywords":["industrial robot","cleanroom","automation"]},
-  {"name":"Comau","category":"Industrial robotics","country":"Italy","type":"Private","ticker":"","robot":"Industrial robots","website":"https://www.comau.com/","keywords":["manufacturing","industrial automation"]},
-  {"name":"Nachi Robotics","category":"Industrial robotics","country":"Japan","type":"Public","ticker":"6474.T","robot":"Industrial robots","website":"https://www.nachirobotics.com/","keywords":["industrial robot","welding","automation"]},
-  {"name":"Denso Robotics","category":"Industrial robotics","country":"Japan","type":"Public proxy","ticker":"6902.T","robot":"Small industrial robots","website":"https://www.densorobotics.com/","keywords":["factory robot","automation"]},
-  {"name":"Kawasaki Robotics","category":"Industrial robotics","country":"Japan","type":"Public","ticker":"7012.T","robot":"Industrial robots","website":"https://robotics.kawasaki.com/","keywords":["industrial robot","factory automation"]},
-  {"name":"Doosan Robotics","category":"Collaborative robots","country":"South Korea","type":"Public","ticker":"454910.KS","robot":"Doosan cobots","website":"https://www.doosanrobotics.com/","keywords":["cobot","collaborative robot"]},
-  {"name":"Rainbow Robotics","category":"Humanoid and collaborative robotics","country":"South Korea","type":"Public","ticker":"277810.KQ","robot":"HUBO, collaborative robots","website":"https://www.rainbow-robotics.com/","keywords":["hubo","humanoid","cobot"]},
-  {"name":"Hyundai Robotics","category":"Industrial robotics","country":"South Korea","type":"Public proxy","ticker":"Hyundai","robot":"Industrial robots","website":"https://www.hyundai-robotics.com/","keywords":["industrial robot","automation"]},
-  {"name":"Samsung Electronics","category":"AI devices and consumer robotics","country":"South Korea","type":"Public","ticker":"005930.KS","robot":"Ballie","website":"https://www.samsung.com/","keywords":["ballie","consumer robot","ai device"]},
-  {"name":"LG Electronics","category":"Service and consumer robotics","country":"South Korea","type":"Public","ticker":"066570.KS","robot":"CLOi robots","website":"https://www.lg.com/","keywords":["cloi","service robot","consumer robot"]},
-  {"name":"SoftBank Robotics","category":"Service and social robots","country":"Japan / France","type":"Private","ticker":"","robot":"Pepper, NAO, Whiz","website":"https://www.softbankrobotics.com/","keywords":["pepper","nao","service robot"]},
-  {"name":"PAL Robotics","category":"Humanoid and service robotics","country":"Spain","type":"Private","ticker":"","robot":"TALOS, TIAGo, ARI","website":"https://pal-robotics.com/","keywords":["talos","tiago","research robot"]},
-  {"name":"Robotis","category":"Education and research robotics","country":"South Korea","type":"Public","ticker":"108490.KQ","robot":"Dynamixel, TurtleBot","website":"https://www.robotis.us/","keywords":["dynamixel","education robot","research"]},
-  {"name":"Clearpath Robotics","category":"Research mobile robots","country":"Canada","type":"Subsidiary","ticker":"Rockwell Automation","robot":"Husky, Jackal","website":"https://clearpathrobotics.com/","keywords":["mobile robot","research platform"]},
-  {"name":"OTTO Motors","category":"Autonomous mobile robots","country":"Canada","type":"Subsidiary","ticker":"Rockwell Automation","robot":"OTTO AMRs","website":"https://ottomotors.com/","keywords":["amr","warehouse","mobile robot"]},
-  {"name":"Locus Robotics","category":"Warehouse robotics","country":"USA","type":"Private","ticker":"","robot":"LocusBots","website":"https://locusrobotics.com/","keywords":["warehouse","amr","fulfillment"]},
-  {"name":"Geekplus","category":"Warehouse robotics","country":"China","type":"Private","ticker":"","robot":"Warehouse AMRs","website":"https://www.geekplus.com/","keywords":["warehouse","amr","logistics"]},
-  {"name":"MiR","category":"Autonomous mobile robots","country":"Denmark","type":"Subsidiary","ticker":"Teradyne","robot":"MiR AMRs","website":"https://mobile-industrial-robots.com/","keywords":["amr","mobile robot","factory"]},
-  {"name":"AutoStore","category":"Warehouse automation","country":"Norway","type":"Public","ticker":"AUTO.OL","robot":"Cube storage robots","website":"https://www.autostoresystem.com/","keywords":["warehouse automation","storage robot"]},
-  {"name":"Symbotic","category":"Warehouse automation","country":"USA","type":"Public","ticker":"SYM","robot":"Warehouse automation system","website":"https://www.symbotic.com/","keywords":["warehouse automation","robotics"]},
-  {"name":"Ocado Technology","category":"Grocery warehouse robotics","country":"United Kingdom","type":"Public proxy","ticker":"OCDO.L","robot":"Automated grid robots","website":"https://www.ocadogroup.com/technology/","keywords":["warehouse grid","grocery robotics"]},
-  {"name":"Exotec","category":"Warehouse robotics","country":"France","type":"Private","ticker":"","robot":"Skypod","website":"https://www.exotec.com/","keywords":["skypod","warehouse","amr"]},
-  {"name":"Berkshire Grey","category":"Warehouse robotics","country":"USA","type":"Private","ticker":"","robot":"Robotic picking systems","website":"https://www.berkshiregrey.com/","keywords":["warehouse picking","automation"]},
-  {"name":"RightHand Robotics","category":"Robotic picking","country":"USA","type":"Private","ticker":"","robot":"RightPick","website":"https://righthandrobotics.com/","keywords":["picking robot","warehouse"]},
-  {"name":"Ambi Robotics","category":"AI parcel sorting robotics","country":"USA","type":"Private","ticker":"","robot":"AmbiSort","website":"https://www.ambirobotics.com/","keywords":["parcel sorting","warehouse ai"]},
-  {"name":"Plus One Robotics","category":"Warehouse vision robotics","country":"USA","type":"Private","ticker":"","robot":"Parcel handling robots","website":"https://www.plusonerobotics.com/","keywords":["vision robot","warehouse"]},
-  {"name":"GreyOrange","category":"Warehouse robotics","country":"USA / India","type":"Private","ticker":"","robot":"GreyMatter, Ranger","website":"https://www.greyorange.com/","keywords":["warehouse","fulfillment","robot fleet"]},
-  {"name":"Seegrid","category":"Autonomous mobile robots","country":"USA","type":"Private","ticker":"","robot":"Palion AMRs","website":"https://seegrid.com/","keywords":["amr","warehouse","manufacturing"]},
-  {"name":"Vecna Robotics","category":"Autonomous mobile robots","country":"USA","type":"Private","ticker":"","robot":"Forklift AMRs","website":"https://www.vecnarobotics.com/","keywords":["amr","forklift","warehouse"]},
-  {"name":"Burro","category":"Agricultural and outdoor robotics","country":"USA","type":"Private","ticker":"","robot":"Burro autonomous platform","website":"https://burro.ai/","keywords":["agriculture","outdoor robot","autonomous cart"]},
-  {"name":"Monarch Tractor","category":"Autonomous agriculture","country":"USA","type":"Private","ticker":"","robot":"MK-V tractor","website":"https://www.monarchtractor.com/","keywords":["autonomous tractor","agtech"]},
-  {"name":"Naïo Technologies","category":"Agricultural robotics","country":"France","type":"Private","ticker":"","robot":"Oz, Orio","website":"https://www.naio-technologies.com/","keywords":["agriculture robot","weeding"]},
-  {"name":"Carbon Robotics","category":"Agricultural robotics","country":"USA","type":"Private","ticker":"","robot":"LaserWeeder","website":"https://carbonrobotics.com/","keywords":["laser weeding","agriculture"]},
-  {"name":"Blue River Technology","category":"Agricultural robotics","country":"USA","type":"Subsidiary","ticker":"Deere","robot":"See & Spray","website":"https://bluerivertechnology.com/","keywords":["agtech","computer vision","deere"]},
-  {"name":"John Deere","category":"Autonomous agriculture","country":"USA","type":"Public","ticker":"DE","robot":"Autonomous tractor","website":"https://www.deere.com/","keywords":["autonomous tractor","agriculture"]},
-  {"name":"Intuitive Surgical","category":"Surgical robotics","country":"USA","type":"Public","ticker":"ISRG","robot":"da Vinci","website":"https://www.intuitive.com/","keywords":["surgical robot","medical robotics"]},
-  {"name":"Stryker","category":"Medical robotics","country":"USA","type":"Public","ticker":"SYK","robot":"Mako","website":"https://www.stryker.com/","keywords":["surgical robot","orthopedics"]},
-  {"name":"Medtronic","category":"Medical robotics","country":"Ireland / USA","type":"Public","ticker":"MDT","robot":"Hugo RAS","website":"https://www.medtronic.com/","keywords":["surgical robot","medical device"]},
-  {"name":"CMR Surgical","category":"Surgical robotics","country":"United Kingdom","type":"Private","ticker":"","robot":"Versius","website":"https://cmrsurgical.com/","keywords":["surgical robot","medical robotics"]},
-  {"name":"Vicarious Surgical","category":"Surgical robotics","country":"USA","type":"Public","ticker":"RBOT","robot":"Surgical robot","website":"https://www.vicarioussurgical.com/","keywords":["surgical robot","minimally invasive"]},
-  {"name":"Asensus Surgical","category":"Surgical robotics","country":"USA","type":"Public","ticker":"ASXC","robot":"Senhance","website":"https://www.asensus.com/","keywords":["surgical robot","medical"]},
-  {"name":"ReWalk Robotics","category":"Exoskeleton robotics","country":"Israel / USA","type":"Public","ticker":"LFWD","robot":"ReWalk exoskeleton","website":"https://rewalk.com/","keywords":["exoskeleton","rehabilitation"]},
-  {"name":"Cyberdyne","category":"Exoskeleton and medical robotics","country":"Japan","type":"Public","ticker":"7779.T","robot":"HAL","website":"https://www.cyberdyne.jp/english/","keywords":["exoskeleton","hal","medical robot"]},
-  {"name":"Ekso Bionics","category":"Exoskeleton robotics","country":"USA","type":"Public","ticker":"EKSO","robot":"EksoNR","website":"https://eksobionics.com/","keywords":["exoskeleton","rehabilitation"]},
-  {"name":"iRobot","category":"Consumer robotics","country":"USA","type":"Public","ticker":"IRBT","robot":"Roomba","website":"https://www.irobot.com/","keywords":["roomba","consumer robot","vacuum"]},
-  {"name":"Roborock","category":"Consumer robotics","country":"China","type":"Public","ticker":"688169.SS","robot":"Robot vacuums","website":"https://global.roborock.com/","keywords":["robot vacuum","consumer robot"]},
-  {"name":"Ecovacs Robotics","category":"Consumer robotics","country":"China","type":"Public","ticker":"603486.SS","robot":"Deebot","website":"https://www.ecovacs.com/","keywords":["robot vacuum","consumer robot"]},
-  {"name":"DJI","category":"Drones and robotics","country":"China","type":"Private","ticker":"","robot":"Drones, RoboMaster","website":"https://www.dji.com/","keywords":["drone","robotics","consumer robot"]},
-  {"name":"Skydio","category":"Autonomous drones","country":"USA","type":"Private","ticker":"","robot":"Autonomous drones","website":"https://www.skydio.com/","keywords":["drone","autonomy","inspection"]},
-  {"name":"Zipline","category":"Autonomous delivery drones","country":"USA","type":"Private","ticker":"","robot":"Delivery drones","website":"https://www.flyzipline.com/","keywords":["drone delivery","logistics"]},
-  {"name":"Wing","category":"Drone delivery","country":"USA","type":"Alphabet subsidiary","ticker":"GOOGL","robot":"Delivery drones","website":"https://wing.com/","keywords":["drone delivery","alphabet"]},
-  {"name":"Starship Technologies","category":"Autonomous delivery robots","country":"USA / Estonia","type":"Private","ticker":"","robot":"Sidewalk delivery robots","website":"https://www.starship.xyz/","keywords":["delivery robot","sidewalk"]},
-  {"name":"Serve Robotics","category":"Autonomous delivery robots","country":"USA","type":"Public","ticker":"SERV","robot":"Sidewalk delivery robots","website":"https://www.serverobotics.com/","keywords":["delivery robot","sidewalk","autonomy"]},
-  {"name":"Nuro","category":"Autonomous delivery vehicles","country":"USA","type":"Private","ticker":"","robot":"Autonomous delivery vehicle","website":"https://www.nuro.ai/","keywords":["delivery vehicle","autonomous"]},
-  {"name":"Waymo","category":"Autonomous driving","country":"USA","type":"Alphabet subsidiary","ticker":"GOOGL","robot":"Robotaxi","website":"https://waymo.com/","keywords":["robotaxi","autonomous vehicle"]},
-  {"name":"Zoox","category":"Autonomous mobility","country":"USA","type":"Amazon subsidiary","ticker":"AMZN","robot":"Robotaxi","website":"https://zoox.com/","keywords":["robotaxi","autonomous vehicle"]},
-  {"name":"Aurora","category":"Autonomous driving","country":"USA","type":"Public","ticker":"AUR","robot":"Autonomous trucking","website":"https://aurora.tech/","keywords":["autonomous trucking","self driving"]},
-  {"name":"Motional","category":"Autonomous mobility","country":"USA / South Korea","type":"Joint venture","ticker":"Hyundai / Aptiv","robot":"Robotaxi technology","website":"https://motional.com/","keywords":["robotaxi","autonomous driving"]},
-  {"name":"Rethink Robotics","category":"Collaborative robotics","country":"Germany / USA","type":"Private","ticker":"","robot":"Sawyer, Baxter legacy","website":"https://www.rethinkrobotics.com/","keywords":["cobot","sawyer","baxter"]},
-  {"name":"PickNik Robotics","category":"Robot software","country":"USA","type":"Private","ticker":"","robot":"MoveIt Pro","website":"https://picknik.ai/","keywords":["robot software","moveit","manipulation"]},
-  {"name":"Intrinsic","category":"Industrial robotics software","country":"USA","type":"Alphabet subsidiary","ticker":"GOOGL","robot":"Robotics software platform","website":"https://www.intrinsic.ai/","keywords":["robot software","industrial automation"]},
-  {"name":"Wandelbots","category":"Robot programming software","country":"Germany","type":"Private","ticker":"","robot":"Robot programming tools","website":"https://www.wandelbots.com/","keywords":["robot programming","automation software"]},
-  {"name":"Vention","category":"Factory automation platform","country":"Canada","type":"Private","ticker":"","robot":"Modular automation","website":"https://vention.io/","keywords":["factory automation","robot cells"]},
-  {"name":"Realtime Robotics","category":"Robot motion planning","country":"USA","type":"Private","ticker":"","robot":"Motion planning platform","website":"https://rtr.ai/","keywords":["motion planning","industrial robots"]},
-  {"name":"Formant","category":"Robot fleet management","country":"USA","type":"Private","ticker":"","robot":"Robot operations platform","website":"https://formant.io/","keywords":["robot fleet","robot operations"]},
-  {"name":"Foxglove","category":"Robotics observability","country":"USA","type":"Private","ticker":"","robot":"Robotics data tools","website":"https://foxglove.dev/","keywords":["robot data","observability","ros"]},
-  {"name":"RoboDK","category":"Robot simulation and offline programming","country":"Canada","type":"Private","ticker":"","robot":"Simulation software","website":"https://robodk.com/","keywords":["robot simulation","offline programming"]},
-  {"name":"Open Robotics","category":"Open-source robotics software","country":"USA","type":"Nonprofit / ecosystem","ticker":"","robot":"ROS, Gazebo","website":"https://www.openrobotics.org/","keywords":["ros","gazebo","open source"]},
-  {"name":"ANYbotics","category":"Industrial inspection robots","country":"Switzerland","type":"Private","ticker":"","robot":"ANYmal","website":"https://www.anybotics.com/","keywords":["inspection robot","quadruped"]},
-  {"name":"Ghost Robotics","category":"Quadruped robots","country":"USA","type":"Private","ticker":"","robot":"Vision 60","website":"https://www.ghostrobotics.io/","keywords":["quadruped","defense","inspection"]},
-  {"name":"ANYmal Research / ETH Zurich","category":"Robotics research","country":"Switzerland","type":"Academic ecosystem","ticker":"","robot":"Legged robotics research","website":"https://rsl.ethz.ch/","keywords":["legged robotics","research"]},
-  {"name":"Swiss-Mile","category":"Wheeled-legged robots","country":"Switzerland","type":"Private","ticker":"","robot":"Wheeled quadruped","website":"https://www.swiss-mile.com/","keywords":["wheeled robot","inspection"]},
-  {"name":"Telerob","category":"Defense and hazardous environment robots","country":"Germany","type":"Subsidiary","ticker":"","robot":"tEODor","website":"https://www.telerob.com/","keywords":["eod robot","defense robot"]},
-  {"name":"Teledyne FLIR","category":"Defense and inspection robots","country":"USA","type":"Public proxy","ticker":"TDY","robot":"PackBot, Kobra","website":"https://www.flir.com/","keywords":["defense robot","inspection"]},
-  {"name":"Milrem Robotics","category":"Autonomous ground vehicles","country":"Estonia","type":"Private","ticker":"","robot":"THeMIS","website":"https://milremrobotics.com/","keywords":["ugv","autonomous ground vehicle"]},
-  {"name":"Anduril Industries","category":"Autonomous defense systems","country":"USA","type":"Private","ticker":"","robot":"Autonomous systems","website":"https://www.anduril.com/","keywords":["defense autonomy","robotics"]},
-  {"name":"Shield AI","category":"Autonomous defense drones","country":"USA","type":"Private","ticker":"","robot":"V-BAT, Hivemind","website":"https://shield.ai/","keywords":["drone","autonomy","defense"]},
-  {"name":"Saronic","category":"Autonomous maritime vessels","country":"USA","type":"Private","ticker":"","robot":"Autonomous surface vessels","website":"https://www.saronic.com/","keywords":["maritime robot","autonomous vessel"]},
-  {"name":"Ocean Infinity","category":"Marine robotics","country":"USA / UK","type":"Private","ticker":"","robot":"Autonomous marine fleet","website":"https://oceaninfinity.com/","keywords":["marine robotics","autonomous vessel"]},
-  {"name":"Saildrone","category":"Autonomous maritime robots","country":"USA","type":"Private","ticker":"","robot":"Saildrone USVs","website":"https://www.saildrone.com/","keywords":["ocean robot","usv","marine data"]},
-  {"name":"Blue Robotics","category":"Marine robotics components","country":"USA","type":"Private","ticker":"","robot":"ROV components","website":"https://bluerobotics.com/","keywords":["rov","marine robotics"]},
-  {"name":"OpenAI","category":"Frontier AI","country":"USA","type":"Private","ticker":"","robot":"AI models","website":"https://openai.com/","keywords":["chatgpt","gpt","ai lab"]},
-  {"name":"Anthropic","category":"Frontier AI","country":"USA","type":"Private","ticker":"","robot":"Claude","website":"https://www.anthropic.com/","keywords":["claude","ai safety","frontier ai"]},
-  {"name":"xAI","category":"Frontier AI","country":"USA","type":"Private","ticker":"","robot":"Grok","website":"https://x.ai/","keywords":["grok","frontier ai"]},
-  {"name":"Mistral AI","category":"AI models","country":"France","type":"Private","ticker":"","robot":"AI models","website":"https://mistral.ai/","keywords":["open models","ai lab","europe"]},
-  {"name":"Cohere","category":"Enterprise AI models","country":"Canada","type":"Private","ticker":"","robot":"AI models","website":"https://cohere.com/","keywords":["enterprise ai","language models"]},
-  {"name":"Hugging Face","category":"AI platform","country":"USA / France","type":"Private","ticker":"","robot":"AI model hub","website":"https://huggingface.co/","keywords":["model hub","open source ai"]},
-  {"name":"Perplexity AI","category":"AI search","country":"USA","type":"Private","ticker":"","robot":"AI answer engine","website":"https://www.perplexity.ai/","keywords":["ai search","answer engine"]},
-  {"name":"Runway","category":"Generative video AI","country":"USA","type":"Private","ticker":"","robot":"AI video tools","website":"https://runwayml.com/","keywords":["video ai","creative ai"]},
-  {"name":"ElevenLabs","category":"AI audio","country":"USA / UK","type":"Private","ticker":"","robot":"Voice AI","website":"https://elevenlabs.io/","keywords":["voice ai","audio generation"]},
-  {"name":"Stability AI","category":"Generative AI","country":"United Kingdom","type":"Private","ticker":"","robot":"Image models","website":"https://stability.ai/","keywords":["image generation","stable diffusion"]},
-  {"name":"Character.AI","category":"AI companions","country":"USA","type":"Private","ticker":"","robot":"Character AI","website":"https://character.ai/","keywords":["chatbots","ai companions"]},
-  {"name":"Databricks","category":"Data and AI platform","country":"USA","type":"Private","ticker":"","robot":"Data intelligence platform","website":"https://www.databricks.com/","keywords":["data platform","ai infrastructure"]},
-  {"name":"Scale AI","category":"AI data platform","country":"USA","type":"Private","ticker":"","robot":"Data platform","website":"https://scale.com/","keywords":["data labeling","ai data"]},
-  {"name":"CoreWeave","category":"AI cloud infrastructure","country":"USA","type":"Private","ticker":"","robot":"AI cloud","website":"https://www.coreweave.com/","keywords":["gpu cloud","ai infrastructure"]},
-  {"name":"Cerebras","category":"AI chips and systems","country":"USA","type":"Private","ticker":"","robot":"AI compute systems","website":"https://www.cerebras.ai/","keywords":["ai chip","compute"]},
-  {"name":"Groq","category":"AI inference chips","country":"USA","type":"Private","ticker":"","robot":"LPU inference","website":"https://groq.com/","keywords":["ai chip","inference"]},
-  {"name":"SambaNova Systems","category":"AI chips and platforms","country":"USA","type":"Private","ticker":"","robot":"AI compute platform","website":"https://sambanova.ai/","keywords":["ai chip","enterprise ai"]},
-  {"name":"Graphcore","category":"AI chips","country":"United Kingdom","type":"Private","ticker":"","robot":"IPU systems","website":"https://www.graphcore.ai/","keywords":["ai chip","ipu"]},
-  {"name":"Cognex","category":"Machine vision","country":"USA","type":"Public","ticker":"CGNX","robot":"Vision systems","website":"https://www.cognex.com/","keywords":["machine vision","factory automation"]},
-  {"name":"Keyence","category":"Sensors and machine vision","country":"Japan","type":"Public","ticker":"6861.T","robot":"Automation sensors","website":"https://www.keyence.com/","keywords":["sensors","machine vision","automation"]},
-  {"name":"Rockwell Automation","category":"Industrial automation","country":"USA","type":"Public","ticker":"ROK","robot":"Factory automation","website":"https://www.rockwellautomation.com/","keywords":["industrial automation","factory"]},
-  {"name":"Siemens","category":"Industrial automation and AI","country":"Germany","type":"Public","ticker":"SIE.DE","robot":"Factory automation","website":"https://www.siemens.com/","keywords":["industrial automation","digital twin"]},
-  {"name":"Schneider Electric","category":"Industrial automation","country":"France","type":"Public","ticker":"SU.PA","robot":"Automation systems","website":"https://www.se.com/","keywords":["automation","energy"]},
-  {"name":"Mitsubishi Electric","category":"Industrial automation","country":"Japan","type":"Public","ticker":"6503.T","robot":"Industrial robots","website":"https://www.mitsubishielectric.com/fa/","keywords":["factory automation","industrial robot"]},
-  {"name":"Asimov","category":"Open-source humanoid robotics","country":"USA","type":"Private","ticker":"","robot":"Asimov humanoid, Asimov OS","website":"https://asimov.inc/","keywords":["humanoid","open source","robot operating system","developer platform"]},
-  {"name":"Galbot","category":"Embodied AI and humanoid robotics","country":"China","type":"Private","ticker":"","robot":"Galbot G1, Galbot S1","website":"https://www.galbot.com/","logo":"https://www.galbot.com/assets/logojing.1_QVWmWl.png","keywords":["humanoid","embodied ai","industrial heavy-load robot","pick and place","vla","galbot g1","galbot s1"]},
-  {"name":"RIVR","category":"Physical AI delivery robotics","country":"Switzerland","type":"Private","ticker":"","robot":"Wheeled-legged delivery robots","website":"https://www.rivr.ai/","keywords":["doorstep delivery","last mile","physical ai","wheeled legged"]},
-  {"name":"Fauna Robotics","category":"Humanoid robotics development platforms","country":"USA","type":"Private","ticker":"","robot":"Sprout","website":"https://faunarobotics.com/","keywords":["sprout","soft humanoid","developer robot","research platform"]},
-  {"name":"EngineAI","category":"Humanoid robotics","country":"China","type":"Private","ticker":"","robot":"PM01, SE01","website":"https://en.engineai.com.cn/","keywords":["pm01","humanoid","developer platform","open source"]},
-  {"name":"Foundry Robotics","category":"AI-first manufacturing robotics","country":"USA","type":"Private","ticker":"","robot":"Autonomous robotic cells","website":"https://foundryrobotics.ai/","keywords":["manufacturing","assembly","autonomous cells","dual use robotics"]},
-  {"name":"FieldAI","category":"Robot autonomy and physical AI","country":"USA","type":"Private","ticker":"","robot":"EDGE, Field Foundation Models","website":"https://www.fieldai.com/","keywords":["robot brain","autonomy","field foundation models","industrial robots"]},
-  {"name":"Reflex Robotics","category":"Warehouse and factory humanoids","country":"USA","type":"Private","ticker":"","robot":"Reflex Robot","website":"https://www.reflexrobotics.com/","keywords":["humanoid","warehouse","factory","teleoperation"]},
-  {"name":"Sunday Robotics","category":"Home robotics","country":"USA","type":"Private","ticker":"","robot":"Memo","website":"https://www.sunday.ai/","keywords":["home robot","memo","household robot","skill capture"]},
-  {"name":"Noble Machines","category":"Industrial general-purpose robots","country":"USA","type":"Private","ticker":"","robot":"General-purpose industrial robot","website":"https://www.noblemachines.ai/","keywords":["industrial humanoid","general purpose robot","material handling","inspection"]},
-  {"name":"Booster Robotics","category":"Humanoid robotics development platforms","country":"China","type":"Private","ticker":"","robot":"Booster T1, Booster K1","website":"https://www.booster.tech/","keywords":["humanoid","developer platform","robocup","education"]},
-  {"name":"AgiBot","category":"Embodied AI and humanoid robotics","country":"China","type":"Private","ticker":"","robot":"AgiBot A2, G1, X2, X1","website":"https://www.agibot.com/","keywords":["humanoid","embodied ai","mass production","agibot world"]},
-  {"name":"LimX Dynamics","category":"General-purpose humanoid robotics","country":"China","type":"Private","ticker":"","robot":"LimX Oli, TRON 1, TRON 2","website":"https://www.limxdynamics.com/en","keywords":["humanoid","physical ai","agentic os","tron"]},
-  {"name":"Leju Robotics","category":"Humanoid robotics","country":"China","type":"Private","ticker":"","robot":"KUAVO 4Pro, KUAVO 5","website":"https://www.lejurobot.com/en","keywords":["kuavo","humanoid","industrial manufacturing","teleoperation"]},
-  {"name":"Pudu Robotics","category":"Service and humanoid robotics","country":"China","type":"Private","ticker":"","robot":"PUDU D9, D7, service robots","website":"https://www.pudurobotics.com/","keywords":["service robot","humanoid","d9","commercial robotics"]},
-  {"name":"MagicLab","category":"General-purpose humanoid robotics","country":"China","type":"Private","ticker":"","robot":"MagicBot Gen1","website":"https://www.magiclab.top/en/human","keywords":["magicbot","humanoid","multi robot collaboration","industrial"]}, 
   {
-  "name": "X-Humanoid",
-  "category": "Humanoid robotics, embodied AI, general-purpose robot platforms",
-  "country": "China",
-  "type": "Private / research-commercial ecosystem",
-  "ticker": "",
-  "robot": "Embodied Tien Kung 3.0",
-  "website": "https://www.x-humanoid.com/",
-  "keywords": ["x-humanoid", "tien kung", "embodied ai", "humanoid", "wise kaiwu", "china"]
-}
-,
-{
-  "name": "WIRobotics",
-  "category": "Wearable Robotics / Mobility Robotics",
-  "country": "South Korea",
-  "type": "Private",
-  "ticker": "",
-  "robot": "WIM, WIM S, WIM KIDS, ALLEX, WIBS",
-  "website": "https://www.wirobotics.com",
-  "focus": "Wearable walking-assist robots, gait training, mobility support, and human-responsive robotics",
-  "sourceLinks": [
-    "https://www.wirobotics.com/product/wimInfo",
-    "https://corp.wirobotics.com/en/product/wim-s",
-    "https://www.wirobotics.com/media/newsDetail?idx=75&page=1&pageType=01"
-  ],
-  "keywords": ["wirobotics", "wim", "wim s", "wim kids", "allex", "wibs", "wearable robot", "walking assist", "gait training", "mobility robotics", "exoskeleton"]
-}
-,
-{
-  "name": "DEEP Robotics",
-  "category": "Quadruped Robotics / Industrial Robotics / Embodied AI",
-  "country": "China",
-  "type": "Private",
-  "ticker": "",
-  "robot": "Lite3, Lite3 Pro, Lite3 LIDAR, X20, X30, X30 Pro, LYNX, LYNX M20, DR01, DR02",
-  "website": "https://www.deeprobotics.cn/",
-  "focus": "Industrial robot dogs, quadruped robots, inspection robotics, wheeled quadrupeds, humanoids, and embodied AI mobility systems",
-  "sourceLinks": [
-    "https://www.deeprobotics.cn/en/index/lite3.html",
-    "https://www.deeprobotics.cn/en/index/product.html",
-    "https://www.deeprobotics.cn/en/index/product3.html",
-    "https://www.deeprobotics.cn/en/index/lynx.html",
-    "https://www.deeprobotics.cn/en/index/humanoid.html",
-    "https://www.deeprobotics.cn/en/index/dr02.html"
-  ],
-  "keywords": ["deep robotics", "deeprobotics", "lite3", "x20", "x30", "x30 pro", "lynx", "lynx m20", "dr01", "dr02", "quadruped", "robot dog", "wheeled quadruped", "humanoid", "inspection robot", "embodied ai"]
-}
-,
-{
-  "name": "OpenMind",
-  "category": "Embodied AI and humanoid robotics",
-  "country": "USA",
-  "type": "Private",
-  "ticker": "",
-  "robot": "Future humanoid platform",
-  "website": "https://www.openmind.org/",
-  "image": "../assets/robots/openmind-new.png",
-  "logo": "../assets/robots/openmind-new.png",
-  "keywords": ["openmind", "embodied ai", "humanoid", "physical ai", "robotics"]
-}
+    "name": "Tesla",
+    "category": "Humanoid robotics, EV, autonomy",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "TSLA",
+    "robot": "Optimus",
+    "website": "https://www.tesla.com/AI",
+    "keywords": [
+      "humanoid",
+      "factory",
+      "autonomy",
+      "electric vehicles"
+    ]
+  },
+  {
+    "name": "NVIDIA",
+    "category": "AI infrastructure, robotics compute",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "NVDA",
+    "robot": "Isaac, GR00T",
+    "website": "https://www.nvidia.com/en-us/industries/robotics/",
+    "keywords": [
+      "gpu",
+      "simulation",
+      "robotics platform",
+      "physical ai"
+    ]
+  },
+  {
+    "name": "Alphabet / Google DeepMind",
+    "category": "AI research, robotics AI",
+    "country": "USA / UK",
+    "type": "Public",
+    "ticker": "GOOGL",
+    "robot": "Gemini Robotics",
+    "website": "https://deepmind.google/",
+    "keywords": [
+      "ai lab",
+      "robot learning",
+      "gemini",
+      "research"
+    ]
+  },
+  {
+    "name": "Microsoft / OpenAI",
+    "category": "Frontier AI, AI platform",
+    "country": "USA",
+    "type": "Public proxy",
+    "ticker": "MSFT",
+    "robot": "AI models",
+    "website": "https://openai.com/",
+    "keywords": [
+      "chatgpt",
+      "frontier models",
+      "ai platform"
+    ]
+  },
+  {
+    "name": "Meta AI",
+    "category": "AI research, robotics research",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "META",
+    "robot": "AI models",
+    "website": "https://ai.meta.com/",
+    "keywords": [
+      "llama",
+      "embodied ai",
+      "research"
+    ]
+  },
+  {
+    "name": "Amazon Robotics",
+    "category": "Warehouse robotics, automation",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "AMZN",
+    "robot": "Warehouse robots",
+    "website": "https://www.amazonrobotics.com/",
+    "keywords": [
+      "warehouse",
+      "logistics",
+      "automation"
+    ]
+  },
+  {
+    "name": "Apple",
+    "category": "AI devices, consumer ecosystem",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "AAPL",
+    "robot": "AI devices",
+    "website": "https://www.apple.com/ai/",
+    "keywords": [
+      "ai devices",
+      "consumer ai",
+      "hardware"
+    ]
+  },
+  {
+    "name": "Boston Dynamics",
+    "category": "Advanced robotics",
+    "country": "USA",
+    "type": "Subsidiary",
+    "ticker": "Hyundai Motor Group",
+    "robot": "Atlas, Spot, Stretch",
+    "website": "https://bostondynamics.com/",
+    "keywords": [
+      "atlas",
+      "spot",
+      "industrial robotics",
+      "mobility"
+    ]
+  },
+  {
+    "name": "Figure AI",
+    "category": "Humanoid robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Figure 02",
+    "website": "https://www.figure.ai/",
+    "keywords": [
+      "humanoid",
+      "factory",
+      "general purpose robot"
+    ]
+  },
+  {
+    "name": "Unitree Robotics",
+    "category": "Humanoid and quadruped robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "G1, H1, Go2",
+    "website": "https://www.unitree.com/",
+    "keywords": [
+      "g1",
+      "h1",
+      "quadruped",
+      "price visible"
+    ]
+  },
+  {
+    "name": "Agility Robotics",
+    "category": "Humanoid logistics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Digit",
+    "website": "https://agilityrobotics.com/",
+    "keywords": [
+      "digit",
+      "warehouse",
+      "logistics",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Apptronik",
+    "category": "Humanoid robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Apollo",
+    "website": "https://apptronik.com/",
+    "keywords": [
+      "apollo",
+      "industrial humanoid"
+    ]
+  },
+  {
+    "name": "1X Technologies",
+    "category": "Home and workplace humanoids",
+    "country": "Norway / USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "NEO, EVE",
+    "website": "https://www.1x.tech/",
+    "keywords": [
+      "neo",
+      "home humanoid",
+      "physical ai"
+    ]
+  },
+  {
+    "name": "Sanctuary AI",
+    "category": "General-purpose humanoids",
+    "country": "Canada",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Phoenix",
+    "website": "https://www.sanctuary.ai/",
+    "keywords": [
+      "phoenix",
+      "general purpose robot"
+    ]
+  },
+  {
+    "name": "Engineered Arts",
+    "category": "Social humanoid robots",
+    "country": "United Kingdom",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Ameca",
+    "website": "https://www.engineeredarts.co.uk/",
+    "keywords": [
+      "ameca",
+      "social humanoid",
+      "human robot interaction"
+    ]
+  },
+  {
+    "name": "UBTECH Robotics",
+    "category": "Humanoid and service robots",
+    "country": "China",
+    "type": "Public",
+    "ticker": "9880.HK",
+    "robot": "Walker S",
+    "website": "https://www.ubtrobot.com/",
+    "keywords": [
+      "walker",
+      "humanoid",
+      "china"
+    ]
+  },
+  {
+    "name": "Fourier Intelligence",
+    "category": "Humanoid and rehabilitation robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "GR-1",
+    "website": "https://www.fftai.com/",
+    "keywords": [
+      "gr-1",
+      "rehabilitation",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "XPENG Robotics",
+    "category": "Humanoid robotics",
+    "country": "China",
+    "type": "Public proxy",
+    "ticker": "XPEV",
+    "robot": "Iron",
+    "website": "https://www.xpeng.com/",
+    "keywords": [
+      "iron",
+      "humanoid",
+      "xpeng"
+    ]
+  },
+  {
+    "name": "Toyota Research Institute",
+    "category": "Robotics research",
+    "country": "Japan / USA",
+    "type": "Public proxy",
+    "ticker": "TM",
+    "robot": "Robotics research",
+    "website": "https://www.tri.global/",
+    "keywords": [
+      "robot learning",
+      "research",
+      "toyota"
+    ]
+  },
+  {
+    "name": "Honda Robotics",
+    "category": "Robotics research",
+    "country": "Japan",
+    "type": "Public proxy",
+    "ticker": "HMC",
+    "robot": "ASIMO legacy",
+    "website": "https://global.honda/en/robotics/",
+    "keywords": [
+      "asimo",
+      "research",
+      "mobility"
+    ]
+  },
+  {
+    "name": "NEURA Robotics",
+    "category": "Cognitive robotics",
+    "country": "Germany",
+    "type": "Private",
+    "ticker": "",
+    "robot": "4NE-1, MAiRA",
+    "website": "https://www.neurarobotics.com/",
+    "keywords": [
+      "cognitive robotics",
+      "humanoid",
+      "industrial"
+    ]
+  },
+  {
+    "name": "Clone Robotics",
+    "category": "Humanoid hardware",
+    "country": "Poland / USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Clone hand, android",
+    "website": "https://www.clonerobotics.com/",
+    "keywords": [
+      "musculoskeletal",
+      "android",
+      "robot hand"
+    ]
+  },
+  {
+    "name": "Skild AI",
+    "category": "Robotics foundation models",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "General-purpose robot brain",
+    "website": "https://www.skild.ai/",
+    "keywords": [
+      "robot brain",
+      "foundation model",
+      "physical ai"
+    ]
+  },
+  {
+    "name": "Physical Intelligence",
+    "category": "Robotics AI models",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Generalist robot AI",
+    "website": "https://www.physicalintelligence.company/",
+    "keywords": [
+      "pi",
+      "robot learning",
+      "generalist ai"
+    ]
+  },
+  {
+    "name": "Mentee Robotics",
+    "category": "Humanoid robotics",
+    "country": "Israel",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Menteebot",
+    "website": "https://www.menteebot.com/",
+    "keywords": [
+      "menteebot",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Persona AI",
+    "category": "Industrial humanoids",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Persona Humanoid",
+    "website": "https://persona.ai/",
+    "logo": "https://persona.ai/wp-content/uploads/2025/12/logo@2x.webp",
+    "keywords": [
+      "industrial humanoid",
+      "manufacturing",
+      "shipyards",
+      "energy",
+      "construction",
+      "welding",
+      "fabrication",
+      "persona humanoid"
+    ]
+  },
+  {
+    "name": "Covariant",
+    "category": "Warehouse AI robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Robotics AI platform",
+    "website": "https://covariant.ai/",
+    "keywords": [
+      "warehouse ai",
+      "robot picking",
+      "automation"
+    ]
+  },
+  {
+    "name": "Dexterity AI",
+    "category": "Warehouse robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Robotic handling systems",
+    "website": "https://www.dexterity.ai/",
+    "keywords": [
+      "warehouse",
+      "robot manipulation",
+      "logistics"
+    ]
+  },
+  {
+    "name": "ABB Robotics",
+    "category": "Industrial robotics",
+    "country": "Switzerland / Sweden",
+    "type": "Public",
+    "ticker": "ABBN.SW",
+    "robot": "Industrial robots",
+    "website": "https://new.abb.com/products/robotics",
+    "keywords": [
+      "industrial robot",
+      "factory automation",
+      "cobot"
+    ]
+  },
+  {
+    "name": "Altınay Robot Grubu",
+    "category": "Industrial Robotics, Factory Automation, Robotic Systems Integration",
+    "country": "Türkiye",
+    "region": "Europe / Middle East",
+    "type": "Private industrial robotics group",
+    "ticker": "",
+    "robot": "GRASS industrial robot arms, robotic systems, factory automation",
+    "website": "https://altinay.com/tr/robot-grubu",
+    "focus": "Robotic systems, factory automation, flexible manufacturing technologies",
+    "groupCompanies": [
+      "Altınay Robot Teknolojileri",
+      "GRASS",
+      "KSM",
+      "Olbricht",
+      "Robio"
+    ],
+    "keyProject": "GRASS",
+    "grassFocus": "Domestic industrial robot arms, servo motors, gearboxes, motor drivers",
+    "industriesServed": [
+      "Automotive",
+      "Glass",
+      "White goods",
+      "Agriculture",
+      "Food",
+      "General manufacturing"
+    ],
+    "employees": "300+",
+    "countries": "3",
+    "locations": "6",
+    "operationalArea": "25,000 m²",
+    "experience": "30+ years",
+    "clients": "150+",
+    "deliveredProjects": "500+",
+    "exportCountries": "20+",
+    "keywords": [
+      "Turkish robotics",
+      "Türkiye robotics",
+      "industrial automation",
+      "robot arms",
+      "factory automation",
+      "robotics sovereignty",
+      "GRASS",
+      "servo motors",
+      "gearboxes",
+      "motor drivers",
+      "automotive",
+      "glass",
+      "white goods",
+      "agriculture",
+      "food",
+      "general manufacturing"
+    ]
+  },
+  {
+    "name": "AKINROBOTICS",
+    "category": "Humanoid Robotics, Service Robots, Industrial Robotics, AI Robotics",
+    "country": "Türkiye",
+    "city": "Konya",
+    "region": "Europe / Middle East",
+    "type": "Private robotics company",
+    "ticker": "",
+    "robot": "ADA series, AKINCI humanoid robots, Service Robot V3, AMR Robot V500, AMR Robot V1000, Industrial Robot Arm 4.2",
+    "website": "https://www.akinrobotics.com/",
+    "foundedBy": "AKINSOFT",
+    "focus": "Humanoid robots, service robots, AMR systems, robotic arms, domestic robotics technologies",
+    "positioning": "Turkey's humanoid robotics company",
+    "applicationArea": "11,000 m² robotics application area",
+    "productionArea": "3,800 m² indoor production area",
+    "importantClaims": [
+      "World's first humanoid robot factory",
+      "Domestic robotics manufacturing",
+      "Mass-production humanoid robotics vision"
+    ],
+    "keywords": [
+      "humanoid robotics",
+      "Turkish robotics",
+      "service robots",
+      "robotics factory",
+      "physical AI",
+      "AKINCI humanoid",
+      "ADA robot",
+      "AMR Robot V500",
+      "AMR Robot V1000",
+      "Industrial Robot Arm 4.2",
+      "domestic robotics manufacturing",
+      "Konya"
+    ]
+  },
+  {
+    "name": "ASELSAN",
+    "category": "Defense Robotics, Autonomous Systems, Unmanned Systems, AI-enabled Defense Technologies",
+    "country": "Türkiye",
+    "city": "Ankara",
+    "region": "Europe / Middle East",
+    "type": "Public defense technology company",
+    "ticker": "ASELS.IS",
+    "robot": "Unmanned ground systems, autonomous systems, defense robotics, sensor and command-control stacks",
+    "website": "https://www.aselsan.com/",
+    "focus": "Defense electronics, autonomous systems, unmanned platforms, electro-optics, sensors, command-control systems and robotics-adjacent defense technologies",
+    "keywords": [
+      "ASELSAN",
+      "Turkish robotics",
+      "Türkiye robotics",
+      "defense robotics",
+      "autonomous systems",
+      "UGV",
+      "unmanned systems",
+      "military robotics",
+      "robotics sovereignty",
+      "physical AI",
+      "defense technology"
+    ]
+  },
+  {
+    "name": "Milvus Robotics",
+    "category": "Autonomous Mobile Robots, Warehouse Robotics, Industrial Automation",
+    "country": "Türkiye",
+    "city": "Ankara",
+    "region": "Europe / Middle East",
+    "type": "Private robotics company",
+    "ticker": "",
+    "robot": "Autonomous mobile robots, AMR platforms, intralogistics and warehouse automation robots",
+    "website": "https://milvusrobotics.com/",
+    "focus": "Autonomous mobile robots for intralogistics, warehouse automation, flexible manufacturing and industrial transport",
+    "keywords": [
+      "Milvus Robotics",
+      "Turkish robotics",
+      "Türkiye robotics",
+      "AMR",
+      "autonomous mobile robots",
+      "warehouse robotics",
+      "intralogistics",
+      "factory automation",
+      "robotics startup",
+      "industrial automation"
+    ]
+  },
+  {
+    "name": "FANUC",
+    "category": "Industrial robotics",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "6954.T",
+    "robot": "Industrial robots",
+    "website": "https://www.fanuc.co.jp/en/",
+    "keywords": [
+      "factory automation",
+      "industrial robot",
+      "cnc"
+    ]
+  },
+  {
+    "name": "KUKA",
+    "category": "Industrial robotics",
+    "country": "Germany",
+    "type": "Subsidiary",
+    "ticker": "Midea Group",
+    "robot": "Industrial robots",
+    "website": "https://www.kuka.com/",
+    "keywords": [
+      "industrial robot",
+      "automation",
+      "manufacturing"
+    ]
+  },
+  {
+    "name": "Yaskawa Motoman",
+    "category": "Industrial robotics",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "6506.T",
+    "robot": "Motoman robots",
+    "website": "https://www.motoman.com/",
+    "keywords": [
+      "industrial robot",
+      "welding",
+      "automation"
+    ]
+  },
+  {
+    "name": "Universal Robots",
+    "category": "Collaborative robots",
+    "country": "Denmark",
+    "type": "Subsidiary",
+    "ticker": "Teradyne",
+    "robot": "UR cobots",
+    "website": "https://www.universal-robots.com/",
+    "keywords": [
+      "cobot",
+      "collaborative robot",
+      "automation"
+    ]
+  },
+  {
+    "name": "Teradyne Robotics",
+    "category": "Collaborative robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "TER",
+    "robot": "Universal Robots, MiR",
+    "website": "https://www.teradyne.com/",
+    "keywords": [
+      "cobot",
+      "automation",
+      "robotics portfolio"
+    ]
+  },
+  {
+    "name": "Omron Robotics",
+    "category": "Industrial and mobile robotics",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "6645.T",
+    "robot": "Mobile robots, automation",
+    "website": "https://automation.omron.com/",
+    "keywords": [
+      "mobile robot",
+      "factory automation"
+    ]
+  },
+  {
+    "name": "Epson Robots",
+    "category": "Industrial robotics",
+    "country": "Japan",
+    "type": "Public proxy",
+    "ticker": "SEKEY",
+    "robot": "SCARA and industrial robots",
+    "website": "https://epson.com/robots",
+    "keywords": [
+      "scara",
+      "industrial robot",
+      "automation"
+    ]
+  },
+  {
+    "name": "Stäubli Robotics",
+    "category": "Industrial robotics",
+    "country": "Switzerland",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Industrial robots",
+    "website": "https://www.staubli.com/",
+    "keywords": [
+      "industrial robot",
+      "cleanroom",
+      "automation"
+    ]
+  },
+  {
+    "name": "Comau",
+    "category": "Industrial robotics",
+    "country": "Italy",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Industrial robots",
+    "website": "https://www.comau.com/",
+    "keywords": [
+      "manufacturing",
+      "industrial automation"
+    ]
+  },
+  {
+    "name": "Nachi Robotics",
+    "category": "Industrial robotics",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "6474.T",
+    "robot": "Industrial robots",
+    "website": "https://www.nachirobotics.com/",
+    "keywords": [
+      "industrial robot",
+      "welding",
+      "automation"
+    ]
+  },
+  {
+    "name": "Denso Robotics",
+    "category": "Industrial robotics",
+    "country": "Japan",
+    "type": "Public proxy",
+    "ticker": "6902.T",
+    "robot": "Small industrial robots",
+    "website": "https://www.densorobotics.com/",
+    "keywords": [
+      "factory robot",
+      "automation"
+    ]
+  },
+  {
+    "name": "Kawasaki Robotics",
+    "category": "Industrial robotics",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "7012.T",
+    "robot": "Industrial robots",
+    "website": "https://robotics.kawasaki.com/",
+    "keywords": [
+      "industrial robot",
+      "factory automation"
+    ]
+  },
+  {
+    "name": "Doosan Robotics",
+    "category": "Collaborative robots",
+    "country": "South Korea",
+    "type": "Public",
+    "ticker": "454910.KS",
+    "robot": "Doosan cobots",
+    "website": "https://www.doosanrobotics.com/",
+    "keywords": [
+      "cobot",
+      "collaborative robot"
+    ]
+  },
+  {
+    "name": "Rainbow Robotics",
+    "category": "Humanoid and collaborative robotics",
+    "country": "South Korea",
+    "type": "Public",
+    "ticker": "277810.KQ",
+    "robot": "HUBO, collaborative robots",
+    "website": "https://www.rainbow-robotics.com/",
+    "keywords": [
+      "hubo",
+      "humanoid",
+      "cobot"
+    ]
+  },
+  {
+    "name": "Hyundai Robotics",
+    "category": "Industrial robotics",
+    "country": "South Korea",
+    "type": "Public proxy",
+    "ticker": "Hyundai",
+    "robot": "Industrial robots",
+    "website": "https://www.hyundai-robotics.com/",
+    "keywords": [
+      "industrial robot",
+      "automation"
+    ]
+  },
+  {
+    "name": "Samsung Electronics",
+    "category": "AI devices and consumer robotics",
+    "country": "South Korea",
+    "type": "Public",
+    "ticker": "005930.KS",
+    "robot": "Ballie",
+    "website": "https://www.samsung.com/",
+    "keywords": [
+      "ballie",
+      "consumer robot",
+      "ai device"
+    ]
+  },
+  {
+    "name": "LG Electronics",
+    "category": "Service and consumer robotics",
+    "country": "South Korea",
+    "type": "Public",
+    "ticker": "066570.KS",
+    "robot": "CLOi robots",
+    "website": "https://www.lg.com/",
+    "keywords": [
+      "cloi",
+      "service robot",
+      "consumer robot"
+    ]
+  },
+  {
+    "name": "SoftBank Robotics",
+    "category": "Service and social robots",
+    "country": "Japan / France",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Pepper, NAO, Whiz",
+    "website": "https://www.softbankrobotics.com/",
+    "keywords": [
+      "pepper",
+      "nao",
+      "service robot"
+    ]
+  },
+  {
+    "name": "PAL Robotics",
+    "category": "Humanoid and service robotics",
+    "country": "Spain",
+    "type": "Private",
+    "ticker": "",
+    "robot": "TALOS, TIAGo, ARI",
+    "website": "https://pal-robotics.com/",
+    "keywords": [
+      "talos",
+      "tiago",
+      "research robot"
+    ]
+  },
+  {
+    "name": "Robotis",
+    "category": "Education and research robotics",
+    "country": "South Korea",
+    "type": "Public",
+    "ticker": "108490.KQ",
+    "robot": "Dynamixel, TurtleBot",
+    "website": "https://www.robotis.us/",
+    "keywords": [
+      "dynamixel",
+      "education robot",
+      "research"
+    ]
+  },
+  {
+    "name": "Clearpath Robotics",
+    "category": "Research mobile robots",
+    "country": "Canada",
+    "type": "Subsidiary",
+    "ticker": "Rockwell Automation",
+    "robot": "Husky, Jackal",
+    "website": "https://clearpathrobotics.com/",
+    "keywords": [
+      "mobile robot",
+      "research platform"
+    ]
+  },
+  {
+    "name": "OTTO Motors",
+    "category": "Autonomous mobile robots",
+    "country": "Canada",
+    "type": "Subsidiary",
+    "ticker": "Rockwell Automation",
+    "robot": "OTTO AMRs",
+    "website": "https://ottomotors.com/",
+    "keywords": [
+      "amr",
+      "warehouse",
+      "mobile robot"
+    ]
+  },
+  {
+    "name": "Locus Robotics",
+    "category": "Warehouse robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "LocusBots",
+    "website": "https://locusrobotics.com/",
+    "keywords": [
+      "warehouse",
+      "amr",
+      "fulfillment"
+    ]
+  },
+  {
+    "name": "Geekplus",
+    "category": "Warehouse robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Warehouse AMRs",
+    "website": "https://www.geekplus.com/",
+    "keywords": [
+      "warehouse",
+      "amr",
+      "logistics"
+    ]
+  },
+  {
+    "name": "MiR",
+    "category": "Autonomous mobile robots",
+    "country": "Denmark",
+    "type": "Subsidiary",
+    "ticker": "Teradyne",
+    "robot": "MiR AMRs",
+    "website": "https://mobile-industrial-robots.com/",
+    "keywords": [
+      "amr",
+      "mobile robot",
+      "factory"
+    ]
+  },
+  {
+    "name": "AutoStore",
+    "category": "Warehouse automation",
+    "country": "Norway",
+    "type": "Public",
+    "ticker": "AUTO.OL",
+    "robot": "Cube storage robots",
+    "website": "https://www.autostoresystem.com/",
+    "keywords": [
+      "warehouse automation",
+      "storage robot"
+    ]
+  },
+  {
+    "name": "Symbotic",
+    "category": "Warehouse automation",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "SYM",
+    "robot": "Warehouse automation system",
+    "website": "https://www.symbotic.com/",
+    "keywords": [
+      "warehouse automation",
+      "robotics"
+    ]
+  },
+  {
+    "name": "Ocado Technology",
+    "category": "Grocery warehouse robotics",
+    "country": "United Kingdom",
+    "type": "Public proxy",
+    "ticker": "OCDO.L",
+    "robot": "Automated grid robots",
+    "website": "https://www.ocadogroup.com/technology/",
+    "keywords": [
+      "warehouse grid",
+      "grocery robotics"
+    ]
+  },
+  {
+    "name": "Exotec",
+    "category": "Warehouse robotics",
+    "country": "France",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Skypod",
+    "website": "https://www.exotec.com/",
+    "keywords": [
+      "skypod",
+      "warehouse",
+      "amr"
+    ]
+  },
+  {
+    "name": "Berkshire Grey",
+    "category": "Warehouse robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Robotic picking systems",
+    "website": "https://www.berkshiregrey.com/",
+    "keywords": [
+      "warehouse picking",
+      "automation"
+    ]
+  },
+  {
+    "name": "RightHand Robotics",
+    "category": "Robotic picking",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "RightPick",
+    "website": "https://righthandrobotics.com/",
+    "keywords": [
+      "picking robot",
+      "warehouse"
+    ]
+  },
+  {
+    "name": "Ambi Robotics",
+    "category": "AI parcel sorting robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AmbiSort",
+    "website": "https://www.ambirobotics.com/",
+    "keywords": [
+      "parcel sorting",
+      "warehouse ai"
+    ]
+  },
+  {
+    "name": "Plus One Robotics",
+    "category": "Warehouse vision robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Parcel handling robots",
+    "website": "https://www.plusonerobotics.com/",
+    "keywords": [
+      "vision robot",
+      "warehouse"
+    ]
+  },
+  {
+    "name": "GreyOrange",
+    "category": "Warehouse robotics",
+    "country": "USA / India",
+    "type": "Private",
+    "ticker": "",
+    "robot": "GreyMatter, Ranger",
+    "website": "https://www.greyorange.com/",
+    "keywords": [
+      "warehouse",
+      "fulfillment",
+      "robot fleet"
+    ]
+  },
+  {
+    "name": "Seegrid",
+    "category": "Autonomous mobile robots",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Palion AMRs",
+    "website": "https://seegrid.com/",
+    "keywords": [
+      "amr",
+      "warehouse",
+      "manufacturing"
+    ]
+  },
+  {
+    "name": "Vecna Robotics",
+    "category": "Autonomous mobile robots",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Forklift AMRs",
+    "website": "https://www.vecnarobotics.com/",
+    "keywords": [
+      "amr",
+      "forklift",
+      "warehouse"
+    ]
+  },
+  {
+    "name": "Burro",
+    "category": "Agricultural and outdoor robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Burro autonomous platform",
+    "website": "https://burro.ai/",
+    "keywords": [
+      "agriculture",
+      "outdoor robot",
+      "autonomous cart"
+    ]
+  },
+  {
+    "name": "Monarch Tractor",
+    "category": "Autonomous agriculture",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "MK-V tractor",
+    "website": "https://www.monarchtractor.com/",
+    "keywords": [
+      "autonomous tractor",
+      "agtech"
+    ]
+  },
+  {
+    "name": "Naïo Technologies",
+    "category": "Agricultural robotics",
+    "country": "France",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Oz, Orio",
+    "website": "https://www.naio-technologies.com/",
+    "keywords": [
+      "agriculture robot",
+      "weeding"
+    ]
+  },
+  {
+    "name": "Carbon Robotics",
+    "category": "Agricultural robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "LaserWeeder",
+    "website": "https://carbonrobotics.com/",
+    "keywords": [
+      "laser weeding",
+      "agriculture"
+    ]
+  },
+  {
+    "name": "Blue River Technology",
+    "category": "Agricultural robotics",
+    "country": "USA",
+    "type": "Subsidiary",
+    "ticker": "Deere",
+    "robot": "See & Spray",
+    "website": "https://bluerivertechnology.com/",
+    "keywords": [
+      "agtech",
+      "computer vision",
+      "deere"
+    ]
+  },
+  {
+    "name": "John Deere",
+    "category": "Autonomous agriculture",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "DE",
+    "robot": "Autonomous tractor",
+    "website": "https://www.deere.com/",
+    "keywords": [
+      "autonomous tractor",
+      "agriculture"
+    ]
+  },
+  {
+    "name": "Intuitive Surgical",
+    "category": "Surgical robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "ISRG",
+    "robot": "da Vinci",
+    "website": "https://www.intuitive.com/",
+    "keywords": [
+      "surgical robot",
+      "medical robotics"
+    ]
+  },
+  {
+    "name": "Stryker",
+    "category": "Medical robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "SYK",
+    "robot": "Mako",
+    "website": "https://www.stryker.com/",
+    "keywords": [
+      "surgical robot",
+      "orthopedics"
+    ]
+  },
+  {
+    "name": "Medtronic",
+    "category": "Medical robotics",
+    "country": "Ireland / USA",
+    "type": "Public",
+    "ticker": "MDT",
+    "robot": "Hugo RAS",
+    "website": "https://www.medtronic.com/",
+    "keywords": [
+      "surgical robot",
+      "medical device"
+    ]
+  },
+  {
+    "name": "CMR Surgical",
+    "category": "Surgical robotics",
+    "country": "United Kingdom",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Versius",
+    "website": "https://cmrsurgical.com/",
+    "keywords": [
+      "surgical robot",
+      "medical robotics"
+    ]
+  },
+  {
+    "name": "Vicarious Surgical",
+    "category": "Surgical robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "RBOT",
+    "robot": "Surgical robot",
+    "website": "https://www.vicarioussurgical.com/",
+    "keywords": [
+      "surgical robot",
+      "minimally invasive"
+    ]
+  },
+  {
+    "name": "Asensus Surgical",
+    "category": "Surgical robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "ASXC",
+    "robot": "Senhance",
+    "website": "https://www.asensus.com/",
+    "keywords": [
+      "surgical robot",
+      "medical"
+    ]
+  },
+  {
+    "name": "ReWalk Robotics",
+    "category": "Exoskeleton robotics",
+    "country": "Israel / USA",
+    "type": "Public",
+    "ticker": "LFWD",
+    "robot": "ReWalk exoskeleton",
+    "website": "https://rewalk.com/",
+    "keywords": [
+      "exoskeleton",
+      "rehabilitation"
+    ]
+  },
+  {
+    "name": "Cyberdyne",
+    "category": "Exoskeleton and medical robotics",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "7779.T",
+    "robot": "HAL",
+    "website": "https://www.cyberdyne.jp/english/",
+    "keywords": [
+      "exoskeleton",
+      "hal",
+      "medical robot"
+    ]
+  },
+  {
+    "name": "Ekso Bionics",
+    "category": "Exoskeleton robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "EKSO",
+    "robot": "EksoNR",
+    "website": "https://eksobionics.com/",
+    "keywords": [
+      "exoskeleton",
+      "rehabilitation"
+    ]
+  },
+  {
+    "name": "iRobot",
+    "category": "Consumer robotics",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "IRBT",
+    "robot": "Roomba",
+    "website": "https://www.irobot.com/",
+    "keywords": [
+      "roomba",
+      "consumer robot",
+      "vacuum"
+    ]
+  },
+  {
+    "name": "Roborock",
+    "category": "Consumer robotics",
+    "country": "China",
+    "type": "Public",
+    "ticker": "688169.SS",
+    "robot": "Robot vacuums",
+    "website": "https://global.roborock.com/",
+    "keywords": [
+      "robot vacuum",
+      "consumer robot"
+    ]
+  },
+  {
+    "name": "Ecovacs Robotics",
+    "category": "Consumer robotics",
+    "country": "China",
+    "type": "Public",
+    "ticker": "603486.SS",
+    "robot": "Deebot",
+    "website": "https://www.ecovacs.com/",
+    "keywords": [
+      "robot vacuum",
+      "consumer robot"
+    ]
+  },
+  {
+    "name": "DJI",
+    "category": "Drones and robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Drones, RoboMaster",
+    "website": "https://www.dji.com/",
+    "keywords": [
+      "drone",
+      "robotics",
+      "consumer robot"
+    ]
+  },
+  {
+    "name": "Skydio",
+    "category": "Autonomous drones",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Autonomous drones",
+    "website": "https://www.skydio.com/",
+    "keywords": [
+      "drone",
+      "autonomy",
+      "inspection"
+    ]
+  },
+  {
+    "name": "Zipline",
+    "category": "Autonomous delivery drones",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Delivery drones",
+    "website": "https://www.flyzipline.com/",
+    "keywords": [
+      "drone delivery",
+      "logistics"
+    ]
+  },
+  {
+    "name": "Wing",
+    "category": "Drone delivery",
+    "country": "USA",
+    "type": "Alphabet subsidiary",
+    "ticker": "GOOGL",
+    "robot": "Delivery drones",
+    "website": "https://wing.com/",
+    "keywords": [
+      "drone delivery",
+      "alphabet"
+    ]
+  },
+  {
+    "name": "Starship Technologies",
+    "category": "Autonomous delivery robots",
+    "country": "USA / Estonia",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Sidewalk delivery robots",
+    "website": "https://www.starship.xyz/",
+    "keywords": [
+      "delivery robot",
+      "sidewalk"
+    ]
+  },
+  {
+    "name": "Serve Robotics",
+    "category": "Autonomous delivery robots",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "SERV",
+    "robot": "Sidewalk delivery robots",
+    "website": "https://www.serverobotics.com/",
+    "keywords": [
+      "delivery robot",
+      "sidewalk",
+      "autonomy"
+    ]
+  },
+  {
+    "name": "Nuro",
+    "category": "Autonomous delivery vehicles",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Autonomous delivery vehicle",
+    "website": "https://www.nuro.ai/",
+    "keywords": [
+      "delivery vehicle",
+      "autonomous"
+    ]
+  },
+  {
+    "name": "Waymo",
+    "category": "Autonomous driving",
+    "country": "USA",
+    "type": "Alphabet subsidiary",
+    "ticker": "GOOGL",
+    "robot": "Robotaxi",
+    "website": "https://waymo.com/",
+    "keywords": [
+      "robotaxi",
+      "autonomous vehicle"
+    ]
+  },
+  {
+    "name": "Zoox",
+    "category": "Autonomous mobility",
+    "country": "USA",
+    "type": "Amazon subsidiary",
+    "ticker": "AMZN",
+    "robot": "Robotaxi",
+    "website": "https://zoox.com/",
+    "keywords": [
+      "robotaxi",
+      "autonomous vehicle"
+    ]
+  },
+  {
+    "name": "Aurora",
+    "category": "Autonomous driving",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "AUR",
+    "robot": "Autonomous trucking",
+    "website": "https://aurora.tech/",
+    "keywords": [
+      "autonomous trucking",
+      "self driving"
+    ]
+  },
+  {
+    "name": "Motional",
+    "category": "Autonomous mobility",
+    "country": "USA / South Korea",
+    "type": "Joint venture",
+    "ticker": "Hyundai / Aptiv",
+    "robot": "Robotaxi technology",
+    "website": "https://motional.com/",
+    "keywords": [
+      "robotaxi",
+      "autonomous driving"
+    ]
+  },
+  {
+    "name": "Rethink Robotics",
+    "category": "Collaborative robotics",
+    "country": "Germany / USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Sawyer, Baxter legacy",
+    "website": "https://www.rethinkrobotics.com/",
+    "keywords": [
+      "cobot",
+      "sawyer",
+      "baxter"
+    ]
+  },
+  {
+    "name": "PickNik Robotics",
+    "category": "Robot software",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "MoveIt Pro",
+    "website": "https://picknik.ai/",
+    "keywords": [
+      "robot software",
+      "moveit",
+      "manipulation"
+    ]
+  },
+  {
+    "name": "Intrinsic",
+    "category": "Industrial robotics software",
+    "country": "USA",
+    "type": "Alphabet subsidiary",
+    "ticker": "GOOGL",
+    "robot": "Robotics software platform",
+    "website": "https://www.intrinsic.ai/",
+    "keywords": [
+      "robot software",
+      "industrial automation"
+    ]
+  },
+  {
+    "name": "Wandelbots",
+    "category": "Robot programming software",
+    "country": "Germany",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Robot programming tools",
+    "website": "https://www.wandelbots.com/",
+    "keywords": [
+      "robot programming",
+      "automation software"
+    ]
+  },
+  {
+    "name": "Vention",
+    "category": "Factory automation platform",
+    "country": "Canada",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Modular automation",
+    "website": "https://vention.io/",
+    "keywords": [
+      "factory automation",
+      "robot cells"
+    ]
+  },
+  {
+    "name": "Realtime Robotics",
+    "category": "Robot motion planning",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Motion planning platform",
+    "website": "https://rtr.ai/",
+    "keywords": [
+      "motion planning",
+      "industrial robots"
+    ]
+  },
+  {
+    "name": "Formant",
+    "category": "Robot fleet management",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Robot operations platform",
+    "website": "https://formant.io/",
+    "keywords": [
+      "robot fleet",
+      "robot operations"
+    ]
+  },
+  {
+    "name": "Foxglove",
+    "category": "Robotics observability",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Robotics data tools",
+    "website": "https://foxglove.dev/",
+    "keywords": [
+      "robot data",
+      "observability",
+      "ros"
+    ]
+  },
+  {
+    "name": "RoboDK",
+    "category": "Robot simulation and offline programming",
+    "country": "Canada",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Simulation software",
+    "website": "https://robodk.com/",
+    "keywords": [
+      "robot simulation",
+      "offline programming"
+    ]
+  },
+  {
+    "name": "Open Robotics",
+    "category": "Open-source robotics software",
+    "country": "USA",
+    "type": "Nonprofit / ecosystem",
+    "ticker": "",
+    "robot": "ROS, Gazebo",
+    "website": "https://www.openrobotics.org/",
+    "keywords": [
+      "ros",
+      "gazebo",
+      "open source"
+    ]
+  },
+  {
+    "name": "ANYbotics",
+    "category": "Industrial inspection robots",
+    "country": "Switzerland",
+    "type": "Private",
+    "ticker": "",
+    "robot": "ANYmal",
+    "website": "https://www.anybotics.com/",
+    "keywords": [
+      "inspection robot",
+      "quadruped"
+    ]
+  },
+  {
+    "name": "Ghost Robotics",
+    "category": "Quadruped robots",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Vision 60",
+    "website": "https://www.ghostrobotics.io/",
+    "keywords": [
+      "quadruped",
+      "defense",
+      "inspection"
+    ]
+  },
+  {
+    "name": "ANYmal Research / ETH Zurich",
+    "category": "Robotics research",
+    "country": "Switzerland",
+    "type": "Academic ecosystem",
+    "ticker": "",
+    "robot": "Legged robotics research",
+    "website": "https://rsl.ethz.ch/",
+    "keywords": [
+      "legged robotics",
+      "research"
+    ]
+  },
+  {
+    "name": "Swiss-Mile",
+    "category": "Wheeled-legged robots",
+    "country": "Switzerland",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Wheeled quadruped",
+    "website": "https://www.swiss-mile.com/",
+    "keywords": [
+      "wheeled robot",
+      "inspection"
+    ]
+  },
+  {
+    "name": "Telerob",
+    "category": "Defense and hazardous environment robots",
+    "country": "Germany",
+    "type": "Subsidiary",
+    "ticker": "",
+    "robot": "tEODor",
+    "website": "https://www.telerob.com/",
+    "keywords": [
+      "eod robot",
+      "defense robot"
+    ]
+  },
+  {
+    "name": "Teledyne FLIR",
+    "category": "Defense and inspection robots",
+    "country": "USA",
+    "type": "Public proxy",
+    "ticker": "TDY",
+    "robot": "PackBot, Kobra",
+    "website": "https://www.flir.com/",
+    "keywords": [
+      "defense robot",
+      "inspection"
+    ]
+  },
+  {
+    "name": "Milrem Robotics",
+    "category": "Autonomous ground vehicles",
+    "country": "Estonia",
+    "type": "Private",
+    "ticker": "",
+    "robot": "THeMIS",
+    "website": "https://milremrobotics.com/",
+    "keywords": [
+      "ugv",
+      "autonomous ground vehicle"
+    ]
+  },
+  {
+    "name": "Anduril Industries",
+    "category": "Autonomous defense systems",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Autonomous systems",
+    "website": "https://www.anduril.com/",
+    "keywords": [
+      "defense autonomy",
+      "robotics"
+    ]
+  },
+  {
+    "name": "Shield AI",
+    "category": "Autonomous defense drones",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "V-BAT, Hivemind",
+    "website": "https://shield.ai/",
+    "keywords": [
+      "drone",
+      "autonomy",
+      "defense"
+    ]
+  },
+  {
+    "name": "Saronic",
+    "category": "Autonomous maritime vessels",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Autonomous surface vessels",
+    "website": "https://www.saronic.com/",
+    "keywords": [
+      "maritime robot",
+      "autonomous vessel"
+    ]
+  },
+  {
+    "name": "Ocean Infinity",
+    "category": "Marine robotics",
+    "country": "USA / UK",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Autonomous marine fleet",
+    "website": "https://oceaninfinity.com/",
+    "keywords": [
+      "marine robotics",
+      "autonomous vessel"
+    ]
+  },
+  {
+    "name": "Saildrone",
+    "category": "Autonomous maritime robots",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Saildrone USVs",
+    "website": "https://www.saildrone.com/",
+    "keywords": [
+      "ocean robot",
+      "usv",
+      "marine data"
+    ]
+  },
+  {
+    "name": "Blue Robotics",
+    "category": "Marine robotics components",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "ROV components",
+    "website": "https://bluerobotics.com/",
+    "keywords": [
+      "rov",
+      "marine robotics"
+    ]
+  },
+  {
+    "name": "OpenAI",
+    "category": "Frontier AI",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI models",
+    "website": "https://openai.com/",
+    "keywords": [
+      "chatgpt",
+      "gpt",
+      "ai lab"
+    ]
+  },
+  {
+    "name": "Anthropic",
+    "category": "Frontier AI",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Claude",
+    "website": "https://www.anthropic.com/",
+    "keywords": [
+      "claude",
+      "ai safety",
+      "frontier ai"
+    ]
+  },
+  {
+    "name": "xAI",
+    "category": "Frontier AI",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Grok",
+    "website": "https://x.ai/",
+    "keywords": [
+      "grok",
+      "frontier ai"
+    ]
+  },
+  {
+    "name": "Mistral AI",
+    "category": "AI models",
+    "country": "France",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI models",
+    "website": "https://mistral.ai/",
+    "keywords": [
+      "open models",
+      "ai lab",
+      "europe"
+    ]
+  },
+  {
+    "name": "Cohere",
+    "category": "Enterprise AI models",
+    "country": "Canada",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI models",
+    "website": "https://cohere.com/",
+    "keywords": [
+      "enterprise ai",
+      "language models"
+    ]
+  },
+  {
+    "name": "Hugging Face",
+    "category": "AI platform",
+    "country": "USA / France",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI model hub",
+    "website": "https://huggingface.co/",
+    "keywords": [
+      "model hub",
+      "open source ai"
+    ]
+  },
+  {
+    "name": "Perplexity AI",
+    "category": "AI search",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI answer engine",
+    "website": "https://www.perplexity.ai/",
+    "keywords": [
+      "ai search",
+      "answer engine"
+    ]
+  },
+  {
+    "name": "Runway",
+    "category": "Generative video AI",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI video tools",
+    "website": "https://runwayml.com/",
+    "keywords": [
+      "video ai",
+      "creative ai"
+    ]
+  },
+  {
+    "name": "ElevenLabs",
+    "category": "AI audio",
+    "country": "USA / UK",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Voice AI",
+    "website": "https://elevenlabs.io/",
+    "keywords": [
+      "voice ai",
+      "audio generation"
+    ]
+  },
+  {
+    "name": "Stability AI",
+    "category": "Generative AI",
+    "country": "United Kingdom",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Image models",
+    "website": "https://stability.ai/",
+    "keywords": [
+      "image generation",
+      "stable diffusion"
+    ]
+  },
+  {
+    "name": "Character.AI",
+    "category": "AI companions",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Character AI",
+    "website": "https://character.ai/",
+    "keywords": [
+      "chatbots",
+      "ai companions"
+    ]
+  },
+  {
+    "name": "Databricks",
+    "category": "Data and AI platform",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Data intelligence platform",
+    "website": "https://www.databricks.com/",
+    "keywords": [
+      "data platform",
+      "ai infrastructure"
+    ]
+  },
+  {
+    "name": "Scale AI",
+    "category": "AI data platform",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Data platform",
+    "website": "https://scale.com/",
+    "keywords": [
+      "data labeling",
+      "ai data"
+    ]
+  },
+  {
+    "name": "CoreWeave",
+    "category": "AI cloud infrastructure",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI cloud",
+    "website": "https://www.coreweave.com/",
+    "keywords": [
+      "gpu cloud",
+      "ai infrastructure"
+    ]
+  },
+  {
+    "name": "Cerebras",
+    "category": "AI chips and systems",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI compute systems",
+    "website": "https://www.cerebras.ai/",
+    "keywords": [
+      "ai chip",
+      "compute"
+    ]
+  },
+  {
+    "name": "Groq",
+    "category": "AI inference chips",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "LPU inference",
+    "website": "https://groq.com/",
+    "keywords": [
+      "ai chip",
+      "inference"
+    ]
+  },
+  {
+    "name": "SambaNova Systems",
+    "category": "AI chips and platforms",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AI compute platform",
+    "website": "https://sambanova.ai/",
+    "keywords": [
+      "ai chip",
+      "enterprise ai"
+    ]
+  },
+  {
+    "name": "Graphcore",
+    "category": "AI chips",
+    "country": "United Kingdom",
+    "type": "Private",
+    "ticker": "",
+    "robot": "IPU systems",
+    "website": "https://www.graphcore.ai/",
+    "keywords": [
+      "ai chip",
+      "ipu"
+    ]
+  },
+  {
+    "name": "Cognex",
+    "category": "Machine vision",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "CGNX",
+    "robot": "Vision systems",
+    "website": "https://www.cognex.com/",
+    "keywords": [
+      "machine vision",
+      "factory automation"
+    ]
+  },
+  {
+    "name": "Keyence",
+    "category": "Sensors and machine vision",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "6861.T",
+    "robot": "Automation sensors",
+    "website": "https://www.keyence.com/",
+    "keywords": [
+      "sensors",
+      "machine vision",
+      "automation"
+    ]
+  },
+  {
+    "name": "Rockwell Automation",
+    "category": "Industrial automation",
+    "country": "USA",
+    "type": "Public",
+    "ticker": "ROK",
+    "robot": "Factory automation",
+    "website": "https://www.rockwellautomation.com/",
+    "keywords": [
+      "industrial automation",
+      "factory"
+    ]
+  },
+  {
+    "name": "Siemens",
+    "category": "Industrial automation and AI",
+    "country": "Germany",
+    "type": "Public",
+    "ticker": "SIE.DE",
+    "robot": "Factory automation",
+    "website": "https://www.siemens.com/",
+    "keywords": [
+      "industrial automation",
+      "digital twin"
+    ]
+  },
+  {
+    "name": "Schneider Electric",
+    "category": "Industrial automation",
+    "country": "France",
+    "type": "Public",
+    "ticker": "SU.PA",
+    "robot": "Automation systems",
+    "website": "https://www.se.com/",
+    "keywords": [
+      "automation",
+      "energy"
+    ]
+  },
+  {
+    "name": "Mitsubishi Electric",
+    "category": "Industrial automation",
+    "country": "Japan",
+    "type": "Public",
+    "ticker": "6503.T",
+    "robot": "Industrial robots",
+    "website": "https://www.mitsubishielectric.com/fa/",
+    "keywords": [
+      "factory automation",
+      "industrial robot"
+    ]
+  },
+  {
+    "name": "Asimov",
+    "category": "Open-source humanoid robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Asimov humanoid, Asimov OS",
+    "website": "https://asimov.inc/",
+    "keywords": [
+      "humanoid",
+      "open source",
+      "robot operating system",
+      "developer platform"
+    ]
+  },
+  {
+    "name": "Galbot",
+    "category": "Embodied AI and humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Galbot G1, Galbot S1",
+    "website": "https://www.galbot.com/",
+    "logo": "https://www.galbot.com/assets/logojing.1_QVWmWl.png",
+    "keywords": [
+      "humanoid",
+      "embodied ai",
+      "industrial heavy-load robot",
+      "pick and place",
+      "vla",
+      "galbot g1",
+      "galbot s1"
+    ]
+  },
+  {
+    "name": "RIVR",
+    "category": "Physical AI delivery robotics",
+    "country": "Switzerland",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Wheeled-legged delivery robots",
+    "website": "https://www.rivr.ai/",
+    "keywords": [
+      "doorstep delivery",
+      "last mile",
+      "physical ai",
+      "wheeled legged"
+    ]
+  },
+  {
+    "name": "Fauna Robotics",
+    "category": "Humanoid robotics development platforms",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Sprout",
+    "website": "https://faunarobotics.com/",
+    "keywords": [
+      "sprout",
+      "soft humanoid",
+      "developer robot",
+      "research platform"
+    ]
+  },
+  {
+    "name": "EngineAI",
+    "category": "Humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "PM01, SE01",
+    "website": "https://en.engineai.com.cn/",
+    "keywords": [
+      "pm01",
+      "humanoid",
+      "developer platform",
+      "open source"
+    ]
+  },
+  {
+    "name": "Foundry Robotics",
+    "category": "AI-first manufacturing robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Autonomous robotic cells",
+    "website": "https://foundryrobotics.ai/",
+    "keywords": [
+      "manufacturing",
+      "assembly",
+      "autonomous cells",
+      "dual use robotics"
+    ]
+  },
+  {
+    "name": "FieldAI",
+    "category": "Robot autonomy and physical AI",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "EDGE, Field Foundation Models",
+    "website": "https://www.fieldai.com/",
+    "keywords": [
+      "robot brain",
+      "autonomy",
+      "field foundation models",
+      "industrial robots"
+    ]
+  },
+  {
+    "name": "Reflex Robotics",
+    "category": "Warehouse and factory humanoids",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Reflex Robot",
+    "website": "https://www.reflexrobotics.com/",
+    "keywords": [
+      "humanoid",
+      "warehouse",
+      "factory",
+      "teleoperation"
+    ]
+  },
+  {
+    "name": "Sunday Robotics",
+    "category": "Home robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Memo",
+    "website": "https://www.sunday.ai/",
+    "keywords": [
+      "home robot",
+      "memo",
+      "household robot",
+      "skill capture"
+    ]
+  },
+  {
+    "name": "Noble Machines",
+    "category": "Industrial general-purpose robots",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "General-purpose industrial robot",
+    "website": "https://www.noblemachines.ai/",
+    "keywords": [
+      "industrial humanoid",
+      "general purpose robot",
+      "material handling",
+      "inspection"
+    ]
+  },
+  {
+    "name": "Booster Robotics",
+    "category": "Humanoid robotics development platforms",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Booster T1, Booster K1",
+    "website": "https://www.booster.tech/",
+    "keywords": [
+      "humanoid",
+      "developer platform",
+      "robocup",
+      "education"
+    ]
+  },
+  {
+    "name": "AgiBot",
+    "category": "Embodied AI and humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "AgiBot A2, G1, X2, X1",
+    "website": "https://www.agibot.com/",
+    "keywords": [
+      "humanoid",
+      "embodied ai",
+      "mass production",
+      "agibot world"
+    ]
+  },
+  {
+    "name": "LimX Dynamics",
+    "category": "General-purpose humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "LimX Oli, TRON 1, TRON 2",
+    "website": "https://www.limxdynamics.com/en",
+    "keywords": [
+      "humanoid",
+      "physical ai",
+      "agentic os",
+      "tron"
+    ]
+  },
+  {
+    "name": "Leju Robotics",
+    "category": "Humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "KUAVO 4Pro, KUAVO 5",
+    "website": "https://www.lejurobot.com/en",
+    "keywords": [
+      "kuavo",
+      "humanoid",
+      "industrial manufacturing",
+      "teleoperation"
+    ]
+  },
+  {
+    "name": "Pudu Robotics",
+    "category": "Service and humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "PUDU D9, D7, service robots",
+    "website": "https://www.pudurobotics.com/",
+    "keywords": [
+      "service robot",
+      "humanoid",
+      "d9",
+      "commercial robotics"
+    ]
+  },
+  {
+    "name": "MagicLab",
+    "category": "General-purpose humanoid robotics",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "MagicBot Gen1",
+    "website": "https://www.magiclab.top/en/human",
+    "keywords": [
+      "magicbot",
+      "humanoid",
+      "multi robot collaboration",
+      "industrial"
+    ]
+  },
+  {
+    "name": "X-Humanoid",
+    "category": "Humanoid robotics, embodied AI, general-purpose robot platforms",
+    "country": "China",
+    "type": "Private / research-commercial ecosystem",
+    "ticker": "",
+    "robot": "Embodied Tien Kung 3.0",
+    "website": "https://www.x-humanoid.com/",
+    "keywords": [
+      "x-humanoid",
+      "tien kung",
+      "embodied ai",
+      "humanoid",
+      "wise kaiwu",
+      "china"
+    ]
+  },
+  {
+    "name": "WIRobotics",
+    "category": "Wearable Robotics / Mobility Robotics",
+    "country": "South Korea",
+    "type": "Private",
+    "ticker": "",
+    "robot": "WIM, WIM S, WIM KIDS, ALLEX, WIBS",
+    "website": "https://www.wirobotics.com",
+    "focus": "Wearable walking-assist robots, gait training, mobility support, and human-responsive robotics",
+    "sourceLinks": [
+      "https://www.wirobotics.com/product/wimInfo",
+      "https://corp.wirobotics.com/en/product/wim-s",
+      "https://www.wirobotics.com/media/newsDetail?idx=75&page=1&pageType=01"
+    ],
+    "keywords": [
+      "wirobotics",
+      "wim",
+      "wim s",
+      "wim kids",
+      "allex",
+      "wibs",
+      "wearable robot",
+      "walking assist",
+      "gait training",
+      "mobility robotics",
+      "exoskeleton"
+    ]
+  },
+  {
+    "name": "DEEP Robotics",
+    "category": "Quadruped Robotics / Industrial Robotics / Embodied AI",
+    "country": "China",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Lite3, Lite3 Pro, Lite3 LIDAR, X20, X30, X30 Pro, LYNX, LYNX M20, DR01, DR02",
+    "website": "https://www.deeprobotics.cn/",
+    "focus": "Industrial robot dogs, quadruped robots, inspection robotics, wheeled quadrupeds, humanoids, and embodied AI mobility systems",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.deeprobotics.cn/en/index/product.html",
+      "https://www.deeprobotics.cn/en/index/product3.html",
+      "https://www.deeprobotics.cn/en/index/lynx.html",
+      "https://www.deeprobotics.cn/en/index/humanoid.html",
+      "https://www.deeprobotics.cn/en/index/dr02.html"
+    ],
+    "keywords": [
+      "deep robotics",
+      "deeprobotics",
+      "lite3",
+      "x20",
+      "x30",
+      "x30 pro",
+      "lynx",
+      "lynx m20",
+      "dr01",
+      "dr02",
+      "quadruped",
+      "robot dog",
+      "wheeled quadruped",
+      "humanoid",
+      "inspection robot",
+      "embodied ai"
+    ]
+  },
+  {
+    "name": "OpenMind",
+    "category": "Embodied AI and humanoid robotics",
+    "country": "USA",
+    "type": "Private",
+    "ticker": "",
+    "robot": "Future humanoid platform",
+    "website": "https://www.openmind.org/",
+    "image": "../assets/robots/openmind-new.png",
+    "logo": "../assets/robots/openmind-new.png",
+    "keywords": [
+      "openmind",
+      "embodied ai",
+      "humanoid",
+      "physical ai",
+      "robotics"
+    ]
+  },
+  {
+    "name": "AES",
+    "category": "Energy Robotics / Clean Energy Infrastructure",
+    "country": "United States",
+    "type": "Public",
+    "ticker": "AES",
+    "robot": "Maximo",
+    "website": "https://www.aes.com/",
+    "focus": "Clean energy infrastructure, solar automation, and AI-enabled solar installation robotics",
+    "sourceLinks": [
+      "https://www.aes.com/about-us/innovation/maximo",
+      "https://www.aes.com/energy-insights/reimagining-solar"
+    ],
+    "keywords": [
+      "energy robotics",
+      "solar installation",
+      "clean energy",
+      "automation",
+      "maximo"
+    ]
+  }
 ]

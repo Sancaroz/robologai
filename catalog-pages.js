@@ -192,13 +192,13 @@ const robotFallback = [
     ]
   },
   {
-    "name": "G1",
+    "name": "Unitree G1",
     "company": "Unitree Robotics",
     "category": "Humanoid",
     "country": "China",
     "status": "Order-based availability",
     "availability": "Available / order-based",
-    "price": "From around $16K depending on configuration",
+    "price": 16000,
     "useCase": "Research, education, prototyping",
     "height": "132 cm",
     "runtime": "About 2 hours",

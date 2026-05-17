@@ -1,0 +1,28 @@
+{
+  "name": "Maximo",
+  "company": "AES",
+  "category": "Energy Robotics",
+  "country": "United States",
+  "status": "Deployed / enterprise use",
+  "availability": "Enterprise use / project deployment",
+  "price": "No official public price",
+  "useCase": "Solar module installation automation",
+  "height": "Not disclosed",
+  "runtime": "Extended shifts; exact runtime not publicly disclosed",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "imageCredit": "AES official media",
+  "source": "https://www.aes.com/about-us/innovation/maximo",
+  "sourceLinks": [
+    "https://www.aes.com/about-us/innovation/maximo",
+    "https://www.aes.com/energy-insights/reimagining-solar"
+  ],
+  "keywords": [
+    "solar installation robot",
+    "energy robotics",
+    "solar module installation",
+    "computer vision",
+    "clean energy",
+    "construction automation"
+  ]
+}
