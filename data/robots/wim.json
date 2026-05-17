@@ -1,0 +1,22 @@
+{
+  "name": "WIM",
+  "company": "WIRobotics",
+  "category": "Wearable walking-assist robot",
+  "country": "South Korea",
+  "status": "Commercial wearable mobility robot",
+  "availability": "Official WIRobotics product page and selected retailers",
+  "price": "Retailer price / not official MSRP: €2,499 incl. tax; £2,224.12 / £2,001.70 incl. tax shown by EU/UK retailers",
+  "useCase": "Wearable walking assistance, gait training, daily mobility support, and resistance-mode exercise",
+  "height": "Not applicable",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 3,
+  "imageCredit": "WIRobotics official product page",
+  "source": "https://www.wirobotics.com/product/wimInfo",
+  "sourceLinks": [
+    "https://www.wirobotics.com/product/wimInfo",
+    "https://www.physiosupplies.fr/wirobotics-wim-robot-portable",
+    "https://www.physioparts.co.uk/wirobotics-wim-wearable-robot"
+  ],
+  "keywords": ["wirobotics", "wim", "wearable robot", "walking assist", "gait training", "mobility", "exoskeleton", "retailer price not official msrp"]
+}
