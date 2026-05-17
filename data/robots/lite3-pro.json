@@ -1,0 +1,21 @@
+{
+  "name": "Lite3 Pro",
+  "company": "DEEP Robotics",
+  "category": "Quadruped",
+  "country": "China",
+  "status": "Commercial / developer quadruped configuration",
+  "availability": "Official Lite3 product family and retailer listings",
+  "price": "Retailer/reference pricing: about US$9,995",
+  "useCase": "Advanced perception development, robotics education, research, obstacle-aware mobility, and SDK/API development",
+  "height": "Official standing dimensions: 610 x 370 x 450 mm",
+  "runtime": "Official endurance: 1.5-2 hours",
+  "maturity": 4,
+  "priceVisibility": 4,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/lite3.html",
+    "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+  ],
+  "keywords": ["deep robotics", "lite3 pro", "quadruped", "robot dog", "developer platform", "perception", "retailer reference pricing"]
+}
