@@ -1,0 +1,21 @@
+{
+  "name": "Lite3",
+  "company": "DEEP Robotics",
+  "category": "Quadruped",
+  "country": "China",
+  "status": "Commercial / research quadruped platform",
+  "availability": "Official product page and retailer listings",
+  "price": "Retailer/reference pricing: Lite3 Basic about US$4,995; official China page shows Lite 3 from US$2,890",
+  "useCase": "Academic research, education, entertainment, quadruped locomotion, SDK/API development, and light mobility experiments",
+  "height": "Official configuration-dependent standing height: 406-496 mm",
+  "runtime": "Official configuration-dependent endurance: 1.5-2 hours",
+  "maturity": 4,
+  "priceVisibility": 4,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/lite3.html",
+    "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+  ],
+  "keywords": ["deep robotics", "deeprobotics", "lite3", "lite 3", "quadruped", "robot dog", "research", "education", "retailer reference pricing"]
+}
