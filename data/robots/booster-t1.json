@@ -1,0 +1,19 @@
+{
+    "name": "Booster T1",
+    "company": "Booster Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Developer and competition platform",
+    "availability": "Available / order-based",
+    "price": "Configuration dependent",
+    "useCase": "Education, RoboCup, research and development",
+    "height": "About 120 cm class",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "image": "https://www.booster.tech/_astro/product-1.Dk_Ke_Kw_24hsch.webp",
+    "imageCredit": "Booster Robotics official media",
+    "source": "https://www.booster.tech/",
+    "keywords": ["booster", "t1", "robocup", "education"]
+  }
+  
