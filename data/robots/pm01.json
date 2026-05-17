@@ -1,0 +1,19 @@
+{
+    "name": "PM01",
+    "company": "EngineAI",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Developer platform",
+    "availability": "Available / developer focused",
+    "price": "Public estimates vary by configuration",
+    "useCase": "Research, education, embodied AI development",
+    "height": "138 cm",
+    "runtime": "About 2 hours",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "image": "https://en-engineai-1304599088.cos.ap-guangzhou.myqcloud.com/uploads/frame/PM01/PM01_00000.png",
+    "imageCredit": "EngineAI official media",
+    "source": "https://en.engineai.com.cn/product-pm01.html",
+    "keywords": ["pm01", "engineai", "open source", "developer"]
+  }
+  
