@@ -1415,6 +1415,54 @@ function robotQuality(robot) {
   };
 }
 
+function sourceHost(url = "") {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "source";
+  }
+}
+
+function sourceList(primary = "", extra = []) {
+  return [primary, ...(Array.isArray(extra) ? extra : [])]
+    .filter(Boolean)
+    .filter((url, index, list) => list.indexOf(url) === index)
+    .slice(0, 6);
+}
+
+function renderSourceNotes(title, sources, fallbackLabel = "Official source") {
+  const sourceItems = sources.length ? sources : [];
+  if (!sourceItems.length) return "";
+  return `
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Source Notes</p>
+        <h2>${pageEscape(title)}</h2>
+      </div>
+      <div class="source-note-grid">
+        ${sourceItems.map((url, index) => `
+          <article>
+            <span>${index === 0 ? pageEscape(fallbackLabel) : "Supporting source"}</span>
+            <strong>${pageEscape(sourceHost(url))}</strong>
+            <small>${pageEscape(url)}</small>
+            <a href="${pageEscape(url)}" target="_blank" rel="noopener noreferrer">Open source →</a>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function companyQuality(company, robots = []) {
+  const sources = sourceList(company.website, company.sourceLinks);
+  return {
+    sourceConfidence: sources.length ? "Official source linked" : "Source needed",
+    robotCoverage: robots.length ? `${robots.length} linked profile${robots.length === 1 ? "" : "s"}` : "Robot list only",
+    marketConfidence: company.ticker ? "Public market ticker" : company.type || "Private / unlisted",
+    dataFreshness: company.sourceLinks?.length ? "Source-backed profile" : "Periodic review"
+  };
+}
+
 function robotAlternatives(robot, limit = 4) {
   const useCases = new Set(robotUseCases(robot).map((item) => item.slug));
   return pageState.robots
@@ -1932,6 +1980,7 @@ function renderRobotProfile() {
   const rank = robotRankings().find((item) => robotSlug(item.robot) === robotSlug(robot))?.rank;
   const video = robotVideo(robot);
   const quality = robotQuality(robot);
+  const robotSources = sourceList(robot.source, robot.sourceLinks);
   const alternatives = robotAlternatives(robot);
   const compareSlugs = [robot, ...alternatives.slice(0, 3)].map((item) => robotSlug(item)).join(",");
 
@@ -1978,6 +2027,7 @@ function renderRobotProfile() {
         <article><span>Review</span><strong>${pageEscape(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
       </div>
     </section>
+    ${renderSourceNotes(`${robot.name} source trail.`, robotSources, "Official product source")}
     <section class="profile-detail-grid">
       <article class="profile-facts">
         <h2>Robot facts</h2>
@@ -2167,6 +2217,8 @@ function renderCompanyProfile() {
     .slice(0, 6);
   const extraRows = optionalCompanyRows(company);
   const extraStats = optionalCompanyStats(company);
+  const quality = companyQuality(company, robots);
+  const companySources = sourceList(company.website, company.sourceLinks);
   const related = pageState.companies
     .filter((item) => item.name !== company.name && (broadCountryName(item.country) === broadCountryName(company.country) || pageNormalize(item.category).includes(pageNormalize(company.category).split(" ")[0])))
     .slice(0, 6);
@@ -2203,6 +2255,19 @@ function renderCompanyProfile() {
         <p>${pageEscape(company.name)} is tracked as part of Robologai's robotics and AI company database. Use this profile as a source-first launch point, then verify fast-changing details from the official website.</p>
       </article>
     </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Data Quality</p>
+        <h2>How confident Robologai is about this company profile.</h2>
+      </div>
+      <div class="data-quality-grid">
+        <article><span>Source</span><strong>${pageEscape(quality.sourceConfidence)}</strong><small>${pageEscape(company.website || "Official source missing")}</small></article>
+        <article><span>Robot coverage</span><strong>${pageEscape(quality.robotCoverage)}</strong><small>${pageEscape(company.robot || "Robotics / AI activity")}</small></article>
+        <article><span>Market</span><strong>${pageEscape(quality.marketConfidence)}</strong><small>${pageEscape(company.ticker || "No public ticker")}</small></article>
+        <article><span>Review</span><strong>${pageEscape(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+      </div>
+    </section>
+    ${renderSourceNotes(`${company.name} source trail.`, companySources, "Official company source")}
     ${extraStats.length ? `<section class="catalog-section">
       <div class="section-heading compact">
         <p>Company Scale</p>

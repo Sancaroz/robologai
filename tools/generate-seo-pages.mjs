@@ -234,6 +234,55 @@ function optionalCompanyStats(company) {
   ].filter(([, value]) => value);
 }
 
+function sourceHost(url = "") {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "source";
+  }
+}
+
+function sourceList(primary = "", extra = []) {
+  return [primary, ...(Array.isArray(extra) ? extra : [])]
+    .filter(Boolean)
+    .filter((url, index, list) => list.indexOf(url) === index)
+    .slice(0, 6);
+}
+
+function robotQuality(robot) {
+  const priceVisibility = Number(robot.priceVisibility || 0);
+  const score = robotScore(robot);
+  return {
+    sourceConfidence: robot.source ? "Official source linked" : "Source needed",
+    priceConfidence: priceVisibility >= 4 ? "Public price" : priceVisibility >= 2 ? "Partial / quote signal" : "No public price",
+    mediaVerified: robot.image ? "Official / source visual" : "Media pending",
+    dataFreshness: score >= 68 ? "High-priority watch" : "Periodic review"
+  };
+}
+
+function companyQuality(company, linkedRobots = []) {
+  const sources = sourceList(company.website, company.sourceLinks);
+  return {
+    sourceConfidence: sources.length ? "Official source linked" : "Source needed",
+    robotCoverage: linkedRobots.length ? `${linkedRobots.length} linked profile${linkedRobots.length === 1 ? "" : "s"}` : "Robot list only",
+    marketConfidence: company.ticker ? "Public market ticker" : company.type || "Private / unlisted",
+    dataFreshness: company.sourceLinks?.length ? "Source-backed profile" : "Periodic review"
+  };
+}
+
+function sourceNotes(title, sources, fallbackLabel = "Official source") {
+  if (!sources.length) return "";
+  return `\n      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Source Notes</p>
+          <h2>${escapeHtml(title)}</h2>
+        </div>
+        <div class="source-note-grid">
+          ${sources.map((url, index) => `<article><span>${index === 0 ? escapeHtml(fallbackLabel) : "Supporting source"}</span><strong>${escapeHtml(sourceHost(url))}</strong><small>${escapeHtml(url)}</small><a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">Open source →</a></article>`).join("")}
+        </div>
+      </section>`;
+}
+
 function navClass(active, item) {
   return active === item ? ' class="active"' : "";
 }
@@ -255,7 +304,7 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
     <title>${escapeHtml(title)} | robologai</title>
     <link rel="icon" href="../assets/robologai-icon-v2.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/robologai-icon-v2.svg">
-    <link rel="stylesheet" href="../styles.css?v=20260515-premium-logo">
+    <link rel="stylesheet" href="../styles.css?v=20260517-profile-quality">
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
   </head>
   <body>
@@ -272,10 +321,6 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
       <div class="header-actions intelligence-controls">
         <span class="live-control" aria-label="Robotics signal feed"><i></i><b>Signals</b><small data-live-signals-count>12 tracked</small></span>
         <a class="language-pill" href="../tr.html"><span>Language</span><strong>TR</strong></a>
-        <a class="icon-button nav-search-button" href="../index.html#company-search" aria-label="Search Robologai">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.2-4.2m2.2-5.3a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
-          <span>Search</span>
-        </a>
         <a class="join-button x-cta" href="https://x.com/robologai" target="_blank" rel="noopener noreferrer" aria-label="Follow @robologai on X">Join Intel Feed</a>
       </div>
     </header>
@@ -299,6 +344,8 @@ function robotPage(robot) {
   const score = robotScore(robot);
   const rank = robotRank(robot);
   const breakdown = robotScoreBreakdown(robot);
+  const quality = robotQuality(robot);
+  const sources = sourceList(robot.source, robot.sourceLinks);
   const related = relatedRobots(robot);
   const title = `${robot.name} Robot Profile: Price, Use Case, Status`;
   const description = `${robot.name} by ${robot.company}: ${robot.category} robot profile with availability, price signal, use case, status, source link, and Robologai readiness score.`;
@@ -362,6 +409,18 @@ function robotPage(robot) {
       </section>
       <section class="catalog-section">
         <div class="section-heading compact">
+          <p>Data Quality</p>
+          <h2>How confident Robologai is about this profile.</h2>
+        </div>
+        <div class="data-quality-grid">
+          <article><span>Source</span><strong>${escapeHtml(quality.sourceConfidence)}</strong><small>${escapeHtml(robot.source || "Official source missing")}</small></article>
+          <article><span>Price</span><strong>${escapeHtml(quality.priceConfidence)}</strong><small>${escapeHtml(robot.price)}</small></article>
+          <article><span>Media</span><strong>${escapeHtml(quality.mediaVerified)}</strong><small>${escapeHtml(robot.imageCredit || "Source image / page used")}</small></article>
+          <article><span>Review</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+        </div>
+      </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}
+      <section class="catalog-section">
+        <div class="section-heading compact">
           <p>Compare Next</p>
           <h2>Robots to compare with ${escapeHtml(robot.name)}.</h2>
         </div>
@@ -383,6 +442,8 @@ function companyPage(company) {
   const related = relatedCompanies(company);
   const extraRows = optionalCompanyRows(company);
   const extraStats = optionalCompanyStats(company);
+  const quality = companyQuality(company, linkedRobots);
+  const sources = sourceList(company.website, company.sourceLinks);
   const title = `${company.name} Company Profile: Robots, AI, Market Signal`;
   const description = `${company.name} profile on robologai: ${company.category}, country, public/private status, ticker, robot assets, official website, and related robotics companies.`;
   const canonical = `https://robologai.com/companies/${pageSlug}.html`;
@@ -423,7 +484,19 @@ function companyPage(company) {
           <h2>Robologai signal</h2>
           <p>${escapeHtml(company.name)} is tracked in Robologai's robotics and AI company database. This static profile gives search engines and readers a stable source-first page, while the interactive database remains available for filtering and comparison.</p>
         </article>
-      </section>${extraStats.length ? `
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Data Quality</p>
+          <h2>How confident Robologai is about this company profile.</h2>
+        </div>
+        <div class="data-quality-grid">
+          <article><span>Source</span><strong>${escapeHtml(quality.sourceConfidence)}</strong><small>${escapeHtml(company.website || "Official source missing")}</small></article>
+          <article><span>Robot coverage</span><strong>${escapeHtml(quality.robotCoverage)}</strong><small>${escapeHtml(company.robot || "Robotics / AI activity")}</small></article>
+          <article><span>Market</span><strong>${escapeHtml(quality.marketConfidence)}</strong><small>${escapeHtml(company.ticker || "No public ticker")}</small></article>
+          <article><span>Review</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+        </div>
+      </section>${sourceNotes(`${company.name} source trail.`, sources, "Official company source")}${extraStats.length ? `
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Company Scale</p>

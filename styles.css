@@ -5716,6 +5716,7 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid,
 .compare-summary-grid,
 .data-quality-grid,
+.source-note-grid,
 .tr-guide-grid,
 .compare-preset-grid,
 .faq-grid {
@@ -5731,6 +5732,7 @@ body.light-theme .profile-main > div > span {
 .buyer-guide-grid,
 .profile-stack-grid,
 .data-quality-grid,
+.source-note-grid,
 .tr-guide-grid,
 .compare-preset-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -5753,6 +5755,7 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid article,
 .compare-summary-grid article,
 .data-quality-grid article,
+.source-note-grid article,
 .tr-guide-grid a,
 .compare-preset-grid a,
 .faq-grid details {
@@ -5779,6 +5782,7 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid span,
 .compare-summary-grid span,
 .data-quality-grid span,
+.source-note-grid span,
 .tr-guide-grid span,
 .compare-preset-grid span {
   color: var(--blue-2);
@@ -5793,6 +5797,7 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid small,
 .company-signal-grid small,
 .data-quality-grid small,
+.source-note-grid small,
 .tr-guide-grid small {
   color: #c4cedc;
   line-height: 1.45;
@@ -5804,12 +5809,23 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid strong,
 .compare-summary-grid strong,
 .data-quality-grid strong,
+.source-note-grid strong,
 .tr-guide-grid strong,
 .compare-preset-grid strong,
 .faq-grid summary {
   color: #eef6ff;
   font-size: 16px;
   line-height: 1.25;
+}
+
+.source-note-grid article {
+  min-height: 170px;
+}
+
+.source-note-grid a {
+  align-self: end;
+  color: #7df9ff;
+  font-weight: 950;
 }
 
 .faq-grid details {
@@ -10104,6 +10120,7 @@ body.light-theme .buyer-guide-grid small,
 body.light-theme .profile-stack-grid small,
 body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
+body.light-theme .source-note-grid small,
 body.light-theme .tr-guide-grid small,
 body.light-theme .faq-grid p,
 body.light-theme .featured-robot-card p,
@@ -10123,6 +10140,7 @@ body.light-theme .profile-stack-grid article,
 body.light-theme .company-signal-grid article,
 body.light-theme .compare-summary-grid article,
 body.light-theme .data-quality-grid article,
+body.light-theme .source-note-grid article,
 body.light-theme .tr-guide-grid a,
 body.light-theme .compare-preset-grid a,
 body.light-theme .faq-grid details,
@@ -10154,6 +10172,7 @@ body.light-theme .profile-stack-grid strong,
 body.light-theme .company-signal-grid strong,
 body.light-theme .compare-summary-grid strong,
 body.light-theme .data-quality-grid strong,
+body.light-theme .source-note-grid strong,
 body.light-theme .tr-guide-grid strong,
 body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
@@ -10398,6 +10417,7 @@ body.light-theme .facts span {
   .home-compare-grid,
   .compare-summary-grid,
   .data-quality-grid,
+  .source-note-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,
@@ -10713,6 +10733,7 @@ body.light-theme .facts span {
   .company-signal-grid,
   .compare-summary-grid,
   .data-quality-grid,
+  .source-note-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,
