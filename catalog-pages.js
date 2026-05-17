@@ -2728,25 +2728,98 @@ function renderMarketPage() {
   const publicGrid = document.querySelector("[data-market-public]");
   const privateGrid = document.querySelector("[data-market-private]");
   const priceGrid = document.querySelector("[data-market-prices]");
-  if (!publicGrid && !privateGrid && !priceGrid) return;
+  const overviewGrid = document.querySelector("[data-market-overview]");
+  const segmentGrid = document.querySelector("[data-market-segments]");
+  const priceAccessGrid = document.querySelector("[data-market-price-access]");
+  const leaderGrid = document.querySelector("[data-market-leaders]");
+  if (!publicGrid && !privateGrid && !priceGrid && !overviewGrid && !segmentGrid && !priceAccessGrid && !leaderGrid) return;
 
   const publicCompanies = pageState.companies.filter((company) => pageNormalize(company.type).includes("public")).slice(0, 18);
   const privateBuilders = pageState.companies.filter((company) => pageNormalize(`${company.type} ${company.category}`).includes("private") && pageNormalize(company.category).includes("robot")).slice(0, 18);
   const priceRobots = pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2).slice(0, 12);
+  const allPublicCompanies = pageState.companies.filter((company) => pageNormalize(company.type).includes("public"));
+  const pricedRobots = pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2);
+  const sourceLinkedRobots = pageState.robots.filter((robot) => robot.source);
+  const segments = [
+    ["Humanoid", (robot) => pageNormalize(robot.category).includes("humanoid")],
+    ["Quadruped", (robot) => pageNormalize(robot.category).includes("quadruped")],
+    ["Wearable", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("wearable") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("exo")],
+    ["Industrial / Warehouse", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("industrial") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("warehouse") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("logistics")],
+    ["AI Infrastructure", (robot) => pageNormalize(`${robot.category} ${robot.useCase} ${robot.company}`).includes("ai") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("embodied")]
+  ];
+  const priceAccess = [
+    ["Public / visible", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 4), "Official or strong public pricing signal"],
+    ["Retailer / reference", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2 && Number(robot.priceVisibility || 0) < 4), "Useful benchmark, not always official MSRP"],
+    ["Enterprise quote", pageState.robots.filter((robot) => pageNormalize(robot.price).includes("enterprise") || pageNormalize(robot.price).includes("quote")), "Commercial access requires vendor contact"],
+    ["No public price", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) <= 1), "Market remains hard to benchmark"]
+  ];
+  const rankings = robotRankings();
 
+  if (overviewGrid) {
+    overviewGrid.innerHTML = [
+      ["Companies indexed", pageState.companies.length, `${allPublicCompanies.length} public-market proxies tracked`],
+      ["Robot profiles", pageState.robots.length, `${pricedRobots.length} with useful price/access signal`],
+      ["Private builders", pageState.companies.filter((company) => pageNormalize(company.type).includes("private")).length, "Venture, industrial, and robotics builders"],
+      ["Source coverage", `${sourceLinkedRobots.length}/${pageState.robots.length}`, "Robot profiles with official sources"]
+    ].map(([label, value, note]) => `
+      <article><span>${pageEscape(label)}</span><strong>${pageEscape(value)}</strong><small>${pageEscape(note)}</small></article>
+    `).join("");
+  }
+  if (segmentGrid) {
+    segmentGrid.innerHTML = segments.map(([label, predicate]) => {
+      const robots = pageState.robots.filter(predicate);
+      const leader = [...robots].sort((a, b) => robotScore(b) - robotScore(a))[0];
+      return `
+        <article>
+          <span>${pageEscape(label)}</span>
+          <strong>${robots.length}</strong>
+          <small>${leader ? `${pageEscape(leader.name)} leads this segment at ${robotScore(leader)} R-Score` : "No tracked robots yet"}</small>
+          ${leader ? `<a href="${pageEscape(robotProfileHref(leader))}">Open leader →</a>` : ""}
+        </article>
+      `;
+    }).join("");
+  }
   if (publicGrid) {
     publicGrid.innerHTML = publicCompanies.map((company) => `
-      <article class="signal-card"><strong>${pageEscape(company.name)}</strong><span>${pageEscape(company.ticker || company.type)}</span><small>${pageEscape(company.category)}</small><a href="${pageEscape(company.website)}" target="_blank" rel="noopener noreferrer">Source →</a></article>
+      <article class="signal-card"><strong>${pageEscape(company.name)}</strong><span>${pageEscape(company.ticker || company.type)}</span><small>${pageEscape(company.category)}</small><a href="${pageEscape(companyProfileHref(company))}">Profile →</a></article>
     `).join("");
   }
   if (privateGrid) {
     privateGrid.innerHTML = privateBuilders.map((company) => `
-      <article class="signal-card"><strong>${pageEscape(company.name)}</strong><span>${pageEscape(company.country)}</span><small>${pageEscape(company.robot || company.category)}</small><a href="${pageEscape(company.website)}" target="_blank" rel="noopener noreferrer">Source →</a></article>
+      <article class="signal-card"><strong>${pageEscape(company.name)}</strong><span>${pageEscape(company.country)}</span><small>${pageEscape(company.robot || company.category)}</small><a href="${pageEscape(companyProfileHref(company))}">Profile →</a></article>
     `).join("");
+  }
+  if (priceAccessGrid) {
+    priceAccessGrid.innerHTML = priceAccess.map(([label, robots, note]) => {
+      const leader = [...robots].sort((a, b) => robotScore(b) - robotScore(a))[0];
+      return `
+        <article>
+          <span>${pageEscape(label)}</span>
+          <strong>${robots.length}</strong>
+          <small>${pageEscape(note)}${leader ? ` · ${pageEscape(leader.name)} is the strongest tracked example.` : ""}</small>
+        </article>
+      `;
+    }).join("");
   }
   if (priceGrid) {
     priceGrid.innerHTML = priceRobots.map((robot) => `
-      <article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.price)}</small><a href="${pageEscape(robot.source)}" target="_blank" rel="noopener noreferrer">Source →</a></article>
+      <article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.price)}</small><a href="${pageEscape(robotProfileHref(robot))}">Profile →</a></article>
+    `).join("");
+  }
+  if (leaderGrid) {
+    const leaders = [
+      ["R-Score leader", rankings[0], "Best overall readiness signal"],
+      ["Commercial readiness", [...rankings].sort((a, b) => b.breakdown.commercial - a.breakdown.commercial)[0], "Strongest maturity and deployment mix"],
+      ["Price transparency", [...rankings].sort((a, b) => b.breakdown.price - a.breakdown.price)[0], "Best visible price/access signal"],
+      ["Source proof", [...rankings].sort((a, b) => b.breakdown.source + b.breakdown.media - (a.breakdown.source + a.breakdown.media))[0], "Strongest source and media trail"]
+    ];
+    leaderGrid.innerHTML = leaders.map(([label, item, note]) => `
+      <article>
+        <span>${pageEscape(label)}</span>
+        <strong>${pageEscape(item?.robot?.name || "Pending")}</strong>
+        <small>${pageEscape(note)}${item ? ` · ${item.score} R-Score` : ""}</small>
+        ${item ? `<a href="${pageEscape(robotProfileHref(item.robot))}">Open profile →</a>` : ""}
+      </article>
     `).join("");
   }
   renderSignalFeed("[data-market-signals]");

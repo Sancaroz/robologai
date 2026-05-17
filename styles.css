@@ -6277,6 +6277,71 @@ body.light-theme .humanoid-preview-card dt {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.market-overview-grid,
+.market-segment-grid,
+.market-price-access-grid,
+.market-leader-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.market-overview-grid,
+.market-price-access-grid,
+.market-leader-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.market-segment-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.market-overview-grid article,
+.market-segment-grid article,
+.market-price-access-grid article,
+.market-leader-grid article {
+  display: grid;
+  gap: 9px;
+  min-height: 148px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
+}
+
+.market-overview-grid span,
+.market-segment-grid span,
+.market-price-access-grid span,
+.market-leader-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.market-overview-grid strong,
+.market-segment-grid strong,
+.market-price-access-grid strong,
+.market-leader-grid strong {
+  color: #eef6ff;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.market-overview-grid small,
+.market-segment-grid small,
+.market-price-access-grid small,
+.market-leader-grid small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
+.market-segment-grid a,
+.market-leader-grid a {
+  align-self: end;
+  color: #7df9ff;
+  font-weight: 950;
+}
+
 .signal-card {
   display: grid;
   gap: 8px;
@@ -10268,6 +10333,10 @@ body.light-theme .product-lineup-grid small,
 body.light-theme .robot-snapshot-grid small,
 body.light-theme .robot-readiness-grid small,
 body.light-theme .deployment-context-grid small,
+body.light-theme .market-overview-grid small,
+body.light-theme .market-segment-grid small,
+body.light-theme .market-price-access-grid small,
+body.light-theme .market-leader-grid small,
 body.light-theme .tr-guide-grid small,
 body.light-theme .faq-grid p,
 body.light-theme .featured-robot-card p,
@@ -10294,6 +10363,10 @@ body.light-theme .product-lineup-grid article,
 body.light-theme .robot-snapshot-grid article,
 body.light-theme .robot-readiness-grid article,
 body.light-theme .deployment-context-grid article,
+body.light-theme .market-overview-grid article,
+body.light-theme .market-segment-grid article,
+body.light-theme .market-price-access-grid article,
+body.light-theme .market-leader-grid article,
 body.light-theme .tr-guide-grid a,
 body.light-theme .compare-preset-grid a,
 body.light-theme .faq-grid details,
@@ -10332,6 +10405,10 @@ body.light-theme .product-lineup-grid strong,
 body.light-theme .robot-snapshot-grid strong,
 body.light-theme .robot-readiness-grid strong,
 body.light-theme .deployment-context-grid strong,
+body.light-theme .market-overview-grid strong,
+body.light-theme .market-segment-grid strong,
+body.light-theme .market-price-access-grid strong,
+body.light-theme .market-leader-grid strong,
 body.light-theme .tr-guide-grid strong,
 body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
@@ -10601,6 +10678,10 @@ body.light-theme .facts span {
   .robot-snapshot-grid,
   .robot-readiness-grid,
   .deployment-context-grid,
+  .market-overview-grid,
+  .market-segment-grid,
+  .market-price-access-grid,
+  .market-leader-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,
@@ -11018,6 +11099,10 @@ body.light-theme .facts span {
 
   .company-catalog-grid,
   .price-signal-grid,
+  .market-overview-grid,
+  .market-segment-grid,
+  .market-price-access-grid,
+  .market-leader-grid,
   .price-board,
   .video-gallery-grid,
   .catalog-grid,
