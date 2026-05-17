@@ -5767,12 +5767,24 @@ body.light-theme .profile-main > div > span {
   margin-top: 16px;
 }
 
+.compare-summary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.compare-best-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
 .home-intelligence-grid article,
 .signal-update-card,
 .buyer-guide-grid article,
 .profile-stack-grid article,
 .company-signal-grid article,
 .compare-summary-grid article,
+.compare-best-fit-grid article,
 .data-quality-grid article,
 .source-note-grid article,
 .company-snapshot-grid article,
@@ -5805,6 +5817,7 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid span,
 .company-signal-grid span,
 .compare-summary-grid span,
+.compare-best-fit-grid span,
 .data-quality-grid span,
 .source-note-grid span,
 .company-snapshot-grid span,
@@ -5842,6 +5855,7 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid strong,
 .company-signal-grid strong,
 .compare-summary-grid strong,
+.compare-best-fit-grid strong,
 .data-quality-grid strong,
 .source-note-grid strong,
 .company-snapshot-grid strong,
@@ -6302,6 +6316,44 @@ body.light-theme .humanoid-preview-card dt {
   color: var(--muted);
 }
 
+.full-compare-table td small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+}
+
+.compare-empty-state {
+  margin-top: 14px;
+}
+
+.compare-empty-state article {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border: 1px dashed rgba(120, 231, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(120, 231, 255, 0.08);
+}
+
+.compare-empty-state span,
+.compare-best-fit-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.compare-empty-state strong {
+  color: #eef6ff;
+  font-size: 18px;
+}
+
+.compare-empty-state small,
+.compare-best-fit-grid small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
 .mini-footer {
   display: flex;
   align-items: center;
@@ -6705,6 +6757,10 @@ body.light-theme .humanoid-preview-card dt {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
+  max-height: 260px;
+  overflow: auto;
+  margin-top: 12px;
+  padding: 4px;
 }
 
 .compare-picker label {
@@ -6720,8 +6776,42 @@ body.light-theme .humanoid-preview-card dt {
   padding: 0 13px;
 }
 
+.compare-picker label small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .compare-picker input {
   accent-color: var(--blue);
+}
+
+.compare-search {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.compare-search span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.compare-search input {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  color: #eaf6ff;
+  background: rgba(7, 17, 31, 0.78);
+  font: inherit;
+  padding: 0 14px;
+}
+
+.compare-no-results {
+  margin: 0;
+  color: var(--muted);
 }
 
 .video-gallery-grid {
@@ -10196,6 +10286,7 @@ body.light-theme .buyer-guide-grid article,
 body.light-theme .profile-stack-grid article,
 body.light-theme .company-signal-grid article,
 body.light-theme .compare-summary-grid article,
+body.light-theme .compare-best-fit-grid article,
 body.light-theme .data-quality-grid article,
 body.light-theme .source-note-grid article,
 body.light-theme .company-snapshot-grid article,
@@ -10233,6 +10324,7 @@ body.light-theme .buyer-guide-grid strong,
 body.light-theme .profile-stack-grid strong,
 body.light-theme .company-signal-grid strong,
 body.light-theme .compare-summary-grid strong,
+body.light-theme .compare-best-fit-grid strong,
 body.light-theme .data-quality-grid strong,
 body.light-theme .source-note-grid strong,
 body.light-theme .company-snapshot-grid strong,
@@ -10255,6 +10347,24 @@ body.light-theme .use-case-robot-grid strong,
 body.light-theme .profile-intel-strip strong,
 body.light-theme .compare-picker label {
   color: #162235;
+}
+
+body.light-theme .compare-search input {
+  color: #162235;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .compare-empty-state article {
+  background: rgba(20, 184, 166, 0.08);
+}
+
+body.light-theme .compare-empty-state strong {
+  color: #162235;
+}
+
+body.light-theme .compare-empty-state small,
+body.light-theme .compare-best-fit-grid small {
+  color: #43566c;
 }
 
 body.light-theme .profile-hero > div > span,
@@ -10483,6 +10593,7 @@ body.light-theme .facts span {
   .company-signal-grid,
   .home-compare-grid,
   .compare-summary-grid,
+  .compare-best-fit-grid,
   .data-quality-grid,
   .source-note-grid,
   .company-snapshot-grid,
@@ -10804,6 +10915,7 @@ body.light-theme .facts span {
   .profile-stack-grid,
   .company-signal-grid,
   .compare-summary-grid,
+  .compare-best-fit-grid,
   .data-quality-grid,
   .source-note-grid,
   .company-snapshot-grid,

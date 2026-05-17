@@ -24,9 +24,897 @@ const pageState = {
 };
 
 const robotFallback = [
-  { name: "Optimus", company: "Tesla", category: "Humanoid", country: "USA", status: "Internal development", availability: "Not publicly sold", price: "No official public price", useCase: "Manufacturing, logistics, future general-purpose work", source: "https://www.tesla.com/AI" },
-  { name: "Figure 02", company: "Figure AI", category: "Humanoid", country: "USA", status: "Enterprise pilots", availability: "Enterprise only", price: "No official public price", useCase: "Workplace manipulation and factory automation", source: "https://www.figure.ai/" },
-  { name: "G1", company: "Unitree Robotics", category: "Humanoid", country: "China", status: "Order-based availability", availability: "Available / order-based", price: "From around $16K depending on configuration", useCase: "Research, education, prototyping", source: "https://www.unitree.com/g1/" }
+  {
+    "name": "Optimus",
+    "company": "Tesla",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "Internal development",
+    "availability": "Not publicly sold",
+    "price": "No official public price",
+    "useCase": "Manufacturing, logistics, future general-purpose work",
+    "height": "Not finalized",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Optimus_Tesla.jpg",
+    "imageCredit": "Wikimedia Commons / public domain",
+    "source": "https://www.tesla.com/AI",
+    "keywords": [
+      "factory",
+      "autonomy",
+      "tesla",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Figure 02",
+    "company": "Figure AI",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "Enterprise pilots",
+    "availability": "Enterprise only",
+    "price": "No official public price",
+    "useCase": "Workplace manipulation and factory automation",
+    "height": "5 ft 6 in",
+    "runtime": "Up to 5 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "https://images.ctfassets.net/qx5k8y1u9drj/56I3mHKEdLZdrsONwOm3sc/63b1569bb855cc334c2dda67ce40ba4a/generic-page-image.jpeg",
+    "imageCredit": "Figure AI official media",
+    "source": "https://www.figure.ai/",
+    "keywords": [
+      "figure",
+      "workplace",
+      "factory",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Persona Humanoid",
+    "company": "Persona AI",
+    "category": "Heavy-industry humanoid",
+    "country": "USA",
+    "status": "Prototype / pre-production development",
+    "availability": "Pre-orders / leasing program; targeting Q3 2027 deployment",
+    "price": "Lease terms; no official public unit price",
+    "useCase": "Skilled industrial labor across shipyards, energy, construction, manufacturing, welding, fabrication, assembly and mining",
+    "height": "Not disclosed",
+    "runtime": "Targeting 2 work shifts per day",
+    "maturity": 3,
+    "priceVisibility": 2,
+    "image": "https://persona.ai/wp-content/uploads/image-of-humanoid-robot.webp",
+    "imageCredit": "Persona AI official media",
+    "source": "https://persona.ai/humanoid/",
+    "keywords": [
+      "persona",
+      "industrial humanoid",
+      "shipyards",
+      "energy",
+      "construction",
+      "manufacturing",
+      "welder",
+      "fabricator",
+      "assembler",
+      "miner"
+    ]
+  },
+  {
+    "name": "Apollo",
+    "company": "Apptronik",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "Commercial scaling",
+    "availability": "Enterprise pilots",
+    "price": "No official public price",
+    "useCase": "Logistics, manufacturing, industrial support",
+    "height": "5 ft 8 in",
+    "runtime": "About 4 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "https://cdn.prod.website-files.com/646de3abb3e62d339f089e28/64e54eb19605183a5d58e077_Hero%20Shot%2001.png",
+    "imageCredit": "Apptronik official media",
+    "source": "https://apptronik.com/",
+    "keywords": [
+      "apollo",
+      "industrial",
+      "warehouse",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Digit",
+    "company": "Agility Robotics",
+    "category": "Humanoid logistics",
+    "country": "USA",
+    "status": "Enterprise deployment",
+    "availability": "RaaS / enterprise",
+    "price": "Enterprise pricing",
+    "useCase": "Warehouse movement and tote handling",
+    "height": "5 ft 9 in",
+    "runtime": "About 2 hours",
+    "maturity": 5,
+    "priceVisibility": 2,
+    "image": "https://cdn.prod.website-files.com/68d6ca150ffa11fdc25d7575/698c88da0a3bf08e257409ea_digit-profile.jpg",
+    "imageCredit": "Agility Robotics official media",
+    "source": "https://agilityrobotics.com/",
+    "keywords": [
+      "digit",
+      "warehouse",
+      "logistics",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Atlas",
+    "company": "Boston Dynamics",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "R&D platform",
+    "availability": "Not publicly sold",
+    "price": "No official public price",
+    "useCase": "Advanced mobility, manipulation, industrial R&D",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "https://bostondynamics.com/wp-content/uploads/2024/04/atlas-blue-mobile-copy.jpg",
+    "imageCredit": "Boston Dynamics official media",
+    "source": "https://bostondynamics.com/atlas/",
+    "keywords": [
+      "atlas",
+      "mobility",
+      "boston dynamics",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Spot",
+    "company": "Boston Dynamics",
+    "category": "Quadruped",
+    "country": "USA",
+    "status": "Commercial robot",
+    "availability": "Available",
+    "price": "Base price has been reported around $74,500+",
+    "useCase": "Inspection, mapping, industrial safety",
+    "height": "33 in",
+    "runtime": "About 90 minutes",
+    "maturity": 5,
+    "priceVisibility": 4,
+    "image": "https://bostondynamics.com/wp-content/uploads/2024/02/spot-stairs-safety-lights.jpg",
+    "imageCredit": "Boston Dynamics official media",
+    "source": "https://bostondynamics.com/products/spot/",
+    "keywords": [
+      "spot",
+      "inspection",
+      "quadruped",
+      "commercial"
+    ]
+  },
+  {
+    "name": "G1",
+    "company": "Unitree Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Order-based availability",
+    "availability": "Available / order-based",
+    "price": "From around $16K depending on configuration",
+    "useCase": "Research, education, prototyping",
+    "height": "132 cm",
+    "runtime": "About 2 hours",
+    "maturity": 5,
+    "priceVisibility": 5,
+    "image": "https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png",
+    "imageCredit": "Unitree official media",
+    "source": "https://www.unitree.com/g1/",
+    "keywords": [
+      "g1",
+      "unitree",
+      "research",
+      "price visible"
+    ]
+  },
+  {
+    "name": "H1",
+    "company": "Unitree Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Commercial / research platform",
+    "availability": "Order-based",
+    "price": "Configuration dependent",
+    "useCase": "Research, mobility, humanoid development",
+    "height": "180 cm",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "image": "https://www.unitree.com/images/ea2d2b637df84e3bacd508cd1f2711e5_2744x1596.jpg",
+    "imageCredit": "Unitree official media",
+    "source": "https://www.unitree.com/",
+    "keywords": [
+      "h1",
+      "unitree",
+      "humanoid",
+      "mobility"
+    ]
+  },
+  {
+    "name": "PM01",
+    "company": "EngineAI",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Developer platform",
+    "availability": "Available / developer focused",
+    "price": "Public estimates vary by configuration",
+    "useCase": "Research, education, embodied AI development",
+    "height": "138 cm",
+    "runtime": "About 2 hours",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "image": "https://en-engineai-1304599088.cos.ap-guangzhou.myqcloud.com/uploads/frame/PM01/PM01_00000.png",
+    "imageCredit": "EngineAI official media",
+    "source": "https://en.engineai.com.cn/product-pm01.html",
+    "keywords": [
+      "pm01",
+      "engineai",
+      "open source",
+      "developer"
+    ]
+  },
+  {
+    "name": "Booster T1",
+    "company": "Booster Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Developer and competition platform",
+    "availability": "Available / order-based",
+    "price": "Configuration dependent",
+    "useCase": "Education, RoboCup, research and development",
+    "height": "About 120 cm class",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "image": "https://www.booster.tech/_astro/product-1.Dk_Ke_Kw_24hsch.webp",
+    "imageCredit": "Booster Robotics official media",
+    "source": "https://www.booster.tech/",
+    "keywords": [
+      "booster",
+      "t1",
+      "robocup",
+      "education"
+    ]
+  },
+  {
+    "name": "NEO",
+    "company": "1X Technologies",
+    "category": "Home humanoid",
+    "country": "Norway / USA",
+    "status": "Developing / limited access",
+    "availability": "Limited",
+    "price": "No broad public price",
+    "useCase": "Home assistance and human environments",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "source": "https://www.1x.tech/",
+    "keywords": [
+      "neo",
+      "home robot",
+      "1x",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Memo",
+    "company": "Sunday Robotics",
+    "category": "Home robot",
+    "country": "USA",
+    "status": "Beta planned",
+    "availability": "Beta launching late 2026",
+    "price": "No final retail price",
+    "useCase": "Dishes, laundry, coffee, household assistance",
+    "height": "Variable reach",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "https://cdn.sanity.io/images/1omys9i3/production/319392a9e6c83e4b9f7c2158c5b10fa6f75e84c1-2400x1260.png",
+    "imageCredit": "Sunday Robotics official media",
+    "source": "https://www.sunday.ai/",
+    "keywords": [
+      "memo",
+      "home robot",
+      "household",
+      "sunday"
+    ]
+  },
+  {
+    "name": "Sprout",
+    "company": "Fauna Robotics",
+    "category": "Soft humanoid",
+    "country": "USA",
+    "status": "Developer / research platform",
+    "availability": "Early access",
+    "price": "Reported around $50K",
+    "useCase": "Research, development, human-robot interaction",
+    "height": "About 3.5 ft",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 4,
+    "image": "https://cdn.prod.website-files.com/6931911db0300aa6e7e3fc81/6977d9e235cf9a54353a625b_fauna_social_6%20(1).jpg",
+    "imageCredit": "Fauna Robotics official media",
+    "source": "https://faunarobotics.com/",
+    "keywords": [
+      "sprout",
+      "soft humanoid",
+      "fauna",
+      "research"
+    ]
+  },
+  {
+    "name": "Phoenix",
+    "company": "Sanctuary AI",
+    "category": "Humanoid",
+    "country": "Canada",
+    "status": "Enterprise development",
+    "availability": "Enterprise / pilots",
+    "price": "No official public price",
+    "useCase": "General-purpose work in structured environments",
+    "height": "5 ft 7 in",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "source": "https://www.sanctuary.ai/",
+    "keywords": [
+      "phoenix",
+      "sanctuary",
+      "general purpose",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Ameca",
+    "company": "Engineered Arts",
+    "category": "Social humanoid",
+    "country": "United Kingdom",
+    "status": "Commercial / demo platform",
+    "availability": "Available for commercial engagement",
+    "price": "Enterprise / quote-based",
+    "useCase": "Human-robot interaction, events, research",
+    "height": "Human scale",
+    "runtime": "Not disclosed",
+    "maturity": 5,
+    "priceVisibility": 2,
+    "source": "https://www.engineeredarts.co.uk/",
+    "keywords": [
+      "ameca",
+      "social humanoid",
+      "hri",
+      "engineered arts"
+    ]
+  },
+  {
+    "name": "Walker S",
+    "company": "UBTECH Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Industrial pilots",
+    "availability": "Enterprise",
+    "price": "No official public price",
+    "useCase": "Manufacturing, automotive, industrial tasks",
+    "height": "Human scale",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "source": "https://www.ubtrobot.com/",
+    "keywords": [
+      "walker",
+      "ubtech",
+      "industrial",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "AgiBot A2",
+    "company": "AgiBot",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Commercializing",
+    "availability": "Enterprise / developer ecosystem",
+    "price": "No official public price",
+    "useCase": "Embodied AI datasets, manufacturing, general robot development",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "source": "https://www.agibot.com/",
+    "keywords": [
+      "agibot",
+      "a2",
+      "embodied ai",
+      "china"
+    ]
+  },
+  {
+    "name": "LimX Oli",
+    "company": "LimX Dynamics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Product launched",
+    "availability": "Buy now / enterprise inquiry",
+    "price": "No broad public price",
+    "useCase": "Research, manufacturing, business and household services",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 2,
+    "image": "https://www.limxdynamics.com/_next/image?url=%2Fimages%2Fheader%2Fproduct-1.png&w=1080&q=75",
+    "imageCredit": "LimX Dynamics official media",
+    "source": "https://www.limxdynamics.com/en",
+    "keywords": [
+      "limx",
+      "oli",
+      "physical ai",
+      "agentic os"
+    ]
+  },
+  {
+    "name": "KUAVO",
+    "company": "Leju Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Industrial and research scenarios",
+    "availability": "Enterprise / research platform",
+    "price": "No official public price",
+    "useCase": "Industrial manufacturing, business services, research training",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "source": "https://www.lejurobot.com/en",
+    "keywords": [
+      "kuavo",
+      "leju",
+      "industrial",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "PUDU D9",
+    "company": "Pudu Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Prototype / commercial path",
+    "availability": "Contact sales",
+    "price": "Quote-based; third-party estimates vary",
+    "useCase": "Object manipulation, service robotics, customer engagement",
+    "height": "170 cm",
+    "runtime": "Battery: 15 Ah / 0.72 kWh",
+    "maturity": 3,
+    "priceVisibility": 2,
+    "image": "https://cdn.pudutech.com/official-website/d9/section3_front_en.webp",
+    "imageCredit": "Pudu Robotics official media",
+    "source": "https://www.pudurobotics.com/en/products/d9",
+    "keywords": [
+      "pudu",
+      "d9",
+      "service robot",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "MagicBot Gen1",
+    "company": "MagicLab",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "General-purpose humanoid",
+    "availability": "Purchase / inquiry",
+    "price": "No broad public price",
+    "useCase": "Flexible manufacturing and multi-robot collaboration",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 2,
+    "source": "https://www.magiclab.top/en/human",
+    "keywords": [
+      "magicbot",
+      "magiclab",
+      "manufacturing",
+      "humanoid"
+    ]
+  },
+  {
+    "name": "Galbot G1",
+    "company": "Galbot",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Developer platform / official robot",
+    "availability": "Developer documentation and inquiry",
+    "price": "No official public price",
+    "useCase": "General-purpose humanoid work, embodied AI development, manipulation and pick-and-place tasks",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/g1/g1-poster.jpg",
+    "imageCredit": "Galbot official media",
+    "source": "https://developer.galbot.com/docs/g1/2.2.4/zh/g1",
+    "keywords": [
+      "galbot",
+      "g1",
+      "humanoid",
+      "embodied ai",
+      "vla",
+      "manipulation",
+      "pick and place"
+    ]
+  },
+  {
+    "name": "Galbot S1",
+    "company": "Galbot",
+    "category": "Heavy-load industrial platform",
+    "country": "China",
+    "status": "Developer platform / official robot",
+    "availability": "Developer documentation and inquiry",
+    "price": "No official public price",
+    "useCase": "Industrial heavy-load robotics, simulation, visualization and embodied AI development",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/s1/product-en.png",
+    "imageCredit": "Galbot official media",
+    "source": "https://developer.galbot.com/docs/s1/2.0.0/zh/s1",
+    "keywords": [
+      "galbot",
+      "s1",
+      "industrial robot",
+      "heavy load",
+      "embodied ai",
+      "simulation"
+    ]
+  },
+  {
+    "name": "Embodied Tien Kung 3.0",
+    "company": "X-Humanoid",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Launched / advanced platform",
+    "availability": "Developer and enterprise ecosystem",
+    "price": "No official public price",
+    "useCase": "Industrial, commercial, embodied AI development and high-dynamic autonomous tasks",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "assets/robots/tien-kung-3.png",
+    "imageCredit": "X-Humanoid / PRNewswire official press release",
+    "source": "https://www.x-humanoid.com/",
+    "keywords": [
+      "tien kung",
+      "x-humanoid",
+      "embodied ai",
+      "wise kaiwu",
+      "humanoid",
+      "autonomous"
+    ]
+  },
+  {
+    "name": "WIM",
+    "company": "WIRobotics",
+    "category": "Wearable walking-assist robot",
+    "country": "South Korea",
+    "status": "Commercial wearable mobility robot",
+    "availability": "Official WIRobotics product page and selected retailers",
+    "price": "Retailer price / not official MSRP: €2,499 incl. tax; £2,224.12 / £2,001.70 incl. tax shown by EU/UK retailers",
+    "useCase": "Wearable walking assistance, gait training, daily mobility support, and resistance-mode exercise",
+    "height": "Not applicable",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "imageCredit": "WIRobotics official product page",
+    "source": "https://www.wirobotics.com/product/wimInfo",
+    "sourceLinks": [
+      "https://www.wirobotics.com/product/wimInfo",
+      "https://www.physiosupplies.fr/wirobotics-wim-robot-portable",
+      "https://www.physioparts.co.uk/wirobotics-wim-wearable-robot"
+    ],
+    "keywords": [
+      "wirobotics",
+      "wim",
+      "wearable robot",
+      "walking assist",
+      "gait training",
+      "mobility",
+      "exoskeleton",
+      "retailer price not official msrp"
+    ]
+  },
+  {
+    "name": "Lite3",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Commercial / research quadruped platform",
+    "availability": "Official product page and retailer listings",
+    "price": "Retailer/reference pricing: Lite3 Basic about US$4,995; official China page shows Lite 3 from US$2,890",
+    "useCase": "Academic research, education, entertainment, quadruped locomotion, SDK/API development, and light mobility experiments",
+    "height": "Official configuration-dependent standing height: 406-496 mm",
+    "runtime": "Official configuration-dependent endurance: 1.5-2 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "deeprobotics",
+      "lite3",
+      "lite 3",
+      "quadruped",
+      "robot dog",
+      "research",
+      "education",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "Lite3 Pro",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Commercial / developer quadruped configuration",
+    "availability": "Official Lite3 product family and retailer listings",
+    "price": "Retailer/reference pricing: about US$9,995",
+    "useCase": "Advanced perception development, robotics education, research, obstacle-aware mobility, and SDK/API development",
+    "height": "Official standing dimensions: 610 x 370 x 450 mm",
+    "runtime": "Official endurance: 1.5-2 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "lite3 pro",
+      "quadruped",
+      "robot dog",
+      "developer platform",
+      "perception",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "Lite3 LIDAR",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Commercial / LiDAR quadruped configuration",
+    "availability": "Official Lite3 product family and retailer listings",
+    "price": "Retailer/reference pricing: about US$14,500",
+    "useCase": "Quadruped autonomy, SLAM/navigation experiments, LiDAR perception, research, and education",
+    "height": "Official standing dimensions: 610 x 370 x 496 mm",
+    "runtime": "Official endurance: 1.5-2 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lite3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lite3.html",
+      "https://www.robotsusa.com/Deep-Robotics-Lite-Series.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "lite3 lidar",
+      "quadruped",
+      "robot dog",
+      "lidar",
+      "slam",
+      "autonomous navigation",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "X20",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Industrial quadruped robot",
+    "availability": "Official product page / contact sales",
+    "price": "No official public price",
+    "useCase": "Industrial patrol inspection, power utilities, tunnel inspection, rescue, metal and mining, and construction environments",
+    "height": "Official standing size: 950 x 470 x 700 mm",
+    "runtime": "Official endurance: 2-4 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/product.html",
+    "keywords": [
+      "deep robotics",
+      "x20",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip66",
+      "patrol"
+    ]
+  },
+  {
+    "name": "X30",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Industrial-grade quadruped robot",
+    "availability": "Official product page / contact sales",
+    "price": "No official public price",
+    "useCase": "Industrial inspection, investigation, security, surveying, mapping, and all-weather patrol",
+    "height": "Official standing size: 1000 x 695 x 470 mm",
+    "runtime": "Official endurance: 2.5-4 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/product3.html",
+    "keywords": [
+      "deep robotics",
+      "x30",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip67",
+      "security",
+      "mapping"
+    ]
+  },
+  {
+    "name": "X30 Pro",
+    "company": "DEEP Robotics",
+    "category": "Quadruped",
+    "country": "China",
+    "status": "Industrial-grade quadruped robot",
+    "availability": "Official product page, online shop, and retailer listings",
+    "price": "Retailer/reference pricing: US$85,000+; official US shop listing seen at US$113,400",
+    "useCase": "Industrial inspection, patrol, emergency response, public safety, surveying, mapping, and all-weather autonomous navigation",
+    "height": "Official standing size: 1000 x 715 x 470 mm",
+    "runtime": "Official endurance: 2.5-4 hours",
+    "maturity": 4,
+    "priceVisibility": 4,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/product3.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/product3.html",
+      "https://www.robotsusa.com/Deep-Robotics-X30-Pro-Industrial-Quadruped-Robot-Dog.htm",
+      "https://shop.deeprobotics.us/products/x30"
+    ],
+    "keywords": [
+      "deep robotics",
+      "x30 pro",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip67",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "LYNX",
+    "company": "DEEP Robotics",
+    "category": "Wheeled Quadruped",
+    "country": "China",
+    "status": "All-terrain wheeled-leg quadruped",
+    "availability": "Official product family / contact sales",
+    "price": "No official public price",
+    "useCase": "All-terrain mobility, outdoor research, industrial inspection, emergency response, logistics, and field exploration",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lynx.html",
+    "keywords": [
+      "deep robotics",
+      "lynx",
+      "wheeled quadruped",
+      "wheel-legged",
+      "all terrain",
+      "robot dog",
+      "field robotics"
+    ]
+  },
+  {
+    "name": "LYNX M20",
+    "company": "DEEP Robotics",
+    "category": "Wheeled Quadruped",
+    "country": "China",
+    "status": "Industrial wheeled-legged quadruped robot",
+    "availability": "Official product page, online shop, and retailer listings",
+    "price": "Retailer/reference pricing varies by seller: around US$39,995+ to US$61,200 for M20/M20 Pro listings",
+    "useCase": "Industrial inspection, power inspection, emergency response, logistics, last-mile delivery, outdoor off-road mobility, and field exploration",
+    "height": "Official standing size: 820 x 430 x 570 mm",
+    "runtime": "Official endurance: 3 hours unloaded; 2.5 hours loaded",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "imageCredit": "DEEP Robotics official product page",
+    "source": "https://www.deeprobotics.cn/en/index/lynx.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/lynx.html",
+      "https://www.deeprobotics.us/products/lynx-m20/",
+      "https://shop.deeprobotics.us/products/lynx-m20",
+      "https://www.warpix.com/products/deep-robotics-lynx-m20"
+    ],
+    "keywords": [
+      "deep robotics",
+      "lynx m20",
+      "lynx m20 pro",
+      "wheeled quadruped",
+      "wheel-legged",
+      "industrial robot dog",
+      "inspection",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "DR01",
+    "company": "DEEP Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Humanoid / embodied intelligence explorer",
+    "availability": "Official product page and retailer listings",
+    "price": "Retailer/reference pricing: about US$29,995",
+    "useCase": "Embodied intelligence research, humanoid mobility, perception learning, industrial productivity exploration, and home-environment research",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 3,
+    "imageCredit": "DEEP Robotics official humanoid page",
+    "source": "https://www.deeprobotics.cn/en/index/humanoid.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/humanoid.html",
+      "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "dr01",
+      "humanoid",
+      "embodied intelligence",
+      "robotics research",
+      "retailer reference pricing"
+    ]
+  },
+  {
+    "name": "DR02",
+    "company": "DEEP Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Industrial-level humanoid robot",
+    "availability": "Official product page and retailer listings",
+    "price": "Retailer/reference pricing: about US$119,950",
+    "useCase": "All-weather industrial humanoid operation, outdoor work, cargo transport, emergency scenarios, and human-space automation",
+    "height": "Not disclosed on official page",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 3,
+    "imageCredit": "DEEP Robotics official DR02 page",
+    "source": "https://www.deeprobotics.cn/en/index/dr02.html",
+    "sourceLinks": [
+      "https://www.deeprobotics.cn/en/index/dr02.html",
+      "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
+    ],
+    "keywords": [
+      "deep robotics",
+      "dr02",
+      "humanoid",
+      "industrial humanoid",
+      "ip66",
+      "all-weather",
+      "embodied ai",
+      "retailer reference pricing"
+    ]
+  }
 ];
 
 const companyFallback = [
@@ -2433,55 +3321,137 @@ function renderCountryTracker() {
 function renderComparePage() {
   const body = document.querySelector("[data-full-compare]");
   if (!body) return;
-  const selected = [...document.querySelectorAll("[data-compare-select] input:checked")].map((input) => input.value);
   const params = new URLSearchParams(window.location.search);
   const queryRobots = (params.get("robots") || "").split(",").map((item) => item.trim()).filter(Boolean);
-  const priority = selected.length ? selected : queryRobots.length ? queryRobots : ["Optimus", "Figure 02", "Apollo", "Digit", "G1", "PM01", "Booster T1", "AgiBot A2", "LimX Oli", "PUDU D9", "Memo", "Sprout"];
-  const robots = priority.slice(0, 4).map((name) => pageState.robots.find((robot) => robot.name === name || robotSlug(robot) === name)).filter(Boolean);
+  const priority = queryRobots;
+  const robots = priority.slice(0, 4).map((name) => pageState.robots.find((robot) => robotMatchesCompareToken(robot, name))).filter(Boolean);
   const summary = document.querySelector("[data-compare-summary]");
+  const bestFit = document.querySelector("[data-compare-best-fit]");
+  const empty = document.querySelector("[data-compare-empty]");
+  if (!robots.length) {
+    if (empty) {
+      empty.innerHTML = `
+        <article>
+          <span>Start here</span>
+          <strong>Pick a preset above or select up to four robots below.</strong>
+          <small>Compare works best when the robots share a market lane: humanoids, quadrupeds, wearable robots, or accessible research platforms.</small>
+        </article>
+      `;
+    }
+    if (summary) summary.innerHTML = "";
+    if (bestFit) bestFit.innerHTML = "";
+    body.innerHTML = `<tr><td colspan="14"><strong>Choose robots to build a comparison matrix.</strong><small>Use the preset links or selector chips above.</small></td></tr>`;
+    return;
+  }
+  if (empty) empty.innerHTML = "";
   if (summary) {
     const leader = [...robots].sort((a, b) => robotScore(b) - robotScore(a))[0];
     const priced = robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2).length;
     const videos = robots.filter((robot) => robotVideo(robot)).length;
+    const categories = [...new Set(robots.map((robot) => robot.category).filter(Boolean))];
     summary.innerHTML = `
       <article><span>Top R-Score</span><strong>${leader ? `${pageEscape(leader.name)} · ${robotScore(leader)}` : "Choose robots"}</strong></article>
       <article><span>Price visibility</span><strong>${priced}/${robots.length || 0} visible enough</strong></article>
       <article><span>Embedded demos</span><strong>${videos}/${robots.length || 0} available</strong></article>
+      <article><span>Market overlap</span><strong>${pageEscape(categories.length === 1 ? categories[0] : `${categories.length} categories`)}</strong></article>
     `;
+  }
+  if (bestFit) {
+    const bestResearch = [...robots].sort((a, b) => robotScoreBreakdown(b).intelligence - robotScoreBreakdown(a).intelligence)[0];
+    const bestEnterprise = [...robots].sort((a, b) => robotScoreBreakdown(b).commercial - robotScoreBreakdown(a).commercial)[0];
+    const bestPrice = [...robots].sort((a, b) => robotScoreBreakdown(b).price - robotScoreBreakdown(a).price)[0];
+    const bestProof = [...robots].sort((a, b) => (robotScoreBreakdown(b).media + robotScoreBreakdown(b).source) - (robotScoreBreakdown(a).media + robotScoreBreakdown(a).source))[0];
+    bestFit.innerHTML = [
+      ["Best for research", bestResearch, "Highest AI/source signal in this set."],
+      ["Best for enterprise", bestEnterprise, "Strongest commercial readiness signal."],
+      ["Best price visibility", bestPrice, "Most visible price/access signal."],
+      ["Best proof trail", bestProof, "Strongest media and official-source proof."]
+    ].map(([label, robot, note]) => `
+      <article>
+        <span>${pageEscape(label)}</span>
+        <strong>${pageEscape(robot?.name || "Choose robots")}</strong>
+        <small>${pageEscape(note)}</small>
+      </article>
+    `).join("");
   }
   body.innerHTML = robots.map((robot) => `
     <tr>
+      ${(() => {
+        const breakdown = robotScoreBreakdown(robot);
+        return `
       <td><strong>${pageEscape(robot.name)}</strong><small>${pageEscape(robot.company)}</small></td>
       <td>${pageEscape(robot.category)}</td>
       <td>${pageEscape(robot.country)}</td>
       <td>${pageEscape(robot.availability)}</td>
       <td>${pageEscape(robot.price)}</td>
       <td><strong>${robotScore(robot)}</strong><small>${pageEscape(scoreLabel(robotScore(robot)))}</small></td>
+      <td><strong>${breakdown.commercial}</strong><small>${pageMeter(breakdown.commercial / 20)}</small></td>
+      <td><strong>${breakdown.mobility}</strong><small>${pageMeter(breakdown.mobility / 20)}</small></td>
+      <td><strong>${breakdown.intelligence}</strong><small>${pageMeter(breakdown.intelligence / 20)}</small></td>
+      <td><strong>${breakdown.source}</strong><small>${robot.source ? "Official linked" : "Source needed"}</small></td>
       <td>${robotVideo(robot) ? `<a href="videos.html">Playable</a>` : "Source only"}</td>
       <td>${pageEscape(robot.useCase)}</td>
       <td>${pageMeter(robot.maturity)}</td>
       <td><a href="${pageEscape(robotProfileHref(robot))}">Profile →</a></td>
+        `;
+      })()}
     </tr>
   `).join("");
 }
 
-function renderComparePicker() {
+function updateCompareUrl(selected) {
+  const url = new URL(window.location.href);
+  if (selected.length) {
+    url.searchParams.set("robots", selected.join(","));
+  } else {
+    url.searchParams.delete("robots");
+  }
+  window.history.replaceState({}, "", url);
+}
+
+function robotMatchesCompareToken(robot, token = "") {
+  const key = pageNormalize(token);
+  return robot.name === token || robotSlug(robot) === token || pageNormalize(robot.name) === key || pageNormalize(robotSlug(robot)) === key;
+}
+
+function renderComparePicker(filter = "") {
   const picker = document.querySelector("[data-compare-select]");
   if (!picker) return;
   const params = new URLSearchParams(window.location.search);
   const queryRobots = (params.get("robots") || "").split(",").map((item) => item.trim()).filter(Boolean);
-  const defaults = new Set(queryRobots.length ? queryRobots : ["Optimus", "Figure 02", "Apollo", "Digit"]);
-  picker.innerHTML = pageState.robots.slice(0, 16).map((robot) => `
+  const query = pageNormalize(filter);
+  const robots = pageState.robots.filter((robot) => {
+    if (!query) return true;
+    return pageNormalize([robot.name, robot.company, robot.category, robot.country, robot.useCase].filter(Boolean).join(" ")).includes(query);
+  });
+  picker.innerHTML = robots.map((robot) => `
     <label>
-      <input type="checkbox" value="${pageEscape(robot.name)}" ${defaults.has(robot.name) || defaults.has(robotSlug(robot)) ? "checked" : ""}>
+      <input type="checkbox" value="${pageEscape(robot.name)}" ${queryRobots.some((token) => robotMatchesCompareToken(robot, token)) ? "checked" : ""}>
       <span>${pageEscape(robot.name)}</span>
+      <small>${pageEscape(robot.company)}</small>
     </label>
-  `).join("");
+  `).join("") || `<p class="compare-no-results">No robots match this search.</p>`;
   picker.querySelectorAll("input").forEach((input) => input.addEventListener("change", () => {
-    const checked = [...picker.querySelectorAll("input:checked")];
-    if (checked.length > 4) input.checked = false;
+    const current = new Set((new URLSearchParams(window.location.search).get("robots") || "").split(",").map((item) => item.trim()).filter(Boolean));
+    picker.querySelectorAll("input").forEach((item) => {
+      const robot = pageState.robots.find((entry) => entry.name === item.value);
+      const slug = robot ? robotSlug(robot) : robotSlug({ name: item.value });
+      if (item.checked) current.add(slug);
+      else current.delete(slug);
+    });
+    if (current.size > 4) {
+      const robot = pageState.robots.find((entry) => entry.name === input.value);
+      current.delete(robot ? robotSlug(robot) : robotSlug({ name: input.value }));
+      input.checked = false;
+    }
+    updateCompareUrl([...current].slice(0, 4));
     renderComparePage();
   }));
+  const search = document.querySelector("[data-compare-search]");
+  if (search && !search.dataset.ready) {
+    search.dataset.ready = "true";
+    search.addEventListener("input", () => renderComparePicker(search.value));
+  }
 }
 
 function wireCatalogControls() {
