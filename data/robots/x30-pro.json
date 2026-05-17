@@ -1,0 +1,22 @@
+{
+  "name": "X30 Pro",
+  "company": "DEEP Robotics",
+  "category": "Quadruped",
+  "country": "China",
+  "status": "Industrial-grade quadruped robot",
+  "availability": "Official product page, online shop, and retailer listings",
+  "price": "Retailer/reference pricing: US$85,000+; official US shop listing seen at US$113,400",
+  "useCase": "Industrial inspection, patrol, emergency response, public safety, surveying, mapping, and all-weather autonomous navigation",
+  "height": "Official standing size: 1000 x 715 x 470 mm",
+  "runtime": "Official endurance: 2.5-4 hours",
+  "maturity": 4,
+  "priceVisibility": 4,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/product3.html",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/product3.html",
+    "https://www.robotsusa.com/Deep-Robotics-X30-Pro-Industrial-Quadruped-Robot-Dog.htm",
+    "https://shop.deeprobotics.us/products/x30"
+  ],
+  "keywords": ["deep robotics", "x30 pro", "quadruped", "industrial robot dog", "inspection", "ip67", "retailer reference pricing"]
+}
