@@ -1343,6 +1343,62 @@ body.light-theme .video-card h3 {
   margin: 18px 0;
 }
 
+.robot-overview-grid,
+.robot-segment-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.robot-overview-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.robot-segment-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.robot-overview-grid article,
+.robot-segment-grid article {
+  display: grid;
+  gap: 9px;
+  min-height: 148px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
+}
+
+.robot-overview-grid span,
+.robot-segment-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.robot-overview-grid strong,
+.robot-segment-grid strong {
+  color: #eef6ff;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.robot-overview-grid small,
+.robot-segment-grid small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
+.robot-segment-grid a {
+  align-self: end;
+  color: #7df9ff;
+  font-weight: 950;
+}
+
+.robot-empty-card {
+  padding: 22px;
+}
+
 .robot-score-row span {
   display: grid;
   grid-template-columns: 92px minmax(0, 1fr);
@@ -10455,6 +10511,8 @@ body.light-theme .market-price-access-grid small,
 body.light-theme .market-leader-grid small,
 body.light-theme .company-overview-grid small,
 body.light-theme .company-segment-grid small,
+body.light-theme .robot-overview-grid small,
+body.light-theme .robot-segment-grid small,
 body.light-theme .tr-guide-grid small,
 body.light-theme .faq-grid p,
 body.light-theme .featured-robot-card p,
@@ -10487,6 +10545,8 @@ body.light-theme .market-price-access-grid article,
 body.light-theme .market-leader-grid article,
 body.light-theme .company-overview-grid article,
 body.light-theme .company-segment-grid article,
+body.light-theme .robot-overview-grid article,
+body.light-theme .robot-segment-grid article,
 body.light-theme .tr-guide-grid a,
 body.light-theme .compare-preset-grid a,
 body.light-theme .faq-grid details,
@@ -10531,6 +10591,8 @@ body.light-theme .market-price-access-grid strong,
 body.light-theme .market-leader-grid strong,
 body.light-theme .company-overview-grid strong,
 body.light-theme .company-segment-grid strong,
+body.light-theme .robot-overview-grid strong,
+body.light-theme .robot-segment-grid strong,
 body.light-theme .tr-guide-grid strong,
 body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
@@ -10806,6 +10868,8 @@ body.light-theme .facts span {
   .market-leader-grid,
   .company-overview-grid,
   .company-segment-grid,
+  .robot-overview-grid,
+  .robot-segment-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,
@@ -11230,6 +11294,8 @@ body.light-theme .facts span {
   .market-leader-grid,
   .company-overview-grid,
   .company-segment-grid,
+  .robot-overview-grid,
+  .robot-segment-grid,
   .price-board,
   .video-gallery-grid,
   .catalog-grid,

@@ -5255,9 +5255,47 @@ function catalogSitePath(path) {
 
 function renderRobotCards() {
   const grid = document.querySelector("[data-robots-grid]");
-  if (!grid) return;
+  const overview = document.querySelector("[data-robot-overview]");
+  const segments = document.querySelector("[data-robot-segments]");
+  if (!grid && !overview && !segments) return;
   renderAdvancedRobotFilters();
   const rankings = new Map(robotRankings().map((item) => [robotSlug(item.robot), item.rank]));
+  const allRobots = pageState.robots;
+  if (overview) {
+    const categories = new Set(allRobots.map((robot) => robot.category).filter(Boolean)).size;
+    const priced = allRobots.filter((robot) => Number(robot.priceVisibility || 0) >= 2).length;
+    const sourced = allRobots.filter((robot) => robot.source).length;
+    const playable = allRobots.filter((robot) => robotVideo(robot)).length;
+    overview.innerHTML = `
+      <article><span>Robot profiles</span><strong>${allRobots.length}</strong><small>${categories} categories tracked</small></article>
+      <article><span>Price signal</span><strong>${priced}</strong><small>Robots with visible or reference pricing</small></article>
+      <article><span>Source-backed</span><strong>${sourced}/${allRobots.length}</strong><small>Official product or company links</small></article>
+      <article><span>Playable demos</span><strong>${playable}</strong><small>Embedded official / curated media signals</small></article>
+    `;
+  }
+  if (segments) {
+    const segmentDefs = [
+      ["Humanoid", (robot) => pageNormalize(robot.category).includes("humanoid")],
+      ["Quadruped", (robot) => pageNormalize(robot.category).includes("quadruped")],
+      ["Wheeled quadruped", (robot) => pageNormalize(robot.category).includes("wheeled")],
+      ["Wearable", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("wearable") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("exo")],
+      ["Home / social", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("home") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("companion") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("social")],
+      ["Industrial / warehouse", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("industrial") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("warehouse") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("logistics")]
+    ];
+    segments.innerHTML = segmentDefs.map(([label, predicate]) => {
+      const matches = allRobots.filter(predicate);
+      const leader = [...matches].sort((a, b) => robotScore(b) - robotScore(a))[0];
+      return `
+        <article>
+          <span>${pageEscape(label)}</span>
+          <strong>${matches.length}</strong>
+          <small>${leader ? `${pageEscape(leader.name)} leads this segment at ${robotScore(leader)} R-Score.` : "No robots matched yet."}</small>
+          ${leader ? `<a href="${pageEscape(robotProfileHref(leader))}">Open segment lead →</a>` : ""}
+        </article>
+      `;
+    }).join("");
+  }
+  if (!grid) return;
   const terms = pageNormalize(pageState.query).split(/\s+/).filter(Boolean);
   const filter = pageNormalize(pageState.robotFilter);
   const robots = pageState.robots.filter((robot) => {
@@ -5280,6 +5318,7 @@ function renderRobotCards() {
     const video = robotVideo(robot);
     const quality = robotQuality(robot);
     const rank = rankings.get(robotSlug(robot));
+    const company = pageState.companies.find((item) => pageNormalize(item.name) === pageNormalize(robot.company));
     return `
     <article class="catalog-card robot-catalog-card">
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
@@ -5327,12 +5366,14 @@ function renderRobotCards() {
         ` : ""}
         <div class="catalog-actions">
           <a href="${pageEscape(robotProfileHref(robot))}">Open profile →</a>
+          ${company ? `<a href="${pageEscape(companyProfileHref(company))}">Company →</a>` : ""}
+          <a href="compare.html?robots=${pageEscape(robotSlug(robot))}">Compare →</a>
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source →</a>
         </div>
       </div>
     </article>
   `;
-  }).join("");
+  }).join("") || `<article class="catalog-card robot-empty-card"><h2>No matching robots</h2><p>Try a broader search or reset filters to scan the full robotics database.</p></article>`;
   document.querySelectorAll("[data-card-video]").forEach((button) => {
     button.addEventListener("click", () => {
       const slug = button.dataset.cardVideo;
