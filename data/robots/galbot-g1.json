@@ -1,0 +1,18 @@
+ {
+    "name": "Galbot G1",
+    "company": "Galbot",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Developer platform / official robot",
+    "availability": "Developer documentation and inquiry",
+    "price": "No official public price",
+    "useCase": "General-purpose humanoid work, embodied AI development, manipulation and pick-and-place tasks",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/g1/g1-poster.jpg",
+    "imageCredit": "Galbot official media",
+    "source": "https://developer.galbot.com/docs/g1/2.2.4/zh/g1",
+    "keywords": ["galbot", "g1", "humanoid", "embodied ai", "vla", "manipulation", "pick and place"]
+  }
