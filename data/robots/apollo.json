@@ -1,0 +1,18 @@
+{
+    "name": "Apollo",
+    "company": "Apptronik",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "Commercial scaling",
+    "availability": "Enterprise pilots",
+    "price": "No official public price",
+    "useCase": "Logistics, manufacturing, industrial support",
+    "height": "5 ft 8 in",
+    "runtime": "About 4 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "https://cdn.prod.website-files.com/646de3abb3e62d339f089e28/64e54eb19605183a5d58e077_Hero%20Shot%2001.png",
+    "imageCredit": "Apptronik official media",
+    "source": "https://apptronik.com/",
+    "keywords": ["apollo", "industrial", "warehouse", "humanoid"]
+  }
