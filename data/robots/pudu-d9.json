@@ -1,0 +1,19 @@
+{
+    "name": "PUDU D9",
+    "company": "Pudu Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Prototype / commercial path",
+    "availability": "Contact sales",
+    "price": "Quote-based; third-party estimates vary",
+    "useCase": "Object manipulation, service robotics, customer engagement",
+    "height": "170 cm",
+    "runtime": "Battery: 15 Ah / 0.72 kWh",
+    "maturity": 3,
+    "priceVisibility": 2,
+    "image": "https://cdn.pudutech.com/official-website/d9/section3_front_en.webp",
+    "imageCredit": "Pudu Robotics official media",
+    "source": "https://www.pudurobotics.com/en/products/d9",
+    "keywords": ["pudu", "d9", "service robot", "humanoid"]
+  }
+  
