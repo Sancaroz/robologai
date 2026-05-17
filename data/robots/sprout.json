@@ -1,0 +1,19 @@
+{
+    "name": "Sprout",
+    "company": "Fauna Robotics",
+    "category": "Soft humanoid",
+    "country": "USA",
+    "status": "Developer / research platform",
+    "availability": "Early access",
+    "price": "Reported around $50K",
+    "useCase": "Research, development, human-robot interaction",
+    "height": "About 3.5 ft",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 4,
+    "image": "https://cdn.prod.website-files.com/6931911db0300aa6e7e3fc81/6977d9e235cf9a54353a625b_fauna_social_6%20(1).jpg",
+    "imageCredit": "Fauna Robotics official media",
+    "source": "https://faunarobotics.com/",
+    "keywords": ["sprout", "soft humanoid", "fauna", "research"]
+  }
+  
