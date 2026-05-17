@@ -1,0 +1,16 @@
+{
+    "name": "KUAVO",
+    "company": "Leju Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Industrial and research scenarios",
+    "availability": "Enterprise / research platform",
+    "price": "No official public price",
+    "useCase": "Industrial manufacturing, business services, research training",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "source": "https://www.lejurobot.com/en",
+    "keywords": ["kuavo", "leju", "industrial", "humanoid"]
+  }
