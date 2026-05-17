@@ -1,0 +1,17 @@
+{
+  "name": "LYNX",
+  "company": "DEEP Robotics",
+  "category": "Wheeled Quadruped",
+  "country": "China",
+  "status": "All-terrain wheeled-leg quadruped",
+  "availability": "Official product family / contact sales",
+  "price": "No official public price",
+  "useCase": "All-terrain mobility, outdoor research, industrial inspection, emergency response, logistics, and field exploration",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/lynx.html",
+  "keywords": ["deep robotics", "lynx", "wheeled quadruped", "wheel-legged", "all terrain", "robot dog", "field robotics"]
+}
