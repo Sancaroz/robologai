@@ -1,0 +1,18 @@
+{
+    "name": "H1",
+    "company": "Unitree Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Commercial / research platform",
+    "availability": "Order-based",
+    "price": "Configuration dependent",
+    "useCase": "Research, mobility, humanoid development",
+    "height": "180 cm",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 3,
+    "image": "https://www.unitree.com/images/ea2d2b637df84e3bacd508cd1f2711e5_2744x1596.jpg",
+    "imageCredit": "Unitree official media",
+    "source": "https://www.unitree.com/",
+    "keywords": ["h1", "unitree", "humanoid", "mobility"]
+  }
