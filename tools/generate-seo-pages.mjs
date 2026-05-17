@@ -249,14 +249,24 @@ function sourceList(primary = "", extra = []) {
     .slice(0, 6);
 }
 
+function sourceSummary(sources = []) {
+  const hosts = sources.map(sourceHost);
+  const counts = hosts.reduce((map, host) => map.set(host, (map.get(host) || 0) + 1), new Map());
+  return [...counts.entries()]
+    .map(([host, count]) => count > 1 ? `${host} (${count} links)` : host)
+    .join(" + ");
+}
+
 function robotQuality(robot) {
   const priceVisibility = Number(robot.priceVisibility || 0);
   const score = robotScore(robot);
+  const sources = sourceList(robot.source, robot.sourceLinks);
   return {
-    sourceConfidence: robot.source ? "Official source linked" : "Source needed",
-    priceConfidence: priceVisibility >= 4 ? "Public price" : priceVisibility >= 2 ? "Partial / quote signal" : "No public price",
+    sourceConfidence: sources.length > 1 ? `${sources.length} linked sources` : robot.source ? "Official source linked" : "Source needed",
+    priceConfidence: priceVisibility >= 4 ? "Public / official price signal" : priceVisibility >= 2 ? "Retailer / reference price" : "No official public price",
+    deploymentSignal: robot.availability || robot.status || "Deployment not disclosed",
     mediaVerified: robot.image ? "Official / source visual" : "Media pending",
-    dataFreshness: score >= 68 ? "High-priority watch" : "Periodic review"
+    dataFreshness: robot.lastVerified || (score >= 68 ? "May 2026 watchlist review" : "May 2026 catalog review")
   };
 }
 
@@ -475,13 +485,13 @@ function robotPage(robot) {
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Data Quality</p>
-          <h2>How confident Robologai is about this profile.</h2>
+          <h2>Source confidence, pricing clarity, and deployment proof.</h2>
         </div>
         <div class="data-quality-grid">
-          <article><span>Source</span><strong>${escapeHtml(quality.sourceConfidence)}</strong><small>${escapeHtml(robot.source || "Official source missing")}</small></article>
-          <article><span>Price</span><strong>${escapeHtml(quality.priceConfidence)}</strong><small>${escapeHtml(robot.price)}</small></article>
-          <article><span>Media</span><strong>${escapeHtml(quality.mediaVerified)}</strong><small>${escapeHtml(robot.imageCredit || "Source image / page used")}</small></article>
-          <article><span>Review</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+          <article><span>Source trail</span><strong>${escapeHtml(quality.sourceConfidence)}</strong><small>${escapeHtml(sources.length ? sourceSummary(sources) : "Official source missing")}</small></article>
+          <article><span>Pricing clarity</span><strong>${escapeHtml(quality.priceConfidence)}</strong><small>${escapeHtml(robot.price)}</small></article>
+          <article><span>Deployment signal</span><strong>${escapeHtml(robot.status || "Status not disclosed")}</strong><small>${escapeHtml(quality.deploymentSignal)}</small></article>
+          <article><span>Last reviewed</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
         </div>
       </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}
       <section class="catalog-section">

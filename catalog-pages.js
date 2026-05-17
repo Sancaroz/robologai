@@ -5090,11 +5090,13 @@ function renderMiniScoreBars(robot, limit = 3) {
 function robotQuality(robot) {
   const priceVisibility = Number(robot.priceVisibility || 0);
   const score = robotScore(robot);
+  const sources = sourceList(robot.source, robot.sourceLinks);
   return {
-    sourceConfidence: robot.source ? "Official source linked" : "Source needed",
-    priceConfidence: priceVisibility >= 4 ? "Public price" : priceVisibility >= 2 ? "Partial / quote signal" : "No public price",
+    sourceConfidence: sources.length > 1 ? `${sources.length} linked sources` : robot.source ? "Official source linked" : "Source needed",
+    priceConfidence: priceVisibility >= 4 ? "Public / official price signal" : priceVisibility >= 2 ? "Retailer / reference price" : "No official public price",
+    deploymentSignal: robot.availability || robot.status || "Deployment not disclosed",
     mediaVerified: robotVideo(robot) ? "Playable official demo" : robot.image ? "Official / source visual" : "Media pending",
-    dataFreshness: score >= 68 ? "High-priority watch" : "Periodic review"
+    dataFreshness: robot.lastVerified || (score >= 68 ? "May 2026 watchlist review" : "May 2026 catalog review")
   };
 }
 
@@ -5120,6 +5122,14 @@ function sourceList(primary = "", extra = []) {
     .filter(Boolean)
     .filter((url, index, list) => list.indexOf(url) === index)
     .slice(0, 6);
+}
+
+function sourceSummary(sources = []) {
+  const hosts = sources.map(sourceHost);
+  const counts = hosts.reduce((map, host) => map.set(host, (map.get(host) || 0) + 1), new Map());
+  return [...counts.entries()]
+    .map(([host, count]) => count > 1 ? `${host} (${count} links)` : host)
+    .join(" + ");
 }
 
 function renderSourceNotes(title, sources, fallbackLabel = "Official source") {
@@ -5923,13 +5933,13 @@ function renderRobotProfile() {
     <section class="catalog-section">
       <div class="section-heading compact">
         <p>Data Quality</p>
-        <h2>How confident Robologai is about this profile.</h2>
+        <h2>Source confidence, pricing clarity, and deployment proof.</h2>
       </div>
       <div class="data-quality-grid">
-        <article><span>Source</span><strong>${pageEscape(quality.sourceConfidence)}</strong><small>${pageEscape(robot.source || "Official source missing")}</small></article>
-        <article><span>Price</span><strong>${pageEscape(quality.priceConfidence)}</strong><small>${pageEscape(robot.price)}</small></article>
-        <article><span>Media</span><strong>${pageEscape(quality.mediaVerified)}</strong><small>${video?.embed ? "Embedded demo available" : "Source image / page used"}</small></article>
-        <article><span>Review</span><strong>${pageEscape(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+        <article><span>Source trail</span><strong>${pageEscape(quality.sourceConfidence)}</strong><small>${pageEscape(robotSources.length ? sourceSummary(robotSources) : "Official source missing")}</small></article>
+        <article><span>Pricing clarity</span><strong>${pageEscape(quality.priceConfidence)}</strong><small>${pageEscape(robot.price)}</small></article>
+        <article><span>Deployment signal</span><strong>${pageEscape(robot.status || "Status not disclosed")}</strong><small>${pageEscape(quality.deploymentSignal)}</small></article>
+        <article><span>Last reviewed</span><strong>${pageEscape(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
       </div>
     </section>
     ${renderSourceNotes(`${robot.name} source trail.`, robotSources, "Official product source")}
