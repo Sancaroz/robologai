@@ -1,0 +1,18 @@
+{
+    "name": "G1",
+    "company": "Unitree Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Order-based availability",
+    "availability": "Available / order-based",
+    "price": "From around $16K depending on configuration",
+    "useCase": "Research, education, prototyping",
+    "height": "132 cm",
+    "runtime": "About 2 hours",
+    "maturity": 5,
+    "priceVisibility": 5,
+    "image": "https://www.unitree.com/images/11d0a76afbb74e8fb7f692652b4c33e0_800x800.png",
+    "imageCredit": "Unitree official media",
+    "source": "https://www.unitree.com/g1/",
+    "keywords": ["g1", "unitree", "research", "price visible"]
+  }
