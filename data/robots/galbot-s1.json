@@ -1,0 +1,19 @@
+
+  {
+    "name": "Galbot S1",
+    "company": "Galbot",
+    "category": "Heavy-load industrial platform",
+    "country": "China",
+    "status": "Developer platform / official robot",
+    "availability": "Developer documentation and inquiry",
+    "price": "No official public price",
+    "useCase": "Industrial heavy-load robotics, simulation, visualization and embodied AI development",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/s1/product-en.png",
+    "imageCredit": "Galbot official media",
+    "source": "https://developer.galbot.com/docs/s1/2.0.0/zh/s1",
+    "keywords": ["galbot", "s1", "industrial robot", "heavy load", "embodied ai", "simulation"]
+  }
