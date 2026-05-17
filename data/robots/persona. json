@@ -1,0 +1,18 @@
+{
+    "name": "Persona Humanoid",
+    "company": "Persona AI",
+    "category": "Heavy-industry humanoid",
+    "country": "USA",
+    "status": "Prototype / pre-production development",
+    "availability": "Pre-orders / leasing program; targeting Q3 2027 deployment",
+    "price": "Lease terms; no official public unit price",
+    "useCase": "Skilled industrial labor across shipyards, energy, construction, manufacturing, welding, fabrication, assembly and mining",
+    "height": "Not disclosed",
+    "runtime": "Targeting 2 work shifts per day",
+    "maturity": 3,
+    "priceVisibility": 2,
+    "image": "https://persona.ai/wp-content/uploads/image-of-humanoid-robot.webp",
+    "imageCredit": "Persona AI official media",
+    "source": "https://persona.ai/humanoid/",
+    "keywords": ["persona", "industrial humanoid", "shipyards", "energy", "construction", "manufacturing", "welder", "fabricator", "assembler", "miner"]
+  }
