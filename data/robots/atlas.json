@@ -1,0 +1,18 @@
+{
+    "name": "Atlas",
+    "company": "Boston Dynamics",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "R&D platform",
+    "availability": "Not publicly sold",
+    "price": "No official public price",
+    "useCase": "Advanced mobility, manipulation, industrial R&D",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "https://bostondynamics.com/wp-content/uploads/2024/04/atlas-blue-mobile-copy.jpg",
+    "imageCredit": "Boston Dynamics official media",
+    "source": "https://bostondynamics.com/atlas/",
+    "keywords": ["atlas", "mobility", "boston dynamics", "humanoid"]
+  }
