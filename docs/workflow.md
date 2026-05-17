@@ -33,14 +33,17 @@
    - Share on X butonu
 
 Yeni şirket ekleme sırası
-1. Yeni kayıt için önce mümkünse `data/companies/company-name.json` dosyası oluştur.
-2. `node scripts/validate-data.mjs` ile alanları kontrol et.
-3. Şimdilik canlı site `data/companies.json` okuduğu için aggregate dosyayı da güncel tut.
-4. image path kontrol et.
-5. logo dosyasını assets/robots içine koy.
-6. companies/company-name.html oluştur.
-7. company-profile-mark kısmına gerçek img koy.
-8. commit + deploy kontrol et.
+1. Yeni şirket kaydı oluştur:
+   `node scripts/add-company.mjs`
+2. İstersen tek satır komutla da oluşturabilirsin:
+   `node scripts/add-company.mjs --name "Example Robotics" --website "https://example.com/" --category "Humanoid Robotics" --country "USA" --robot "Example Bot" --keywords "humanoid, robotics"`
+3. `node scripts/validate-data.mjs` ile alanları kontrol et.
+4. Şimdilik canlı site `data/companies.json` okuduğu için aggregate dosyayı da güncel tut.
+5. image path kontrol et.
+6. logo dosyasını assets/robots içine koy.
+7. companies/company-name.html oluştur.
+8. company-profile-mark kısmına gerçek img koy.
+9. commit + deploy kontrol et.
 
 Logo çalışmıyorsa kontrol
 - png gerçekten png mi?
