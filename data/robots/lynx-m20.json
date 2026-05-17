@@ -1,0 +1,23 @@
+{
+  "name": "LYNX M20",
+  "company": "DEEP Robotics",
+  "category": "Wheeled Quadruped",
+  "country": "China",
+  "status": "Industrial wheeled-legged quadruped robot",
+  "availability": "Official product page, online shop, and retailer listings",
+  "price": "Retailer/reference pricing varies by seller: around US$39,995+ to US$61,200 for M20/M20 Pro listings",
+  "useCase": "Industrial inspection, power inspection, emergency response, logistics, last-mile delivery, outdoor off-road mobility, and field exploration",
+  "height": "Official standing size: 820 x 430 x 570 mm",
+  "runtime": "Official endurance: 3 hours unloaded; 2.5 hours loaded",
+  "maturity": 4,
+  "priceVisibility": 3,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/lynx.html",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/lynx.html",
+    "https://www.deeprobotics.us/products/lynx-m20/",
+    "https://shop.deeprobotics.us/products/lynx-m20",
+    "https://www.warpix.com/products/deep-robotics-lynx-m20"
+  ],
+  "keywords": ["deep robotics", "lynx m20", "lynx m20 pro", "wheeled quadruped", "wheel-legged", "industrial robot dog", "inspection", "retailer reference pricing"]
+}
