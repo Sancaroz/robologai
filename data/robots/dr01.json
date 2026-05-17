@@ -1,0 +1,21 @@
+{
+  "name": "DR01",
+  "company": "DEEP Robotics",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Humanoid / embodied intelligence explorer",
+  "availability": "Official product page and retailer listings",
+  "price": "Retailer/reference pricing: about US$29,995",
+  "useCase": "Embodied intelligence research, humanoid mobility, perception learning, industrial productivity exploration, and home-environment research",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 3,
+  "imageCredit": "DEEP Robotics official humanoid page",
+  "source": "https://www.deeprobotics.cn/en/index/humanoid.html",
+  "sourceLinks": [
+    "https://www.deeprobotics.cn/en/index/humanoid.html",
+    "https://www.robotsinternational.com/Deep-Robotics-Humanoid-Robots.htm"
+  ],
+  "keywords": ["deep robotics", "dr01", "humanoid", "embodied intelligence", "robotics research", "retailer reference pricing"]
+}
