@@ -1,0 +1,18 @@
+{
+    "name": "LimX Oli",
+    "company": "LimX Dynamics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Product launched",
+    "availability": "Buy now / enterprise inquiry",
+    "price": "No broad public price",
+    "useCase": "Research, manufacturing, business and household services",
+    "height": "Full-size",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 2,
+    "image": "https://www.limxdynamics.com/_next/image?url=%2Fimages%2Fheader%2Fproduct-1.png&w=1080&q=75",
+    "imageCredit": "LimX Dynamics official media",
+    "source": "https://www.limxdynamics.com/en",
+    "keywords": ["limx", "oli", "physical ai", "agentic os"]
+  }
