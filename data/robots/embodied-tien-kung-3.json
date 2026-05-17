@@ -1,0 +1,18 @@
+  {
+  "name": "Embodied Tien Kung 3.0",
+  "company": "X-Humanoid",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Launched / advanced platform",
+  "availability": "Developer and enterprise ecosystem",
+  "price": "No official public price",
+  "useCase": "Industrial, commercial, embodied AI development and high-dynamic autonomous tasks",
+  "height": "Full-size",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/tien-kung-3.png",
+  "imageCredit": "X-Humanoid / PRNewswire official press release",
+  "source": "https://www.x-humanoid.com/",
+  "keywords": ["tien kung", "x-humanoid", "embodied ai", "wise kaiwu", "humanoid", "autonomous"]
+}
