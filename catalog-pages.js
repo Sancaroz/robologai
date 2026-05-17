@@ -925,56 +925,426 @@ const companyFallback = [
 
 const signalFallback = [
   {
-    date: "2026-05-09",
-    type: "Emotional AI",
-    title: "Familiar points toward emotionally responsive home robots",
-    company: "Familiar Machines & Magic",
-    robot: "Familiar",
-    category: "Home robotics",
-    country: "USA",
-    impact: "High",
-    summary: "Roomba creator Colin Angle is framing the next home robot around presence, behavior, and emotional response rather than cleaning alone.",
-    source: "https://www.prnewswire.com/news-releases/roomba-pioneer-colin-angle-unveils-new-venture-familiar-machines--magic-introducing-a-new-platform-for-consumer-physical-ai-302761495.html",
-    relatedUrl: "blog/roomba-creator-familiar-emotional-ai-robot.html"
+    "date": "2026-05-15",
+    "type": "Research Signal",
+    "title": "Video Friday: Heavy Robotic Machinery Operates Itself",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-material-handling-robots",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
   },
   {
-    date: "2026-05-08",
-    type: "Humanoid",
-    title: "Unitree keeps price transparency pressure on the humanoid market",
-    company: "Unitree Robotics",
-    robot: "G1",
-    category: "Research humanoid",
-    country: "China",
-    impact: "High",
-    summary: "Visible pricing and official demo material make G1 a useful benchmark for robotics labs and early physical AI builders.",
-    source: "https://www.unitree.com/g1/",
-    relatedUrl: "robots/unitree-g1.html"
+    "date": "2026-05-13",
+    "type": "Robotics Startup Signal",
+    "title": "Rivian spinoff Mind Robotics raises another $400M",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Mind Robotics, which was first revealed in late 2025, has now raised more than $1 billion to date.",
+    "source": "https://techcrunch.com/2026/05/13/rivian-spinoff-mind-robotics-raises-another-400m/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
   },
   {
-    date: "2026-05-07",
-    type: "Enterprise Pilot",
-    title: "Figure 02 remains one of the strongest factory humanoid signals",
-    company: "Figure AI",
-    robot: "Figure 02",
-    category: "Industrial humanoid",
-    country: "USA",
-    impact: "High",
-    summary: "The platform is positioned around workplace manipulation, enterprise pilots, and general-purpose robot learning.",
-    source: "https://www.figure.ai/",
-    relatedUrl: "robots/figure-02.html"
+    "date": "2026-05-12",
+    "type": "Research Signal",
+    "title": "Hello Robot Sets the Standard for Practical, Safe Home Robots",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Many roboticists (and at least one robotics journalist) have been seduced by the dream of a robot butler. And the rampant popularity of videos showing humanoid robots doing household tasks in improbably clean kitchens and unrealistically tidy bedrooms suggests",
+    "source": "https://spectrum.ieee.org/stretch-4-home-robot",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
   },
   {
-    date: "2026-05-07",
-    type: "Factory AI",
-    title: "Tesla Optimus keeps the factory-first humanoid narrative alive",
-    company: "Tesla",
-    robot: "Optimus",
-    category: "Humanoid",
-    country: "USA",
-    impact: "Medium",
-    summary: "Optimus is still best read as an internal manufacturing and embodied AI signal until public deployment details become clearer.",
-    source: "https://www.tesla.com/AI",
-    relatedUrl: "robots/tesla-optimus.html"
+    "date": "2026-05-12",
+    "type": "Robotics News",
+    "title": "SAP und Cyberwave setzen vollständig autonome, KI-gestützte Roboter in einem realen SAP-Logistiklager ein",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "WALLDORF, Deutschland, 11. Mai 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), der weltweit führende Anbieter von Unternehmensanwendungssoftware, und Cyberwave, ein auf KI-Robotik-Software spezialisiertes Unternehmen, gaben heute den erfolgreichen Einsatz vollautonom",
+    "source": "https://www.prnewswire.com/news-releases/sap-und-cyberwave-setzen-vollstandig-autonome-ki-gestutzte-roboter-in-einem-realen-sap-logistiklager-ein-302768875.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-12",
+    "type": "Robotics News",
+    "title": "SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics intelligence",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "-SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial en un almacén logístico SAP en funcionamiento WALLDORF, Alemania, 11 de mayo de 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), líder mundial en software de aplicaciones empresariale",
+    "source": "https://www.prnewswire.com/news-releases/sap-y-cyberwave-implementan-robots-totalmente-autonomos-con-inteligencia-artificial-302768860.html",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-11",
+    "type": "Robotics Startup Signal",
+    "title": "Korea&#8217;s biggest manufacturers back Config, the TSMC of robot data",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Instead of building robots themselves, the team is focused on a simpler goal — providing data that robots need to learn and operate. They believe that better data will be key to making robots more useful.",
+    "source": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-09",
+    "type": "Research Signal",
+    "title": "Video Friday: AI Gives Robot Hands Humanlike Dexterity",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-robotic-hand-dexterity",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-09",
+    "type": "Research Signal",
+    "title": "Video Friday: AI Gives Robot Hands Human-Like Dexterity",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-robotic-hand-dexterity",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-09",
+    "type": "Emotional AI",
+    "title": "Familiar points toward emotionally responsive home robots",
+    "company": "Familiar Machines & Magic",
+    "robot": "Familiar",
+    "category": "Home robotics",
+    "country": "USA",
+    "impact": "High",
+    "summary": "Roomba creator Colin Angle is framing the next home robot around presence, behavior, and emotional response rather than cleaning alone.",
+    "source": "https://www.prnewswire.com/news-releases/roomba-pioneer-colin-angle-unveils-new-venture-familiar-machines--magic-introducing-a-new-platform-for-consumer-physical-ai-302761495.html",
+    "relatedUrl": "blog/roomba-creator-familiar-emotional-ai-robot.html"
+  },
+  {
+    "date": "2026-05-08",
+    "type": "Humanoid",
+    "title": "Unitree keeps price transparency pressure on the humanoid market",
+    "company": "Unitree Robotics",
+    "robot": "G1",
+    "category": "Research humanoid",
+    "country": "China",
+    "impact": "High",
+    "summary": "Visible pricing and official demo material make G1 a useful benchmark for robotics labs and early physical AI builders.",
+    "source": "https://www.unitree.com/g1/",
+    "relatedUrl": "robots/unitree-g1.html"
+  },
+  {
+    "date": "2026-05-07",
+    "type": "Enterprise Pilot",
+    "title": "Figure 02 remains one of the strongest factory humanoid signals",
+    "company": "Figure AI",
+    "robot": "Figure 02",
+    "category": "Industrial humanoid",
+    "country": "USA",
+    "impact": "High",
+    "summary": "The platform is positioned around workplace manipulation, enterprise pilots, and general-purpose robot learning.",
+    "source": "https://www.figure.ai/",
+    "relatedUrl": "robots/figure-02.html"
+  },
+  {
+    "date": "2026-05-07",
+    "type": "Factory AI",
+    "title": "Tesla Optimus keeps the factory-first humanoid narrative alive",
+    "company": "Tesla",
+    "robot": "Optimus",
+    "category": "Humanoid",
+    "country": "USA",
+    "impact": "Medium",
+    "summary": "Optimus is still best read as an internal manufacturing and embodied AI signal until public deployment details become clearer.",
+    "source": "https://www.tesla.com/AI",
+    "relatedUrl": "robots/tesla-optimus.html"
+  },
+  {
+    "date": "2026-05-06",
+    "type": "Robotics Startup Signal",
+    "title": "Khosla-backed robotics startup Genesis AI has gone full stack, demo shows",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Genesis AI, a startup that raised a $105 million seed round to build foundational AI for robotics, has unveiled its first model, GENE-26.5, but also a demo showcasing a set of robotic hands performing complex tasks.",
+    "source": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-06",
+    "type": "Mobility",
+    "title": "Electric Atlas shifts Boston Dynamics from research icon to commercial question",
+    "company": "Boston Dynamics",
+    "robot": "Atlas",
+    "category": "Humanoid mobility",
+    "country": "USA",
+    "impact": "High",
+    "summary": "Atlas remains a top mobility proof point; the next signal to watch is how the platform converts from demo power to market role.",
+    "source": "https://bostondynamics.com/atlas/",
+    "relatedUrl": "robots/boston-dynamics-atlas.html"
+  },
+  {
+    "date": "2026-05-05",
+    "type": "Embodied AI Stack",
+    "title": "NVIDIA robotics stack becomes a platform layer for physical AI",
+    "company": "NVIDIA",
+    "robot": "Isaac / GR00T",
+    "category": "Robotics infrastructure",
+    "country": "USA",
+    "impact": "High",
+    "summary": "Simulation, robot foundation models, and edge compute are becoming as important as the robot body itself.",
+    "source": "https://developer.nvidia.com/isaac",
+    "relatedUrl": "market.html"
+  },
+  {
+    "date": "2026-05-04",
+    "type": "Research Signal",
+    "title": "iRobot Founder Wants to Put a Robotic Familiar Into Your Home",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Two years ago, Colin Angle stepped down as CEO of iRobot , the company that he cofounded and the most successful home robot company the world has ever seen. Angle almost immediately founded a stealthy new “physical AI” company called Familiar Machines & Magic ",
+    "source": "https://spectrum.ieee.org/familiar-machines-and-magic",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-04",
+    "type": "Research Signal",
+    "title": "DAIMON Robotics Wants to Give Robot Hands a Sense of Touch",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "This article is brought to you by DAIMON Robotics . This April, Hong Kong-based DAIMON Robotics has released Daimon-Infinity , which it describes as the largest omni-modal robotic dataset for physical AI, featuring high resolution tactile sensing and spanning ",
+    "source": "https://spectrum.ieee.org/daimon-robotics-physical-ai",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-04",
+    "type": "Warehouse",
+    "title": "Digit keeps warehouse humanoid deployment in focus",
+    "company": "Agility Robotics",
+    "robot": "Digit",
+    "category": "Logistics humanoid",
+    "country": "USA",
+    "impact": "Medium",
+    "summary": "Digit is one of the clearest examples of a humanoid-shaped robot being aimed at a specific logistics workflow.",
+    "source": "https://www.agilityrobotics.com/",
+    "relatedUrl": "robots/agility-digit.html"
+  },
+  {
+    "date": "2026-05-03",
+    "type": "Home Robot",
+    "title": "1X NEO keeps the home humanoid category visible",
+    "company": "1X Technologies",
+    "robot": "NEO",
+    "category": "Home humanoid",
+    "country": "Norway / USA",
+    "impact": "Medium",
+    "summary": "Home humanoids need a different readiness model: safety, trust, teleoperation posture, and domestic usefulness matter more than show demos.",
+    "source": "https://www.1x.tech/",
+    "relatedUrl": "robots/1x-neo.html"
+  },
+  {
+    "date": "2026-05-02",
+    "type": "Surgical Robotics",
+    "title": "Surgical robots remain the most proven robotics business lane",
+    "company": "Intuitive Surgical",
+    "robot": "da Vinci systems",
+    "category": "Medical robotics",
+    "country": "USA",
+    "impact": "Medium",
+    "summary": "While humanoids drive attention, surgical robotics shows what mature robot economics can look like at scale.",
+    "source": "https://www.intuitive.com/",
+    "relatedUrl": "companies/intuitive-surgical.html"
+  },
+  {
+    "date": "2026-05-01",
+    "type": "Research Signal",
+    "title": "Video Friday: Figure, 1X Ramp Up Humanoid Robot Production",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-humanoid-robot-production",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-01",
+    "type": "Autonomy",
+    "title": "DeepMind robotics research keeps the AI-to-action layer moving",
+    "company": "Google DeepMind",
+    "robot": "Gemini Robotics",
+    "category": "Robot AI",
+    "country": "USA / UK",
+    "impact": "High",
+    "summary": "The frontier is shifting from language intelligence toward models that can understand objects, motion, and physical task context.",
+    "source": "https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/",
+    "relatedUrl": "companies/alphabet-google-deepmind.html"
+  },
+  {
+    "date": "2026-04-30",
+    "type": "Robot Economy",
+    "title": "Machine economy narratives are converging with robotics infrastructure",
+    "company": "XMAQUINA / peaq ecosystem",
+    "robot": "Robot economy stack",
+    "category": "DePIN robotics",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Ownership, utilization, robot data, and physical network incentives are becoming a separate robotics intelligence theme.",
+    "source": "https://www.xmaquina.io/",
+    "relatedUrl": "blog/xmaquina-decentralized-robotics.html"
+  },
+  {
+    "date": "2026-04-29",
+    "type": "Robotics Startup Signal",
+    "title": "Colby Adcock&#8217;s Scout AI raises $100M to train its models for war: We visited its bootcamp",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "We visited Scout AI's training ground where it's working on AI agents that can help individual soldiers control fleets of autonomous vehicles.",
+    "source": "https://techcrunch.com/2026/04/29/coby-adcocks-scout-ai-raises-100-million-to-train-models-for-war-we-visited-its-bootcamp/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-29",
+    "type": "Inspection",
+    "title": "Quadrupeds remain the practical bridge between robots and field operations",
+    "company": "Boston Dynamics / ANYbotics / Unitree",
+    "robot": "Spot, ANYmal, Go2",
+    "category": "Field robotics",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Inspection robots prove that useful robotics can scale before general-purpose humanoids reach full autonomy.",
+    "source": "https://bostondynamics.com/products/spot/",
+    "relatedUrl": "use-cases.html"
+  },
+  {
+    "date": "2026-04-24",
+    "type": "Research Signal",
+    "title": "Video Friday: Who Wins in Robot vs. Pro Ping-Pong Player?",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
+    "source": "https://spectrum.ieee.org/video-friday-ping-pong-robot",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-23",
+    "type": "Research Signal",
+    "title": "This Roboticist-Turned-Teacher Built a Life-Size Replica of ENIAC",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Tom Burick has always considered himself a builder. Over the years he’s designed robots, constructed a vintage teardrop trailer , and most recently, led a group of students in building a full-scale replica of a pivotal 1940s computer. Burick is a technology in",
+    "source": "https://spectrum.ieee.org/roboticist-turned-teacher-eniac-replica",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-22",
+    "type": "Embodied AI Stack",
+    "title": "NVIDIA and Google Cloud Collaborate to Advance Agentic and Physical AI",
+    "company": "NVIDIA",
+    "robot": "Isaac / GR00T",
+    "category": "Robotics infrastructure",
+    "country": "USA",
+    "impact": "High",
+    "summary": "NVIDIA and Google Cloud have collaborated for more than a decade, co‑engineering a full‑stack AI platform that spans every technology layer — from performance‑optimized libraries and frameworks to enterprise‑grade cloud services. This foundation enables develo",
+    "source": "https://blogs.nvidia.com/blog/google-cloud-agentic-physical-ai-factories/",
+    "relatedUrl": "physical-ai.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-22",
+    "type": "Research Signal",
+    "title": "Proposed Chinese Robot Ban Is Latest U.S. Tech Sovereignty Move",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "The American Security Robotics Act, a bipartisan bill introduced in March by Senators Tom Cotton (R-Ark.) and Chuck Schumer (D-N.Y.) and Representative Elise Stefanik (R-N.Y.), proposes to limit U.S. government use of Chinese ground robots including humanoids,",
+    "source": "https://spectrum.ieee.org/chinese-robots-us-ban",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-20",
+    "type": "Research Signal",
+    "title": "The USC Professor Who Pioneered Socially Assistive Robotics",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "When the robotics engineering field that Maja Matarić wanted to work in didn’t exist, she helped create it. In 2005 she helped define the new area of socially assistive robotics. As an associate professor of computer science, neuroscience, and pediatrics at th",
+    "source": "https://spectrum.ieee.org/socially-assistive-robotics",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-04-19",
+    "type": "Robotics Startup Signal",
+    "title": "Robots beat human records at Beijing half-marathon",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "The winning time is a massive improvement over last year’s race, when the fastest robot finished in two hours and 40 minutes.",
+    "source": "https://techcrunch.com/2026/04/19/robots-beat-human-records-at-beijing-half-marathon/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
   }
 ];
 
@@ -1750,6 +2120,22 @@ function signalConfidence(signal) {
   return "Source-linked";
 }
 
+function signalQualityScore(signal) {
+  const confidence = signalConfidence(signal);
+  const impact = pageNormalize(signal.impact || "");
+  let score = signal.source ? 45 : 20;
+  if (confidence === "Official") score += 30;
+  else if (confidence === "Press release") score += 24;
+  else if (confidence === "Media report") score += 18;
+  else if (confidence === "Retailer") score += 14;
+  else if (confidence === "Automated feed") score += 10;
+  if (impact.includes("high")) score += 15;
+  else if (impact.includes("medium")) score += 8;
+  if (findSignalCompany(signal)) score += 5;
+  if (findSignalRobot(signal)) score += 5;
+  return Math.max(0, Math.min(100, score));
+}
+
 function signalWhyItMatters(signal) {
   if (signal.whyItMatters) return signal.whyItMatters;
   const type = signalIntelligenceType(signal);
@@ -1792,6 +2178,8 @@ function signalViewModel(signal) {
     ...signal,
     intelligenceType: signalIntelligenceType(signal),
     confidence: signalConfidence(signal),
+    qualityScore: signalQualityScore(signal),
+    sourceHost: sourceHost(signal.source || ""),
     whyItMatters: signalWhyItMatters(signal),
     companyHref: company ? companyProfileHref(company) : "",
     robotHref: robot ? robotProfileHref(robot) : ""
@@ -1823,9 +2211,10 @@ function renderRoboticsSignalsPage() {
   const feed = document.querySelector("[data-signals-feed]");
   const types = document.querySelector("[data-signals-types]");
   const metrics = document.querySelector("[data-signals-metrics]");
+  const qualityGrid = document.querySelector("[data-signals-quality]");
   const filters = document.querySelector("[data-signals-filters]");
   const count = document.querySelector("[data-signals-count]");
-  if (!featured && !feed && !types && !metrics && !filters && !count) return;
+  if (!featured && !feed && !types && !metrics && !qualityGrid && !filters && !count) return;
 
   const signals = pageState.signals.length ? pageState.signals : signalFallback;
   const visibleSignals = filteredSignals(signals).map(signalViewModel);
@@ -1837,11 +2226,25 @@ function renderRoboticsSignalsPage() {
 
   if (metrics) {
     const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
+    const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
     metrics.innerHTML = `
       <article><strong>${signals.length}</strong><small>Robotics signals</small></article>
       <article><strong>${signalTypes.length}</strong><small>Signal categories</small></article>
       <article><strong>${highImpact}</strong><small>High-impact watches</small></article>
-      <article><strong>${officialish}</strong><small>Official / PR sources</small></article>
+      <article><strong>${profileLinked}</strong><small>Profile-linked signals</small></article>
+    `;
+  }
+
+  if (qualityGrid) {
+    const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
+    const mediaRetailer = enrichedSignals.filter((item) => ["Media report", "Retailer"].includes(item.confidence)).length;
+    const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
+    const avgQuality = enrichedSignals.length ? Math.round(enrichedSignals.reduce((sum, item) => sum + item.qualityScore, 0) / enrichedSignals.length) : 0;
+    qualityGrid.innerHTML = `
+      <article><span>Average quality</span><strong>${avgQuality}</strong><small>Weighted by source, impact, and profile links</small></article>
+      <article><span>Official / PR</span><strong>${officialish}</strong><small>Company or distribution-backed sources</small></article>
+      <article><span>Media / retailer</span><strong>${mediaRetailer}</strong><small>Useful context, checked against source trail</small></article>
+      <article><span>Profile linked</span><strong>${profileLinked}</strong><small>Signals connected to company or robot profiles</small></article>
     `;
   }
 
@@ -1855,12 +2258,13 @@ function renderRoboticsSignalsPage() {
         <b class="signal-impact ${signalImpactClass(lead.impact)}">${pageEscape(lead.impact || "Tracked")}</b>
         <em>${pageEscape(lead.confidence)}</em>
         <em>${pageEscape(lead.intelligenceType)}</em>
+        <em>Q${pageEscape(String(lead.qualityScore))}</em>
       </div>
       <dl>
         <div><dt>Company</dt><dd>${pageEscape(lead.company)}</dd></div>
         <div><dt>Robot</dt><dd>${pageEscape(lead.robot)}</dd></div>
         <div><dt>Category</dt><dd>${pageEscape(lead.category)}</dd></div>
-        <div><dt>Country</dt><dd>${pageEscape(lead.country)}</dd></div>
+        <div><dt>Source</dt><dd>${pageEscape(lead.sourceHost)}</dd></div>
       </dl>
       <div class="signal-why"><strong>Why it matters</strong><span>${pageEscape(lead.whyItMatters)}</span></div>
       <div class="signals-actions">
@@ -1915,6 +2319,8 @@ function renderRoboticsSignalsPage() {
             <em>${pageEscape(item.robot)}</em>
             <em>${pageEscape(item.country)}</em>
             <em>${pageEscape(item.category)}</em>
+            <em>${pageEscape(item.sourceHost)}</em>
+            <em>Q${pageEscape(String(item.qualityScore))}</em>
           </div>
           <small><strong>Why it matters:</strong> ${pageEscape(item.whyItMatters)}</small>
         </div>

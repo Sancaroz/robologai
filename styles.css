@@ -3868,7 +3868,19 @@ body.light-theme .data-wave {
   margin-top: 16px;
 }
 
+.signals-quality-section {
+  margin-top: 22px;
+}
+
+.signals-quality-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
 .signals-metrics article,
+.signals-quality-grid article,
 .signals-featured,
 .signals-type-panel,
 .signals-row {
@@ -3882,8 +3894,28 @@ body.light-theme .data-wave {
   padding: 18px;
 }
 
+.signals-quality-grid article {
+  display: grid;
+  gap: 8px;
+  min-height: 142px;
+  padding: 18px;
+}
+
+.signals-quality-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
 .signals-metrics strong {
   display: block;
+  color: #eef6ff;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.signals-quality-grid strong {
   color: #eef6ff;
   font-size: 32px;
   line-height: 1;
@@ -3894,6 +3926,12 @@ body.light-theme .data-wave {
   margin-top: 8px;
   color: #95a8c0;
   font-weight: 800;
+}
+
+.signals-quality-grid small {
+  color: #95a8c0;
+  font-weight: 800;
+  line-height: 1.45;
 }
 
 .signals-command {
@@ -4397,6 +4435,7 @@ body.light-theme .leaderboard-head {
 
 body.light-theme .signals-hero,
 body.light-theme .signals-metrics article,
+body.light-theme .signals-quality-grid article,
 body.light-theme .signals-featured,
 body.light-theme .signals-type-panel,
 body.light-theme .signals-section,
@@ -4410,6 +4449,7 @@ body.light-theme .signals-empty {
 body.light-theme .signals-hero h1,
 body.light-theme .signals-hero span,
 body.light-theme .signals-metrics strong,
+body.light-theme .signals-quality-grid strong,
 body.light-theme .signals-featured h2,
 body.light-theme .signals-featured dd,
 body.light-theme .signals-filter-head h2,
@@ -4422,6 +4462,7 @@ body.light-theme .signals-empty strong {
 body.light-theme .signals-featured p,
 body.light-theme .signals-row-main p,
 body.light-theme .signals-metrics small,
+body.light-theme .signals-quality-grid small,
 body.light-theme .signals-row-main small,
 body.light-theme .signals-type-grid small,
 body.light-theme .signals-filter-grid span,
@@ -10708,6 +10749,7 @@ body.light-theme .facts span {
   .leaderboard-hero,
   .signals-hero,
   .signals-command,
+  .signals-quality-grid,
   .signals-filter-grid {
     grid-template-columns: 1fr;
   }
@@ -11732,6 +11774,7 @@ body.light-theme .facts span {
   }
 
   .signals-metrics,
+  .signals-quality-grid,
   .signals-featured dl {
     grid-template-columns: 1fr;
   }
@@ -11800,7 +11843,8 @@ body.light-theme .facts span {
     width: 100%;
   }
 
-  .signals-metrics {
+  .signals-metrics,
+  .signals-quality-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
