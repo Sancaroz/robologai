@@ -5733,6 +5733,81 @@ body.light-theme .profile-main > div > span {
   padding: 0;
 }
 
+.company-overview-grid,
+.company-segment-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.company-overview-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.company-segment-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.company-overview-grid article,
+.company-segment-grid article {
+  display: grid;
+  gap: 9px;
+  min-height: 148px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
+}
+
+.company-overview-grid span,
+.company-segment-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.company-overview-grid strong,
+.company-segment-grid strong {
+  color: #eef6ff;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.company-overview-grid small,
+.company-segment-grid small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
+.company-segment-grid a {
+  align-self: end;
+  color: #7df9ff;
+  font-weight: 950;
+}
+
+.company-card-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.company-card-metrics span {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 999px;
+  color: #dff8ff;
+  background: rgba(120, 231, 255, 0.08);
+  font-size: 11px;
+  font-weight: 900;
+  padding: 0 9px;
+}
+
+.company-empty-card {
+  padding: 22px;
+}
+
 .market-page-layout {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -10378,6 +10453,8 @@ body.light-theme .market-overview-grid small,
 body.light-theme .market-segment-grid small,
 body.light-theme .market-price-access-grid small,
 body.light-theme .market-leader-grid small,
+body.light-theme .company-overview-grid small,
+body.light-theme .company-segment-grid small,
 body.light-theme .tr-guide-grid small,
 body.light-theme .faq-grid p,
 body.light-theme .featured-robot-card p,
@@ -10408,6 +10485,8 @@ body.light-theme .market-overview-grid article,
 body.light-theme .market-segment-grid article,
 body.light-theme .market-price-access-grid article,
 body.light-theme .market-leader-grid article,
+body.light-theme .company-overview-grid article,
+body.light-theme .company-segment-grid article,
 body.light-theme .tr-guide-grid a,
 body.light-theme .compare-preset-grid a,
 body.light-theme .faq-grid details,
@@ -10450,6 +10529,8 @@ body.light-theme .market-overview-grid strong,
 body.light-theme .market-segment-grid strong,
 body.light-theme .market-price-access-grid strong,
 body.light-theme .market-leader-grid strong,
+body.light-theme .company-overview-grid strong,
+body.light-theme .company-segment-grid strong,
 body.light-theme .tr-guide-grid strong,
 body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
@@ -10723,6 +10804,8 @@ body.light-theme .facts span {
   .market-segment-grid,
   .market-price-access-grid,
   .market-leader-grid,
+  .company-overview-grid,
+  .company-segment-grid,
   .tr-guide-grid,
   .compare-preset-grid,
   .faq-grid,
@@ -11145,6 +11228,8 @@ body.light-theme .facts span {
   .market-segment-grid,
   .market-price-access-grid,
   .market-leader-grid,
+  .company-overview-grid,
+  .company-segment-grid,
   .price-board,
   .video-gallery-grid,
   .catalog-grid,
