@@ -1,0 +1,17 @@
+{
+    "name": "NEO",
+    "company": "1X Technologies",
+    "category": "Home humanoid",
+    "country": "Norway / USA",
+    "status": "Developing / limited access",
+    "availability": "Limited",
+    "price": "No broad public price",
+    "useCase": "Home assistance and human environments",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "source": "https://www.1x.tech/",
+    "keywords": ["neo", "home robot", "1x", "humanoid"]
+  }
+  
