@@ -1,0 +1,17 @@
+{
+  "name": "X20",
+  "company": "DEEP Robotics",
+  "category": "Quadruped",
+  "country": "China",
+  "status": "Industrial quadruped robot",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Industrial patrol inspection, power utilities, tunnel inspection, rescue, metal and mining, and construction environments",
+  "height": "Official standing size: 950 x 470 x 700 mm",
+  "runtime": "Official endurance: 2-4 hours",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "imageCredit": "DEEP Robotics official product page",
+  "source": "https://www.deeprobotics.cn/en/index/product.html",
+  "keywords": ["deep robotics", "x20", "quadruped", "industrial robot dog", "inspection", "ip66", "patrol"]
+}
