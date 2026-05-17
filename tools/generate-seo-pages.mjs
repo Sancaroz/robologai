@@ -260,6 +260,15 @@ function robotQuality(robot) {
   };
 }
 
+function robotDeploymentThesis(robot) {
+  const text = normalize([robot.name, robot.company, robot.category, robot.country, robot.status, robot.availability, robot.price, robot.useCase, ...(robot.keywords || [])].filter(Boolean).join(" "));
+  if (text.includes("enterprise") || text.includes("industrial") || text.includes("inspection")) return "Enterprise deployment signal";
+  if (text.includes("available") || text.includes("order") || text.includes("retailer")) return "Commercial access signal";
+  if (text.includes("research") || text.includes("developer") || text.includes("education")) return "Developer and research signal";
+  if (text.includes("prototype") || text.includes("development")) return "Early-stage platform signal";
+  return "Robotics market signal";
+}
+
 function companyQuality(company, linkedRobots = []) {
   const sources = sourceList(company.website, company.sourceLinks);
   return {
@@ -327,7 +336,7 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
     <title>${escapeHtml(title)} | robologai</title>
     <link rel="icon" href="../assets/robologai-icon-v2.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/robologai-icon-v2.svg">
-    <link rel="stylesheet" href="../styles.css?v=20260517-company-intel">
+    <link rel="stylesheet" href="../styles.css?v=20260517-robot-intel">
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
   </head>
   <body>
@@ -370,6 +379,7 @@ function robotPage(robot) {
   const quality = robotQuality(robot);
   const sources = sourceList(robot.source, robot.sourceLinks);
   const related = relatedRobots(robot);
+  const deploymentThesis = robotDeploymentThesis(robot);
   const title = `${robot.name} Robot Profile: Price, Use Case, Status`;
   const description = `${robot.name} by ${robot.company}: ${robot.category} robot profile with availability, price signal, use case, status, source link, and Robologai readiness score.`;
   const canonical = `https://robologai.com/robots/${pageSlug}.html`;
@@ -399,6 +409,24 @@ function robotPage(robot) {
           ${robot.image ? `<img src="${escapeAttr(robot.image)}" alt="${escapeAttr(robot.name)} robot" loading="lazy">` : `<div class="company-profile-mark">${escapeHtml(initials(robot.name))}</div>`}
           <figcaption>${escapeHtml(robot.imageCredit || "Robologai source-first profile")}</figcaption>
         </figure>
+      </section>
+      <section class="profile-intel-strip" aria-label="Robot intelligence summary">
+        <article><span>Use case</span><strong>${escapeHtml(robot.useCase || robot.category || "Robot platform")}</strong></article>
+        <article><span>Country</span><strong>${escapeHtml(robot.country || "Global")}</strong></article>
+        <article><span>Price</span><strong>${escapeHtml(robot.price)}</strong></article>
+        <article><span>Stage</span><strong>${escapeHtml(deploymentThesis)}</strong></article>
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Robot Snapshot</p>
+          <h2>Core commercial and technical signals for ${escapeHtml(robot.name)}.</h2>
+        </div>
+        <div class="robot-snapshot-grid">
+          <article><span>Platform</span><strong>${escapeHtml(robot.category || "Robot")}</strong><small>${escapeHtml(robot.company)}</small></article>
+          <article><span>Deployment stage</span><strong>${escapeHtml(scoreLabel(score))}</strong><small>${escapeHtml(robot.status || "Status not disclosed")}</small></article>
+          <article><span>Access</span><strong>${escapeHtml(robot.availability || "Availability unknown")}</strong><small>${escapeHtml(quality.priceConfidence)}</small></article>
+          <article><span>Market role</span><strong>${escapeHtml(deploymentThesis)}</strong><small>${escapeHtml(robot.useCase || robot.category)}</small></article>
+        </div>
       </section>
       <section class="profile-detail-grid">
         <article class="profile-facts">
@@ -432,6 +460,20 @@ function robotPage(robot) {
       </section>
       <section class="catalog-section">
         <div class="section-heading compact">
+          <p>Readiness Breakdown</p>
+          <h2>How Robologai scores ${escapeHtml(robot.name)} across market-readiness signals.</h2>
+        </div>
+        <div class="robot-readiness-grid">
+          <article><span>Commercial readiness</span><strong>${breakdown.commercial}</strong><small>Availability, maturity, and price visibility.</small></article>
+          <article><span>Mobility proof</span><strong>${breakdown.mobility}</strong><small>Movement class, media proof, and deployment maturity.</small></article>
+          <article><span>AI signal</span><strong>${breakdown.intelligence}</strong><small>Embodied AI, autonomy, and source strength.</small></article>
+          <article><span>Price transparency</span><strong>${breakdown.price}</strong><small>${escapeHtml(robot.price)}</small></article>
+          <article><span>Media proof</span><strong>${breakdown.media}</strong><small>${escapeHtml(robot.imageCredit || "Source image / page used")}</small></article>
+          <article><span>Source strength</span><strong>${breakdown.source}</strong><small>${escapeHtml(robot.source || "Official source missing")}</small></article>
+        </div>
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
           <p>Data Quality</p>
           <h2>How confident Robologai is about this profile.</h2>
         </div>
@@ -442,6 +484,17 @@ function robotPage(robot) {
           <article><span>Review</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
         </div>
       </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Deployment Context</p>
+          <h2>What ${escapeHtml(robot.name)} signals about the physical AI market.</h2>
+        </div>
+        <div class="deployment-context-grid">
+          <article><span>Buyer lens</span><strong>${escapeHtml(scoreLabel(score))}</strong><small>${escapeHtml(Number(robot.priceVisibility || 0) >= 3 ? "Access and pricing are easier to evaluate." : "Access and pricing still need direct verification.")}</small></article>
+          <article><span>Operating lane</span><strong>${escapeHtml(robot.category || "Robot platform")}</strong><small>${escapeHtml(robot.useCase || "Use case not disclosed")}</small></article>
+          <article><span>Proof path</span><strong>${escapeHtml(quality.mediaVerified)}</strong><small>Official source and product media are the primary proof points.</small></article>
+        </div>
+      </section>
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Compare Next</p>

@@ -1415,6 +1415,15 @@ function robotQuality(robot) {
   };
 }
 
+function robotDeploymentThesis(robot) {
+  const text = robotText(robot);
+  if (text.includes("enterprise") || text.includes("industrial") || text.includes("inspection")) return "Enterprise deployment signal";
+  if (text.includes("available") || text.includes("order") || text.includes("retailer")) return "Commercial access signal";
+  if (text.includes("research") || text.includes("developer") || text.includes("education")) return "Developer and research signal";
+  if (text.includes("prototype") || text.includes("development")) return "Early-stage platform signal";
+  return "Robotics market signal";
+}
+
 function sourceHost(url = "") {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
@@ -2006,6 +2015,8 @@ function renderRobotProfile() {
   const robotSources = sourceList(robot.source, robot.sourceLinks);
   const alternatives = robotAlternatives(robot);
   const compareSlugs = [robot, ...alternatives.slice(0, 3)].map((item) => robotSlug(item)).join(",");
+  const company = pageState.companies.find((item) => pageNormalize(item.name) === pageNormalize(robot.company));
+  const deploymentThesis = robotDeploymentThesis(robot);
 
   document.title = `${robot.name} Profile | robologai`;
   root.innerHTML = `
@@ -2022,6 +2033,7 @@ function renderRobotProfile() {
         <div class="profile-action-row">
           <a href="compare.html">Compare robots</a>
           <a href="compare.html?robots=${pageEscape(compareSlugs)}">Compare alternatives</a>
+          ${company ? `<a href="${pageEscape(companyProfileHref(company))}">Company profile</a>` : ""}
           <a href="prices.html">Price tracker</a>
           ${video?.embed ? `<a href="#profile-video">Watch demo</a>` : ""}
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
@@ -2040,6 +2052,27 @@ function renderRobotProfile() {
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
+        <p>Robot Snapshot</p>
+        <h2>Core commercial and technical signals for ${pageEscape(robot.name)}.</h2>
+      </div>
+      <div class="robot-snapshot-grid">
+        <article><span>Platform</span><strong>${pageEscape(robot.category || "Robot")}</strong><small>${pageEscape(robot.company)}</small></article>
+        <article><span>Deployment stage</span><strong>${pageEscape(robotStage(robot))}</strong><small>${pageEscape(robot.status || "Status not disclosed")}</small></article>
+        <article><span>Access</span><strong>${pageEscape(robot.availability || "Availability unknown")}</strong><small>${pageEscape(quality.priceConfidence)}</small></article>
+        <article><span>Market role</span><strong>${pageEscape(deploymentThesis)}</strong><small>${pageEscape(useCases[0]?.title || robot.useCase || robot.category)}</small></article>
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Readiness Breakdown</p>
+        <h2>How Robologai scores ${pageEscape(robot.name)} across market-readiness signals.</h2>
+      </div>
+      <div class="robot-readiness-grid">
+        ${robotCapabilityRows(robot).map(([label, value]) => `<article><span>${pageEscape(label)}</span><strong>${Math.round(value * 20)}</strong><small>${pageMeter(value)}</small></article>`).join("")}
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
         <p>Data Quality</p>
         <h2>How confident Robologai is about this profile.</h2>
       </div>
@@ -2051,6 +2084,17 @@ function renderRobotProfile() {
       </div>
     </section>
     ${renderSourceNotes(`${robot.name} source trail.`, robotSources, "Official product source")}
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Deployment Context</p>
+        <h2>What ${pageEscape(robot.name)} signals about the physical AI market.</h2>
+      </div>
+      <div class="deployment-context-grid">
+        <article><span>Buyer lens</span><strong>${pageEscape(scoreLabel(score))}</strong><small>${pageEscape(Number(robot.priceVisibility || 0) >= 3 ? "Access and pricing are easier to evaluate." : "Access and pricing still need direct verification.")}</small></article>
+        <article><span>Operating lane</span><strong>${pageEscape(useCases[0]?.title || robot.category || "Robot platform")}</strong><small>${pageEscape(robot.useCase || "Use case not disclosed")}</small></article>
+        <article><span>Proof path</span><strong>${pageEscape(quality.mediaVerified)}</strong><small>${pageEscape(video?.embed ? "Demo media is available in the profile." : "Official source and product media are the primary proof points.")}</small></article>
+      </div>
+    </section>
     <section class="profile-detail-grid">
       <article class="profile-facts">
         <h2>Robot facts</h2>
