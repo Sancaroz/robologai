@@ -8,6 +8,20 @@ The live site still reads `data/robots.json`, but that aggregate file can now be
 node scripts/build-data.mjs --write
 ```
 
+The easiest way to add a complete robot record is:
+
+```bash
+node scripts/add-robot.mjs
+```
+
+For one-line use:
+
+```bash
+node scripts/add-robot.mjs --name "Example Bot" --company "Example Robotics" --category "Humanoid" --country "USA" --use-case "Factory work" --source "https://example.com/bot"
+```
+
+By default, the script writes the modular JSON, rebuilds `data/robots.json`, regenerates static profile pages, and validates the data. Use `--skip-build` if you only want to create the modular JSON file.
+
 Suggested file naming:
 
 ```text

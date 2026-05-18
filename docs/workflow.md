@@ -45,6 +45,22 @@ Yeni şirket ekleme sırası
 8. company-profile-mark kısmına gerçek img koy.
 9. commit + deploy kontrol et.
 
+Yeni robot ekleme sırası
+1. Önce şirketin `data/companies/` veya `data/companies.json` içinde olduğundan emin ol.
+2. Yeni robot kaydını soru-cevapla oluştur:
+   `node scripts/add-robot.mjs`
+3. İstersen tek satır komutla da oluşturabilirsin:
+   `node scripts/add-robot.mjs --name "Example Bot" --company "Example Robotics" --category "Humanoid" --country "USA" --use-case "Factory work" --source "https://example.com/bot"`
+4. Script otomatik olarak:
+   - `data/robots/company-robot.json` dosyasını oluşturur
+   - `data/robots.json` aggregate dosyasını günceller
+   - `companies/*.html` ve `robots/*.html` profil sayfalarını yeniden üretir
+   - data validation çalıştırır
+5. Sadece modüler JSON oluşturmak istersen:
+   `node scripts/add-robot.mjs --skip-build`
+6. Robot görseli için önerilen path:
+   `assets/robots/robot-slug/hero.png`
+
 Logo çalışmıyorsa kontrol
 - png gerçekten png mi?
 - path doğru mu?
@@ -52,16 +68,19 @@ Logo çalışmıyorsa kontrol
 - OM placeholder kaldı mı?
 
 
-## Yeni Robot Ekleme
+## Yeni Robot Ekleme (manuel dosya yöntemi)
 
-1. Yeni kayıt için önce mümkünse `data/robots/company-robot.json` dosyası oluştur.
-2. `node scripts/validate-data.mjs` ile alanları kontrol et.
-3. Şimdilik canlı site `data/robots.json` okuduğu için aggregate dosyayı da güncel tut.
-4. Görseli `assets/robots/` içine yükle.
-5. `image` yolunu doğru yaz:
+1. Script kullanmak istemiyorsan yeni kayıt için `data/robots/company-robot.json` dosyası oluştur.
+2. Mevcut robotu küçük bir bilgiyle güncelliyorsan dosya kısmi olabilir; örnek olarak sadece `name`, `company`, `price` gibi alanlar yazılabilir. Script merkezi kayıttan eksikleri tamamlar.
+3. Yeni robot ekliyorsan zorunlu alanları tam yaz: `name`, `company`, `category`, `country`, `status`, `availability`, `price`, `useCase`, `source`.
+4. `node scripts/build-data.mjs` ile dry-run yap.
+5. `node scripts/build-data.mjs --write` ile `data/robots.json` aggregate dosyasını üret.
+6. `node scripts/validate-data.mjs` ile alanları kontrol et.
+7. Görseli `assets/robots/` içine yükle.
+8. `image` yolunu doğru yaz:
    `assets/robots/dosya-adi.png`
-6. Commit et.
-7. Robots sayfasında kontrol et.
+9. Commit et.
+10. Robots sayfasında kontrol et.
 
 ## Modüler Data Geçişi
 
@@ -76,3 +95,5 @@ Logo çalışmıyorsa kontrol
   `node scripts/build-data.mjs`
 - Aggregate dosyaları yazmak için:
   `node scripts/build-data.mjs --write`
+- Robot kayıtları canonical slug ile birleşir. Örneğin merkezi `G1` kaydı ile `data/robots/unitree-g1.json` aynı robot olarak ele alınır.
+- Modüler robot dosyaları tam kayıt veya mevcut merkezi kayda uygulanan kısmi override olabilir.
