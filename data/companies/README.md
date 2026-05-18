@@ -4,6 +4,20 @@ This folder is the staged source area for future company records.
 
 The live site still reads `data/companies.json`. Do not delete or replace that aggregate file yet.
 
+The easiest way to add a company is:
+
+```bash
+node scripts/add-company.mjs
+```
+
+For one-line use:
+
+```bash
+node scripts/add-company.mjs --name "Example Robotics" --website "https://example.com/" --category "Humanoid Robotics" --country "USA" --robot "Example Bot"
+```
+
+By default, the script writes the modular JSON, rebuilds `data/companies.json`, regenerates static profile pages, and validates the data. Use `--skip-build` if you only want to create the modular JSON file.
+
 Suggested file naming:
 
 ```text

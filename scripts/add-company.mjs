@@ -47,6 +47,8 @@ function parseArgs(argv) {
 
 function readJson(filePath, fallback) {
   try {
+    const stats = fs.statSync(filePath);
+    if (stats.size === 0) return fallback;
     return JSON.parse(fs.readFileSync(filePath, "utf8"));
   } catch {
     return fallback;
@@ -82,6 +84,9 @@ async function askMissing(args) {
     args.keywords = hasCliValues ? (args.keywords || "") : await ask("keywords", "Keywords, comma-separated", "");
     args.focus = hasCliValues ? (args.focus || "") : await ask("focus", "Focus", "");
     args.sourceLinks = hasCliValues ? (args["source-links"] || args.website || "") : await ask("source-links", "Source links, comma-separated", args.website || "");
+    args.logo = hasCliValues ? (args.logo || "") : await ask("logo", "Logo path", "");
+    args.image = hasCliValues ? (args.image || "") : await ask("image", "Image path", "");
+    args.lastVerified = hasCliValues ? (args["last-verified"] || "") : await ask("last-verified", "Last verified", "");
   } finally {
     rl.close();
   }
@@ -106,14 +111,17 @@ Options:
   --keywords       Comma-separated keywords
   --focus          Short focus note, optional
   --source-links   Comma-separated source links
+  --logo           Logo path, such as assets/companies/example-robotics/logo.svg
+  --image          Optional company image path
+  --last-verified  Optional review label, such as "May 2026 source review"
+  --skip-build     Only write modular JSON; do not rebuild aggregate data or pages
   --dry-run        Print the record without writing
   --help           Show this help
 
 Output:
   data/companies/<company-slug>.json
 
-After creation:
-  node scripts/validate-data.mjs
+By default this script rebuilds aggregate data, regenerates static pages, and validates data.
 `);
 }
 
@@ -153,6 +161,9 @@ async function main() {
   };
 
   if (args.focus) record.focus = String(args.focus).trim();
+  if (args.logo) record.logo = String(args.logo).trim();
+  if (args.image) record.image = String(args.image).trim();
+  if (args["last-verified"] || args.lastVerified) record.lastVerified = String(args["last-verified"] || args.lastVerified).trim();
   const sourceLinks = splitList(args["source-links"]);
   if (sourceLinks.length) record.sourceLinks = sourceLinks;
 
@@ -179,11 +190,25 @@ async function main() {
   fs.writeFileSync(outputPath, json);
   console.log(`Created ${path.relative(root, outputPath)}`);
 
-  const validation = spawnSync(process.execPath, ["scripts/validate-data.mjs"], {
+  if (args["skip-build"]) {
+    runStep("Validating data...", ["scripts/validate-data.mjs"]);
+    return;
+  }
+
+  runStep("Updating aggregate data...", ["scripts/build-data.mjs", "--write"]);
+  runStep("Regenerating static profile pages...", ["tools/generate-seo-pages.mjs"]);
+  runStep("Validating data...", ["scripts/validate-data.mjs"]);
+}
+
+function runStep(label, args) {
+  console.log(label);
+  const result = spawnSync(process.execPath, args, {
     cwd: root,
     stdio: "inherit"
   });
-  if (validation.status !== 0) process.exitCode = validation.status || 1;
+  if (result.status !== 0) {
+    throw new Error(`${label} failed.`);
+  }
 }
 
 main().catch((error) => {

@@ -37,13 +37,18 @@ Yeni şirket ekleme sırası
    `node scripts/add-company.mjs`
 2. İstersen tek satır komutla da oluşturabilirsin:
    `node scripts/add-company.mjs --name "Example Robotics" --website "https://example.com/" --category "Humanoid Robotics" --country "USA" --robot "Example Bot" --keywords "humanoid, robotics"`
-3. `node scripts/validate-data.mjs` ile alanları kontrol et.
-4. Şimdilik canlı site `data/companies.json` okuduğu için aggregate dosyayı da güncel tut.
-5. image path kontrol et.
-6. logo dosyasını assets/robots içine koy.
-7. companies/company-name.html oluştur.
-8. company-profile-mark kısmına gerçek img koy.
-9. commit + deploy kontrol et.
+3. Logo kullanacaksan önerilen yol:
+   `assets/companies/company-slug/logo.svg`
+4. Tek satırda logo da verebilirsin:
+   `node scripts/add-company.mjs --name "Example Robotics" --website "https://example.com/" --category "Humanoid Robotics" --country "USA" --logo "assets/companies/example-robotics/logo.svg"`
+5. Script otomatik olarak:
+   - `data/companies/company-slug.json` dosyasını oluşturur
+   - `data/companies.json` aggregate dosyasını günceller
+   - `companies/*.html` ve `robots/*.html` profil sayfalarını yeniden üretir
+   - data validation çalıştırır
+6. Sadece modüler JSON oluşturmak istersen:
+   `node scripts/add-company.mjs --skip-build`
+7. Commit + deploy kontrol et.
 
 Yeni robot ekleme sırası
 1. Önce şirketin `data/companies/` veya `data/companies.json` içinde olduğundan emin ol.
