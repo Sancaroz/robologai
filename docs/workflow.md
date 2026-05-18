@@ -104,5 +104,9 @@ Logo çalışmıyorsa kontrol
   `node scripts/build-data.mjs`
 - Aggregate dosyaları yazmak için:
   `node scripts/build-data.mjs --write`
+- Commit öncesi tek komut kontrol:
+  `node scripts/health-check.mjs`
+- Aggregate ve statik profil sayfalarını da yeniden üretmek için:
+  `node scripts/health-check.mjs --write`
 - Robot kayıtları canonical slug ile birleşir. Örneğin merkezi `G1` kaydı ile `data/robots/unitree-g1.json` aynı robot olarak ele alınır.
 - Modüler robot dosyaları tam kayıt veya mevcut merkezi kayda uygulanan kısmi override olabilir.
