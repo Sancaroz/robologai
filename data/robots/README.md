@@ -22,6 +22,12 @@ node scripts/add-robot.mjs --name "Example Bot" --company "Example Robotics" --c
 
 By default, the script writes the modular JSON, rebuilds `data/robots.json`, regenerates static profile pages, and validates the data. Use `--skip-build` if you only want to create the modular JSON file.
 
+If you prefer manual editing, copy:
+
+```text
+data/templates/robot.template.json
+```
+
 Suggested file naming:
 
 ```text

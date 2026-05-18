@@ -1,0 +1,15 @@
+{
+  "date": "2026-05-18",
+  "type": "Product launch",
+  "title": "Example Robotics introduces Example Bot",
+  "company": "Example Robotics",
+  "robot": "Example Bot",
+  "category": "Humanoid Robotics",
+  "country": "United States",
+  "impact": "Medium",
+  "summary": "Short source-backed signal summary. Keep it factual and avoid unsupported claims.",
+  "source": "https://example.com/news/example-bot",
+  "relatedUrl": "robots/example-bot.html",
+  "sourceType": "manual",
+  "whyItMatters": "Explain why this changes the robotics market, buyer access, deployment readiness, or competitive landscape."
+}

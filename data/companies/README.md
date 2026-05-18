@@ -18,6 +18,12 @@ node scripts/add-company.mjs --name "Example Robotics" --website "https://exampl
 
 By default, the script writes the modular JSON, rebuilds `data/companies.json`, regenerates static profile pages, and validates the data. Use `--skip-build` if you only want to create the modular JSON file.
 
+If you prefer manual editing, copy:
+
+```text
+data/templates/company.template.json
+```
+
 Suggested file naming:
 
 ```text

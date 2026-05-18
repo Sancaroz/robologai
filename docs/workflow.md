@@ -48,7 +48,9 @@ Yeni şirket ekleme sırası
    - data validation çalıştırır
 6. Sadece modüler JSON oluşturmak istersen:
    `node scripts/add-company.mjs --skip-build`
-7. Commit + deploy kontrol et.
+7. GitHub/Codex içinde elle eklemek istersen:
+   `data/templates/company.template.json` dosyasını kopyala.
+8. Commit + deploy kontrol et.
 
 Yeni robot ekleme sırası
 1. Önce şirketin `data/companies/` veya `data/companies.json` içinde olduğundan emin ol.
@@ -65,6 +67,8 @@ Yeni robot ekleme sırası
    `node scripts/add-robot.mjs --skip-build`
 6. Robot görseli için önerilen path:
    `assets/robots/robot-slug/hero.png`
+7. GitHub/Codex içinde elle eklemek istersen:
+   `data/templates/robot.template.json` dosyasını kopyala.
 
 Logo çalışmıyorsa kontrol
 - png gerçekten png mi?
@@ -110,3 +114,5 @@ Logo çalışmıyorsa kontrol
   `node scripts/health-check.mjs --write`
 - Robot kayıtları canonical slug ile birleşir. Örneğin merkezi `G1` kaydı ile `data/robots/unitree-g1.json` aynı robot olarak ele alınır.
 - Modüler robot dosyaları tam kayıt veya mevcut merkezi kayda uygulanan kısmi override olabilir.
+- Elle ekleme rehberi:
+  `data/README.md`

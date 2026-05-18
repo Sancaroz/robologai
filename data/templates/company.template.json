@@ -1,0 +1,20 @@
+{
+  "name": "Example Robotics",
+  "category": "Humanoid Robotics",
+  "country": "United States",
+  "type": "Private",
+  "ticker": "",
+  "robot": "Example Bot",
+  "website": "https://example.com/",
+  "focus": "Short description of what the company builds",
+  "logo": "assets/companies/example-robotics/logo.svg",
+  "image": "assets/companies/example-robotics/hero.png",
+  "sourceLinks": [
+    "https://example.com/"
+  ],
+  "keywords": [
+    "robotics",
+    "humanoid"
+  ],
+  "lastVerified": "May 2026 source review"
+}

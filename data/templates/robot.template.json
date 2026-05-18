@@ -1,0 +1,25 @@
+{
+  "name": "Example Bot",
+  "company": "Example Robotics",
+  "category": "Humanoid",
+  "country": "United States",
+  "status": "Tracked / research",
+  "availability": "Availability not disclosed",
+  "price": "No official public price",
+  "useCase": "Factory work, research, or primary deployment lane",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/example-bot/hero.png",
+  "imageCredit": "Official company media",
+  "source": "https://example.com/bot",
+  "sourceLinks": [
+    "https://example.com/bot"
+  ],
+  "keywords": [
+    "humanoid",
+    "factory"
+  ],
+  "lastVerified": "May 2026 source review"
+}
