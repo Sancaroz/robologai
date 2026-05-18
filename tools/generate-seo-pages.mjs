@@ -402,14 +402,28 @@ function robotPage(robot) {
   const canonical = `https://robologai.com/robots/${pageSlug}.html`;
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: robot.name,
-    brand: { "@type": "Brand", name: robot.company },
-    category: robot.category,
+    "@type": "TechArticle",
+    headline: title,
+    name: `${robot.name} Robot Profile`,
     description,
     image: robot.image || undefined,
     url: canonical,
-    manufacturer: company ? { "@type": "Organization", name: company.name, url: company.website } : undefined
+    about: [
+      { "@type": "Thing", name: robot.category },
+      { "@type": "Organization", name: robot.company, url: company?.website || robot.source || undefined }
+    ],
+    mainEntity: {
+      "@type": "Thing",
+      name: robot.name,
+      description: `${robot.name} by ${robot.company}`,
+      additionalType: robot.category,
+      url: canonical
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "RoboLogAI",
+      url: "https://robologai.com/"
+    }
   };
   const body = `      <section class="profile-hero robot-profile-hero">
         <div>
