@@ -917,5 +917,26 @@
       "clean energy",
       "construction automation"
     ]
+  },
+  {
+    "name": "Figure 03",
+    "slug": "figure-03",
+    "company": "Figure AI",
+    "companySlug": "figure-ai",
+    "type": "Humanoid Robot",
+    "category": "Humanoid",
+    "country": "USA",
+    "status": "Pilot",
+    "availability": "Not publicly available",
+    "useCase": "General-purpose humanoid tasks",
+    "price": {
+      "type": "not_public",
+      "value": null,
+      "currency": null,
+      "note": "Official public pricing is not available."
+    },
+    "description": "Figure 03 is Figure AI's third-generation humanoid robot.",
+    "source": "https://www.figure.ai/",
+    "image": "assets/robots/figure-03/hero.png"
   }
 ]

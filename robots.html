@@ -139,6 +139,20 @@
           <div class="catalog-grid" data-robots-grid></div>
         </section>
       </section>
+
+      <section class="catalog-section data-operations-section" aria-label="Robot data operations">
+        <div class="section-heading compact">
+          <p>Data Operations</p>
+          <h2>Extend the robot catalog with modular source files.</h2>
+          <span>Use official sources, separate robot imagery, and health checks before publishing new robot profiles.</span>
+        </div>
+        <div class="data-ops-grid">
+          <article><span>Add robot</span><strong>scripts/add-robot.mjs</strong><small>Creates a modular robot JSON record and can rebuild aggregate data automatically.</small></article>
+          <article><span>Image path</span><strong>assets/robots/robot-slug/hero.png</strong><small>Keep robot visuals separate from data so profiles can use consistent media paths.</small></article>
+          <article><span>Template</span><strong>data/templates/robot.template.json</strong><small>Use this when adding robots manually through GitHub or Codex.</small></article>
+          <article><span>Check</span><strong>scripts/health-check.mjs --write</strong><small>Regenerates data and pages, then validates sources, assets, and JavaScript.</small></article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer mini-footer">

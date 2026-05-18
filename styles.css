@@ -5888,6 +5888,7 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid,
 .compare-summary-grid,
 .data-quality-grid,
+.data-ops-grid,
 .source-note-grid,
 .company-snapshot-grid,
 .product-lineup-grid,
@@ -5905,10 +5906,15 @@ body.light-theme .profile-main > div > span {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.data-operations-section {
+  margin-bottom: 42px;
+}
+
 .signal-update-grid,
 .buyer-guide-grid,
 .profile-stack-grid,
 .data-quality-grid,
+.data-ops-grid,
 .source-note-grid,
 .company-snapshot-grid,
 .robot-snapshot-grid,
@@ -5923,6 +5929,10 @@ body.light-theme .profile-main > div > span {
 
 .product-lineup-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.data-ops-grid strong {
+  overflow-wrap: anywhere;
 }
 
 .deployment-context-grid {
@@ -5958,6 +5968,7 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid article,
 .compare-best-fit-grid article,
 .data-quality-grid article,
+.data-ops-grid article,
 .source-note-grid article,
 .company-snapshot-grid article,
 .product-lineup-grid article,
@@ -5991,6 +6002,7 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid span,
 .compare-best-fit-grid span,
 .data-quality-grid span,
+.data-ops-grid span,
 .source-note-grid span,
 .company-snapshot-grid span,
 .product-lineup-grid span,
@@ -6011,6 +6023,7 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid small,
 .company-signal-grid small,
 .data-quality-grid small,
+.data-ops-grid small,
 .source-note-grid small,
 .company-snapshot-grid small,
 .product-lineup-grid small,
@@ -6029,6 +6042,7 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid strong,
 .compare-best-fit-grid strong,
 .data-quality-grid strong,
+.data-ops-grid strong,
 .source-note-grid strong,
 .company-snapshot-grid strong,
 .product-lineup-grid strong,
@@ -10513,6 +10527,7 @@ body.light-theme .buyer-guide-grid small,
 body.light-theme .profile-stack-grid small,
 body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
+body.light-theme .data-ops-grid small,
 body.light-theme .source-note-grid small,
 body.light-theme .company-snapshot-grid small,
 body.light-theme .product-lineup-grid small,
@@ -10547,6 +10562,7 @@ body.light-theme .company-signal-grid article,
 body.light-theme .compare-summary-grid article,
 body.light-theme .compare-best-fit-grid article,
 body.light-theme .data-quality-grid article,
+body.light-theme .data-ops-grid article,
 body.light-theme .source-note-grid article,
 body.light-theme .company-snapshot-grid article,
 body.light-theme .product-lineup-grid article,
@@ -10593,6 +10609,7 @@ body.light-theme .company-signal-grid strong,
 body.light-theme .compare-summary-grid strong,
 body.light-theme .compare-best-fit-grid strong,
 body.light-theme .data-quality-grid strong,
+body.light-theme .data-ops-grid strong,
 body.light-theme .source-note-grid strong,
 body.light-theme .company-snapshot-grid strong,
 body.light-theme .product-lineup-grid strong,
@@ -10870,6 +10887,7 @@ body.light-theme .facts span {
   .compare-summary-grid,
   .compare-best-fit-grid,
   .data-quality-grid,
+  .data-ops-grid,
   .source-note-grid,
   .company-snapshot-grid,
   .product-lineup-grid,
@@ -11201,6 +11219,7 @@ body.light-theme .facts span {
   .compare-summary-grid,
   .compare-best-fit-grid,
   .data-quality-grid,
+  .data-ops-grid,
   .source-note-grid,
   .company-snapshot-grid,
   .product-lineup-grid,

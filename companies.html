@@ -88,6 +88,20 @@
           <div class="catalog-grid company-catalog-grid" data-companies-grid></div>
         </section>
       </section>
+
+      <section class="catalog-section data-operations-section" aria-label="Company data operations">
+        <div class="section-heading compact">
+          <p>Data Operations</p>
+          <h2>Extend the company database with modular source files.</h2>
+          <span>Use source-first records, local logo paths, and health checks before publishing new company coverage.</span>
+        </div>
+        <div class="data-ops-grid">
+          <article><span>Add company</span><strong>scripts/add-company.mjs</strong><small>Creates a modular company JSON record and can rebuild aggregate data automatically.</small></article>
+          <article><span>Logo path</span><strong>assets/companies/company-slug/logo.svg</strong><small>Store company logos separately from data so profiles can stay clean and portable.</small></article>
+          <article><span>Template</span><strong>data/templates/company.template.json</strong><small>Use this when adding companies manually through GitHub or Codex.</small></article>
+          <article><span>Check</span><strong>scripts/health-check.mjs --write</strong><small>Regenerates data and pages, then validates sources, assets, and JavaScript.</small></article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer mini-footer">
