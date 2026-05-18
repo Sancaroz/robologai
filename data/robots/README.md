@@ -1,8 +1,12 @@
 # Modular Robot Records
 
-This folder is the staged source area for future robot records.
+This folder is the modular source area for robot records.
 
-The live site still reads `data/robots.json`. Do not delete or replace that aggregate file yet.
+The live site still reads `data/robots.json`, but that aggregate file can now be generated from this folder with:
+
+```bash
+node scripts/build-data.mjs --write
+```
 
 Suggested file naming:
 
@@ -11,7 +15,7 @@ data/robots/deep-robotics-x30-pro.json
 data/robots/wirobotics-wim.json
 ```
 
-Required fields:
+Required fields for a brand-new robot:
 
 ```json
 {
@@ -35,8 +39,30 @@ Recommended fields:
   "runtime": "Not disclosed",
   "maturity": 3,
   "priceVisibility": 1,
+  "image": "assets/robots/robot-slug/hero.png",
+  "imageCredit": "Official company media",
   "keywords": ["humanoid", "factory"]
 }
 ```
 
+Recommended robot image path:
+
+```text
+assets/robots/robot-slug/hero.png
+assets/robots/robot-slug/demo.webp
+```
+
 Use `node scripts/validate-data.mjs` before committing.
+
+Partial updates are allowed for robots that already exist in `data/robots.json`.
+For example, this can update the central Unitree G1 record without repeating every field:
+
+```json
+{
+  "name": "Unitree G1",
+  "company": "Unitree Robotics",
+  "price": 16000
+}
+```
+
+Robot records are merged by canonical robot slug, so `G1` from Unitree and `Unitree G1` resolve to the same aggregate record.

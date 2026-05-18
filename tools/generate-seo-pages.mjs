@@ -282,11 +282,18 @@ function robotDeploymentThesis(robot) {
 function companyQuality(company, linkedRobots = []) {
   const sources = sourceList(company.website, company.sourceLinks);
   return {
-    sourceConfidence: sources.length ? "Official source linked" : "Source needed",
-    robotCoverage: linkedRobots.length ? `${linkedRobots.length} linked profile${linkedRobots.length === 1 ? "" : "s"}` : "Robot list only",
+    sourceConfidence: sources.length > 1 ? `${sources.length} linked sources` : sources.length ? "Official source linked" : "Source needed",
+    robotCoverage: linkedRobots.length ? `${linkedRobots.length} linked robot profile${linkedRobots.length === 1 ? "" : "s"}` : "Robot profile pending",
     marketConfidence: company.ticker ? "Public market ticker" : company.type || "Private / unlisted",
-    dataFreshness: company.sourceLinks?.length ? "Source-backed profile" : "Periodic review"
+    dataFreshness: company.lastVerified || (sources.length ? "May 2026 source review" : "May 2026 catalog review")
   };
+}
+
+function companyProfileMark(company) {
+  if (company.logo) {
+    return `<div class="company-profile-mark company-profile-logo-mark"><img src="${escapeAttr(company.logo)}" alt="${escapeAttr(company.name)} logo" loading="lazy"></div>`;
+  }
+  return `<div class="company-profile-mark">${escapeHtml(initials(company.name))}</div>`;
 }
 
 function companyRobotCategories(company, linkedRobots = []) {
@@ -555,7 +562,7 @@ function companyPage(company) {
             <article><strong>${escapeHtml(broadCountryName(company.country))}</strong><small>Country tracker</small></article>
           </div>
         </div>
-        <div class="company-profile-mark">${escapeHtml(initials(company.name))}</div>
+        ${companyProfileMark(company)}
       </section>
       <section class="profile-detail-grid">
         <article class="profile-facts">
@@ -597,13 +604,13 @@ function companyPage(company) {
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Data Quality</p>
-          <h2>How confident Robologai is about this company profile.</h2>
+          <h2>Robot coverage, official sources, market type, and review status.</h2>
         </div>
         <div class="data-quality-grid">
-          <article><span>Source</span><strong>${escapeHtml(quality.sourceConfidence)}</strong><small>${escapeHtml(company.website || "Official source missing")}</small></article>
-          <article><span>Robot coverage</span><strong>${escapeHtml(quality.robotCoverage)}</strong><small>${escapeHtml(company.robot || "Robotics / AI activity")}</small></article>
-          <article><span>Market</span><strong>${escapeHtml(quality.marketConfidence)}</strong><small>${escapeHtml(company.ticker || "No public ticker")}</small></article>
-          <article><span>Review</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
+          <article><span>Linked robots</span><strong>${escapeHtml(quality.robotCoverage)}</strong><small>${escapeHtml(categories.join(" · ") || company.robot || "Robot profile pending")}</small></article>
+          <article><span>Official source trail</span><strong>${escapeHtml(quality.sourceConfidence)}</strong><small>${escapeHtml(sources.length ? sourceSummary(sources) : "Official source missing")}</small></article>
+          <article><span>Market type</span><strong>${escapeHtml(quality.marketConfidence)}</strong><small>${escapeHtml(company.ticker || company.type || "No public ticker")}</small></article>
+          <article><span>Last reviewed</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
         </div>
       </section>${sourceNotes(`${company.name} source trail.`, sources, "Official company source")}${extraStats.length ? `
       <section class="catalog-section">

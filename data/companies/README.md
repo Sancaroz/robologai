@@ -28,4 +28,19 @@ Required fields:
 
 Optional fields such as `logo`, `image`, `focus`, `sourceLinks`, `city`, `region`, and operating metrics are allowed.
 
+Recommended logo path:
+
+```text
+assets/companies/company-slug/logo.svg
+assets/companies/company-slug/logo.png
+```
+
+Then reference it from the company JSON:
+
+```json
+{
+  "logo": "assets/companies/company-slug/logo.svg"
+}
+```
+
 Use `node scripts/validate-data.mjs` before committing.

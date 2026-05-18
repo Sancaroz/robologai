@@ -6754,6 +6754,20 @@ body.light-theme .humanoid-preview-card dt {
   font-weight: 950;
 }
 
+.company-profile-logo-mark {
+  padding: clamp(28px, 5vw, 72px);
+  background:
+    radial-gradient(circle at 70% 22%, rgba(120, 231, 255, 0.18), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(226, 243, 250, 0.9));
+}
+
+.company-profile-logo-mark img {
+  max-width: min(320px, 82%);
+  max-height: 220px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 28px rgba(7, 17, 31, 0.18));
+}
+
 .profile-detail-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
