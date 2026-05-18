@@ -5190,6 +5190,13 @@ function companyProfileMark(company) {
   return `<div class="company-profile-mark">${pageEscape(pageInitials(company.name))}</div>`;
 }
 
+function companyCardMark(company) {
+  if (company.logo) {
+    return `<div class="company-avatar company-avatar-logo"><img src="${pageEscape(company.logo)}" alt="${pageEscape(company.name)} logo" loading="lazy" decoding="async"></div>`;
+  }
+  return `<div class="company-avatar">${pageEscape(pageInitials(company.name))}</div>`;
+}
+
 function companyRobotCategories(company, robots = []) {
   const categories = robots.map((robot) => robot.category).filter(Boolean);
   if (!categories.length && company.category) categories.push(company.category);
@@ -5359,6 +5366,7 @@ function renderRobotCards() {
       <figure class="catalog-visual ${robot.image ? "" : "catalog-visual-empty"}">
         ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
         ${rank ? `<div class="robot-rank-chip">#${rank}</div>` : ""}
+        <div class="catalog-media-chip">${pageEscape(robot.image ? "Visual verified" : "Visual pending")}</div>
         <figcaption>${robotScore(robot)} <small>R-Score</small></figcaption>
       </figure>
       <div class="catalog-card-body">
@@ -5617,7 +5625,7 @@ function renderCompanyCards() {
     const quality = companyQuality(company, linkedRobots);
     return `
     <article class="catalog-card company-catalog-card">
-      <div class="company-avatar">${pageEscape(pageInitials(company.name))}</div>
+      ${companyCardMark(company)}
       <div class="catalog-card-body">
         <div class="database-tags">
           <span>${pageEscape(company.type || "Entity")}</span>

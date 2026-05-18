@@ -62,6 +62,35 @@
 
       <section class="catalog-section">
         <div class="section-heading compact">
+          <p>Command Recipes</p>
+          <h2>Copy the command that matches the data task.</h2>
+        </div>
+        <div class="command-recipe-grid">
+          <article>
+            <span>Add a company</span>
+            <code>node scripts/add-company.mjs</code>
+            <small>Use this for a guided company record flow with logo, source links, and validation.</small>
+          </article>
+          <article>
+            <span>Add a robot</span>
+            <code>node scripts/add-robot.mjs</code>
+            <small>Use this for a guided robot profile flow with source, pricing, maturity, and image path.</small>
+          </article>
+          <article>
+            <span>Check before commit</span>
+            <code>node scripts/health-check.mjs</code>
+            <small>Runs dry-run build, data checks, asset checks, and JavaScript syntax checks.</small>
+          </article>
+          <article>
+            <span>Regenerate site data</span>
+            <code>node scripts/health-check.mjs --write</code>
+            <small>Writes aggregate JSON, regenerates profile pages, then validates everything.</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
           <p>Manual Templates</p>
           <h2>Use templates when adding records through GitHub or Codex.</h2>
         </div>
