@@ -16,6 +16,6 @@
     "note": "Official public pricing is not available."
   },
   "description": "Figure 03 is Figure AI's third-generation humanoid robot.",
-  "source": "https://www.figure.ai/",
-  "image": "assets/robots/figure-03/hero.png"
+  "image": "assets/robots/figure-03/hero.png",
+"heroImage": "assets/robots/figure-03/hero.png"
 }
