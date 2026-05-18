@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-05-18",
+    "type": "Research Signal",
+    "title": "Agentic AI for Robot Teams",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "This presentation highlights recent efforts at the Johns Hopkins Applied Physics Laboratory to advance agentic AI for collaborative robotic teams. It begins by framing the core challenges of enabling autonomy, coordination, and adaptability across heterogeneou",
+    "source": "https://events.bizzabo.com/867156",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-15",
     "type": "Research Signal",
     "title": "Video Friday: Heavy Robotic Machinery Operates Itself",
