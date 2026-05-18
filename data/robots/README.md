@@ -66,7 +66,12 @@ assets/robots/robot-slug/hero.png
 assets/robots/robot-slug/demo.webp
 ```
 
-Use `node scripts/validate-data.mjs` before committing.
+Use these checks before committing:
+
+```bash
+node scripts/validate-data.mjs
+node scripts/validate-assets.mjs
+```
 
 Partial updates are allowed for robots that already exist in `data/robots.json`.
 For example, this can update the central Unitree G1 record without repeating every field:

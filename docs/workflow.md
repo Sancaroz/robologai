@@ -71,6 +71,8 @@ Logo çalışmıyorsa kontrol
 - path doğru mu?
 - büyük/küçük harf aynı mı?
 - OM placeholder kaldı mı?
+- asset kontrolü çalışıyor mu?
+  `node scripts/validate-assets.mjs`
 
 
 ## Yeni Robot Ekleme (manuel dosya yöntemi)
@@ -96,6 +98,8 @@ Logo çalışmıyorsa kontrol
   - `data/signals/`
 - Güvenlik kontrolü:
   `node scripts/validate-data.mjs`
+- Logo/görsel path kontrolü:
+  `node scripts/validate-assets.mjs`
 - Dry-run aggregate kontrolü:
   `node scripts/build-data.mjs`
 - Aggregate dosyaları yazmak için:

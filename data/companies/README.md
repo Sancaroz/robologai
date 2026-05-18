@@ -57,4 +57,9 @@ Then reference it from the company JSON:
 }
 ```
 
-Use `node scripts/validate-data.mjs` before committing.
+Use these checks before committing:
+
+```bash
+node scripts/validate-data.mjs
+node scripts/validate-assets.mjs
+```
