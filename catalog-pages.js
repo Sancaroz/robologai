@@ -20,7 +20,8 @@ const pageState = {
   signalTypeFilter: "all",
   signalImpactFilter: "all",
   signalCountryFilter: "all",
-  signalConfidenceFilter: "all"
+  signalConfidenceFilter: "all",
+  signalProfileFilter: "all"
 };
 
 const robotFallback = [
@@ -4473,6 +4474,17 @@ function signalFilterSlug(value = "") {
   return pageNormalize(value).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "all";
 }
 
+function signalDateValue(signal) {
+  const value = Date.parse(signal.date || "");
+  return Number.isFinite(value) ? value : 0;
+}
+
+function signalLatestDate(signals = []) {
+  const latest = signals.reduce((max, signal) => Math.max(max, signalDateValue(signal)), 0);
+  if (!latest) return "No date";
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(latest));
+}
+
 function signalText(signal) {
   return pageNormalize([
     signal.title,
@@ -4586,7 +4598,8 @@ function filteredSignals(signals) {
     const matchesImpact = pageState.signalImpactFilter === "all" || impact === pageState.signalImpactFilter;
     const matchesCountry = pageState.signalCountryFilter === "all" || country === pageState.signalCountryFilter;
     const matchesConfidence = pageState.signalConfidenceFilter === "all" || confidence === pageState.signalConfidenceFilter;
-    return matchesType && matchesImpact && matchesCountry && matchesConfidence;
+    const matchesProfile = pageState.signalProfileFilter === "all" || Boolean(view.companyHref || view.robotHref);
+    return matchesType && matchesImpact && matchesCountry && matchesConfidence && matchesProfile;
   });
 }
 
@@ -4612,15 +4625,15 @@ function renderRoboticsSignalsPage() {
   const signalTypes = [...new Set(enrichedSignals.map((item) => item.intelligenceType).filter(Boolean))];
   const confidenceTypes = [...new Set(enrichedSignals.map((item) => item.confidence).filter(Boolean))];
   const countries = [...new Set(signals.map((item) => broadCountryName(item.country || "")).filter(Boolean))];
+  const affectedCompanies = new Set(signals.map((item) => pageNormalize(item.company || "")).filter(Boolean)).size;
+  const robotLinked = enrichedSignals.filter((item) => item.robotHref).length;
 
   if (metrics) {
-    const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
-    const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
     metrics.innerHTML = `
-      <article><strong>${signals.length}</strong><small>Robotics signals</small></article>
-      <article><strong>${signalTypes.length}</strong><small>Signal categories</small></article>
-      <article><strong>${highImpact}</strong><small>High-impact watches</small></article>
-      <article><strong>${profileLinked}</strong><small>Profile-linked signals</small></article>
+      <article><strong>${highImpact}</strong><small>High-impact signals</small></article>
+      <article><strong>${affectedCompanies}</strong><small>Companies affected</small></article>
+      <article><strong>${robotLinked}</strong><small>Robot profiles linked</small></article>
+      <article><strong>${signalLatestDate(signals)}</strong><small>Latest signal date</small></article>
     `;
   }
 
@@ -4688,6 +4701,11 @@ function renderRoboticsSignalsPage() {
         ${signalFilterButton("All", "all", pageState.signalConfidenceFilter, "data-signal-confidence-filter")}
         ${confidenceTypes.map((confidence) => signalFilterButton(confidence, confidence, pageState.signalConfidenceFilter, "data-signal-confidence-filter")).join("")}
       </div>
+      <div>
+        <span>Profile Links</span>
+        ${signalFilterButton("All", "all", pageState.signalProfileFilter, "data-signal-profile-filter")}
+        ${signalFilterButton("Profile linked only", "linked", pageState.signalProfileFilter, "data-signal-profile-filter")}
+      </div>
     `;
   }
 
@@ -4704,10 +4722,10 @@ function renderRoboticsSignalsPage() {
           <h2>${pageEscape(item.title)}</h2>
           <p>${pageEscape(item.summary)}</p>
           <div class="signal-chip-row">
-            <em>${pageEscape(item.company)}</em>
-            <em>${pageEscape(item.robot)}</em>
+            <em>${pageEscape(item.confidence === "Official" ? "Official / primary source" : item.confidence)}</em>
+            ${(item.companyHref || item.robotHref) ? "<em>Profile linked</em>" : ""}
+            <em>${pageEscape(item.intelligenceType)}</em>
             <em>${pageEscape(item.country)}</em>
-            <em>${pageEscape(item.category)}</em>
             <em>${pageEscape(item.sourceHost)}</em>
             <em>Q${pageEscape(String(item.qualityScore))}</em>
           </div>
@@ -6454,6 +6472,13 @@ function wireCatalogControls() {
     const signalConfidenceButton = target.closest("[data-signal-confidence-filter]");
     if (signalConfidenceButton) {
       pageState.signalConfidenceFilter = signalConfidenceButton.dataset.signalConfidenceFilter || "all";
+      renderRoboticsSignalsPage();
+      return;
+    }
+
+    const signalProfileButton = target.closest("[data-signal-profile-filter]");
+    if (signalProfileButton) {
+      pageState.signalProfileFilter = signalProfileButton.dataset.signalProfileFilter || "all";
       renderRoboticsSignalsPage();
     }
   });
