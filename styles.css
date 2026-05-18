@@ -5910,6 +5910,47 @@ body.light-theme .profile-main > div > span {
   margin-bottom: 42px;
 }
 
+.data-ops-cta {
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  color: inherit;
+  background: linear-gradient(135deg, rgba(120, 231, 255, 0.08), rgba(9, 22, 39, 0.78));
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.data-ops-cta:hover {
+  transform: translateY(-2px);
+  border-color: rgba(120, 231, 255, 0.42);
+  background: linear-gradient(135deg, rgba(120, 231, 255, 0.12), rgba(9, 22, 39, 0.88));
+}
+
+.data-ops-cta span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.data-ops-cta strong {
+  color: #eef6ff;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.1;
+}
+
+.data-ops-cta small {
+  color: #c4cedc;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.data-ops-hero {
+  min-height: 0;
+}
+
 .signal-update-grid,
 .buyer-guide-grid,
 .profile-stack-grid,
@@ -10528,6 +10569,7 @@ body.light-theme .profile-stack-grid small,
 body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
 body.light-theme .data-ops-grid small,
+body.light-theme .data-ops-cta small,
 body.light-theme .source-note-grid small,
 body.light-theme .company-snapshot-grid small,
 body.light-theme .product-lineup-grid small,
@@ -10594,6 +10636,10 @@ body.light-theme .compare-picker label {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(235, 243, 252, 0.94));
 }
 
+body.light-theme .data-ops-cta {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(232, 245, 250, 0.92));
+}
+
 body.light-theme .robot-week-grid div {
   background: rgba(255, 255, 255, 0.68);
 }
@@ -10610,6 +10656,7 @@ body.light-theme .compare-summary-grid strong,
 body.light-theme .compare-best-fit-grid strong,
 body.light-theme .data-quality-grid strong,
 body.light-theme .data-ops-grid strong,
+body.light-theme .data-ops-cta strong,
 body.light-theme .source-note-grid strong,
 body.light-theme .company-snapshot-grid strong,
 body.light-theme .product-lineup-grid strong,

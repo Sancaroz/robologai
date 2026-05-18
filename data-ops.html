@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="RoboLogAI data operations guide for adding source-backed companies, robots, signals, logos, images, templates, and health checks.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://robologai.com/data-ops.html">
+    <meta property="og:title" content="Data Operations | RoboLogAI">
+    <meta property="og:description" content="Source-first data workflow for extending the RoboLogAI company and robot intelligence catalog.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://robologai.com/data-ops.html">
+    <meta property="og:image" content="https://robologai.com/assets/robot-lab.png">
+    <title>Data Operations | RoboLogAI</title>
+    <link rel="icon" href="assets/robologai-icon-v2.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/robologai-icon-v2.svg">
+    <link rel="stylesheet" href="styles.css?v=20260519-data-ops">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand brand-full" href="index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a href="index.html" data-i18n="navHome">Home</a>
+        <a href="signals.html">Signals</a>
+        <a href="companies.html">Companies</a>
+        <a href="robots.html">Robots</a>
+        <a href="market.html">Market</a>
+        <a href="hakkimizda.html" data-i18n="navAbout">About</a>
+      </nav>
+      <div class="header-actions intelligence-controls">
+        <span class="live-control" aria-label="Robotics signal feed"><i></i><b>Signals</b><small data-live-signals-count>12 tracked</small></span>
+        <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle><span data-theme-icon>☾</span></button>
+        <a class="language-pill" href="tr.html" aria-label="Turkish version"><strong>TR</strong></a>
+        <a class="join-button x-cta" href="index.html#bulten" aria-label="Join the RoboLogAI newsletter">Join Intel Feed</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero data-ops-hero">
+        <p>Data Operations</p>
+        <h1>Extend RoboLogAI with source-backed records.</h1>
+        <span>A compact operating guide for adding companies, robots, signals, logos, and images without touching generated aggregate data by hand.</span>
+        <div class="catalog-metrics">
+          <article><strong>Modular</strong><small>Company and robot files</small></article>
+          <article><strong>Source-first</strong><small>Official links preferred</small></article>
+          <article><strong>Health Check</strong><small>One command before commit</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Fast Paths</p>
+          <h2>Add records with scripts instead of editing aggregate JSON.</h2>
+        </div>
+        <div class="data-ops-grid">
+          <article><span>Add company</span><strong>node scripts/add-company.mjs</strong><small>Creates a modular company record and can rebuild aggregate files and profile pages.</small></article>
+          <article><span>Add robot</span><strong>node scripts/add-robot.mjs</strong><small>Creates a modular robot record, blocks duplicates, and validates required source fields.</small></article>
+          <article><span>Check project</span><strong>node scripts/health-check.mjs</strong><small>Runs dry-run build, data validation, asset validation, and JavaScript syntax checks.</small></article>
+          <article><span>Write updates</span><strong>node scripts/health-check.mjs --write</strong><small>Regenerates aggregate JSON and static profile pages, then runs the checks.</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Manual Templates</p>
+          <h2>Use templates when adding records through GitHub or Codex.</h2>
+        </div>
+        <div class="data-ops-grid">
+          <article><span>Company template</span><strong>data/templates/company.template.json</strong><small>Copy to data/companies/company-slug.json.</small></article>
+          <article><span>Robot template</span><strong>data/templates/robot.template.json</strong><small>Copy to data/robots/company-robot.json.</small></article>
+          <article><span>Signal template</span><strong>data/templates/signal.template.json</strong><small>Copy to data/signals/YYYY-MM-DD-short-title.json.</small></article>
+          <article><span>Data guide</span><strong>data/README.md</strong><small>Explains the modular data workflow and generated files.</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Asset Paths</p>
+          <h2>Keep logos and robot images separate from data records.</h2>
+        </div>
+        <div class="data-ops-grid">
+          <article><span>Company logo</span><strong>assets/companies/company-slug/logo.svg</strong><small>Reference with the company JSON logo field.</small></article>
+          <article><span>Company image</span><strong>assets/companies/company-slug/hero.png</strong><small>Optional profile or social image for company coverage.</small></article>
+          <article><span>Robot image</span><strong>assets/robots/robot-slug/hero.png</strong><small>Reference with the robot JSON image field.</small></article>
+          <article><span>Asset check</span><strong>node scripts/validate-assets.mjs</strong><small>Detects missing local logo and image paths before deploy.</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Do Not Edit</p>
+          <h2>These aggregate files are generated by scripts.</h2>
+        </div>
+        <div class="data-ops-grid">
+          <article><span>Aggregate</span><strong>data/companies.json</strong><small>Generated from central and modular company records.</small></article>
+          <article><span>Aggregate</span><strong>data/robots.json</strong><small>Generated from central and modular robot records.</small></article>
+          <article><span>Aggregate</span><strong>data/signals.json</strong><small>Generated or maintained as the live signal feed source.</small></article>
+          <article><span>Generated pages</span><strong>companies/*.html and robots/*.html</strong><small>Regenerate with health-check --write after data changes.</small></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer mini-footer">
+      <a class="brand footer-brand brand-full" href="index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>
+      <p>Robotics and AI intelligence, organized as catalogs, comparisons, and source-first analysis.</p>
+      <a class="footer-x-link" href="https://x.com/robologai" target="_blank" rel="noopener noreferrer">Follow @robologai on X</a>
+    </footer>
+    <script src="script.js?v=20260515-search"></script>
+    <script src="catalog-pages.js?v=20260517-data-ops"></script>
+  </body>
+</html>
