@@ -2411,5 +2411,25 @@
       "automation",
       "maximo"
     ]
+  },
+  {
+    "name": "ENGINAI",
+    "category": "Humanoid Robotics",
+    "country": "China",
+    "type": "Humanoid Robotics",
+    "ticker": "N/A",
+    "robot": "PM01, SA01, SE01, T800, T1000, Humanoid Robot Platform",
+    "website": "https://en.engineai.com.cn/",
+    "keywords": [
+      "humanoid",
+      "AI robotics",
+      "combat robot",
+      "agility",
+      "EngineAI"
+    ],
+    "focus": "Advanced humanoid robotics and mobility systems",
+    "logo": "assets/companies/enginai/logo.png",
+    "image": "assets/companies/enginai/logo.png",
+    "lastVerified": "2026-05-19"
   }
 ]

@@ -951,5 +951,30 @@
     "price": "Not publicly listed",
     "useCase": "Autonomous wheeled-legged delivery robotics",
     "source": "https://www.rivr.ai/"
+  },
+  {
+    "name": "T800",
+    "company": "ENGINEAI",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Tracked",
+    "availability": "Limited Availability",
+    "price": "$ 45,000 -$ 80,000",
+    "useCase": "Advanced humanoid mobility, combat simulation and agility testing",
+    "height": "1,85 m",
+    "runtime": "4 hours",
+    "maturity": 3,
+    "priceVisibility": 3,
+    "source": "https://en.engineai.com.cn/",
+    "image": "assets/robots/enginai/t800-enginai.png",
+    "imageCredit": "ENGINAI Official Media",
+    "keywords": [
+      "humanoid",
+      "AI robot",
+      "combat simulation",
+      "agility",
+      "ENGINAI",
+      "T800"
+    ]
   }
 ]
