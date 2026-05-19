@@ -12,15 +12,15 @@
   "maturity": 3,
   "priceVisibility": 3,
   "source": "https://en.engineai.com.cn/",
-  "image": "assets/robots/enginai/t800-enginai.png",
-  "heroImage": "assets/robots/enginai/t800-enginai.png",
-  "imageCredit": "ENGINAI Official Media",
+  "image": "assets/robots/engineai/t800-engineai.png",
+  "heroImage": "assets/robots/engineai/t800-enginai.png",
+  "imageCredit": "ENGINEAI Official Media",
   "keywords": [
     "humanoid",
     "AI robot",
     "combat simulation",
     "agility",
-    "ENGINAI",
+    "ENGINEAI",
     "T800"
   ]
 }
