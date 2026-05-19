@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-05-19",
+    "type": "Research Signal",
+    "title": "Home Robot Safety Is All About Relationships",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "The International Standards Organization (ISO) is updating its 12-year-old safety requirements for personal care robots . A lot has happened since the last revision, both on the technology side and with researcher’s understanding of safety for humans collabora",
+    "source": "https://spectrum.ieee.org/domestic-humanoid-robot-safety-standards",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-18",
     "type": "Research Signal",
     "title": "What Makes a Job Dull, Dirty, or Dangerous?",
