@@ -939,5 +939,17 @@
     "source": "https://www.figure.ai/",
     "image": "assets/robots/figure-03/hero.png",
     "heroImage": "assets/robots/figure-03/hero.png"
+  },
+  {
+    "name": "RIVR Delivery Robot",
+    "slug": "rivr-delivery-robot",
+    "company": "RIVR",
+    "category": "Delivery Robotics",
+    "country": "Switzerland",
+    "status": "Active",
+    "availability": "Pilot",
+    "price": "Not publicly listed",
+    "useCase": "Autonomous wheeled-legged delivery robotics",
+    "source": "https://www.rivr.ai/"
   }
 ]

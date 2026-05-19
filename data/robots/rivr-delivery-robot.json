@@ -1,0 +1,12 @@
+{
+  "name": "RIVR Delivery Robot",
+  "slug": "rivr-delivery-robot",
+  "company": "RIVR",
+  "category": "Delivery Robotics",
+  "country": "Switzerland",
+  "status": "Active",
+  "availability": "Pilot",
+  "price": "Not publicly listed",
+  "useCase": "Autonomous wheeled-legged delivery robotics",
+  "source": "https://www.rivr.ai/"
+}
