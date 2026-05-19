@@ -13,6 +13,7 @@
   "priceVisibility": 3,
   "source": "https://en.engineai.com.cn/",
   "image": "assets/robots/enginai/t800-enginai.png",
+  "heroImage": "assets/robots/enginai/t800-enginai.png",
   "imageCredit": "ENGINAI Official Media",
   "keywords": [
     "humanoid",
