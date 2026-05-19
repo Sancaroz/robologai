@@ -2113,21 +2113,6 @@
     ]
   },
   {
-    "name": "EngineAI",
-    "category": "Humanoid robotics",
-    "country": "China",
-    "type": "Private",
-    "ticker": "",
-    "robot": "PM01, SE01",
-    "website": "https://en.engineai.com.cn/",
-    "keywords": [
-      "pm01",
-      "humanoid",
-      "developer platform",
-      "open source"
-    ]
-  },
-  {
     "name": "Foundry Robotics",
     "category": "AI-first manufacturing robotics",
     "country": "USA",
