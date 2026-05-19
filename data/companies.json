@@ -12,7 +12,9 @@
       "factory",
       "autonomy",
       "electric vehicles"
-    ]
+    ],
+    "logo": "assets/companies/tesla/logo.png",
+    "image": "assets/companies/tesla/logo.png"
   },
   {
     "name": "NVIDIA",

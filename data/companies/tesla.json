@@ -1,1 +1,12 @@
-  {"name":"Tesla","category":"Humanoid robotics, EV, autonomy","country":"USA","type":"Public","ticker":"TSLA","robot":"Optimus","website":"https://www.tesla.com/AI","keywords":["humanoid","factory","autonomy","electric vehicles"]}
+ {
+  "name": "Tesla",
+  "category": "Humanoid robotics, EV, autonomy",
+  "country": "USA",
+  "type": "Public",
+  "ticker": "TSLA",
+  "robot": "Optimus",
+  "website": "https://www.tesla.com/AI",
+  "logo": "assets/companies/tesla/logo.png",
+  "image": "assets/companies/tesla/logo.png",
+  "keywords": ["humanoid", "factory", "autonomy", "electric vehicles"]
+} 
