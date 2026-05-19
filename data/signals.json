@@ -2,6 +2,20 @@
   {
     "date": "2026-05-18",
     "type": "Research Signal",
+    "title": "What Makes a Job Dull, Dirty, or Dangerous?",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "For years, the field of robotics has used the terms “dull, dirty, and dangerous” (DDD) to describe the types of tasks or jobs where robots might be useful—by doing work that’s undesirable for people. A classic example of a DDD job is one of “repetitive physica",
+    "source": "https://spectrum.ieee.org/dull-dirty-dangerous-robots",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-18",
+    "type": "Research Signal",
     "title": "Agentic AI for Robot Teams",
     "company": "Robotics ecosystem",
     "robot": "Robotics ecosystem",
