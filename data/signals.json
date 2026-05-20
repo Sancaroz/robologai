@@ -1,6 +1,34 @@
 [
   {
     "date": "2026-05-19",
+    "type": "Robotics Startup Signal",
+    "title": "Google’s Genie world model can now simulate real streets with Street View",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics startups and market movement",
+    "country": "Global",
+    "impact": "Medium",
+    "summary": "Google DeepMind is integrating Street View with Project Genie to create immersive, interactive world simulations for robotics, gaming, and travel, allowing users to explore environments, weather changes, and rare scenarios.",
+    "source": "https://techcrunch.com/2026/05/19/googles-genie-world-model-can-now-simulate-real-streets-with-street-view/",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-19",
+    "type": "Research Signal",
+    "title": "Robots Could Turn E-Waste Into a Source of Legacy Chips",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "Electronic waste is moving up on regulatory agendas in 2026: New European waste-shipment rules, expanded recycling fees on products with non-removable batteries in California, and an e-waste import ban in Malaysia, for example, are all increasing pressure to r",
+    "source": "https://spectrum.ieee.org/e-waste-recycling-robots-ram",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-19",
     "type": "Research Signal",
     "title": "Home Robot Safety Is All About Relationships",
     "company": "Robotics ecosystem",
@@ -8,7 +36,7 @@
     "category": "Robotics research",
     "country": "Global",
     "impact": "High",
-    "summary": "The International Standards Organization (ISO) is updating its 12-year-old safety requirements for personal care robots . A lot has happened since the last revision, both on the technology side and with researcher’s understanding of safety for humans collabora",
+    "summary": "The International Organization for Standardization (ISO) is updating its 12-year-old safety requirements for personal care robots . A lot has happened since the last revision, both on the technology side and with researchers’ understanding of safety for humans",
     "source": "https://spectrum.ieee.org/domestic-humanoid-robot-safety-standards",
     "relatedUrl": "signals.html",
     "sourceType": "automated"
