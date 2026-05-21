@@ -11,7 +11,8 @@
     "runtime": "About 2 hours",
     "maturity": 4,
     "priceVisibility": 3,
-    "image": "https://en-engineai-1304599088.cos.ap-guangzhou.myqcloud.com/uploads/frame/PM01/PM01_00000.png",
+    "image": "assets/robots/engine-ai/pm01/hero.png",
+    "heroImage": "assets/robots/engine-ai/pm01/.png",
     "imageCredit": "EngineAI official media",
     "source": "https://en.engineai.com.cn/product-pm01.html",
     "keywords": ["pm01", "engineai", "open source", "developer"]
