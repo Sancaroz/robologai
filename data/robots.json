@@ -35,8 +35,9 @@
     "runtime": "Up to 5 hours",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "https://images.ctfassets.net/qx5k8y1u9drj/56I3mHKEdLZdrsONwOm3sc/63b1569bb855cc334c2dda67ce40ba4a/generic-page-image.jpeg",
+    "image": "assets/robots/figure-ai/figure-02/hero.png",
     "imageCredit": "Figure AI official media",
+    "heroImage": "assets/robots/figure-ai/figure-02/hero.png",
     "source": "https://www.figure.ai/",
     "keywords": [
       "figure",
@@ -44,6 +45,7 @@
       "factory",
       "humanoid"
     ]
+    
   },
   {
     "name": "Persona Humanoid",
@@ -365,7 +367,9 @@
       "social humanoid",
       "hri",
       "engineered arts"
-    ]
+    ],
+    "image": "assets/robots/engineeredarts/ameca.png",
+    "heroImage": "assets/robots/engineeredarts/ameca.png"
   },
   {
     "name": "Walker S",
@@ -937,8 +941,8 @@
     },
     "description": "Figure 03 is Figure AI's third-generation humanoid robot.",
     "source": "https://www.figure.ai/",
-    "image": "assets/robots/figure-03/hero.png",
-    "heroImage": "assets/robots/figure-03/hero.png"
+    "image": "assets/robots/figure-ai/figure-03/hero.png",
+    "heroImage": "assets/robots/figure-ai/figure-03/hero.png"
   },
   {
     "name": "RIVR Delivery Robot",
@@ -966,7 +970,7 @@
     "maturity": 3,
     "priceVisibility": 3,
     "source": "https://en.engineai.com.cn/",
-    "image": "assets/robots/engineai/t800-engineai.png",
+    "image": "assets/robots/engine-ai/t800/hero.png",
     "imageCredit": "ENGINEAI Official Media",
     "keywords": [
       "humanoid",
@@ -976,6 +980,6 @@
       "ENGINEAI",
       "T800"
     ],
-    "heroImage": "assets/robots/engineai/t800-enginai.png"
+    "heroImage": "assets/robots/engine-ai/t800/hero.png"
   }
 ]

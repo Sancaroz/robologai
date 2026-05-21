@@ -12,8 +12,8 @@
   "maturity": 3,
   "priceVisibility": 3,
   "source": "https://en.engineai.com.cn/",
-  "image": "assets/robots/engineai/t800-engineai.png",
-  "heroImage": "assets/robots/engineai/t800-enginai.png",
+  "image": "assets/robots/engine-ai/t800/hero.png",
+  "heroImage": "assets/robots/engine-ai/t800/hero.png",
   "imageCredit": "ENGINEAI Official Media",
   "keywords": [
     "humanoid",
