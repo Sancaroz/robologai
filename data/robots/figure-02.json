@@ -11,7 +11,8 @@
     "runtime": "Up to 5 hours",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "https://images.ctfassets.net/qx5k8y1u9drj/56I3mHKEdLZdrsONwOm3sc/63b1569bb855cc334c2dda67ce40ba4a/generic-page-image.jpeg",
+    "image": "assets/robots/figure-02/hero.png",
+    "heroImage": "assets/robots/figure-02/hero.png",
     "imageCredit": "Figure AI official media",
     "source": "https://www.figure.ai/",
     "keywords": ["figure", "workplace", "factory", "humanoid"]

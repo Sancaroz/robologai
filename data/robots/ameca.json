@@ -11,6 +11,8 @@
     "runtime": "Not disclosed",
     "maturity": 5,
     "priceVisibility": 2,
+    "image": "assets/robots/engineeredarts/ameca.png",
+    "heroImage": "assets/robots/engineeredarts/ameca.png",
     "source": "https://www.engineeredarts.co.uk/",
     "keywords": ["ameca", "social humanoid", "hri", "engineered arts"]
   }
