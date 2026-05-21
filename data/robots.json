@@ -45,7 +45,6 @@
       "factory",
       "humanoid"
     ]
-    
   },
   {
     "name": "Persona Humanoid",
@@ -981,5 +980,33 @@
       "T800"
     ],
     "heroImage": "assets/robots/engine-ai/t800/hero.png"
+  },
+  {
+    "name": "K1",
+    "slug": "booster-k1",
+    "company": "Booster Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Tracked",
+    "availability": "Commercial",
+    "maturity": "5",
+    "price": "from USD 5,999",
+    "priceVisibility": 5,
+    "useCase": "Humanoid locomotion research, embodied AI development and RoboCup competition",
+    "source": "https://www.booster.tech/booster-k1/",
+    "image": "assets/robots/boostertech/k1/hero.png",
+    "heroImage": "assets/robots/boostertech/k1/hero.png",
+    "imageCredit": "Booster Robotics Official Media",
+    "keywords": "humanoid robot, RoboCup, embodied AI, locomotion research, Booster Robotics, K1",
+    "specs": {
+      "height": "95 cm",
+      "weight": "19.5 kg",
+      "degreesOfFreedom": "22",
+      "batteryLife": "30-80 minutes",
+      "aiPerformance": "48-200 TOPS",
+      "camera": "Stereo depth camera",
+      "imu": "9-axis IMU",
+      "connectivity": "Wi-Fi, Bluetooth 5.2"
+    }
   }
 ]
