@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-05-21",
+    "type": "Research Signal",
+    "title": "Open-Source Software Is Starting to Help Robots Think",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "When a group of academics started making open-source robotics hardware , a generation of roboticists got years of their lives back. Now, the bigger challenge is getting robots to think—and that’s starting to be open-sourced too. The shift is still early, but c",
+    "source": "https://spectrum.ieee.org/open-source-robot-ai-platforms",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-21",
+    "type": "Research Signal",
+    "title": "The Future of Physical AI Isn’t Smarter Robots, It’s Smarter Interfaces",
+    "company": "Robotics ecosystem",
+    "robot": "Robotics ecosystem",
+    "category": "Robotics research",
+    "country": "Global",
+    "impact": "High",
+    "summary": "This sponsored article is brought to you by Wetour Robotics . A field technician on a wind turbine, harness clipped, both hands on a wrench, needs to send a command to the diagnostic device hanging at her belt. A logistics worker on a loading dock, gloves on, ",
+    "source": "https://spectrum.ieee.org/wetour-robotics-physical-ai-human-interfaces",
+    "relatedUrl": "signals.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-20",
     "type": "Research Signal",
     "title": "Will Robotics Have a ChatGPT Moment?",
