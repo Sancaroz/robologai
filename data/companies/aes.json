@@ -7,6 +7,8 @@
   "robot": "Maximo",
   "website": "https://www.aes.com/",
   "focus": "Clean energy infrastructure, solar automation, and AI-enabled solar installation robotics",
+   "image": "assets/companies/aes/logo.png",
+  "logoImage": "assets/companies/aes/logo.png",
   "sourceLinks": [
     "https://www.aes.com/about-us/innovation/maximo",
     "https://www.aes.com/energy-insights/reimagining-solar"

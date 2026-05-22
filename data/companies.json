@@ -2441,7 +2441,9 @@
       "clean energy",
       "automation",
       "maximo"
-    ]
+    ],
+    "image": "assets/companies/aes/logo.png",
+    "logoImage": "assets/companies/aes/logo.png"
   },
   {
     "name": "ENGINEAI",
