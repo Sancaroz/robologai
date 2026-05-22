@@ -3189,6 +3189,102 @@ body.light-theme .data-wave {
   line-height: 1.35;
 }
 
+.focus-lanes-section {
+  margin-top: 12px;
+  padding: 26px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(7, 17, 34, 0.96), rgba(5, 9, 20, 0.92)),
+    rgba(4, 12, 25, 0.86);
+  box-shadow: 0 24px 74px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.focus-lanes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.focus-lanes-grid a,
+.focus-lanes-grid article {
+  position: relative;
+  display: flex;
+  min-height: 184px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.focus-lanes-grid a::before,
+.focus-lanes-grid article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(120, 231, 255, 0.11), transparent 52%);
+  opacity: 0.72;
+}
+
+.focus-lanes-grid a:hover {
+  transform: translateY(-3px);
+  border-color: rgba(120, 231, 255, 0.42);
+  background: rgba(120, 231, 255, 0.075);
+}
+
+.focus-lanes-grid .is-secondary {
+  border-color: rgba(159, 178, 201, 0.18);
+  background: rgba(159, 178, 201, 0.045);
+}
+
+.focus-lanes-grid span {
+  position: relative;
+  width: fit-content;
+  padding: 6px 8px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 999px;
+  color: var(--blue-2);
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.focus-lanes-grid strong {
+  position: relative;
+  display: block;
+  color: #eef6ff;
+  font-size: clamp(21px, 2vw, 28px);
+  line-height: 0.98;
+}
+
+.focus-lanes-grid small {
+  position: relative;
+  display: block;
+  color: #9fb2c9;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.focus-lanes-grid b {
+  position: relative;
+  display: block;
+  color: #46f3ff;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 .robotics-signal-ticker {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -4442,6 +4538,9 @@ body.light-theme .data-wave {
 body.light-theme .live-stats-strip article,
 body.light-theme .live-intelligence-board,
 body.light-theme .live-intelligence-feed article,
+body.light-theme .focus-lanes-section,
+body.light-theme .focus-lanes-grid a,
+body.light-theme .focus-lanes-grid article,
 body.light-theme .robotics-signal-ticker,
 body.light-theme .trending-robots-section,
 body.light-theme .rscore-command-section,
@@ -4462,6 +4561,7 @@ body.light-theme .rscore-snapshot-grid article {
 body.light-theme .live-stats-strip strong,
 body.light-theme .live-intelligence-head h2,
 body.light-theme .live-intelligence-feed strong,
+body.light-theme .focus-lanes-grid strong,
 body.light-theme .trending-robots-grid strong,
 body.light-theme .trending-robots-grid dd,
 body.light-theme .rscore-command-main h2,
@@ -10612,6 +10712,7 @@ body.light-theme .use-case-panel-head p,
 body.light-theme .use-case-robot-grid small,
 body.light-theme .empty-note,
 body.light-theme .home-intelligence-grid small,
+body.light-theme .focus-lanes-grid small,
 body.light-theme .signal-update-card small,
 body.light-theme .buyer-guide-grid small,
 body.light-theme .profile-stack-grid small,
@@ -10647,6 +10748,8 @@ body.light-theme .catalog-results-head,
 body.light-theme .catalog-card,
 body.light-theme .signal-card,
 body.light-theme .home-intelligence-grid article,
+body.light-theme .focus-lanes-grid a,
+body.light-theme .focus-lanes-grid article,
 body.light-theme .signal-update-card,
 body.light-theme .buyer-guide-grid article,
 body.light-theme .profile-stack-grid article,
@@ -10980,6 +11083,7 @@ body.light-theme .facts span {
   .use-case-profile-grid,
   .profile-intel-strip,
   .home-intelligence-grid,
+  .focus-lanes-grid,
   .live-stats-strip,
   .live-intelligence-feed,
   .trending-robots-grid,

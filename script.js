@@ -428,6 +428,7 @@ const statCompanies = document.querySelectorAll("[data-stat-companies]");
 const statCountries = document.querySelectorAll("[data-stat-countries]");
 const statRobots = document.querySelectorAll("[data-stat-robots]");
 const statHumanoids = document.querySelectorAll("[data-stat-humanoids]");
+const homeFocusLanes = document.querySelector("[data-home-focus-lanes]");
 const noResults = document.querySelector(".no-results");
 const profilePanel = document.querySelector(".profile-panel");
 const loadMore = document.querySelector(".load-more");
@@ -491,8 +492,13 @@ function companySearchText(company) {
     ...(Array.isArray(company.importantClaims) ? company.importantClaims : []),
     ...(Array.isArray(company.groupCompanies) ? company.groupCompanies : []),
     ...(Array.isArray(company.industriesServed) ? company.industriesServed : []),
-    ...(company.keywords || [])
+    ...valueList(company.keywords)
   ].filter(Boolean).join(" "));
+}
+
+function valueList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return String(value || "").split(",").map((item) => item.trim()).filter(Boolean);
 }
 
 function escapeHtml(value = "") {
@@ -530,8 +536,101 @@ function isHumanoidRobot(robot) {
     robot.name,
     robot.category,
     robot.useCase,
-    ...(robot.keywords || [])
+    ...valueList(robot.keywords)
   ].filter(Boolean).join(" ")).includes("humanoid");
+}
+
+const focusLaneMeta = [
+  {
+    label: "Humanoids",
+    type: "Core",
+    href: "robots.html?filter=humanoids",
+    note: "General-purpose, home, factory, social, and research humanoid systems."
+  },
+  {
+    label: "Embodied AI",
+    type: "Core",
+    href: "companies.html?filter=embodied-ai",
+    note: "Robot learning, embodied models, manipulation, and AI-first robotics builders."
+  },
+  {
+    label: "Physical AI",
+    type: "Core",
+    href: "companies.html?filter=physical-ai",
+    note: "The compute, model, data, simulation, and autonomy stack behind real-world robots."
+  },
+  {
+    label: "Autonomous Robotics",
+    type: "Core",
+    href: "robots.html?filter=autonomous-robotics",
+    note: "Delivery, mobility, inspection, drones, marine systems, and field autonomy."
+  },
+  {
+    label: "Secondary Robotics",
+    type: "Secondary",
+    href: "robots.html?filter=secondary",
+    note: "Industrial, warehouse, medical, quadruped, delivery, and research coverage stays tracked."
+  }
+];
+
+function strategicRecordText(item = {}) {
+  return normalizeSearch([
+    item.name,
+    item.company,
+    item.category,
+    item.primaryFocus,
+    ...valueList(item.segments),
+    item.country,
+    item.status,
+    item.availability,
+    item.price,
+    item.useCase,
+    item.robot,
+    item.focus,
+    item.positioning,
+    ...valueList(item.keywords)
+  ].filter(Boolean).join(" "));
+}
+
+function inferredPrimaryFocus(item = {}) {
+  const validFocus = ["Humanoids", "Embodied AI", "Physical AI", "Autonomous Robotics", "Secondary"];
+  if (validFocus.includes(item.primaryFocus)) return item.primaryFocus;
+  const text = strategicRecordText(item);
+  if (text.includes("humanoid") || text.includes("biped") || text.includes("general-purpose") || text.includes("home and workplace")) return "Humanoids";
+  if (text.includes("embodied") || text.includes("foundation model") || text.includes("robotics ai model") || text.includes("physical intelligence") || text.includes("openmind") || text.includes("skild")) return "Embodied AI";
+  if (text.includes("physical ai") || text.includes("robot autonomy") || text.includes("robotics compute") || text.includes("simulation") || text.includes("isaac") || text.includes("gr00t")) return "Physical AI";
+  if (text.includes("autonomous") || text.includes("mobility") || text.includes("delivery") || text.includes("drone") || text.includes("marine") || text.includes("agriculture") || text.includes("navigation")) return "Autonomous Robotics";
+  return "Secondary";
+}
+
+function recordMatchesLane(item, lane) {
+  const text = strategicRecordText(item);
+  const focus = inferredPrimaryFocus(item);
+  if (lane === "Secondary" || lane === "Secondary Robotics") return focus === "Secondary";
+  if (focus === lane) return true;
+  if (lane === "Humanoids") return text.includes("humanoid");
+  if (lane === "Embodied AI") return text.includes("embodied") || text.includes("robot learning") || text.includes("foundation model");
+  if (lane === "Physical AI") return text.includes("physical ai") || text.includes("robot autonomy") || text.includes("simulation") || text.includes("robotics compute");
+  if (lane === "Autonomous Robotics") return text.includes("autonomous") || text.includes("delivery") || text.includes("mobility") || text.includes("drone") || text.includes("navigation");
+  return false;
+}
+
+function renderHomeFocusLanes() {
+  if (!homeFocusLanes) return;
+  const companies = companyDatabase.length ? companyDatabase : fallbackCompanyDatabase;
+  const robots = robotDatabase.length ? robotDatabase : [];
+  homeFocusLanes.innerHTML = focusLaneMeta.map((lane) => {
+    const companyCount = companies.filter((company) => recordMatchesLane(company, lane.label)).length;
+    const robotCount = robots.filter((robot) => recordMatchesLane(robot, lane.label)).length;
+    return `
+      <a href="${escapeHtml(lane.href)}" class="${lane.type === "Core" ? "is-core" : "is-secondary"}">
+        <span>${escapeHtml(lane.type)}</span>
+        <strong>${escapeHtml(lane.label)}</strong>
+        <small>${escapeHtml(lane.note)}</small>
+        <b>${robotCount} robots · ${companyCount} companies</b>
+      </a>
+    `;
+  }).join("");
 }
 
 function formatCount(value, suffix = "") {
@@ -577,7 +676,7 @@ function robotSearchText(robot) {
     robot.availability,
     robot.price,
     robot.useCase,
-    ...(robot.keywords || [])
+    ...valueList(robot.keywords)
   ].filter(Boolean).join(" "));
 }
 
@@ -744,6 +843,7 @@ async function loadRobotDatabase() {
   renderRobotCatalog();
   renderRobotCompare();
   renderDatabaseInsights();
+  renderHomeFocusLanes();
   renderHomeSearchResults();
 }
 
@@ -791,6 +891,7 @@ async function loadCompanyDatabase() {
     companyDatabase = fallbackCompanyDatabase;
   }
   renderDatabaseInsights();
+  renderHomeFocusLanes();
   renderCompanyDatabase(searchInput?.value || "");
   renderHomeSearchResults();
 }
