@@ -4023,7 +4023,19 @@ function pageEscape(value = "") {
 }
 
 function robotText(robot) {
-  return pageNormalize([robot.name, robot.company, robot.category, robot.country, robot.status, robot.availability, robot.price, robot.useCase, ...(robot.keywords || [])].filter(Boolean).join(" "));
+  return pageNormalize([
+    robot.name,
+    robot.company,
+    robot.category,
+    robot.primaryFocus,
+    ...(Array.isArray(robot.segments) ? robot.segments : []),
+    robot.country,
+    robot.status,
+    robot.availability,
+    robot.price,
+    robot.useCase,
+    ...companyValueList(robot.keywords)
+  ].filter(Boolean).join(" "));
 }
 
 function companyValueList(value) {
@@ -4044,14 +4056,85 @@ function companyText(company) {
     company.website,
     company.foundedBy,
     company.focus,
+    company.primaryFocus,
+    ...(Array.isArray(company.segments) ? company.segments : []),
     company.positioning,
     company.keyProject,
     company.grassFocus,
     ...companyValueList(company.importantClaims),
     ...companyValueList(company.groupCompanies),
     ...companyValueList(company.industriesServed),
-    ...(company.keywords || [])
+    ...companyValueList(company.keywords)
   ].filter(Boolean).join(" "));
+}
+
+const strategicFocusValues = ["Humanoids", "Embodied AI", "Physical AI", "Autonomous Robotics", "Secondary"];
+const strategicFocusSlugs = {
+  humanoids: "Humanoids",
+  "embodied-ai": "Embodied AI",
+  "physical-ai": "Physical AI",
+  "autonomous-robotics": "Autonomous Robotics",
+  secondary: "Secondary"
+};
+
+function normalizedSegments(item = {}) {
+  return Array.isArray(item.segments) ? item.segments.filter(Boolean) : [];
+}
+
+function hasSegment(item, segment) {
+  const needle = pageNormalize(segment);
+  return normalizedSegments(item).some((value) => pageNormalize(value) === needle);
+}
+
+function inferredFocusFromText(text = "") {
+  if (text.includes("humanoid") || text.includes("biped") || text.includes("general-purpose") || text.includes("home and workplace")) return "Humanoids";
+  if (text.includes("embodied") || text.includes("foundation model") || text.includes("robotics ai model") || text.includes("physical intelligence") || text.includes("openmind") || text.includes("skild")) return "Embodied AI";
+  if (text.includes("physical ai") || text.includes("robot autonomy") || text.includes("robotics compute") || text.includes("simulation") || text.includes("isaac") || text.includes("gr00t")) return "Physical AI";
+  if (text.includes("autonomous") || text.includes("mobility") || text.includes("delivery") || text.includes("drone") || text.includes("marine") || text.includes("agriculture") || text.includes("navigation")) return "Autonomous Robotics";
+  return "Secondary";
+}
+
+function strategicText(item, kind) {
+  const baseText = kind === "robot" ? robotText(item) : companyText(item);
+  return pageNormalize([
+    baseText,
+    item.primaryFocus,
+    ...normalizedSegments(item)
+  ].filter(Boolean).join(" "));
+}
+
+function primaryFocus(item, kind) {
+  if (strategicFocusValues.includes(item.primaryFocus)) return item.primaryFocus;
+  return inferredFocusFromText(strategicText(item, kind));
+}
+
+function strategicSegments(item, kind) {
+  const text = strategicText(item, kind);
+  const segments = new Set(normalizedSegments(item));
+  segments.add(primaryFocus(item, kind));
+  if (countrySlug(item.country) === "china") segments.add("China Robotics");
+  if (Number(item.priceVisibility || 0) >= 2 || text.includes("available") || text.includes("commercial") || text.includes("deployed") || text.includes("retailer") || text.includes("price")) segments.add("Commercial Access");
+  if (text.includes("industrial") || text.includes("factory") || text.includes("manufacturing") || text.includes("automation") || text.includes("robot arm")) segments.add("Industrial");
+  if (text.includes("warehouse") || text.includes("logistics") || text.includes("amr") || text.includes("intralogistics") || text.includes("picking")) segments.add("Warehouse");
+  if (text.includes("delivery")) segments.add("Delivery");
+  if (text.includes("quadruped") || text.includes("robot dog") || text.includes("wheeled-legged")) segments.add("Quadruped");
+  if (text.includes("medical") || text.includes("surgical") || text.includes("exoskeleton") || text.includes("rehabilitation") || text.includes("wearable") || text.includes("gait")) segments.add("Medical");
+  if (text.includes("research") || text.includes("developer") || text.includes("education") || text.includes("open-source") || text.includes("platform")) segments.add("Research Platforms");
+  return [...segments];
+}
+
+function matchesStrategicFilter(item, filter, kind) {
+  if (filter === "all") return true;
+  const text = strategicText(item, kind);
+  const segments = strategicSegments(item, kind).map(pageNormalize);
+  const focus = pageNormalize(primaryFocus(item, kind));
+  if (strategicFocusSlugs[filter]) return focus === pageNormalize(strategicFocusSlugs[filter]) || segments.includes(pageNormalize(strategicFocusSlugs[filter]));
+  if (filter === "china" || filter === "china-robotics") return countrySlug(item.country) === "china" || segments.includes("china robotics");
+  if (filter === "available" || filter === "commercial-access") return segments.includes("commercial access");
+  if (filter === "home") return text.includes("home") || text.includes("household") || text.includes("companion");
+  if (filter === "ai") return text.includes(" ai") || text.includes("artificial intelligence") || text.includes("embodied") || text.includes("physical ai");
+  if (filter === "public" || filter === "private") return text.includes(filter);
+  return text.includes(filter);
 }
 
 function optionalCompanyRows(company) {
@@ -5305,24 +5388,24 @@ function renderRobotCards() {
   const allRobots = pageState.robots;
   if (overview) {
     const categories = new Set(allRobots.map((robot) => robot.category).filter(Boolean)).size;
+    const coreRobots = allRobots.filter((robot) => primaryFocus(robot, "robot") !== "Secondary").length;
     const priced = allRobots.filter((robot) => Number(robot.priceVisibility || 0) >= 2).length;
     const sourced = allRobots.filter((robot) => robot.source).length;
-    const playable = allRobots.filter((robot) => robotVideo(robot)).length;
     overview.innerHTML = `
-      <article><span>Robot profiles</span><strong>${allRobots.length}</strong><small>${categories} categories tracked</small></article>
-      <article><span>Price signal</span><strong>${priced}</strong><small>Robots with visible or reference pricing</small></article>
+      <article><span>Robot profiles</span><strong>${allRobots.length}</strong><small>${categories} legacy categories still tracked</small></article>
+      <article><span>Core focus</span><strong>${coreRobots}</strong><small>Humanoid, embodied, physical AI, and autonomous systems</small></article>
+      <article><span>Commercial access</span><strong>${priced}</strong><small>Deployable, available, or price/reference signal</small></article>
       <article><span>Source-backed</span><strong>${sourced}/${allRobots.length}</strong><small>Official product or company links</small></article>
-      <article><span>Playable demos</span><strong>${playable}</strong><small>Embedded official / curated media signals</small></article>
     `;
   }
   if (segments) {
     const segmentDefs = [
-      ["Humanoid", (robot) => pageNormalize(robot.category).includes("humanoid")],
-      ["Quadruped", (robot) => pageNormalize(robot.category).includes("quadruped")],
-      ["Wheeled quadruped", (robot) => pageNormalize(robot.category).includes("wheeled")],
-      ["Wearable", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("wearable") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("exo")],
-      ["Home / social", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("home") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("companion") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("social")],
-      ["Industrial / warehouse", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("industrial") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("warehouse") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("logistics")]
+      ["Humanoids", (robot) => matchesStrategicFilter(robot, "humanoids", "robot")],
+      ["Embodied AI", (robot) => matchesStrategicFilter(robot, "embodied-ai", "robot")],
+      ["Physical AI", (robot) => matchesStrategicFilter(robot, "physical-ai", "robot")],
+      ["Autonomous robotics", (robot) => matchesStrategicFilter(robot, "autonomous-robotics", "robot")],
+      ["China robotics lens", (robot) => matchesStrategicFilter(robot, "china-robotics", "robot")],
+      ["Secondary coverage", (robot) => matchesStrategicFilter(robot, "secondary", "robot")]
     ];
     segments.innerHTML = segmentDefs.map(([label, predicate]) => {
       const matches = allRobots.filter(predicate);
@@ -5343,7 +5426,7 @@ function renderRobotCards() {
   const robots = pageState.robots.filter((robot) => {
     const text = robotText(robot);
     const matchesQuery = !terms.length || terms.every((term) => text.includes(term));
-    const matchesFilter = filter === "all" || text.includes(filter);
+    const matchesFilter = matchesStrategicFilter(robot, filter, "robot");
     const matchesUseCase = pageState.robotUseCaseFilter === "all" || robotUseCases(robot).some((item) => item.slug === pageState.robotUseCaseFilter);
     const matchesCountry = pageState.robotCountryFilter === "all" || countrySlug(robot.country) === pageState.robotCountryFilter;
     const matchesScore = pageState.robotScoreFilter === "all" || (
@@ -5371,6 +5454,7 @@ function renderRobotCards() {
       </figure>
       <div class="catalog-card-body">
         <div class="database-tags">
+          <span>${pageEscape(primaryFocus(robot, "robot"))}</span>
           <span>${pageEscape(robot.category || "Robot")}</span>
           <span>${pageEscape(robot.country || "Global")}</span>
           <span>${pageEscape(scoreLabel(robotScore(robot)))}</span>
@@ -5577,36 +5661,36 @@ function renderCompanyCards() {
     const names = listedRobotNames(company.robot);
     return pageState.robots.some((robot) => pageNormalize(robot.company) === pageNormalize(company.name) || names.includes(pageNormalize(robot.name)));
   }).length;
-  const sourceBacked = companiesAll.filter((company) => company.website || company.sourceLinks?.length).length;
   const publicCount = companiesAll.filter((company) => pageNormalize(company.type).includes("public")).length;
   const privateCount = companiesAll.filter((company) => pageNormalize(company.type).includes("private")).length;
+  const coreCompanyCount = companiesAll.filter((company) => primaryFocus(company, "company") !== "Secondary").length;
   const companies = pageState.companies.filter((company) => {
     const text = companyText(company);
     const matchesQuery = !terms.length || terms.every((term) => text.includes(term));
-    const matchesFilter = filter === "all" || text.includes(filter);
+    const matchesFilter = matchesStrategicFilter(company, filter, "company");
     return matchesQuery && matchesFilter;
   });
 
   if (overview) {
     overview.innerHTML = `
       <article><span>Companies</span><strong>${companiesAll.length}</strong><small>${publicCount} public · ${privateCount} private</small></article>
+      <article><span>Core focus</span><strong>${coreCompanyCount}</strong><small>Humanoid, embodied, physical AI, and autonomous robotics</small></article>
       <article><span>Countries</span><strong>${new Set(companiesAll.map((company) => broadCountryName(company.country)).filter(Boolean)).size}</strong><small>Regional robotics and AI coverage</small></article>
       <article><span>Robot-linked</span><strong>${linkedCompanyCount}</strong><small>Companies connected to tracked robot profiles</small></article>
-      <article><span>Source-backed</span><strong>${sourceBacked}/${companiesAll.length}</strong><small>Official website or source trail available</small></article>
     `;
   }
 
   if (segments) {
     const segmentDefs = [
-      ["Humanoid builders", "humanoid"],
-      ["Quadruped / field", "quadruped inspection field"],
-      ["Wearable robotics", "wearable exo gait mobility"],
-      ["Industrial / warehouse", "industrial warehouse logistics automation"],
-      ["AI infrastructure", "ai embodied intelligence foundation"]
+      ["Humanoid builders", (company) => matchesStrategicFilter(company, "humanoids", "company")],
+      ["Embodied AI", (company) => matchesStrategicFilter(company, "embodied-ai", "company")],
+      ["Physical AI", (company) => matchesStrategicFilter(company, "physical-ai", "company")],
+      ["Autonomous robotics", (company) => matchesStrategicFilter(company, "autonomous-robotics", "company")],
+      ["China robotics lens", (company) => matchesStrategicFilter(company, "china-robotics", "company")],
+      ["Secondary robotics coverage", (company) => matchesStrategicFilter(company, "secondary", "company")]
     ];
-    segments.innerHTML = segmentDefs.map(([label, terms]) => {
-      const termList = terms.split(" ");
-      const matches = companiesAll.filter((company) => termList.some((term) => companyText(company).includes(term)));
+    segments.innerHTML = segmentDefs.map(([label, predicate]) => {
+      const matches = companiesAll.filter(predicate);
       const leader = matches.find((company) => company.website) || matches[0];
       return `
         <article>
@@ -5628,6 +5712,7 @@ function renderCompanyCards() {
       ${companyCardMark(company)}
       <div class="catalog-card-body">
         <div class="database-tags">
+          <span>${pageEscape(primaryFocus(company, "company"))}</span>
           <span>${pageEscape(company.type || "Entity")}</span>
           <span>${pageEscape(company.country || "Global")}</span>
           ${company.ticker ? `<span>${pageEscape(company.ticker)}</span>` : ""}
@@ -5672,11 +5757,11 @@ function renderMarketPage() {
   const pricedRobots = pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2);
   const sourceLinkedRobots = pageState.robots.filter((robot) => robot.source);
   const segments = [
-    ["Humanoid", (robot) => pageNormalize(robot.category).includes("humanoid")],
-    ["Quadruped", (robot) => pageNormalize(robot.category).includes("quadruped")],
-    ["Wearable", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("wearable") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("exo")],
-    ["Industrial / Warehouse", (robot) => pageNormalize(`${robot.category} ${robot.useCase}`).includes("industrial") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("warehouse") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("logistics")],
-    ["AI Infrastructure", (robot) => pageNormalize(`${robot.category} ${robot.useCase} ${robot.company}`).includes("ai") || pageNormalize(`${robot.category} ${robot.useCase}`).includes("embodied")]
+    ["Humanoids", (robot) => matchesStrategicFilter(robot, "humanoids", "robot")],
+    ["Embodied AI", (robot) => matchesStrategicFilter(robot, "embodied-ai", "robot")],
+    ["Physical AI", (robot) => matchesStrategicFilter(robot, "physical-ai", "robot")],
+    ["Autonomous robotics", (robot) => matchesStrategicFilter(robot, "autonomous-robotics", "robot")],
+    ["Secondary robotics", (robot) => matchesStrategicFilter(robot, "secondary", "robot")]
   ];
   const priceAccess = [
     ["Public / visible", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 4), "Official or strong public pricing signal"],

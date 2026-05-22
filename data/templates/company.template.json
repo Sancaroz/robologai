@@ -1,6 +1,11 @@
 {
   "name": "Example Robotics",
   "category": "Humanoid Robotics",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Commercial Access"
+  ],
   "country": "United States",
   "type": "Private",
   "ticker": "",

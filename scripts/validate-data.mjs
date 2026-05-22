@@ -21,6 +21,8 @@ const requiredFields = {
   signals: ["date", "type", "title", "company", "robot", "category", "country", "impact", "summary", "source"]
 };
 
+const primaryFocusValues = new Set(["Humanoids", "Embodied AI", "Physical AI", "Autonomous Robotics", "Secondary"]);
+
 function readJson(filePath) {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -51,6 +53,12 @@ function validateRecord(kind, record, label) {
     return value === undefined || value === null || String(value).trim() === "";
   });
   if (missing.length) throw new Error(`${label} missing required field(s): ${missing.join(", ")}`);
+  if (record.primaryFocus !== undefined && !primaryFocusValues.has(record.primaryFocus)) {
+    throw new Error(`${label} has invalid primaryFocus; expected one of: ${[...primaryFocusValues].join(", ")}`);
+  }
+  if (record.segments !== undefined && (!Array.isArray(record.segments) || record.segments.some((segment) => typeof segment !== "string" || !segment.trim()))) {
+    throw new Error(`${label} has invalid segments; expected an array of non-empty strings`);
+  }
   if (kind === "robots") {
     const maturity = Number(record.maturity ?? 1);
     const priceVisibility = Number(record.priceVisibility ?? 1);

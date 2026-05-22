@@ -12,7 +12,7 @@
     "maturity": 4,
     "priceVisibility": 3,
     "image": "assets/robots/engine-ai/pm01/hero.png",
-    "heroImage": "assets/robots/engine-ai/pm01/.png",
+    "heroImage": "assets/robots/engine-ai/pm01/hero.png",
     "imageCredit": "EngineAI official media",
     "source": "https://en.engineai.com.cn/product-pm01.html",
     "keywords": ["pm01", "engineai", "open source", "developer"]
