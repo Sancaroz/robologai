@@ -1,6 +1,20 @@
 [
   {
     "date": "2026-05-21",
+    "type": "Embodied AI Stack",
+    "title": "NVIDIA GTC Taipei at COMPUTEX: Live Updates on What’s Next in AI",
+    "company": "NVIDIA",
+    "robot": "Isaac / GR00T",
+    "category": "Robotics infrastructure",
+    "country": "USA",
+    "impact": "High",
+    "summary": "At NVIDIA GTC Taipei at COMPUTEX, the world’s developers, researchers and industry leaders are converging to dive into the latest breakthroughs shaping every industry, covering topics spanning AI factories and scaling infrastructure to agentic and physical AI ",
+    "source": "https://blogs.nvidia.com/blog/nvidia-gtc-taipei-computex-2026-news/",
+    "relatedUrl": "physical-ai.html",
+    "sourceType": "automated"
+  },
+  {
+    "date": "2026-05-21",
     "type": "Research Signal",
     "title": "Open-Source Software Is Starting to Help Robots Think",
     "company": "Robotics ecosystem",
