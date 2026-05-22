@@ -11,6 +11,8 @@
     "runtime": "Not disclosed",
     "maturity": 3,
     "priceVisibility": 1,
+    "image": "assets/robots/sanctuary-ai/phoenix/hero.png",
+    "heroImage": "assets/robots/sanctuary-ai/phoenix/hero.png",
     "source": "https://www.sanctuary.ai/",
     "keywords": ["phoenix", "sanctuary", "general purpose", "humanoid"]
   }

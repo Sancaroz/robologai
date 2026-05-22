@@ -11,6 +11,8 @@
   "runtime": "Not disclosed",
   "maturity": 3,
   "priceVisibility": 1,
+  "image": "assets/robots/deeprobotics/lynx/hero.png",
+  "heroImage": "assets/robots/deeprobotics/lynx/hero.png",
   "imageCredit": "DEEP Robotics official product page",
   "source": "https://www.deeprobotics.cn/en/index/lynx.html",
   "keywords": ["deep robotics", "lynx", "wheeled quadruped", "wheel-legged", "all terrain", "robot dog", "field robotics"]

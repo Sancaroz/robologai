@@ -11,6 +11,8 @@
   "runtime": "Official endurance: 2.5-4 hours",
   "maturity": 4,
   "priceVisibility": 4,
+  "image": "assets/robots/deeprobotics/x30.png",
+  "heroImage": "assets/robots/deeprobotics/x30.png",
   "imageCredit": "DEEP Robotics official product page",
   "source": "https://www.deeprobotics.cn/en/index/product3.html",
   "sourceLinks": [

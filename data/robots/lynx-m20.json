@@ -11,6 +11,8 @@
   "runtime": "Official endurance: 3 hours unloaded; 2.5 hours loaded",
   "maturity": 4,
   "priceVisibility": 3,
+  "image": "assets/robots/deeprobotics/lynx-m20/.png",
+  "heroImage": "assets/robots/deeprobotics/lynx-m20/hero.png",
   "imageCredit": "DEEP Robotics official product page",
   "source": "https://www.deeprobotics.cn/en/index/lynx.html",
   "sourceLinks": [

@@ -11,6 +11,8 @@
   "runtime": "Official endurance: 1.5-2 hours",
   "maturity": 4,
   "priceVisibility": 4,
+  "image": "assets/robots/deeprobotics/lite3.png",
+  "heroImage": "assets/robots/deeprobotics/lite3.png",
   "imageCredit": "DEEP Robotics official product page",
   "source": "https://www.deeprobotics.cn/en/index/lite3.html",
   "sourceLinks": [

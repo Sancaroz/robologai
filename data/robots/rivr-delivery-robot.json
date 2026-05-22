@@ -8,5 +8,7 @@
   "availability": "Pilot",
   "price": "Not publicly listed",
   "useCase": "Autonomous wheeled-legged delivery robotics",
+  "image": "assets/robots/rivr/hero.png",
+  "heroImage": "assets/robots/rivr/hero.png",
   "source": "https://www.rivr.ai/"
 }
