@@ -5393,7 +5393,13 @@ function assetIssueList(title, rows) {
     <article class="asset-coverage-list">
       <span>${pageEscape(title)}</span>
       <strong>${rows.length ? `${rows.length} records` : "Clear"}</strong>
-      ${visible.length ? `<ul>${visible.map((row) => `<li><b>${pageEscape(row.name)}</b><small>${pageEscape(row.note)}</small></li>`).join("")}</ul>` : `<small>No records in this group.</small>`}
+      ${visible.length ? `<ul>${visible.map((row) => `
+        <li>
+          <b>${pageEscape(row.name)}</b>
+          <small>${pageEscape(row.note)}</small>
+          ${row.path ? `<code>${pageEscape(row.path)}</code>` : ""}
+        </li>
+      `).join("")}</ul>` : `<small>No records in this group.</small>`}
     </article>
   `;
 }
@@ -5519,7 +5525,11 @@ async function renderAssetCoveragePanel() {
   const robotImages = robotRows.filter((row) => row.imageStatus === "ok" || row.imageStatus === "external");
   const brokenCompanies = companyRows.filter((row) => row.profileStatus === "broken").map((row) => ({ name: row.name, note: row.profileMark }));
   const missingCompanyMarks = companyRows.filter((row) => row.profileStatus === "missing").map((row) => ({ name: row.name, note: "No logo, image, or heroImage field" }));
-  const missingProperLogos = companyRows.filter((row) => row.logoStatus === "missing").map((row) => ({ name: row.name, note: row.profileMark ? "Profile can fall back to image, but logo field is empty" : "No logo field" }));
+  const missingProperLogos = companyRows.filter((row) => row.logoStatus === "missing").map((row) => ({
+    name: row.name,
+    note: row.profileMark ? "Profile can fall back to image, but logo field is empty" : "No logo field",
+    path: `assets/companies/${seoSlug(row.name)}/logo.svg`
+  }));
   const brokenRobots = robotRows.filter((row) => row.imageStatus === "broken").map((row) => ({ name: row.name, note: row.image }));
   const missingRobots = robotRows.filter((row) => row.imageStatus === "missing").map((row) => ({ name: row.name, note: row.company || "No image field" }));
   const brokenTotal = brokenCompanies.length + brokenRobots.length;

@@ -6588,6 +6588,19 @@ body.light-theme .profile-main > div > span {
   font-size: 12px;
 }
 
+.asset-coverage-list code {
+  display: block;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(120, 231, 255, 0.14);
+  border-radius: 6px;
+  padding: 7px 8px;
+  color: #dff8ff;
+  background: rgba(255, 255, 255, 0.045);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
 .company-intelligence-grid {
   grid-template-columns: 0.85fr 1.45fr 1fr;
 }
@@ -11317,6 +11330,7 @@ body.light-theme .data-ops-grid small,
 body.light-theme .asset-coverage-panel small,
 body.light-theme .asset-coverage-grid small,
 body.light-theme .asset-issue-grid small,
+body.light-theme .asset-coverage-list code,
 body.light-theme .company-intelligence-grid small,
 body.light-theme .command-recipe-grid small,
 body.light-theme .data-ops-cta small,
