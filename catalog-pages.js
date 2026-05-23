@@ -5327,6 +5327,7 @@ function companyCardMark(company) {
 }
 
 const assetStatusCache = new Map();
+const linkStatusCache = new Map();
 
 function recordAssetPath(record, fields = []) {
   return fields.map((field) => record?.[field]).find(Boolean) || "";
@@ -5366,6 +5367,95 @@ function assetIssueList(title, rows) {
       <strong>${rows.length ? `${rows.length} records` : "Clear"}</strong>
       ${visible.length ? `<ul>${visible.map((row) => `<li><b>${pageEscape(row.name)}</b><small>${pageEscape(row.note)}</small></li>`).join("")}</ul>` : `<small>No records in this group.</small>`}
     </article>
+  `;
+}
+
+function localLinkPath(value = "") {
+  const link = String(value || "").trim();
+  if (!link || link.startsWith("#") || /^https?:\/\//i.test(link) || /^mailto:/i.test(link)) return "";
+  const cleanLink = link.split("#")[0].split("?")[0].replace(/^\.\//, "");
+  if (!cleanLink || cleanLink.endsWith("/")) return "";
+  return cleanLink;
+}
+
+async function localLinkStatus(path = "") {
+  const cleanPath = localLinkPath(path);
+  if (!cleanPath) return "external";
+  if (linkStatusCache.has(cleanPath)) return linkStatusCache.get(cleanPath);
+  const statusPromise = fetch(catalogSitePath(cleanPath), { cache: "no-store" })
+    .then((response) => (response.ok ? "ok" : "broken"))
+    .catch(() => "unknown");
+  linkStatusCache.set(cleanPath, statusPromise);
+  return statusPromise;
+}
+
+function linkIssueList(title, rows) {
+  const visible = rows.slice(0, 8);
+  return `
+    <article class="asset-coverage-list">
+      <span>${pageEscape(title)}</span>
+      <strong>${rows.length ? `${rows.length} links` : "Clear"}</strong>
+      ${visible.length ? `<ul>${visible.map((row) => `<li><b>${pageEscape(row.name)}</b><small>${pageEscape(row.note)}</small></li>`).join("")}</ul>` : `<small>No links in this group.</small>`}
+    </article>
+  `;
+}
+
+async function renderLinkIntegrityPanel() {
+  const panel = document.querySelector("[data-link-integrity]");
+  if (!panel) return;
+
+  const companies = pageState.companies || [];
+  const robots = pageState.robots || [];
+  const signals = pageState.signals || [];
+  const companyRows = await Promise.all(companies.map(async (company) => {
+    const href = companyProfileHref(company);
+    return {
+      name: company.name || "Unnamed company",
+      href,
+      status: await localLinkStatus(href)
+    };
+  }));
+  const robotRows = await Promise.all(robots.map(async (robot) => {
+    const href = robotProfileHref(robot);
+    return {
+      name: robot.name || "Unnamed robot",
+      href,
+      status: await localLinkStatus(href)
+    };
+  }));
+  const signalRows = await Promise.all(signals.map(async (signal) => {
+    const href = localLinkPath(signal.relatedUrl || "");
+    return {
+      name: signal.title || "Untitled signal",
+      href,
+      status: href ? await localLinkStatus(href) : "external"
+    };
+  }));
+
+  const companyReady = companyRows.filter((row) => row.status === "ok");
+  const robotReady = robotRows.filter((row) => row.status === "ok");
+  const signalReady = signalRows.filter((row) => row.status === "ok" || row.status === "external");
+  const brokenCompanies = companyRows.filter((row) => row.status === "broken").map((row) => ({ name: row.name, note: row.href }));
+  const brokenRobots = robotRows.filter((row) => row.status === "broken").map((row) => ({ name: row.name, note: row.href }));
+  const brokenSignals = signalRows.filter((row) => row.status === "broken").map((row) => ({ name: row.name, note: row.href }));
+  const unknownLinks = [...companyRows, ...robotRows, ...signalRows]
+    .filter((row) => row.status === "unknown")
+    .map((row) => ({ name: row.name, note: row.href || "Browser could not verify this local link" }));
+  const brokenTotal = brokenCompanies.length + brokenRobots.length + brokenSignals.length;
+
+  panel.innerHTML = `
+    <div class="asset-coverage-grid">
+      <article><span>Company profile pages</span><strong>${companyReady.length}/${companies.length}</strong><small>Generated pages expected under companies/*.html.</small></article>
+      <article><span>Robot profile pages</span><strong>${robotReady.length}/${robots.length}</strong><small>Generated pages expected under robots/*.html.</small></article>
+      <article><span>Signal related URLs</span><strong>${signalReady.length}/${signals.length}</strong><small>Local signal links plus external source-backed links.</small></article>
+      <article class="${brokenTotal ? "asset-warning-card" : "asset-ok-card"}"><span>Broken local links</span><strong>${brokenTotal}</strong><small>${brokenTotal ? "Regenerate pages or fix relatedUrl paths before deploy." : "No broken local profile or signal links detected."}</small></article>
+    </div>
+    <div class="asset-issue-grid">
+      ${linkIssueList("Broken company pages", brokenCompanies)}
+      ${linkIssueList("Broken robot pages", brokenRobots)}
+      ${linkIssueList("Broken signal links", brokenSignals)}
+      ${linkIssueList("Unverified local links", unknownLinks)}
+    </div>
   `;
 }
 
@@ -7033,6 +7123,7 @@ async function initCatalogPages() {
   renderComparePicker();
   renderComparePage();
   renderAssetCoveragePanel();
+  renderLinkIntegrityPanel();
   wireCatalogControls();
 }
 
