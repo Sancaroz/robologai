@@ -4724,15 +4724,27 @@ function signalFilterButton(label, value, current, attr) {
   return `<button class="${current === slug ? "is-active" : ""}" type="button" ${attr}="${pageEscape(slug)}">${pageEscape(label)}</button>`;
 }
 
+function signalBreakdownRow(label, value, total, note) {
+  const percent = total ? Math.round((value / total) * 100) : 0;
+  return `
+    <article>
+      <div><span>${pageEscape(label)}</span><strong>${pageEscape(String(value))}/${pageEscape(String(total))}</strong></div>
+      <i style="--signal-breakdown:${percent}%"><b></b></i>
+      <small>${pageEscape(note)} · ${percent}%</small>
+    </article>
+  `;
+}
+
 function renderRoboticsSignalsPage() {
   const featured = document.querySelector("[data-signals-featured]");
   const feed = document.querySelector("[data-signals-feed]");
   const types = document.querySelector("[data-signals-types]");
   const metrics = document.querySelector("[data-signals-metrics]");
   const qualityGrid = document.querySelector("[data-signals-quality]");
+  const breakdownGrid = document.querySelector("[data-signals-breakdown]");
   const filters = document.querySelector("[data-signals-filters]");
   const count = document.querySelector("[data-signals-count]");
-  if (!featured && !feed && !types && !metrics && !qualityGrid && !filters && !count) return;
+  if (!featured && !feed && !types && !metrics && !qualityGrid && !breakdownGrid && !filters && !count) return;
 
   const signals = pageState.signals.length ? pageState.signals : signalFallback;
   const visibleSignals = filteredSignals(signals).map(signalViewModel);
@@ -4767,6 +4779,22 @@ function renderRoboticsSignalsPage() {
       <article><span>Core AI lens</span><strong>${coreLens}</strong><small>Humanoid, embodied AI, physical AI, or autonomous robotics signals</small></article>
       <article><span>Profile linked</span><strong>${profileLinked}</strong><small>${ecosystemSignals} ecosystem signals kept as market context</small></article>
     `;
+  }
+
+  if (breakdownGrid) {
+    const total = enrichedSignals.length;
+    const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
+    const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
+    const ecosystemSignals = enrichedSignals.filter((item) => item.ecosystemSignal && !item.companyHref && !item.robotHref).length;
+    const highImpactCount = enrichedSignals.filter((item) => pageNormalize(item.impact).includes("high")).length;
+    const coreLens = enrichedSignals.filter((item) => item.strategicLens !== "Secondary").length;
+    breakdownGrid.innerHTML = [
+      signalBreakdownRow("Official / PR", officialish, total, "Primary-source confidence"),
+      signalBreakdownRow("Profile linked", profileLinked, total, "Company or robot profile connected"),
+      signalBreakdownRow("Ecosystem context", ecosystemSignals, total, "Broad market signals separated from profiles"),
+      signalBreakdownRow("High impact", highImpactCount, total, "Signals marked as strategically important"),
+      signalBreakdownRow("Core AI lens", coreLens, total, "Humanoid, embodied, physical, or autonomous")
+    ].join("");
   }
 
   if (featured) {

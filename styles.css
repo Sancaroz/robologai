@@ -4226,8 +4226,16 @@ body.light-theme .data-wave {
   margin-top: 14px;
 }
 
+.signals-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
 .signals-metrics article,
 .signals-quality-grid article,
+.signals-breakdown-grid article,
 .signals-featured,
 .signals-type-panel,
 .signals-row {
@@ -4248,9 +4256,29 @@ body.light-theme .data-wave {
   padding: 18px;
 }
 
+.signals-breakdown-grid article {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.signals-breakdown-grid article div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .signals-quality-grid span {
   color: var(--blue-2);
   font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.signals-breakdown-grid span {
+  color: #c9d8ec;
+  font-size: 11px;
   font-weight: 950;
   text-transform: uppercase;
 }
@@ -4268,6 +4296,29 @@ body.light-theme .data-wave {
   line-height: 1;
 }
 
+.signals-breakdown-grid strong {
+  color: #eef6ff;
+  font-size: 14px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.signals-breakdown-grid i {
+  display: block;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.signals-breakdown-grid i b {
+  display: block;
+  width: var(--signal-breakdown, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--blue-2));
+}
+
 .signals-metrics small {
   display: block;
   margin-top: 8px;
@@ -4279,6 +4330,13 @@ body.light-theme .data-wave {
   color: #95a8c0;
   font-weight: 800;
   line-height: 1.45;
+}
+
+.signals-breakdown-grid small {
+  color: #95a8c0;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .signals-command {
@@ -4787,6 +4845,7 @@ body.light-theme .leaderboard-head {
 body.light-theme .signals-hero,
 body.light-theme .signals-metrics article,
 body.light-theme .signals-quality-grid article,
+body.light-theme .signals-breakdown-grid article,
 body.light-theme .signals-featured,
 body.light-theme .signals-type-panel,
 body.light-theme .signals-section,
@@ -4801,6 +4860,7 @@ body.light-theme .signals-hero h1,
 body.light-theme .signals-hero span,
 body.light-theme .signals-metrics strong,
 body.light-theme .signals-quality-grid strong,
+body.light-theme .signals-breakdown-grid strong,
 body.light-theme .signals-featured h2,
 body.light-theme .signals-featured dd,
 body.light-theme .signals-filter-head h2,
@@ -4814,6 +4874,7 @@ body.light-theme .signals-featured p,
 body.light-theme .signals-row-main p,
 body.light-theme .signals-metrics small,
 body.light-theme .signals-quality-grid small,
+body.light-theme .signals-breakdown-grid small,
 body.light-theme .signals-row-main small,
 body.light-theme .signals-type-grid small,
 body.light-theme .signals-filter-grid span,
@@ -11702,6 +11763,7 @@ body.light-theme .facts span {
   .signals-hero,
   .signals-command,
   .signals-quality-grid,
+  .signals-breakdown-grid,
   .signals-filter-grid {
     grid-template-columns: 1fr;
   }
@@ -12736,6 +12798,7 @@ body.light-theme .facts span {
 
   .signals-metrics,
   .signals-quality-grid,
+  .signals-breakdown-grid,
   .signals-featured dl {
     grid-template-columns: 1fr;
   }
@@ -12805,7 +12868,8 @@ body.light-theme .facts span {
   }
 
   .signals-metrics,
-  .signals-quality-grid {
+  .signals-quality-grid,
+  .signals-breakdown-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
