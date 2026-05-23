@@ -6144,6 +6144,8 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid,
 .data-quality-grid,
 .data-ops-grid,
+.asset-coverage-grid,
+.asset-issue-grid,
 .command-recipe-grid,
 .source-note-grid,
 .company-snapshot-grid,
@@ -6212,6 +6214,7 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid,
 .data-quality-grid,
 .data-ops-grid,
+.asset-coverage-grid,
 .command-recipe-grid,
 .source-note-grid,
 .company-snapshot-grid,
@@ -6231,6 +6234,100 @@ body.light-theme .profile-main > div > span {
 
 .data-ops-grid strong {
   overflow-wrap: anywhere;
+}
+
+.asset-coverage-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.asset-coverage-grid,
+.asset-issue-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.asset-coverage-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.asset-issue-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.asset-coverage-panel article,
+.asset-coverage-grid article,
+.asset-issue-grid article {
+  display: grid;
+  gap: 9px;
+  min-height: 142px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+}
+
+.asset-coverage-panel span,
+.asset-coverage-grid span,
+.asset-issue-grid span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.asset-coverage-panel strong,
+.asset-coverage-grid strong,
+.asset-issue-grid strong {
+  color: #eef6ff;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.asset-coverage-grid strong {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.asset-coverage-panel small,
+.asset-coverage-grid small,
+.asset-issue-grid small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
+.asset-ok-card {
+  border-color: rgba(43, 213, 118, 0.34);
+}
+
+.asset-warning-card {
+  border-color: rgba(255, 181, 71, 0.48);
+}
+
+.asset-coverage-list ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.asset-coverage-list li {
+  display: grid;
+  gap: 3px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(120, 231, 255, 0.12);
+}
+
+.asset-coverage-list b {
+  color: #eef6ff;
+  font-size: 13px;
+}
+
+.asset-coverage-list li small {
+  overflow-wrap: anywhere;
+  font-size: 12px;
 }
 
 .command-recipe-grid code {
@@ -10844,6 +10941,9 @@ body.light-theme .profile-stack-grid small,
 body.light-theme .company-signal-grid small,
 body.light-theme .data-quality-grid small,
 body.light-theme .data-ops-grid small,
+body.light-theme .asset-coverage-panel small,
+body.light-theme .asset-coverage-grid small,
+body.light-theme .asset-issue-grid small,
 body.light-theme .command-recipe-grid small,
 body.light-theme .data-ops-cta small,
 body.light-theme .source-note-grid small,
@@ -10885,6 +10985,9 @@ body.light-theme .compare-summary-grid article,
 body.light-theme .compare-best-fit-grid article,
 body.light-theme .data-quality-grid article,
 body.light-theme .data-ops-grid article,
+body.light-theme .asset-coverage-panel article,
+body.light-theme .asset-coverage-grid article,
+body.light-theme .asset-issue-grid article,
 body.light-theme .command-recipe-grid article,
 body.light-theme .source-note-grid article,
 body.light-theme .company-snapshot-grid article,
@@ -10944,6 +11047,9 @@ body.light-theme .compare-summary-grid strong,
 body.light-theme .compare-best-fit-grid strong,
 body.light-theme .data-quality-grid strong,
 body.light-theme .data-ops-grid strong,
+body.light-theme .asset-coverage-panel strong,
+body.light-theme .asset-coverage-grid strong,
+body.light-theme .asset-issue-grid strong,
 body.light-theme .command-recipe-grid strong,
 body.light-theme .data-ops-cta strong,
 body.light-theme .source-note-grid strong,
@@ -11226,6 +11332,8 @@ body.light-theme .facts span {
   .compare-best-fit-grid,
   .data-quality-grid,
   .data-ops-grid,
+  .asset-coverage-grid,
+  .asset-issue-grid,
   .source-note-grid,
   .company-snapshot-grid,
   .product-lineup-grid,
@@ -11559,6 +11667,8 @@ body.light-theme .facts span {
   .compare-best-fit-grid,
   .data-quality-grid,
   .data-ops-grid,
+  .asset-coverage-grid,
+  .asset-issue-grid,
   .source-note-grid,
   .company-snapshot-grid,
   .product-lineup-grid,

@@ -5282,6 +5282,103 @@ function companyCardMark(company) {
   return `<div class="company-avatar">${pageEscape(pageInitials(company.name))}</div>`;
 }
 
+const assetStatusCache = new Map();
+
+function recordAssetPath(record, fields = []) {
+  return fields.map((field) => record?.[field]).find(Boolean) || "";
+}
+
+function isExternalAsset(value = "") {
+  return /^https?:\/\//i.test(String(value)) || /^data:/i.test(String(value));
+}
+
+function imageAssetStatus(path = "") {
+  if (!path) return Promise.resolve("missing");
+  if (isExternalAsset(path)) return Promise.resolve("external");
+  const cleanPath = String(path).split(/[?#]/)[0];
+  if (assetStatusCache.has(cleanPath)) return assetStatusCache.get(cleanPath);
+  const statusPromise = new Promise((resolve) => {
+    const image = new Image();
+    const timer = window.setTimeout(() => resolve("broken"), 3200);
+    image.onload = () => {
+      window.clearTimeout(timer);
+      resolve("ok");
+    };
+    image.onerror = () => {
+      window.clearTimeout(timer);
+      resolve("broken");
+    };
+    image.src = catalogSitePath(cleanPath);
+  });
+  assetStatusCache.set(cleanPath, statusPromise);
+  return statusPromise;
+}
+
+function assetIssueList(title, rows) {
+  const visible = rows.slice(0, 8);
+  return `
+    <article class="asset-coverage-list">
+      <span>${pageEscape(title)}</span>
+      <strong>${rows.length ? `${rows.length} records` : "Clear"}</strong>
+      ${visible.length ? `<ul>${visible.map((row) => `<li><b>${pageEscape(row.name)}</b><small>${pageEscape(row.note)}</small></li>`).join("")}</ul>` : `<small>No records in this group.</small>`}
+    </article>
+  `;
+}
+
+async function renderAssetCoveragePanel() {
+  const panel = document.querySelector("[data-asset-coverage]");
+  if (!panel) return;
+
+  const companies = pageState.companies || [];
+  const robots = pageState.robots || [];
+  const companyRows = await Promise.all(companies.map(async (company) => {
+    const logo = recordAssetPath(company, ["logo", "logoImage"]);
+    const profileMark = recordAssetPath(company, ["logo", "logoImage", "image", "heroImage"]);
+    return {
+      name: company.name || "Unnamed company",
+      logo,
+      profileMark,
+      logoStatus: await imageAssetStatus(logo),
+      profileStatus: await imageAssetStatus(profileMark)
+    };
+  }));
+  const robotRows = await Promise.all(robots.map(async (robot) => {
+    const image = recordAssetPath(robot, ["image", "heroImage"]);
+    return {
+      name: robot.name || "Unnamed robot",
+      company: robot.company || "",
+      image,
+      imageStatus: await imageAssetStatus(image)
+    };
+  }));
+
+  const profileReady = companyRows.filter((row) => row.profileStatus === "ok" || row.profileStatus === "external");
+  const properLogos = companyRows.filter((row) => row.logoStatus === "ok" || row.logoStatus === "external");
+  const robotImages = robotRows.filter((row) => row.imageStatus === "ok" || row.imageStatus === "external");
+  const brokenCompanies = companyRows.filter((row) => row.profileStatus === "broken").map((row) => ({ name: row.name, note: row.profileMark }));
+  const missingCompanyMarks = companyRows.filter((row) => row.profileStatus === "missing").map((row) => ({ name: row.name, note: "No logo, image, or heroImage field" }));
+  const missingProperLogos = companyRows.filter((row) => row.logoStatus === "missing").map((row) => ({ name: row.name, note: row.profileMark ? "Profile can fall back to image, but logo field is empty" : "No logo field" }));
+  const brokenRobots = robotRows.filter((row) => row.imageStatus === "broken").map((row) => ({ name: row.name, note: row.image }));
+  const missingRobots = robotRows.filter((row) => row.imageStatus === "missing").map((row) => ({ name: row.name, note: row.company || "No image field" }));
+  const brokenTotal = brokenCompanies.length + brokenRobots.length;
+
+  panel.innerHTML = `
+    <div class="asset-coverage-grid">
+      <article><span>Company profile marks</span><strong>${profileReady.length}/${companies.length}</strong><small>Uses logo first, then logoImage, image, or heroImage as fallback.</small></article>
+      <article><span>Dedicated company logos</span><strong>${properLogos.length}/${companies.length}</strong><small>Records with an actual logo or logoImage field.</small></article>
+      <article><span>Robot images</span><strong>${robotImages.length}/${robots.length}</strong><small>Robot cards and generated profiles with usable image paths.</small></article>
+      <article class="${brokenTotal ? "asset-warning-card" : "asset-ok-card"}"><span>Broken local paths</span><strong>${brokenTotal}</strong><small>${brokenTotal ? "Fix these before deploy." : "No broken local image paths detected in the browser check."}</small></article>
+    </div>
+    <div class="asset-issue-grid">
+      ${assetIssueList("Broken company visuals", brokenCompanies)}
+      ${assetIssueList("Missing company profile marks", missingCompanyMarks)}
+      ${assetIssueList("Missing dedicated logos", missingProperLogos)}
+      ${assetIssueList("Broken robot images", brokenRobots)}
+      ${assetIssueList("Missing robot images", missingRobots)}
+    </div>
+  `;
+}
+
 function companyRobotCategories(company, robots = []) {
   const categories = robots.map((robot) => robot.category).filter(Boolean);
   if (!categories.length && company.category) categories.push(company.category);
@@ -6777,6 +6874,7 @@ async function initCatalogPages() {
   renderUseCasesPage();
   renderComparePicker();
   renderComparePage();
+  renderAssetCoveragePanel();
   wireCatalogControls();
 }
 
