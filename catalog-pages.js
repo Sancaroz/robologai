@@ -5395,6 +5395,27 @@ function companyMarketThesis(company, robots = []) {
   return "Robotics ecosystem signal";
 }
 
+function companyStrategicThesis(company, robots = []) {
+  const focus = primaryFocus(company, "company");
+  const robotNames = robots.map((robot) => robot.name).filter(Boolean).slice(0, 3);
+  const segmentText = strategicSegments(company, "company")
+    .filter((segment) => segment !== focus)
+    .slice(0, 4)
+    .join(", ");
+  if (focus === "Humanoids") return `${company.name} is part of the humanoid robotics watchlist because its products, research, or market activity point toward general-purpose embodied labor. ${robotNames.length ? `Tracked products include ${robotNames.join(", ")}.` : "Robot profile coverage is still being expanded."}`;
+  if (focus === "Embodied AI") return `${company.name} is tracked as an embodied AI signal: models, data, autonomy, and robot learning that may move AI systems into physical environments. ${segmentText ? `Relevant segments include ${segmentText}.` : ""}`;
+  if (focus === "Physical AI") return `${company.name} sits in the physical AI stack: compute, simulation, autonomy, robotics models, or infrastructure that helps machines perceive and act in the real world. ${segmentText ? `Relevant segments include ${segmentText}.` : ""}`;
+  if (focus === "Autonomous Robotics") return `${company.name} is tracked for autonomous robotics deployment: mobile systems, field robots, delivery, inspection, logistics, or other real-world automation lanes. ${robotNames.length ? `Tracked products include ${robotNames.join(", ")}.` : ""}`;
+  return `${company.name} remains in RoboLogAI as secondary robotics coverage. It may not be the core humanoid or physical AI lane, but it provides useful market context around industrial, medical, warehouse, research, or service robotics.`;
+}
+
+function companySegmentPills(company) {
+  return strategicSegments(company, "company")
+    .slice(0, 8)
+    .map((segment) => `<span>${pageEscape(segment)}</span>`)
+    .join("");
+}
+
 function robotPriceSignal(robot) {
   if (!robot?.price) return "Price not listed";
   if (Number(robot.priceVisibility || 0) >= 4) return robot.price;
@@ -6417,6 +6438,9 @@ function renderCompanyProfile() {
   const companySources = sourceList(company.website, company.sourceLinks);
   const categories = companyRobotCategories(company, robots);
   const marketThesis = companyMarketThesis(company, robots);
+  const focus = primaryFocus(company, "company");
+  const segments = strategicSegments(company, "company");
+  const strategicThesis = companyStrategicThesis(company, robots);
   const related = pageState.companies
     .filter((item) => item.name !== company.name && (broadCountryName(item.country) === broadCountryName(company.country) || pageNormalize(item.category).includes(pageNormalize(company.category).split(" ")[0])))
     .slice(0, 6);
@@ -6429,6 +6453,7 @@ function renderCompanyProfile() {
         <h1>${pageEscape(company.name)}</h1>
         <span>${pageEscape(company.category)}</span>
         <div class="catalog-metrics">
+          <article><strong>${pageEscape(focus)}</strong><small>Primary focus</small></article>
           <article><strong>${pageEscape(company.robot || "Robotics / AI")}</strong><small>Robot / asset</small></article>
           <article><strong>${pageEscape(company.ticker || company.type || "Private")}</strong><small>Market signal</small></article>
           <article><strong>${pageEscape(broadCountryName(company.country))}</strong><small>Country tracker</small></article>
@@ -6441,6 +6466,8 @@ function renderCompanyProfile() {
         <h2>Company facts</h2>
         <dl>
           <div><dt>Category</dt><dd>${pageEscape(company.category)}</dd></div>
+          <div><dt>Primary focus</dt><dd>${pageEscape(focus)}</dd></div>
+          <div><dt>Segments</dt><dd>${pageEscape(segments.slice(0, 5).join(" · "))}</dd></div>
           <div><dt>Country</dt><dd><a href="country.html?country=${pageEscape(countrySlug(company.country))}">${pageEscape(company.country)} →</a></dd></div>
           <div><dt>Type</dt><dd>${pageEscape(company.type || "Entity")}</dd></div>
           <div><dt>Ticker</dt><dd>${pageEscape(company.ticker || "Not public / not listed")}</dd></div>
@@ -6450,8 +6477,31 @@ function renderCompanyProfile() {
       </article>
       <article class="profile-facts">
         <h2>Robologai signal</h2>
-        <p>${pageEscape(company.name)} is tracked as a ${pageEscape(marketThesis)}. Use this profile as a source-first launch point for product coverage, market exposure, and fast-changing robotics claims.</p>
+        <p>${pageEscape(strategicThesis)}</p>
       </article>
+    </section>
+    <section class="catalog-section company-intelligence-section">
+      <div class="section-heading compact">
+        <p>Strategic Positioning</p>
+        <h2>Why ${pageEscape(company.name)} matters to the physical AI economy.</h2>
+      </div>
+      <div class="company-intelligence-grid">
+        <article>
+          <span>Primary focus</span>
+          <strong>${pageEscape(focus)}</strong>
+          <small>${pageEscape(marketThesis)}</small>
+        </article>
+        <article>
+          <span>RoboLogAI thesis</span>
+          <strong>${pageEscape(company.name)}</strong>
+          <small>${pageEscape(strategicThesis)}</small>
+        </article>
+        <article>
+          <span>Segments</span>
+          <div class="company-segment-pills">${companySegmentPills(company)}</div>
+          <small>${pageEscape(segments.length)} intelligence tags attached to this profile.</small>
+        </article>
+      </div>
     </section>
     <section class="catalog-section">
       <div class="section-heading compact">
@@ -6459,6 +6509,7 @@ function renderCompanyProfile() {
         <h2>Core signals Robologai tracks for ${pageEscape(company.name)}.</h2>
       </div>
       <div class="company-snapshot-grid">
+        <article><span>Primary focus</span><strong>${pageEscape(focus)}</strong><small>${pageEscape(segments.slice(0, 3).join(" · "))}</small></article>
         <article><span>Market lane</span><strong>${pageEscape(marketThesis)}</strong><small>${pageEscape(company.category)}</small></article>
         <article><span>Product coverage</span><strong>${pageEscape(robots.length ? `${robots.length} tracked robot${robots.length === 1 ? "" : "s"}` : "Profile watch")}</strong><small>${pageEscape(categories.join(" · ") || company.robot || "Robotics activity")}</small></article>
         <article><span>Country signal</span><strong>${pageEscape(broadCountryName(company.country))}</strong><small>Regional robotics and AI tracker</small></article>

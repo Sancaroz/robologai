@@ -110,3 +110,80 @@ git add .
 ```
 
 Prefer explicit file names instead.
+
+1. Proje klasörüne gir
+cd PROJE-KLASORU
+
+Örnek:
+
+cd ~/Desktop/ROBOLOGAI
+2. Değişiklikleri kontrol et
+git status
+
+Burada:
+
+değişen dosyalar
+yeni dosyalar
+silinen dosyalar
+
+görünür.
+
+3. İstersen önce hata kontrolü yap
+
+Senin yapı için mantıklı:
+
+node scripts/health-check.mjs
+
+veya:
+
+npm run build
+
+Hata yoksa devam.
+
+4. Tüm değişiklikleri staging’e ekle
+git add .
+5. Commit oluştur
+git commit -m "update robot profiles and data"
+
+Örnek commit mesajları:
+
+"fix asset paths"
+"add Figure 03"
+"update robot cards"
+"improve homepage layout"
+6. GitHub’a gönder
+git commit -m "update robot profiles and data"
+Eğer push hatası alırsan
+
+Çok normal 🙂
+
+Önce:
+
+git pull --rebase
+
+Sonra tekrar:
+
+git push
+En pratik tam akış
+git status
+
+node scripts/health-check.mjs
+
+git add .
+
+git commit -m "update site"
+
+git push
+GitHub’da kontrol
+
+Push sonrası:
+
+GitHub repo sayfasını yenile
+son commit görünür
+Cloudflare/Vercel deploy başladıysa otomatik build tetiklenir
+Çok önemli tavsiye
+
+git status kullanmayı alışkanlık yap.
+Profesyoneller terminalde en çok bunu kullanır 🙂
+
+grep -L '"image"' data/robots/*.json

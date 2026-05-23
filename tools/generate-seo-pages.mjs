@@ -79,6 +79,74 @@ function companyLogoSource(company = {}) {
   return company.logo || company.logoImage || company.image || company.heroImage || "";
 }
 
+function companyValueList(value) {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return String(value || "").split(",").map((item) => item.trim()).filter(Boolean);
+}
+
+const strategicFocusValues = ["Humanoids", "Embodied AI", "Physical AI", "Autonomous Robotics", "Secondary"];
+
+function companyText(company) {
+  return normalize([
+    company.name,
+    company.category,
+    company.country,
+    company.city,
+    company.region,
+    company.type,
+    company.ticker,
+    company.robot,
+    company.website,
+    company.foundedBy,
+    company.focus,
+    company.primaryFocus,
+    ...(Array.isArray(company.segments) ? company.segments : []),
+    company.positioning,
+    company.keyProject,
+    company.grassFocus,
+    ...companyValueList(company.importantClaims),
+    ...companyValueList(company.groupCompanies),
+    ...companyValueList(company.industriesServed),
+    ...companyValueList(company.keywords)
+  ].filter(Boolean).join(" "));
+}
+
+function inferredFocusFromText(text = "") {
+  if (text.includes("humanoid") || text.includes("biped") || text.includes("general-purpose") || text.includes("home and workplace")) return "Humanoids";
+  if (text.includes("embodied") || text.includes("foundation model") || text.includes("robotics ai model") || text.includes("physical intelligence") || text.includes("openmind") || text.includes("skild")) return "Embodied AI";
+  if (text.includes("physical ai") || text.includes("robot autonomy") || text.includes("robotics compute") || text.includes("simulation") || text.includes("isaac") || text.includes("gr00t")) return "Physical AI";
+  if (text.includes("autonomous") || text.includes("mobility") || text.includes("delivery") || text.includes("drone") || text.includes("marine") || text.includes("agriculture") || text.includes("navigation")) return "Autonomous Robotics";
+  return "Secondary";
+}
+
+function primaryFocus(company) {
+  if (strategicFocusValues.includes(company.primaryFocus)) return company.primaryFocus;
+  return inferredFocusFromText(companyText(company));
+}
+
+function strategicSegments(company) {
+  const text = companyText(company);
+  const segments = new Set(Array.isArray(company.segments) ? company.segments.filter(Boolean) : []);
+  const focus = primaryFocus(company);
+  segments.add(focus);
+  if (slug(company.country) === "china") segments.add("China Robotics");
+  if (text.includes("available") || text.includes("commercial") || text.includes("deployed") || text.includes("retailer") || text.includes("price")) segments.add("Commercial Access");
+  if (text.includes("industrial") || text.includes("factory") || text.includes("manufacturing") || text.includes("automation") || text.includes("robot arm")) segments.add("Industrial");
+  if (text.includes("warehouse") || text.includes("logistics") || text.includes("amr") || text.includes("intralogistics") || text.includes("picking")) segments.add("Warehouse");
+  if (text.includes("delivery")) segments.add("Delivery");
+  if (text.includes("quadruped") || text.includes("robot dog") || text.includes("wheeled-legged")) segments.add("Quadruped");
+  if (text.includes("medical") || text.includes("surgical") || text.includes("exoskeleton") || text.includes("rehabilitation") || text.includes("wearable") || text.includes("gait")) segments.add("Medical");
+  if (text.includes("research") || text.includes("developer") || text.includes("education") || text.includes("open-source") || text.includes("platform")) segments.add("Research Platforms");
+  return [...segments];
+}
+
+function companySegmentPills(company) {
+  return strategicSegments(company)
+    .slice(0, 8)
+    .map((segment) => `<span>${escapeHtml(segment)}</span>`)
+    .join("");
+}
+
 function initials(value = "") {
   return String(value)
     .split(/\s+/)
@@ -323,6 +391,20 @@ function companyMarketThesis(company, linkedRobots = []) {
   return "Robotics ecosystem signal";
 }
 
+function companyStrategicThesis(company, linkedRobots = []) {
+  const focus = primaryFocus(company);
+  const robotNames = linkedRobots.map((robot) => robot.name).filter(Boolean).slice(0, 3);
+  const segmentText = strategicSegments(company)
+    .filter((segment) => segment !== focus)
+    .slice(0, 4)
+    .join(", ");
+  if (focus === "Humanoids") return `${company.name} is part of the humanoid robotics watchlist because its products, research, or market activity point toward general-purpose embodied labor. ${robotNames.length ? `Tracked products include ${robotNames.join(", ")}.` : "Robot profile coverage is still being expanded."}`;
+  if (focus === "Embodied AI") return `${company.name} is tracked as an embodied AI signal: models, data, autonomy, and robot learning that may move AI systems into physical environments. ${segmentText ? `Relevant segments include ${segmentText}.` : ""}`;
+  if (focus === "Physical AI") return `${company.name} sits in the physical AI stack: compute, simulation, autonomy, robotics models, or infrastructure that helps machines perceive and act in the real world. ${segmentText ? `Relevant segments include ${segmentText}.` : ""}`;
+  if (focus === "Autonomous Robotics") return `${company.name} is tracked for autonomous robotics deployment: mobile systems, field robots, delivery, inspection, logistics, or other real-world automation lanes. ${robotNames.length ? `Tracked products include ${robotNames.join(", ")}.` : ""}`;
+  return `${company.name} remains in RoboLogAI as secondary robotics coverage. It may not be the core humanoid or physical AI lane, but it provides useful market context around industrial, medical, warehouse, research, or service robotics.`;
+}
+
 function robotPriceSignal(robot) {
   if (!robot?.price) return "Price not listed";
   if (Number(robot.priceVisibility || 0) >= 4) return robot.price;
@@ -564,6 +646,9 @@ function companyPage(company) {
   const sources = sourceList(company.website, company.sourceLinks);
   const categories = companyRobotCategories(company, linkedRobots);
   const marketThesis = companyMarketThesis(company, linkedRobots);
+  const focus = primaryFocus(company);
+  const segments = strategicSegments(company);
+  const strategicThesis = companyStrategicThesis(company, linkedRobots);
   const title = `${company.name} Company Profile: Robots, AI, Market Signal`;
   const description = `${company.name} profile on robologai: ${company.category}, country, public/private status, ticker, robot assets, official website, and related robotics companies.`;
   const canonical = `https://robologai.com/companies/${pageSlug}.html`;
@@ -582,6 +667,7 @@ function companyPage(company) {
           <h1>${escapeHtml(company.name)} Company Profile</h1>
           <span>${escapeHtml(company.category)}</span>
           <div class="catalog-metrics">
+            <article><strong>${escapeHtml(focus)}</strong><small>Primary focus</small></article>
             <article><strong>${escapeHtml(company.robot || "Robotics / AI")}</strong><small>Robot / asset</small></article>
             <article><strong>${escapeHtml(company.ticker || company.type || "Private")}</strong><small>Market signal</small></article>
             <article><strong>${escapeHtml(broadCountryName(company.country))}</strong><small>Country tracker</small></article>
@@ -594,6 +680,8 @@ function companyPage(company) {
           <h2>${escapeHtml(company.name)} facts</h2>
           <dl>
             <div><dt>Category</dt><dd>${escapeHtml(company.category)}</dd></div>
+            <div><dt>Primary focus</dt><dd>${escapeHtml(focus)}</dd></div>
+            <div><dt>Segments</dt><dd>${escapeHtml(segments.slice(0, 5).join(" · "))}</dd></div>
             <div><dt>Country</dt><dd><a href="../country.html?country=${escapeAttr(slug(broadCountryName(company.country)))}">${escapeHtml(company.country)} →</a></dd></div>
             <div><dt>Type</dt><dd>${escapeHtml(company.type || "Entity")}</dd></div>
             <div><dt>Ticker</dt><dd>${escapeHtml(company.ticker || "Not public / not listed")}</dd></div>
@@ -602,8 +690,31 @@ function companyPage(company) {
         </article>
         <article class="profile-facts">
           <h2>Robologai signal</h2>
-          <p>${escapeHtml(company.name)} is tracked as a ${escapeHtml(marketThesis)}. This static profile gives search engines and readers a stable source-first page, while the interactive database remains available for filtering and comparison.</p>
+          <p>${escapeHtml(strategicThesis)}</p>
         </article>
+      </section>
+      <section class="catalog-section company-intelligence-section">
+        <div class="section-heading compact">
+          <p>Strategic Positioning</p>
+          <h2>Why ${escapeHtml(company.name)} matters to the physical AI economy.</h2>
+        </div>
+        <div class="company-intelligence-grid">
+          <article>
+            <span>Primary focus</span>
+            <strong>${escapeHtml(focus)}</strong>
+            <small>${escapeHtml(marketThesis)}</small>
+          </article>
+          <article>
+            <span>RoboLogAI thesis</span>
+            <strong>${escapeHtml(company.name)}</strong>
+            <small>${escapeHtml(strategicThesis)}</small>
+          </article>
+          <article>
+            <span>Segments</span>
+            <div class="company-segment-pills">${companySegmentPills(company)}</div>
+            <small>${escapeHtml(segments.length)} intelligence tags attached to this profile.</small>
+          </article>
+        </div>
       </section>
       <section class="catalog-section">
         <div class="section-heading compact">
@@ -611,6 +722,7 @@ function companyPage(company) {
           <h2>Core signals Robologai tracks for ${escapeHtml(company.name)}.</h2>
         </div>
         <div class="company-snapshot-grid">
+          <article><span>Primary focus</span><strong>${escapeHtml(focus)}</strong><small>${escapeHtml(segments.slice(0, 3).join(" · "))}</small></article>
           <article><span>Market lane</span><strong>${escapeHtml(marketThesis)}</strong><small>${escapeHtml(company.category)}</small></article>
           <article><span>Product coverage</span><strong>${escapeHtml(linkedRobots.length ? `${linkedRobots.length} tracked robot${linkedRobots.length === 1 ? "" : "s"}` : "Profile watch")}</strong><small>${escapeHtml(categories.join(" · ") || company.robot || "Robotics activity")}</small></article>
           <article><span>Country signal</span><strong>${escapeHtml(broadCountryName(company.country))}</strong><small>Regional robotics and AI tracker</small></article>

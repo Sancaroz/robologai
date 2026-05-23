@@ -6146,6 +6146,7 @@ body.light-theme .profile-main > div > span {
 .data-ops-grid,
 .asset-coverage-grid,
 .asset-issue-grid,
+.company-intelligence-grid,
 .command-recipe-grid,
 .source-note-grid,
 .company-snapshot-grid,
@@ -6215,6 +6216,7 @@ body.light-theme .profile-main > div > span {
 .data-quality-grid,
 .data-ops-grid,
 .asset-coverage-grid,
+.company-intelligence-grid,
 .command-recipe-grid,
 .source-note-grid,
 .company-snapshot-grid,
@@ -6328,6 +6330,58 @@ body.light-theme .profile-main > div > span {
 .asset-coverage-list li small {
   overflow-wrap: anywhere;
   font-size: 12px;
+}
+
+.company-intelligence-grid {
+  grid-template-columns: 0.85fr 1.45fr 1fr;
+}
+
+.company-intelligence-grid article {
+  display: grid;
+  gap: 10px;
+  min-height: 172px;
+  padding: 20px;
+  border: 1px solid rgba(120, 231, 255, 0.18);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.92), rgba(7, 17, 31, 0.95));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+}
+
+.company-intelligence-grid span,
+.company-segment-pills span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.company-intelligence-grid strong {
+  color: #eef6ff;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.08;
+}
+
+.company-intelligence-grid small {
+  color: #c4cedc;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.company-segment-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: start;
+}
+
+.company-segment-pills span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 1px solid rgba(120, 231, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(120, 231, 255, 0.08);
 }
 
 .command-recipe-grid code {
@@ -10944,6 +10998,7 @@ body.light-theme .data-ops-grid small,
 body.light-theme .asset-coverage-panel small,
 body.light-theme .asset-coverage-grid small,
 body.light-theme .asset-issue-grid small,
+body.light-theme .company-intelligence-grid small,
 body.light-theme .command-recipe-grid small,
 body.light-theme .data-ops-cta small,
 body.light-theme .source-note-grid small,
@@ -10988,6 +11043,7 @@ body.light-theme .data-ops-grid article,
 body.light-theme .asset-coverage-panel article,
 body.light-theme .asset-coverage-grid article,
 body.light-theme .asset-issue-grid article,
+body.light-theme .company-intelligence-grid article,
 body.light-theme .command-recipe-grid article,
 body.light-theme .source-note-grid article,
 body.light-theme .company-snapshot-grid article,
@@ -11031,6 +11087,10 @@ body.light-theme .command-recipe-grid code {
   background: rgba(235, 243, 252, 0.92);
 }
 
+body.light-theme .company-segment-pills span {
+  background: rgba(4, 126, 146, 0.08);
+}
+
 body.light-theme .robot-week-grid div {
   background: rgba(255, 255, 255, 0.68);
 }
@@ -11050,6 +11110,7 @@ body.light-theme .data-ops-grid strong,
 body.light-theme .asset-coverage-panel strong,
 body.light-theme .asset-coverage-grid strong,
 body.light-theme .asset-issue-grid strong,
+body.light-theme .company-intelligence-grid strong,
 body.light-theme .command-recipe-grid strong,
 body.light-theme .data-ops-cta strong,
 body.light-theme .source-note-grid strong,
@@ -11334,6 +11395,7 @@ body.light-theme .facts span {
   .data-ops-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
+  .company-intelligence-grid,
   .source-note-grid,
   .company-snapshot-grid,
   .product-lineup-grid,
@@ -11669,6 +11731,7 @@ body.light-theme .facts span {
   .data-ops-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
+  .company-intelligence-grid,
   .source-note-grid,
   .company-snapshot-grid,
   .product-lineup-grid,
