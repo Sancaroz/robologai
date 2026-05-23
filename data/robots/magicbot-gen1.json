@@ -11,8 +11,8 @@
     "runtime": "Not disclosed",
     "maturity": 3,
     "priceVisibility": 2,
-    "image": "assets/robots/magiclab/magicbot-g1/hero.png",
-    "heroImage": "assets/robots/magiclab/magicbot-g1/hero.png",
+    "image": "assets/robots/magiclab/magicbot-g1.png",
+    "heroImage": "assets/robots/magiclab/magicbot-g1.png",
     "source": "https://www.magiclab.top/en/human",
     "keywords": ["magicbot", "magiclab", "manufacturing", "humanoid"]
   }

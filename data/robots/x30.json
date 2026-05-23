@@ -10,7 +10,7 @@
   "height": "Official standing size: 1000 x 695 x 470 mm",
   "runtime": "Official endurance: 2.5-4 hours",
   "maturity": 4,
-  "priceVisibility": 3
+  "priceVisibility": 3,
   "image": "assets/robots/deeprobotics/x30.png",
   "heroImage": "assets/robots/deeprobotics/x30.png",
   "imageCredit": "DEEP Robotics official product page",

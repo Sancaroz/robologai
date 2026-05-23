@@ -5652,8 +5652,9 @@ function renderAdvancedRobotFilters() {
 function renderCompanyCards() {
   const grid = document.querySelector("[data-companies-grid]");
   const overview = document.querySelector("[data-company-overview]");
+  const coreLayer = document.querySelector("[data-company-core-layer]");
   const segments = document.querySelector("[data-company-segments]");
-  if (!grid && !overview && !segments) return;
+  if (!grid && !overview && !coreLayer && !segments) return;
   const terms = pageNormalize(pageState.query).split(/\s+/).filter(Boolean);
   const filter = pageNormalize(pageState.companyFilter);
   const companiesAll = pageState.companies;
@@ -5678,6 +5679,58 @@ function renderCompanyCards() {
       <article><span>Countries</span><strong>${new Set(companiesAll.map((company) => broadCountryName(company.country)).filter(Boolean)).size}</strong><small>Regional robotics and AI coverage</small></article>
       <article><span>Robot-linked</span><strong>${linkedCompanyCount}</strong><small>Companies connected to tracked robot profiles</small></article>
     `;
+  }
+
+  if (coreLayer) {
+    const layerDefs = [
+      {
+        label: "Humanoid Builders",
+        filter: "humanoids",
+        thesis: "Body-first builders turning humanoid demos into factory, home, warehouse, and research platforms."
+      },
+      {
+        label: "Embodied AI Labs",
+        filter: "embodied-ai",
+        thesis: "AI-first teams shaping manipulation, robot learning, and embodied model capability."
+      },
+      {
+        label: "Physical AI Stack",
+        filter: "physical-ai",
+        thesis: "Compute, simulation, data, autonomy, and model infrastructure behind real-world robots."
+      },
+      {
+        label: "Autonomous Robotics",
+        filter: "autonomous-robotics",
+        thesis: "Mobility, delivery, field autonomy, drones, marine systems, and inspection routes."
+      },
+      {
+        label: "Secondary Coverage",
+        filter: "secondary",
+        thesis: "Industrial, warehouse, medical, quadruped, delivery, and research platforms stay tracked."
+      }
+    ];
+    coreLayer.innerHTML = layerDefs.map((lane) => {
+      const matches = companiesAll.filter((company) => matchesStrategicFilter(company, lane.filter, "company"));
+      const linkedMatches = matches.map((company) => ({
+        company,
+        robots: pageState.robots.filter((robot) => pageNormalize(robot.company) === pageNormalize(company.name) || listedRobotNames(company.robot).includes(pageNormalize(robot.name)))
+      }));
+      const leader = linkedMatches.find((item) => item.robots.length && item.company.website)?.company || matches.find((company) => company.website) || matches[0];
+      const publicCount = matches.filter((company) => pageNormalize(company.type).includes("public")).length;
+      const privateCount = matches.filter((company) => pageNormalize(company.type).includes("private")).length;
+      return `
+        <article class="${lane.filter === "secondary" ? "is-secondary" : "is-core"}">
+          <button type="button" data-company-core-filter="${pageEscape(lane.filter)}">
+            <span>${lane.filter === "secondary" ? "Secondary" : "Core"}</span>
+            <strong>${pageEscape(lane.label)}</strong>
+            <small>${pageEscape(lane.thesis)}</small>
+            <b>${matches.length} companies</b>
+            <em>${publicCount} public · ${privateCount} private</em>
+          </button>
+          ${leader ? `<a href="${pageEscape(companyProfileHref(leader))}">Lead profile · ${pageEscape(leader.name)} →</a>` : ""}
+        </article>
+      `;
+    }).join("");
   }
 
   if (segments) {
@@ -6580,6 +6633,17 @@ function wireCatalogControls() {
     if (signalProfileButton) {
       pageState.signalProfileFilter = signalProfileButton.dataset.signalProfileFilter || "all";
       renderRoboticsSignalsPage();
+    }
+
+    const companyCoreButton = target.closest("[data-company-core-filter]");
+    if (companyCoreButton) {
+      pageState.companyFilter = companyCoreButton.dataset.companyCoreFilter || "all";
+      document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === pageState.companyFilter));
+      const url = new URL(window.location.href);
+      url.searchParams.set("filter", pageState.companyFilter);
+      window.history.replaceState({}, "", url);
+      renderCompanyCards();
+      document.querySelector(".catalog-layout")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 
