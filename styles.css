@@ -7125,11 +7125,16 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .market-overview-grid,
+.market-lens-grid,
 .market-segment-grid,
 .market-price-access-grid,
 .market-leader-grid {
   display: grid;
   gap: 12px;
+}
+
+.market-lens-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .market-overview-grid,
@@ -7143,6 +7148,7 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .market-overview-grid article,
+.market-lens-grid article,
 .market-segment-grid article,
 .market-price-access-grid article,
 .market-leader-grid article {
@@ -7155,7 +7161,24 @@ body.light-theme .humanoid-preview-card dt {
   background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
 }
 
+.market-lens-grid article {
+  min-height: 260px;
+  border-color: rgba(120, 231, 255, 0.18);
+}
+
+.market-lens-grid article.is-core {
+  background:
+    linear-gradient(145deg, rgba(18, 35, 60, 0.94), rgba(7, 17, 31, 0.96)),
+    radial-gradient(circle at 20% 0%, rgba(120, 231, 255, 0.14), transparent 34%);
+}
+
+.market-lens-grid article.is-secondary {
+  border-style: dashed;
+  opacity: 0.92;
+}
+
 .market-overview-grid span,
+.market-lens-grid span,
 .market-segment-grid span,
 .market-price-access-grid span,
 .market-leader-grid span {
@@ -7166,6 +7189,7 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .market-overview-grid strong,
+.market-lens-grid strong,
 .market-segment-grid strong,
 .market-price-access-grid strong,
 .market-leader-grid strong {
@@ -7175,11 +7199,50 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .market-overview-grid small,
+.market-lens-grid small,
 .market-segment-grid small,
 .market-price-access-grid small,
 .market-leader-grid small {
   color: #c4cedc;
   line-height: 1.45;
+}
+
+.market-lens-grid dl {
+  display: grid;
+  gap: 7px;
+  margin: 6px 0;
+}
+
+.market-lens-grid dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(120, 231, 255, 0.12);
+}
+
+.market-lens-grid dt,
+.market-lens-grid dd {
+  margin: 0;
+  color: #c4cedc;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.market-lens-grid dd {
+  color: #eef6ff;
+}
+
+.market-lens-grid article > div {
+  display: grid;
+  gap: 8px;
+  align-self: end;
+}
+
+.market-lens-grid a {
+  color: #7df9ff;
+  font-size: 12px;
+  font-weight: 950;
 }
 
 .market-segment-grid a,
@@ -11203,6 +11266,8 @@ body.light-theme .robot-snapshot-grid small,
 body.light-theme .robot-readiness-grid small,
 body.light-theme .deployment-context-grid small,
 body.light-theme .market-overview-grid small,
+body.light-theme .market-lens-grid small,
+body.light-theme .market-lens-grid dt,
 body.light-theme .market-segment-grid small,
 body.light-theme .market-price-access-grid small,
 body.light-theme .market-leader-grid small,
@@ -11247,6 +11312,7 @@ body.light-theme .robot-snapshot-grid article,
 body.light-theme .robot-readiness-grid article,
 body.light-theme .deployment-context-grid article,
 body.light-theme .market-overview-grid article,
+body.light-theme .market-lens-grid article,
 body.light-theme .market-segment-grid article,
 body.light-theme .market-price-access-grid article,
 body.light-theme .market-leader-grid article,
@@ -11315,6 +11381,8 @@ body.light-theme .robot-snapshot-grid strong,
 body.light-theme .robot-readiness-grid strong,
 body.light-theme .deployment-context-grid strong,
 body.light-theme .market-overview-grid strong,
+body.light-theme .market-lens-grid strong,
+body.light-theme .market-lens-grid dd,
 body.light-theme .market-segment-grid strong,
 body.light-theme .market-price-access-grid strong,
 body.light-theme .market-leader-grid strong,
@@ -11598,6 +11666,7 @@ body.light-theme .facts span {
   .robot-readiness-grid,
   .deployment-context-grid,
   .market-overview-grid,
+  .market-lens-grid,
   .market-segment-grid,
   .market-price-access-grid,
   .market-leader-grid,
@@ -12029,6 +12098,7 @@ body.light-theme .facts span {
   .company-catalog-grid,
   .price-signal-grid,
   .market-overview-grid,
+  .market-lens-grid,
   .market-segment-grid,
   .market-price-access-grid,
   .market-leader-grid,

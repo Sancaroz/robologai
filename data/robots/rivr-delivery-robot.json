@@ -6,9 +6,12 @@
   "country": "Switzerland",
   "status": "Active",
   "availability": "Pilot",
+  "maturity": 3,
   "price": "Not publicly listed",
+  "priceVisibility": 1,
   "useCase": "Autonomous wheeled-legged delivery robotics",
   "image": "assets/robots/rivr/hero.png",
   "heroImage": "assets/robots/rivr/hero.png",
+  "imageCredit": "RIVR official media",
   "source": "https://www.rivr.ai/"
 }

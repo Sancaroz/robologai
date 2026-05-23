@@ -8,14 +8,12 @@
   "country": "USA",
   "status": "Pilot",
   "availability": "Not publicly available",
+  "maturity": 3,
+  "priceVisibility": 1,
   "useCase": "General-purpose humanoid tasks",
-  "price": {
-    "type": "not_public",
-    "value": null,
-    "currency": null,
-    "note": "Official public pricing is not available."
-  },
+  "price": "No official public price",
   "description": "Figure 03 is Figure AI's third-generation humanoid robot.",
   "image": "assets/robots/figure-ai/figure-03/hero.png",
-"heroImage": "assets/robots/figure-ai/figure-03/hero.png"
+  "heroImage": "assets/robots/figure-ai/figure-03/hero.png",
+  "imageCredit": "Figure AI official media"
 }

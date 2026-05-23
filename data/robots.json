@@ -376,7 +376,9 @@
       "sanctuary",
       "general purpose",
       "humanoid"
-    ]
+    ],
+    "image": "assets/robots/sanctuary-ai/phonix/hero.png",
+    "heroImage": "assets/robots/sanctuary-ai/phonix/hero.png"
   },
   {
     "name": "Ameca",
@@ -441,7 +443,10 @@
       "a2",
       "embodied ai",
       "china"
-    ]
+    ],
+    "image": "assets/robots/agibot/a2-ultra/hero.png",
+    "heroImage": "assets/robots/agibot/a2-ultra/hero.png",
+    "imageCredit": "Official company media"
   },
   {
     "name": "LimX Oli",
@@ -485,7 +490,10 @@
       "leju",
       "industrial",
       "humanoid"
-    ]
+    ],
+    "image": "assets/robots/lejurobot/kuavo4-pro/hero.png",
+    "heroImage": "assets/robots/lejurobot/kuavo4-pro/hero.png",
+    "imageCredit": "Leju Robotics official media"
   },
   {
     "name": "PUDU D9",
@@ -529,7 +537,9 @@
       "magiclab",
       "manufacturing",
       "humanoid"
-    ]
+    ],
+    "image": "assets/robots/magiclab/magicbot-g1.png",
+    "heroImage": "assets/robots/magiclab/magicbot-g1.png"
   },
   {
     "name": "Galbot G1",
@@ -696,7 +706,9 @@
       "developer platform",
       "perception",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/lite3.png",
+    "heroImage": "assets/robots/deeprobotics/lite3.png"
   },
   {
     "name": "Lite3 LIDAR",
@@ -751,7 +763,9 @@
       "inspection",
       "ip66",
       "patrol"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/x20.png",
+    "heroImage": "assets/robots/deeprobotics/x20.png"
   },
   {
     "name": "X30",
@@ -765,7 +779,7 @@
     "height": "Official standing size: 1000 x 695 x 470 mm",
     "runtime": "Official endurance: 2.5-4 hours",
     "maturity": 4,
-    "priceVisibility": 1,
+    "priceVisibility": 3,
     "imageCredit": "DEEP Robotics official product page",
     "source": "https://www.deeprobotics.cn/en/index/product3.html",
     "keywords": [
@@ -777,7 +791,9 @@
       "ip67",
       "security",
       "mapping"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/x30.png",
+    "heroImage": "assets/robots/deeprobotics/x30.png"
   },
   {
     "name": "X30 Pro",
@@ -807,7 +823,9 @@
       "inspection",
       "ip67",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/x30.png",
+    "heroImage": "assets/robots/deeprobotics/x30.png"
   },
   {
     "name": "LYNX",
@@ -832,7 +850,9 @@
       "all terrain",
       "robot dog",
       "field robotics"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/lynex.png",
+    "heroImage": "assets/robots/deeprobotics/lynex.png"
   },
   {
     "name": "LYNX M20",
@@ -864,7 +884,9 @@
       "industrial robot dog",
       "inspection",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/lynex-m20.png",
+    "heroImage": "assets/robots/deeprobotics/lynex-m20.png"
   },
   {
     "name": "DR01",
@@ -892,7 +914,9 @@
       "embodied intelligence",
       "robotics research",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/dr01.png",
+    "heroImage": "assets/robots/deeprobotics/dr01.png"
   },
   {
     "name": "DR02",
@@ -922,7 +946,9 @@
       "all-weather",
       "embodied ai",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/dr02.png",
+    "heroImage": "assets/robots/deeprobotics/dr02.png"
   },
   {
     "name": "Maximo",
@@ -963,16 +989,14 @@
     "status": "Pilot",
     "availability": "Not publicly available",
     "useCase": "General-purpose humanoid tasks",
-    "price": {
-      "type": "not_public",
-      "value": null,
-      "currency": null,
-      "note": "Official public pricing is not available."
-    },
+    "price": "No official public price",
     "description": "Figure 03 is Figure AI's third-generation humanoid robot.",
     "source": "https://www.figure.ai/",
     "image": "assets/robots/figure-ai/figure-03/hero.png",
-    "heroImage": "assets/robots/figure-ai/figure-03/hero.png"
+    "heroImage": "assets/robots/figure-ai/figure-03/hero.png",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "imageCredit": "Figure AI official media"
   },
   {
     "name": "RIVR Delivery Robot",
@@ -984,7 +1008,12 @@
     "availability": "Pilot",
     "price": "Not publicly listed",
     "useCase": "Autonomous wheeled-legged delivery robotics",
-    "source": "https://www.rivr.ai/"
+    "source": "https://www.rivr.ai/",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/rivr/hero.png",
+    "heroImage": "assets/robots/rivr/hero.png",
+    "imageCredit": "RIVR official media"
   },
   {
     "name": "T800",
@@ -1020,7 +1049,7 @@
     "country": "China",
     "status": "Tracked",
     "availability": "Commercial",
-    "maturity": "5",
+    "maturity": 5,
     "price": "from USD 5,999",
     "priceVisibility": 5,
     "useCase": "Humanoid locomotion research, embodied AI development and RoboCup competition",

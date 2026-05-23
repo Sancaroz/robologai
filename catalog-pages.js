@@ -5943,11 +5943,12 @@ function renderMarketPage() {
   const publicGrid = document.querySelector("[data-market-public]");
   const privateGrid = document.querySelector("[data-market-private]");
   const priceGrid = document.querySelector("[data-market-prices]");
+  const marketLensGrid = document.querySelector("[data-market-lens]");
   const overviewGrid = document.querySelector("[data-market-overview]");
   const segmentGrid = document.querySelector("[data-market-segments]");
   const priceAccessGrid = document.querySelector("[data-market-price-access]");
   const leaderGrid = document.querySelector("[data-market-leaders]");
-  if (!publicGrid && !privateGrid && !priceGrid && !overviewGrid && !segmentGrid && !priceAccessGrid && !leaderGrid) return;
+  if (!publicGrid && !privateGrid && !priceGrid && !marketLensGrid && !overviewGrid && !segmentGrid && !priceAccessGrid && !leaderGrid) return;
 
   const publicCompanies = pageState.companies.filter((company) => pageNormalize(company.type).includes("public")).slice(0, 18);
   const privateBuilders = pageState.companies.filter((company) => pageNormalize(`${company.type} ${company.category}`).includes("private") && pageNormalize(company.category).includes("robot")).slice(0, 18);
@@ -5970,11 +5971,65 @@ function renderMarketPage() {
   ];
   const rankings = robotRankings();
 
+  if (marketLensGrid) {
+    const lensDefs = [
+      {
+        label: "Humanoid builders",
+        filter: "humanoids",
+        thesis: "Body-first companies turning humanoid platforms into factory, home, warehouse, and research systems."
+      },
+      {
+        label: "Embodied AI labs",
+        filter: "embodied-ai",
+        thesis: "AI-first companies developing robot learning, manipulation, autonomy, and data layers for physical systems."
+      },
+      {
+        label: "Physical AI infrastructure",
+        filter: "physical-ai",
+        thesis: "Compute, simulation, sensors, models, and autonomy stack companies behind real-world machine intelligence."
+      },
+      {
+        label: "Autonomous robotics",
+        filter: "autonomous-robotics",
+        thesis: "Mobile robots, delivery systems, field autonomy, drones, marine systems, and inspection platforms."
+      },
+      {
+        label: "Secondary robotics coverage",
+        filter: "secondary",
+        thesis: "Industrial, warehouse, medical, quadruped, service, and research robotics that explain deployment reality."
+      }
+    ];
+    marketLensGrid.innerHTML = lensDefs.map((lens) => {
+      const companies = pageState.companies.filter((company) => matchesStrategicFilter(company, lens.filter, "company"));
+      const robots = pageState.robots.filter((robot) => matchesStrategicFilter(robot, lens.filter, "robot"));
+      const publicCount = companies.filter((company) => pageNormalize(company.type).includes("public")).length;
+      const privateCount = companies.filter((company) => pageNormalize(company.type).includes("private")).length;
+      const leader = companies.find((company) => pageNormalize(company.type).includes("public")) || companies.find((company) => company.website) || companies[0];
+      const robotLeader = [...robots].sort((a, b) => robotScore(b) - robotScore(a))[0];
+      return `
+        <article class="${lens.filter === "secondary" ? "is-secondary" : "is-core"}">
+          <span>${lens.filter === "secondary" ? "Context lane" : "Core market lane"}</span>
+          <strong>${pageEscape(lens.label)}</strong>
+          <small>${pageEscape(lens.thesis)}</small>
+          <dl>
+            <div><dt>Companies</dt><dd>${companies.length}</dd></div>
+            <div><dt>Public / private</dt><dd>${publicCount} / ${privateCount}</dd></div>
+            <div><dt>Robots</dt><dd>${robots.length}</dd></div>
+          </dl>
+          <div>
+            ${leader ? `<a href="${pageEscape(companyProfileHref(leader))}">Company lead · ${pageEscape(leader.name)} →</a>` : ""}
+            ${robotLeader ? `<a href="${pageEscape(robotProfileHref(robotLeader))}">Robot lead · ${pageEscape(robotLeader.name)} →</a>` : ""}
+          </div>
+        </article>
+      `;
+    }).join("");
+  }
+
   if (overviewGrid) {
     overviewGrid.innerHTML = [
       ["Companies indexed", pageState.companies.length, `${allPublicCompanies.length} public-market proxies tracked`],
       ["Robot profiles", pageState.robots.length, `${pricedRobots.length} with useful price/access signal`],
-      ["Private builders", pageState.companies.filter((company) => pageNormalize(company.type).includes("private")).length, "Venture, industrial, and robotics builders"],
+      ["Core market lanes", pageState.companies.filter((company) => primaryFocus(company, "company") !== "Secondary").length, "Humanoid, embodied AI, physical AI, and autonomous robotics"],
       ["Source coverage", `${sourceLinkedRobots.length}/${pageState.robots.length}`, "Robot profiles with official sources"]
     ].map(([label, value, note]) => `
       <article><span>${pageEscape(label)}</span><strong>${pageEscape(value)}</strong><small>${pageEscape(note)}</small></article>

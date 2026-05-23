@@ -6,7 +6,7 @@
   "country": "China",
   "status": "Tracked",
   "availability": "Commercial",
-  "maturity": "5",
+  "maturity": 5,
   "price": "from USD 5,999",
   "priceVisibility": 5,
   "useCase": "Humanoid locomotion research, embodied AI development and RoboCup competition",

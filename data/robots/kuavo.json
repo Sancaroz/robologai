@@ -1,5 +1,5 @@
 {
-    "name": "KUAVO 4 Pro",
+    "name": "KUAVO",
     "company": "Leju Robotics",
     "category": "Humanoid",
     "country": "China",
@@ -13,6 +13,7 @@
     "priceVisibility": 1,
     "image": "assets/robots/lejurobot/kuavo4-pro/hero.png",
     "heroImage": "assets/robots/lejurobot/kuavo4-pro/hero.png",
+    "imageCredit": "Leju Robotics official media",
     "source": "https://www.lejurobot.com/en",
     "keywords": ["kuavo", "leju", "industrial", "humanoid"]
   }
