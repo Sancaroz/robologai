@@ -69,6 +69,16 @@ function escapeAttr(value = "") {
   return escapeHtml(value).replace(/'/g, "&#39;");
 }
 
+function pageAssetPath(value = "") {
+  const pathValue = String(value || "");
+  if (!pathValue || /^https?:\/\//i.test(pathValue) || pathValue.startsWith("../") || pathValue.startsWith("/")) return pathValue;
+  return pathValue.startsWith("assets/") ? `../${pathValue}` : pathValue;
+}
+
+function companyLogoSource(company = {}) {
+  return company.logo || company.logoImage || company.image || company.heroImage || "";
+}
+
 function initials(value = "") {
   return String(value)
     .split(/\s+/)
@@ -290,8 +300,9 @@ function companyQuality(company, linkedRobots = []) {
 }
 
 function companyProfileMark(company) {
-  if (company.logo) {
-    return `<div class="company-profile-mark company-profile-logo-mark"><img src="${escapeAttr(company.logo)}" alt="${escapeAttr(company.name)} logo" loading="lazy"></div>`;
+  const logo = companyLogoSource(company);
+  if (logo) {
+    return `<div class="company-profile-mark company-profile-logo-mark"><img src="${escapeAttr(pageAssetPath(logo))}" alt="${escapeAttr(company.name)} logo" loading="lazy"></div>`;
   }
   return `<div class="company-profile-mark">${escapeHtml(initials(company.name))}</div>`;
 }
@@ -437,7 +448,7 @@ function robotPage(robot) {
           </div>
         </div>
         <figure class="profile-visual">
-          ${robot.image ? `<img src="${escapeAttr(robot.image)}" alt="${escapeAttr(robot.name)} robot" loading="lazy">` : `<div class="company-profile-mark">${escapeHtml(initials(robot.name))}</div>`}
+          ${robot.image ? `<img src="${escapeAttr(pageAssetPath(robot.image))}" alt="${escapeAttr(robot.name)} robot" loading="lazy">` : `<div class="company-profile-mark">${escapeHtml(initials(robot.name))}</div>`}
           <figcaption>${escapeHtml(robot.imageCredit || "Robologai source-first profile")}</figcaption>
         </figure>
       </section>

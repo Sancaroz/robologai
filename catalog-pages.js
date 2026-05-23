@@ -5267,15 +5267,17 @@ function companyQuality(company, robots = []) {
 }
 
 function companyProfileMark(company) {
-  if (company.logo) {
-    return `<div class="company-profile-mark company-profile-logo-mark"><img src="${pageEscape(company.logo)}" alt="${pageEscape(company.name)} logo" loading="lazy"></div>`;
+  const logo = company.logo || company.logoImage || company.image || company.heroImage;
+  if (logo) {
+    return `<div class="company-profile-mark company-profile-logo-mark"><img src="${pageEscape(logo)}" alt="${pageEscape(company.name)} logo" loading="lazy"></div>`;
   }
   return `<div class="company-profile-mark">${pageEscape(pageInitials(company.name))}</div>`;
 }
 
 function companyCardMark(company) {
-  if (company.logo) {
-    return `<div class="company-avatar company-avatar-logo"><img src="${pageEscape(company.logo)}" alt="${pageEscape(company.name)} logo" loading="lazy" decoding="async"></div>`;
+  const logo = company.logo || company.logoImage || company.image || company.heroImage;
+  if (logo) {
+    return `<div class="company-avatar company-avatar-logo"><img src="${pageEscape(logo)}" alt="${pageEscape(company.name)} logo" loading="lazy" decoding="async"></div>`;
   }
   return `<div class="company-avatar">${pageEscape(pageInitials(company.name))}</div>`;
 }
