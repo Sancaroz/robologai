@@ -4648,6 +4648,10 @@ function signalStrategicLens(signal, company = null, robot = null) {
 }
 
 function findSignalCompany(signal) {
+  const slug = pageNormalize(signal.companySlug || "");
+  if (slug) {
+    return pageState.companies.find((company) => companySlug(company) === slug || seoSlug(company.name) === slug) || null;
+  }
   const name = pageNormalize(signal.company || "");
   if (!name || name.includes("ecosystem")) return null;
   return pageState.companies.find((company) => {
@@ -4657,6 +4661,10 @@ function findSignalCompany(signal) {
 }
 
 function findSignalRobot(signal) {
+  const slug = pageNormalize(signal.robotSlug || "");
+  if (slug) {
+    return pageState.robots.find((robot) => robotSlug(robot) === slug || robotSeoSlug(robot) === slug || seoSlug(robot.name) === slug) || null;
+  }
   const robotName = pageNormalize(signal.robot || "");
   const companyName = pageNormalize(signal.company || "");
   if (!robotName || robotName.includes("ecosystem")) return null;
@@ -4665,6 +4673,14 @@ function findSignalRobot(signal) {
     const company = pageNormalize(robot.company || "");
     return name === robotName || (robotName.includes(name) && (!companyName || companyName.includes(company) || company.includes(companyName)));
   }) || null;
+}
+
+function signalIsEcosystem(signal) {
+  if (signal.ecosystemSignal === true) return true;
+  const company = pageNormalize(signal.company || "");
+  const robot = pageNormalize(signal.robot || "");
+  if ((company.includes("ecosystem") || robot.includes("ecosystem")) && !signal.companySlug && !signal.robotSlug) return true;
+  return company === "robotics ecosystem" || robot === "robotics ecosystem";
 }
 
 function signalViewModel(signal) {
@@ -4679,6 +4695,7 @@ function signalViewModel(signal) {
     qualityScore: signalQualityScore(signal),
     sourceHost: sourceHost(signal.source || ""),
     whyItMatters: signalWhyItMatters(signal),
+    ecosystemSignal: signalIsEcosystem(signal),
     companyHref: company ? companyProfileHref(company) : "",
     robotHref: robot ? robotProfileHref(robot) : ""
   };
@@ -4740,15 +4757,15 @@ function renderRoboticsSignalsPage() {
 
   if (qualityGrid) {
     const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
-    const mediaRetailer = enrichedSignals.filter((item) => ["Media report", "Retailer"].includes(item.confidence)).length;
     const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
+    const ecosystemSignals = enrichedSignals.filter((item) => item.ecosystemSignal && !item.companyHref && !item.robotHref).length;
     const coreLens = enrichedSignals.filter((item) => item.strategicLens !== "Secondary").length;
     const avgQuality = enrichedSignals.length ? Math.round(enrichedSignals.reduce((sum, item) => sum + item.qualityScore, 0) / enrichedSignals.length) : 0;
     qualityGrid.innerHTML = `
       <article><span>Average quality</span><strong>${avgQuality}</strong><small>Weighted by source, impact, and profile links</small></article>
       <article><span>Official / PR</span><strong>${officialish}</strong><small>Company or distribution-backed sources</small></article>
       <article><span>Core AI lens</span><strong>${coreLens}</strong><small>Humanoid, embodied AI, physical AI, or autonomous robotics signals</small></article>
-      <article><span>Profile linked</span><strong>${profileLinked}</strong><small>${mediaRetailer} media / retailer signals checked against source trail</small></article>
+      <article><span>Profile linked</span><strong>${profileLinked}</strong><small>${ecosystemSignals} ecosystem signals kept as market context</small></article>
     `;
   }
 
@@ -4832,6 +4849,7 @@ function renderRoboticsSignalsPage() {
           <div class="signal-chip-row">
             <em>${pageEscape(item.confidence === "Official" ? "Official / primary source" : item.confidence)}</em>
             ${(item.companyHref || item.robotHref) ? "<em>Profile linked</em>" : ""}
+            ${(!item.companyHref && !item.robotHref && item.ecosystemSignal) ? "<em>Ecosystem signal</em>" : ""}
             <em>${pageEscape(item.strategicLens)}</em>
             <em>${pageEscape(item.intelligenceType)}</em>
             <em>${pageEscape(item.country)}</em>

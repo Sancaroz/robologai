@@ -11,7 +11,8 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-humanoid-robot-learning",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-21",
@@ -25,7 +26,8 @@
     "summary": "At NVIDIA GTC Taipei at COMPUTEX, the world’s developers, researchers and industry leaders are converging to dive into the latest breakthroughs shaping every industry, covering topics spanning AI factories and scaling infrastructure to agentic and physical AI ",
     "source": "https://blogs.nvidia.com/blog/nvidia-gtc-taipei-computex-2026-news/",
     "relatedUrl": "physical-ai.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "companySlug": "nvidia"
   },
   {
     "date": "2026-05-21",
@@ -39,7 +41,8 @@
     "summary": "When a group of academics started making open-source robotics hardware , a generation of roboticists got years of their lives back. Now, the bigger challenge is getting robots to think—and that’s starting to be open sourced too. The shift is still early, but c",
     "source": "https://spectrum.ieee.org/open-source-robot-ai-platforms",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-21",
@@ -53,7 +56,8 @@
     "summary": "This sponsored article is brought to you by Wetour Robotics . A field technician on a wind turbine, harness clipped, both hands on a wrench, needs to send a command to the diagnostic device hanging at her belt. A logistics worker on a loading dock, gloves on, ",
     "source": "https://spectrum.ieee.org/wetour-robotics-physical-ai-human-interfaces",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-20",
@@ -67,7 +71,8 @@
     "summary": "Over the next few decades, billions of autonomous, AI-powered robots will work alongside people in factories, perform tedious tasks in warehouses, care for the elderly, assist in unsafe disaster areas , deliver packages and food to our doorsteps, and eventuall",
     "source": "https://spectrum.ieee.org/robotics-ai-breakthrough",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-19",
@@ -81,7 +86,8 @@
     "summary": "Google DeepMind is integrating Street View with Project Genie to create immersive, interactive world simulations for robotics, gaming, and travel, allowing users to explore environments, weather changes, and rare scenarios.",
     "source": "https://techcrunch.com/2026/05/19/googles-genie-world-model-can-now-simulate-real-streets-with-street-view/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-19",
@@ -95,7 +101,8 @@
     "summary": "Electronic waste is moving up on regulatory agendas in 2026. New European waste-shipment rules, expanded recycling fees on products with non-removable batteries in California, and an e-waste import ban in Malaysia, for example, are all increasing pressure to r",
     "source": "https://spectrum.ieee.org/e-waste-recycling-robots-ram",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-19",
@@ -109,7 +116,8 @@
     "summary": "The International Organization for Standardization (ISO) is updating its 12-year-old safety requirements for personal care robots . A lot has happened since the last revision, both on the technology side and with researchers’ understanding of safety for humans",
     "source": "https://spectrum.ieee.org/domestic-humanoid-robot-safety-standards",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-18",
@@ -123,7 +131,8 @@
     "summary": "For years, the field of robotics has used the terms “dull, dirty, and dangerous” (DDD) to describe the types of tasks or jobs where robots might be useful—by doing work that’s undesirable for people. A classic example of a DDD job is one of “repetitive physica",
     "source": "https://spectrum.ieee.org/dull-dirty-dangerous-robots",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-18",
@@ -137,7 +146,8 @@
     "summary": "This presentation highlights recent efforts at the Johns Hopkins Applied Physics Laboratory to advance agentic AI for collaborative robotic teams. It begins by framing the core challenges of enabling autonomy, coordination, and adaptability across heterogeneou",
     "source": "https://events.bizzabo.com/867156",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-15",
@@ -151,7 +161,8 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-material-handling-robots",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-13",
@@ -165,7 +176,8 @@
     "summary": "Mind Robotics, which was first revealed in late 2025, has now raised more than $1 billion to date.",
     "source": "https://techcrunch.com/2026/05/13/rivian-spinoff-mind-robotics-raises-another-400m/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-12",
@@ -179,7 +191,8 @@
     "summary": "Many roboticists (and at least one robotics journalist) have been seduced by the dream of a robot butler. And the rampant popularity of videos showing humanoid robots doing household tasks in improbably clean kitchens and unrealistically tidy bedrooms suggests",
     "source": "https://spectrum.ieee.org/stretch-4-home-robot",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-12",
@@ -193,7 +206,8 @@
     "summary": "WALLDORF, Deutschland, 11. Mai 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), der weltweit führende Anbieter von Unternehmensanwendungssoftware, und Cyberwave, ein auf KI-Robotik-Software spezialisiertes Unternehmen, gaben heute den erfolgreichen Einsatz vollautonom",
     "source": "https://www.prnewswire.com/news-releases/sap-und-cyberwave-setzen-vollstandig-autonome-ki-gestutzte-roboter-in-einem-realen-sap-logistiklager-ein-302768875.html",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-12",
@@ -207,7 +221,8 @@
     "summary": "-SAP y Cyberwave implementan robots totalmente autónomos con inteligencia artificial en un almacén logístico SAP en funcionamiento WALLDORF, Alemania, 11 de mayo de 2026 /PRNewswire/ -- SAP SE (NYSE: SAP), líder mundial en software de aplicaciones empresariale",
     "source": "https://www.prnewswire.com/news-releases/sap-y-cyberwave-implementan-robots-totalmente-autonomos-con-inteligencia-artificial-302768860.html",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-11",
@@ -221,7 +236,8 @@
     "summary": "Instead of building robots themselves, the team is focused on a simpler goal — providing data that robots need to learn and operate. They believe that better data will be key to making robots more useful.",
     "source": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-09",
@@ -235,7 +251,8 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-robotic-hand-dexterity",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-09",
@@ -249,7 +266,8 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-robotic-hand-dexterity",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-09",
@@ -262,7 +280,8 @@
     "impact": "High",
     "summary": "Roomba creator Colin Angle is framing the next home robot around presence, behavior, and emotional response rather than cleaning alone.",
     "source": "https://www.prnewswire.com/news-releases/roomba-pioneer-colin-angle-unveils-new-venture-familiar-machines--magic-introducing-a-new-platform-for-consumer-physical-ai-302761495.html",
-    "relatedUrl": "blog/roomba-creator-familiar-emotional-ai-robot.html"
+    "relatedUrl": "blog/roomba-creator-familiar-emotional-ai-robot.html",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-08",
@@ -275,7 +294,9 @@
     "impact": "High",
     "summary": "Visible pricing and official demo material make G1 a useful benchmark for robotics labs and early physical AI builders.",
     "source": "https://www.unitree.com/g1/",
-    "relatedUrl": "robots/unitree-g1.html"
+    "relatedUrl": "robots/unitree-g1.html",
+    "companySlug": "unitree-robotics",
+    "robotSlug": "unitree-g1"
   },
   {
     "date": "2026-05-07",
@@ -288,7 +309,9 @@
     "impact": "High",
     "summary": "The platform is positioned around workplace manipulation, enterprise pilots, and general-purpose robot learning.",
     "source": "https://www.figure.ai/",
-    "relatedUrl": "robots/figure-02.html"
+    "relatedUrl": "robots/figure-02.html",
+    "companySlug": "figure-ai",
+    "robotSlug": "figure-02"
   },
   {
     "date": "2026-05-07",
@@ -301,7 +324,9 @@
     "impact": "Medium",
     "summary": "Optimus is still best read as an internal manufacturing and embodied AI signal until public deployment details become clearer.",
     "source": "https://www.tesla.com/AI",
-    "relatedUrl": "robots/tesla-optimus.html"
+    "relatedUrl": "robots/tesla-optimus.html",
+    "companySlug": "tesla",
+    "robotSlug": "tesla-optimus"
   },
   {
     "date": "2026-05-06",
@@ -315,7 +340,8 @@
     "summary": "Genesis AI, a startup that raised a $105 million seed round to build foundational AI for robotics, has unveiled its first model, GENE-26.5, but also a demo showcasing a set of robotic hands performing complex tasks.",
     "source": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-06",
@@ -328,7 +354,9 @@
     "impact": "High",
     "summary": "Atlas remains a top mobility proof point; the next signal to watch is how the platform converts from demo power to market role.",
     "source": "https://bostondynamics.com/atlas/",
-    "relatedUrl": "robots/boston-dynamics-atlas.html"
+    "relatedUrl": "robots/boston-dynamics-atlas.html",
+    "companySlug": "boston-dynamics",
+    "robotSlug": "boston-dynamics-atlas"
   },
   {
     "date": "2026-05-05",
@@ -341,7 +369,8 @@
     "impact": "High",
     "summary": "Simulation, robot foundation models, and edge compute are becoming as important as the robot body itself.",
     "source": "https://developer.nvidia.com/isaac",
-    "relatedUrl": "market.html"
+    "relatedUrl": "market.html",
+    "companySlug": "nvidia"
   },
   {
     "date": "2026-05-04",
@@ -355,7 +384,8 @@
     "summary": "Two years ago, Colin Angle stepped down as CEO of iRobot , the company that he cofounded and the most successful home robot company the world has ever seen. Angle almost immediately founded a stealthy new “physical AI” company called Familiar Machines & Magic ",
     "source": "https://spectrum.ieee.org/familiar-machines-and-magic",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-04",
@@ -369,7 +399,8 @@
     "summary": "This article is brought to you by DAIMON Robotics . This April, Hong Kong-based DAIMON Robotics has released Daimon-Infinity , which it describes as the largest omni-modal robotic dataset for physical AI, featuring high resolution tactile sensing and spanning ",
     "source": "https://spectrum.ieee.org/daimon-robotics-physical-ai",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-04",
@@ -382,7 +413,9 @@
     "impact": "Medium",
     "summary": "Digit is one of the clearest examples of a humanoid-shaped robot being aimed at a specific logistics workflow.",
     "source": "https://www.agilityrobotics.com/",
-    "relatedUrl": "robots/agility-digit.html"
+    "relatedUrl": "robots/agility-digit.html",
+    "companySlug": "agility-robotics",
+    "robotSlug": "agility-digit"
   },
   {
     "date": "2026-05-03",
@@ -395,7 +428,9 @@
     "impact": "Medium",
     "summary": "Home humanoids need a different readiness model: safety, trust, teleoperation posture, and domestic usefulness matter more than show demos.",
     "source": "https://www.1x.tech/",
-    "relatedUrl": "robots/1x-neo.html"
+    "relatedUrl": "robots/1x-neo.html",
+    "companySlug": "1x-technologies",
+    "robotSlug": "1x-neo"
   },
   {
     "date": "2026-05-02",
@@ -408,7 +443,8 @@
     "impact": "Medium",
     "summary": "While humanoids drive attention, surgical robotics shows what mature robot economics can look like at scale.",
     "source": "https://www.intuitive.com/",
-    "relatedUrl": "companies/intuitive-surgical.html"
+    "relatedUrl": "companies/intuitive-surgical.html",
+    "companySlug": "intuitive-surgical"
   },
   {
     "date": "2026-05-01",
@@ -422,7 +458,8 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-humanoid-robot-production",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-05-01",
@@ -435,7 +472,8 @@
     "impact": "High",
     "summary": "The frontier is shifting from language intelligence toward models that can understand objects, motion, and physical task context.",
     "source": "https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/",
-    "relatedUrl": "companies/alphabet-google-deepmind.html"
+    "relatedUrl": "companies/alphabet-google-deepmind.html",
+    "companySlug": "alphabet-google-deepmind"
   },
   {
     "date": "2026-04-30",
@@ -448,7 +486,8 @@
     "impact": "Medium",
     "summary": "Ownership, utilization, robot data, and physical network incentives are becoming a separate robotics intelligence theme.",
     "source": "https://www.xmaquina.io/",
-    "relatedUrl": "blog/xmaquina-decentralized-robotics.html"
+    "relatedUrl": "blog/xmaquina-decentralized-robotics.html",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-29",
@@ -462,7 +501,8 @@
     "summary": "We visited Scout AI's training ground where it's working on AI agents that can help individual soldiers control fleets of autonomous vehicles.",
     "source": "https://techcrunch.com/2026/04/29/coby-adcocks-scout-ai-raises-100-million-to-train-models-for-war-we-visited-its-bootcamp/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-29",
@@ -475,7 +515,10 @@
     "impact": "Medium",
     "summary": "Inspection robots prove that useful robotics can scale before general-purpose humanoids reach full autonomy.",
     "source": "https://bostondynamics.com/products/spot/",
-    "relatedUrl": "use-cases.html"
+    "relatedUrl": "use-cases.html",
+    "companySlug": "boston-dynamics",
+    "robotSlug": "boston-dynamics-spot",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-24",
@@ -489,7 +532,8 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-ping-pong-robot",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-23",
@@ -503,7 +547,8 @@
     "summary": "Tom Burick has always considered himself a builder. Over the years he’s designed robots, constructed a vintage teardrop trailer , and most recently, led a group of students in building a full-scale replica of a pivotal 1940s computer. Burick is a technology in",
     "source": "https://spectrum.ieee.org/roboticist-turned-teacher-eniac-replica",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-22",
@@ -517,7 +562,8 @@
     "summary": "NVIDIA and Google Cloud have collaborated for more than a decade, co‑engineering a full‑stack AI platform that spans every technology layer — from performance‑optimized libraries and frameworks to enterprise‑grade cloud services. This foundation enables develo",
     "source": "https://blogs.nvidia.com/blog/google-cloud-agentic-physical-ai-factories/",
     "relatedUrl": "physical-ai.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "companySlug": "nvidia"
   },
   {
     "date": "2026-04-22",
@@ -531,7 +577,8 @@
     "summary": "The American Security Robotics Act, a bipartisan bill introduced in March by Senators Tom Cotton (R-Ark.) and Chuck Schumer (D-N.Y.) and Representative Elise Stefanik (R-N.Y.), proposes to limit U.S. government use of Chinese ground robots including humanoids,",
     "source": "https://spectrum.ieee.org/chinese-robots-us-ban",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-20",
@@ -545,7 +592,8 @@
     "summary": "When the robotics engineering field that Maja Matarić wanted to work in didn’t exist, she helped create it. In 2005 she helped define the new area of socially assistive robotics. As an associate professor of computer science, neuroscience, and pediatrics at th",
     "source": "https://spectrum.ieee.org/socially-assistive-robotics",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   },
   {
     "date": "2026-04-19",
@@ -559,6 +607,7 @@
     "summary": "The winning time is a massive improvement over last year’s race, when the fastest robot finished in two hours and 40 minutes.",
     "source": "https://techcrunch.com/2026/04/19/robots-beat-human-records-at-beijing-half-marathon/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated"
+    "sourceType": "automated",
+    "ecosystemSignal": true
   }
 ]
