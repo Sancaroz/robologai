@@ -24,6 +24,7 @@ function main() {
 
   run("Validating data", ["scripts/validate-data.mjs"]);
   run("Validating asset paths", ["scripts/validate-assets.mjs"]);
+  run("Validating profile and signal links", ["scripts/validate-links.mjs"]);
 
   const syntaxFiles = [
     "catalog-pages.js",
@@ -35,6 +36,7 @@ function main() {
     "scripts/update-signals.mjs",
     "scripts/validate-assets.mjs",
     "scripts/validate-data.mjs",
+    "scripts/validate-links.mjs",
     "tools/generate-seo-pages.mjs"
   ];
 
