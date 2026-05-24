@@ -74,6 +74,13 @@ node scripts/health-check.mjs --write
 Individual checks:
 
 ```bash
+node scripts/audit-robot-images.mjs
 node scripts/validate-data.mjs
 node scripts/validate-assets.mjs
+```
+
+Robot image quality audit:
+
+```bash
+node scripts/audit-robot-images.mjs --company deeprobotics
 ```
