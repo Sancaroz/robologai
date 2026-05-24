@@ -12,8 +12,9 @@
     "runtime": "Not disclosed",
     "maturity": 3,
     "priceVisibility": 1,
-    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/s1/product-en.png",
+    "image": "assets/robots/galbot/s1/hero.png",
+    "heroImage": "assets/robots/galbot/s1/hero.png",
     "imageCredit": "Galbot official media",
-    "source": "https://developer.galbot.com/docs/s1/2.0.0/zh/s1",
+    "source": "https://www.galbot.com/s1",
     "keywords": ["galbot", "s1", "industrial robot", "heavy load", "embodied ai", "simulation"]
   }

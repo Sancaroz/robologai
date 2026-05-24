@@ -11,8 +11,9 @@
     "runtime": "Not disclosed",
     "maturity": 3,
     "priceVisibility": 1,
-    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/g1/g1-poster.jpg",
+    "image": "assets/robots/galbot/g1/hero.png",
+    "heroImage": "assets/robots/galbot/g1/hero.png",
     "imageCredit": "Galbot official media",
-    "source": "https://developer.galbot.com/docs/g1/2.2.4/zh/g1",
+    "source": "https://www.galbot.com/g1",
     "keywords": ["galbot", "g1", "humanoid", "embodied ai", "vla", "manipulation", "pick and place"]
   }

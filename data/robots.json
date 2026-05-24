@@ -564,9 +564,9 @@
     "runtime": "Not disclosed",
     "maturity": 3,
     "priceVisibility": 1,
-    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/g1/g1-poster.jpg",
+    "image": "assets/robots/galbot/g1/hero.png",
     "imageCredit": "Galbot official media",
-    "source": "https://developer.galbot.com/docs/g1/2.2.4/zh/g1",
+    "source": "https://www.galbot.com/g1",
     "keywords": [
       "galbot",
       "g1",
@@ -575,7 +575,8 @@
       "vla",
       "manipulation",
       "pick and place"
-    ]
+    ],
+    "heroImage": "assets/robots/galbot/g1/hero.png"
   },
   {
     "name": "Galbot S1",
@@ -590,9 +591,9 @@
     "runtime": "Not disclosed",
     "maturity": 3,
     "priceVisibility": 1,
-    "image": "https://galbot.oss-cn-beijing.aliyuncs.com/online/portal/img/s1/product-en.png",
+    "image": "assets/robots/galbot/s1/hero.png",
     "imageCredit": "Galbot official media",
-    "source": "https://developer.galbot.com/docs/s1/2.0.0/zh/s1",
+    "source": "https://www.galbot.com/s1",
     "keywords": [
       "galbot",
       "s1",
@@ -600,7 +601,8 @@
       "heavy load",
       "embodied ai",
       "simulation"
-    ]
+    ],
+    "heroImage": "assets/robots/galbot/s1/hero.png"
   },
   {
     "name": "Embodied Tien Kung 3.0",
