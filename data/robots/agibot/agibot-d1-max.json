@@ -1,0 +1,29 @@
+{
+  "name": "AGIBOT D1 Max",
+  "company": "AgiBot",
+  "category": "Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Industrial",
+    "Autonomous Robotics"
+  ],
+  "country": "China",
+  "status": "Industrial quadruped productivity platform",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Industrial inspection, heavy-load tasks, outdoor operation, and field robotics",
+  "height": "Not disclosed",
+  "runtime": "Official product page reference: at least 5h unloaded; at least 3.5h fully loaded",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/agibot/d1/d1max/hero.png",
+  "heroImage": "assets/robots/agibot/d1/d1max/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://www.agibot.com/products/D1_Max",
+  "sourceLinks": [
+    "https://www.agibot.com/products/D1_Max",
+    "https://www.agibot.com/products"
+  ],
+  "keywords": ["agibot", "d1 max", "quadruped", "industrial robot dog", "inspection", "payload"]
+}

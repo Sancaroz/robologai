@@ -1,0 +1,28 @@
+{
+  "name": "AGIBOT D1 Ultra",
+  "company": "AgiBot",
+  "category": "Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Autonomous Robotics",
+    "Industrial"
+  ],
+  "country": "China",
+  "status": "Quadruped intelligent robot",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Inspection, field mobility, research, education, and quadruped autonomy development",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/agibot/d1/d1-ultra/hero.png",
+  "heroImage": "assets/robots/agibot/d1/d1-ultra/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://www.agibot.com/products",
+  "sourceLinks": [
+    "https://www.agibot.com/products"
+  ],
+  "keywords": ["agibot", "d1 ultra", "quadruped", "robot dog", "inspection", "autonomous robotics"]
+}

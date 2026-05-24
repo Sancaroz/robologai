@@ -1,0 +1,29 @@
+{
+  "name": "AGIBOT D1 MaxPro",
+  "company": "AgiBot",
+  "category": "Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Industrial",
+    "Autonomous Robotics"
+  ],
+  "country": "China",
+  "status": "Industrial quadruped for demanding operations",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Heavy-load transport, material handling, emergency response, rescue, logistics, and industrial inspection",
+  "height": "Not disclosed",
+  "runtime": "Official product page reference: 5.5h unloaded; at least 2.5h fully loaded",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/agibot/d1/d1-maxpro/hero.png",
+  "heroImage": "assets/robots/agibot/d1/d1-maxpro/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://www.agibot.com/products/D1_MaxPro",
+  "sourceLinks": [
+    "https://www.agibot.com/products/D1_MaxPro",
+    "https://www.agibot.com/products"
+  ],
+  "keywords": ["agibot", "d1 maxpro", "quadruped", "industrial robot dog", "inspection", "rescue", "payload"]
+}

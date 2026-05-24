@@ -11,10 +11,13 @@
     "runtime": "Not disclosed",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "assets/robots/agibot/a2-ultra/hero.png",
-    "heroImage": "assets/robots/agibot/a2-ultra/hero.png",
+    "image": "assets/robots/agibot/a2/a2-lite/hero.png",
+    "heroImage": "assets/robots/agibot/a2/a2-lite/hero.png",
     "imageCredit": "Official company media",
-    "source": "https://www.agibot.com/",
-    "keywords": ["agibot", "a2", "embodied ai", "china"]
+    "source": "https://www.agibot.com/products",
+    "sourceLinks": [
+      "https://www.agibot.com/products"
+    ],
+    "keywords": ["agibot", "a2", "a2 series", "embodied ai", "china"]
   }
   

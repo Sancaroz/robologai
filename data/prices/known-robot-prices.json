@@ -1,5 +1,18 @@
 [
   {
+    "robot": "AGIBOT A2 Lite",
+    "company": "AgiBot",
+    "priceText": "Official store price: US$44,560",
+    "currency": "USD",
+    "minPrice": 44560,
+    "maxPrice": null,
+    "sourceType": "official-shop",
+    "source": "https://store.agibot.com/products/a2-lite",
+    "confidence": 5,
+    "lastChecked": "2026-05-24",
+    "notes": "Official AGIBOT store listing; shipping, customs, and taxes may vary."
+  },
+  {
     "robot": "Unitree G1",
     "company": "Unitree Robotics",
     "priceText": "From US$16,000",

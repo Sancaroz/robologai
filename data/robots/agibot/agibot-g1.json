@@ -1,0 +1,28 @@
+{
+  "name": "AGIBOT G1",
+  "company": "AgiBot",
+  "category": "Embodied AI robot",
+  "primaryFocus": "Embodied AI",
+  "segments": [
+    "Embodied AI",
+    "Physical AI",
+    "Research Platforms"
+  ],
+  "country": "China",
+  "status": "Universal embodied intelligent robot",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Embodied AI research, interaction, general robot intelligence, and development workflows",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/agibot/g1/hero.png",
+  "heroImage": "assets/robots/agibot/g1/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://www.agibot.com/products",
+  "sourceLinks": [
+    "https://www.agibot.com/products"
+  ],
+  "keywords": ["agibot", "g1", "embodied ai", "physical ai", "universal robot"]
+}

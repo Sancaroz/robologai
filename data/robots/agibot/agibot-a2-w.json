@@ -1,0 +1,28 @@
+{
+  "name": "AGIBOT A2-W",
+  "company": "AgiBot",
+  "category": "Humanoid",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Industrial",
+    "Commercial Access"
+  ],
+  "country": "China",
+  "status": "Flexible manufacturing humanoid robot",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Flexible manufacturing, industrial interaction, embodied AI, and factory automation research",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/agibot/a2/a2-w/hero.png",
+  "heroImage": "assets/robots/agibot/a2/a2-w/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://www.agibot.com/products",
+  "sourceLinks": [
+    "https://www.agibot.com/products"
+  ],
+  "keywords": ["agibot", "a2-w", "humanoid", "manufacturing robot", "industrial humanoid", "embodied ai"]
+}

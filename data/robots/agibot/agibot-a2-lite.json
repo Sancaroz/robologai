@@ -1,0 +1,29 @@
+{
+  "name": "AGIBOT A2 Lite",
+  "company": "AgiBot",
+  "category": "Humanoid",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Commercial Access",
+    "Research Platforms"
+  ],
+  "country": "China",
+  "status": "Full-size humanoid for performance and interaction",
+  "availability": "Official store / product page",
+  "price": "Official store price seen at US$44,560",
+  "useCase": "Entertainment, commercial performance, guided interaction, choreography, and embodied AI development",
+  "height": "Official store specification: about 169 cm",
+  "runtime": "Official store specification: standing endurance about 4h35min; walking endurance about 1.5h",
+  "maturity": 4,
+  "priceVisibility": 5,
+  "image": "assets/robots/agibot/a2/a2-lite/hero.png",
+  "heroImage": "assets/robots/agibot/a2/a2-lite/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://store.agibot.com/products/a2-lite",
+  "sourceLinks": [
+    "https://store.agibot.com/products/a2-lite",
+    "https://www.agibot.com/products"
+  ],
+  "keywords": ["agibot", "a2 lite", "humanoid", "performance robot", "commercial humanoid", "embodied ai"]
+}

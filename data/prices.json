@@ -154,5 +154,18 @@
     "confidence": 3,
     "lastChecked": "2026-05-24",
     "notes": "Reported/reference price signal; verify through Boston Dynamics sales before quoting."
+  },
+  {
+    "robot": "AGIBOT A2 Lite",
+    "company": "AgiBot",
+    "priceText": "Official store price: US$44,560",
+    "currency": "USD",
+    "minPrice": 44560,
+    "maxPrice": null,
+    "sourceType": "official-shop",
+    "source": "https://store.agibot.com/products/a2-lite",
+    "confidence": 5,
+    "lastChecked": "2026-05-24",
+    "notes": "Official AGIBOT store listing; shipping, customs, and taxes may vary."
   }
 ]

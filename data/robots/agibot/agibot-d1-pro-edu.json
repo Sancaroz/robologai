@@ -1,0 +1,29 @@
+{
+  "name": "AGIBOT D1 Pro/Edu",
+  "company": "AgiBot",
+  "category": "Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Research Platforms",
+    "Autonomous Robotics"
+  ],
+  "country": "China",
+  "status": "All-round quadruped intelligence platform",
+  "availability": "Official product page / contact sales",
+  "price": "No official public price",
+  "useCase": "Education, research, quadruped mobility development, inspection, and embodied AI experiments",
+  "height": "Not disclosed",
+  "runtime": "Store reference for D1 Pro: typically 1-2 hours per charge",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/agibot/d1/d1-pro-edu/hero.png",
+  "heroImage": "assets/robots/agibot/d1/d1-pro-edu/hero.png",
+  "imageCredit": "AGIBOT official product media",
+  "source": "https://www.agibot.com/products",
+  "sourceLinks": [
+    "https://www.agibot.com/products",
+    "https://store.agibot.com/products/d1-pro"
+  ],
+  "keywords": ["agibot", "d1 pro", "d1 edu", "quadruped", "robot dog", "education", "research"]
+}
