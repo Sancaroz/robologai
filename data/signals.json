@@ -11,8 +11,7 @@
     "summary": "Video Friday is your weekly selection of awesome robotics videos, collected by your friends at IEEE Spectrum robotics. We also post a weekly calendar of upcoming robotics events for the next few months. Please send us your events for inclusion. ICRA 2026 : 1–5",
     "source": "https://spectrum.ieee.org/video-friday-humanoid-robot-learning",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-21",
@@ -26,8 +25,7 @@
     "summary": "At NVIDIA GTC Taipei at COMPUTEX, the world’s developers, researchers and industry leaders are converging to dive into the latest breakthroughs shaping every industry, covering topics spanning AI factories and scaling infrastructure to agentic and physical AI ",
     "source": "https://blogs.nvidia.com/blog/nvidia-gtc-taipei-computex-2026-news/",
     "relatedUrl": "physical-ai.html",
-    "sourceType": "automated",
-    "companySlug": "nvidia"
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-21",
@@ -41,8 +39,7 @@
     "summary": "When a group of academics started making open-source robotics hardware , a generation of roboticists got years of their lives back. Now, the bigger challenge is getting robots to think—and that’s starting to be open sourced too. The shift is still early, but c",
     "source": "https://spectrum.ieee.org/open-source-robot-ai-platforms",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-21",
@@ -56,8 +53,7 @@
     "summary": "This sponsored article is brought to you by Wetour Robotics . A field technician on a wind turbine, harness clipped, both hands on a wrench, needs to send a command to the diagnostic device hanging at her belt. A logistics worker on a loading dock, gloves on, ",
     "source": "https://spectrum.ieee.org/wetour-robotics-physical-ai-human-interfaces",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-20",
@@ -71,8 +67,7 @@
     "summary": "Over the next few decades, billions of autonomous, AI-powered robots will work alongside people in factories, perform tedious tasks in warehouses, care for the elderly, assist in unsafe disaster areas , deliver packages and food to our doorsteps, and eventuall",
     "source": "https://spectrum.ieee.org/robotics-ai-breakthrough",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-19",
@@ -86,8 +81,7 @@
     "summary": "Google DeepMind is integrating Street View with Project Genie to create immersive, interactive world simulations for robotics, gaming, and travel, allowing users to explore environments, weather changes, and rare scenarios.",
     "source": "https://techcrunch.com/2026/05/19/googles-genie-world-model-can-now-simulate-real-streets-with-street-view/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-19",
@@ -101,8 +95,7 @@
     "summary": "Electronic waste is moving up on regulatory agendas in 2026. New European waste-shipment rules, expanded recycling fees on products with non-removable batteries in California, and an e-waste import ban in Malaysia, for example, are all increasing pressure to r",
     "source": "https://spectrum.ieee.org/e-waste-recycling-robots-ram",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-19",
@@ -116,8 +109,7 @@
     "summary": "The International Organization for Standardization (ISO) is updating its 12-year-old safety requirements for personal care robots . A lot has happened since the last revision, both on the technology side and with researchers’ understanding of safety for humans",
     "source": "https://spectrum.ieee.org/domestic-humanoid-robot-safety-standards",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-18",
@@ -131,8 +123,7 @@
     "summary": "For years, the field of robotics has used the terms “dull, dirty, and dangerous” (DDD) to describe the types of tasks or jobs where robots might be useful—by doing work that’s undesirable for people. A classic example of a DDD job is one of “repetitive physica",
     "source": "https://spectrum.ieee.org/dull-dirty-dangerous-robots",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-18",
@@ -146,8 +137,7 @@
     "summary": "This presentation highlights recent efforts at the Johns Hopkins Applied Physics Laboratory to advance agentic AI for collaborative robotic teams. It begins by framing the core challenges of enabling autonomy, coordination, and adaptability across heterogeneou",
     "source": "https://events.bizzabo.com/867156",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-15",
@@ -176,8 +166,7 @@
     "summary": "Mind Robotics, which was first revealed in late 2025, has now raised more than $1 billion to date.",
     "source": "https://techcrunch.com/2026/05/13/rivian-spinoff-mind-robotics-raises-another-400m/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-12",
@@ -236,8 +225,7 @@
     "summary": "Instead of building robots themselves, the team is focused on a simpler goal — providing data that robots need to learn and operate. They believe that better data will be key to making robots more useful.",
     "source": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-09",
@@ -340,8 +328,7 @@
     "summary": "Genesis AI, a startup that raised a $105 million seed round to build foundational AI for robotics, has unveiled its first model, GENE-26.5, but also a demo showcasing a set of robotic hands performing complex tasks.",
     "source": "https://techcrunch.com/2026/05/06/khosla-backed-robotics-startup-genesis-ai-has-gone-full-stack-demo-shows/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-05-06",
@@ -501,8 +488,7 @@
     "summary": "We visited Scout AI's training ground where it's working on AI agents that can help individual soldiers control fleets of autonomous vehicles.",
     "source": "https://techcrunch.com/2026/04/29/coby-adcocks-scout-ai-raises-100-million-to-train-models-for-war-we-visited-its-bootcamp/",
     "relatedUrl": "signals.html",
-    "sourceType": "automated",
-    "ecosystemSignal": true
+    "sourceType": "automated"
   },
   {
     "date": "2026-04-29",
