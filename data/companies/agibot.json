@@ -1,0 +1,35 @@
+{
+  "name": "AgiBot",
+  "category": "Embodied AI and humanoid robotics",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Embodied AI",
+    "China Robotics",
+    "Commercial Access",
+    "Quadruped"
+  ],
+  "country": "China",
+  "type": "Private",
+  "ticker": "",
+  "robot": "AgiBot A2, AGIBOT A2 Lite, AGIBOT A2-W, AGIBOT G1, AGIBOT D1 Pro/Edu, AGIBOT D1 Ultra, AGIBOT D1 Max, AGIBOT D1 MaxPro",
+  "website": "https://www.agibot.com/",
+  "focus": "Embodied AI, humanoid robots, quadruped robots, and commercial robot product families.",
+  "logo": "assets/companies/agibot/logo.png",
+  "sourceLinks": [
+    "https://www.agibot.com/",
+    "https://www.agibot.com/products",
+    "https://store.agibot.com/products/a2-lite"
+  ],
+  "keywords": [
+    "agibot",
+    "humanoid",
+    "embodied ai",
+    "quadruped",
+    "a2",
+    "d1",
+    "g1",
+    "china robotics"
+  ],
+  "lastVerified": "May 2026 source review"
+}

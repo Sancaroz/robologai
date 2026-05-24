@@ -2254,14 +2254,34 @@
     "country": "China",
     "type": "Private",
     "ticker": "",
-    "robot": "AgiBot A2, G1, X2, X1",
+    "robot": "AgiBot A2, AGIBOT A2 Lite, AGIBOT A2-W, AGIBOT G1, AGIBOT D1 Pro/Edu, AGIBOT D1 Ultra, AGIBOT D1 Max, AGIBOT D1 MaxPro",
     "website": "https://www.agibot.com/",
     "keywords": [
+      "agibot",
       "humanoid",
       "embodied ai",
-      "mass production",
-      "agibot world"
-    ]
+      "quadruped",
+      "a2",
+      "d1",
+      "g1",
+      "china robotics"
+    ],
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Embodied AI",
+      "China Robotics",
+      "Commercial Access",
+      "Quadruped"
+    ],
+    "focus": "Embodied AI, humanoid robots, quadruped robots, and commercial robot product families.",
+    "logo": "assets/companies/agibot/logo.png",
+    "sourceLinks": [
+      "https://www.agibot.com/",
+      "https://www.agibot.com/products",
+      "https://store.agibot.com/products/a2-lite"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "LimX Dynamics",
