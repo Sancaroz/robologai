@@ -4081,6 +4081,26 @@ const strategicFocusSlugs = {
   secondary: "Secondary"
 };
 
+function isQuadrupedRobot(robot = {}) {
+  const text = robotText(robot);
+  return pageNormalize(robot.category).includes("quadruped") ||
+    normalizedSegments(robot).some((segment) => pageNormalize(segment).includes("quadruped")) ||
+    text.includes("robot dog") ||
+    text.includes("magicdog") ||
+    text.includes("wheeled quadruped") ||
+    text.includes("wheeled-legged");
+}
+
+function isHumanoidRobot(robot = {}) {
+  if (isQuadrupedRobot(robot)) return false;
+  const text = robotText(robot);
+  return pageNormalize(robot.primaryFocus) === "humanoids" ||
+    pageNormalize(robot.category).includes("humanoid") ||
+    normalizedSegments(robot).some((segment) => pageNormalize(segment) === "humanoids") ||
+    text.includes("bipedal humanoid") ||
+    text.includes("general-purpose humanoid");
+}
+
 function normalizedSegments(item = {}) {
   return Array.isArray(item.segments) ? item.segments.filter(Boolean) : [];
 }
@@ -4132,6 +4152,8 @@ function matchesStrategicFilter(item, filter, kind) {
   const text = strategicText(item, kind);
   const segments = strategicSegments(item, kind).map(pageNormalize);
   const focus = pageNormalize(primaryFocus(item, kind));
+  if (kind === "robot" && filter === "humanoids") return isHumanoidRobot(item);
+  if (kind === "robot" && (filter === "quadrupeds" || filter === "quadruped")) return isQuadrupedRobot(item);
   if (strategicFocusSlugs[filter]) return focus === pageNormalize(strategicFocusSlugs[filter]) || segments.includes(pageNormalize(strategicFocusSlugs[filter]));
   if (filter === "china" || filter === "china-robotics") return countrySlug(item.country) === "china" || segments.includes("china robotics");
   if (filter === "available" || filter === "commercial-access") return segments.includes("commercial access");
@@ -5742,6 +5764,7 @@ function renderRobotCards() {
   if (segments) {
     const segmentDefs = [
       ["Humanoids", (robot) => matchesStrategicFilter(robot, "humanoids", "robot")],
+      ["Quadrupeds", (robot) => matchesStrategicFilter(robot, "quadrupeds", "robot")],
       ["Embodied AI", (robot) => matchesStrategicFilter(robot, "embodied-ai", "robot")],
       ["Physical AI", (robot) => matchesStrategicFilter(robot, "physical-ai", "robot")],
       ["Autonomous robotics", (robot) => matchesStrategicFilter(robot, "autonomous-robotics", "robot")],
