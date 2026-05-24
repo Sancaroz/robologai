@@ -1,0 +1,30 @@
+{
+  "name": "MagicDog Y1",
+  "company": "MagicLab",
+  "category": "Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Industrial",
+    "Autonomous Robotics",
+    "Commercial Access"
+  ],
+  "country": "China",
+  "status": "Industrial quadruped robot",
+  "availability": "Official product page / purchase inquiry",
+  "price": "No official public price",
+  "useCase": "Industrial inspection, field patrol, heavy payload mobility, emergency response, and all-terrain autonomous robotics",
+  "height": "Official dimensions: 915 x 458 x 800 mm",
+  "runtime": "Official operating time: 4-6 hours",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/magiclab/magicdog-y1/hero.png",
+  "heroImage": "assets/robots/magiclab/magicdog-y1/hero.png",
+  "imageCredit": "MagicLab official product media",
+  "source": "https://www.magiclab.top/en/dog-y",
+  "sourceLinks": [
+    "https://www.magiclab.top/en/dog-y",
+    "https://www.magiclab.top/en/dog"
+  ],
+  "keywords": ["magiclab", "magicdog y1", "quadruped", "industrial robot dog", "inspection", "ip67", "payload"]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "MagicBot Z1",
+  "company": "MagicLab",
+  "category": "Humanoid",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Embodied AI",
+    "Research Platforms",
+    "Commercial Access"
+  ],
+  "country": "China",
+  "status": "High-dynamic bipedal humanoid robot",
+  "availability": "Official product page / purchase inquiry",
+  "price": "No official public price",
+  "useCase": "Scientific research, education, exhibitions, cultural tourism, commercial performance, and embodied AI development",
+  "height": "Official standing dimensions: 1369 x 422 x 200 mm",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/magiclab/magicbot-z1/hero.png",
+  "heroImage": "assets/robots/magiclab/magicbot-z1/hero.png",
+  "imageCredit": "MagicLab official product media",
+  "source": "https://www.magiclab.top/en/z1",
+  "sourceLinks": [
+    "https://www.magiclab.top/en/z1",
+    "https://www.magiclab.top/en/human"
+  ],
+  "keywords": ["magiclab", "magicbot z1", "humanoid", "bipedal robot", "embodied ai", "research", "education"]
+}

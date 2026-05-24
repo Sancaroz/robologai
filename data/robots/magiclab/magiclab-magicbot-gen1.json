@@ -1,0 +1,23 @@
+{
+    "name": "MagicBot Gen1",
+    "company": "MagicLab",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "General-purpose humanoid",
+    "availability": "Official product page / purchase inquiry",
+    "price": "No broad public price",
+    "useCase": "Flexible manufacturing and multi-robot collaboration",
+    "height": "Official standing dimensions: 1740 x 580 x 280 mm",
+    "runtime": "Official operating time: 3-5 hours",
+    "maturity": 3,
+    "priceVisibility": 2,
+    "image": "assets/robots/magiclab/magicbot-gen1/hero.png",
+    "heroImage": "assets/robots/magiclab/magicbot-gen1/hero.png",
+    "imageCredit": "MagicLab official product media",
+    "source": "https://www.magiclab.top/en/human",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/human"
+    ],
+    "keywords": ["magicbot gen1", "magicbot", "magiclab", "manufacturing", "humanoid", "multi robot collaboration"]
+  }
+ 

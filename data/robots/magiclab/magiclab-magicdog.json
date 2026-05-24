@@ -1,0 +1,29 @@
+{
+  "name": "MagicDog",
+  "company": "MagicLab",
+  "category": "Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Autonomous Robotics",
+    "Research Platforms",
+    "Commercial Access"
+  ],
+  "country": "China",
+  "status": "Bionic quadruped companion robot",
+  "availability": "Official product page / purchase inquiry",
+  "price": "No official public price",
+  "useCase": "Emotional interaction, education, programming, companionship, inspection-style mobility, and quadruped development",
+  "height": "Official standing dimensions: 670 x 350 x 560 mm",
+  "runtime": "Official battery life: 1.5-3.0 hours",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/magiclab/magicdog/hero.png",
+  "heroImage": "assets/robots/magiclab/magicdog/hero.png",
+  "imageCredit": "MagicLab official product media",
+  "source": "https://www.magiclab.top/en/dog",
+  "sourceLinks": [
+    "https://www.magiclab.top/en/dog"
+  ],
+  "keywords": ["magiclab", "magicdog", "quadruped", "robot dog", "companion robot", "emotion interaction"]
+}

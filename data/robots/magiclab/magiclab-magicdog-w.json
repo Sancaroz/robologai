@@ -1,0 +1,30 @@
+{
+  "name": "MagicDog-W",
+  "company": "MagicLab",
+  "category": "Wheeled Quadruped",
+  "primaryFocus": "Secondary",
+  "segments": [
+    "Quadruped",
+    "Autonomous Robotics",
+    "Research Platforms",
+    "Commercial Access"
+  ],
+  "country": "China",
+  "status": "Quadruped wheeled robot",
+  "availability": "Official product page / purchase inquiry",
+  "price": "No official public price",
+  "useCase": "All-terrain wheeled-legged mobility, inspection, research, education, and expansion payload development",
+  "height": "Official standing dimensions: 670 x 350 x 650 mm",
+  "runtime": "Official battery life: 2-4 hours; standby up to 8 hours",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/magiclab/magicdog-w/hero.png",
+  "heroImage": "assets/robots/magiclab/magicdog-w/hero.png",
+  "imageCredit": "MagicLab official product media",
+  "source": "https://www.magiclab.top/en/dog-w",
+  "sourceLinks": [
+    "https://www.magiclab.top/en/dog-w",
+    "https://www.magiclab.top/en/dog"
+  ],
+  "keywords": ["magiclab", "magicdog-w", "wheeled quadruped", "robot dog", "all terrain", "inspection"]
+}

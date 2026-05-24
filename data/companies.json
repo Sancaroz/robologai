@@ -2330,18 +2330,41 @@
   },
   {
     "name": "MagicLab",
-    "category": "General-purpose humanoid robotics",
+    "category": "Embodied AI, humanoid robotics, and quadruped robotics",
     "country": "China",
     "type": "Private",
     "ticker": "",
-    "robot": "MagicBot Gen1",
-    "website": "https://www.magiclab.top/en/human",
+    "robot": "MagicBot Gen1, MagicBot Z1, MagicDog, MagicDog-W, MagicDog Y1",
+    "website": "https://www.magiclab.top/en/",
     "keywords": [
+      "magiclab",
       "magicbot",
+      "magicdog",
       "humanoid",
+      "quadruped",
+      "embodied ai",
       "multi robot collaboration",
       "industrial"
-    ]
+    ],
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Embodied AI",
+      "Quadruped",
+      "China Robotics",
+      "Commercial Access"
+    ],
+    "focus": "General-purpose humanoid robots, embodied intelligence, quadruped robots, and robot components.",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/",
+      "https://www.magiclab.top/en/human",
+      "https://www.magiclab.top/en/z1",
+      "https://www.magiclab.top/en/dog",
+      "https://www.magiclab.top/en/dog-w",
+      "https://www.magiclab.top/en/dog-y",
+      "https://www.magiclab.top/en/about"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "X-Humanoid",

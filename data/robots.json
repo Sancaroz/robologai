@@ -538,22 +538,28 @@
     "category": "Humanoid",
     "country": "China",
     "status": "General-purpose humanoid",
-    "availability": "Purchase / inquiry",
+    "availability": "Official product page / purchase inquiry",
     "price": "No broad public price",
     "useCase": "Flexible manufacturing and multi-robot collaboration",
-    "height": "Full-size",
-    "runtime": "Not disclosed",
+    "height": "Official standing dimensions: 1740 x 580 x 280 mm",
+    "runtime": "Official operating time: 3-5 hours",
     "maturity": 3,
     "priceVisibility": 2,
     "source": "https://www.magiclab.top/en/human",
     "keywords": [
+      "magicbot gen1",
       "magicbot",
       "magiclab",
       "manufacturing",
-      "humanoid"
+      "humanoid",
+      "multi robot collaboration"
     ],
-    "image": "assets/robots/magiclab/magicbot-g1.png",
-    "heroImage": "assets/robots/magiclab/magicbot-g1.png"
+    "image": "assets/robots/magiclab/magicbot-gen1/hero.png",
+    "heroImage": "assets/robots/magiclab/magicbot-gen1/hero.png",
+    "imageCredit": "MagicLab official product media",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/human"
+    ]
   },
   {
     "name": "Galbot G1",
@@ -1485,6 +1491,155 @@
       "embodied ai",
       "physical ai",
       "universal robot"
+    ]
+  },
+  {
+    "name": "MagicBot Z1",
+    "company": "MagicLab",
+    "category": "Humanoid",
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Embodied AI",
+      "Research Platforms",
+      "Commercial Access"
+    ],
+    "country": "China",
+    "status": "High-dynamic bipedal humanoid robot",
+    "availability": "Official product page / purchase inquiry",
+    "price": "No official public price",
+    "useCase": "Scientific research, education, exhibitions, cultural tourism, commercial performance, and embodied AI development",
+    "height": "Official standing dimensions: 1369 x 422 x 200 mm",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/magiclab/magicbot-z1/hero.png",
+    "heroImage": "assets/robots/magiclab/magicbot-z1/hero.png",
+    "imageCredit": "MagicLab official product media",
+    "source": "https://www.magiclab.top/en/z1",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/z1",
+      "https://www.magiclab.top/en/human"
+    ],
+    "keywords": [
+      "magiclab",
+      "magicbot z1",
+      "humanoid",
+      "bipedal robot",
+      "embodied ai",
+      "research",
+      "education"
+    ]
+  },
+  {
+    "name": "MagicDog-W",
+    "company": "MagicLab",
+    "category": "Wheeled Quadruped",
+    "primaryFocus": "Secondary",
+    "segments": [
+      "Quadruped",
+      "Autonomous Robotics",
+      "Research Platforms",
+      "Commercial Access"
+    ],
+    "country": "China",
+    "status": "Quadruped wheeled robot",
+    "availability": "Official product page / purchase inquiry",
+    "price": "No official public price",
+    "useCase": "All-terrain wheeled-legged mobility, inspection, research, education, and expansion payload development",
+    "height": "Official standing dimensions: 670 x 350 x 650 mm",
+    "runtime": "Official battery life: 2-4 hours; standby up to 8 hours",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/magiclab/magicdog-w/hero.png",
+    "heroImage": "assets/robots/magiclab/magicdog-w/hero.png",
+    "imageCredit": "MagicLab official product media",
+    "source": "https://www.magiclab.top/en/dog-w",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/dog-w",
+      "https://www.magiclab.top/en/dog"
+    ],
+    "keywords": [
+      "magiclab",
+      "magicdog-w",
+      "wheeled quadruped",
+      "robot dog",
+      "all terrain",
+      "inspection"
+    ]
+  },
+  {
+    "name": "MagicDog Y1",
+    "company": "MagicLab",
+    "category": "Quadruped",
+    "primaryFocus": "Secondary",
+    "segments": [
+      "Quadruped",
+      "Industrial",
+      "Autonomous Robotics",
+      "Commercial Access"
+    ],
+    "country": "China",
+    "status": "Industrial quadruped robot",
+    "availability": "Official product page / purchase inquiry",
+    "price": "No official public price",
+    "useCase": "Industrial inspection, field patrol, heavy payload mobility, emergency response, and all-terrain autonomous robotics",
+    "height": "Official dimensions: 915 x 458 x 800 mm",
+    "runtime": "Official operating time: 4-6 hours",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "assets/robots/magiclab/magicdog-y1/hero.png",
+    "heroImage": "assets/robots/magiclab/magicdog-y1/hero.png",
+    "imageCredit": "MagicLab official product media",
+    "source": "https://www.magiclab.top/en/dog-y",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/dog-y",
+      "https://www.magiclab.top/en/dog"
+    ],
+    "keywords": [
+      "magiclab",
+      "magicdog y1",
+      "quadruped",
+      "industrial robot dog",
+      "inspection",
+      "ip67",
+      "payload"
+    ]
+  },
+  {
+    "name": "MagicDog",
+    "company": "MagicLab",
+    "category": "Quadruped",
+    "primaryFocus": "Secondary",
+    "segments": [
+      "Quadruped",
+      "Autonomous Robotics",
+      "Research Platforms",
+      "Commercial Access"
+    ],
+    "country": "China",
+    "status": "Bionic quadruped companion robot",
+    "availability": "Official product page / purchase inquiry",
+    "price": "No official public price",
+    "useCase": "Emotional interaction, education, programming, companionship, inspection-style mobility, and quadruped development",
+    "height": "Official standing dimensions: 670 x 350 x 560 mm",
+    "runtime": "Official battery life: 1.5-3.0 hours",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/magiclab/magicdog/hero.png",
+    "heroImage": "assets/robots/magiclab/magicdog/hero.png",
+    "imageCredit": "MagicLab official product media",
+    "source": "https://www.magiclab.top/en/dog",
+    "sourceLinks": [
+      "https://www.magiclab.top/en/dog"
+    ],
+    "keywords": [
+      "magiclab",
+      "magicdog",
+      "quadruped",
+      "robot dog",
+      "companion robot",
+      "emotion interaction"
     ]
   }
 ]
