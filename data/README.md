@@ -28,9 +28,9 @@ node scripts/add-robot.mjs
 Manual file method:
 
 1. Copy `data/templates/robot.template.json`.
-2. Save it as `data/robots/company-robot.json`.
-3. Put the robot image at `assets/robots/robot-slug/hero.png`.
-4. Set `"image": "assets/robots/robot-slug/hero.png"` in the JSON.
+2. Save it as `data/robots/company-slug/company-robot-slug.json`.
+3. Put the robot image at `assets/robots/company-slug/robot-slug/hero.png`.
+4. Set `"image": "assets/robots/company-slug/robot-slug/hero.png"` in the JSON.
 
 ## Add a signal
 

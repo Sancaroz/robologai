@@ -40,6 +40,13 @@ function brandSlug(company = "") {
     .replace(/-ltd$/, "");
 }
 
+function robotRecordPath(record, flatOutput = false) {
+  const outputSlug = robotKey(record);
+  if (!outputSlug) throw new Error("Could not create a file slug from robot and company name.");
+  if (flatOutput) return path.join(robotDir, `${outputSlug}.json`);
+  return path.join(robotDir, brandSlug(record.company), `${outputSlug}.json`);
+}
+
 function robotKey(record) {
   const name = slug(record.name);
   const brand = brandSlug(record.company);
@@ -123,7 +130,7 @@ function existingRobotKeys() {
 
 async function askMissing(args) {
   if (args.help) return args;
-  const hasCliValues = Object.keys(args).some((key) => !["dry-run", "help", "skip-build", "allow-missing-company"].includes(key));
+  const hasCliValues = Object.keys(args).some((key) => !["dry-run", "help", "skip-build", "allow-missing-company", "flat-output"].includes(key));
   const rl = readline.createInterface({ input, output });
   const ask = async (key, label, fallback = "") => {
     if (args[key] !== undefined) return args[key];
@@ -182,12 +189,13 @@ Options:
   --image-credit          Optional image credit
   --keywords              Comma-separated keywords
   --allow-missing-company Create even if company is not in company data yet
+  --flat-output           Use legacy data/robots/<company-robot-slug>.json output
   --skip-build            Only write modular JSON; do not rebuild aggregate data or pages
   --dry-run               Print the record without writing
   --help                  Show this help
 
 Output:
-  data/robots/<company-robot-slug>.json
+  data/robots/<company-slug>/<company-robot-slug>.json
 `);
 }
 
@@ -250,22 +258,22 @@ async function main() {
   }
 
   const outputSlug = robotKey(record);
-  if (!outputSlug) throw new Error("Could not create a file slug from robot and company name.");
   if (existingRobotKeys().has(outputSlug)) {
     throw new Error(`${record.name} by ${record.company} already exists in central or modular robot data.`);
   }
-  const outputPath = path.join(robotDir, `${outputSlug}.json`);
+  const outputPath = robotRecordPath(record, Boolean(args["flat-output"]));
   if (fs.existsSync(outputPath)) {
     throw new Error(`${path.relative(root, outputPath)} already exists.`);
   }
 
   const json = `${JSON.stringify(record, null, 2)}\n`;
   if (args["dry-run"]) {
+    console.log(`Would create ${path.relative(root, outputPath)}`);
     console.log(json);
     return;
   }
 
-  fs.mkdirSync(robotDir, { recursive: true });
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, json);
   console.log(`Created ${path.relative(root, outputPath)}`);
 

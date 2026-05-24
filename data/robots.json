@@ -1068,5 +1068,46 @@
       "imu": "9-axis IMU",
       "connectivity": "Wi-Fi, Bluetooth 5.2"
     }
+  },
+  {
+    "name": "Walker S2",
+    "company": "UBTECH Robotics",
+    "category": "Humanoid",
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Industrial",
+      "Commercial Access",
+      "China Robotics"
+    ],
+    "country": "China",
+    "status": "Industrial humanoid platform for mass production delivery",
+    "availability": "Enterprise / industrial deployment",
+    "price": "No official public price",
+    "useCase": "Manufacturing, production-line tasks, autonomous battery-swapping humanoid operations",
+    "height": "Not disclosed",
+    "runtime": "Autonomous battery swapping for continuous operation",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "assets/robots/ubtech/walker-s2/hero.jpg",
+    "heroImage": "assets/robots/ubtech/walker-s2/hero.jpg",
+    "imageCredit": "UBTECH official Walker S2 product page",
+    "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
+    "sourceLinks": [
+      "https://www.ubtrobot.com/en/humanoid/products/walker-s2"
+    ],
+    "keywords": [
+      "walker s2",
+      "ubtech",
+      "humanoid",
+      "industrial",
+      "battery swapping",
+      "manufacturing",
+      "binocular stereo vision"
+    ],
+    "gallery": [
+      "assets/robots/ubtech/walker-s2/gallery-1.jpg",
+      "assets/robots/ubtech/walker-s2/gallery-2.jpg"
+    ]
   }
 ]

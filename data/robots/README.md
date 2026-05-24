@@ -31,8 +31,8 @@ data/templates/robot.template.json
 Suggested file naming:
 
 ```text
-data/robots/deep-robotics-x30-pro.json
-data/robots/wirobotics-wim.json
+data/robots/deep-robotics/deep-robotics-x30-pro.json
+data/robots/wirobotics/wirobotics-wim.json
 ```
 
 Required fields for a brand-new robot:
@@ -68,8 +68,8 @@ Recommended fields:
 Recommended robot image path:
 
 ```text
-assets/robots/robot-slug/hero.png
-assets/robots/robot-slug/demo.webp
+assets/robots/company-slug/robot-slug/hero.png
+assets/robots/company-slug/robot-slug/demo.webp
 ```
 
 Use these checks before committing:
