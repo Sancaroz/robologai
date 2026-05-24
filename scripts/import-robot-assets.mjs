@@ -11,6 +11,12 @@ const modularCompanyDir = path.join(root, "data", "companies");
 const modularRobotDir = path.join(root, "data", "robots");
 const imagePattern = /\.(avif|webp|png|jpe?g)$/i;
 const heroPattern = /^hero\.(avif|webp|png|jpe?g)$/i;
+const companySlugAliases = new Map([
+  ["deeprobotics", "DEEP Robotics"]
+]);
+const companyFolderAliases = new Map([
+  ["DEEP Robotics", "deeprobotics"]
+]);
 
 function parseArgs(argv) {
   const args = {};
@@ -127,6 +133,7 @@ function robotRecords() {
 }
 
 function companyNameFromSlug(companySlug, companies) {
+  if (companySlugAliases.has(companySlug)) return companySlugAliases.get(companySlug);
   const match = companies.find((company) => brandSlug(company.name) === companySlug || slug(company.name) === companySlug);
   return match?.name || titleFromSlug(companySlug);
 }
@@ -203,7 +210,8 @@ function draftRecord({ companyName, robotName, source, hero, gallery, existing, 
 }
 
 function outputPath(record) {
-  return path.join(robotDir, brandSlug(record.company), `${robotKey(record)}.json`);
+  const companyFolder = companyFolderAliases.get(record.company) || brandSlug(record.company);
+  return path.join(robotDir, companyFolder, `${robotKey(record)}.json`);
 }
 
 function runStep(label, args) {

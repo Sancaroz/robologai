@@ -11,8 +11,8 @@
   "runtime": "Not disclosed",
   "maturity": 3,
   "priceVisibility": 3,
-  "image": "assets/robots/deeprobotics/dr01.png",
-  "heroImage": "assets/robots/deeprobotics/dr01.png",
+  "image": "assets/robots/deeprobotics/dr01/hero.png",
+  "heroImage": "assets/robots/deeprobotics/dr01/hero.png",
   "imageCredit": "DEEP Robotics official humanoid page",
   "source": "https://www.deeprobotics.cn/en/index/humanoid.html",
   "sourceLinks": [

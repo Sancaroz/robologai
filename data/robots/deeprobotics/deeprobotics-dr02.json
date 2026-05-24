@@ -11,8 +11,8 @@
   "runtime": "Not disclosed",
   "maturity": 3,
   "priceVisibility": 3,
-  "image": "assets/robots/deeprobotics/dr02.png",
-  "heroImage": "assets/robots/deeprobotics/dr02.png",
+  "image": "assets/robots/deeprobotics/dr02/hero.png",
+  "heroImage": "assets/robots/deeprobotics/dr02/hero.png",
   "imageCredit": "DEEP Robotics official DR02 page",
   "source": "https://www.deeprobotics.cn/en/index/dr02.html",
   "sourceLinks": [

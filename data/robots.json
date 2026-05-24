@@ -689,7 +689,9 @@
       "research",
       "education",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/lite3/hero.png",
+    "heroImage": "assets/robots/deeprobotics/lite3/hero.png"
   },
   {
     "name": "Lite3 Pro",
@@ -719,8 +721,8 @@
       "perception",
       "retailer reference pricing"
     ],
-    "image": "assets/robots/deeprobotics/lite3.png",
-    "heroImage": "assets/robots/deeprobotics/lite3.png"
+    "image": "assets/robots/deeprobotics/lite3/hero.png",
+    "heroImage": "assets/robots/deeprobotics/lite3/hero.png"
   },
   {
     "name": "Lite3 LIDAR",
@@ -750,7 +752,9 @@
       "slam",
       "autonomous navigation",
       "retailer reference pricing"
-    ]
+    ],
+    "image": "assets/robots/deeprobotics/lite3/hero.png",
+    "heroImage": "assets/robots/deeprobotics/lite3/hero.png"
   },
   {
     "name": "X20",
@@ -776,8 +780,8 @@
       "ip66",
       "patrol"
     ],
-    "image": "assets/robots/deeprobotics/x20.png",
-    "heroImage": "assets/robots/deeprobotics/x20.png"
+    "image": "assets/robots/deeprobotics/x20/hero.png",
+    "heroImage": "assets/robots/deeprobotics/x20/hero.png"
   },
   {
     "name": "X30",
@@ -804,8 +808,8 @@
       "security",
       "mapping"
     ],
-    "image": "assets/robots/deeprobotics/x30.png",
-    "heroImage": "assets/robots/deeprobotics/x30.png"
+    "image": "assets/robots/deeprobotics/x30/hero.png",
+    "heroImage": "assets/robots/deeprobotics/x30/hero.png"
   },
   {
     "name": "X30 Pro",
@@ -836,8 +840,8 @@
       "ip67",
       "retailer reference pricing"
     ],
-    "image": "assets/robots/deeprobotics/x30.png",
-    "heroImage": "assets/robots/deeprobotics/x30.png"
+    "image": "assets/robots/deeprobotics/x30-pro/hero.png",
+    "heroImage": "assets/robots/deeprobotics/x30-pro/hero.png"
   },
   {
     "name": "LYNX",
@@ -863,8 +867,8 @@
       "robot dog",
       "field robotics"
     ],
-    "image": "assets/robots/deeprobotics/lynex.png",
-    "heroImage": "assets/robots/deeprobotics/lynex.png"
+    "image": "assets/robots/deeprobotics/lynx/hero.png",
+    "heroImage": "assets/robots/deeprobotics/lynx/hero.png"
   },
   {
     "name": "LYNX M20",
@@ -897,8 +901,8 @@
       "inspection",
       "retailer reference pricing"
     ],
-    "image": "assets/robots/deeprobotics/lynex-m20.png",
-    "heroImage": "assets/robots/deeprobotics/lynex-m20.png"
+    "image": "assets/robots/deeprobotics/lynx-m20/hero.png",
+    "heroImage": "assets/robots/deeprobotics/lynx-m20/hero.png"
   },
   {
     "name": "DR01",
@@ -927,8 +931,8 @@
       "robotics research",
       "retailer reference pricing"
     ],
-    "image": "assets/robots/deeprobotics/dr01.png",
-    "heroImage": "assets/robots/deeprobotics/dr01.png"
+    "image": "assets/robots/deeprobotics/dr01/hero.png",
+    "heroImage": "assets/robots/deeprobotics/dr01/hero.png"
   },
   {
     "name": "DR02",
@@ -959,8 +963,8 @@
       "embodied ai",
       "retailer reference pricing"
     ],
-    "image": "assets/robots/deeprobotics/dr02.png",
-    "heroImage": "assets/robots/deeprobotics/dr02.png"
+    "image": "assets/robots/deeprobotics/dr02/hero.png",
+    "heroImage": "assets/robots/deeprobotics/dr02/hero.png"
   },
   {
     "name": "Maximo",
