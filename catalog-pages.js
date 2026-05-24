@@ -4557,6 +4557,65 @@ function robotScoreBreakdown(robot) {
   };
 }
 
+function priceRecordForRobot(robot) {
+  const key = priceRecordKey(robot);
+  return priceRecords().find((price) => priceRecordKey(price) === key) || null;
+}
+
+function sourceProofScore(robot) {
+  const sources = sourceList(robot.source, robot.sourceLinks);
+  const officialSources = sources.filter((source) => /(^https?:\/\/)?([^/]+\.)?(agibot|bostondynamics|deeprobotics|figure|unitree|ubtrobot|magiclab|engineai|booster|1x|tesla|apptronik|agilityrobotics|sanctuary|pudurobotics)\./i.test(source));
+  return Math.min(100, (sources.length ? 35 : 0) + (officialSources.length ? 25 : 0) + (robot.image ? 20 : 0) + (robotVideo(robot) ? 20 : 0));
+}
+
+function priceTransparencyScore(robot) {
+  const priceRecord = priceRecordForRobot(robot);
+  const sourceType = priceRecord?.sourceType || "";
+  const typeBonus = ["official", "official-shop"].includes(sourceType) ? 35 :
+    sourceType === "deposit" ? 24 :
+    ["retailer", "retailer-reference"].includes(sourceType) ? 20 :
+    sourceType === "reported-reference" ? 12 :
+    0;
+  const structuredBonus = priceRecord?.isStructured ? 20 : 0;
+  const confidenceBonus = Math.max(0, Math.min(25, Number(priceRecord?.confidence || 0) * 5));
+  return Math.min(100, (Number(robot.priceVisibility || 0) * 4) + typeBonus + structuredBonus + confidenceBonus);
+}
+
+function marketLeaderScore(robot, lane) {
+  const breakdown = robotScoreBreakdown(robot);
+  const text = robotText(robot);
+  if (lane === "commercial") {
+    const deploymentTextBonus = text.includes("enterprise") || text.includes("industrial") || text.includes("available") || text.includes("commercial") ? 12 : 0;
+    return Math.round((breakdown.commercial * 0.74) + (sourceProofScore(robot) * 0.14) + (deploymentTextBonus));
+  }
+  if (lane === "price") return priceTransparencyScore(robot);
+  if (lane === "source") return sourceProofScore(robot);
+  return breakdown.overall;
+}
+
+function selectMarketLeaders(rankings) {
+  const used = new Set();
+  const pick = (lane, fallbackIndex = 0) => {
+    const ranked = rankings
+      .map((item) => ({ ...item, laneScore: marketLeaderScore(item.robot, lane) }))
+      .sort((a, b) => b.laneScore - a.laneScore || b.score - a.score);
+    return ranked.find((item) => !used.has(robotSeoSlug(item.robot))) || ranked[fallbackIndex] || ranked[0];
+  };
+  const overall = pick("overall");
+  if (overall) used.add(robotSeoSlug(overall.robot));
+  const commercial = pick("commercial");
+  if (commercial) used.add(robotSeoSlug(commercial.robot));
+  const price = pick("price");
+  if (price) used.add(robotSeoSlug(price.robot));
+  const source = pick("source");
+  return [
+    ["R-Score leader", overall, "Best balanced readiness signal"],
+    ["Commercial readiness", commercial, "Maturity, availability, and deployment posture"],
+    ["Price transparency", price, "Structured price record and public price confidence"],
+    ["Source proof", source, "Official sources, media, and profile evidence"]
+  ];
+}
+
 function scoreLabel(score) {
   if (score >= 82) return "Leader";
   if (score >= 68) return "Strong signal";
@@ -6303,17 +6362,12 @@ function renderMarketPage() {
     }).join("");
   }
   if (leaderGrid) {
-    const leaders = [
-      ["R-Score leader", rankings[0], "Best overall readiness signal"],
-      ["Commercial readiness", [...rankings].sort((a, b) => b.breakdown.commercial - a.breakdown.commercial)[0], "Strongest maturity and deployment mix"],
-      ["Price transparency", [...rankings].sort((a, b) => b.breakdown.price - a.breakdown.price)[0], "Best visible price/access signal"],
-      ["Source proof", [...rankings].sort((a, b) => b.breakdown.source + b.breakdown.media - (a.breakdown.source + a.breakdown.media))[0], "Strongest source and media trail"]
-    ];
+    const leaders = selectMarketLeaders(rankings);
     leaderGrid.innerHTML = leaders.map(([label, item, note]) => `
       <article>
         <span>${pageEscape(label)}</span>
         <strong>${pageEscape(item?.robot?.name || "Pending")}</strong>
-        <small>${pageEscape(note)}${item ? ` · ${item.score} R-Score` : ""}</small>
+        <small>${pageEscape(note)}${item ? ` · ${item.laneScore ?? item.score} signal · ${item.score} R-Score` : ""}</small>
         ${item ? `<a href="${pageEscape(robotProfileHref(item.robot))}">Open profile →</a>` : ""}
       </article>
     `).join("");
