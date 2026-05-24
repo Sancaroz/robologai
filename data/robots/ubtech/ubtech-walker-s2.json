@@ -18,8 +18,8 @@
   "runtime": "Autonomous battery swapping for continuous operation",
   "maturity": 4,
   "priceVisibility": 1,
-  "image": "assets/robots/ubtech/walker-s2/hero.jpg",
-  "heroImage": "assets/robots/ubtech/walker-s2/hero.jpg",
+  "image": "assets/robots/ubtech/walker/walker-s2/hero.png",
+  "heroImage": "assets/robots/ubtech/walker/walker-s2/hero.png",
   "gallery": [
     "assets/robots/ubtech/walker-s2/gallery-1.jpg",
     "assets/robots/ubtech/walker-s2/gallery-2.jpg"

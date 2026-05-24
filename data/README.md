@@ -25,6 +25,12 @@ Recommended:
 node scripts/add-robot.mjs
 ```
 
+Image-first import:
+
+1. Put files under `assets/robots/company-slug/robot-slug/hero.jpg`.
+2. Add optional `source.txt` in the same folder with the official URL.
+3. Run `node scripts/import-robot-assets.mjs --write`.
+
 Manual file method:
 
 1. Copy `data/templates/robot.template.json`.

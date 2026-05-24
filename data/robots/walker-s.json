@@ -1,26 +1,31 @@
 {
-    "name": "Walker S",
-    "company": "UBTECH Robotics",
-    "category": "Humanoid",
-    "country": "China",
-    "status": "Industrial pilots",
-    "availability": "Enterprise",
-    "price": "No official public price",
-    "useCase": "Manufacturing, automotive, industrial tasks",
-    "height": "Human scale",
-    "runtime": "Not disclosed",
-    "maturity": 4,
-    "priceVisibility": 1,
-    "image": "assets/robots/ubtech/walker-s/hero.jpg",
-    "heroImage": "assets/robots/ubtech/walker-s/hero.jpg",
-    "gallery": [
-      "assets/robots/ubtech/walker-s/gallery-1.jpg"
-    ],
-    "imageCredit": "UBTECH official Walker S product media",
-    "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s",
-    "sourceLinks": [
-      "https://www.ubtrobot.com/en/humanoid/products/walker-s"
-    ],
-    "keywords": ["walker", "walker s", "ubtech", "industrial", "humanoid"]
-  }
-  
+  "name": "Walker S",
+  "company": "UBTECH Robotics",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Industrial pilots",
+  "availability": "Enterprise",
+  "price": "No official public price",
+  "useCase": "Manufacturing, automotive, industrial tasks",
+  "height": "Human scale",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/ubtech/walker/walker-s/hero.png",
+  "heroImage": "assets/robots/ubtech/walker/walker-s/hero.png",
+  "gallery": [
+    "assets/robots/ubtech/walker/walker-s/hero.png"
+  ],
+  "imageCredit": "UBTECH official Walker S product media",
+  "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s",
+  "sourceLinks": [
+    "https://www.ubtrobot.com/en/humanoid/products/walker-s"
+  ],
+  "keywords": [
+    "walker",
+    "walker s",
+    "ubtech",
+    "industrial",
+    "humanoid"
+  ]
+}

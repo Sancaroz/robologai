@@ -424,10 +424,10 @@
       "industrial",
       "humanoid"
     ],
-    "image": "assets/robots/ubtech/walker-s/hero.jpg",
-    "heroImage": "assets/robots/ubtech/walker-s/hero.jpg",
+    "image": "assets/robots/ubtech/walker/walker-s/hero.png",
+    "heroImage": "assets/robots/ubtech/walker/walker-s/hero.png",
     "gallery": [
-      "assets/robots/ubtech/walker-s/gallery-1.jpg"
+      "assets/robots/ubtech/walker/walker-s/hero.png"
     ],
     "imageCredit": "UBTECH official Walker S product media",
     "sourceLinks": [
@@ -1099,8 +1099,8 @@
     "runtime": "Autonomous battery swapping for continuous operation",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "assets/robots/ubtech/walker-s2/hero.jpg",
-    "heroImage": "assets/robots/ubtech/walker-s2/hero.jpg",
+    "image": "assets/robots/ubtech/walker/walker-s2/hero.png",
+    "heroImage": "assets/robots/ubtech/walker/walker-s2/hero.png",
     "imageCredit": "UBTECH official Walker S2 product page",
     "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
     "sourceLinks": [
@@ -1140,8 +1140,8 @@
     "runtime": "Not disclosed",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "assets/robots/ubtech/cruzr-s2/hero.jpg",
-    "heroImage": "assets/robots/ubtech/cruzr-s2/hero.jpg",
+    "image": "assets/robots/ubtech/cruzr/s2/hero.png",
+    "heroImage": "assets/robots/ubtech/cruzr/s2/hero.png",
     "imageCredit": "UBTECH official Cruzr S2 product page",
     "source": "https://www.ubtrobot.com/en/commercial/products/cruzr-s2",
     "sourceLinks": [
@@ -1176,8 +1176,8 @@
     "runtime": "Walking 2h, standing 4h; charging 1.5h",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "assets/robots/ubtech/walker-c/hero.jpg",
-    "heroImage": "assets/robots/ubtech/walker-c/hero.jpg",
+    "image": "assets/robots/ubtech/walker/walker-c/hero.png",
+    "heroImage": "assets/robots/ubtech/walker/walker-c/hero.png",
     "imageCredit": "UBTECH official Walker C product page",
     "source": "https://www.ubtrobot.com/en/humanoid/products/walker-c",
     "sourceLinks": [
@@ -1192,6 +1192,39 @@
       "reception",
       "expo",
       "embodied ai"
+    ]
+  },
+  {
+    "name": "Walker X",
+    "company": "UBTECH Robotics",
+    "category": "Humanoid",
+    "country": "China",
+    "status": "Commercial service humanoid platform",
+    "availability": "Enterprise / commercial service deployment",
+    "price": "No official public price",
+    "useCase": "Commercial reception, guided service, public venue interaction, and humanoid demonstration",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "source": "https://www.ubtrobot.com/en/humanoid/products/walker-x",
+    "image": "assets/robots/ubtech/walker/walker-x/hero.png",
+    "heroImage": "assets/robots/ubtech/walker/walker-x/hero.png",
+    "sourceLinks": [
+      "https://www.ubtrobot.com/en/humanoid/products/walker-x"
+    ],
+    "keywords": [
+      "walker x",
+      "ubtech",
+      "humanoid",
+      "service robot",
+      "commercial robot"
+    ],
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Commercial Access",
+      "China Robotics"
     ]
   }
 ]

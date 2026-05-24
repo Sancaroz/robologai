@@ -22,6 +22,22 @@ node scripts/add-robot.mjs --name "Example Bot" --company "Example Robotics" --c
 
 By default, the script writes the modular JSON, rebuilds `data/robots.json`, regenerates static profile pages, and validates the data. Use `--skip-build` if you only want to create the modular JSON file.
 
+For image-first imports, put robot assets in folders like this:
+
+```text
+assets/robots/ubtech/walker/walker-s2/hero.png
+assets/robots/ubtech/walker/walker-s2/gallery-1.jpg
+assets/robots/ubtech/walker/walker-s2/source.txt
+```
+
+Then run:
+
+```bash
+node scripts/import-robot-assets.mjs --write
+```
+
+The importer creates or updates `data/robots/company-slug/company-robot-slug.json`, then rebuilds aggregate data and generated profile pages. Without `--write`, it previews the records only.
+
 If you prefer manual editing, copy:
 
 ```text

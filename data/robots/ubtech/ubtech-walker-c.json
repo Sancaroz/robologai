@@ -17,8 +17,8 @@
   "runtime": "Walking 2h, standing 4h; charging 1.5h",
   "maturity": 4,
   "priceVisibility": 1,
-  "image": "assets/robots/ubtech/walker-c/hero.jpg",
-  "heroImage": "assets/robots/ubtech/walker-c/hero.jpg",
+  "image": "assets/robots/ubtech/walker/walker-c/hero.png",
+  "heroImage": "assets/robots/ubtech/walker/walker-c/hero.png",
   "imageCredit": "UBTECH official Walker C product page",
   "source": "https://www.ubtrobot.com/en/humanoid/products/walker-c",
   "sourceLinks": [

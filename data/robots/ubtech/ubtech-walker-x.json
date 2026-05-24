@@ -1,0 +1,33 @@
+{
+  "name": "Walker X",
+  "company": "UBTECH Robotics",
+  "category": "Humanoid",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Commercial Access",
+    "China Robotics"
+  ],
+  "country": "China",
+  "status": "Commercial service humanoid platform",
+  "availability": "Enterprise / commercial service deployment",
+  "price": "No official public price",
+  "useCase": "Commercial reception, guided service, public venue interaction, and humanoid demonstration",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "source": "https://www.ubtrobot.com/en/humanoid/products/walker-x",
+  "image": "assets/robots/ubtech/walker/walker-x/hero.png",
+  "heroImage": "assets/robots/ubtech/walker/walker-x/hero.png",
+  "sourceLinks": [
+    "https://www.ubtrobot.com/en/humanoid/products/walker-x"
+  ],
+  "keywords": [
+    "walker x",
+    "ubtech",
+    "humanoid",
+    "service robot",
+    "commercial robot"
+  ]
+}

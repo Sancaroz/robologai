@@ -34,8 +34,11 @@ function readJson(filePath) {
 function listJsonFiles(dirPath) {
   if (!fs.existsSync(dirPath)) return [];
   return fs.readdirSync(dirPath, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
-    .map((entry) => path.join(dirPath, entry.name))
+    .flatMap((entry) => {
+      const entryPath = path.join(dirPath, entry.name);
+      if (entry.isDirectory()) return listJsonFiles(entryPath);
+      return entry.isFile() && entry.name.endsWith(".json") ? [entryPath] : [];
+    })
     .sort();
 }
 

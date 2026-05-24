@@ -33,6 +33,7 @@ function main() {
     "scripts/add-robot.mjs",
     "scripts/build-data.mjs",
     "scripts/health-check.mjs",
+    "scripts/import-robot-assets.mjs",
     "scripts/update-signals.mjs",
     "scripts/validate-assets.mjs",
     "scripts/validate-data.mjs",
