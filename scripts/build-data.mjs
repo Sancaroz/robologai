@@ -19,6 +19,11 @@ const collections = {
     file: path.join(root, "data", "signals.json"),
     dir: path.join(root, "data", "signals"),
     key: (record) => `${normalizeKey(record.source)}::${normalizeKey(record.title)}`
+  },
+  prices: {
+    file: path.join(root, "data", "prices.json"),
+    dir: path.join(root, "data", "prices"),
+    key: (record) => `${normalizeKey(record.company)}::${normalizeKey(record.robot)}::${normalizeKey(record.source)}`
   }
 };
 

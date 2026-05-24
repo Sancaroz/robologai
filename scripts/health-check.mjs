@@ -31,6 +31,7 @@ function main() {
     "script.js",
     "scripts/add-company.mjs",
     "scripts/add-robot.mjs",
+    "scripts/audit-price-sources.mjs",
     "scripts/audit-robot-images.mjs",
     "scripts/build-data.mjs",
     "scripts/health-check.mjs",

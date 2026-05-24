@@ -6,19 +6,22 @@ const root = process.cwd();
 const centralFiles = {
   companies: path.join(root, "data", "companies.json"),
   robots: path.join(root, "data", "robots.json"),
-  signals: path.join(root, "data", "signals.json")
+  signals: path.join(root, "data", "signals.json"),
+  prices: path.join(root, "data", "prices.json")
 };
 
 const modularDirs = {
   companies: path.join(root, "data", "companies"),
   robots: path.join(root, "data", "robots"),
-  signals: path.join(root, "data", "signals")
+  signals: path.join(root, "data", "signals"),
+  prices: path.join(root, "data", "prices")
 };
 
 const requiredFields = {
   companies: ["name", "category", "country", "type", "website"],
   robots: ["name", "company", "category", "country", "status", "availability", "price", "useCase", "source"],
-  signals: ["date", "type", "title", "company", "robot", "category", "country", "impact", "summary", "source"]
+  signals: ["date", "type", "title", "company", "robot", "category", "country", "impact", "summary", "source"],
+  prices: ["robot", "company", "priceText", "sourceType", "source", "confidence", "lastChecked"]
 };
 
 const primaryFocusValues = new Set(["Humanoids", "Embodied AI", "Physical AI", "Autonomous Robotics", "Secondary"]);
@@ -72,6 +75,18 @@ function validateRecord(kind, record, label) {
       throw new Error(`${label} has invalid priceVisibility; expected 0-5`);
     }
   }
+  if (kind === "prices") {
+    const confidence = Number(record.confidence ?? 1);
+    if (!Number.isFinite(confidence) || confidence < 1 || confidence > 5) {
+      throw new Error(`${label} has invalid confidence; expected 1-5`);
+    }
+    if (record.minPrice !== undefined && record.minPrice !== null && (!Number.isFinite(Number(record.minPrice)) || Number(record.minPrice) < 0)) {
+      throw new Error(`${label} has invalid minPrice; expected positive number or null`);
+    }
+    if (record.maxPrice !== undefined && record.maxPrice !== null && (!Number.isFinite(Number(record.maxPrice)) || Number(record.maxPrice) < 0)) {
+      throw new Error(`${label} has invalid maxPrice; expected positive number or null`);
+    }
+  }
 }
 
 function normalize(value = "") {
@@ -111,6 +126,7 @@ function recordKey(kind, record) {
     return name.startsWith(brand) ? name : `${brand}-${name}`;
   }
   if (kind === "signals") return `${normalize(record.source || "")}::${normalize(record.title || "")}`;
+  if (kind === "prices") return `${normalize(record.company || "")}::${normalize(record.robot || "")}::${normalize(record.source || "")}`;
   return normalize(record.name || "");
 }
 
@@ -165,21 +181,34 @@ function validateLinks(companies, robots) {
   }
 }
 
+function validatePriceLinks(prices, robots) {
+  const robotKeys = new Set(robots.map((robot) => `${normalize(robot.company || "")}::${normalize(robot.name || "")}`));
+  const missingRobots = prices
+    .filter((price) => !robotKeys.has(`${normalize(price.company || "")}::${normalize(price.robot || "")}`))
+    .map((price) => `${price.company} / ${price.robot}`);
+  if (missingRobots.length) {
+    throw new Error(`prices reference missing robots: ${missingRobots.slice(0, 12).join("; ")}`);
+  }
+}
+
 function main() {
   const central = {
     companies: asArray(readJson(centralFiles.companies), "data/companies.json"),
     robots: asArray(readJson(centralFiles.robots), "data/robots.json"),
-    signals: asArray(readJson(centralFiles.signals), "data/signals.json")
+    signals: asArray(readJson(centralFiles.signals), "data/signals.json"),
+    prices: asArray(readJson(centralFiles.prices), "data/prices.json")
   };
   const modular = {
     companies: readModularRecords("companies"),
     robots: readModularRecords("robots"),
-    signals: readModularRecords("signals")
+    signals: readModularRecords("signals"),
+    prices: readModularRecords("prices")
   };
   const merged = {
     companies: mergeRecords(central.companies, modular.companies.map(({ __sourceFile, ...record }) => record), "companies"),
     robots: mergeRecords(central.robots, modular.robots.map(({ __sourceFile, ...record }) => record), "robots"),
-    signals: mergeRecords(central.signals, modular.signals.map(({ __sourceFile, ...record }) => record), "signals")
+    signals: mergeRecords(central.signals, modular.signals.map(({ __sourceFile, ...record }) => record), "signals"),
+    prices: mergeRecords(central.prices, modular.prices.map(({ __sourceFile, ...record }) => record), "prices")
   };
 
   for (const kind of Object.keys(modular)) {
@@ -193,11 +222,14 @@ function main() {
   validateCollection("companies", merged.companies, "companies");
   validateCollection("robots", merged.robots, "robots");
   validateCollection("signals", merged.signals, "signals");
+  validateCollection("prices", merged.prices, "prices");
   validateLinks(merged.companies, merged.robots);
+  validatePriceLinks(merged.prices, merged.robots);
 
   console.log(`companies ok: ${central.companies.length} central, ${modular.companies.length} modular`);
   console.log(`robots ok: ${central.robots.length} central, ${modular.robots.length} modular`);
   console.log(`signals ok: ${central.signals.length} central, ${modular.signals.length} modular`);
+  console.log(`prices ok: ${central.prices.length} central, ${modular.prices.length} modular`);
 }
 
 try {

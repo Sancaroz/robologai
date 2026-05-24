@@ -1,0 +1,13 @@
+{
+  "robot": "Robot name",
+  "company": "Company name",
+  "priceText": "Visible price or pricing note",
+  "currency": "USD",
+  "minPrice": 0,
+  "maxPrice": null,
+  "sourceType": "official-shop",
+  "source": "https://example.com/product",
+  "confidence": 4,
+  "lastChecked": "2026-05-24",
+  "notes": "Official, retailer, reference, deposit, or quote context."
+}

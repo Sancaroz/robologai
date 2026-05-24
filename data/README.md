@@ -47,6 +47,15 @@ Manual file method:
 3. Use official or primary sources first.
 4. Link `relatedUrl` to a company or robot profile when possible.
 
+## Add a price signal
+
+Manual file method:
+
+1. Copy `data/templates/price.template.json`.
+2. Save it under `data/prices/` or append it to a focused modular file.
+3. Separate `sourceType` clearly: `official`, `official-shop`, `retailer`, `retailer-reference`, `reported-reference`, `deposit`, or `quote`.
+4. Use `confidence` from 1 to 5 and update `lastChecked` when the source is reviewed.
+
 ## Do not edit these by hand
 
 These aggregate files are generated from modular records and should be updated with scripts:
@@ -55,6 +64,7 @@ These aggregate files are generated from modular records and should be updated w
 data/companies.json
 data/robots.json
 data/signals.json
+data/prices.json
 ```
 
 ## Build and check
@@ -75,6 +85,7 @@ Individual checks:
 
 ```bash
 node scripts/audit-robot-images.mjs
+node scripts/audit-price-sources.mjs
 node scripts/validate-data.mjs
 node scripts/validate-assets.mjs
 ```
@@ -83,4 +94,11 @@ Robot image quality audit:
 
 ```bash
 node scripts/audit-robot-images.mjs --company deeprobotics
+```
+
+Price source audit:
+
+```bash
+node scripts/audit-price-sources.mjs
+node scripts/audit-price-sources.mjs --check-links
 ```

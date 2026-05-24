@@ -2,6 +2,7 @@ const pageState = {
   robots: [],
   companies: [],
   signals: [],
+  prices: [],
   tasks: [],
   timeline: [],
   heatmap: [],
@@ -3739,6 +3740,8 @@ const signalFallback = [
   }
 ];
 
+const priceFallback = [];
+
 const taskFallback = [
   {
     task: "Tote handling",
@@ -4226,6 +4229,52 @@ function robotProfileHref(robot) {
 
 function companyProfileHref(company) {
   return `companies/${seoSlug(company.name)}.html`;
+}
+
+function priceRecordKey(item = {}) {
+  return `${pageNormalize(item.company || "")}::${pageNormalize(item.robot || item.name || "")}`;
+}
+
+function robotForPrice(price = {}) {
+  return pageState.robots.find((robot) => priceRecordKey(robot) === priceRecordKey(price)) || null;
+}
+
+function priceRecords() {
+  const explicit = pageState.prices.map((price) => ({
+    ...price,
+    robotRecord: robotForPrice(price),
+    isStructured: true
+  }));
+  const seen = new Set(explicit.map(priceRecordKey));
+  const derived = pageState.robots
+    .filter((robot) => Number(robot.priceVisibility || 0) >= 2 && !seen.has(priceRecordKey(robot)))
+    .map((robot) => ({
+      robot: robot.name,
+      company: robot.company,
+      priceText: robot.price,
+      sourceType: pageNormalize(robot.price).includes("quote") || pageNormalize(robot.price).includes("enterprise") ? "quote" : "robot-profile",
+      source: robot.source,
+      confidence: Math.min(5, Math.max(1, Number(robot.priceVisibility || 1))),
+      lastChecked: "",
+      notes: "Derived from robot profile price field.",
+      robotRecord: robot,
+      isStructured: false
+    }));
+  return [...explicit, ...derived].sort((a, b) => Number(b.confidence || 0) - Number(a.confidence || 0));
+}
+
+function priceSourceLabel(type = "") {
+  const labels = {
+    official: "Official",
+    "official-shop": "Official shop",
+    retailer: "Retailer",
+    "retailer-reference": "Retailer/reference",
+    "reported-reference": "Reported/reference",
+    deposit: "Deposit",
+    quote: "Quote",
+    "robot-profile": "Profile signal"
+  };
+  return labels[type] || type || "Price signal";
 }
 
 function countrySlug(country = "") {
@@ -6098,9 +6147,9 @@ function renderMarketPage() {
 
   const publicCompanies = pageState.companies.filter((company) => pageNormalize(company.type).includes("public")).slice(0, 18);
   const privateBuilders = pageState.companies.filter((company) => pageNormalize(`${company.type} ${company.category}`).includes("private") && pageNormalize(company.category).includes("robot")).slice(0, 18);
-  const priceRobots = pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2).slice(0, 12);
+  const trackedPrices = priceRecords();
+  const priceRobots = trackedPrices.slice(0, 12);
   const allPublicCompanies = pageState.companies.filter((company) => pageNormalize(company.type).includes("public"));
-  const pricedRobots = pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2);
   const sourceLinkedRobots = pageState.robots.filter((robot) => robot.source);
   const segments = [
     ["Humanoids", (robot) => matchesStrategicFilter(robot, "humanoids", "robot")],
@@ -6174,7 +6223,7 @@ function renderMarketPage() {
   if (overviewGrid) {
     overviewGrid.innerHTML = [
       ["Companies indexed", pageState.companies.length, `${allPublicCompanies.length} public-market proxies tracked`],
-      ["Robot profiles", pageState.robots.length, `${pricedRobots.length} with useful price/access signal`],
+      ["Robot profiles", pageState.robots.length, `${trackedPrices.length} structured or derived price signals`],
       ["Core market lanes", pageState.companies.filter((company) => primaryFocus(company, "company") !== "Secondary").length, "Humanoid, embodied AI, physical AI, and autonomous robotics"],
       ["Source coverage", `${sourceLinkedRobots.length}/${pageState.robots.length}`, "Robot profiles with official sources"]
     ].map(([label, value, note]) => `
@@ -6218,9 +6267,17 @@ function renderMarketPage() {
     }).join("");
   }
   if (priceGrid) {
-    priceGrid.innerHTML = priceRobots.map((robot) => `
-      <article class="signal-card"><strong>${pageEscape(robot.name)}</strong><span>${pageEscape(robot.company)}</span><small>${pageEscape(robot.price)}</small><a href="${pageEscape(robotProfileHref(robot))}">Profile →</a></article>
-    `).join("");
+    priceGrid.innerHTML = priceRobots.map((price) => {
+      const robot = price.robotRecord;
+      return `
+      <article class="signal-card">
+        <strong>${pageEscape(price.robot)}</strong>
+        <span>${pageEscape(price.company)} · ${pageEscape(priceSourceLabel(price.sourceType))}</span>
+        <small>${pageEscape(price.priceText)}${price.confidence ? ` · Confidence ${pageEscape(price.confidence)}/5` : ""}</small>
+        <a href="${pageEscape(robot ? robotProfileHref(robot) : price.source)}"${robot ? "" : " target=\"_blank\" rel=\"noopener noreferrer\""}>${robot ? "Profile" : "Source"} →</a>
+      </article>
+    `;
+    }).join("");
   }
   if (leaderGrid) {
     const leaders = [
@@ -6244,27 +6301,38 @@ function renderMarketPage() {
 function renderPricesPage() {
   const grid = document.querySelector("[data-prices-grid]");
   if (!grid) return;
+  const records = priceRecords();
   const groups = [
-    ["Public / visible", (robot) => Number(robot.priceVisibility || 0) >= 4],
-    ["Configuration dependent", (robot) => Number(robot.priceVisibility || 0) >= 2 && Number(robot.priceVisibility || 0) < 4],
-    ["Enterprise / quote-based", (robot) => pageNormalize(robot.price).includes("enterprise") || pageNormalize(robot.price).includes("quote")],
-    ["No public price", (robot) => Number(robot.priceVisibility || 0) <= 1]
+    ["Official / deposit", records.filter((price) => ["official", "official-shop", "deposit"].includes(price.sourceType))],
+    ["Retailer / reference", records.filter((price) => ["retailer", "retailer-reference", "reported-reference"].includes(price.sourceType))],
+    ["Profile / quote signal", records.filter((price) => !["official", "official-shop", "deposit", "retailer", "retailer-reference", "reported-reference"].includes(price.sourceType))],
+    ["No public price", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) <= 1).map((robot) => ({
+      robot: robot.name,
+      company: robot.company,
+      priceText: robot.price,
+      sourceType: "no-public-price",
+      source: robot.source,
+      confidence: robot.priceVisibility,
+      robotRecord: robot
+    }))]
   ];
 
-  grid.innerHTML = groups.map(([title, predicate]) => {
-    const robots = pageState.robots.filter(predicate);
+  grid.innerHTML = groups.map(([title, prices]) => {
     return `
       <section class="price-column">
-        <div class="price-column-head"><strong>${pageEscape(title)}</strong><span>${robots.length} robots</span></div>
-        ${robots.map((robot) => `
+        <div class="price-column-head"><strong>${pageEscape(title)}</strong><span>${prices.length} robots</span></div>
+        ${prices.map((price) => {
+          const robot = price.robotRecord;
+          return `
           <article class="price-card">
-            <strong>${pageEscape(robot.name)}</strong>
-            <span>${pageEscape(robot.company)}</span>
-            <p>${pageEscape(robot.price)}</p>
-            <small>${pageEscape(robot.availability)}</small>
-            <a href="${pageEscape(robotProfileHref(robot))}">Profile →</a>
+            <strong>${pageEscape(price.robot)}</strong>
+            <span>${pageEscape(price.company)} · ${pageEscape(priceSourceLabel(price.sourceType))}</span>
+            <p>${pageEscape(price.priceText)}</p>
+            <small>${pageEscape(price.lastChecked ? `Checked ${price.lastChecked}` : robot?.availability || "Source review needed")}${price.confidence ? ` · Confidence ${pageEscape(price.confidence)}/5` : ""}</small>
+            <a href="${pageEscape(robot ? robotProfileHref(robot) : price.source)}"${robot ? "" : " target=\"_blank\" rel=\"noopener noreferrer\""}>${robot ? "Profile" : "Source"} →</a>
           </article>
-        `).join("")}
+        `;
+        }).join("")}
       </section>
     `;
   }).join("");
@@ -7111,10 +7179,11 @@ async function initCatalogPages() {
     document.querySelectorAll("[data-robot-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.robotPageFilter === initialFilter));
     document.querySelectorAll("[data-company-page-filter]").forEach((item) => item.classList.toggle("is-active", item.dataset.companyPageFilter === initialFilter));
   }
-  const [robots, companies, signals, tasks, timeline, heatmap, physicalAi, robotEconomy, globalMap, futureIndex] = await Promise.all([
+  const [robots, companies, signals, prices, tasks, timeline, heatmap, physicalAi, robotEconomy, globalMap, futureIndex] = await Promise.all([
     loadJson("data/robots.json", robotFallback),
     loadJson("data/companies.json", companyFallback),
     loadJson("data/signals.json", signalFallback),
+    loadJson("data/prices.json", priceFallback),
     loadJson("data/tasks.json", taskFallback),
     loadJson("data/timeline.json", timelineFallback),
     loadJson("data/heatmap.json", heatmapFallback),
@@ -7126,6 +7195,7 @@ async function initCatalogPages() {
   pageState.robots = robots;
   pageState.companies = companies;
   pageState.signals = signals;
+  pageState.prices = prices;
   pageState.tasks = tasks;
   pageState.timeline = timeline;
   pageState.heatmap = heatmap;
