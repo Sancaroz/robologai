@@ -11,7 +11,16 @@
     "runtime": "Not disclosed",
     "maturity": 4,
     "priceVisibility": 1,
-    "source": "https://www.ubtrobot.com/",
-    "keywords": ["walker", "ubtech", "industrial", "humanoid"]
+    "image": "assets/robots/ubtech/walker-s/hero.jpg",
+    "heroImage": "assets/robots/ubtech/walker-s/hero.jpg",
+    "gallery": [
+      "assets/robots/ubtech/walker-s/gallery-1.jpg"
+    ],
+    "imageCredit": "UBTECH official Walker S product media",
+    "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s",
+    "sourceLinks": [
+      "https://www.ubtrobot.com/en/humanoid/products/walker-s"
+    ],
+    "keywords": ["walker", "walker s", "ubtech", "industrial", "humanoid"]
   }
   

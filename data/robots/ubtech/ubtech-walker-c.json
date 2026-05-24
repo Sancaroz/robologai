@@ -1,0 +1,37 @@
+{
+  "name": "Walker C",
+  "company": "UBTECH Robotics",
+  "category": "Humanoid",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Commercial Access",
+    "China Robotics"
+  ],
+  "country": "China",
+  "status": "Commercial service humanoid for exhibitions, office buildings, and public venues",
+  "availability": "Enterprise / commercial service deployment",
+  "price": "No official public price",
+  "useCase": "Tour guide, greeting, reception, live Q&A, voice broadcasting, and public-zone entertainment",
+  "height": "163 cm",
+  "runtime": "Walking 2h, standing 4h; charging 1.5h",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/ubtech/walker-c/hero.jpg",
+  "heroImage": "assets/robots/ubtech/walker-c/hero.jpg",
+  "imageCredit": "UBTECH official Walker C product page",
+  "source": "https://www.ubtrobot.com/en/humanoid/products/walker-c",
+  "sourceLinks": [
+    "https://www.ubtrobot.com/en/humanoid/products/walker-c"
+  ],
+  "keywords": [
+    "walker c",
+    "ubtech",
+    "humanoid",
+    "service robot",
+    "tour guide",
+    "reception",
+    "expo",
+    "embodied ai"
+  ]
+}

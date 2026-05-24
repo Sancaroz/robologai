@@ -416,12 +416,22 @@
     "runtime": "Not disclosed",
     "maturity": 4,
     "priceVisibility": 1,
-    "source": "https://www.ubtrobot.com/",
+    "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s",
     "keywords": [
       "walker",
+      "walker s",
       "ubtech",
       "industrial",
       "humanoid"
+    ],
+    "image": "assets/robots/ubtech/walker-s/hero.jpg",
+    "heroImage": "assets/robots/ubtech/walker-s/hero.jpg",
+    "gallery": [
+      "assets/robots/ubtech/walker-s/gallery-1.jpg"
+    ],
+    "imageCredit": "UBTECH official Walker S product media",
+    "sourceLinks": [
+      "https://www.ubtrobot.com/en/humanoid/products/walker-s"
     ]
   },
   {
@@ -1108,6 +1118,80 @@
     "gallery": [
       "assets/robots/ubtech/walker-s2/gallery-1.jpg",
       "assets/robots/ubtech/walker-s2/gallery-2.jpg"
+    ]
+  },
+  {
+    "name": "Cruzr S2",
+    "company": "UBTECH Robotics",
+    "category": "Wheeled humanoid",
+    "primaryFocus": "Autonomous Robotics",
+    "segments": [
+      "Autonomous Robotics",
+      "Commercial Access",
+      "Industrial",
+      "China Robotics"
+    ],
+    "country": "China",
+    "status": "Full-sized wheeled humanoid robot for commercial and industrial service operations",
+    "availability": "Enterprise / partner request",
+    "price": "No official public price",
+    "useCase": "Commercial service, industrial handling, sorting, component assembly, and multi-scenario enterprise operations",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "assets/robots/ubtech/cruzr-s2/hero.jpg",
+    "heroImage": "assets/robots/ubtech/cruzr-s2/hero.jpg",
+    "imageCredit": "UBTECH official Cruzr S2 product page",
+    "source": "https://www.ubtrobot.com/en/commercial/products/cruzr-s2",
+    "sourceLinks": [
+      "https://www.ubtrobot.com/en/commercial/products/cruzr-s2"
+    ],
+    "keywords": [
+      "cruzr s2",
+      "ubtech",
+      "wheeled humanoid",
+      "commercial robot",
+      "industrial",
+      "dexterous manipulation",
+      "binocular stereo vision"
+    ]
+  },
+  {
+    "name": "Walker C",
+    "company": "UBTECH Robotics",
+    "category": "Humanoid",
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Commercial Access",
+      "China Robotics"
+    ],
+    "country": "China",
+    "status": "Commercial service humanoid for exhibitions, office buildings, and public venues",
+    "availability": "Enterprise / commercial service deployment",
+    "price": "No official public price",
+    "useCase": "Tour guide, greeting, reception, live Q&A, voice broadcasting, and public-zone entertainment",
+    "height": "163 cm",
+    "runtime": "Walking 2h, standing 4h; charging 1.5h",
+    "maturity": 4,
+    "priceVisibility": 1,
+    "image": "assets/robots/ubtech/walker-c/hero.jpg",
+    "heroImage": "assets/robots/ubtech/walker-c/hero.jpg",
+    "imageCredit": "UBTECH official Walker C product page",
+    "source": "https://www.ubtrobot.com/en/humanoid/products/walker-c",
+    "sourceLinks": [
+      "https://www.ubtrobot.com/en/humanoid/products/walker-c"
+    ],
+    "keywords": [
+      "walker c",
+      "ubtech",
+      "humanoid",
+      "service robot",
+      "tour guide",
+      "reception",
+      "expo",
+      "embodied ai"
     ]
   }
 ]

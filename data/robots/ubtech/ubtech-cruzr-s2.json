@@ -1,0 +1,37 @@
+{
+  "name": "Cruzr S2",
+  "company": "UBTECH Robotics",
+  "category": "Wheeled humanoid",
+  "primaryFocus": "Autonomous Robotics",
+  "segments": [
+    "Autonomous Robotics",
+    "Commercial Access",
+    "Industrial",
+    "China Robotics"
+  ],
+  "country": "China",
+  "status": "Full-sized wheeled humanoid robot for commercial and industrial service operations",
+  "availability": "Enterprise / partner request",
+  "price": "No official public price",
+  "useCase": "Commercial service, industrial handling, sorting, component assembly, and multi-scenario enterprise operations",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/ubtech/cruzr-s2/hero.jpg",
+  "heroImage": "assets/robots/ubtech/cruzr-s2/hero.jpg",
+  "imageCredit": "UBTECH official Cruzr S2 product page",
+  "source": "https://www.ubtrobot.com/en/commercial/products/cruzr-s2",
+  "sourceLinks": [
+    "https://www.ubtrobot.com/en/commercial/products/cruzr-s2"
+  ],
+  "keywords": [
+    "cruzr s2",
+    "ubtech",
+    "wheeled humanoid",
+    "commercial robot",
+    "industrial",
+    "dexterous manipulation",
+    "binocular stereo vision"
+  ]
+}
