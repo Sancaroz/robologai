@@ -4751,6 +4751,35 @@ function signalQualityScore(signal) {
   return Math.max(0, Math.min(100, score));
 }
 
+function signalProfileStatus(view) {
+  if (view.robotHref && view.companyHref) return "Robot + company linked";
+  if (view.robotHref) return "Robot profile linked";
+  if (view.companyHref) return "Company profile linked";
+  if (view.ecosystemSignal) return "Ecosystem context";
+  return "Profile gap";
+}
+
+function signalProfileFilterMatch(view) {
+  const filter = pageState.signalProfileFilter;
+  if (filter === "all") return true;
+  if (filter === "linked") return Boolean(view.companyHref || view.robotHref);
+  if (filter === "company-linked") return Boolean(view.companyHref);
+  if (filter === "robot-linked") return Boolean(view.robotHref);
+  if (filter === "ecosystem") return Boolean(view.ecosystemSignal && !view.companyHref && !view.robotHref);
+  if (filter === "profile-gap") return Boolean(!view.companyHref && !view.robotHref && !view.ecosystemSignal);
+  return true;
+}
+
+function signalSourceConfidenceDetail(signal) {
+  const confidence = signalConfidence(signal);
+  if (confidence === "Official") return "Primary company or product source";
+  if (confidence === "Press release") return "Distribution-backed announcement";
+  if (confidence === "Media report") return "Editorial or industry media source";
+  if (confidence === "Retailer") return "Seller or marketplace reference";
+  if (confidence === "Automated feed") return "Automated intake, needs editorial review";
+  return "Source link present, classification pending";
+}
+
 function signalWhyItMatters(signal) {
   if (signal.whyItMatters) return signal.whyItMatters;
   const type = signalIntelligenceType(signal);
@@ -4817,18 +4846,21 @@ function signalViewModel(signal) {
   const company = findSignalCompany(signal);
   const robot = findSignalRobot(signal);
   const lens = signalStrategicLens(signal, company, robot);
-  return {
+  const view = {
     ...signal,
     intelligenceType: signalIntelligenceType(signal),
     strategicLens: lens,
     confidence: signalConfidence(signal),
     qualityScore: signalQualityScore(signal),
     sourceHost: sourceHost(signal.source || ""),
+    sourceConfidenceDetail: signalSourceConfidenceDetail(signal),
     whyItMatters: signalWhyItMatters(signal),
     ecosystemSignal: signalIsEcosystem(signal),
     companyHref: company ? companyProfileHref(company) : "",
     robotHref: robot ? robotProfileHref(robot) : ""
   };
+  view.profileStatus = signalProfileStatus(view);
+  return view;
 }
 
 function filteredSignals(signals) {
@@ -4843,7 +4875,7 @@ function filteredSignals(signals) {
     const matchesImpact = pageState.signalImpactFilter === "all" || impact === pageState.signalImpactFilter;
     const matchesCountry = pageState.signalCountryFilter === "all" || country === pageState.signalCountryFilter;
     const matchesConfidence = pageState.signalConfidenceFilter === "all" || confidence === pageState.signalConfidenceFilter;
-    const matchesProfile = pageState.signalProfileFilter === "all" || Boolean(view.companyHref || view.robotHref);
+    const matchesProfile = signalProfileFilterMatch(view);
     const matchesFocus = pageState.signalFocusFilter === "all" || focus === pageState.signalFocusFilter;
     return matchesType && matchesImpact && matchesCountry && matchesConfidence && matchesProfile && matchesFocus;
   });
@@ -4887,6 +4919,7 @@ function renderRoboticsSignalsPage() {
   const countries = [...new Set(signals.map((item) => broadCountryName(item.country || "")).filter(Boolean))];
   const affectedCompanies = new Set(signals.map((item) => pageNormalize(item.company || "")).filter(Boolean)).size;
   const robotLinked = enrichedSignals.filter((item) => item.robotHref).length;
+  const companyLinked = enrichedSignals.filter((item) => item.companyHref).length;
 
   if (metrics) {
     metrics.innerHTML = `
@@ -4900,14 +4933,15 @@ function renderRoboticsSignalsPage() {
   if (qualityGrid) {
     const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
     const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
+    const sourceReviewNeeded = enrichedSignals.filter((item) => ["Automated feed", "Source-linked"].includes(item.confidence)).length;
     const ecosystemSignals = enrichedSignals.filter((item) => item.ecosystemSignal && !item.companyHref && !item.robotHref).length;
     const coreLens = enrichedSignals.filter((item) => item.strategicLens !== "Secondary").length;
     const avgQuality = enrichedSignals.length ? Math.round(enrichedSignals.reduce((sum, item) => sum + item.qualityScore, 0) / enrichedSignals.length) : 0;
     qualityGrid.innerHTML = `
       <article><span>Average quality</span><strong>${avgQuality}</strong><small>Weighted by source, impact, and profile links</small></article>
-      <article><span>Official / PR</span><strong>${officialish}</strong><small>Company or distribution-backed sources</small></article>
-      <article><span>Core AI lens</span><strong>${coreLens}</strong><small>Humanoid, embodied AI, physical AI, or autonomous robotics signals</small></article>
-      <article><span>Profile linked</span><strong>${profileLinked}</strong><small>${ecosystemSignals} ecosystem signals kept as market context</small></article>
+      <article><span>Primary sources</span><strong>${officialish}</strong><small>Official and PR-backed signals separated from media and automated feeds</small></article>
+      <article><span>Profile coverage</span><strong>${profileLinked}</strong><small>${companyLinked} company links · ${robotLinked} robot links · ${ecosystemSignals} ecosystem context</small></article>
+      <article><span>Review queue</span><strong>${sourceReviewNeeded}</strong><small>Automated or lightly classified source trails needing editorial review</small></article>
     `;
   }
 
@@ -4915,15 +4949,16 @@ function renderRoboticsSignalsPage() {
     const total = enrichedSignals.length;
     const officialish = enrichedSignals.filter((item) => ["Official", "Press release"].includes(item.confidence)).length;
     const profileLinked = enrichedSignals.filter((item) => item.companyHref || item.robotHref).length;
+    const companyLinkedCount = enrichedSignals.filter((item) => item.companyHref).length;
+    const robotLinkedCount = enrichedSignals.filter((item) => item.robotHref).length;
     const ecosystemSignals = enrichedSignals.filter((item) => item.ecosystemSignal && !item.companyHref && !item.robotHref).length;
-    const highImpactCount = enrichedSignals.filter((item) => pageNormalize(item.impact).includes("high")).length;
-    const coreLens = enrichedSignals.filter((item) => item.strategicLens !== "Secondary").length;
+    const sourceReviewNeeded = enrichedSignals.filter((item) => ["Automated feed", "Source-linked"].includes(item.confidence)).length;
     breakdownGrid.innerHTML = [
       signalBreakdownRow("Official / PR", officialish, total, "Primary-source confidence"),
       signalBreakdownRow("Profile linked", profileLinked, total, "Company or robot profile connected"),
-      signalBreakdownRow("Ecosystem context", ecosystemSignals, total, "Broad market signals separated from profiles"),
-      signalBreakdownRow("High impact", highImpactCount, total, "Signals marked as strategically important"),
-      signalBreakdownRow("Core AI lens", coreLens, total, "Humanoid, embodied, physical, or autonomous")
+      signalBreakdownRow("Company linked", companyLinkedCount, total, "Company profile connected"),
+      signalBreakdownRow("Robot linked", robotLinkedCount, total, "Robot profile connected"),
+      signalBreakdownRow("Needs review", sourceReviewNeeded + ecosystemSignals, total, "Automated, broad, or unclassified signals")
     ].join("");
   }
 
@@ -4935,7 +4970,8 @@ function renderRoboticsSignalsPage() {
       <p>${pageEscape(lead.summary)}</p>
       <div class="signal-chip-row">
         <b class="signal-impact ${signalImpactClass(lead.impact)}">${pageEscape(lead.impact || "Tracked")}</b>
-        <em>${pageEscape(lead.confidence)}</em>
+        <em class="signal-chip-source">Source: ${pageEscape(lead.confidence)}</em>
+        <em class="signal-chip-profile">${pageEscape(lead.profileStatus)}</em>
         <em>${pageEscape(lead.intelligenceType)}</em>
         <em>${pageEscape(lead.strategicLens)}</em>
         <em>Q${pageEscape(String(lead.qualityScore))}</em>
@@ -4944,7 +4980,7 @@ function renderRoboticsSignalsPage() {
         <div><dt>Company</dt><dd>${pageEscape(lead.company)}</dd></div>
         <div><dt>Robot</dt><dd>${pageEscape(lead.robot)}</dd></div>
         <div><dt>Category</dt><dd>${pageEscape(lead.category)}</dd></div>
-        <div><dt>Source</dt><dd>${pageEscape(lead.sourceHost)}</dd></div>
+        <div><dt>Source</dt><dd>${pageEscape(lead.sourceHost)} · ${pageEscape(lead.sourceConfidenceDetail)}</dd></div>
       </dl>
       <div class="signal-why"><strong>Why it matters</strong><span>${pageEscape(lead.whyItMatters)}</span></div>
       <div class="signals-actions">
@@ -4987,7 +5023,11 @@ function renderRoboticsSignalsPage() {
       <div>
         <span>Profile Links</span>
         ${signalFilterButton("All", "all", pageState.signalProfileFilter, "data-signal-profile-filter")}
-        ${signalFilterButton("Profile linked only", "linked", pageState.signalProfileFilter, "data-signal-profile-filter")}
+        ${signalFilterButton("Any profile", "linked", pageState.signalProfileFilter, "data-signal-profile-filter")}
+        ${signalFilterButton("Company linked", "company-linked", pageState.signalProfileFilter, "data-signal-profile-filter")}
+        ${signalFilterButton("Robot linked", "robot-linked", pageState.signalProfileFilter, "data-signal-profile-filter")}
+        ${signalFilterButton("Ecosystem context", "ecosystem", pageState.signalProfileFilter, "data-signal-profile-filter")}
+        ${signalFilterButton("Profile gaps", "profile-gap", pageState.signalProfileFilter, "data-signal-profile-filter")}
       </div>
     `;
   }
@@ -5005,13 +5045,12 @@ function renderRoboticsSignalsPage() {
           <h2>${pageEscape(item.title)}</h2>
           <p>${pageEscape(item.summary)}</p>
           <div class="signal-chip-row">
-            <em>${pageEscape(item.confidence === "Official" ? "Official / primary source" : item.confidence)}</em>
-            ${(item.companyHref || item.robotHref) ? "<em>Profile linked</em>" : ""}
-            ${(!item.companyHref && !item.robotHref && item.ecosystemSignal) ? "<em>Ecosystem signal</em>" : ""}
+            <em class="signal-chip-source">Source: ${pageEscape(item.confidence === "Official" ? "Official / primary" : item.confidence)}</em>
+            <em class="signal-chip-profile">${pageEscape(item.profileStatus)}</em>
             <em>${pageEscape(item.strategicLens)}</em>
             <em>${pageEscape(item.intelligenceType)}</em>
             <em>${pageEscape(item.country)}</em>
-            <em>${pageEscape(item.sourceHost)}</em>
+            <em>${pageEscape(item.sourceHost)} · ${pageEscape(item.sourceConfidenceDetail)}</em>
             <em>Q${pageEscape(String(item.qualityScore))}</em>
           </div>
           <small><strong>Why it matters:</strong> ${pageEscape(item.whyItMatters)}</small>
