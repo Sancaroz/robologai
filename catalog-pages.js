@@ -5636,6 +5636,19 @@ function qualityIssueCard(title, rows) {
   `;
 }
 
+function qualityActionItem(rank, item) {
+  return `
+    <article class="quality-action-card ${item.severity ? `quality-${pageEscape(item.severity)}` : ""}">
+      <div>
+        <span>${pageEscape(rank)} · ${pageEscape(item.group)}</span>
+        <strong>${item.href ? `<a href="${pageEscape(item.href)}">${pageEscape(item.name)}</a>` : pageEscape(item.name)}</strong>
+        <small>${pageEscape(item.note)}</small>
+      </div>
+      ${item.action ? `<code>${pageEscape(item.action)}</code>` : ""}
+    </article>
+  `;
+}
+
 function qualitySourceCount(record) {
   return sourceList(record.website || record.source, record.sourceLinks).length;
 }
@@ -5716,6 +5729,16 @@ async function renderDataQualityDashboard() {
     .filter((row) => row.priceVisibility <= 1)
     .map((row) => ({ name: row.name, href: row.href, note: `${row.priceLabel} · verify whether price is official, quote-only, or unavailable`, action: "Update price, priceVisibility, or price source" }));
 
+  const nextActions = [
+    ...broken.map((row) => ({ ...row, group: "Fix first", severity: "critical", weight: 100 })),
+    ...missingVisuals.map((row) => ({ ...row, group: "Add visual", severity: "high", weight: 80 })),
+    ...missingLogos.map((row) => ({ ...row, group: "Add logo", severity: "medium", weight: 65 })),
+    ...sourceGaps.map((row) => ({ ...row, group: "Add sources", severity: "medium", weight: 50 })),
+    ...priceGaps.map((row) => ({ ...row, group: "Clarify price", severity: "low", weight: 35 }))
+  ]
+    .sort((a, b) => b.weight - a.weight || String(a.name).localeCompare(String(b.name)))
+    .slice(0, 6);
+
   const visualReady = companyRows.filter((row) => row.profileStatus === "ok" || row.profileStatus === "external").length + robotRows.filter((row) => row.imageStatus === "ok" || row.imageStatus === "external").length;
   const visualTotal = companyRows.length + robotRows.length;
   const pageReady = companyRows.filter((row) => row.pageStatus === "ok").length + robotRows.filter((row) => row.pageStatus === "ok").length;
@@ -5735,6 +5758,16 @@ async function renderDataQualityDashboard() {
       <article><span>Open quality tasks</span><strong>${priorityTotal}</strong><small>Work left across visuals, logos, sources, price clarity, and broken links.</small></article>
       <article><span>Recommended next command</span><strong>node scripts/health-check.mjs</strong><small>Run after each data or asset batch, then regenerate with --write when records change.</small></article>
     </div>
+    <section class="quality-action-section" aria-label="Recommended data quality actions">
+      <div>
+        <span>Next best actions</span>
+        <strong>${nextActions.length ? `${nextActions.length} prioritized fixes` : "Queue clear"}</strong>
+        <small>Sorted by deploy risk first, then missing visuals, logos, sources, and price clarity.</small>
+      </div>
+      <div class="quality-action-grid">
+        ${nextActions.length ? nextActions.map((item, index) => qualityActionItem(`#${index + 1}`, item)).join("") : `<article class="quality-action-card quality-clear"><div><span>Clear</span><strong>No priority actions</strong><small>The current data quality queue has no visible tasks.</small></div></article>`}
+      </div>
+    </section>
     <div class="quality-worklist-grid">
       ${qualityIssueCard("1. Broken paths and pages", broken)}
       ${qualityIssueCard("2. Missing profile visuals", missingVisuals)}

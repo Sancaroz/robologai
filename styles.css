@@ -6549,6 +6549,113 @@ body.light-theme .profile-main > div > span {
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
 }
 
+.quality-action-section {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 10px;
+  background:
+    linear-gradient(145deg, rgba(7, 17, 31, 0.82), rgba(5, 11, 20, 0.94)),
+    radial-gradient(circle at 12% 0%, rgba(120, 231, 255, 0.12), transparent 32%);
+}
+
+.quality-action-section > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.quality-action-section > div:first-child span,
+.quality-action-card span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.quality-action-section > div:first-child strong {
+  color: #eef6ff;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.quality-action-section > div:first-child small {
+  color: #c4cedc;
+  font-weight: 800;
+}
+
+.quality-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.quality-action-card {
+  display: grid;
+  align-content: space-between;
+  gap: 12px;
+  min-height: 164px;
+  padding: 14px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.quality-action-card div {
+  display: grid;
+  gap: 7px;
+}
+
+.quality-action-card strong,
+.quality-action-card strong a {
+  color: #eef6ff;
+  font-size: 16px;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.quality-action-card strong a:hover {
+  color: var(--blue-2);
+}
+
+.quality-action-card small {
+  color: #c4cedc;
+  line-height: 1.45;
+}
+
+.quality-action-card code {
+  display: block;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(120, 231, 255, 0.14);
+  border-radius: 6px;
+  padding: 7px 8px;
+  color: #dff8ff;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.quality-critical {
+  border-color: rgba(255, 99, 132, 0.46);
+}
+
+.quality-high {
+  border-color: rgba(255, 181, 71, 0.42);
+}
+
+.quality-medium {
+  border-color: rgba(120, 231, 255, 0.28);
+}
+
+.quality-low {
+  border-color: rgba(148, 163, 184, 0.22);
+}
+
+.quality-clear {
+  border-color: rgba(43, 213, 118, 0.34);
+}
+
 .quality-worklist-grid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
@@ -11519,7 +11626,10 @@ body.light-theme .asset-coverage-panel small,
 body.light-theme .asset-coverage-grid small,
 body.light-theme .asset-issue-grid small,
 body.light-theme .quality-summary-strip small,
+body.light-theme .quality-action-section small,
+body.light-theme .quality-action-card small,
 body.light-theme .quality-worklist-grid small,
+body.light-theme .quality-action-card code,
 body.light-theme .asset-coverage-list code,
 body.light-theme .company-intelligence-grid small,
 body.light-theme .command-recipe-grid small,
@@ -11569,6 +11679,8 @@ body.light-theme .asset-coverage-panel article,
 body.light-theme .asset-coverage-grid article,
 body.light-theme .asset-issue-grid article,
 body.light-theme .quality-summary-strip article,
+body.light-theme .quality-action-section,
+body.light-theme .quality-action-card,
 body.light-theme .quality-worklist-grid article,
 body.light-theme .company-intelligence-grid article,
 body.light-theme .command-recipe-grid article,
@@ -11640,6 +11752,9 @@ body.light-theme .asset-coverage-panel strong,
 body.light-theme .asset-coverage-grid strong,
 body.light-theme .asset-issue-grid strong,
 body.light-theme .quality-summary-strip strong,
+body.light-theme .quality-action-section > div:first-child strong,
+body.light-theme .quality-action-card strong,
+body.light-theme .quality-action-card strong a,
 body.light-theme .quality-worklist-grid strong,
 body.light-theme .company-intelligence-grid strong,
 body.light-theme .command-recipe-grid strong,
@@ -11930,6 +12045,7 @@ body.light-theme .facts span {
   .asset-coverage-grid,
   .asset-issue-grid,
   .quality-summary-strip,
+  .quality-action-grid,
   .quality-worklist-grid,
   .company-intelligence-grid,
   .source-note-grid,
@@ -12270,6 +12386,7 @@ body.light-theme .facts span {
   .asset-coverage-grid,
   .asset-issue-grid,
   .quality-summary-strip,
+  .quality-action-grid,
   .quality-worklist-grid,
   .company-intelligence-grid,
   .source-note-grid,
