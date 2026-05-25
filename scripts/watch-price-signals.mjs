@@ -230,7 +230,7 @@ function confidenceFor(value, context, url) {
 
 function writeSignals(signals) {
   fs.mkdirSync(outputDir, { recursive: true });
-  const today = new Date().toISOString().slice(0, 10);
+  const today = localDateStamp();
   const payload = {
     generatedAt: new Date().toISOString(),
     reviewRequired: true,
@@ -239,6 +239,17 @@ function writeSignals(signals) {
   };
   fs.writeFileSync(path.join(outputDir, "latest.json"), `${JSON.stringify(payload, null, 2)}\n`);
   fs.writeFileSync(path.join(outputDir, `${today}.json`), `${JSON.stringify(payload, null, 2)}\n`);
+}
+
+function localDateStamp() {
+  const date = new Date();
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Istanbul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+  return formatter.format(date);
 }
 
 function printHelp() {

@@ -37,6 +37,7 @@ function main() {
     "scripts/build-data.mjs",
     "scripts/health-check.mjs",
     "scripts/import-robot-assets.mjs",
+    "scripts/review-price-signals.mjs",
     "scripts/update-signals.mjs",
     "scripts/validate-assets.mjs",
     "scripts/validate-data.mjs",

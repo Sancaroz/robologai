@@ -194,7 +194,12 @@
           <article>
             <span>Review report</span>
             <strong>node scripts/watch-price-signals.mjs --fetch --write --limit 50</strong>
-            <small>Saves candidate signals under data/price-signals/ for manual review before publishing any price.</small>
+            <small>Saves ignored local JSON reports under data/price-signals/ for manual review before publishing any price.</small>
+          </article>
+          <article>
+            <span>Review candidates</span>
+            <strong>node scripts/review-price-signals.mjs --min-confidence 4</strong>
+            <small>Compares saved signals with existing structured prices and prints review actions without editing data.</small>
           </article>
         </div>
       </section>

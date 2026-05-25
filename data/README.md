@@ -88,6 +88,7 @@ node scripts/audit-robot-images.mjs
 node scripts/audit-sources.mjs
 node scripts/audit-price-sources.mjs
 node scripts/watch-price-signals.mjs
+node scripts/review-price-signals.mjs
 node scripts/validate-data.mjs
 node scripts/validate-assets.mjs
 ```
@@ -122,3 +123,12 @@ node scripts/watch-price-signals.mjs --fetch --write --limit 50
 ```
 
 The watcher writes review-only reports to `data/price-signals/`; it does not update robot cards automatically.
+Generated `data/price-signals/*.json` reports are local review artifacts and are ignored by git.
+
+Price signal review:
+
+```bash
+node scripts/review-price-signals.mjs
+node scripts/review-price-signals.mjs --min-confidence 5
+node scripts/review-price-signals.mjs --json
+```
