@@ -5540,6 +5540,7 @@ function companyCardMark(company) {
 }
 
 const assetStatusCache = new Map();
+const assetInfoCache = new Map();
 const linkStatusCache = new Map();
 
 function recordAssetPath(record, fields = []) {
@@ -5551,25 +5552,37 @@ function isExternalAsset(value = "") {
 }
 
 function imageAssetStatus(path = "") {
-  if (!path) return Promise.resolve("missing");
-  if (isExternalAsset(path)) return Promise.resolve("external");
+  return imageAssetInfo(path).then((info) => info.status);
+}
+
+function imageAssetInfo(path = "") {
+  if (!path) return Promise.resolve({ status: "missing", width: 0, height: 0 });
+  if (isExternalAsset(path)) return Promise.resolve({ status: "external", width: 0, height: 0 });
   const cleanPath = String(path).split(/[?#]/)[0];
-  if (assetStatusCache.has(cleanPath)) return assetStatusCache.get(cleanPath);
-  const statusPromise = new Promise((resolve) => {
+  if (assetInfoCache.has(cleanPath)) return assetInfoCache.get(cleanPath);
+  const infoPromise = new Promise((resolve) => {
     const image = new Image();
-    const timer = window.setTimeout(() => resolve("broken"), 3200);
+    const timer = window.setTimeout(() => resolve({ status: "broken", width: 0, height: 0 }), 3200);
     image.onload = () => {
       window.clearTimeout(timer);
-      resolve("ok");
+      resolve({ status: "ok", width: image.naturalWidth || 0, height: image.naturalHeight || 0 });
     };
     image.onerror = () => {
       window.clearTimeout(timer);
-      resolve("broken");
+      resolve({ status: "broken", width: 0, height: 0 });
     };
     image.src = catalogSitePath(cleanPath);
   });
-  assetStatusCache.set(cleanPath, statusPromise);
-  return statusPromise;
+  assetInfoCache.set(cleanPath, infoPromise);
+  return infoPromise;
+}
+
+function imageQualityLabel(info = {}) {
+  if (info.status !== "ok") return info.status || "missing";
+  const shortest = Math.min(Number(info.width || 0), Number(info.height || 0));
+  if (shortest >= 900) return "hero-ready";
+  if (shortest >= 600) return "card-ready";
+  return "too-small";
 }
 
 function assetIssueList(title, rows) {
@@ -5685,16 +5698,20 @@ async function renderDataQualityDashboard() {
   }));
   const robotRows = await Promise.all(robots.map(async (robot) => {
     const image = recordAssetPath(robot, ["image", "heroImage"]);
+    const imageInfo = await imageAssetInfo(image);
     const href = robotProfileHref(robot);
     return {
       name: robot.name || "Unnamed robot",
       company: robot.company || "",
       image,
+      imageWidth: imageInfo.width,
+      imageHeight: imageInfo.height,
+      imageQuality: imageQualityLabel(imageInfo),
       href,
       priceLabel: qualityPriceLabel(robot),
       priceVisibility: Number(robot.priceVisibility || 0),
       sourceCount: qualitySourceCount(robot),
-      imageStatus: await imageAssetStatus(image),
+      imageStatus: imageInfo.status,
       pageStatus: await localLinkStatus(href)
     };
   }));
@@ -5721,6 +5738,9 @@ async function renderDataQualityDashboard() {
   const missingLogos = companyRows
     .filter((row) => row.logoStatus === "missing")
     .map((row) => ({ name: row.name, href: row.href, note: row.profileMark ? "Profile visual exists, but dedicated logo field is empty" : "No dedicated logo field", action: `assets/companies/${seoSlug(row.name)}/logo.svg` }));
+  const lowQualityVisuals = robotRows
+    .filter((row) => row.imageStatus === "ok" && row.imageQuality === "too-small")
+    .map((row) => ({ name: row.name, href: row.href, note: `${row.imageWidth}x${row.imageHeight} local robot image · shortest side is under 600px`, action: row.image ? `Replace ${row.image} with a 900x900 preferred source image` : "Add hero image" }));
   const sourceGaps = [
     ...companies.filter((company) => qualitySourceCount(company) < 2).map((company) => ({ name: company.name || "Unnamed company", href: companyProfileHref(company), note: "Only one official/source link tracked", action: "Add sourceLinks in modular company JSON" })),
     ...robots.filter((robot) => qualitySourceCount(robot) < 2).map((robot) => ({ name: robot.name || "Unnamed robot", href: robotProfileHref(robot), note: "Only one official/source link tracked", action: "Add sourceLinks in modular robot JSON" }))
@@ -5732,6 +5752,7 @@ async function renderDataQualityDashboard() {
   const nextActions = [
     ...broken.map((row) => ({ ...row, group: "Fix first", severity: "critical", weight: 100 })),
     ...missingVisuals.map((row) => ({ ...row, group: "Add visual", severity: "high", weight: 80 })),
+    ...lowQualityVisuals.map((row) => ({ ...row, group: "Upgrade image", severity: "medium", weight: 70 })),
     ...missingLogos.map((row) => ({ ...row, group: "Add logo", severity: "medium", weight: 65 })),
     ...sourceGaps.map((row) => ({ ...row, group: "Add sources", severity: "medium", weight: 50 })),
     ...priceGaps.map((row) => ({ ...row, group: "Clarify price", severity: "low", weight: 35 }))
@@ -5745,14 +5766,15 @@ async function renderDataQualityDashboard() {
   const pageTotal = companyRows.length + robotRows.length;
   const multiSource = companies.filter((company) => qualitySourceCount(company) >= 2).length + robots.filter((robot) => qualitySourceCount(robot) >= 2).length;
   const pricedRobots = robotRows.filter((row) => row.priceVisibility >= 2).length;
-  const priorityTotal = broken.length + missingVisuals.length + missingLogos.length + sourceGaps.length + priceGaps.length;
+  const heroReadyRobots = robotRows.filter((row) => row.imageQuality === "hero-ready" || row.imageStatus === "external").length;
+  const priorityTotal = broken.length + missingVisuals.length + lowQualityVisuals.length + missingLogos.length + sourceGaps.length + priceGaps.length;
 
   panel.innerHTML = `
     <div class="asset-coverage-grid quality-score-grid">
       <article class="${broken.length ? "asset-warning-card" : "asset-ok-card"}"><span>Fix first</span><strong>${broken.length}</strong><small>${broken.length ? "Broken paths or pages should be handled before publishing." : "No broken local paths or generated profile pages detected."}</small></article>
       <article><span>Visual coverage</span><strong>${visualReady}/${visualTotal}</strong><small>Company profile marks plus robot image paths that load.</small></article>
+      <article><span>Hero-ready robots</span><strong>${heroReadyRobots}/${robots.length}</strong><small>Local robot images with 900px+ shortest side, plus external source visuals.</small></article>
       <article><span>Source depth</span><strong>${multiSource}/${companies.length + robots.length}</strong><small>Company and robot records with at least two source links.</small></article>
-      <article><span>Price clarity</span><strong>${pricedRobots}/${robots.length}</strong><small>Robot records with public, retailer, enterprise, or quote-level price signal.</small></article>
     </div>
     <div class="quality-summary-strip">
       <article><span>Open quality tasks</span><strong>${priorityTotal}</strong><small>Work left across visuals, logos, sources, price clarity, and broken links.</small></article>
@@ -5762,7 +5784,7 @@ async function renderDataQualityDashboard() {
       <div>
         <span>Next best actions</span>
         <strong>${nextActions.length ? `${nextActions.length} prioritized fixes` : "Queue clear"}</strong>
-        <small>Sorted by deploy risk first, then missing visuals, logos, sources, and price clarity.</small>
+        <small>Sorted by deploy risk first, then missing visuals, image quality, logos, sources, and price clarity.</small>
       </div>
       <div class="quality-action-grid">
         ${nextActions.length ? nextActions.map((item, index) => qualityActionItem(`#${index + 1}`, item)).join("") : `<article class="quality-action-card quality-clear"><div><span>Clear</span><strong>No priority actions</strong><small>The current data quality queue has no visible tasks.</small></div></article>`}
@@ -5771,9 +5793,10 @@ async function renderDataQualityDashboard() {
     <div class="quality-worklist-grid">
       ${qualityIssueCard("1. Broken paths and pages", broken)}
       ${qualityIssueCard("2. Missing profile visuals", missingVisuals)}
-      ${qualityIssueCard("3. Missing dedicated logos", missingLogos)}
-      ${qualityIssueCard("4. Source depth gaps", sourceGaps)}
-      ${qualityIssueCard("5. Price clarity gaps", priceGaps)}
+      ${qualityIssueCard("3. Low-resolution robot images", lowQualityVisuals)}
+      ${qualityIssueCard("4. Missing dedicated logos", missingLogos)}
+      ${qualityIssueCard("5. Source depth gaps", sourceGaps)}
+      ${qualityIssueCard("6. Price clarity gaps", priceGaps)}
     </div>
   `;
 }
