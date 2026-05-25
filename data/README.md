@@ -87,6 +87,7 @@ Individual checks:
 node scripts/audit-robot-images.mjs
 node scripts/audit-sources.mjs
 node scripts/audit-price-sources.mjs
+node scripts/watch-price-signals.mjs
 node scripts/validate-data.mjs
 node scripts/validate-assets.mjs
 ```
@@ -111,3 +112,13 @@ node scripts/audit-sources.mjs
 node scripts/audit-sources.mjs --type robot --limit 20
 node scripts/audit-sources.mjs --company agility --min 3
 ```
+
+Price signal watcher:
+
+```bash
+node scripts/watch-price-signals.mjs
+node scripts/watch-price-signals.mjs --fetch --company unitree --limit 10
+node scripts/watch-price-signals.mjs --fetch --write --limit 50
+```
+
+The watcher writes review-only reports to `data/price-signals/`; it does not update robot cards automatically.

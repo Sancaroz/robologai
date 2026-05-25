@@ -41,6 +41,7 @@ function main() {
     "scripts/validate-assets.mjs",
     "scripts/validate-data.mjs",
     "scripts/validate-links.mjs",
+    "scripts/watch-price-signals.mjs",
     "tools/generate-seo-pages.mjs"
   ];
 

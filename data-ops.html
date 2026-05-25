@@ -180,6 +180,23 @@
             <small>Useful for important companies before publishing a larger batch of robots or market signals.</small>
           </article>
         </div>
+        <div class="quality-summary-strip source-audit-strip">
+          <article>
+            <span>Price signal preview</span>
+            <strong>node scripts/watch-price-signals.mjs --company company-slug --limit 10</strong>
+            <small>Shows which official robot source URLs would be scanned before any network request is made.</small>
+          </article>
+          <article>
+            <span>Fetch price signals</span>
+            <strong>node scripts/watch-price-signals.mjs --fetch --company company-slug --limit 10</strong>
+            <small>Looks for price, deposit, preorder, quote, and contact-sales signals without changing robot cards.</small>
+          </article>
+          <article>
+            <span>Review report</span>
+            <strong>node scripts/watch-price-signals.mjs --fetch --write --limit 50</strong>
+            <small>Saves candidate signals under data/price-signals/ for manual review before publishing any price.</small>
+          </article>
+        </div>
       </section>
 
       <section class="catalog-section">
