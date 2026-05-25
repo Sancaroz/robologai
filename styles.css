@@ -6428,6 +6428,7 @@ body.light-theme .profile-main > div > span {
 .data-ops-grid,
 .asset-coverage-grid,
 .asset-issue-grid,
+.robot-asset-flow,
 .company-intelligence-grid,
 .command-recipe-grid,
 .source-note-grid,
@@ -6537,6 +6538,44 @@ body.light-theme .profile-main > div > span {
 
 .asset-issue-grid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.robot-asset-flow {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.robot-asset-flow article {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 166px;
+  padding: 18px;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(18, 35, 60, 0.88), rgba(7, 17, 31, 0.94)),
+    radial-gradient(circle at 14% 0%, rgba(120, 231, 255, 0.08), transparent 30%);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+}
+
+.robot-asset-flow span {
+  color: var(--blue-2);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.robot-asset-flow strong {
+  overflow-wrap: anywhere;
+  color: #eef6ff;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.robot-asset-flow small {
+  color: #c4cedc;
+  line-height: 1.45;
 }
 
 .quality-summary-strip,
@@ -11625,6 +11664,7 @@ body.light-theme .data-ops-grid small,
 body.light-theme .asset-coverage-panel small,
 body.light-theme .asset-coverage-grid small,
 body.light-theme .asset-issue-grid small,
+body.light-theme .robot-asset-flow small,
 body.light-theme .quality-summary-strip small,
 body.light-theme .quality-action-section small,
 body.light-theme .quality-action-card small,
@@ -11678,6 +11718,7 @@ body.light-theme .data-ops-grid article,
 body.light-theme .asset-coverage-panel article,
 body.light-theme .asset-coverage-grid article,
 body.light-theme .asset-issue-grid article,
+body.light-theme .robot-asset-flow article,
 body.light-theme .quality-summary-strip article,
 body.light-theme .quality-action-section,
 body.light-theme .quality-action-card,
@@ -11751,6 +11792,7 @@ body.light-theme .data-ops-grid strong,
 body.light-theme .asset-coverage-panel strong,
 body.light-theme .asset-coverage-grid strong,
 body.light-theme .asset-issue-grid strong,
+body.light-theme .robot-asset-flow strong,
 body.light-theme .quality-summary-strip strong,
 body.light-theme .quality-action-section > div:first-child strong,
 body.light-theme .quality-action-card strong,
@@ -12044,6 +12086,7 @@ body.light-theme .facts span {
   .data-ops-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
+  .robot-asset-flow,
   .quality-summary-strip,
   .quality-action-grid,
   .quality-worklist-grid,
@@ -12385,6 +12428,7 @@ body.light-theme .facts span {
   .data-ops-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
+  .robot-asset-flow,
   .quality-summary-strip,
   .quality-action-grid,
   .quality-worklist-grid,

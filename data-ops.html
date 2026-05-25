@@ -111,8 +111,47 @@
         <div class="data-ops-grid">
           <article><span>Company logo</span><strong>assets/companies/company-slug/logo.svg</strong><small>Reference with the company JSON logo field.</small></article>
           <article><span>Company image</span><strong>assets/companies/company-slug/hero.png</strong><small>Optional profile or social image for company coverage.</small></article>
-          <article><span>Robot image</span><strong>assets/robots/robot-slug/hero.png</strong><small>Reference with the robot JSON image field.</small></article>
+          <article><span>Robot image</span><strong>assets/robots/company-slug/robot-slug/hero.png</strong><small>Reference with the robot JSON image field.</small></article>
           <article><span>Asset check</span><strong>node scripts/validate-assets.mjs</strong><small>Detects missing local logo and image paths before deploy.</small></article>
+        </div>
+      </section>
+
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Robot Asset Intake</p>
+          <h2>Turn uploaded robot images into modular data updates.</h2>
+        </div>
+        <div class="robot-asset-flow">
+          <article>
+            <span>1. Folder shape</span>
+            <strong>assets/robots/company-slug/robot-slug/hero.jpg</strong>
+            <small>Add gallery-1.jpg, gallery-2.jpg, and source.txt in the same folder when available.</small>
+          </article>
+          <article>
+            <span>2. Preview import</span>
+            <strong>node scripts/import-robot-assets.mjs --company company-slug</strong>
+            <small>Dry-run first; it shows which modular robot JSON files will be created or updated.</small>
+          </article>
+          <article>
+            <span>3. Write records</span>
+            <strong>node scripts/import-robot-assets.mjs --company company-slug --write</strong>
+            <small>Updates image, heroImage, gallery, aggregate JSON, generated profiles, and validation checks.</small>
+          </article>
+          <article>
+            <span>4. Check image quality</span>
+            <strong>node scripts/audit-robot-images.mjs --company company-slug --min-hero 900 --min-card 600</strong>
+            <small>Flags local robot images that are card-ready, hero-ready, too small, or unreadable.</small>
+          </article>
+          <article>
+            <span>5. Draft safety</span>
+            <strong>source.txt or --create-drafts</strong>
+            <small>New robot records are created only with a source URL, unless draft creation is explicitly enabled.</small>
+          </article>
+          <article>
+            <span>6. Final gate</span>
+            <strong>node scripts/health-check.mjs</strong>
+            <small>Run before commit so data, links, profile pages, assets, and JS syntax stay deploy-ready.</small>
+          </article>
         </div>
       </section>
 
