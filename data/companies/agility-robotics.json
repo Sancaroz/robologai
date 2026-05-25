@@ -1,0 +1,34 @@
+{
+  "name": "Agility Robotics",
+  "category": "Industrial humanoid automation",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Industrial",
+    "Warehouse",
+    "Commercial Access"
+  ],
+  "country": "USA",
+  "type": "Private",
+  "ticker": "",
+  "robot": "Digit",
+  "logo": "assets/companies/agility-robotics/logo.png",
+  "image": "assets/companies/agility-robotics/logo.png",
+  "website": "https://www.agilityrobotics.com/",
+  "focus": "Industrial humanoid automation for warehouses, factories, and facility-floor workflows.",
+  "sourceLinks": [
+    "https://www.agilityrobotics.com/",
+    "https://www.agilityrobotics.com/solutions",
+    "https://www.agilityrobotics.com/company"
+  ],
+  "keywords": [
+    "digit",
+    "agility robotics",
+    "humanoid",
+    "warehouse",
+    "factory automation",
+    "industrial automation",
+    "enterprise deployment"
+  ],
+  "lastVerified": "May 2026 source review"
+}

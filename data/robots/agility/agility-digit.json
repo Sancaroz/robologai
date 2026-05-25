@@ -1,0 +1,23 @@
+{
+    "name": "Digit",
+    "company": "Agility Robotics",
+    "category": "Humanoid logistics",
+    "country": "USA",
+    "status": "Production-deployed industrial humanoid robot",
+    "availability": "Enterprise deployment / Deploy Digit inquiry",
+    "price": "Enterprise pricing",
+    "useCase": "Warehouse and factory automation, tote handling, repetitive material movement, and facility-floor workflows",
+    "height": "5 ft 9 in",
+    "runtime": "About 2 hours",
+    "maturity": 5,
+    "priceVisibility": 2,
+    "image": "assets/robots/agility/digit/hero.png",
+    "heroImage": "assets/robots/agility/digit/hero.png",
+    "imageCredit": "Agility Robotics official media",
+    "source": "https://www.agilityrobotics.com/",
+    "sourceLinks": [
+      "https://www.agilityrobotics.com/",
+      "https://www.agilityrobotics.com/solutions"
+    ],
+    "keywords": ["digit", "agility robotics", "warehouse", "factory", "logistics", "humanoid", "industrial automation"]
+  }

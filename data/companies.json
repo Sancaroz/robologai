@@ -164,20 +164,37 @@
   },
   {
     "name": "Agility Robotics",
-    "category": "Humanoid logistics",
+    "category": "Industrial humanoid automation",
     "country": "USA",
     "type": "Private",
     "ticker": "",
     "robot": "Digit",
     "logo": "assets/companies/agility-robotics/logo.png",
     "image": "assets/companies/agility-robotics/logo.png",
-    "website": "https://agilityrobotics.com/",
+    "website": "https://www.agilityrobotics.com/",
     "keywords": [
       "digit",
+      "agility robotics",
+      "humanoid",
       "warehouse",
-      "logistics",
-      "humanoid"
-    ]
+      "factory automation",
+      "industrial automation",
+      "enterprise deployment"
+    ],
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Industrial",
+      "Warehouse",
+      "Commercial Access"
+    ],
+    "focus": "Industrial humanoid automation for warehouses, factories, and facility-floor workflows.",
+    "sourceLinks": [
+      "https://www.agilityrobotics.com/",
+      "https://www.agilityrobotics.com/solutions",
+      "https://www.agilityrobotics.com/company"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "Apptronik",
@@ -2364,7 +2381,9 @@
       "https://www.magiclab.top/en/dog-y",
       "https://www.magiclab.top/en/about"
     ],
-    "lastVerified": "May 2026 source review"
+    "lastVerified": "May 2026 source review",
+    "image": "assets/companies/magiclab/logo.png",
+    "heroImage": "assets/companies/magiclab/logo.png"
   },
   {
     "name": "X-Humanoid",
