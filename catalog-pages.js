@@ -5564,6 +5564,132 @@ function linkIssueList(title, rows) {
   `;
 }
 
+function qualityIssueCard(title, rows) {
+  const visible = rows.slice(0, 10);
+  return `
+    <article class="asset-coverage-list quality-worklist-card">
+      <span>${pageEscape(title)}</span>
+      <strong>${rows.length ? `${rows.length} tasks` : "Clear"}</strong>
+      ${visible.length ? `<ul>${visible.map((row) => `
+        <li>
+          <b>${row.href ? `<a href="${pageEscape(row.href)}">${pageEscape(row.name)}</a>` : pageEscape(row.name)}</b>
+          <small>${pageEscape(row.note)}</small>
+          ${row.action ? `<code>${pageEscape(row.action)}</code>` : ""}
+        </li>
+      `).join("")}</ul><small>Showing ${visible.length} of ${rows.length} records in this group.</small>` : `<small>No records in this priority group.</small>`}
+    </article>
+  `;
+}
+
+function qualitySourceCount(record) {
+  return sourceList(record.website || record.source, record.sourceLinks).length;
+}
+
+function qualityPriceLabel(robot) {
+  const price = pageNormalize(robot.price || "");
+  const visibility = Number(robot.priceVisibility || 0);
+  if (visibility >= 4 || price.includes("$") || price.includes("usd") || price.includes("eur")) return "price signal visible";
+  if (visibility >= 2 || price.includes("enterprise") || price.includes("quote")) return "partial price signal";
+  return "price unclear";
+}
+
+async function renderDataQualityDashboard() {
+  const panel = document.querySelector("[data-data-quality-dashboard]");
+  if (!panel) return;
+
+  const companies = pageState.companies || [];
+  const robots = pageState.robots || [];
+  const signals = pageState.signals || [];
+  const companyRows = await Promise.all(companies.map(async (company) => {
+    const logo = recordAssetPath(company, ["logo", "logoImage"]);
+    const profileMark = recordAssetPath(company, ["logo", "logoImage", "image", "heroImage"]);
+    const href = companyProfileHref(company);
+    return {
+      name: company.name || "Unnamed company",
+      logo,
+      profileMark,
+      href,
+      sourceCount: qualitySourceCount(company),
+      logoStatus: await imageAssetStatus(logo),
+      profileStatus: await imageAssetStatus(profileMark),
+      pageStatus: await localLinkStatus(href)
+    };
+  }));
+  const robotRows = await Promise.all(robots.map(async (robot) => {
+    const image = recordAssetPath(robot, ["image", "heroImage"]);
+    const href = robotProfileHref(robot);
+    return {
+      name: robot.name || "Unnamed robot",
+      company: robot.company || "",
+      image,
+      href,
+      priceLabel: qualityPriceLabel(robot),
+      priceVisibility: Number(robot.priceVisibility || 0),
+      sourceCount: qualitySourceCount(robot),
+      imageStatus: await imageAssetStatus(image),
+      pageStatus: await localLinkStatus(href)
+    };
+  }));
+  const signalRows = await Promise.all(signals.map(async (signal) => {
+    const href = localLinkPath(signal.relatedUrl || "");
+    return {
+      name: signal.title || "Untitled signal",
+      href,
+      pageStatus: href ? await localLinkStatus(href) : "external"
+    };
+  }));
+
+  const broken = [
+    ...companyRows.filter((row) => row.profileStatus === "broken").map((row) => ({ name: row.name, href: row.href, note: `Broken company visual: ${row.profileMark}`, action: "Fix asset path or replace file" })),
+    ...robotRows.filter((row) => row.imageStatus === "broken").map((row) => ({ name: row.name, href: row.href, note: `Broken robot image: ${row.image}`, action: "Fix image path or replace file" })),
+    ...companyRows.filter((row) => row.pageStatus === "broken").map((row) => ({ name: row.name, href: row.href, note: `Missing company profile: ${row.href}`, action: "Run node scripts/health-check.mjs --write" })),
+    ...robotRows.filter((row) => row.pageStatus === "broken").map((row) => ({ name: row.name, href: row.href, note: `Missing robot profile: ${row.href}`, action: "Run node scripts/health-check.mjs --write" })),
+    ...signalRows.filter((row) => row.pageStatus === "broken").map((row) => ({ name: row.name, note: `Broken signal relatedUrl: ${row.href}`, action: "Fix relatedUrl or regenerate profile" }))
+  ];
+  const missingVisuals = [
+    ...robotRows.filter((row) => row.imageStatus === "missing").map((row) => ({ name: row.name, href: row.href, note: row.company ? `No robot image field · ${row.company}` : "No robot image field", action: `assets/robots/${seoSlug(row.company || row.name)}/${seoSlug(row.name)}/hero.png` })),
+    ...companyRows.filter((row) => row.profileStatus === "missing").map((row) => ({ name: row.name, href: row.href, note: "No logo, image, or heroImage field", action: `assets/companies/${seoSlug(row.name)}/logo.svg` }))
+  ];
+  const missingLogos = companyRows
+    .filter((row) => row.logoStatus === "missing")
+    .map((row) => ({ name: row.name, href: row.href, note: row.profileMark ? "Profile visual exists, but dedicated logo field is empty" : "No dedicated logo field", action: `assets/companies/${seoSlug(row.name)}/logo.svg` }));
+  const sourceGaps = [
+    ...companies.filter((company) => qualitySourceCount(company) < 2).map((company) => ({ name: company.name || "Unnamed company", href: companyProfileHref(company), note: "Only one official/source link tracked", action: "Add sourceLinks in modular company JSON" })),
+    ...robots.filter((robot) => qualitySourceCount(robot) < 2).map((robot) => ({ name: robot.name || "Unnamed robot", href: robotProfileHref(robot), note: "Only one official/source link tracked", action: "Add sourceLinks in modular robot JSON" }))
+  ];
+  const priceGaps = robotRows
+    .filter((row) => row.priceVisibility <= 1)
+    .map((row) => ({ name: row.name, href: row.href, note: `${row.priceLabel} · verify whether price is official, quote-only, or unavailable`, action: "Update price, priceVisibility, or price source" }));
+
+  const visualReady = companyRows.filter((row) => row.profileStatus === "ok" || row.profileStatus === "external").length + robotRows.filter((row) => row.imageStatus === "ok" || row.imageStatus === "external").length;
+  const visualTotal = companyRows.length + robotRows.length;
+  const pageReady = companyRows.filter((row) => row.pageStatus === "ok").length + robotRows.filter((row) => row.pageStatus === "ok").length;
+  const pageTotal = companyRows.length + robotRows.length;
+  const multiSource = companies.filter((company) => qualitySourceCount(company) >= 2).length + robots.filter((robot) => qualitySourceCount(robot) >= 2).length;
+  const pricedRobots = robotRows.filter((row) => row.priceVisibility >= 2).length;
+  const priorityTotal = broken.length + missingVisuals.length + missingLogos.length + sourceGaps.length + priceGaps.length;
+
+  panel.innerHTML = `
+    <div class="asset-coverage-grid quality-score-grid">
+      <article class="${broken.length ? "asset-warning-card" : "asset-ok-card"}"><span>Fix first</span><strong>${broken.length}</strong><small>${broken.length ? "Broken paths or pages should be handled before publishing." : "No broken local paths or generated profile pages detected."}</small></article>
+      <article><span>Visual coverage</span><strong>${visualReady}/${visualTotal}</strong><small>Company profile marks plus robot image paths that load.</small></article>
+      <article><span>Source depth</span><strong>${multiSource}/${companies.length + robots.length}</strong><small>Company and robot records with at least two source links.</small></article>
+      <article><span>Price clarity</span><strong>${pricedRobots}/${robots.length}</strong><small>Robot records with public, retailer, enterprise, or quote-level price signal.</small></article>
+    </div>
+    <div class="quality-summary-strip">
+      <article><span>Open quality tasks</span><strong>${priorityTotal}</strong><small>Work left across visuals, logos, sources, price clarity, and broken links.</small></article>
+      <article><span>Recommended next command</span><strong>node scripts/health-check.mjs</strong><small>Run after each data or asset batch, then regenerate with --write when records change.</small></article>
+    </div>
+    <div class="quality-worklist-grid">
+      ${qualityIssueCard("1. Broken paths and pages", broken)}
+      ${qualityIssueCard("2. Missing profile visuals", missingVisuals)}
+      ${qualityIssueCard("3. Missing dedicated logos", missingLogos)}
+      ${qualityIssueCard("4. Source depth gaps", sourceGaps)}
+      ${qualityIssueCard("5. Price clarity gaps", priceGaps)}
+    </div>
+  `;
+}
+
 async function renderLinkIntegrityPanel() {
   const panel = document.querySelector("[data-link-integrity]");
   if (!panel) return;
@@ -7307,6 +7433,7 @@ async function initCatalogPages() {
   renderUseCasesPage();
   renderComparePicker();
   renderComparePage();
+  renderDataQualityDashboard();
   renderAssetCoveragePanel();
   renderLinkIntegrityPanel();
   wireCatalogControls();

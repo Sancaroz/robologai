@@ -6527,9 +6527,25 @@ body.light-theme .profile-main > div > span {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.quality-summary-strip,
+.quality-worklist-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.quality-summary-strip {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+
+.quality-worklist-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .asset-coverage-panel article,
 .asset-coverage-grid article,
-.asset-issue-grid article {
+.asset-issue-grid article,
+.quality-summary-strip article,
+.quality-worklist-grid article {
   display: grid;
   gap: 9px;
   min-height: 142px;
@@ -6542,7 +6558,9 @@ body.light-theme .profile-main > div > span {
 
 .asset-coverage-panel span,
 .asset-coverage-grid span,
-.asset-issue-grid span {
+.asset-issue-grid span,
+.quality-summary-strip span,
+.quality-worklist-grid span {
   color: var(--blue-2);
   font-size: 12px;
   font-weight: 950;
@@ -6551,22 +6569,36 @@ body.light-theme .profile-main > div > span {
 
 .asset-coverage-panel strong,
 .asset-coverage-grid strong,
-.asset-issue-grid strong {
+.asset-issue-grid strong,
+.quality-summary-strip strong,
+.quality-worklist-grid strong {
   color: #eef6ff;
   font-size: 16px;
   line-height: 1.25;
 }
 
-.asset-coverage-grid strong {
+.asset-coverage-grid strong,
+.quality-score-grid strong {
   font-size: 28px;
   line-height: 1;
 }
 
 .asset-coverage-panel small,
 .asset-coverage-grid small,
-.asset-issue-grid small {
+.asset-issue-grid small,
+.quality-summary-strip small,
+.quality-worklist-grid small {
   color: #c4cedc;
   line-height: 1.45;
+}
+
+.quality-summary-strip article {
+  min-height: 112px;
+  background: linear-gradient(135deg, rgba(120, 231, 255, 0.08), rgba(9, 22, 39, 0.78));
+}
+
+.quality-worklist-card {
+  align-content: start;
 }
 
 .asset-ok-card {
@@ -6595,6 +6627,15 @@ body.light-theme .profile-main > div > span {
 .asset-coverage-list b {
   color: #eef6ff;
   font-size: 13px;
+}
+
+.asset-coverage-list b a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.asset-coverage-list b a:hover {
+  color: var(--blue-2);
 }
 
 .asset-coverage-list li small {
@@ -11361,6 +11402,8 @@ body.light-theme .data-ops-grid small,
 body.light-theme .asset-coverage-panel small,
 body.light-theme .asset-coverage-grid small,
 body.light-theme .asset-issue-grid small,
+body.light-theme .quality-summary-strip small,
+body.light-theme .quality-worklist-grid small,
 body.light-theme .asset-coverage-list code,
 body.light-theme .company-intelligence-grid small,
 body.light-theme .command-recipe-grid small,
@@ -11409,6 +11452,8 @@ body.light-theme .data-ops-grid article,
 body.light-theme .asset-coverage-panel article,
 body.light-theme .asset-coverage-grid article,
 body.light-theme .asset-issue-grid article,
+body.light-theme .quality-summary-strip article,
+body.light-theme .quality-worklist-grid article,
 body.light-theme .company-intelligence-grid article,
 body.light-theme .command-recipe-grid article,
 body.light-theme .source-note-grid article,
@@ -11477,6 +11522,8 @@ body.light-theme .data-ops-grid strong,
 body.light-theme .asset-coverage-panel strong,
 body.light-theme .asset-coverage-grid strong,
 body.light-theme .asset-issue-grid strong,
+body.light-theme .quality-summary-strip strong,
+body.light-theme .quality-worklist-grid strong,
 body.light-theme .company-intelligence-grid strong,
 body.light-theme .command-recipe-grid strong,
 body.light-theme .data-ops-cta strong,
@@ -11764,6 +11811,8 @@ body.light-theme .facts span {
   .data-ops-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
+  .quality-summary-strip,
+  .quality-worklist-grid,
   .company-intelligence-grid,
   .source-note-grid,
   .company-snapshot-grid,
@@ -12102,6 +12151,8 @@ body.light-theme .facts span {
   .data-ops-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
+  .quality-summary-strip,
+  .quality-worklist-grid,
   .company-intelligence-grid,
   .source-note-grid,
   .company-snapshot-grid,
