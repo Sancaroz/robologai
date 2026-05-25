@@ -110,7 +110,9 @@
       "ai devices",
       "consumer ai",
       "hardware"
-    ]
+    ],
+    "logo": "assets/companies/apple/apple.png",
+    "image": "assets/companies/apple/apple.png"
   },
   {
     "name": "Boston Dynamics",
@@ -1826,7 +1828,9 @@
       "chatgpt",
       "gpt",
       "ai lab"
-    ]
+    ],
+    "logo": "assets/companies/open-ai/logo.png",
+    "image": "assets/companies/open-ai/logo.png"
   },
   {
     "name": "Anthropic",
@@ -1853,7 +1857,9 @@
     "keywords": [
       "grok",
       "frontier ai"
-    ]
+    ],
+    "logo": "assets/companies/x-ai/logo.png",
+    "image": "assets/companies/x-ai/logo.png"
   },
   {
     "name": "Mistral AI",
@@ -2198,7 +2204,9 @@
       "last mile",
       "physical ai",
       "wheeled legged"
-    ]
+    ],
+    "logo": "assets/companies/rivr/logo.png",
+    "image": "assets/companies/rivr/logo.png"
   },
   {
     "name": "Fauna Robotics",
@@ -2213,7 +2221,9 @@
       "soft humanoid",
       "developer robot",
       "research platform"
-    ]
+    ],
+    "logo": "assets/companies/faunarobotics/logo.png",
+    "image": "assets/companies/faunarobotics/logo.png"
   },
   {
     "name": "Foundry Robotics",
@@ -2228,7 +2238,9 @@
       "assembly",
       "autonomous cells",
       "dual use robotics"
-    ]
+    ],
+    "logo": "assets/companies/foundry/logo.png",
+    "image": "assets/companies/foundry/logo.png"
   },
   {
     "name": "FieldAI",
@@ -2243,7 +2255,9 @@
       "autonomy",
       "field foundation models",
       "industrial robots"
-    ]
+    ],
+    "logo": "assets/companies/field-ai/logo.png",
+    "image": "assets/companies/field-ai/logo.png"
   },
   {
     "name": "Reflex Robotics",
@@ -2273,7 +2287,9 @@
       "memo",
       "household robot",
       "skill capture"
-    ]
+    ],
+    "logo": "assets/companies/sundayrobotics/logo.png",
+    "image": "assets/companies/sundayrobotics/logo.png"
   },
   {
     "name": "Noble Machines",
@@ -2423,7 +2439,8 @@
     ],
     "lastVerified": "May 2026 source review",
     "image": "assets/companies/magiclab/logo.png",
-    "heroImage": "assets/companies/magiclab/logo.png"
+    "heroImage": "assets/companies/magiclab/logo.png",
+    "logo": "assets/companies/magiclab/logo.png"
   },
   {
     "name": "X-Humanoid",
@@ -2440,7 +2457,9 @@
       "humanoid",
       "wise kaiwu",
       "china"
-    ]
+    ],
+    "logo": "assets/companies/x-humanoid/logo.png",
+    "image": "assets/companies/x-humanoid/logo.png"
   },
   {
     "name": "WIRobotics",
@@ -2468,7 +2487,9 @@
       "gait training",
       "mobility robotics",
       "exoskeleton"
-    ]
+    ],
+    "logo": "assets/companies/wirobotics/logo.png",
+    "image": "assets/companies/wirobotics/logo.png"
   },
   {
     "name": "DEEP Robotics",
@@ -2504,7 +2525,9 @@
       "humanoid",
       "inspection robot",
       "embodied ai"
-    ]
+    ],
+    "logo": "assets/companies/deeprobotics/logo.png",
+    "image": "assets/companies/deeprobotics/logo.png"
   },
   {
     "name": "OpenMind",
