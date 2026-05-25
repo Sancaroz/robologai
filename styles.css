@@ -6585,7 +6585,7 @@ body.light-theme .profile-main > div > span {
 }
 
 .quality-summary-strip {
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .quality-action-section {

@@ -5674,6 +5674,18 @@ function qualityPriceLabel(robot) {
   return "price unclear";
 }
 
+function qualityPriceRecordIssues(price = {}) {
+  const issues = [];
+  ["robot", "company", "priceText", "sourceType", "source", "confidence", "lastChecked"].forEach((field) => {
+    if (price[field] === undefined || price[field] === null || String(price[field]).trim() === "") issues.push(`missing ${field}`);
+  });
+  if (Number(price.confidence || 0) < 3) issues.push("low confidence");
+  const checked = Date.parse(`${price.lastChecked || ""}T00:00:00Z`);
+  if (!Number.isFinite(checked) || ((Date.now() - checked) / 86400000) > 45) issues.push("stale price check");
+  if (price.source && !/^https?:\/\//i.test(String(price.source))) issues.push("source is not http(s)");
+  return issues;
+}
+
 async function renderDataQualityDashboard() {
   const panel = document.querySelector("[data-data-quality-dashboard]");
   if (!panel) return;
@@ -5681,6 +5693,7 @@ async function renderDataQualityDashboard() {
   const companies = pageState.companies || [];
   const robots = pageState.robots || [];
   const signals = pageState.signals || [];
+  const prices = pageState.prices || [];
   const companyRows = await Promise.all(companies.map(async (company) => {
     const logo = recordAssetPath(company, ["logo", "logoImage"]);
     const profileMark = recordAssetPath(company, ["logo", "logoImage", "image", "heroImage"]);
@@ -5743,13 +5756,30 @@ async function renderDataQualityDashboard() {
   const lowQualityVisuals = robotRows
     .filter((row) => row.imageStatus === "ok" && row.imageQuality === "too-small")
     .map((row) => ({ name: row.name, href: row.href, note: `${row.imageWidth}x${row.imageHeight} local robot image · shortest side is under 600px`, action: row.image ? `Replace ${row.image} with a 900x900 preferred source image` : "Add hero image" }));
-  const sourceGaps = [
-    ...companies.filter((company) => qualitySourceCount(company) < 2).map((company) => ({ name: company.name || "Unnamed company", href: companyProfileHref(company), note: "Only one official/source link tracked", action: "Add sourceLinks in modular company JSON" })),
-    ...robots.filter((robot) => qualitySourceCount(robot) < 2).map((robot) => ({ name: robot.name || "Unnamed robot", href: robotProfileHref(robot), note: "Only one official/source link tracked", action: "Add sourceLinks in modular robot JSON" }))
-  ];
+  const companySourceGaps = companies
+    .filter((company) => qualitySourceCount(company) < 2)
+    .map((company) => ({ name: company.name || "Unnamed company", href: companyProfileHref(company), note: "Only one official/source link tracked", action: "Add sourceLinks in modular company JSON" }));
+  const robotSourceGaps = robots
+    .filter((robot) => qualitySourceCount(robot) < 2)
+    .map((robot) => ({ name: robot.name || "Unnamed robot", href: robotProfileHref(robot), note: "Only one official/source link tracked", action: "Add sourceLinks in modular robot JSON" }));
   const priceGaps = robotRows
     .filter((row) => row.priceVisibility <= 1)
     .map((row) => ({ name: row.name, href: row.href, note: `${row.priceLabel} · verify whether price is official, quote-only, or unavailable`, action: "Update price, priceVisibility, or price source" }));
+  const priceAuditGaps = prices
+    .map((price) => ({ price, issues: qualityPriceRecordIssues(price) }))
+    .filter((row) => row.issues.length)
+    .map(({ price, issues }) => ({
+      name: `${price.company || "Unknown company"} / ${price.robot || "Unknown robot"}`,
+      href: price.source,
+      note: issues.join(", "),
+      action: "Update modular price record or source metadata"
+    }));
+  const priceSourceTypes = prices.reduce((acc, price) => {
+    const type = priceSourceLabel(price.sourceType || "unknown");
+    acc[type] = (acc[type] || 0) + 1;
+    return acc;
+  }, {});
+  const priceSourceSummary = Object.entries(priceSourceTypes).map(([type, count]) => `${type} ${count}`).join(" · ") || "No structured price records";
 
   const nextActions = [
     ...broken.map((row) => ({ ...row, group: "Fix first", severity: "critical", weight: 100 })),
@@ -5757,26 +5787,31 @@ async function renderDataQualityDashboard() {
     ...lowQualityVisuals.map((row) => ({ ...row, group: "Upgrade robot image", severity: "medium", weight: 75 })),
     ...missingCompanyVisuals.map((row) => ({ ...row, group: "Add company visual", severity: "medium", weight: 70 })),
     ...missingLogos.map((row) => ({ ...row, group: "Add logo", severity: "medium", weight: 65 })),
-    ...sourceGaps.map((row) => ({ ...row, group: "Add sources", severity: "medium", weight: 50 })),
+    ...robotSourceGaps.map((row) => ({ ...row, group: "Add robot sources", severity: "medium", weight: 55 })),
+    ...companySourceGaps.map((row) => ({ ...row, group: "Add company sources", severity: "medium", weight: 50 })),
+    ...priceAuditGaps.map((row) => ({ ...row, group: "Fix price source", severity: "medium", weight: 45 })),
     ...priceGaps.map((row) => ({ ...row, group: "Clarify price", severity: "low", weight: 35 }))
   ]
     .sort((a, b) => b.weight - a.weight || String(a.name).localeCompare(String(b.name)))
     .slice(0, 6);
 
-  const multiSource = companies.filter((company) => qualitySourceCount(company) >= 2).length + robots.filter((robot) => qualitySourceCount(robot) >= 2).length;
+  const companySourceReady = companies.filter((company) => qualitySourceCount(company) >= 2).length;
+  const robotSourceReady = robots.filter((robot) => qualitySourceCount(robot) >= 2).length;
+  const multiSource = companySourceReady + robotSourceReady;
   const heroReadyRobots = robotRows.filter((row) => row.imageQuality === "hero-ready" || row.imageStatus === "external").length;
   const robotVisualTasks = missingRobotVisuals.length + lowQualityVisuals.length;
-  const priorityTotal = broken.length + missingRobotVisuals.length + lowQualityVisuals.length + missingCompanyVisuals.length + missingLogos.length + sourceGaps.length + priceGaps.length;
+  const priorityTotal = broken.length + missingRobotVisuals.length + lowQualityVisuals.length + missingCompanyVisuals.length + missingLogos.length + companySourceGaps.length + robotSourceGaps.length + priceAuditGaps.length + priceGaps.length;
 
   panel.innerHTML = `
     <div class="asset-coverage-grid quality-score-grid">
       <article class="${broken.length ? "asset-warning-card" : "asset-ok-card"}"><span>Fix first</span><strong>${broken.length}</strong><small>${broken.length ? "Broken paths or pages should be handled before publishing." : "No broken local paths or generated profile pages detected."}</small></article>
       <article><span>Robot visual tasks</span><strong>${robotVisualTasks}</strong><small>${missingRobotVisuals.length} missing robot images · ${lowQualityVisuals.length} low-resolution robot visuals.</small></article>
       <article><span>Hero-ready robots</span><strong>${heroReadyRobots}/${robots.length}</strong><small>Local robot images with 900px+ shortest side, plus external source visuals.</small></article>
-      <article><span>Source depth</span><strong>${multiSource}/${companies.length + robots.length}</strong><small>Company and robot records with at least two source links.</small></article>
+      <article><span>Source depth</span><strong>${multiSource}/${companies.length + robots.length}</strong><small>${companySourceReady}/${companies.length} companies · ${robotSourceReady}/${robots.length} robots have at least two sources.</small></article>
     </div>
     <div class="quality-summary-strip">
       <article><span>Open quality tasks</span><strong>${priorityTotal}</strong><small>Work left across visuals, logos, sources, price clarity, and broken links.</small></article>
+      <article class="${priceAuditGaps.length ? "asset-warning-card" : "asset-ok-card"}"><span>Structured prices</span><strong>${prices.length} records</strong><small>${priceAuditGaps.length ? `${priceAuditGaps.length} price source issues need review.` : `Price source audit clear · ${priceSourceSummary}`}</small></article>
       <article><span>Recommended next command</span><strong>node scripts/health-check.mjs</strong><small>Run after each data or asset batch, then regenerate with --write when records change.</small></article>
     </div>
     <section class="quality-action-section" aria-label="Recommended data quality actions">
@@ -5795,8 +5830,10 @@ async function renderDataQualityDashboard() {
       ${qualityIssueCard("3. Low-resolution robot images", lowQualityVisuals)}
       ${qualityIssueCard("4. Missing company visuals", missingCompanyVisuals)}
       ${qualityIssueCard("5. Missing dedicated logos", missingLogos)}
-      ${qualityIssueCard("6. Source depth gaps", sourceGaps)}
-      ${qualityIssueCard("7. Price clarity gaps", priceGaps)}
+      ${qualityIssueCard("6. Robot source depth gaps", robotSourceGaps)}
+      ${qualityIssueCard("7. Company source depth gaps", companySourceGaps)}
+      ${qualityIssueCard("8. Structured price source issues", priceAuditGaps)}
+      ${qualityIssueCard("9. Price clarity gaps", priceGaps)}
     </div>
   `;
 }
