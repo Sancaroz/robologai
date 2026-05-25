@@ -131,5 +131,6 @@ Price signal review:
 node scripts/review-price-signals.mjs
 node scripts/review-price-signals.mjs --min-confidence 5
 node scripts/review-price-signals.mjs --drafts
+node scripts/review-price-signals.mjs --markdown
 node scripts/review-price-signals.mjs --json
 ```

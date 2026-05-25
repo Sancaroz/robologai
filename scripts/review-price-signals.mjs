@@ -172,6 +172,33 @@ function localDateStamp() {
   return formatter.format(date);
 }
 
+function markdownEscape(value = "") {
+  return String(value).replace(/\|/g, "\\|").replace(/\n/g, " ").trim();
+}
+
+function printMarkdown(rows, signalPath, signals) {
+  console.log(`# Price Signal Review`);
+  console.log("");
+  console.log(`- Source: \`${path.relative(root, signalPath)}\``);
+  console.log(`- Signals loaded: ${signals.length}`);
+  console.log(`- Review rows: ${rows.length}`);
+  console.log(`- Generated: ${localDateStamp()}`);
+  console.log("");
+
+  if (!rows.length) {
+    console.log("No high-confidence price signals to review.");
+    return;
+  }
+
+  console.log("| Review | Robot | Signal | Existing | Draft | Source |");
+  console.log("| --- | --- | --- | --- | --- | --- |");
+  for (const row of rows) {
+    const draft = row.draft.priceText || row.amount || "";
+    const existing = row.existingPrice || "No structured price";
+    console.log(`| [ ] ${markdownEscape(row.action)} | ${markdownEscape(`${row.company} / ${row.robot}`)} | ${markdownEscape(`${row.signalType}, confidence ${row.confidence}`)} | ${markdownEscape(existing)} | ${markdownEscape(draft)} | ${markdownEscape(row.source)} |`);
+  }
+}
+
 function printHelp() {
   console.log(`Review candidate price signals against existing structured prices.
 
@@ -180,6 +207,7 @@ Usage:
   node scripts/review-price-signals.mjs --file data/price-signals/2026-05-26.json
   node scripts/review-price-signals.mjs --min-confidence 5
   node scripts/review-price-signals.mjs --drafts
+  node scripts/review-price-signals.mjs --markdown
   node scripts/review-price-signals.mjs --json
 
 This script only reads price-signal reports and prints review actions. It does not update robot cards or price records.`);
@@ -201,6 +229,10 @@ function main() {
 
   const signals = loadSignals(signalPath);
   const rows = reviewRows(signals, allPriceRecords(), args);
+  if (args.markdown) {
+    printMarkdown(rows, signalPath, signals);
+    return;
+  }
   if (args.drafts) {
     const drafts = rows.map((row) => row.draft);
     console.log(JSON.stringify(drafts, null, 2));
