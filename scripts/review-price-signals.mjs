@@ -87,6 +87,17 @@ function signalAmount(signal) {
   return amount ? amount[0].replace(/\s+/g, " ").trim() : "";
 }
 
+function numericAmount(amount = "") {
+  const match = String(amount).match(/[\d,.]+/);
+  if (!match) return null;
+  const suffix = String(amount).match(/[kKmM]\b/);
+  const base = Number(match[0].replace(/,/g, ""));
+  if (!Number.isFinite(base)) return null;
+  if (suffix && suffix[0].toLowerCase() === "k") return Math.round(base * 1000);
+  if (suffix && suffix[0].toLowerCase() === "m") return Math.round(base * 1000000);
+  return Math.round(base);
+}
+
 function sourceTypeFor(signal) {
   if (signal.signalType === "deposit") return "deposit";
   if (signal.signalType === "preorder") return "official";
@@ -131,7 +142,7 @@ function reviewRows(signals, existingPrices, args) {
           company: signal.company || "",
           priceText: priceTextFor(signal),
           currency: amount.includes("€") || /\bEUR\b/i.test(amount) ? "EUR" : amount.includes("£") || /\bGBP\b/i.test(amount) ? "GBP" : "USD",
-          minPrice: null,
+          minPrice: numericAmount(amount),
           maxPrice: null,
           sourceType: sourceTypeFor(signal),
           source: signal.source || "",
@@ -168,6 +179,7 @@ Usage:
   node scripts/review-price-signals.mjs
   node scripts/review-price-signals.mjs --file data/price-signals/2026-05-26.json
   node scripts/review-price-signals.mjs --min-confidence 5
+  node scripts/review-price-signals.mjs --drafts
   node scripts/review-price-signals.mjs --json
 
 This script only reads price-signal reports and prints review actions. It does not update robot cards or price records.`);
@@ -189,6 +201,11 @@ function main() {
 
   const signals = loadSignals(signalPath);
   const rows = reviewRows(signals, allPriceRecords(), args);
+  if (args.drafts) {
+    const drafts = rows.map((row) => row.draft);
+    console.log(JSON.stringify(drafts, null, 2));
+    return;
+  }
   if (args.json) {
     console.log(JSON.stringify(rows, null, 2));
     return;
