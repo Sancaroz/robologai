@@ -163,6 +163,23 @@
         <div class="asset-coverage-panel" data-data-quality-dashboard>
           <article><span>Loading</span><strong>Building priority queue...</strong><small>Assets, source links, profile pages, and commercial clarity are being ranked into an action list.</small></article>
         </div>
+        <div class="quality-summary-strip source-audit-strip">
+          <article>
+            <span>Source audit</span>
+            <strong>node scripts/audit-sources.mjs --type robot --limit 20</strong>
+            <small>Use after adding product pages or official references so robot and company records move toward two independent source URLs.</small>
+          </article>
+          <article>
+            <span>Company source audit</span>
+            <strong>node scripts/audit-sources.mjs --type company --limit 20</strong>
+            <small>Lists modular company records that need deeper website, product, press, docs, or investor sourceLinks.</small>
+          </article>
+          <article>
+            <span>Stricter review</span>
+            <strong>node scripts/audit-sources.mjs --company company-slug --min 3</strong>
+            <small>Useful for important companies before publishing a larger batch of robots or market signals.</small>
+          </article>
+        </div>
       </section>
 
       <section class="catalog-section">

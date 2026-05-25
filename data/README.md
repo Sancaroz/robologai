@@ -85,6 +85,7 @@ Individual checks:
 
 ```bash
 node scripts/audit-robot-images.mjs
+node scripts/audit-sources.mjs
 node scripts/audit-price-sources.mjs
 node scripts/validate-data.mjs
 node scripts/validate-assets.mjs
@@ -101,4 +102,12 @@ Price source audit:
 ```bash
 node scripts/audit-price-sources.mjs
 node scripts/audit-price-sources.mjs --check-links
+```
+
+Source depth audit:
+
+```bash
+node scripts/audit-sources.mjs
+node scripts/audit-sources.mjs --type robot --limit 20
+node scripts/audit-sources.mjs --company agility --min 3
 ```

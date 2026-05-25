@@ -33,6 +33,7 @@ function main() {
     "scripts/add-robot.mjs",
     "scripts/audit-price-sources.mjs",
     "scripts/audit-robot-images.mjs",
+    "scripts/audit-sources.mjs",
     "scripts/build-data.mjs",
     "scripts/health-check.mjs",
     "scripts/import-robot-assets.mjs",
