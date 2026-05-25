@@ -5979,6 +5979,19 @@ body.light-theme .profile-main > div > span {
   object-fit: cover;
 }
 
+.robot-catalog-card .catalog-visual {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(120, 231, 255, 0.1), transparent 48%),
+    rgba(255, 255, 255, 0.045);
+}
+
+.robot-catalog-card .catalog-visual img {
+  box-sizing: border-box;
+  padding: 12px;
+  object-fit: contain;
+  object-position: center;
+}
+
 .catalog-visual figcaption,
 .profile-visual figcaption {
   position: absolute;
@@ -6064,6 +6077,7 @@ body.light-theme .profile-main > div > span {
 }
 
 .company-avatar-logo {
+  box-sizing: border-box;
   overflow: hidden;
   padding: 10px;
   background: rgba(255, 255, 255, 0.92);
@@ -6876,10 +6890,13 @@ body.light-theme .profile-main > div > span {
 }
 
 .featured-robot-card img {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
+  padding: 12px;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .featured-robot-card figcaption {
@@ -7053,10 +7070,13 @@ body.light-theme .profile-main > div > span {
 }
 
 .humanoid-preview-card img {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
+  padding: 12px;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .humanoid-preview-card figcaption {
@@ -7493,10 +7513,13 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .profile-visual img {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
+  padding: clamp(12px, 2.2vw, 22px);
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .profile-action-row {
@@ -7574,9 +7597,12 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .company-profile-logo-mark img {
-  max-width: min(320px, 82%);
-  max-height: 220px;
+  width: 100%;
+  height: 100%;
+  max-width: min(360px, 86%);
+  max-height: 240px;
   object-fit: contain;
+  object-position: center;
   filter: drop-shadow(0 18px 28px rgba(7, 17, 31, 0.18));
 }
 
@@ -8443,12 +8469,15 @@ body.light-theme .private-list span {
 }
 
 .profile-main > img {
+  box-sizing: border-box;
   width: 124px;
   height: 124px;
   padding: 18px;
   border: 1px solid rgba(148, 163, 184, 0.52);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
+  object-fit: contain;
+  object-position: center;
 }
 
 .profile-main h2 {
@@ -8558,6 +8587,8 @@ body.light-theme .similar-panel {
   width: 28px;
   height: 28px;
   border-radius: 6px;
+  object-fit: contain;
+  object-position: center;
 }
 
 .similar-panel a {
