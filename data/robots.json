@@ -78,25 +78,40 @@
   {
     "name": "Apollo",
     "company": "Apptronik",
-    "category": "Humanoid",
+    "category": "Industrial humanoid",
     "country": "USA",
-    "status": "Commercial scaling",
-    "availability": "Enterprise pilots",
+    "status": "Commercial humanoid platform for warehouse and manufacturing operations",
+    "availability": "Enterprise inquiry / Get Started",
     "price": "No official public price",
-    "useCase": "Logistics, manufacturing, industrial support",
+    "useCase": "Trailer unloading, case picking, palletization, machine tending, workcell delivery, warehouse automation, and manufacturing support",
     "height": "5 ft 8 in",
-    "runtime": "About 4 hours",
+    "runtime": "4 hours per battery pack",
     "maturity": 4,
     "priceVisibility": 1,
-    "image": "https://cdn.prod.website-files.com/646de3abb3e62d339f089e28/64e54eb19605183a5d58e077_Hero%20Shot%2001.png",
+    "image": "assets/robots/apptronik/apollo/hero.png",
     "imageCredit": "Apptronik official media",
-    "source": "https://apptronik.com/",
+    "source": "https://apptronik.com/apollo",
     "keywords": [
       "apollo",
-      "industrial",
+      "apptronik",
+      "industrial humanoid",
       "warehouse",
-      "humanoid"
-    ]
+      "manufacturing",
+      "trailer unloading",
+      "case picking",
+      "palletization",
+      "machine tending",
+      "workcell delivery"
+    ],
+    "weight": "160 lb",
+    "payload": "55 lb",
+    "heroImage": "assets/robots/apptronik/apollo/hero.png",
+    "sourceLinks": [
+      "https://apptronik.com/apollo",
+      "https://apptronik.com/",
+      "https://apptronik.com/videos"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "Digit",
@@ -1649,5 +1664,41 @@
       "companion robot",
       "emotion interaction"
     ]
+  },
+  {
+    "name": "Asimov 1",
+    "company": "Asimov",
+    "category": "Open-source humanoid",
+    "country": "USA",
+    "status": "Open-source humanoid robot by Menlo Research",
+    "availability": "Pre-order / DIY kit / build from BOM",
+    "price": "No official public price",
+    "useCase": "Humanoid robotics research, developer experimentation, open-source robot building, embodied AI prototyping, and education",
+    "height": "120 cm",
+    "weight": "35 kg",
+    "runtime": "Not publicly specified",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/asimov/asimov-1/hero.png",
+    "heroImage": "assets/robots/asimov/asimov-1/hero.png",
+    "imageCredit": "Asimov official media",
+    "source": "https://asimov.inc/",
+    "sourceLinks": [
+      "https://asimov.inc/",
+      "https://manual.asimov.inc/",
+      "https://github.com/menloresearch/asimov"
+    ],
+    "keywords": [
+      "asimov",
+      "asimov 1",
+      "menlo research",
+      "open-source humanoid",
+      "humanoid",
+      "developer robot",
+      "diy kit",
+      "robotics research",
+      "embodied ai"
+    ],
+    "lastVerified": "May 2026 source review"
   }
 ]

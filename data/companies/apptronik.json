@@ -1,0 +1,34 @@
+{
+  "name": "Apptronik",
+  "category": "Industrial humanoid robotics",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Industrial",
+    "Warehouse",
+    "Commercial Access"
+  ],
+  "country": "USA",
+  "type": "Private",
+  "ticker": "",
+  "robot": "Apollo",
+  "logo": "assets/companies/apptronik/logo.png",
+  "image": "assets/companies/apptronik/logo.png",
+  "website": "https://apptronik.com/",
+  "focus": "General-purpose humanoid robotics for warehouse, manufacturing, logistics, and industrial workcell operations.",
+  "sourceLinks": [
+    "https://apptronik.com/",
+    "https://apptronik.com/apollo",
+    "https://apptronik.com/videos"
+  ],
+  "keywords": [
+    "apollo",
+    "apptronik",
+    "industrial humanoid",
+    "warehouse automation",
+    "manufacturing",
+    "logistics",
+    "commercial humanoid"
+  ],
+  "lastVerified": "May 2026 source review"
+}

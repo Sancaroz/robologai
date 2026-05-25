@@ -198,7 +198,7 @@
   },
   {
     "name": "Apptronik",
-    "category": "Humanoid robotics",
+    "category": "Industrial humanoid robotics",
     "country": "USA",
     "type": "Private",
     "ticker": "",
@@ -208,8 +208,27 @@
     "website": "https://apptronik.com/",
     "keywords": [
       "apollo",
-      "industrial humanoid"
-    ]
+      "apptronik",
+      "industrial humanoid",
+      "warehouse automation",
+      "manufacturing",
+      "logistics",
+      "commercial humanoid"
+    ],
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Industrial",
+      "Warehouse",
+      "Commercial Access"
+    ],
+    "focus": "General-purpose humanoid robotics for warehouse, manufacturing, logistics, and industrial workcell operations.",
+    "sourceLinks": [
+      "https://apptronik.com/",
+      "https://apptronik.com/apollo",
+      "https://apptronik.com/videos"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "1X Technologies",
@@ -2117,14 +2136,35 @@
     "country": "USA",
     "type": "Private",
     "ticker": "",
-    "robot": "Asimov humanoid, Asimov OS",
+    "robot": "Asimov 1",
     "website": "https://asimov.inc/",
     "keywords": [
+      "asimov",
+      "asimov 1",
+      "menlo research",
       "humanoid",
       "open source",
-      "robot operating system",
-      "developer platform"
-    ]
+      "developer platform",
+      "diy robot",
+      "robotics research"
+    ],
+    "primaryFocus": "Humanoids",
+    "segments": [
+      "Humanoids",
+      "Embodied AI",
+      "Developer Tools",
+      "Commercial Access"
+    ],
+    "logo": "assets/companies/asimov/logo.svg",
+    "image": "assets/companies/asimov/logo.svg",
+    "focus": "Open-source humanoid robotics by Menlo Research, with a DIY kit, manual, repository, and developer-oriented build path.",
+    "sourceLinks": [
+      "https://asimov.inc/",
+      "https://manual.asimov.inc/",
+      "https://github.com/menloresearch/asimov",
+      "https://menlo.ai/"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "Galbot",

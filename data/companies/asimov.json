@@ -1,0 +1,36 @@
+{
+  "name": "Asimov",
+  "category": "Open-source humanoid robotics",
+  "primaryFocus": "Humanoids",
+  "segments": [
+    "Humanoids",
+    "Embodied AI",
+    "Developer Tools",
+    "Commercial Access"
+  ],
+  "country": "USA",
+  "type": "Private",
+  "ticker": "",
+  "robot": "Asimov 1",
+  "logo": "assets/companies/asimov/logo.svg",
+  "image": "assets/companies/asimov/logo.svg",
+  "website": "https://asimov.inc/",
+  "focus": "Open-source humanoid robotics by Menlo Research, with a DIY kit, manual, repository, and developer-oriented build path.",
+  "sourceLinks": [
+    "https://asimov.inc/",
+    "https://manual.asimov.inc/",
+    "https://github.com/menloresearch/asimov",
+    "https://menlo.ai/"
+  ],
+  "keywords": [
+    "asimov",
+    "asimov 1",
+    "menlo research",
+    "humanoid",
+    "open source",
+    "developer platform",
+    "diy robot",
+    "robotics research"
+  ],
+  "lastVerified": "May 2026 source review"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Asimov 1",
+  "company": "Asimov",
+  "category": "Open-source humanoid",
+  "country": "USA",
+  "status": "Open-source humanoid robot by Menlo Research",
+  "availability": "Pre-order / DIY kit / build from BOM",
+  "price": "No official public price",
+  "useCase": "Humanoid robotics research, developer experimentation, open-source robot building, embodied AI prototyping, and education",
+  "height": "120 cm",
+  "weight": "35 kg",
+  "runtime": "Not publicly specified",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/asimov/asimov-1/hero.png",
+  "heroImage": "assets/robots/asimov/asimov-1/hero.png",
+  "imageCredit": "Asimov official media",
+  "source": "https://asimov.inc/",
+  "sourceLinks": [
+    "https://asimov.inc/",
+    "https://manual.asimov.inc/",
+    "https://github.com/menloresearch/asimov"
+  ],
+  "keywords": [
+    "asimov",
+    "asimov 1",
+    "menlo research",
+    "open-source humanoid",
+    "humanoid",
+    "developer robot",
+    "diy kit",
+    "robotics research",
+    "embodied ai"
+  ],
+  "lastVerified": "May 2026 source review"
+}

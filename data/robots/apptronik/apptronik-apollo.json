@@ -1,0 +1,38 @@
+{
+  "name": "Apollo",
+  "company": "Apptronik",
+  "category": "Industrial humanoid",
+  "country": "USA",
+  "status": "Commercial humanoid platform for warehouse and manufacturing operations",
+  "availability": "Enterprise inquiry / Get Started",
+  "price": "No official public price",
+  "useCase": "Trailer unloading, case picking, palletization, machine tending, workcell delivery, warehouse automation, and manufacturing support",
+  "height": "5 ft 8 in",
+  "weight": "160 lb",
+  "payload": "55 lb",
+  "runtime": "4 hours per battery pack",
+  "maturity": 4,
+  "priceVisibility": 1,
+  "image": "assets/robots/apptronik/apollo/hero.png",
+  "heroImage": "assets/robots/apptronik/apollo/hero.png",
+  "imageCredit": "Apptronik official media",
+  "source": "https://apptronik.com/apollo",
+  "sourceLinks": [
+    "https://apptronik.com/apollo",
+    "https://apptronik.com/",
+    "https://apptronik.com/videos"
+  ],
+  "keywords": [
+    "apollo",
+    "apptronik",
+    "industrial humanoid",
+    "warehouse",
+    "manufacturing",
+    "trailer unloading",
+    "case picking",
+    "palletization",
+    "machine tending",
+    "workcell delivery"
+  ],
+  "lastVerified": "May 2026 source review"
+}
