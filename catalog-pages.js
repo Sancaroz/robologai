@@ -5853,6 +5853,27 @@ function companyStrategicThesis(company, robots = []) {
   return `${company.name} remains in RoboLogAI as secondary robotics coverage. It may not be the core humanoid or physical AI lane, but it provides useful market context around industrial, medical, warehouse, research, or service robotics.`;
 }
 
+function companyRobotLineupCard(robot, company) {
+  const tracked = Boolean(robot.company && robotSlug(robot));
+  const score = tracked ? robotScore(robot) : null;
+  const href = tracked ? robotProfileHref(robot) : company.website || "#";
+  return `
+    <article class="product-lineup-card ${robot.image ? "has-visual" : ""}">
+      <figure class="${robot.image ? "" : "catalog-visual-empty"}">
+        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name || company.name))}</span>`}
+        ${score ? `<figcaption>${score}<small>R-Score</small></figcaption>` : ""}
+      </figure>
+      <div>
+        <span>${pageEscape(robot.category || company.category)}</span>
+        <strong>${pageEscape(robot.name)}</strong>
+        <small>${pageEscape(robot.useCase || company.category)}</small>
+        <em>${pageEscape(robotPriceSignal(robot))}</em>
+        <a href="${pageEscape(href)}"${tracked ? "" : " target=\"_blank\" rel=\"noopener noreferrer\""}>${tracked ? "Robot profile" : "Official source"} →</a>
+      </div>
+    </article>
+  `;
+}
+
 function companySegmentPills(company) {
   return strategicSegments(company, "company")
     .slice(0, 8)
@@ -7053,7 +7074,7 @@ function renderCompanyProfile() {
         <h2>Tracked robots and products associated with ${pageEscape(company.name)}.</h2>
       </div>
       <div class="product-lineup-grid">
-        ${(robots.length ? robots : [{ name: company.robot || "Robotics / AI activity", company: company.name, category: company.category, useCase: company.category, price: "Price not listed", source: company.website }]).map((robot) => `<article><span>${pageEscape(robot.category || company.category)}</span><strong>${pageEscape(robot.name)}</strong><small>${pageEscape(robot.useCase || company.category)}</small><em>${pageEscape(robotPriceSignal(robot))}</em>${robotSlug(robot) ? `<a href="${pageEscape(robotProfileHref(robot))}">Robot profile →</a>` : ""}</article>`).join("")}
+        ${(robots.length ? robots : [{ name: company.robot || "Robotics / AI activity", company: company.name, category: company.category, useCase: company.category, price: "Price not listed", source: company.website }]).map((robot) => companyRobotLineupCard(robot, company)).join("")}
       </div>
     </section>
     <section class="catalog-section">

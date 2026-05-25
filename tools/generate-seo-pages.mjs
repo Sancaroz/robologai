@@ -421,6 +421,25 @@ function companyStrategicThesis(company, linkedRobots = []) {
   return `${company.name} remains in RoboLogAI as secondary robotics coverage. It may not be the core humanoid or physical AI lane, but it provides useful market context around industrial, medical, warehouse, research, or service robotics.`;
 }
 
+function companyRobotLineupCard(robot, company) {
+  const tracked = robots.includes(robot);
+  const score = tracked ? robotScore(robot) : null;
+  const href = tracked ? `../robots/${robotPageSlug(robot)}.html` : company.website || "#";
+  return `<article class="product-lineup-card ${robot.image ? "has-visual" : ""}">
+    <figure class="${robot.image ? "" : "catalog-visual-empty"}">
+      ${robot.image ? `<img src="${escapeAttr(pageAssetPath(robot.image))}" alt="${escapeAttr(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${escapeHtml(initials(robot.name || company.name))}</span>`}
+      ${score ? `<figcaption>${score}<small>R-Score</small></figcaption>` : ""}
+    </figure>
+    <div>
+      <span>${escapeHtml(robot.category || company.category)}</span>
+      <strong>${escapeHtml(robot.name)}</strong>
+      <small>${escapeHtml(robot.useCase || company.category)}</small>
+      <em>${escapeHtml(robotPriceSignal(robot))}</em>
+      <a href="${escapeAttr(href)}"${tracked ? "" : " target=\"_blank\" rel=\"noopener noreferrer\""}>${tracked ? "Robot profile" : "Official source"} →</a>
+    </div>
+  </article>`;
+}
+
 function robotPriceSignal(robot) {
   if (!robot?.price) return "Price not listed";
   if (Number(robot.priceVisibility || 0) >= 4) return robot.price;
@@ -767,7 +786,7 @@ function companyPage(company) {
           <h2>Tracked robots and products associated with ${escapeHtml(company.name)}.</h2>
         </div>
         <div class="product-lineup-grid">
-          ${(linkedRobots.length ? linkedRobots : [{ name: company.robot || "Robotics / AI activity", company: company.name, category: company.category, useCase: company.category, price: "Price not listed" }]).map((robot) => `<article><span>${escapeHtml(robot.category || company.category)}</span><strong>${escapeHtml(robot.name)}</strong><small>${escapeHtml(robot.useCase || company.category)}</small><em>${escapeHtml(robotPriceSignal(robot))}</em>${robots.includes(robot) ? `<a href="../robots/${robotPageSlug(robot)}.html">Robot profile →</a>` : ""}</article>`).join("")}
+          ${(linkedRobots.length ? linkedRobots : [{ name: company.robot || "Robotics / AI activity", company: company.name, category: company.category, useCase: company.category, price: "Price not listed" }]).map((robot) => companyRobotLineupCard(robot, company)).join("")}
         </div>
       </section>
       <section class="catalog-section">
