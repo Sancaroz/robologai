@@ -76,6 +76,13 @@ Recommended fields:
   "maturity": 3,
   "priceVisibility": 1,
   "image": "assets/robots/robot-slug/hero.png",
+  "heroImage": "assets/robots/robot-slug/hero.png",
+  "gallery": [
+    {
+      "src": "assets/robots/robot-slug/gallery-1.png",
+      "caption": "Official product view"
+    }
+  ],
   "imageCredit": "Official company media",
   "keywords": ["humanoid", "factory"]
 }
@@ -85,7 +92,8 @@ Recommended robot image path:
 
 ```text
 assets/robots/company-slug/robot-slug/hero.png
-assets/robots/company-slug/robot-slug/demo.webp
+assets/robots/company-slug/robot-slug/gallery-1.png
+assets/robots/company-slug/robot-slug/gallery-2.png
 ```
 
 Use these checks before committing:

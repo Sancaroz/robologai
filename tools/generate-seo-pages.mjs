@@ -221,6 +221,22 @@ function scoreBars(robot) {
   ].map(([label, value]) => `<li><span>${escapeHtml(label)}</span><b style="--score:${Math.max(0, Math.min(100, value)) / 100}"><i></i></b><em>${value}</em></li>`).join("");
 }
 
+function robotGallery(robot) {
+  const gallery = Array.isArray(robot.gallery) ? robot.gallery : String(robot.gallery || "").split(",").map((item) => item.trim()).filter(Boolean);
+  return gallery.map((item, index) => {
+    if (typeof item === "string") {
+      return {
+        src: item,
+        caption: `${robot.name} gallery image ${index + 1}`
+      };
+    }
+    return {
+      src: item?.src || item?.image || item?.url || "",
+      caption: item?.caption || item?.alt || `${robot.name} gallery image ${index + 1}`
+    };
+  }).filter((item) => item.src);
+}
+
 function broadCountryName(country = "") {
   return country.includes("/") ? country.split("/")[0].trim() : country;
 }
@@ -490,6 +506,22 @@ function robotPage(robot) {
   const sources = sourceList(robot.source, robot.sourceLinks);
   const related = relatedRobots(robot);
   const deploymentThesis = robotDeploymentThesis(robot);
+  const gallery = robotGallery(robot);
+  const gallerySection = gallery.length ? `
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Image Gallery</p>
+          <h2>Additional product visuals for ${escapeHtml(robot.name)}.</h2>
+        </div>
+        <div class="robot-gallery-grid">
+          ${gallery.map((item) => `
+            <figure>
+              <img src="${escapeAttr(pageAssetPath(item.src))}" alt="${escapeAttr(item.caption)}" loading="lazy" decoding="async">
+              <figcaption>${escapeHtml(item.caption)}</figcaption>
+            </figure>
+          `).join("")}
+        </div>
+      </section>` : "";
   const title = `${robot.name} Robot Profile: Price, Use Case, Status`;
   const description = `${robot.name} by ${robot.company}: ${robot.category} robot profile with availability, price signal, use case, status, source link, and Robologai readiness score.`;
   const canonical = `https://robologai.com/robots/${pageSlug}.html`;
@@ -607,7 +639,7 @@ function robotPage(robot) {
           <article><span>Deployment signal</span><strong>${escapeHtml(robot.status || "Status not disclosed")}</strong><small>${escapeHtml(quality.deploymentSignal)}</small></article>
           <article><span>Last reviewed</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
         </div>
-      </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}
+      </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}${gallerySection}
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Deployment Context</p>

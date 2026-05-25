@@ -20,10 +20,7 @@
   "priceVisibility": 1,
   "image": "assets/robots/ubtech/walker/walker-s2/hero.png",
   "heroImage": "assets/robots/ubtech/walker/walker-s2/hero.png",
-  "gallery": [
-    "assets/robots/ubtech/walker-s2/gallery-1.jpg",
-    "assets/robots/ubtech/walker-s2/gallery-2.jpg"
-  ],
+  "gallery": [],
   "imageCredit": "UBTECH official Walker S2 product page",
   "source": "https://www.ubtrobot.com/en/humanoid/products/walker-s2",
   "sourceLinks": [

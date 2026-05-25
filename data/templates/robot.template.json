@@ -17,6 +17,13 @@
   "maturity": 3,
   "priceVisibility": 1,
   "image": "assets/robots/example-bot/hero.png",
+  "heroImage": "assets/robots/example-bot/hero.png",
+  "gallery": [
+    {
+      "src": "assets/robots/example-bot/gallery-1.png",
+      "caption": "Example Bot official product view"
+    }
+  ],
   "imageCredit": "Official company media",
   "source": "https://example.com/bot",
   "sourceLinks": [

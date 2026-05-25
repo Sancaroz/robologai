@@ -1154,10 +1154,7 @@
       "manufacturing",
       "binocular stereo vision"
     ],
-    "gallery": [
-      "assets/robots/ubtech/walker-s2/gallery-1.jpg",
-      "assets/robots/ubtech/walker-s2/gallery-2.jpg"
-    ]
+    "gallery": []
   },
   {
     "name": "Cruzr S2",

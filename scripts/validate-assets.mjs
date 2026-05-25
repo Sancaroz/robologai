@@ -14,7 +14,8 @@ const collections = [
     name: "robots",
     central: path.join(root, "data", "robots.json"),
     dir: path.join(root, "data", "robots"),
-    fields: ["image"]
+    fields: ["image", "heroImage"],
+    listFields: ["gallery"]
   }
 ];
 
@@ -88,6 +89,15 @@ function validateAssetPath(assetPath, label) {
   return null;
 }
 
+function assetValues(value) {
+  if (!value) return [];
+  const items = Array.isArray(value) ? value : String(value).split(",").map((item) => item.trim()).filter(Boolean);
+  return items.map((item) => {
+    if (typeof item === "string") return item;
+    return item?.src || item?.image || item?.url || "";
+  }).filter(Boolean);
+}
+
 function main() {
   const errors = [];
   let checked = 0;
@@ -102,6 +112,14 @@ function main() {
         else checked += 1;
         const error = validateAssetPath(value, `${label}.${field}`);
         if (error) errors.push(error);
+      }
+      for (const field of collection.listFields || []) {
+        assetValues(record?.[field]).forEach((value, index) => {
+          if (isExternalUrl(value) || isDataUrl(value)) skippedExternal += 1;
+          else checked += 1;
+          const error = validateAssetPath(value, `${label}.${field}[${index}]`);
+          if (error) errors.push(error);
+        });
       }
     }
   }

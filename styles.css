@@ -7833,6 +7833,41 @@ body.light-theme .humanoid-preview-card dt {
   line-height: 1.6;
 }
 
+.robot-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.robot-gallery-grid figure {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(18, 35, 60, 0.9), rgba(7, 17, 31, 0.94));
+}
+
+.robot-gallery-grid img {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 12px;
+  object-fit: contain;
+  object-position: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(120, 231, 255, 0.1), transparent 48%),
+    rgba(255, 255, 255, 0.045);
+}
+
+.robot-gallery-grid figcaption {
+  padding: 12px 14px;
+  color: #c4cedc;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .price-board {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -11388,6 +11423,7 @@ body.light-theme .catalog-results-head span,
 body.light-theme .quick-path-grid span,
 body.light-theme .use-case-profile-grid small,
 body.light-theme .profile-media-card p,
+body.light-theme .robot-gallery-grid figcaption,
 body.light-theme .use-case-panel-head p,
 body.light-theme .use-case-robot-grid small,
 body.light-theme .empty-note,
@@ -11483,6 +11519,7 @@ body.light-theme .price-column,
 body.light-theme .quick-path-grid a,
 body.light-theme .use-case-profile-grid a,
 body.light-theme .profile-media-card,
+body.light-theme .robot-gallery-grid figure,
 body.light-theme .robot-video-player,
 body.light-theme .use-case-panel,
 body.light-theme .profile-intel-strip article,
@@ -11549,6 +11586,7 @@ body.light-theme .compare-preset-grid strong,
 body.light-theme .faq-grid summary,
 body.light-theme .featured-robot-card h3,
 body.light-theme .robot-week-grid strong,
+body.light-theme .robot-gallery-grid figcaption,
 body.light-theme .profile-facts dt,
 body.light-theme .price-card strong,
 body.light-theme .quick-path-grid strong,
@@ -12168,6 +12206,7 @@ body.light-theme .facts span {
   .use-case-robot-grid,
   .robot-video-player,
   .profile-media-card,
+  .robot-gallery-grid,
   .site-footer {
     grid-template-columns: 1fr;
   }

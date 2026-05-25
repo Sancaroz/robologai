@@ -5403,6 +5403,22 @@ function robotQuality(robot) {
   };
 }
 
+function robotGallery(robot) {
+  const gallery = Array.isArray(robot.gallery) ? robot.gallery : String(robot.gallery || "").split(",").map((item) => item.trim()).filter(Boolean);
+  return gallery.map((item, index) => {
+    if (typeof item === "string") {
+      return {
+        src: item,
+        caption: `${robot.name} gallery image ${index + 1}`
+      };
+    }
+    return {
+      src: item?.src || item?.image || item?.url || "",
+      caption: item?.caption || item?.alt || `${robot.name} gallery image ${index + 1}`
+    };
+  }).filter((item) => item.src);
+}
+
 function robotDeploymentThesis(robot) {
   const text = robotText(robot);
   if (text.includes("enterprise") || text.includes("industrial") || text.includes("inspection")) return "Enterprise deployment signal";
@@ -6665,6 +6681,7 @@ function renderRobotProfile() {
   const compareSlugs = [robot, ...alternatives.slice(0, 3)].map((item) => robotSlug(item)).join(",");
   const company = pageState.companies.find((item) => pageNormalize(item.name) === pageNormalize(robot.company));
   const deploymentThesis = robotDeploymentThesis(robot);
+  const gallery = robotGallery(robot);
 
   document.title = `${robot.name} Profile | robologai`;
   root.innerHTML = `
@@ -6806,6 +6823,22 @@ function renderRobotProfile() {
         `).join("")}
       </div>
     </section>
+    ${gallery.length ? `
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Image Gallery</p>
+        <h2>Additional product visuals for ${pageEscape(robot.name)}.</h2>
+      </div>
+      <div class="robot-gallery-grid">
+        ${gallery.map((item) => `
+          <figure>
+            <img src="${pageEscape(item.src)}" alt="${pageEscape(item.caption)}" loading="lazy" decoding="async">
+            <figcaption>${pageEscape(item.caption)}</figcaption>
+          </figure>
+        `).join("")}
+      </div>
+    </section>
+    ` : ""}
     <section class="catalog-section">
       <div class="section-heading compact">
         <p>Official Media</p>
