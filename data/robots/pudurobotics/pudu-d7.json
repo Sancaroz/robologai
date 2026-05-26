@@ -1,0 +1,24 @@
+{
+  "name": "PUDU D7",
+  "company": "Pudu Robotics",
+  "category": "Semi-humanoid service robot",
+  "country": "China",
+  "status": "Announced / commercialization path",
+  "availability": "Contact sales / commercialization anticipated",
+  "price": "No official public price",
+  "useCase": "Semi-humanoid service work, item transport, elevator operation, sorting tasks, and industrial or hospitality assistance",
+  "height": "165 cm",
+  "runtime": "Over 8 hours",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/pudurobotics/pudu-d7.png",
+  "heroImage": "assets/robots/pudurobotics/pudu-d7.png",
+  "imageCredit": "Pudu Robotics official media",
+  "source": "https://www.pudurobotics.com/about/news/66ebc0513d909300432a21f8",
+  "sourceLinks": [
+    "https://www.pudurobotics.com/about/news/66ebc0513d909300432a21f8",
+    "https://www.pudurobotics.com/en/products/",
+    "https://www.pudurobotics.com/en/company"
+  ],
+  "keywords": ["pudu", "d7", "semi-humanoid", "service robot", "pudu x-lab", "embodied intelligence", "wheeled humanoid"]
+}

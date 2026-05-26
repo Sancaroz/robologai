@@ -1,0 +1,24 @@
+{
+  "name": "FlashBot Arm",
+  "company": "Pudu Robotics",
+  "category": "Semi-humanoid service robot",
+  "country": "China",
+  "status": "Product page / commercial path",
+  "availability": "Contact sales",
+  "price": "No official public price",
+  "useCase": "Hospitality and building service delivery, elevator operation, access-card interaction, door opening, and assisted manipulation",
+  "height": "1440 mm",
+  "runtime": "8 hours unloaded",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "image": "assets/robots/pudurobotics/flashbot-arm.png",
+  "heroImage": "assets/robots/pudurobotics/flashbot-arm.png",
+  "imageCredit": "Pudu Robotics official media",
+  "source": "https://www.pudurobotics.com/en/products/flashbot-arm",
+  "sourceLinks": [
+    "https://www.pudurobotics.com/en/products/flashbot-arm",
+    "https://www.pudurobotics.com/en/products/",
+    "https://www.pudurobotics.com/en/company"
+  ],
+  "keywords": ["pudu", "flashbot arm", "semi-humanoid", "service robot", "hospitality", "delivery robot", "manipulation"]
+}

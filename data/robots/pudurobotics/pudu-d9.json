@@ -11,9 +11,15 @@
     "runtime": "Battery: 15 Ah / 0.72 kWh",
     "maturity": 3,
     "priceVisibility": 2,
-    "image": "https://cdn.pudutech.com/official-website/d9/section3_front_en.webp",
+    "image": "assets/robots/pudurobotics/pudu-d9.png",
+    "heroImage": "assets/robots/pudurobotics/pudu-d9.png",
     "imageCredit": "Pudu Robotics official media",
     "source": "https://www.pudurobotics.com/en/products/d9",
-    "keywords": ["pudu", "d9", "service robot", "humanoid"]
+    "sourceLinks": [
+      "https://www.pudurobotics.com/en/products/d9",
+      "https://www.pudurobotics.com/about/news/6763cce40767a20044b4a69a",
+      "https://www.pudurobotics.com/en/products/"
+    ],
+    "keywords": ["pudu", "d9", "service robot", "humanoid", "pudu x-lab", "bipedal humanoid"]
   }
   

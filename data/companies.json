@@ -2388,18 +2388,40 @@
   },
   {
     "name": "Pudu Robotics",
-    "category": "Service and humanoid robotics",
+    "category": "Commercial service, semi-humanoid, humanoid, and industrial robotics",
     "country": "China",
     "type": "Private",
     "ticker": "",
-    "robot": "PUDU D9, D7, service robots",
+    "robot": "PUDU D9, PUDU D7, PUDU D5, FlashBot Arm",
     "website": "https://www.pudurobotics.com/",
     "keywords": [
+      "pudu robotics",
       "service robot",
+      "commercial cleaning",
+      "industrial delivery",
+      "semi-humanoid",
       "humanoid",
-      "d9",
-      "commercial robotics"
-    ]
+      "quadruped",
+      "pudu x-lab"
+    ],
+    "primaryFocus": "Autonomous Robotics",
+    "segments": [
+      "Service Robots",
+      "Commercial Delivery",
+      "Commercial Cleaning",
+      "Industrial Delivery",
+      "Humanoids",
+      "Quadrupeds"
+    ],
+    "logo": "assets/companies/pudurobotics/logo.svg",
+    "image": "assets/companies/pudurobotics/logo.svg",
+    "focus": "Commercial service robots, cleaning robots, industrial delivery platforms, semi-humanoid service robots, and humanoid embodied AI systems.",
+    "sourceLinks": [
+      "https://www.pudurobotics.com/",
+      "https://www.pudurobotics.com/en/products/",
+      "https://www.pudurobotics.com/en/company"
+    ],
+    "lastVerified": "May 2026 source review"
   },
   {
     "name": "MagicLab",

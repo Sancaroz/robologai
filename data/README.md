@@ -87,6 +87,8 @@ Individual checks:
 node scripts/audit-robot-images.mjs
 node scripts/audit-sources.mjs
 node scripts/audit-price-sources.mjs
+node scripts/discover-robot-candidates.mjs --input leads.txt
+node scripts/review-robot-candidates.mjs
 node scripts/watch-price-signals.mjs
 node scripts/review-price-signals.mjs
 node scripts/validate-data.mjs
@@ -112,6 +114,24 @@ Source depth audit:
 node scripts/audit-sources.mjs
 node scripts/audit-sources.mjs --type robot --limit 20
 node scripts/audit-sources.mjs --company agility --min 3
+```
+
+Robot candidate discovery:
+
+```bash
+node scripts/discover-robot-candidates.mjs --input leads.txt
+node scripts/discover-robot-candidates.mjs --input leads.txt --fetch
+node scripts/discover-robot-candidates.mjs --input leads.txt --write
+```
+
+Generated `data/robot-candidates/*.json` reports are local review artifacts and are ignored by git.
+
+Robot candidate review:
+
+```bash
+node scripts/review-robot-candidates.mjs
+node scripts/review-robot-candidates.mjs --markdown
+node scripts/review-robot-candidates.mjs --json
 ```
 
 Price signal watcher:

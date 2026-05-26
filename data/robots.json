@@ -545,14 +545,22 @@
     "runtime": "Battery: 15 Ah / 0.72 kWh",
     "maturity": 3,
     "priceVisibility": 2,
-    "image": "https://cdn.pudutech.com/official-website/d9/section3_front_en.webp",
+    "image": "assets/robots/pudurobotics/pudu-d9.png",
     "imageCredit": "Pudu Robotics official media",
     "source": "https://www.pudurobotics.com/en/products/d9",
     "keywords": [
       "pudu",
       "d9",
       "service robot",
-      "humanoid"
+      "humanoid",
+      "pudu x-lab",
+      "bipedal humanoid"
+    ],
+    "heroImage": "assets/robots/pudurobotics/pudu-d9.png",
+    "sourceLinks": [
+      "https://www.pudurobotics.com/en/products/d9",
+      "https://www.pudurobotics.com/about/news/6763cce40767a20044b4a69a",
+      "https://www.pudurobotics.com/en/products/"
     ]
   },
   {
@@ -1697,5 +1705,101 @@
       "embodied ai"
     ],
     "lastVerified": "May 2026 source review"
+  },
+  {
+    "name": "PUDU D5",
+    "company": "Pudu Robotics",
+    "category": "Quadruped delivery and inspection robot",
+    "country": "China",
+    "status": "Product page / commercial path",
+    "availability": "Request a demo / contact sales",
+    "price": "No official public price",
+    "useCase": "Outdoor delivery, inspection, security, logistics, research, and all-terrain autonomous mobility",
+    "height": "Not disclosed",
+    "runtime": "Not disclosed",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/pudurobotics/pudu-d5.png",
+    "heroImage": "assets/robots/pudurobotics/pudu-d5.png",
+    "imageCredit": "Pudu Robotics official media",
+    "source": "https://www.pudurobotics.com/en/products/d5",
+    "sourceLinks": [
+      "https://www.pudurobotics.com/en/products/d5",
+      "https://www.pudurobotics.com/en/products/",
+      "https://www.pudurobotics.com/en/company"
+    ],
+    "keywords": [
+      "pudu",
+      "d5",
+      "quadruped",
+      "delivery robot",
+      "inspection robot",
+      "all-terrain",
+      "industrial delivery"
+    ]
+  },
+  {
+    "name": "PUDU D7",
+    "company": "Pudu Robotics",
+    "category": "Semi-humanoid service robot",
+    "country": "China",
+    "status": "Announced / commercialization path",
+    "availability": "Contact sales / commercialization anticipated",
+    "price": "No official public price",
+    "useCase": "Semi-humanoid service work, item transport, elevator operation, sorting tasks, and industrial or hospitality assistance",
+    "height": "165 cm",
+    "runtime": "Over 8 hours",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/pudurobotics/pudu-d7.png",
+    "heroImage": "assets/robots/pudurobotics/pudu-d7.png",
+    "imageCredit": "Pudu Robotics official media",
+    "source": "https://www.pudurobotics.com/about/news/66ebc0513d909300432a21f8",
+    "sourceLinks": [
+      "https://www.pudurobotics.com/about/news/66ebc0513d909300432a21f8",
+      "https://www.pudurobotics.com/en/products/",
+      "https://www.pudurobotics.com/en/company"
+    ],
+    "keywords": [
+      "pudu",
+      "d7",
+      "semi-humanoid",
+      "service robot",
+      "pudu x-lab",
+      "embodied intelligence",
+      "wheeled humanoid"
+    ]
+  },
+  {
+    "name": "FlashBot Arm",
+    "company": "Pudu Robotics",
+    "category": "Semi-humanoid service robot",
+    "country": "China",
+    "status": "Product page / commercial path",
+    "availability": "Contact sales",
+    "price": "No official public price",
+    "useCase": "Hospitality and building service delivery, elevator operation, access-card interaction, door opening, and assisted manipulation",
+    "height": "1440 mm",
+    "runtime": "8 hours unloaded",
+    "maturity": 3,
+    "priceVisibility": 1,
+    "image": "assets/robots/pudurobotics/flashbot-arm.png",
+    "heroImage": "assets/robots/pudurobotics/flashbot-arm.png",
+    "imageCredit": "Pudu Robotics official media",
+    "source": "https://www.pudurobotics.com/en/products/flashbot-arm",
+    "sourceLinks": [
+      "https://www.pudurobotics.com/en/products/flashbot-arm",
+      "https://www.pudurobotics.com/en/products/",
+      "https://www.pudurobotics.com/en/company"
+    ],
+    "keywords": [
+      "pudu",
+      "flashbot arm",
+      "semi-humanoid",
+      "service robot",
+      "hospitality",
+      "delivery robot",
+      "manipulation"
+    ]
   }
 ]

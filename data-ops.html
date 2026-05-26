@@ -165,6 +165,16 @@
         </div>
         <div class="quality-summary-strip source-audit-strip">
           <article>
+            <span>Robot candidate discovery</span>
+            <strong>node scripts/discover-robot-candidates.mjs --input leads.txt --write</strong>
+            <small>Turns batch URL lists into ignored local candidate reports before modular robot records are created.</small>
+          </article>
+          <article>
+            <span>Robot candidate review</span>
+            <strong>node scripts/review-robot-candidates.mjs --markdown</strong>
+            <small>Compares candidate reports against the catalog and prints add/update/duplicate review actions.</small>
+          </article>
+          <article>
             <span>Source audit</span>
             <strong>node scripts/audit-sources.mjs --type robot --limit 20</strong>
             <small>Use after adding product pages or official references so robot and company records move toward two independent source URLs.</small>

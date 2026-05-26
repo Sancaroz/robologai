@@ -1,0 +1,37 @@
+{
+  "name": "Pudu Robotics",
+  "category": "Commercial service, semi-humanoid, humanoid, and industrial robotics",
+  "primaryFocus": "Autonomous Robotics",
+  "segments": [
+    "Service Robots",
+    "Commercial Delivery",
+    "Commercial Cleaning",
+    "Industrial Delivery",
+    "Humanoids",
+    "Quadrupeds"
+  ],
+  "country": "China",
+  "type": "Private",
+  "ticker": "",
+  "robot": "PUDU D9, PUDU D7, PUDU D5, FlashBot Arm",
+  "logo": "assets/companies/pudurobotics/logo.svg",
+  "image": "assets/companies/pudurobotics/logo.svg",
+  "website": "https://www.pudurobotics.com/",
+  "focus": "Commercial service robots, cleaning robots, industrial delivery platforms, semi-humanoid service robots, and humanoid embodied AI systems.",
+  "sourceLinks": [
+    "https://www.pudurobotics.com/",
+    "https://www.pudurobotics.com/en/products/",
+    "https://www.pudurobotics.com/en/company"
+  ],
+  "keywords": [
+    "pudu robotics",
+    "service robot",
+    "commercial cleaning",
+    "industrial delivery",
+    "semi-humanoid",
+    "humanoid",
+    "quadruped",
+    "pudu x-lab"
+  ],
+  "lastVerified": "May 2026 source review"
+}
