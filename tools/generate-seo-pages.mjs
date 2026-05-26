@@ -239,6 +239,64 @@ function robotGallery(robot) {
   }).filter((item) => item.src);
 }
 
+function robotMediaItems(robot, gallery = robotGallery(robot)) {
+  const mainSrc = robot.heroImage || robot.image || "";
+  const items = [];
+  if (mainSrc) {
+    items.push({
+      src: mainSrc,
+      alt: `${robot.name} robot`,
+      caption: robot.imageCredit || "",
+      label: "Hero"
+    });
+  }
+  gallery.forEach((item, index) => {
+    if (!item.src || item.src === mainSrc) return;
+    items.push({
+      src: item.src,
+      alt: item.alt || `${robot.name} gallery image ${index + 1}`,
+      caption: item.caption || "",
+      label: String(index + 2)
+    });
+  });
+  return items;
+}
+
+function robotMediaPicker(robot, gallery) {
+  const items = robotMediaItems(robot, gallery);
+  if (!items.length) return `<div class="company-profile-mark">${escapeHtml(initials(robot.name))}</div>`;
+  return `
+          <img class="profile-visual-main" data-profile-gallery-main src="${escapeAttr(pageAssetPath(items[0].src))}" alt="${escapeAttr(items[0].alt)}" loading="lazy">
+          <figcaption data-profile-gallery-caption ${items[0].caption ? "" : "hidden"}>${escapeHtml(items[0].caption)}</figcaption>
+          ${items.length > 1 ? `<div class="profile-gallery-thumbs" aria-label="${escapeAttr(robot.name)} image selector">
+            ${items.map((item, index) => `
+              <button class="${index === 0 ? "is-active" : ""}" type="button" data-gallery-src="${escapeAttr(pageAssetPath(item.src))}" data-gallery-alt="${escapeAttr(item.alt)}" data-gallery-caption="${escapeAttr(item.caption)}" aria-label="Show ${escapeAttr(item.alt)}">
+                <img src="${escapeAttr(pageAssetPath(item.src))}" alt="" loading="lazy" decoding="async">
+              </button>
+            `).join("")}
+          </div>` : ""}`;
+}
+
+function profileGalleryScript() {
+  return `<script>
+      document.querySelectorAll("[data-profile-gallery]").forEach((gallery) => {
+        const main = gallery.querySelector("[data-profile-gallery-main]");
+        const caption = gallery.querySelector("[data-profile-gallery-caption]");
+        gallery.querySelectorAll("[data-gallery-src]").forEach((button) => {
+          button.addEventListener("click", () => {
+            if (!main) return;
+            main.src = button.dataset.gallerySrc || main.src;
+            main.alt = button.dataset.galleryAlt || main.alt;
+            gallery.querySelectorAll("[data-gallery-src]").forEach((item) => item.classList.toggle("is-active", item === button));
+            if (!caption) return;
+            caption.textContent = button.dataset.galleryCaption || "";
+            caption.hidden = !button.dataset.galleryCaption;
+          });
+        });
+      });
+    </script>`;
+}
+
 function broadCountryName(country = "") {
   return country.includes("/") ? country.split("/")[0].trim() : country;
 }
@@ -528,21 +586,7 @@ function robotPage(robot) {
   const related = relatedRobots(robot);
   const deploymentThesis = robotDeploymentThesis(robot);
   const gallery = robotGallery(robot);
-  const gallerySection = gallery.length ? `
-      <section class="catalog-section">
-        <div class="section-heading compact">
-          <p>Image Gallery</p>
-          <h2>Additional product visuals for ${escapeHtml(robot.name)}.</h2>
-        </div>
-        <div class="robot-gallery-grid">
-          ${gallery.map((item) => `
-            <figure>
-              <img src="${escapeAttr(pageAssetPath(item.src))}" alt="${escapeAttr(item.alt || `${robot.name} gallery image`)}" loading="lazy" decoding="async">
-              ${item.caption ? `<figcaption>${escapeHtml(item.caption)}</figcaption>` : ""}
-            </figure>
-          `).join("")}
-        </div>
-      </section>` : "";
+  const mediaItems = robotMediaItems(robot, gallery);
   const title = `${robot.name} Robot Profile: Price, Use Case, Status`;
   const description = `${robot.name} by ${robot.company}: ${robot.category} robot profile with availability, price signal, use case, status, source link, and Robologai readiness score.`;
   const canonical = `https://robologai.com/robots/${pageSlug}.html`;
@@ -582,9 +626,8 @@ function robotPage(robot) {
             <article><strong>${escapeHtml(robot.price)}</strong><small>Price signal</small></article>
           </div>
         </div>
-        <figure class="profile-visual">
-          ${robot.image ? `<img src="${escapeAttr(pageAssetPath(robot.image))}" alt="${escapeAttr(robot.name)} robot" loading="lazy">` : `<div class="company-profile-mark">${escapeHtml(initials(robot.name))}</div>`}
-          <figcaption>${escapeHtml(robot.imageCredit || "Robologai source-first profile")}</figcaption>
+        <figure class="profile-visual ${mediaItems.length > 1 ? "has-gallery" : ""}" data-profile-gallery>
+          ${robotMediaPicker(robot, gallery)}
         </figure>
       </section>
       <section class="profile-intel-strip" aria-label="Robot intelligence summary">
@@ -660,7 +703,7 @@ function robotPage(robot) {
           <article><span>Deployment signal</span><strong>${escapeHtml(robot.status || "Status not disclosed")}</strong><small>${escapeHtml(quality.deploymentSignal)}</small></article>
           <article><span>Last reviewed</span><strong>${escapeHtml(quality.dataFreshness)}</strong><small>Fast-changing claims should be checked against official pages.</small></article>
         </div>
-      </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}${gallerySection}
+      </section>${sourceNotes(`${robot.name} source trail.`, sources, "Official product source")}
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Deployment Context</p>
@@ -685,7 +728,8 @@ function robotPage(robot) {
           <a href="../compare.html?robots=${escapeAttr([dynamicSlug, ...related.slice(0, 2).map((item) => slug(item.name))].join(","))}">Compare robots →</a>
           <a href="../robots.html">Back to robot catalog →</a>
         </div>
-      </section>`;
+      </section>
+      ${mediaItems.length > 1 ? profileGalleryScript() : ""}`;
   return layout({ title, description, canonical, body, schema, activeNav: "robots" });
 }
 

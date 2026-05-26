@@ -46,9 +46,29 @@
             <article><strong>$200 deposit</strong><small>Price signal</small></article>
           </div>
         </div>
-        <figure class="profile-visual">
-          <img src="../assets/robots/1x-tech/neo/hero.png" alt="NEO robot" loading="lazy">
-          <figcaption>1X Official Media</figcaption>
+        <figure class="profile-visual has-gallery" data-profile-gallery>
+          
+          <img class="profile-visual-main" data-profile-gallery-main src="../assets/robots/1x-tech/neo/hero.png" alt="NEO robot" loading="lazy">
+          <figcaption data-profile-gallery-caption >1X Official Media</figcaption>
+          <div class="profile-gallery-thumbs" aria-label="NEO image selector">
+            
+              <button class="is-active" type="button" data-gallery-src="../assets/robots/1x-tech/neo/hero.png" data-gallery-alt="NEO robot" data-gallery-caption="1X Official Media" aria-label="Show NEO robot">
+                <img src="../assets/robots/1x-tech/neo/hero.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/1x-tech/neo/hero2.png" data-gallery-alt="NEO gallery image 1" data-gallery-caption="" aria-label="Show NEO gallery image 1">
+                <img src="../assets/robots/1x-tech/neo/hero2.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/1x-tech/neo/hero3.png" data-gallery-alt="NEO gallery image 2" data-gallery-caption="" aria-label="Show NEO gallery image 2">
+                <img src="../assets/robots/1x-tech/neo/hero3.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/1x-tech/neo/hero4.png" data-gallery-alt="NEO gallery image 3" data-gallery-caption="" aria-label="Show NEO gallery image 3">
+                <img src="../assets/robots/1x-tech/neo/hero4.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+          </div>
         </figure>
       </section>
       <section class="profile-intel-strip" aria-label="Robot intelligence summary">
@@ -136,30 +156,6 @@
       </section>
       <section class="catalog-section">
         <div class="section-heading compact">
-          <p>Image Gallery</p>
-          <h2>Additional product visuals for NEO.</h2>
-        </div>
-        <div class="robot-gallery-grid">
-          
-            <figure>
-              <img src="../assets/robots/1x-tech/neo/hero2.png" alt="NEO gallery image 1" loading="lazy" decoding="async">
-              
-            </figure>
-          
-            <figure>
-              <img src="../assets/robots/1x-tech/neo/hero3.png" alt="NEO gallery image 2" loading="lazy" decoding="async">
-              
-            </figure>
-          
-            <figure>
-              <img src="../assets/robots/1x-tech/neo/hero4.png" alt="NEO gallery image 3" loading="lazy" decoding="async">
-              
-            </figure>
-          
-        </div>
-      </section>
-      <section class="catalog-section">
-        <div class="section-heading compact">
           <p>Deployment Context</p>
           <h2>What NEO signals about the physical AI market.</h2>
         </div>
@@ -183,6 +179,23 @@
           <a href="../robots.html">Back to robot catalog →</a>
         </div>
       </section>
+      <script>
+      document.querySelectorAll("[data-profile-gallery]").forEach((gallery) => {
+        const main = gallery.querySelector("[data-profile-gallery-main]");
+        const caption = gallery.querySelector("[data-profile-gallery-caption]");
+        gallery.querySelectorAll("[data-gallery-src]").forEach((button) => {
+          button.addEventListener("click", () => {
+            if (!main) return;
+            main.src = button.dataset.gallerySrc || main.src;
+            main.alt = button.dataset.galleryAlt || main.alt;
+            gallery.querySelectorAll("[data-gallery-src]").forEach((item) => item.classList.toggle("is-active", item === button));
+            if (!caption) return;
+            caption.textContent = button.dataset.galleryCaption || "";
+            caption.hidden = !button.dataset.galleryCaption;
+          });
+        });
+      });
+    </script>
     </main>
     <footer class="site-footer mini-footer">
       <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>

@@ -7789,6 +7789,60 @@ body.light-theme .humanoid-preview-card dt {
   object-position: center;
 }
 
+.profile-visual.has-gallery {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.profile-visual.has-gallery .profile-visual-main {
+  min-height: 260px;
+}
+
+.profile-gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.profile-gallery-thumbs button {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(120, 231, 255, 0.16);
+  border-radius: 8px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.profile-gallery-thumbs button.is-active {
+  border-color: rgba(120, 231, 255, 0.78);
+  box-shadow: 0 0 0 2px rgba(120, 231, 255, 0.14);
+}
+
+.profile-gallery-thumbs img {
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.profile-visual.has-gallery figcaption {
+  top: 14px;
+  right: 14px;
+  bottom: auto;
+  width: auto;
+  min-width: 72px;
+  height: auto;
+  min-height: 34px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
 .profile-action-row {
   display: flex;
   flex-wrap: wrap;

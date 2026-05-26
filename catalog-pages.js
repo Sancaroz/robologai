@@ -5460,6 +5460,63 @@ function robotGallery(robot) {
   }).filter((item) => item.src);
 }
 
+function robotMediaItems(robot, gallery = robotGallery(robot)) {
+  const mainSrc = robot.heroImage || robot.image || "";
+  const items = [];
+  if (mainSrc) {
+    items.push({
+      src: mainSrc,
+      alt: `${robot.name} robot`,
+      caption: robot.imageCredit || "",
+      label: "Hero"
+    });
+  }
+  gallery.forEach((item, index) => {
+    if (!item.src || item.src === mainSrc) return;
+    items.push({
+      src: item.src,
+      alt: item.alt || `${robot.name} gallery image ${index + 1}`,
+      caption: item.caption || "",
+      label: String(index + 2)
+    });
+  });
+  return items;
+}
+
+function robotMediaPicker(robot, gallery) {
+  const items = robotMediaItems(robot, gallery);
+  if (!items.length) return `<span>${pageEscape(pageInitials(robot.name))}</span>`;
+  return `
+    <img class="profile-visual-main" data-profile-gallery-main src="${pageEscape(items[0].src)}" alt="${pageEscape(items[0].alt)}" loading="lazy" decoding="async">
+    <figcaption data-profile-gallery-caption ${items[0].caption ? "" : "hidden"}>${pageEscape(items[0].caption)}</figcaption>
+    ${items.length > 1 ? `<div class="profile-gallery-thumbs" aria-label="${pageEscape(robot.name)} image selector">
+      ${items.map((item, index) => `
+        <button class="${index === 0 ? "is-active" : ""}" type="button" data-gallery-src="${pageEscape(item.src)}" data-gallery-alt="${pageEscape(item.alt)}" data-gallery-caption="${pageEscape(item.caption)}" aria-label="Show ${pageEscape(item.alt)}">
+          <img src="${pageEscape(item.src)}" alt="" loading="lazy" decoding="async">
+        </button>
+      `).join("")}
+    </div>` : ""}
+  `;
+}
+
+function setupProfileGallery(root = document) {
+  root.querySelectorAll("[data-profile-gallery]").forEach((gallery) => {
+    const main = gallery.querySelector("[data-profile-gallery-main]");
+    const caption = gallery.querySelector("[data-profile-gallery-caption]");
+    gallery.querySelectorAll("[data-gallery-src]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!main) return;
+        main.src = button.dataset.gallerySrc || main.src;
+        main.alt = button.dataset.galleryAlt || main.alt;
+        gallery.querySelectorAll("[data-gallery-src]").forEach((item) => item.classList.toggle("is-active", item === button));
+        if (!caption) return;
+        caption.textContent = button.dataset.galleryCaption || "";
+        caption.hidden = !button.dataset.galleryCaption;
+      });
+    });
+  });
+}
+
 function robotDeploymentThesis(robot) {
   const text = robotText(robot);
   if (text.includes("enterprise") || text.includes("industrial") || text.includes("inspection")) return "Enterprise deployment signal";
@@ -6837,6 +6894,7 @@ function renderRobotProfile() {
   const company = pageState.companies.find((item) => pageNormalize(item.name) === pageNormalize(robot.company));
   const deploymentThesis = robotDeploymentThesis(robot);
   const gallery = robotGallery(robot);
+  const mediaItems = robotMediaItems(robot, gallery);
 
   document.title = `${robot.name} Profile | robologai`;
   root.innerHTML = `
@@ -6859,9 +6917,8 @@ function renderRobotProfile() {
           <a href="${pageEscape(robot.source || "#")}" target="_blank" rel="noopener noreferrer">Official source</a>
         </div>
       </div>
-      <figure class="profile-visual ${robot.image ? "" : "catalog-visual-empty"}">
-        ${robot.image ? `<img src="${pageEscape(robot.image)}" alt="${pageEscape(robot.name)} robot" loading="lazy" decoding="async">` : `<span>${pageEscape(pageInitials(robot.name))}</span>`}
-        <figcaption>${score} <small>${pageEscape(scoreLabel(score))}</small></figcaption>
+      <figure class="profile-visual ${robot.image ? "" : "catalog-visual-empty"} ${mediaItems.length > 1 ? "has-gallery" : ""}" data-profile-gallery>
+        ${robotMediaPicker(robot, gallery)}
       </figure>
     </section>
     <section class="profile-intel-strip" aria-label="Robot intelligence summary">
@@ -6978,22 +7035,6 @@ function renderRobotProfile() {
         `).join("")}
       </div>
     </section>
-    ${gallery.length ? `
-    <section class="catalog-section">
-      <div class="section-heading compact">
-        <p>Image Gallery</p>
-        <h2>Additional product visuals for ${pageEscape(robot.name)}.</h2>
-      </div>
-      <div class="robot-gallery-grid">
-        ${gallery.map((item) => `
-          <figure>
-            <img src="${pageEscape(item.src)}" alt="${pageEscape(item.alt || `${robot.name} gallery image`)}" loading="lazy" decoding="async">
-            ${item.caption ? `<figcaption>${pageEscape(item.caption)}</figcaption>` : ""}
-          </figure>
-        `).join("")}
-      </div>
-    </section>
-    ` : ""}
     <section class="catalog-section">
       <div class="section-heading compact">
         <p>Official Media</p>
@@ -7031,6 +7072,7 @@ function renderRobotProfile() {
       </div>
     </section>
   `;
+  setupProfileGallery(root);
 }
 
 function renderUseCasesPage() {
