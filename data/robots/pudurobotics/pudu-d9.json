@@ -11,6 +11,26 @@
     "runtime": "Battery: 15 Ah / 0.72 kWh",
     "maturity": 3,
     "priceVisibility": 2,
+    "commercialAccess": true,
+    "availableRegions": ["Global"],
+    "accessType": "Dealer Quote",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.pudurobotics.com/en/products/d9",
+    "officialPurchaseUrl": "",
+    "notes": "Contact-sales path is visible; distributor, import support, and Türkiye/MENA customs readiness need verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global contact-sales path exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Pudu brand may be useful for service robotics access research, but D9 Türkiye access is not verified."
+      }
+    },
     "image": "assets/robots/pudurobotics/pudu-d9.png",
     "heroImage": "assets/robots/pudurobotics/pudu-d9.png",
     "imageCredit": "Pudu Robotics official media",

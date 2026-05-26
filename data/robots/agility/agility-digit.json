@@ -11,6 +11,26 @@
     "runtime": "About 2 hours",
     "maturity": 5,
     "priceVisibility": 2,
+    "commercialAccess": true,
+    "availableRegions": ["Global"],
+    "accessType": "Enterprise Pilot",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.agilityrobotics.com/",
+    "officialPurchaseUrl": "",
+    "notes": "Enterprise deployment path is visible; regional access, import support, and customs readiness require direct partner verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global enterprise deployment path exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Potential enterprise pipeline candidate for warehouse and logistics discussions."
+      }
+    },
     "image": "assets/robots/agility/digit/hero.png",
     "heroImage": "assets/robots/agility/digit/hero.png",
     "imageCredit": "Agility Robotics official media",

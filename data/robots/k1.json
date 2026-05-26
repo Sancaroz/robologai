@@ -9,6 +9,26 @@
   "maturity": 5,
   "price": "from USD 5,999",
   "priceVisibility": 5,
+  "commercialAccess": true,
+  "availableRegions": ["Global"],
+  "accessType": "Public Price",
+  "importSupport": false,
+  "customsReady": false,
+  "partnerStatus": "Not contacted",
+  "salesContactUrl": "https://www.booster.tech/booster-k1/",
+  "officialPurchaseUrl": "https://www.booster.tech/booster-k1/",
+  "notes": "Visible public price signal exists; distributor, import support, and customs status should be verified before regional listing.",
+  "marketAccess": {
+    "turkiye": {
+      "status": "Unknown",
+      "salesPath": "Global product page exists; Türkiye sales path not verified",
+      "distributor": "",
+      "importSupport": false,
+      "customsReady": false,
+      "partnerStatus": "Not contacted",
+      "notes": "Candidate for Türkiye research and education market review because public entry pricing is visible."
+    }
+  },
   "useCase": "Humanoid locomotion research, embodied AI development and RoboCup competition",
   "source": "https://www.booster.tech/booster-k1/",
   "image": "assets/robots/boostertech/k1/hero.png",

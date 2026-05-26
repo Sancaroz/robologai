@@ -17,6 +17,26 @@
   "runtime": "Official store specification: standing endurance about 4h35min; walking endurance about 1.5h",
   "maturity": 4,
   "priceVisibility": 5,
+  "commercialAccess": true,
+  "availableRegions": ["Global"],
+  "accessType": "Public Price",
+  "importSupport": false,
+  "customsReady": false,
+  "partnerStatus": "Not contacted",
+  "salesContactUrl": "https://www.agibot.com/products",
+  "officialPurchaseUrl": "https://store.agibot.com/products/a2-lite",
+  "notes": "Official store page provides a visible purchase path; Türkiye, MENA, and customs readiness still need direct verification.",
+  "marketAccess": {
+    "turkiye": {
+      "status": "Unknown",
+      "salesPath": "Global official store exists; Türkiye sales path not verified",
+      "distributor": "",
+      "importSupport": false,
+      "customsReady": false,
+      "partnerStatus": "Not contacted",
+      "notes": "Good candidate for outreach because public price and official store path are visible."
+    }
+  },
   "image": "assets/robots/agibot/a2/a2-lite/hero.png",
   "heroImage": "assets/robots/agibot/a2/a2-lite/hero.png",
   "imageCredit": "AGIBOT official product media",

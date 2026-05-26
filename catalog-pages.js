@@ -16,6 +16,7 @@ const pageState = {
   robotUseCaseFilter: "all",
   robotCountryFilter: "all",
   robotScoreFilter: "all",
+  robotCommercialFilter: "all",
   robotVideoOnly: false,
   robotPricedOnly: false,
   signalTypeFilter: "all",
@@ -4037,6 +4038,13 @@ function robotText(robot) {
     robot.status,
     robot.availability,
     robot.price,
+    robot.accessType,
+    robot.partnerStatus,
+    ...(Array.isArray(robot.availableRegions) ? robot.availableRegions : []),
+    robot.marketAccess?.turkiye?.status,
+    robot.marketAccess?.turkiye?.salesPath,
+    robot.marketAccess?.turkiye?.distributor,
+    robot.marketAccess?.turkiye?.partnerStatus,
     robot.useCase,
     ...companyValueList(robot.keywords)
   ].filter(Boolean).join(" "));
@@ -4137,7 +4145,7 @@ function strategicSegments(item, kind) {
   const segments = new Set(normalizedSegments(item));
   segments.add(primaryFocus(item, kind));
   if (countrySlug(item.country) === "china") segments.add("China Robotics");
-  if (Number(item.priceVisibility || 0) >= 2 || text.includes("available") || text.includes("commercial") || text.includes("deployed") || text.includes("retailer") || text.includes("price")) segments.add("Commercial Access");
+  if (kind === "robot" ? hasCommercialAccess(item) : Number(item.priceVisibility || 0) >= 2 || text.includes("available") || text.includes("commercial") || text.includes("deployed") || text.includes("retailer") || text.includes("price")) segments.add("Commercial Access");
   if (text.includes("industrial") || text.includes("factory") || text.includes("manufacturing") || text.includes("automation") || text.includes("robot arm")) segments.add("Industrial");
   if (text.includes("warehouse") || text.includes("logistics") || text.includes("amr") || text.includes("intralogistics") || text.includes("picking")) segments.add("Warehouse");
   if (text.includes("delivery")) segments.add("Delivery");
@@ -4156,11 +4164,99 @@ function matchesStrategicFilter(item, filter, kind) {
   if (kind === "robot" && (filter === "quadrupeds" || filter === "quadruped")) return isQuadrupedRobot(item);
   if (strategicFocusSlugs[filter]) return focus === pageNormalize(strategicFocusSlugs[filter]) || segments.includes(pageNormalize(strategicFocusSlugs[filter]));
   if (filter === "china" || filter === "china-robotics") return countrySlug(item.country) === "china" || segments.includes("china robotics");
-  if (filter === "available" || filter === "commercial-access") return segments.includes("commercial access");
+  if (filter === "available" || filter === "commercial-access") return kind === "robot" ? hasCommercialAccess(item) : segments.includes("commercial access");
   if (filter === "home") return text.includes("home") || text.includes("household") || text.includes("companion");
   if (filter === "ai") return text.includes(" ai") || text.includes("artificial intelligence") || text.includes("embodied") || text.includes("physical ai");
   if (filter === "public" || filter === "private") return text.includes(filter);
   return text.includes(filter);
+}
+
+function commercialRegions(robot) {
+  const regions = [
+    ...(Array.isArray(robot.availableRegions) ? robot.availableRegions : []),
+    ...(Array.isArray(robot.regionAccess) ? robot.regionAccess.map((item) => item.region) : [])
+  ].filter(Boolean);
+  return [...new Set(regions.map((item) => String(item).trim()).filter(Boolean))];
+}
+
+function commercialAccessType(robot) {
+  const explicit = robot.accessType || "";
+  if (explicit) return explicit;
+  const priceText = pageNormalize(robot.price);
+  const availabilityText = pageNormalize(robot.availability);
+  if (Number(robot.priceVisibility || 0) >= 4 || typeof robot.price === "number") return "Public Price";
+  if (priceText.includes("quote") || priceText.includes("enterprise") || availabilityText.includes("contact sales")) return "Dealer Quote";
+  if (availabilityText.includes("retailer")) return "Distributor";
+  if (availabilityText.includes("research") || availabilityText.includes("developer")) return "Research Platform";
+  if (availabilityText.includes("pilot") || availabilityText.includes("early access") || availabilityText.includes("pre-order")) return "Enterprise Pilot";
+  return "Unknown";
+}
+
+function hasCommercialAccess(robot) {
+  if (robot.commercialAccess !== undefined) return Boolean(robot.commercialAccess);
+  const text = pageNormalize([robot.status, robot.availability, robot.price, ...(robot.keywords || [])].filter(Boolean).join(" "));
+  return Number(robot.priceVisibility || 0) >= 2 || /available|commercial|order|purchase|contact sales|request a demo|retailer|dealer|distributor|quote|enterprise|pre-order|early access/.test(text);
+}
+
+function commercialAccessSummary(robot) {
+  const type = commercialAccessType(robot);
+  const regions = commercialRegions(robot);
+  return {
+    enabled: hasCommercialAccess(robot),
+    type,
+    regions,
+    regionLabel: regions.length ? regions.slice(0, 3).join(" / ") : "Region unknown",
+    importLabel: robot.importSupport ? "Import support" : "Import unknown",
+    customsLabel: robot.customsReady ? "Customs ready" : "Customs review needed",
+    partnerLabel: robot.partnerStatus || "Not contacted",
+    primaryUrl: robot.officialPurchaseUrl || robot.salesContactUrl || robot.source || "#",
+    notes: robot.notes || (type === "Unknown" ? "Commercial path needs verification." : "Commercial path is based on current source and access fields.")
+  };
+}
+
+function marketAccess(robot, market = "turkiye") {
+  return robot.marketAccess?.[market] || {};
+}
+
+function marketAccessSummary(robot, market = "turkiye") {
+  const access = marketAccess(robot, market);
+  const status = access.status || "Unknown";
+  const partnerStatus = access.partnerStatus || "Not contacted";
+  const importSupport = Boolean(access.importSupport);
+  const customsReady = Boolean(access.customsReady);
+  const distributor = access.distributor || "No verified distributor";
+  return {
+    market,
+    status,
+    salesPath: access.salesPath || "Global source only",
+    distributor,
+    importSupport,
+    customsReady,
+    partnerStatus,
+    importLabel: importSupport ? "Import support" : "Import not verified",
+    customsLabel: customsReady ? "Customs ready" : "Customs not verified",
+    notes: access.notes || "Local market access needs direct verification."
+  };
+}
+
+function matchesCommercialFilter(robot, filter) {
+  if (filter === "all") return true;
+  const summary = commercialAccessSummary(robot);
+  const turkiye = marketAccessSummary(robot, "turkiye");
+  const type = pageNormalize(summary.type);
+  const regions = summary.regions.map(pageNormalize);
+  if (filter === "commercial") return summary.enabled;
+  if (filter === "public-price") return type === "public price" || Number(robot.priceVisibility || 0) >= 4 || typeof robot.price === "number";
+  if (filter === "dealer-quote") return type === "dealer quote";
+  if (filter === "distributor") return type === "distributor";
+  if (filter === "turkiye") return pageNormalize(turkiye.status) !== "unknown";
+  if (filter === "turkiye-verified") return ["verified", "distributor", "partner"].includes(pageNormalize(turkiye.status));
+  if (filter === "turkiye-pipeline") return ["contacted", "in discussion", "partner", "distributor"].includes(pageNormalize(turkiye.partnerStatus));
+  if (filter === "europe") return regions.includes("europe");
+  if (filter === "mena") return regions.includes("mena");
+  if (filter === "import-support") return turkiye.importSupport;
+  if (filter === "customs-ready") return turkiye.customsReady;
+  return true;
 }
 
 function optionalCompanyRows(company) {
@@ -6211,14 +6307,16 @@ function renderRobotCards() {
       pageState.robotScoreFilter === "watchlist" ? robotScore(robot) >= 52 && robotScore(robot) < 68 :
       robotScore(robot) < 52
     );
+    const matchesCommercial = matchesCommercialFilter(robot, pageState.robotCommercialFilter);
     const matchesVideo = !pageState.robotVideoOnly || Boolean(robotVideo(robot));
     const matchesPrice = !pageState.robotPricedOnly || Number(robot.priceVisibility || 0) >= 2;
-    return matchesQuery && matchesFilter && matchesUseCase && matchesCountry && matchesScore && matchesVideo && matchesPrice;
+    return matchesQuery && matchesFilter && matchesUseCase && matchesCountry && matchesScore && matchesCommercial && matchesVideo && matchesPrice;
   });
 
   grid.innerHTML = robots.map((robot) => {
     const video = robotVideo(robot);
     const quality = robotQuality(robot);
+    const commercial = commercialAccessSummary(robot);
     const rank = rankings.get(robotSlug(robot));
     const company = pageState.companies.find((item) => pageNormalize(item.name) === pageNormalize(robot.company));
     return `
@@ -6235,6 +6333,7 @@ function renderRobotCards() {
           <span>${pageEscape(robot.category || "Robot")}</span>
           <span>${pageEscape(robot.country || "Global")}</span>
           <span>${pageEscape(scoreLabel(robotScore(robot)))}</span>
+          ${commercial.enabled ? `<span class="commercial-access-chip">${pageEscape(commercial.type)}</span>` : ""}
         </div>
         <h2>${pageEscape(robot.name)}</h2>
         <p>${pageEscape(robot.useCase || "Robotics platform")}</p>
@@ -6246,6 +6345,7 @@ function renderRobotCards() {
           <div><dt>Status</dt><dd>${pageEscape(robot.status)}</dd></div>
           <div><dt>Availability</dt><dd>${pageEscape(robot.availability)}</dd></div>
           <div><dt>Price</dt><dd>${pageEscape(robot.price)}</dd></div>
+          <div><dt>Access</dt><dd>${pageEscape(commercial.enabled ? `${commercial.type} · ${commercial.regionLabel}` : "Not verified")}</dd></div>
         </dl>
         <div class="robot-score-row">
           <span>Maturity ${pageMeter(robot.maturity)}</span>
@@ -6258,6 +6358,7 @@ function renderRobotCards() {
           <span>${pageEscape(quality.sourceConfidence)}</span>
           <span>${pageEscape(quality.priceConfidence)}</span>
           <span>${pageEscape(quality.mediaVerified)}</span>
+          <span>${pageEscape(commercial.partnerLabel)}</span>
         </div>
         ${video?.embed ? `
           <div class="robot-card-video">
@@ -6411,6 +6512,7 @@ function renderRobotLeaderboardPage() {
 function renderAdvancedRobotFilters() {
   const useCaseSelect = document.querySelector("[data-robot-usecase-filter]");
   const countrySelect = document.querySelector("[data-robot-country-filter]");
+  const commercialSelect = document.querySelector("[data-robot-commercial-filter]");
   if (useCaseSelect && !useCaseSelect.dataset.ready) {
     useCaseSelect.innerHTML = `<option value="all">All use cases</option>${useCaseLibrary.map((item) => `<option value="${pageEscape(item.slug)}">${pageEscape(item.title)}</option>`).join("")}`;
     useCaseSelect.value = pageState.robotUseCaseFilter;
@@ -6423,6 +6525,9 @@ function renderAdvancedRobotFilters() {
     countrySelect.innerHTML = `<option value="all">All countries</option>${countries.map(([slug, label]) => `<option value="${pageEscape(slug)}">${pageEscape(label)}</option>`).join("")}`;
     countrySelect.value = pageState.robotCountryFilter;
     countrySelect.dataset.ready = "true";
+  }
+  if (commercialSelect) {
+    commercialSelect.value = pageState.robotCommercialFilter;
   }
 }
 
@@ -6595,10 +6700,12 @@ function renderMarketPage() {
     ["Secondary robotics", (robot) => matchesStrategicFilter(robot, "secondary", "robot")]
   ];
   const priceAccess = [
-    ["Public / visible", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 4), "Official or strong public pricing signal"],
-    ["Retailer / reference", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) >= 2 && Number(robot.priceVisibility || 0) < 4), "Useful benchmark, not always official MSRP"],
-    ["Enterprise quote", pageState.robots.filter((robot) => pageNormalize(robot.price).includes("enterprise") || pageNormalize(robot.price).includes("quote")), "Commercial access requires vendor contact"],
-    ["No public price", pageState.robots.filter((robot) => Number(robot.priceVisibility || 0) <= 1), "Market remains hard to benchmark"]
+    ["Public price", pageState.robots.filter((robot) => matchesCommercialFilter(robot, "public-price")), "Official, deposit, or strong public pricing signal"],
+    ["Dealer quote", pageState.robots.filter((robot) => matchesCommercialFilter(robot, "dealer-quote")), "Commercial access requires vendor or dealer contact"],
+    ["Distributor", pageState.robots.filter((robot) => matchesCommercialFilter(robot, "distributor")), "Regional or retailer path exists"],
+    ["Türkiye verified", pageState.robots.filter((robot) => matchesCommercialFilter(robot, "turkiye-verified")), "Robots with verified local access, partner, or distributor status"],
+    ["Türkiye pipeline", pageState.robots.filter((robot) => matchesCommercialFilter(robot, "turkiye-pipeline")), "Robots where outreach or partnership discussion is active"],
+    ["Needs verification", pageState.robots.filter((robot) => !hasCommercialAccess(robot) || commercialAccessType(robot) === "Unknown"), "Market remains hard to benchmark"]
   ];
   const rankings = robotRankings();
 
@@ -6888,6 +6995,8 @@ function renderRobotProfile() {
   const rank = robotRankings().find((item) => robotSlug(item.robot) === robotSlug(robot))?.rank;
   const video = robotVideo(robot);
   const quality = robotQuality(robot);
+  const commercial = commercialAccessSummary(robot);
+  const turkiyeAccess = marketAccessSummary(robot, "turkiye");
   const robotSources = sourceList(robot.source, robot.sourceLinks);
   const alternatives = robotAlternatives(robot);
   const compareSlugs = [robot, ...alternatives.slice(0, 3)].map((item) => robotSlug(item)).join(",");
@@ -6935,8 +7044,32 @@ function renderRobotProfile() {
       <div class="robot-snapshot-grid">
         <article><span>Platform</span><strong>${pageEscape(robot.category || "Robot")}</strong><small>${pageEscape(robot.company)}</small></article>
         <article><span>Deployment stage</span><strong>${pageEscape(robotStage(robot))}</strong><small>${pageEscape(robot.status || "Status not disclosed")}</small></article>
-        <article><span>Access</span><strong>${pageEscape(robot.availability || "Availability unknown")}</strong><small>${pageEscape(quality.priceConfidence)}</small></article>
+        <article><span>Access</span><strong>${pageEscape(commercial.enabled ? commercial.type : robot.availability || "Availability unknown")}</strong><small>${pageEscape(commercial.regionLabel)}</small></article>
         <article><span>Market role</span><strong>${pageEscape(deploymentThesis)}</strong><small>${pageEscape(useCases[0]?.title || robot.useCase || robot.category)}</small></article>
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Commercial Access</p>
+        <h2>Purchase path, regional access, and import readiness.</h2>
+      </div>
+      <div class="commercial-access-grid">
+        <article><span>Global access</span><strong>${pageEscape(commercial.type)}</strong><small>${pageEscape(commercial.enabled ? robot.availability || "Availability not disclosed" : "Commercial path not verified")}</small></article>
+        <article><span>Global regions</span><strong>${pageEscape(commercial.regionLabel)}</strong><small>Global availability does not mean Türkiye availability.</small></article>
+        <article><span>Global contact</span><strong>${pageEscape(robot.officialPurchaseUrl ? "Official purchase" : robot.salesContactUrl ? "Sales contact" : "Source review")}</strong><small>${pageEscape(commercial.notes)}</small><a href="${pageEscape(commercial.primaryUrl)}" target="_blank" rel="noopener noreferrer">Open access source →</a></article>
+        <article><span>Partner status</span><strong>${pageEscape(commercial.partnerLabel)}</strong><small>Global commercial relationship status.</small></article>
+      </div>
+    </section>
+    <section class="catalog-section">
+      <div class="section-heading compact">
+        <p>Türkiye Market Access</p>
+        <h2>Local sales path, distributor status, import readiness, and partner pipeline.</h2>
+      </div>
+      <div class="commercial-access-grid">
+        <article><span>Türkiye status</span><strong>${pageEscape(turkiyeAccess.status)}</strong><small>${pageEscape(turkiyeAccess.salesPath)}</small></article>
+        <article><span>Distributor</span><strong>${pageEscape(turkiyeAccess.distributor)}</strong><small>${pageEscape(turkiyeAccess.partnerStatus)}</small></article>
+        <article><span>Import</span><strong>${pageEscape(turkiyeAccess.importLabel)}</strong><small>${pageEscape(turkiyeAccess.customsLabel)}</small></article>
+        <article><span>Sales note</span><strong>${pageEscape(turkiyeAccess.partnerStatus)}</strong><small>${pageEscape(turkiyeAccess.notes)}</small></article>
       </div>
     </section>
     <section class="catalog-section">
@@ -7574,6 +7707,13 @@ function wireCatalogControls() {
   document.querySelectorAll("[data-robot-score-filter]").forEach((select) => {
     select.addEventListener("change", () => {
       pageState.robotScoreFilter = select.value || "all";
+      renderRobotCards();
+    });
+  });
+
+  document.querySelectorAll("[data-robot-commercial-filter]").forEach((select) => {
+    select.addEventListener("change", () => {
+      pageState.robotCommercialFilter = select.value || "all";
       renderRobotCards();
     });
   });

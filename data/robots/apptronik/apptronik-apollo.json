@@ -13,6 +13,26 @@
   "runtime": "4 hours per battery pack",
   "maturity": 4,
   "priceVisibility": 1,
+  "commercialAccess": true,
+  "availableRegions": ["Global"],
+  "accessType": "Enterprise Pilot",
+  "importSupport": false,
+  "customsReady": false,
+  "partnerStatus": "Not contacted",
+  "salesContactUrl": "https://apptronik.com/apollo",
+  "officialPurchaseUrl": "",
+  "notes": "Enterprise inquiry path is visible; price, distributor, import support, and customs readiness need direct verification.",
+  "marketAccess": {
+    "turkiye": {
+      "status": "Unknown",
+      "salesPath": "Global enterprise inquiry path exists; Türkiye sales path not verified",
+      "distributor": "",
+      "importSupport": false,
+      "customsReady": false,
+      "partnerStatus": "Not contacted",
+      "notes": "Potential enterprise pipeline candidate for manufacturing and warehouse conversations."
+    }
+  },
   "image": "assets/robots/apptronik/apollo/hero.png",
   "heroImage": "assets/robots/apptronik/apollo/hero.png",
   "imageCredit": "Apptronik official media",

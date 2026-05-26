@@ -16,6 +16,26 @@
   "maturity": 4,
   "price": "$200 deposit",
   "priceVisibility": 5,
+  "commercialAccess": true,
+  "availableRegions": ["Global"],
+  "accessType": "Enterprise Pilot",
+  "importSupport": false,
+  "customsReady": false,
+  "partnerStatus": "Not contacted",
+  "salesContactUrl": "https://www.1x.tech/neo",
+  "officialPurchaseUrl": "https://www.1x.tech/neo",
+  "notes": "Deposit and early-access path are visible; final delivery regions, import support, and customs readiness need verification.",
+  "marketAccess": {
+    "turkiye": {
+      "status": "Unknown",
+      "salesPath": "Global early-access path exists; Türkiye delivery path not verified",
+      "distributor": "",
+      "importSupport": false,
+      "customsReady": false,
+      "partnerStatus": "Not contacted",
+      "notes": "Consumer-facing demand signal is strong, but Türkiye availability should not be shown as verified."
+    }
+  },
   "useCase": "Home assistance, household chores, companion AI and autonomous domestic tasks",
   "source": "https://www.1x.tech/neo",
   "sourceLinks": [

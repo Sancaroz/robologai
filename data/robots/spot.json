@@ -11,6 +11,26 @@
     "runtime": "About 90 minutes",
     "maturity": 5,
     "priceVisibility": 4,
+    "commercialAccess": true,
+    "availableRegions": ["Global"],
+    "accessType": "Dealer Quote",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://bostondynamics.com/products/spot/",
+    "officialPurchaseUrl": "",
+    "notes": "Commercial product access is established, but current purchase, distributor, import, and Türkiye customs path should be verified directly.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global commercial product exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Industrial inspection use cases make this a useful Türkiye enterprise-access benchmark."
+      }
+    },
     "image": "https://bostondynamics.com/wp-content/uploads/2024/02/spot-stairs-safety-lights.jpg",
     "imageCredit": "Boston Dynamics official media",
     "source": "https://bostondynamics.com/products/spot/",

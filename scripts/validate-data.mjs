@@ -25,6 +25,9 @@ const requiredFields = {
 };
 
 const primaryFocusValues = new Set(["Humanoids", "Embodied AI", "Physical AI", "Autonomous Robotics", "Secondary"]);
+const accessTypeValues = new Set(["Public Price", "Dealer Quote", "Distributor", "Research Platform", "Enterprise Pilot", "Unknown"]);
+const partnerStatusValues = new Set(["Not contacted", "Contacted", "In discussion", "Partner", "Distributor"]);
+const marketAccessStatusValues = new Set(["Unknown", "Needs review", "Contacted", "In discussion", "Verified", "Partner", "Distributor", "Unavailable"]);
 
 function readJson(filePath) {
   try {
@@ -73,6 +76,47 @@ function validateRecord(kind, record, label) {
     }
     if (!Number.isFinite(priceVisibility) || priceVisibility < 0 || priceVisibility > 5) {
       throw new Error(`${label} has invalid priceVisibility; expected 0-5`);
+    }
+    if (record.commercialAccess !== undefined && typeof record.commercialAccess !== "boolean") {
+      throw new Error(`${label} has invalid commercialAccess; expected boolean`);
+    }
+    if (record.availableRegions !== undefined && (!Array.isArray(record.availableRegions) || record.availableRegions.some((region) => typeof region !== "string" || !region.trim()))) {
+      throw new Error(`${label} has invalid availableRegions; expected an array of non-empty strings`);
+    }
+    if (record.accessType !== undefined && !accessTypeValues.has(record.accessType)) {
+      throw new Error(`${label} has invalid accessType; expected one of: ${[...accessTypeValues].join(", ")}`);
+    }
+    if (record.importSupport !== undefined && typeof record.importSupport !== "boolean") {
+      throw new Error(`${label} has invalid importSupport; expected boolean`);
+    }
+    if (record.customsReady !== undefined && typeof record.customsReady !== "boolean") {
+      throw new Error(`${label} has invalid customsReady; expected boolean`);
+    }
+    if (record.partnerStatus !== undefined && !partnerStatusValues.has(record.partnerStatus)) {
+      throw new Error(`${label} has invalid partnerStatus; expected one of: ${[...partnerStatusValues].join(", ")}`);
+    }
+    if (record.marketAccess !== undefined) {
+      if (!record.marketAccess || typeof record.marketAccess !== "object" || Array.isArray(record.marketAccess)) {
+        throw new Error(`${label} has invalid marketAccess; expected object`);
+      }
+      for (const [market, access] of Object.entries(record.marketAccess)) {
+        const accessLabel = `${label}.marketAccess.${market}`;
+        if (!access || typeof access !== "object" || Array.isArray(access)) {
+          throw new Error(`${accessLabel} must be an object`);
+        }
+        if (access.status !== undefined && !marketAccessStatusValues.has(access.status)) {
+          throw new Error(`${accessLabel} has invalid status; expected one of: ${[...marketAccessStatusValues].join(", ")}`);
+        }
+        if (access.importSupport !== undefined && typeof access.importSupport !== "boolean") {
+          throw new Error(`${accessLabel} has invalid importSupport; expected boolean`);
+        }
+        if (access.customsReady !== undefined && typeof access.customsReady !== "boolean") {
+          throw new Error(`${accessLabel} has invalid customsReady; expected boolean`);
+        }
+        if (access.partnerStatus !== undefined && !partnerStatusValues.has(access.partnerStatus)) {
+          throw new Error(`${accessLabel} has invalid partnerStatus; expected one of: ${[...partnerStatusValues].join(", ")}`);
+        }
+      }
     }
   }
   if (kind === "prices") {

@@ -111,7 +111,29 @@
       "https://apptronik.com/",
       "https://apptronik.com/videos"
     ],
-    "lastVerified": "May 2026 source review"
+    "lastVerified": "May 2026 source review",
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Enterprise Pilot",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://apptronik.com/apollo",
+    "officialPurchaseUrl": "",
+    "notes": "Enterprise inquiry path is visible; price, distributor, import support, and customs readiness need direct verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global enterprise inquiry path exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Potential enterprise pipeline candidate for manufacturing and warehouse conversations."
+      }
+    }
   },
   {
     "name": "Digit",
@@ -142,7 +164,29 @@
     "sourceLinks": [
       "https://www.agilityrobotics.com/",
       "https://www.agilityrobotics.com/solutions"
-    ]
+    ],
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Enterprise Pilot",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.agilityrobotics.com/",
+    "officialPurchaseUrl": "",
+    "notes": "Enterprise deployment path is visible; regional access, import support, and customs readiness require direct partner verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global enterprise deployment path exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Potential enterprise pipeline candidate for warehouse and logistics discussions."
+      }
+    }
   },
   {
     "name": "Atlas",
@@ -188,7 +232,29 @@
       "inspection",
       "quadruped",
       "commercial"
-    ]
+    ],
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Dealer Quote",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://bostondynamics.com/products/spot/",
+    "officialPurchaseUrl": "",
+    "notes": "Commercial product access is established, but current purchase, distributor, import, and Türkiye customs path should be verified directly.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global commercial product exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Industrial inspection use cases make this a useful Türkiye enterprise-access benchmark."
+      }
+    }
   },
   {
     "name": "Unitree G1",
@@ -211,7 +277,29 @@
       "unitree",
       "research",
       "price visible"
-    ]
+    ],
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Public Price",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.unitree.com/g1/",
+    "officialPurchaseUrl": "https://www.unitree.com/g1/",
+    "notes": "Public price signal and order path are visible; regional distributor, import support, and Türkiye customs readiness need verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global product page exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Strong Türkiye outreach candidate because price visibility is high."
+      }
+    }
   },
   {
     "name": "H1",
@@ -342,7 +430,29 @@
       "assets/robots/1x-tech/neo/hero2.png",
       "assets/robots/1x-tech/neo/hero3.png",
       "assets/robots/1x-tech/neo/hero4.png"
-    ]
+    ],
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Enterprise Pilot",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.1x.tech/neo",
+    "officialPurchaseUrl": "https://www.1x.tech/neo",
+    "notes": "Deposit and early-access path are visible; final delivery regions, import support, and customs readiness need verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global early-access path exists; Türkiye delivery path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Consumer-facing demand signal is strong, but Türkiye availability should not be shown as verified."
+      }
+    }
   },
   {
     "name": "Memo",
@@ -571,7 +681,29 @@
       "https://www.pudurobotics.com/en/products/d9",
       "https://www.pudurobotics.com/about/news/6763cce40767a20044b4a69a",
       "https://www.pudurobotics.com/en/products/"
-    ]
+    ],
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Dealer Quote",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.pudurobotics.com/en/products/d9",
+    "officialPurchaseUrl": "",
+    "notes": "Contact-sales path is visible; distributor, import support, and Türkiye/MENA customs readiness need verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global contact-sales path exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Pudu brand may be useful for service robotics access research, but D9 Türkiye access is not verified."
+      }
+    }
   },
   {
     "name": "MagicBot Gen1",
@@ -1134,6 +1266,28 @@
       "camera": "Stereo depth camera",
       "imu": "9-axis IMU",
       "connectivity": "Wi-Fi, Bluetooth 5.2"
+    },
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Public Price",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.booster.tech/booster-k1/",
+    "officialPurchaseUrl": "https://www.booster.tech/booster-k1/",
+    "notes": "Visible public price signal exists; distributor, import support, and customs status should be verified before regional listing.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global product page exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Candidate for Türkiye research and education market review because public entry pricing is visible."
+      }
     }
   },
   {
@@ -1315,7 +1469,29 @@
       "performance robot",
       "commercial humanoid",
       "embodied ai"
-    ]
+    ],
+    "commercialAccess": true,
+    "availableRegions": [
+      "Global"
+    ],
+    "accessType": "Public Price",
+    "importSupport": false,
+    "customsReady": false,
+    "partnerStatus": "Not contacted",
+    "salesContactUrl": "https://www.agibot.com/products",
+    "officialPurchaseUrl": "https://store.agibot.com/products/a2-lite",
+    "notes": "Official store page provides a visible purchase path; Türkiye, MENA, and customs readiness still need direct verification.",
+    "marketAccess": {
+      "turkiye": {
+        "status": "Unknown",
+        "salesPath": "Global official store exists; Türkiye sales path not verified",
+        "distributor": "",
+        "importSupport": false,
+        "customsReady": false,
+        "partnerStatus": "Not contacted",
+        "notes": "Good candidate for outreach because public price and official store path are visible."
+      }
+    }
   },
   {
     "name": "AGIBOT A2-W",

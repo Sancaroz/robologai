@@ -424,6 +424,72 @@ function robotQuality(robot) {
   };
 }
 
+function commercialRegions(robot) {
+  const regions = [
+    ...(Array.isArray(robot.availableRegions) ? robot.availableRegions : []),
+    ...(Array.isArray(robot.regionAccess) ? robot.regionAccess.map((item) => item.region) : [])
+  ].filter(Boolean);
+  return [...new Set(regions.map((item) => String(item).trim()).filter(Boolean))];
+}
+
+function commercialAccessType(robot) {
+  if (robot.accessType) return robot.accessType;
+  const priceText = normalize(robot.price);
+  const availabilityText = normalize(robot.availability);
+  if (Number(robot.priceVisibility || 0) >= 4 || typeof robot.price === "number") return "Public Price";
+  if (priceText.includes("quote") || priceText.includes("enterprise") || availabilityText.includes("contact sales")) return "Dealer Quote";
+  if (availabilityText.includes("retailer")) return "Distributor";
+  if (availabilityText.includes("research") || availabilityText.includes("developer")) return "Research Platform";
+  if (availabilityText.includes("pilot") || availabilityText.includes("early access") || availabilityText.includes("pre-order")) return "Enterprise Pilot";
+  return "Unknown";
+}
+
+function hasCommercialAccess(robot) {
+  if (robot.commercialAccess !== undefined) return Boolean(robot.commercialAccess);
+  const text = normalize([robot.status, robot.availability, robot.price, ...(robot.keywords || [])].filter(Boolean).join(" "));
+  return Number(robot.priceVisibility || 0) >= 2 || /available|commercial|order|purchase|contact sales|request a demo|retailer|dealer|distributor|quote|enterprise|pre-order|early access/.test(text);
+}
+
+function commercialAccessSummary(robot) {
+  const type = commercialAccessType(robot);
+  const regions = commercialRegions(robot);
+  return {
+    enabled: hasCommercialAccess(robot),
+    type,
+    regionLabel: regions.length ? regions.slice(0, 3).join(" / ") : "Region unknown",
+    importLabel: robot.importSupport ? "Import support" : "Import unknown",
+    customsLabel: robot.customsReady ? "Customs ready" : "Customs review needed",
+    partnerLabel: robot.partnerStatus || "Not contacted",
+    primaryUrl: robot.officialPurchaseUrl || robot.salesContactUrl || robot.source || "#",
+    notes: robot.notes || (type === "Unknown" ? "Commercial path needs verification." : "Commercial path is based on current source and access fields.")
+  };
+}
+
+function marketAccess(robot, market = "turkiye") {
+  return robot.marketAccess?.[market] || {};
+}
+
+function marketAccessSummary(robot, market = "turkiye") {
+  const access = marketAccess(robot, market);
+  const status = access.status || "Unknown";
+  const partnerStatus = access.partnerStatus || "Not contacted";
+  const importSupport = Boolean(access.importSupport);
+  const customsReady = Boolean(access.customsReady);
+  const distributor = access.distributor || "No verified distributor";
+  return {
+    market,
+    status,
+    salesPath: access.salesPath || "Global source only",
+    distributor,
+    importSupport,
+    customsReady,
+    partnerStatus,
+    importLabel: importSupport ? "Import support" : "Import not verified",
+    customsLabel: customsReady ? "Customs ready" : "Customs not verified",
+    notes: access.notes || "Local market access needs direct verification."
+  };
+}
+
 function robotDeploymentThesis(robot) {
   const text = normalize([robot.name, robot.company, robot.category, robot.country, robot.status, robot.availability, robot.price, robot.useCase, ...(robot.keywords || [])].filter(Boolean).join(" "));
   if (text.includes("enterprise") || text.includes("industrial") || text.includes("inspection")) return "Enterprise deployment signal";
@@ -582,6 +648,8 @@ function robotPage(robot) {
   const rank = robotRank(robot);
   const breakdown = robotScoreBreakdown(robot);
   const quality = robotQuality(robot);
+  const commercial = commercialAccessSummary(robot);
+  const turkiyeAccess = marketAccessSummary(robot, "turkiye");
   const sources = sourceList(robot.source, robot.sourceLinks);
   const related = relatedRobots(robot);
   const deploymentThesis = robotDeploymentThesis(robot);
@@ -644,8 +712,32 @@ function robotPage(robot) {
         <div class="robot-snapshot-grid">
           <article><span>Platform</span><strong>${escapeHtml(robot.category || "Robot")}</strong><small>${escapeHtml(robot.company)}</small></article>
           <article><span>Deployment stage</span><strong>${escapeHtml(scoreLabel(score))}</strong><small>${escapeHtml(robot.status || "Status not disclosed")}</small></article>
-          <article><span>Access</span><strong>${escapeHtml(robot.availability || "Availability unknown")}</strong><small>${escapeHtml(quality.priceConfidence)}</small></article>
+          <article><span>Access</span><strong>${escapeHtml(commercial.enabled ? commercial.type : robot.availability || "Availability unknown")}</strong><small>${escapeHtml(commercial.regionLabel)}</small></article>
           <article><span>Market role</span><strong>${escapeHtml(deploymentThesis)}</strong><small>${escapeHtml(robot.useCase || robot.category)}</small></article>
+        </div>
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Commercial Access</p>
+          <h2>Purchase path, regional access, and import readiness.</h2>
+        </div>
+        <div class="commercial-access-grid">
+          <article><span>Global access</span><strong>${escapeHtml(commercial.type)}</strong><small>${escapeHtml(commercial.enabled ? robot.availability || "Availability not disclosed" : "Commercial path not verified")}</small></article>
+          <article><span>Global regions</span><strong>${escapeHtml(commercial.regionLabel)}</strong><small>Global availability does not mean Türkiye availability.</small></article>
+          <article><span>Global contact</span><strong>${escapeHtml(robot.officialPurchaseUrl ? "Official purchase" : robot.salesContactUrl ? "Sales contact" : "Source review")}</strong><small>${escapeHtml(commercial.notes)}</small><a href="${escapeAttr(commercial.primaryUrl)}" target="_blank" rel="noopener noreferrer">Open access source →</a></article>
+          <article><span>Partner status</span><strong>${escapeHtml(commercial.partnerLabel)}</strong><small>Global commercial relationship status.</small></article>
+        </div>
+      </section>
+      <section class="catalog-section">
+        <div class="section-heading compact">
+          <p>Türkiye Market Access</p>
+          <h2>Local sales path, distributor status, import readiness, and partner pipeline.</h2>
+        </div>
+        <div class="commercial-access-grid">
+          <article><span>Türkiye status</span><strong>${escapeHtml(turkiyeAccess.status)}</strong><small>${escapeHtml(turkiyeAccess.salesPath)}</small></article>
+          <article><span>Distributor</span><strong>${escapeHtml(turkiyeAccess.distributor)}</strong><small>${escapeHtml(turkiyeAccess.partnerStatus)}</small></article>
+          <article><span>Import</span><strong>${escapeHtml(turkiyeAccess.importLabel)}</strong><small>${escapeHtml(turkiyeAccess.customsLabel)}</small></article>
+          <article><span>Sales note</span><strong>${escapeHtml(turkiyeAccess.partnerStatus)}</strong><small>${escapeHtml(turkiyeAccess.notes)}</small></article>
         </div>
       </section>
       <section class="profile-detail-grid">

@@ -6426,6 +6426,7 @@ body.light-theme .profile-main > div > span {
 .compare-summary-grid,
 .data-quality-grid,
 .data-ops-grid,
+.commercial-access-grid,
 .asset-coverage-grid,
 .asset-issue-grid,
 .robot-asset-flow,
@@ -6498,6 +6499,7 @@ body.light-theme .profile-main > div > span {
 .profile-stack-grid,
 .data-quality-grid,
 .data-ops-grid,
+.commercial-access-grid,
 .asset-coverage-grid,
 .company-intelligence-grid,
 .command-recipe-grid,
@@ -6913,6 +6915,7 @@ body.light-theme .profile-main > div > span {
 .compare-best-fit-grid article,
 .data-quality-grid article,
 .data-ops-grid article,
+.commercial-access-grid article,
 .command-recipe-grid article,
 .source-note-grid article,
 .company-snapshot-grid article,
@@ -6948,6 +6951,7 @@ body.light-theme .profile-main > div > span {
 .compare-best-fit-grid span,
 .data-quality-grid span,
 .data-ops-grid span,
+.commercial-access-grid span,
 .command-recipe-grid span,
 .source-note-grid span,
 .company-snapshot-grid span,
@@ -6970,6 +6974,7 @@ body.light-theme .profile-main > div > span {
 .company-signal-grid small,
 .data-quality-grid small,
 .data-ops-grid small,
+.commercial-access-grid small,
 .command-recipe-grid small,
 .source-note-grid small,
 .company-snapshot-grid small,
@@ -6990,6 +6995,7 @@ body.light-theme .profile-main > div > span {
 .compare-best-fit-grid strong,
 .data-quality-grid strong,
 .data-ops-grid strong,
+.commercial-access-grid strong,
 .command-recipe-grid strong,
 .source-note-grid strong,
 .company-snapshot-grid strong,
@@ -7007,6 +7013,19 @@ body.light-theme .profile-main > div > span {
 
 .source-note-grid article {
   min-height: 170px;
+}
+
+.commercial-access-grid a {
+  color: var(--blue-2);
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.commercial-access-chip {
+  border-color: rgba(70, 211, 154, 0.36) !important;
+  color: #bff7df !important;
+  background: rgba(70, 211, 154, 0.12) !important;
 }
 
 .source-note-grid a {
@@ -7799,15 +7818,36 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .profile-gallery-thumbs {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
   gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   padding: 0 12px 12px;
+  scroll-padding-inline: 12px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: rgba(120, 231, 255, 0.42) rgba(255, 255, 255, 0.06);
+  scrollbar-width: thin;
+}
+
+.profile-gallery-thumbs::-webkit-scrollbar {
+  height: 8px;
+}
+
+.profile-gallery-thumbs::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.profile-gallery-thumbs::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(120, 231, 255, 0.38);
 }
 
 .profile-gallery-thumbs button {
+  flex: 0 0 clamp(62px, 18%, 88px);
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  scroll-snap-align: start;
   border: 1px solid rgba(120, 231, 255, 0.16);
   border-radius: 8px;
   padding: 0;
@@ -11733,6 +11773,7 @@ body.light-theme .company-snapshot-grid small,
 body.light-theme .product-lineup-grid small,
 body.light-theme .robot-snapshot-grid small,
 body.light-theme .robot-readiness-grid small,
+body.light-theme .commercial-access-grid small,
 body.light-theme .deployment-context-grid small,
 body.light-theme .market-overview-grid small,
 body.light-theme .market-lens-grid small,
@@ -11769,6 +11810,7 @@ body.light-theme .compare-summary-grid article,
 body.light-theme .compare-best-fit-grid article,
 body.light-theme .data-quality-grid article,
 body.light-theme .data-ops-grid article,
+body.light-theme .commercial-access-grid article,
 body.light-theme .asset-coverage-panel article,
 body.light-theme .asset-coverage-grid article,
 body.light-theme .asset-issue-grid article,
@@ -11860,6 +11902,7 @@ body.light-theme .company-snapshot-grid strong,
 body.light-theme .product-lineup-grid strong,
 body.light-theme .robot-snapshot-grid strong,
 body.light-theme .robot-readiness-grid strong,
+body.light-theme .commercial-access-grid strong,
 body.light-theme .deployment-context-grid strong,
 body.light-theme .market-overview-grid strong,
 body.light-theme .market-lens-grid strong,
@@ -12138,6 +12181,7 @@ body.light-theme .facts span {
   .compare-best-fit-grid,
   .data-quality-grid,
   .data-ops-grid,
+  .commercial-access-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
   .robot-asset-flow,
@@ -12150,6 +12194,7 @@ body.light-theme .facts span {
   .product-lineup-grid,
   .robot-snapshot-grid,
   .robot-readiness-grid,
+  .commercial-access-grid,
   .deployment-context-grid,
   .market-overview-grid,
   .market-lens-grid,
@@ -12480,6 +12525,7 @@ body.light-theme .facts span {
   .compare-best-fit-grid,
   .data-quality-grid,
   .data-ops-grid,
+  .commercial-access-grid,
   .asset-coverage-grid,
   .asset-issue-grid,
   .robot-asset-flow,
@@ -12492,6 +12538,7 @@ body.light-theme .facts span {
   .product-lineup-grid,
   .robot-snapshot-grid,
   .robot-readiness-grid,
+  .commercial-access-grid,
   .deployment-context-grid,
   .tr-guide-grid,
   .compare-preset-grid,
