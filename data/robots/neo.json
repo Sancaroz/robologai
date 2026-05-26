@@ -18,8 +18,18 @@
   "priceVisibility": 5,
   "useCase": "Home assistance, household chores, companion AI and autonomous domestic tasks",
   "source": "https://www.1x.tech/neo",
+  "sourceLinks": [
+    "https://www.1x.tech/neo",
+    "https://www.1x.tech/",
+    "https://www.1x.tech/news"
+  ],
   "image": "assets/robots/1x-tech/neo/hero.png",
   "heroImage": "assets/robots/1x-tech/neo/hero.png",
+  "gallery": [
+    "assets/robots/1x-tech/neo/hero2.png",
+    "assets/robots/1x-tech/neo/hero3.png",
+    "assets/robots/1x-tech/neo/hero4.png"
+  ],
   "imageCredit": "1X Official Media",
   "height": "5 ft 6 in",
   "runtime": "4 hours",

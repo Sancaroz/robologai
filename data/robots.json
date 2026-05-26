@@ -332,7 +332,17 @@
       "aiCompute": "Up to 2070 FP4 TFLOPS",
       "connectivity": "Wi-Fi, Bluetooth, 5G",
       "noise": "22 dB"
-    }
+    },
+    "sourceLinks": [
+      "https://www.1x.tech/neo",
+      "https://www.1x.tech/",
+      "https://www.1x.tech/news"
+    ],
+    "gallery": [
+      "assets/robots/1x-tech/neo/hero2.png",
+      "assets/robots/1x-tech/neo/hero3.png",
+      "assets/robots/1x-tech/neo/hero4.png"
+    ]
   },
   {
     "name": "Memo",
