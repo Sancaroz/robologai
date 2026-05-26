@@ -5448,12 +5448,14 @@ function robotGallery(robot) {
     if (typeof item === "string") {
       return {
         src: item,
-        caption: `${robot.name} gallery image ${index + 1}`
+        alt: `${robot.name} gallery image ${index + 1}`,
+        caption: ""
       };
     }
     return {
       src: item?.src || item?.image || item?.url || "",
-      caption: item?.caption || item?.alt || `${robot.name} gallery image ${index + 1}`
+      alt: item?.alt || item?.caption || `${robot.name} gallery image ${index + 1}`,
+      caption: item?.caption || ""
     };
   }).filter((item) => item.src);
 }
@@ -6985,8 +6987,8 @@ function renderRobotProfile() {
       <div class="robot-gallery-grid">
         ${gallery.map((item) => `
           <figure>
-            <img src="${pageEscape(item.src)}" alt="${pageEscape(item.caption)}" loading="lazy" decoding="async">
-            <figcaption>${pageEscape(item.caption)}</figcaption>
+            <img src="${pageEscape(item.src)}" alt="${pageEscape(item.alt || `${robot.name} gallery image`)}" loading="lazy" decoding="async">
+            ${item.caption ? `<figcaption>${pageEscape(item.caption)}</figcaption>` : ""}
           </figure>
         `).join("")}
       </div>
