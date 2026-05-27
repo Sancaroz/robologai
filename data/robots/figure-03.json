@@ -15,5 +15,11 @@
   "description": "Figure 03 is Figure AI's third-generation humanoid robot.",
   "image": "assets/robots/figure-ai/figure-03/hero.png",
   "heroImage": "assets/robots/figure-ai/figure-03/hero.png",
+  "gallery": [
+    "assets/robots/figure-ai/figure-03/hero1.png",
+    "assets/robots/figure-ai/figure-03/hero2.png",
+    "assets/robots/figure-ai/figure-03/hero3.png",
+    "assets/robots/figure-ai/figure-03/hero4.png"
+  ],
   "imageCredit": "Figure AI official media"
 }

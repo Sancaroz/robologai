@@ -7814,7 +7814,11 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .profile-visual.has-gallery .profile-visual-main {
-  min-height: 260px;
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+  max-height: 420px;
+  aspect-ratio: 16 / 10;
 }
 
 .profile-gallery-thumbs {
@@ -7844,7 +7848,7 @@ body.light-theme .humanoid-preview-card dt {
 }
 
 .profile-gallery-thumbs button {
-  flex: 0 0 clamp(62px, 18%, 88px);
+  flex: 0 0 clamp(92px, 24%, 118px);
   overflow: hidden;
   aspect-ratio: 1 / 1;
   scroll-snap-align: start;
@@ -12280,6 +12284,11 @@ body.light-theme .facts span {
 }
 
 @media (max-width: 680px) {
+  .profile-visual.has-gallery .profile-visual-main {
+    min-height: 220px;
+    max-height: 320px;
+  }
+
   .site-header,
   main,
   .site-footer {

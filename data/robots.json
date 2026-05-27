@@ -429,7 +429,9 @@
     "gallery": [
       "assets/robots/1x-tech/neo/hero2.png",
       "assets/robots/1x-tech/neo/hero3.png",
-      "assets/robots/1x-tech/neo/hero4.png"
+      "assets/robots/1x-tech/neo/hero4.png",
+      "assets/robots/1x-tech/neo/hero5.png",
+      "assets/robots/1x-tech/neo/hero6.png"
     ],
     "commercialAccess": true,
     "availableRegions": [
@@ -1195,7 +1197,13 @@
     "heroImage": "assets/robots/figure-ai/figure-03/hero.png",
     "maturity": 3,
     "priceVisibility": 1,
-    "imageCredit": "Figure AI official media"
+    "imageCredit": "Figure AI official media",
+    "gallery": [
+      "assets/robots/figure-ai/figure-03/hero1.png",
+      "assets/robots/figure-ai/figure-03/hero2.png",
+      "assets/robots/figure-ai/figure-03/hero3.png",
+      "assets/robots/figure-ai/figure-03/hero4.png"
+    ]
   },
   {
     "name": "RIVR Delivery Robot",

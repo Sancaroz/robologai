@@ -14,7 +14,7 @@
     <title>Figure 03 Robot Profile: Price, Use Case, Status | robologai</title>
     <link rel="icon" href="../assets/robologai-icon-v2.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/robologai-icon-v2.svg">
-    <link rel="stylesheet" href="../styles.css?v=20260525-image-fit">
+    <link rel="stylesheet" href="../styles.css?v=20260526-gallery-fit">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Figure 03 Robot Profile: Price, Use Case, Status","name":"Figure 03 Robot Profile","description":"Figure 03 by Figure AI: Humanoid robot profile with availability, price signal, use case, status, source link, and Robologai readiness score.","image":"assets/robots/figure-ai/figure-03/hero.png","url":"https://robologai.com/robots/figure-03.html","about":[{"@type":"Thing","name":"Humanoid"},{"@type":"Organization","name":"Figure AI","url":"https://www.figure.ai/"}],"mainEntity":{"@type":"Thing","name":"Figure 03","description":"Figure 03 by Figure AI","additionalType":"Humanoid","url":"https://robologai.com/robots/figure-03.html"},"publisher":{"@type":"Organization","name":"RoboLogAI","url":"https://robologai.com/"}}</script>
   </head>
   <body>
@@ -46,11 +46,33 @@
             <article><strong>No official public price</strong><small>Price signal</small></article>
           </div>
         </div>
-        <figure class="profile-visual " data-profile-gallery>
+        <figure class="profile-visual has-gallery" data-profile-gallery>
           
           <img class="profile-visual-main" data-profile-gallery-main src="../assets/robots/figure-ai/figure-03/hero.png" alt="Figure 03 robot" loading="lazy">
           <figcaption data-profile-gallery-caption >Figure AI official media</figcaption>
-          
+          <div class="profile-gallery-thumbs" aria-label="Figure 03 image selector">
+            
+              <button class="is-active" type="button" data-gallery-src="../assets/robots/figure-ai/figure-03/hero.png" data-gallery-alt="Figure 03 robot" data-gallery-caption="Figure AI official media" aria-label="Show Figure 03 robot">
+                <img src="../assets/robots/figure-ai/figure-03/hero.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/figure-ai/figure-03/hero1.png" data-gallery-alt="Figure 03 gallery image 1" data-gallery-caption="" aria-label="Show Figure 03 gallery image 1">
+                <img src="../assets/robots/figure-ai/figure-03/hero1.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/figure-ai/figure-03/hero2.png" data-gallery-alt="Figure 03 gallery image 2" data-gallery-caption="" aria-label="Show Figure 03 gallery image 2">
+                <img src="../assets/robots/figure-ai/figure-03/hero2.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/figure-ai/figure-03/hero3.png" data-gallery-alt="Figure 03 gallery image 3" data-gallery-caption="" aria-label="Show Figure 03 gallery image 3">
+                <img src="../assets/robots/figure-ai/figure-03/hero3.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/figure-ai/figure-03/hero4.png" data-gallery-alt="Figure 03 gallery image 4" data-gallery-caption="" aria-label="Show Figure 03 gallery image 4">
+                <img src="../assets/robots/figure-ai/figure-03/hero4.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+          </div>
         </figure>
       </section>
       <section class="profile-intel-strip" aria-label="Robot intelligence summary">
@@ -185,7 +207,23 @@
           <a href="../robots.html">Back to robot catalog →</a>
         </div>
       </section>
-      
+      <script>
+      document.querySelectorAll("[data-profile-gallery]").forEach((gallery) => {
+        const main = gallery.querySelector("[data-profile-gallery-main]");
+        const caption = gallery.querySelector("[data-profile-gallery-caption]");
+        gallery.querySelectorAll("[data-gallery-src]").forEach((button) => {
+          button.addEventListener("click", () => {
+            if (!main) return;
+            main.src = button.dataset.gallerySrc || main.src;
+            main.alt = button.dataset.galleryAlt || main.alt;
+            gallery.querySelectorAll("[data-gallery-src]").forEach((item) => item.classList.toggle("is-active", item === button));
+            if (!caption) return;
+            caption.textContent = button.dataset.galleryCaption || "";
+            caption.hidden = !button.dataset.galleryCaption;
+          });
+        });
+      });
+    </script>
     </main>
     <footer class="site-footer mini-footer">
       <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>

@@ -607,7 +607,7 @@ function layout({ title, description, canonical, body, schema, activeNav = "" })
     <title>${escapeHtml(title)} | robologai</title>
     <link rel="icon" href="../assets/robologai-icon-v2.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/robologai-icon-v2.svg">
-    <link rel="stylesheet" href="../styles.css?v=20260525-image-fit">
+    <link rel="stylesheet" href="../styles.css?v=20260526-gallery-fit">
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
   </head>
   <body>
