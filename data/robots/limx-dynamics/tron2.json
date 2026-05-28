@@ -1,0 +1,35 @@
+{
+  "name": "Tron 2",
+  "company": "LimX Dynamics",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Tracked",
+  "availability": "Research / Developer Platform",
+  "price": "No official public price",
+  "useCase": "Advanced embodied AI research, dynamic locomotion development, manipulation and robotics experimentation",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 0,
+  "source": "https://www.limxdynamics.com/en/products/tron2",
+  "image": "assets/robots/limxdynamics/tron-2/hero.png",
+  "heroImage": "assets/robots/limxdynamics/tron-2/hero.png",
+  "gallery": [
+    "assets/robots/limxdynamics/tron-2/hero.png",
+    "assets/robots/limxdynamics/tron-2/hero1.png",
+    "assets/robots/limxdynamics/tron-2/hero2.png",
+    "assets/robots/limxdynamics/tron-2/hero3.png",
+    "assets/robots/limxdynamics/tron-2/hero4.png",
+    "assets/robots/limxdynamics/tron-2/hero5.png",
+    "assets/robots/limxdynamics/tron-2/hero6.png"
+  ],
+  "keywords": [
+    "humanoid robot",
+    "embodied AI",
+    "locomotion",
+    "manipulation",
+    "reinforcement learning",
+    "LimX Dynamics",
+    "Tron 2"
+  ]
+}
