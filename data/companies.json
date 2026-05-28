@@ -2358,18 +2358,25 @@
   },
   {
     "name": "LimX Dynamics",
-    "category": "General-purpose humanoid robotics",
+    "category": "Humanoid Robotics",
     "country": "China",
-    "type": "Private",
-    "ticker": "",
-    "robot": "LimX Oli, TRON 1, TRON 2",
+    "type": "Humanoid Robotics",
+    "ticker": "N/A",
+    "robot": "Oli, Luna, TRON 1, TRON 2",
     "website": "https://www.limxdynamics.com/en",
     "keywords": [
-      "humanoid",
-      "physical ai",
-      "agentic os",
-      "tron"
-    ]
+      "humanoid robotics",
+      "bipedal robots",
+      "embodied AI",
+      "mobility systems",
+      "legged robotics",
+      "LimX Dynamics"
+    ],
+    "focus": "Humanoid robotics and legged mobility systems",
+    "logo": "assets/companies/limxdynamics/logo.png",
+    "image": "assets/companies/limxdynamics/logo.png",
+    "logoImage": "assets/companies/limxdynamics/logo.png",
+    "lastVerified": "2026-05-28"
   },
   {
     "name": "Leju Robotics",
