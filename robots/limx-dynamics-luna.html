@@ -46,11 +46,41 @@
             <article><strong>Not publicly listed</strong><small>Price signal</small></article>
           </div>
         </div>
-        <figure class="profile-visual " data-profile-gallery>
+        <figure class="profile-visual has-gallery" data-profile-gallery>
           
           <img class="profile-visual-main" data-profile-gallery-main src="../assets/robots/limxdynamics/luna/hero.png" alt="Luna robot" loading="lazy">
           <figcaption data-profile-gallery-caption hidden></figcaption>
-          
+          <div class="profile-gallery-thumbs" aria-label="Luna image selector">
+            
+              <button class="is-active" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero.png" data-gallery-alt="Luna robot" data-gallery-caption="" aria-label="Show Luna robot">
+                <img src="../assets/robots/limxdynamics/luna/hero.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero1.png" data-gallery-alt="Luna gallery image 1" data-gallery-caption="" aria-label="Show Luna gallery image 1">
+                <img src="../assets/robots/limxdynamics/luna/hero1.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero2.png" data-gallery-alt="Luna gallery image 2" data-gallery-caption="" aria-label="Show Luna gallery image 2">
+                <img src="../assets/robots/limxdynamics/luna/hero2.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero3.png" data-gallery-alt="Luna gallery image 3" data-gallery-caption="" aria-label="Show Luna gallery image 3">
+                <img src="../assets/robots/limxdynamics/luna/hero3.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero4.png" data-gallery-alt="Luna gallery image 4" data-gallery-caption="" aria-label="Show Luna gallery image 4">
+                <img src="../assets/robots/limxdynamics/luna/hero4.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero5.png" data-gallery-alt="Luna gallery image 5" data-gallery-caption="" aria-label="Show Luna gallery image 5">
+                <img src="../assets/robots/limxdynamics/luna/hero5.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+              <button class="" type="button" data-gallery-src="../assets/robots/limxdynamics/luna/hero6.png" data-gallery-alt="Luna gallery image 6" data-gallery-caption="" aria-label="Show Luna gallery image 6">
+                <img src="../assets/robots/limxdynamics/luna/hero6.png" alt="" loading="lazy" decoding="async">
+              </button>
+            
+          </div>
         </figure>
       </section>
       <section class="profile-intel-strip" aria-label="Robot intelligence summary">
@@ -185,7 +215,23 @@
           <a href="../robots.html">Back to robot catalog →</a>
         </div>
       </section>
-      
+      <script>
+      document.querySelectorAll("[data-profile-gallery]").forEach((gallery) => {
+        const main = gallery.querySelector("[data-profile-gallery-main]");
+        const caption = gallery.querySelector("[data-profile-gallery-caption]");
+        gallery.querySelectorAll("[data-gallery-src]").forEach((button) => {
+          button.addEventListener("click", () => {
+            if (!main) return;
+            main.src = button.dataset.gallerySrc || main.src;
+            main.alt = button.dataset.galleryAlt || main.alt;
+            gallery.querySelectorAll("[data-gallery-src]").forEach((item) => item.classList.toggle("is-active", item === button));
+            if (!caption) return;
+            caption.textContent = button.dataset.galleryCaption || "";
+            caption.hidden = !button.dataset.galleryCaption;
+          });
+        });
+      });
+    </script>
     </main>
     <footer class="site-footer mini-footer">
       <a class="brand footer-brand brand-full" href="../index.html" aria-label="RoboLogAI home"><img class="brand-logo-full" src="../assets/uploads/robologai-full-logo-v2-cropped-header.png?v=20260517-crop-logo" alt="RoboLogAI"></a>

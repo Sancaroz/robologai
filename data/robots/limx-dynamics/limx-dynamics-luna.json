@@ -13,6 +13,14 @@
   "priceVisibility": 1,
   "source": "https://www.limxdynamics.com/en",
   "image": "assets/robots/limxdynamics/luna/hero.png",
+   "gallery": [
+    "assets/robots/limxdynamics/luna/hero1.png",
+    "assets/robots/limxdynamics/luna/hero2.png",
+    "assets/robots/limxdynamics/luna/hero3.png",
+    "assets/robots/limxdynamics/luna/hero4.png",
+    "assets/robots/limxdynamics/luna/hero5.png",
+    "assets/robots/limxdynamics/luna/hero6.png"
+  ],
   "keywords": [
     "humanoid robot",
     "locomotion",
