@@ -1,0 +1,23 @@
+{
+  "name": "Luna",
+  "company": "LimX Dynamics",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Tracked",
+  "availability": "Research / Developer Platform",
+  "price": "Not publicly listed",
+  "useCase": "Humanoid locomotion research and mobility development",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 3,
+  "priceVisibility": 1,
+  "source": "https://www.limxdynamics.com/en",
+  "image": "assets/robots/limxdynamics/luna/hero.png",
+  "keywords": [
+    "humanoid robot",
+    "locomotion",
+    "mobility research",
+    "LimX Dynamics",
+    "Luna"
+  ]
+}
