@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-05-28",
+    "type": "Embodied AI Stack",
+    "title": "NVIDIA Research Advances Robotics From Simulation to the Real World",
+    "company": "NVIDIA",
+    "robot": "Isaac / GR00T",
+    "category": "Robotics infrastructure",
+    "country": "USA",
+    "impact": "High",
+    "summary": "Robotics is entering a new phase: moving from controlled demos and scripted automation toward generalizable, reliable embodied autonomy in the real world. At the International Conference on Robotics and Automation (ICRA), eight of NVIDIA Research’s 28 accepted",
+    "source": "https://blogs.nvidia.com/blog/icra-research-robotics-simulation-to-real-world/",
+    "relatedUrl": "physical-ai.html",
+    "sourceType": "automated"
+  },
+  {
     "date": "2026-05-26",
     "type": "Robotics News",
     "title": "Хирургическая система Sentire® Surgical System получила маркировку CE Mark (MDR) -- Cornerstone Robotics вступает в новую эру своей глобальной экспансии",
