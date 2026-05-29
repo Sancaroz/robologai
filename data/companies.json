@@ -2628,5 +2628,15 @@
     "lastVerified": "2026-05-19",
     "heroImage": "assets/companies/engine-ai/logo.png",
     "logoImage": "assets/companies/engine-ai/logo.png"
+  },
+  {
+    "name": "Realbotix",
+    "category": "Humanoid Robotics\",",
+    "country": "\"AI Companions\"",
+    "type": "Private",
+    "ticker": "",
+    "robot": "",
+    "website": "https://www.realbotix.com/",
+    "keywords": []
   }
 ]

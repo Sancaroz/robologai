@@ -1,0 +1,82 @@
+{
+    "name": "Realbotix Platform",
+    "slug": "realbotix-platform",
+    "company": "Realbotix",
+    "companySlug": "realbotix",
+    "country": "United States",
+    "price": "Contact for pricing",
+    "useCase": [
+  "Human-Robot Interaction",
+  "AI Companionship",
+  "Customer Engagement",
+  "Entertainment",
+  "Customer Service"
+],
+"source": "https://www.realbotix.com/robots",
+    "category": [
+        "Humanoid Robot",
+        "Social Robot",
+        "Modular Robot Platform"
+    ],
+    "focus": [
+        "Human-Robot Interaction",
+        "Social AI",
+        "AI Companionship",
+        "Customer Engagement",
+        "Digital Humans"
+    ],
+    "availability": "Limited Commercial Availability",
+    "status": "Active",
+    "website": "https://www.realbotix.com",
+    "gallery": [
+        "/assets/robots/realbotix/hero.png",
+        "/assets/robots/realbotix/hero1.png",
+        "/assets/robots/realbotix/hero2.png",
+        "/assets/robots/realbotix/hero3.png",
+        "/assets/robots/realbotix/hero4.png"
+    ],
+    "keywords": [
+        "Humanoid Robot",
+        "Social Robotics",
+        "AI Companion",
+        "Conversational AI",
+        "Digital Human",
+        "Human-Robot Interaction",
+        "Customer Service Robot",
+        "Embodied AI",
+        "Interactive AI",
+        "Modular Robotics"
+    ],
+    "models": [
+        {
+            "name": "Aria",
+            "type": "Full-Body Humanoid",
+            "description": "AI-powered humanoid robot focused on companionship, social interaction, customer engagement, and realistic human communication."
+        },
+        {
+            "name": "Melody",
+            "type": "Modular Humanoid",
+            "description": "Portable modular humanoid robot designed for human interaction, companionship, entertainment, and customer-facing experiences."
+        },
+        {
+            "name": "David",
+            "type": "Humanoid Robot",
+            "description": "Male humanoid platform focused on conversational AI, emotional interaction and customer-facing applications."
+        },
+        {
+            "name": "M-Series",
+            "type": "Modular Upper-Body Robot",
+            "description": "Stationary modular humanoid platform with facial expressions and upper-body interaction capabilities."
+        },
+        {
+            "name": "F-Series",
+            "type": "Full-Body Robot",
+            "description": "Full-bodied humanoid platform with mobile base and expanded movement capabilities."
+        },
+        {
+            "name": "B-Series",
+            "type": "Robotic Bust",
+            "description": "AI-enabled robotic bust with facial expressions, conversational AI and customizable appearance."
+        }
+    ]
+}

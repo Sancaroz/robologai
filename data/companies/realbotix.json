@@ -1,0 +1,32 @@
+{
+  "name": "Realbotix",
+  "slug": "realbotix",
+  "website": "https://www.realbotix.com",
+  "country": "United States",
+  "price": "Contact for pricing",
+  "useCase": [
+  "Human-Robot Interaction",
+  "AI Companionship",
+  "Customer Engagement",
+  "Entertainment",
+  "Customer Service"
+],
+  "source": "https://www.realbotix.com/robots",
+  "category": [
+    "Humanoid Robotics",
+    "Social Robotics",
+    "AI Companions"
+  ],
+  "focus": [
+  "Humanoid Robotics",
+  "Human-Robot Interaction",
+  "Social AI",
+  "AI Companionship",
+  "Conversational AI",
+  "Digital Humans"
+],
+  "logo": "assets/companies/realbotix/logo.png",
+  "image": "assets/companies/realbotix/logo.png",
+  "logoImage": "assets/companies/realbotix/logo.png",
+  "lastVerified": "2026-05-29"
+}
