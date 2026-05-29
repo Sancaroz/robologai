@@ -1,0 +1,25 @@
+{
+  "name": "XPENG Robotics",
+  "category": "Humanoid Robotics",
+  "country": "China",
+  "type": "Humanoid Robotics",
+  "ticker": "NYSE: XPEV",
+  "robot": "IRON",
+  "website": "https://www.xpeng.com/",
+  "keywords": [
+    "humanoid robotics",
+    "embodied AI",
+    "XPENG",
+    "IRON",
+    "bionic robot",
+    "manufacturing robotics",
+    "artificial intelligence",
+    "China robotics"
+  ],
+  "focus": "Humanoid robotics, embodied AI systems, intelligent mobility and next-generation automation.",
+  "logo": "assets/companies/xpeng-robotics/logo.png",
+  "image": "assets/companies/xpeng-robotics/logo.png",
+  "logoImage": "assets/companies/xpeng-robotics/logo.png",
+  "lastVerified": "2026-05-29"
+}
+

@@ -1,0 +1,32 @@
+{
+  "name": "IRON",
+  "company": "XPENG Robotics",
+  "category": "Humanoid",
+  "country": "China",
+  "status": "Tracked",
+  "availability": "Prototype / Internal Deployment",
+  "price": "0",
+  "useCase": "Manufacturing assistance, embodied AI research, retail interaction and humanoid robotics development.",
+  "height": "Not disclosed",
+  "runtime": "Not disclosed",
+  "maturity": 4,
+  "priceVisibility": 0,
+  "source": "https://www.xpeng.com/",
+  "image": "assets/robots/xpeng-robotics/iron/hero.png",
+  "imageCredit": "assets/robots/xpeng/iron/hero.png",
+  "gallery": [
+    "assets/robots/xpeng-robotics/iron/hero1.png",
+    "assets/robots/xpeng-robotics/iron/hero2.png",
+    "assets/robots/xpeng-robotics/iron/hero3.png"
+  ],
+  "keywords": [
+    "humanoid robot",
+    "XPENG",
+    "IRON",
+    "embodied AI",
+    "robotics",
+    "manufacturing automation",
+    "bionic robot",
+    "China"
+  ]
+}

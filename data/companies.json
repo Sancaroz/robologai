@@ -312,19 +312,27 @@
   },
   {
     "name": "XPENG Robotics",
-    "category": "Humanoid robotics",
+    "category": "Humanoid Robotics",
     "country": "China",
-    "type": "Public proxy",
-    "ticker": "XPEV",
-    "robot": "Iron",
+    "type": "Humanoid Robotics",
+    "ticker": "NYSE: XPEV",
+    "robot": "IRON",
     "logo": "assets/companies/xpeng-robotics/logo.png",
     "image": "assets/companies/xpeng-robotics/logo.png",
     "website": "https://www.xpeng.com/",
     "keywords": [
-      "iron",
-      "humanoid",
-      "xpeng"
-    ]
+      "humanoid robotics",
+      "embodied AI",
+      "XPENG",
+      "IRON",
+      "bionic robot",
+      "manufacturing robotics",
+      "artificial intelligence",
+      "China robotics"
+    ],
+    "focus": "Humanoid robotics, embodied AI systems, intelligent mobility and next-generation automation.",
+    "logoImage": "assets/companies/xpeng-robotics/logo.png",
+    "lastVerified": "2026-05-29"
   },
   {
     "name": "Toyota Research Institute",
