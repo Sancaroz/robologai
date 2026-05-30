@@ -28,12 +28,14 @@
     "availability": "Limited Commercial Availability",
     "status": "Active",
     "website": "https://www.realbotix.com",
+    "image": "/assets/robots/realbotix-platform/hero.png",
+    "heroImage": "/assets/robots/realbotix-platform/hero.png",
     "gallery": [
-        "/assets/robots/realbotix/hero.png",
-        "/assets/robots/realbotix/hero1.png",
-        "/assets/robots/realbotix/hero2.png",
-        "/assets/robots/realbotix/hero3.png",
-        "/assets/robots/realbotix/hero4.png"
+        "assets/robots/realbotix-platform/hero.png",
+        "assets/robots/realbotix-platform/hero1.png",
+        "assets/robots/realbotix-platform/hero2.png",
+        "assets/robots/realbotix-platform/hero3.png",
+        "assets/robots/realbotix-platform/hero4.png"
     ],
     "keywords": [
         "Humanoid Robot",

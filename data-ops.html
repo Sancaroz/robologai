@@ -245,7 +245,11 @@
       <strong>python3 -m http.server 8000</strong>
       <small>Preview company and robot pages before pushing changes.</small>
     </article>
-
+<article>
+  <span>Commit changes</span>
+  <strong>git add .<br>git commit -m "message"</strong>
+  <small>Save validated company, robot, and data updates before publishing.</small>
+</article>
     <article>
       <span>Push changes</span>
       <strong>git push origin main</strong>
@@ -434,7 +438,24 @@
       <strong>cd ~/Desktop/ROBOLOGAI</strong>
       <small>Return to the project root.</small>
     </article>
+<article>
+  <span>JSON troubleshooting</span>
+  <strong>
+    Expected ',' or '}'<br>
+    missing required field<br>
+    missing asset
+  </strong>
+  <small>Most RoboLogAI validation failures come from JSON syntax errors, missing fields, or incorrect asset paths.</small>
+</article>
 
+<article>
+  <span>Reference errors</span>
+  <strong>
+    companySlug mismatch<br>
+    robots reference missing companies
+  </strong>
+  <small>Check company names, companySlug values, and robot-to-company relationships.</small>
+</article>
     <article>
       <span>Open VS Code</span>
       <strong>code .<br>code data-ops.html</strong>

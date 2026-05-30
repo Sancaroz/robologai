@@ -2168,11 +2168,11 @@
     "status": "Active",
     "website": "https://www.realbotix.com",
     "gallery": [
-      "/assets/robots/realbotix/hero.png",
-      "/assets/robots/realbotix/hero1.png",
-      "/assets/robots/realbotix/hero2.png",
-      "/assets/robots/realbotix/hero3.png",
-      "/assets/robots/realbotix/hero4.png"
+      "assets/robots/realbotix-platform/hero.png",
+      "assets/robots/realbotix-platform/hero1.png",
+      "assets/robots/realbotix-platform/hero2.png",
+      "assets/robots/realbotix-platform/hero3.png",
+      "assets/robots/realbotix-platform/hero4.png"
     ],
     "keywords": [
       "Humanoid Robot",
@@ -2217,7 +2217,9 @@
         "type": "Robotic Bust",
         "description": "AI-enabled robotic bust with facial expressions, conversational AI and customizable appearance."
       }
-    ]
+    ],
+    "image": "/assets/robots/realbotix-platform/hero.png",
+    "heroImage": "/assets/robots/realbotix-platform/hero.png"
   },
   {
     "name": "ANYmal Platform",
@@ -2251,10 +2253,10 @@
     "website": "https://www.anybotics.com/robotics/",
     "status": "Active",
     "gallery": [
-      "/assets/robots/anybotics/anymal/hero.png",
-      "/assets/robots/anybotics/anymal/hero1.png",
-      "/assets/robots/anybotics/anymal/hero2.png",
-      "/assets/robots/anybotics/anymal/hero3.png"
+      "assets/robots/anybotics/anymal/hero.png",
+      "assets/robots/anybotics/anymal/hero1.png",
+      "assets/robots/anybotics/anymal/hero2.png",
+      "assets/robots/anybotics/anymal/hero3.png"
     ],
     "keywords": [
       "Quadruped Robot",
@@ -2280,8 +2282,8 @@
         "description": "Explosion-proof version of ANYmal designed for Ex-rated industrial zones, including oil, gas and chemical environments."
       }
     ],
-    "heroImage": "/assets/robots/anybotics/anymal/hero.png",
-    "logoImage": "/assets/robots/anybotics/anymal/hero.png",
-    "image": "assets/robots/anybotics/hero.png"
+    "heroImage": "assets/robots/anybotics/anymal/hero.png",
+    "logoImage": "assets/robots/anybotics/anymal/hero.png",
+    "image": "assets/robots/anybotics/anymal/hero.png"
   }
 ]
