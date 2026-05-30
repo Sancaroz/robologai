@@ -1,0 +1,62 @@
+{
+  "name": "ANYmal Platform",
+  "slug": "anymal-platform",
+  "company": "ANYbotics",
+  "companySlug": "anybotics",
+  "country": "Switzerland",
+  "category": [
+    "Quadruped Robot",
+    "Inspection Robot",
+    "Industrial Robot"
+  ],
+  "focus": [
+    "Autonomous Industrial Inspection",
+    "Legged Mobility",
+    "Asset Monitoring",
+    "Data Collection",
+    "Hazardous Area Inspection"
+  ],
+  "availability": "Commercial Availability",
+  "price": "Contact for pricing",
+  "useCase": [
+    "Industrial Inspection",
+    "Oil & Gas Inspection",
+    "Chemical Plant Inspection",
+    "Power & Utilities",
+    "Mining",
+    "Railway & Transportation"
+  ],
+  "source": "https://www.anybotics.com/robotics/",
+  "website": "https://www.anybotics.com/robotics/",
+  "status": "Active",
+  "gallery": [
+    "/assets/robots/anybotics/anymal/hero.png",
+    "/assets/robots/anybotics/anymal/hero1.png",
+    "/assets/robots/anybotics/anymal/hero2.png",
+    "/assets/robots/anybotics/anymal/hero3.png"
+  ],
+  "keywords": [
+    "Quadruped Robot",
+    "Inspection Robot",
+    "Industrial Robotics",
+    "Autonomous Inspection",
+    "Legged Robot",
+    "ANYmal",
+    "ANYmal X",
+    "Hazardous Area Robot",
+    "ATEX Robot",
+    "IECEx Robot"
+  ],
+  "models": [
+    {
+      "name": "ANYmal",
+      "type": "Industrial Quadruped Inspection Robot",
+      "description": "Rugged autonomous inspection robot designed for complex industrial facilities, equipped with visual, thermal, acoustic and lidar-based sensing."
+    },
+    {
+      "name": "ANYmal X",
+      "type": "Ex-Certified Quadruped Inspection Robot",
+      "description": "Explosion-proof version of ANYmal designed for Ex-rated industrial zones, including oil, gas and chemical environments."
+    }
+  ]
+}

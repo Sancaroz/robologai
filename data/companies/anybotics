@@ -1,0 +1,13 @@
+{
+    "name": "ANYbotics",
+    "category": "Industrial inspection robots",
+    "country": "Switzerland",
+    "type": "Private",
+    "ticker": "",
+    "robot": "ANYmal",
+    "website": "https://www.anybotics.com/",
+    "keywords": [
+      "inspection robot",
+      "quadruped"
+    ]
+  }
