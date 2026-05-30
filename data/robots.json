@@ -2285,5 +2285,65 @@
     "heroImage": "assets/robots/anybotics/anymal/hero.png",
     "logoImage": "assets/robots/anybotics/anymal/hero.png",
     "image": "assets/robots/anybotics/anymal/hero.png"
+  },
+  {
+    "name": "Clearpath Mobile Robotics Platform",
+    "slug": "clearpath-mobile-platform",
+    "company": "Clearpath Robotics",
+    "companySlug": "clearpath-robotics",
+    "category": "Autonomous Mobile Robot Platform",
+    "description": "A family of ROS-native unmanned ground vehicle platforms designed for research, autonomous navigation, industrial automation, and robotics development.",
+    "robotType": "Mobile Robot",
+    "country": "Canada",
+    "availability": "Commercial Availability",
+    "status": "Active",
+    "website": "https://clearpathrobotics.com/",
+    "source": "https://clearpathrobotics.com/",
+    "sourceLinks": [
+      "https://clearpathrobotics.com/"
+    ],
+    "image": "assets/robots/clearpath-mobile-platform/hero.png",
+    "heroImage": "assets/robots/clearpath-mobile-platform/hero.png",
+    "logoImage": "assets/robots/clearpath-mobile-platform/hero.png",
+    "gallery": [
+      "assets/robots/clearpath-mobile-platform/hero.png",
+      "assets/robots/clearpath-mobile-platform/hero1.png",
+      "assets/robots/clearpath-mobile-platform/hero2.png",
+      "assets/robots/clearpath-mobile-platform/hero3.png",
+      "assets/robots/clearpath-mobile-platform/hero4.png"
+    ],
+    "productLineup": [
+      "Jackal",
+      "Dingo",
+      "Husky A300",
+      "Warthog",
+      "Ridgeback",
+      "TurtleBot 4"
+    ],
+    "useCases": [
+      "Research & Development",
+      "Autonomous Navigation",
+      "Industrial Inspection",
+      "Mobile Manipulation",
+      "Education",
+      "Field Robotics"
+    ],
+    "maturity": 5,
+    "priceVisibility": 1,
+    "keywords": [
+      "clearpath robotics",
+      "jackal",
+      "dingo",
+      "husky",
+      "warthog",
+      "ridgeback",
+      "turtlebot",
+      "ugv",
+      "autonomous mobile robot",
+      "research robot",
+      "ros"
+    ],
+    "price": "Contact for pricing",
+    "useCase": "Autonomous navigation, robotics research, industrial inspection, education, and field robotics"
   }
 ]

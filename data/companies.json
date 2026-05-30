@@ -919,19 +919,6 @@
     ]
   },
   {
-    "name": "Clearpath Robotics",
-    "category": "Research mobile robots",
-    "country": "Canada",
-    "type": "Subsidiary",
-    "ticker": "Rockwell Automation",
-    "robot": "Husky, Jackal",
-    "website": "https://clearpathrobotics.com/",
-    "keywords": [
-      "mobile robot",
-      "research platform"
-    ]
-  },
-  {
     "name": "OTTO Motors",
     "category": "Autonomous mobile robots",
     "country": "Canada",
@@ -2684,5 +2671,52 @@
     "logoImage": "assets/companies/anybotics/logo.png",
     "source": "https://www.anybotics.com/",
     "lastVerified": "2026-05-30"
+  },
+  {
+    "name": "Clearpath Robotics",
+    "slug": "clearpath-robotics",
+    "category": [
+      "Mobile Robotics",
+      "Research Robotics",
+      "Autonomous Robotics"
+    ],
+    "country": "Canada",
+    "type": "Subsidiary",
+    "parentCompany": "Rockwell Automation",
+    "ticker": "ROK",
+    "robot": "Clearpath Mobile Robotics Platform",
+    "logo": "assets/companies/clearpath-robotics/logo.png",
+    "image": "assets/companies/clearpath-robotics/logo.png",
+    "heroImage": "assets/companies/clearpath-robotics/logo.png",
+    "website": "https://clearpathrobotics.com/",
+    "focus": [
+      "ROS-native mobile robot platforms",
+      "Autonomous navigation",
+      "Unmanned ground vehicles",
+      "Research and development",
+      "Robotics education",
+      "Field robotics"
+    ],
+    "availability": "Commercial Availability",
+    "keywords": [
+      "mobile robots",
+      "UGV",
+      "ROS",
+      "ROS 2",
+      "research robots",
+      "autonomous navigation",
+      "field robotics",
+      "Jackal",
+      "Dingo",
+      "Husky",
+      "Warthog",
+      "Ridgeback",
+      "TurtleBot 4"
+    ],
+    "logoImage": "assets/companies/clearpath-robotics/logo.png",
+    "source": "https://clearpathrobotics.com/",
+    "lastVerified": "2026-05-30",
+    "price": "Contact for pricing",
+    "useCase": "Autonomous navigation, robotics research, industrial inspection, education, and field robotics"
   }
 ]
