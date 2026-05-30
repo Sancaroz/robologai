@@ -1653,19 +1653,6 @@
     ]
   },
   {
-    "name": "ANYbotics",
-    "category": "Industrial inspection robots",
-    "country": "Switzerland",
-    "type": "Private",
-    "ticker": "",
-    "robot": "ANYmal",
-    "website": "https://www.anybotics.com/",
-    "keywords": [
-      "inspection robot",
-      "quadruped"
-    ]
-  },
-  {
     "name": "Ghost Robotics",
     "category": "Quadruped robots",
     "country": "USA",
@@ -2664,5 +2651,18 @@
     "image": "assets/companies/realbotix/logo.png",
     "logoImage": "assets/companies/realbotix/logo.png",
     "lastVerified": "2026-05-29"
+  },
+  {
+    "name": "ANYbotics",
+    "category": "Industrial inspection robots",
+    "country": "Switzerland",
+    "type": "Private",
+    "ticker": "",
+    "robot": "ANYmal",
+    "website": "https://www.anybotics.com/",
+    "keywords": [
+      "inspection robot",
+      "quadruped"
+    ]
   }
 ]

@@ -531,6 +531,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://robologai.com/robots/anybotics-anymal-platform.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://robologai.com/companies/tesla.html</loc>
     <lastmod>2026-05-07</lastmod>
     <priority>0.7</priority>
@@ -1071,11 +1076,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://robologai.com/companies/anybotics.html</loc>
-    <lastmod>2026-05-07</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://robologai.com/companies/ghost-robotics.html</loc>
     <lastmod>2026-05-07</lastmod>
     <priority>0.7</priority>
@@ -1362,6 +1362,11 @@
   </url>
   <url>
     <loc>https://robologai.com/companies/realbotix.html</loc>
+    <lastmod>2026-05-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://robologai.com/companies/anybotics.html</loc>
     <lastmod>2026-05-07</lastmod>
     <priority>0.7</priority>
   </url>
