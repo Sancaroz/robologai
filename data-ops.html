@@ -59,7 +59,30 @@
           <article><span>Write updates</span><strong>node scripts/health-check.mjs --write</strong><small>Regenerates aggregate JSON and static profile pages, then runs the checks.</small></article>
         </div>
       </section>
+      <article>
+        <div class="data-ops-grid">
 
+<article>
+  <span>Safe publish flow</span>
+  <strong>status → health → write → preview → commit → push</strong>
+  <small>Never push before checking local preview and health-check output.</small>
+</article>
+<article>
+  <span>Common fixes</span>
+  <strong>JSON comma, missing asset, wrong image path, companySlug mismatch</strong>
+  <small>Most catalog errors come from missing commas, wrong image paths, or company/robot slug mismatch.</small>
+</article>
+<article>
+  <span>Local preview URLs</span>
+  <strong>localhost:8000</strong>
+  <small>Use these pages before committing new company or robot records.</small>
+</article>
+<article>
+  <span>Cleanup duplicate files</span>
+  <strong>find companies -name "* 2.html"</strong>
+  <small>Use this to find accidental macOS duplicate generated pages before commit.</small>
+</article>
+</div>
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Command Recipes</p>
@@ -150,11 +173,103 @@
           <article>
             <span>6. Final gate</span>
             <strong>node scripts/health-check.mjs</strong>
-            <small>Run before commit so data, links, profile pages, assets, and JS syntax stay deploy-ready.</small>
+            <small>Use data-ops, company pages and robot pages before commit.</small>
           </article>
         </div>
       </section>
+<section class="catalog-section">
+  <div class="section-heading compact">
+    <p>Developer Workflow</p>
+    <section class="catalog-section">
+  <div class="section-heading compact">
+    <p>Publishing Checklist</p>
+    <h2>New company and robot records should pass this review.</h2>
+  </div>
 
+  <div class="data-ops-grid">
+    <article>
+      <span>Company record</span>
+      <strong>data/companies/company-slug.json</strong>
+      <small>Include name, slug, category, country, website, focus, keywords, logo, source, and lastVerified.</small>
+    </article>
+
+    <article>
+      <span>Robot record</span>
+      <strong>data/robots/company-slug/robot-slug.json</strong>
+      <small>Include company, companySlug, country, category, useCase, price, source, image, heroImage, and gallery.</small>
+    </article>
+
+    <article>
+      <span>Assets</span>
+      <strong>assets/companies/...<br>assets/robots/...</strong>
+      <small>Make sure every logo, image, heroImage, and gallery path exists exactly as written.</small>
+    </article>
+
+    <article>
+      <span>Final publish</span>
+      <strong>git add .<br>git commit -m "message"<br>git push origin main</strong>
+      <small>Push only after health check is clean and the local preview looks correct.</small>
+    </article>
+  </div>
+</section>
+    <h2>Daily RoboLogAI commands and publishing checklist.</h2>
+  </div>
+
+  <div class="data-ops-grid">
+    <article>
+      <span>Check changes</span>
+      <strong>git status --short</strong>
+      <small>See modified, new, and deleted files before committing.</small>
+    </article>
+
+    <article>
+      <span>Pull latest</span>
+      <strong>git pull --rebase origin main</strong>
+      <small>Always sync with GitHub before making changes.</small>
+    </article>
+
+    <article>
+      <span>Validate data</span>
+      <strong>node scripts/health-check.mjs</strong>
+      <small>Checks JSON, links, assets, profile references, and data quality.</small>
+    </article>
+
+    <article>
+      <span>Regenerate outputs</span>
+      <strong>node scripts/health-check.mjs --write</strong>
+      <small>Updates aggregate data files and generated company/robot pages.</small>
+    </article>
+
+    <article>
+      <span>Local preview</span>
+      <strong>python3 -m http.server 8000</strong>
+      <small>Preview company and robot pages before pushing changes.</small>
+    </article>
+
+    <article>
+      <span>Push changes</span>
+      <strong>git push origin main</strong>
+      <small>Publish only after health check and local review are complete.</small>
+    </article>
+  </div>
+
+  <div class="data-ops-grid">
+    <article>
+      <span>Checklist</span>
+      <strong>New Company / Robot Workflow</strong>
+      <small>
+        □ Create company JSON<br>
+        □ Create robot JSON<br>
+        □ Add logo and images<br>
+        □ Run health check<br>
+        □ Run health check --write<br>
+        □ Review locally<br>
+        □ Commit<br>
+        □ Push
+      </small>
+    </article>
+  </div>
+</section>
       <section class="catalog-section">
         <div class="section-heading compact">
           <p>Data Quality Queue</p>
@@ -226,6 +341,137 @@
 
       <section class="catalog-section">
         <div class="section-heading compact">
+          <section class="catalog-section">
+  <div class="section-heading compact">
+    <p>Developer Workflow</p>
+    <h2>Use these commands before publishing catalog changes.</h2>
+  </div>
+
+  <div class="data-ops-grid">
+    <article>
+      <span>1. Sync first</span>
+      <strong>git status --short<br>git pull --rebase origin main</strong>
+      <small>Check your local changes, then pull the latest GitHub main before editing.</small>
+    </article>
+
+    <article>
+      <span>2. Validate data</span>
+      <strong>node scripts/health-check.mjs</strong>
+      <small>Find JSON errors, missing fields, broken company links, and missing assets.</small>
+    </article>
+
+    <article>
+      <span>3. Regenerate site files</span>
+      <strong>node scripts/health-check.mjs --write</strong>
+      <small>Update aggregate JSON files, generated company pages, robot pages, and sitemap output.</small>
+    </article>
+
+    <article>
+  <span>Local preview</span>
+  <strong>python3 -m http.server 8000</strong>
+  <small>Then open localhost:8000 in your browser.</small>
+</article>
+  </div>
+</section>
+<section class="catalog-section">
+  <div class="section-heading compact">
+    <p>Publishing Checklist</p>
+    <h2>New company and robot records should pass this review.</h2>
+  </div>
+
+  <div class="data-ops-grid">
+    ...
+  </div>
+</section>
+
+<section class="catalog-section">
+  <div class="section-heading compact">
+    <p>Publishing Checklist</p>
+    <h2>New company and robot records should pass this review.</h2>
+  </div>
+
+  <div class="data-ops-grid">
+    <article>
+      <span>Company record</span>
+      <strong>data/companies/company-slug.json</strong>
+      <small>Include name, slug, category, country, website, focus, keywords, logo, source, and lastVerified.</small>
+    </article>
+
+    <article>
+      <span>Robot record</span>
+      <strong>data/robots/company-slug/robot-slug.json</strong>
+      <small>Include company, companySlug, country, category, useCase, price, source, image, heroImage, and gallery.</small>
+    </article>
+
+    <article>
+      <span>Assets</span>
+      <strong>assets/companies/...<br>assets/robots/...</strong>
+      <small>Make sure every logo, image, heroImage, and gallery path exists exactly as written.</small>
+    </article>
+
+    <article>
+      <span>Final publish</span>
+      <strong>git add .<br>git commit -m "message"<br>git push origin main</strong>
+      <small>Push only after health check is clean and the local preview looks correct.</small>
+    </article>
+  </div>
+</section>
+<section class="catalog-section">
+  <div class="section-heading compact">
+    <p>Terminal Survival Notes</p>
+    <h2>Use this when you get lost in VS Code or Terminal.</h2>
+  </div>
+
+  <div class="data-ops-grid">
+    <article>
+      <span>Where am I?</span>
+      <strong>pwd<br>ls<br>ls -la</strong>
+      <small>Shows current folder and files.</small>
+    </article>
+
+    <article>
+      <span>Go to RoboLogAI</span>
+      <strong>cd ~/Desktop/ROBOLOGAI</strong>
+      <small>Return to the project root.</small>
+    </article>
+
+    <article>
+      <span>Open VS Code</span>
+      <strong>code .<br>code data-ops.html</strong>
+      <small>Open project or a specific file.</small>
+    </article>
+
+    <article>
+      <span>Check changes</span>
+      <strong>git status --short</strong>
+      <small>See modified, new and deleted files.</small>
+    </article>
+
+    <article>
+      <span>Pull latest</span>
+      <strong>git pull --rebase origin main</strong>
+      <small>Always sync before editing.</small>
+    </article>
+
+    <article>
+      <span>Validate data</span>
+      <strong>node scripts/health-check.mjs</strong>
+      <small>Checks JSON, assets, links and references.</small>
+    </article>
+
+    <article>
+      <span>Regenerate outputs</span>
+      <strong>node scripts/health-check.mjs --write</strong>
+      <small>Rebuild generated pages and aggregate files.</small>
+    </article>
+
+    <article>
+      <span>Preview locally</span>
+      <strong>python3 -m http.server 8000</strong>
+      <small>Open localhost:8000 in browser. Stop with Ctrl + C.</small>
+    </article>
+  </div>
+</section>
           <p>Logo & Image Coverage</p>
           <h2>Use this as the visual backlog after the priority queue.</h2>
         </div>
