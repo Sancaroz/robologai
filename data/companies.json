@@ -2654,7 +2654,11 @@
   },
   {
     "name": "ANYbotics",
-    "category": "Industrial inspection robots",
+    "category": [
+      "Industrial Robotics",
+      "Inspection Robotics",
+      "Quadruped Robotics"
+    ],
     "country": "Switzerland",
     "type": "Private",
     "ticker": "",
@@ -2662,7 +2666,23 @@
     "website": "https://www.anybotics.com/",
     "keywords": [
       "inspection robot",
-      "quadruped"
-    ]
+      "quadruped",
+      "industrial inspection",
+      "legged robot",
+      "ANYmal"
+    ],
+    "slug": "anybotics",
+    "focus": [
+      "Autonomous Industrial Inspection",
+      "Legged Robotics",
+      "Asset Monitoring",
+      "Hazardous Area Inspection"
+    ],
+    "availability": "Commercial Availability",
+    "logo": "assets/companies/anybotics/logo.png",
+    "image": "assets/companies/anybotics/logo.png",
+    "logoImage": "assets/companies/anybotics/logo.png",
+    "source": "https://www.anybotics.com/",
+    "lastVerified": "2026-05-30"
   }
 ]
