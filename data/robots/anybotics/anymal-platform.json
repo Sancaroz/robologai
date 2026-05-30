@@ -29,6 +29,9 @@
   "source": "https://www.anybotics.com/robotics/",
   "website": "https://www.anybotics.com/robotics/",
   "status": "Active",
+  "image": "assets/robots/anybotics/hero.png",
+  "heroImage": "/assets/robots/anybotics/anymal/hero.png",
+  "logoImage": "/assets/robots/anybotics/anymal/hero.png",
   "gallery": [
     "/assets/robots/anybotics/anymal/hero.png",
     "/assets/robots/anybotics/anymal/hero1.png",

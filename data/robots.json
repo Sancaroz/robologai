@@ -2279,6 +2279,9 @@
         "type": "Ex-Certified Quadruped Inspection Robot",
         "description": "Explosion-proof version of ANYmal designed for Ex-rated industrial zones, including oil, gas and chemical environments."
       }
-    ]
+    ],
+    "heroImage": "/assets/robots/anybotics/anymal/hero.png",
+    "logoImage": "/assets/robots/anybotics/anymal/hero.png",
+    "image": "assets/robots/anybotics/hero.png"
   }
 ]
